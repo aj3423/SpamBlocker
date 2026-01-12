@@ -1,0 +1,12 @@
+New:
+- Regex mode "Geo Location", e.g. "Texas"
+  - Regex preset "Local Number": block all numbers from other regions
+  - History option: show/hide geo location
+
+Changes:
+- SMS query API preset
+  - Replacing Gemini(20 RPD) with Groq(1k RPD). RPD: requests per day
+
+Fixes:
+- SMS regex doesn't work with multi-line SMS 
+- History rule indicator doesn't work with Contact/ContactGroup/CNAP regex

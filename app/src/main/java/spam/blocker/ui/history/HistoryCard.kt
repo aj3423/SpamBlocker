@@ -182,6 +182,7 @@ fun HistoryCard(
                         fontSize = 18.sp
                     )
                 }
+                
                 // Row 2: Geo Location
                 if (G.showHistoryGeoLocation.value) {
                     val loc = Util.numberGeoLocation(ctx, record.peer)
@@ -197,8 +198,6 @@ fun HistoryCard(
                         )
                     }
                 }
-
-
 
                 // Row 3: Reason Summary
                 val r = parseCheckResultFromDb(ctx, record.result, record.reason)
