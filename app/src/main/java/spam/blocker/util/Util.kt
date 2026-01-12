@@ -44,6 +44,7 @@ import java.text.SimpleDateFormat
 import java.time.Duration
 import java.time.Instant
 import java.time.LocalDateTime
+import java.time.Year
 import java.time.ZoneId
 import java.util.Calendar
 import java.util.Date
@@ -144,8 +145,18 @@ object Util {
         }
     }
 
+    fun isSameYearAsNow(timestamp: Long): Boolean {
+        return Year.from(
+            Instant.ofEpochMilli(timestamp).atZone(ZoneId.systemDefault())
+        ) == Year.now()
+    }
     fun fullDateString(timestamp: Long): String {
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd\nHH:mm", Locale.getDefault())
+        val format = if (isSameYearAsNow(timestamp)) {
+            "MM-dd\nHH:mm" // don't show the YEAR
+        } else {
+            "yyyy-MM-dd\nHH:mm"
+        }
+        val dateFormat = SimpleDateFormat(format, Locale.getDefault())
         val date = Date(timestamp)
         return dateFormat.format(date)
     }

@@ -344,10 +344,12 @@ fun RecentApps() {
                 }
             }
 
-            AppChooserIcon { granted ->
-                Permission.usageStats.isGranted = granted
-                if (granted)
-                    appsPopupTrigger.value = true
+            if (enabledAppInfos.isEmpty()) {
+                AppChooserIcon { granted ->
+                    Permission.usageStats.isGranted = granted
+                    if (granted)
+                        appsPopupTrigger.value = true
+                }
             }
         }
     )

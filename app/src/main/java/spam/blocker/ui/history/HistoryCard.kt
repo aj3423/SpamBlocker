@@ -160,48 +160,47 @@ fun HistoryCard(
                 )
             }
 
-            // 2. Db exist indicator / Number / BlockReason / SMS Content
+            // 2. Rule indicator / Number / BlockReason / SMS Content
             Column(
                 modifier = M.padding(start = 4.dp).weight(1f)
             ) {
-                FlowRowSpaced(2, vSpace = 0) {
-                    RowVCenterSpaced(2) {
-                        // Db/Rule existence indicators
-                        if(indicators.isNotEmpty())
-                            IndicatorIcons(indicators)
+                // Row 1: Rule indicator / Number
+                RowVCenterSpaced(2) {
+                    // Db/Rule existence indicators
+                    if(indicators.isNotEmpty())
+                        IndicatorIcons(indicators)
 
-                        // Number
-                        var t = contact?.name ?: record.peer
-                        // Display Name (CNAP)
-                        if (!record.cnap.isNullOrEmpty()) {
-                            t += " (${record.cnap})"
-                        }
-                        Text(
-                            text = t,
-                            color = if (record.isBlocked()) C.block else C.pass,
-                            fontSize = 18.sp
-                        )
+                    // Number
+                    var t = contact?.name ?: record.peer
+                    // Display Name (CNAP)
+                    if (!record.cnap.isNullOrEmpty()) {
+                        t += " (${record.cnap})"
                     }
-                    // Geo Location
-                    if (G.showHistoryGeoLocation.value) {
-                        val loc = Util.numberGeoLocation(ctx, record.peer)
-                        loc?.let {
-                            Text(
-                                text = loc,
-                                style = TextStyle(
-                                    fontSize = 12.sp,
-                                    color = C.textDimGrey,
-                                    lineHeight = 14.sp,
-                                    fontWeight = FontWeight.W500,
-                                ),
-                                modifier = M.padding(start = 4.dp).fillMaxHeight(),
-                            )
-                        }
+                    Text(
+                        text = t,
+                        color = if (record.isBlocked()) C.block else C.pass,
+                        fontSize = 18.sp
+                    )
+                }
+                // Row 2: Geo Location
+                if (G.showHistoryGeoLocation.value) {
+                    val loc = Util.numberGeoLocation(ctx, record.peer)
+                    loc?.let {
+                        Text(
+                            text = loc,
+                            style = TextStyle(
+                                fontSize = 12.sp,
+                                color = C.textDimGrey,
+                                fontWeight = FontWeight.W500,
+                            ),
+                            modifier = M.padding(start = 4.dp),
+                        )
                     }
                 }
 
 
-                // Reason Summary
+
+                // Row 3: Reason Summary
                 val r = parseCheckResultFromDb(ctx, record.result, record.reason)
                 r.ResultReason(record.expanded)
 

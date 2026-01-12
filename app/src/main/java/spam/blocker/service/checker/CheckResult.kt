@@ -477,11 +477,11 @@ class ByRegexRule(
             }
 
             RESULT_ALLOWED_BY_CNAP_REGEX, RESULT_BLOCKED_BY_CNAP_REGEX -> {
-                ctx.getString(R.string.caller_name_rule) + ": $summary"
+                ctx.getString(R.string.caller_name) + ": $summary"
             }
 
             RESULT_ALLOWED_BY_GEO_LOCATION_REGEX, RESULT_BLOCKED_BY_GEO_LOCATION_REGEX -> {
-                ctx.getString(R.string.geo_location_rule) + ": $summary"
+                ctx.getString(R.string.geo_location) + ": $summary"
             }
 
             else -> "bug, please report"
