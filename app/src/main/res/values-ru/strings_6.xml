@@ -31,7 +31,7 @@
         ]]>
     </string>
     <string name="copy_number">Скопировать номер</string>
-    <string name="add_num_to_regex_rule">Добавить номер в правило регулярного выражения</string>
+    <string name="add_num_to_regex_rule">Добавить номер в рег. выражение</string>
     <string name="add_num_to_db">Добавить номер в базу спама</string>
     <string name="mark_all_as_read">Пометить все как прочитанные</string>
     <string name="remove_db_number">Удалить номер из базы спама</string>
