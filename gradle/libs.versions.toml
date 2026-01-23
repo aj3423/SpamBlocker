@@ -1,17 +1,17 @@
 [versions]
-agp = "8.13.2"
+agp = "9.0.0"
 espressoCore = "3.7.0"
 junitVersion = "1.3.0"
 kotlin = "2.3.0"
 activityCompose = "1.12.2"
 
-composeBom = "2025.12.01" # dangerous, breaks things all the time
+composeBom = "2026.01.00" # dangerous, breaks things all the time
 
 # Do NOT upgrade to 3.0.0 until this is fixed: https://github.com/Calvin-LL/Reorderable/issues/111
 reorderable = "2.3.3"
 
-libphonenumber = "9.0.21"
-geocoder = "3.21" # https://repo1.maven.org/maven2/com/googlecode/libphonenumber/geocoder/maven-metadata.xml
+libphonenumber = "9.0.22"
+geocoder = "3.22" # https://repo1.maven.org/maven2/com/googlecode/libphonenumber/geocoder/maven-metadata.xml
 #carrier  = "2.21" # https://repo1.maven.org/maven2/com/googlecode/libphonenumber/carrier/maven-metadata.xml
 
 serialization = "1.9.0"

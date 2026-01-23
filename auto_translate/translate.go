@@ -209,7 +209,8 @@ func translate_text(lang string, content_to_translate string) (string, error) {
 	if verb {
 		color.HiMagenta(prompt)
 	}
-	ret, e := groq("openai/gpt-oss-120b", prompt)
+	// ret, e := groq("openai/gpt-oss-120b", prompt)
+	ret, e := cerebras("gpt-oss-120b", prompt)
 	if e != nil {
 		return "", e
 	}
@@ -476,7 +477,7 @@ func setup() {
 	flag.BoolVar(&verb, "verb", false, "show prompt")
 	flag.StringVar(&only, "only", "", "-only tag")
 	flag.BoolVar(&prune, "prune", false, "Before translating, removes all tags except those in -only. Faster, but may lose context.")
-	flag.BoolVar(&manual, "manual", true, "need to hit Enter to start translating for each language")
+	flag.BoolVar(&manual, "manual", false, "need to hit Enter to start translating for each language")
 	flag.IntVar(&thread, "thread", 1, "")
 	flag.StringVar(&new_file, "new_file", "", "")
 	flag.Parse()
