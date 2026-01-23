@@ -253,7 +253,8 @@ class CallScreeningService : CallScreeningService() {
         logi("Process incoming call")
 
         // 0. check the number with all rules, get the result
-        val r = Checker.checkCall(ctx, rawNumber, cnap, callDetails, simSlot, logger)
+        val r = Checker.checkCall(
+            ctx, rawNumber = rawNumber, cnap = cnap, callDetails = callDetails, simSlot = simSlot, logger = logger)
 
         // 1. log result to history db
         logToHistoryDb(ctx, r, rawNumber, cnap, simSlot, isTest)

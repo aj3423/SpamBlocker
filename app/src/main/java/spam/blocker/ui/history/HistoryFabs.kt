@@ -144,15 +144,13 @@ fun HistoryFabs(
                             val trigger = remember { mutableStateOf(false) }
                             PopupDialog(
                                 trigger = trigger,
-                                onDismiss = {
-                                    reScheduleHistoryCleanup(ctx)
-                                }
                             ) {
                                 // Expiry Enabled
                                 LabeledRow(R.string.expiry) {
                                     SwitchBox(checked = expiryEnabled, onCheckedChange = { isOn ->
                                         spf.setExpiryEnabled(isOn)
                                         expiryEnabled = isOn
+                                        reScheduleHistoryCleanup(ctx)
                                     })
                                 }
 
@@ -164,6 +162,7 @@ fun HistoryFabs(
                                             if (!hasError) {
                                                 ttl = newValue!!
                                                 spf.setTTL(newValue)
+                                                reScheduleHistoryCleanup(ctx)
                                             }
                                         },
                                         labelId = R.string.days,

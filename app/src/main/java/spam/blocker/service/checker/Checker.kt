@@ -101,16 +101,16 @@ fun RegexRule.toChecker(
 //   and `SMS Event` on SMS.
 object Preprocessors { // for namespace only
 
+    interface IPreProcessor {
+        fun preprocess(cCtx: CheckContext)
+    }
+
     // Execute a workflow
-    open class BotRunner(
+    class BotRunner(
         val ctx: Context,
         val bot: Bot,
-    ) : IChecker {
-        override fun priority(): Int {
-            // To make sure it's executed before rules. (but after emergency, which is MAX_VALUE)
-            return Int.MAX_VALUE - 1
-        }
-        override fun check(cCtx: CheckContext): ICheckResult? {
+    ) : IPreProcessor {
+        override fun preprocess(cCtx: CheckContext) {
             // cCtx.logger can be either:
             //  - TextLogger: when testing, which prints logs on the dialog
             //  - null: on real call/sms
@@ -130,11 +130,10 @@ object Preprocessors { // for namespace only
             if (logger is SaveableLogger) {
                 BotTable.setLastLog(ctx, bot.id, logger.serialize())
             }
-            return null
         }
     }
     // Collect all call-related workflows.
-    fun callTriggers(ctx: Context): List<BotRunner> {
+    fun callBots(ctx: Context): List<BotRunner> {
         return BotTable.listAll(ctx)
             .filter {
                 val trigger = it.trigger
@@ -154,7 +153,7 @@ object Preprocessors { // for namespace only
             }
     }
     // Collect all SMS-related workflows.
-    fun smsTriggers(ctx: Context): List<BotRunner> {
+    fun smsBots(ctx: Context): List<BotRunner> {
         return BotTable.listAll(ctx)
             .filter {
                 val trigger = it.trigger
@@ -163,13 +162,11 @@ object Preprocessors { // for namespace only
                 if (!trigger.isActivated())
                     return@filter false
 
-                // Type of these classes ?
+                // one of these types ?
                 return@filter when(trigger) {
                     is SmsEvent, is SmsThrottling, is CalendarEvent -> true
                     else -> false
                 }
-
-                return@filter false
             }
             .map {
                 BotRunner(ctx, it)
@@ -1400,15 +1397,39 @@ class Checker { // for namespace only
 
 
     companion object {
+        private fun defaultCallCheckers(ctx: Context): List<IChecker> {
+            val checkers = arrayListOf(
+                EmergencyCall(ctx),
+                EmergencySituation(ctx),
+                STIR(ctx),
+                SpamDB(ctx),
+                Contact(ctx),
+                RepeatedCall(ctx),
+                Dialed(ctx),
+                Answered(ctx),
+                RecentApp(ctx),
+                MeetingMode(ctx),
+                OffTime(ctx),
+                InstantQuery(ctx, Def.ForNumber),
+                PushAlert(ctx),
+                SmsAlert(ctx)
+            )
 
-        fun checkCallWithCheckers(
+            // Add number rules to checkers
+            val rules = NumberRegexTable().listAll(ctx)
+            checkers += rules.map {
+                it.toChecker(ctx)
+            }
+            return checkers
+        }
+        fun checkCall(
             ctx: Context,
-            logger: ILogger?,
             rawNumber: String,
-            cnap: String?,
-            simSlot: Int?,
+            cnap: String? = null,
             callDetails: Call.Details? = null,
-            checkers: List<IChecker>,
+            simSlot: Int? = null,
+            logger: ILogger? = null,
+            checkers: List<IChecker> = defaultCallCheckers(ctx),
         ): ICheckResult {
             val cCtx = CheckContext(
                 rawNumber = rawNumber,
@@ -1419,8 +1440,8 @@ class Checker { // for namespace only
                 simSlot = simSlot,
             )
             // pre-process the checkers, temporarily modify rules
-            Preprocessors.callTriggers(ctx)
-                .forEach { it.check(cCtx) }
+            Preprocessors.callBots(ctx)
+                .forEach { it.preprocess(cCtx) }
 
             // sort by priority desc
             val sortedCheckers = checkers.sortedByDescending {
@@ -1444,49 +1465,39 @@ class Checker { // for namespace only
             return ByDefault()
         }
 
-        fun checkCall(
+        private fun defaultSmsCheckers(
             ctx: Context,
-            rawNumber: String,
-            cnap: String? = null,
-            callDetails: Call.Details? = null,
-            simSlot: Int? = null,
-            logger: ILogger? = null,
-        ): ICheckResult {
-
-            val checkers = arrayListOf(
-                EmergencyCall(ctx),
-                EmergencySituation(ctx),
-                STIR(ctx),
-                SpamDB(ctx),
+        ): List<IChecker> {
+            val checkers = arrayListOf<IChecker>(
                 Contact(ctx),
-                RepeatedCall(ctx),
-                Dialed(ctx),
-                Answered(ctx),
-                RecentApp(ctx),
+                SpamDB(ctx),
                 MeetingMode(ctx),
                 OffTime(ctx),
-                InstantQuery(ctx, Def.ForNumber),
-                PushAlert(ctx),
-                SmsAlert(ctx)
+                SmsBomb(ctx),
+                InstantQuery(ctx, Def.ForSms),
             )
 
-            // Add number rules to checkers
-            val rules = NumberRegexTable().listAll(ctx)
-            checkers += rules.map {
+            //  add number rules to checkers
+            val numberRules = NumberRegexTable().listAll(ctx)
+            checkers += numberRules.map {
                 it.toChecker(ctx)
             }
 
-            return checkCallWithCheckers(
-                ctx, logger, rawNumber, cnap, simSlot, callDetails, checkers)
-        }
+            //  add sms content rules to checkers
+            val contentFilters = ContentRegexTable().listAll(ctx)
+            checkers += contentFilters.map {
+                Content(ctx, it)
+            }
 
-        fun checkSmsWithCheckers(
+            return checkers
+        }
+        fun checkSms(
             ctx: Context,
-            logger: ILogger?,
             rawNumber: String,
             messageBody: String,
-            simSlot: Int?,
-            checkers: List<IChecker>,
+            simSlot: Int? = null,
+            logger: ILogger? = null,
+            checkers: List<IChecker> = defaultSmsCheckers(ctx),
         ): ICheckResult {
             val cCtx = CheckContext(
                 rawNumber = rawNumber,
@@ -1497,8 +1508,8 @@ class Checker { // for namespace only
             )
 
             // pre-process the checkers, temporarily modify rules
-            Preprocessors.smsTriggers(ctx)
-                .forEach { it.check(cCtx) }
+            Preprocessors.smsBots(ctx)
+                .forEach { it.preprocess(cCtx) }
 
             // sort by priority desc
             val sortedCheckers = checkers.sortedByDescending {
@@ -1521,38 +1532,6 @@ class Checker { // for namespace only
 
             // pass by default
             return ByDefault()
-        }
-        fun checkSms(
-            ctx: Context,
-            rawNumber: String,
-            messageBody: String,
-            simSlot: Int? = null,
-            logger: ILogger? = null,
-        ): ICheckResult {
-            val checkers = arrayListOf<IChecker>(
-                Contact(ctx),
-                SpamDB(ctx),
-                MeetingMode(ctx),
-                OffTime(ctx),
-                SmsBomb(ctx),
-                InstantQuery(ctx, Def.ForSms),
-            )
-
-            //  add number rules to checkers
-            val numberRules = NumberRegexTable().listAll(ctx)
-            checkers += numberRules.map {
-                it.toChecker(ctx)
-            }
-
-            //  add sms content rules to checkers
-            val contentFilters = ContentRegexTable().listAll(ctx)
-            checkers += contentFilters.map {
-                Content(ctx, it)
-            }
-
-            return checkSmsWithCheckers(
-                ctx, logger, rawNumber, messageBody, simSlot, checkers
-            )
         }
 
         // It returns a list<String>, all the Strings will be shown as Buttons in the notification.

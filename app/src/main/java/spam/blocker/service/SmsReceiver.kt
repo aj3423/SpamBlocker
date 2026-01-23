@@ -76,7 +76,8 @@ open class SmsReceiver : BroadcastReceiver() {
     ): ICheckResult {
         logi("process Sms")
 
-        val r = Checker.checkSms(ctx, rawNumber, messageBody, simSlot, logger)
+        val r = Checker.checkSms(
+            ctx, rawNumber = rawNumber, messageBody = messageBody, simSlot = simSlot, logger = logger)
 
         run {
             // 1. log to history db
