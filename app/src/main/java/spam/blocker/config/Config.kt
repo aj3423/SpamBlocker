@@ -55,7 +55,7 @@ class Global : IConfig {
         smsEnabled = spf.isSmsEnabled()
         mmsEnabled = spf.isMmsEnabled()
 
-        isTestingIconClicked = spf.isTestingIconClicked()
+        isTestingIconClicked = spf.isTestIconClicked()
     }
 
     override fun apply(ctx: Context) {
@@ -66,7 +66,7 @@ class Global : IConfig {
             setSmsEnabled(smsEnabled)
             setMmsEnabled(mmsEnabled)
 
-            setTestingIconClicked(isTestingIconClicked)
+            setTestIconClicked(isTestingIconClicked)
         }
     }
 }

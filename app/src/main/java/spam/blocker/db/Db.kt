@@ -31,7 +31,7 @@ class Db private constructor(
 ) : SQLiteOpenHelper(ctx, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 45
+        const val DB_VERSION = 46
         const val DB_NAME = "spam_blocker.db"
 
         // ---- regex rule table ----
@@ -103,6 +103,7 @@ class Db private constructor(
         const val COLUMN_RESULT = "result" // Int, as RESULT_... below
         const val COLUMN_REASON = "reason" // Long, by which filter id is this blocked/whitelisted
         const val COLUMN_READ = "read" // Boolean
+        const val COLUMN_IS_TEST = "is_test" // Boolean
         const val COLUMN_EXTRA_INFO = "extra_info" // text
         const val COLUMN_EXPANDED = "expanded" // Boolean
 
@@ -232,6 +233,7 @@ class Db private constructor(
                         "$COLUMN_SIM_SLOT INTEGER, " +
                         "$COLUMN_REASON LONG, " +
                         "$COLUMN_READ INTEGER, " +
+                        "$COLUMN_IS_TEST INTEGER, " +
                         "$COLUMN_EXTRA_INFO TEXT, " +
                         "$COLUMN_EXPANDED INTEGER " +
                         ")"
@@ -491,6 +493,12 @@ class Db private constructor(
         if ((newVersion >= 45) && (oldVersion < 45)) {
             addColumnIfNotExist(db, TABLE_CALL, COLUMN_CNAP, "TEXT")
             addColumnIfNotExist(db, TABLE_SMS, COLUMN_CNAP, "TEXT")
+        }
+
+        // v5.2 added history.isTest
+        if ((newVersion >= 46) && (oldVersion < 46)) {
+            addColumnIfNotExist(db, TABLE_CALL, COLUMN_IS_TEST, "INTEGER")
+            addColumnIfNotExist(db, TABLE_SMS, COLUMN_IS_TEST, "INTEGER")
         }
     }
 }

@@ -105,8 +105,8 @@ class spf { // for namespace only
         fun getLanguage(): String { return readString(Def.SETTING_LANGUAGE, "") }
         fun setLanguage(lang: String) { writeString(Def.SETTING_LANGUAGE, lang) }
 
-        fun isTestingIconClicked(): Boolean { return readBoolean(Def.SETTING_TESTING_ICON_CLICKED, false) }
-        fun setTestingIconClicked(clicked: Boolean = true) { writeBoolean(Def.SETTING_TESTING_ICON_CLICKED, clicked) }
+        fun isTestIconClicked(): Boolean { return readBoolean(Def.SETTING_TEST_ICON_CLICKED, false) }
+        fun setTestIconClicked(clicked: Boolean = true) { writeBoolean(Def.SETTING_TEST_ICON_CLICKED, clicked) }
 
         // Settings below will not be backed up
         fun getActiveTab(): String { return readString(Def.SETTING_ACTIVE_TAB, "setting") }

@@ -62,7 +62,7 @@ object Def {
     const val SETTING_ACTIVE_TAB = "active_tab"
     const val SETTING_WARN_RUNNING_IN_WORK_PROFILE_ONCE = "warn_running_in_work_profile_once"
     const val SETTING_WARN_DOUBLE_SMS = "warn_double_sms"
-    const val SETTING_TESTING_ICON_CLICKED = "testing_icon_clicked"
+    const val SETTING_TEST_ICON_CLICKED = "testing_icon_clicked"
     const val SETTING_ENABLED = "globally_enable"
     const val SETTING_GLOBAL_ENABLED_COLLAPSED = "global_enable_collapsed"
     const val SETTING_CALL_ENABLED = "call_enable"

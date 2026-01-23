@@ -152,7 +152,7 @@ class CallScreeningService : CallScreeningService() {
         val cnap = details.callerDisplayName
 
         val r = processCall(
-            ctx = this, logger = null, rawNumber = rawNumber, cnap = cnap, callDetails = details, simSlot = ringingSimSlot,
+            ctx = this, logger = null, rawNumber = rawNumber, cnap = cnap, callDetails = details, simSlot = ringingSimSlot, isTest = false
         )
 
         if (r.shouldBlock()) {
@@ -198,7 +198,7 @@ class CallScreeningService : CallScreeningService() {
         return shouldMute
     }
 
-    private fun logToHistoryDb(ctx: Context, r: ICheckResult, rawNumber: String, cnap: String?, simSlot: Int?) {
+    private fun logToHistoryDb(ctx: Context, r: ICheckResult, rawNumber: String, cnap: String?, simSlot: Int?, isTest: Boolean) {
         val isDbLogEnabled = spf.HistoryOptions(ctx).isLoggingEnabled()
         if (!isDbLogEnabled)
             return
@@ -211,6 +211,7 @@ class CallScreeningService : CallScreeningService() {
                 result = r.type,
                 reason = r.reasonToDb(),
                 simSlot = simSlot,
+                isTest = isTest
             )
         )
         // broadcast the call to add a new item in history page
@@ -246,6 +247,7 @@ class CallScreeningService : CallScreeningService() {
         cnap: String?,
         callDetails: Details?, // it's null when testing
         simSlot: Int?,
+        isTest: Boolean,
         logger: ILogger? = null, // for showing detailed steps to logcat or for testing purpose
     ): ICheckResult {
         logi("Process incoming call")
@@ -254,7 +256,7 @@ class CallScreeningService : CallScreeningService() {
         val r = Checker.checkCall(ctx, rawNumber, cnap, callDetails, simSlot, logger)
 
         // 1. log result to history db
-        logToHistoryDb(ctx, r, rawNumber, cnap, simSlot)
+        logToHistoryDb(ctx, r, rawNumber, cnap, simSlot, isTest)
 
         if (r.shouldBlock()) {
             CoroutineScope(IO).launch {
@@ -263,7 +265,7 @@ class CallScreeningService : CallScreeningService() {
                 showSpamNotification(ctx, r, rawNumber)
 
                 // 3. Report spam number
-                autoReportSpam(ctx, r, rawNumber, isTesting = callDetails == null)
+                autoReportSpam(ctx, r, rawNumber, isTest)
             }
         }
 

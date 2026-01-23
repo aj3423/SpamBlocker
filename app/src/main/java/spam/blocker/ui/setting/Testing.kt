@@ -147,11 +147,11 @@ fun PopupTesting(
                         CallScreeningService().processCall(
                             ctx, rawNumber = vm.phone.value, simSlot = vm.simSlot.value,
                             callDetails = null, cnap = vm.callerName.value.ifEmpty { null },
-                            logger = textLogger,
+                            isTest = true, logger = textLogger,
                         )
                     else
                         SmsReceiver().processSms(
-                            ctx, vm.phone.value, vm.sms.value, simSlot = vm.simSlot.value, logger = textLogger)
+                            ctx, vm.phone.value, vm.sms.value, simSlot = vm.simSlot.value, isTest = true, logger = textLogger)
                 }
             }
         },

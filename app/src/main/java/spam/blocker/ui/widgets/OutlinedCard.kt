@@ -14,6 +14,7 @@ import spam.blocker.ui.theme.LocalPalette
 @Composable
 fun OutlineCard(
     modifier: Modifier = Modifier,
+    borderColor: Color = LocalPalette.current.cardBorder,
     containerBg: Color = MaterialTheme.colorScheme.background,
     content: @Composable () -> Unit,
 ) {
@@ -24,7 +25,7 @@ fun OutlineCard(
         colors = CardDefaults.cardColors(
             containerColor = containerBg,
         ),
-        border = BorderStroke(width = 1.dp, color = C.cardBorder),
+        border = BorderStroke(width = 1.dp, color = borderColor),
         shape = RoundedCornerShape(6.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
     ) {

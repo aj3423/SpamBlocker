@@ -33,12 +33,12 @@ fun autoReportSpam(
     ctx: Context,
     r: ICheckResult,
     rawNumber: String,
-    isTesting: Boolean,
+    isTest: Boolean,
 ) {
     if (shouldReportImmediately(r)) {
         reportImmediately(ctx, r, rawNumber)
     } else {
-        scheduleReporting(ctx, r, rawNumber, isTesting)
+        scheduleReporting(ctx, r, rawNumber, isTest)
     }
 }
 

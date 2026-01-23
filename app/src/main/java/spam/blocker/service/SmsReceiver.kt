@@ -63,7 +63,7 @@ open class SmsReceiver : BroadcastReceiver() {
 
         val simSlot = getSimSlotFromSmsIntent(ctx, intent)
 
-        processSms(ctx, rawNumber, messageBody, simSlot)
+        processSms(ctx, rawNumber, messageBody, simSlot, isTest = false)
     }
 
     fun processSms(
@@ -71,6 +71,7 @@ open class SmsReceiver : BroadcastReceiver() {
         rawNumber: String,
         messageBody: String,
         simSlot: Int?,
+        isTest: Boolean,
         logger: ILogger? = null,
     ): ICheckResult {
         logi("process Sms")
@@ -90,6 +91,7 @@ open class SmsReceiver : BroadcastReceiver() {
                         reason = r.reasonToDb(),
                         simSlot = simSlot,
                         extraInfo = if (spf.isLogSmsContentEnabled()) messageBody else null,
+                        isTest = isTest,
                     )
                 )
 

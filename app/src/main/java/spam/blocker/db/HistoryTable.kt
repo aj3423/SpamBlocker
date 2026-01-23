@@ -27,6 +27,7 @@ data class HistoryRecord(
     //  e.g. SMS content
     val extraInfo: String? = null,
 
+    val isTest: Boolean = false, // is it test number or real call
     val read: Boolean = false,
     val expanded: Boolean = false,
 ) {
@@ -68,6 +69,7 @@ abstract class HistoryTable {
                         reason = it.getString(it.getColumnIndex(Db.COLUMN_REASON)),
                         simSlot = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_SIM_SLOT)),
                         read = it.getInt(it.getColumnIndex(Db.COLUMN_READ)) == 1,
+                        isTest = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_IS_TEST)) == 1,
                         extraInfo = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_EXTRA_INFO)),
                         expanded = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_EXPANDED)) == 1,
                     )
@@ -95,6 +97,7 @@ abstract class HistoryTable {
         cv.put(Db.COLUMN_REASON, r.reason)
         cv.put(Db.COLUMN_SIM_SLOT, r.simSlot)
         cv.put(Db.COLUMN_READ, if (r.read) 1 else 0)
+        cv.put(Db.COLUMN_IS_TEST, if (r.isTest) 1 else 0)
         cv.put(Db.COLUMN_EXTRA_INFO, r.extraInfo)
         cv.put(Db.COLUMN_EXPANDED, if(r.expanded) 1 else 0)
         return db.insert(tableName(), null, cv)
@@ -111,6 +114,7 @@ abstract class HistoryTable {
         cv.put(Db.COLUMN_REASON, r.reason)
         cv.put(Db.COLUMN_SIM_SLOT, r.simSlot)
         cv.put(Db.COLUMN_READ, if (r.read) 1 else 0)
+        cv.put(Db.COLUMN_IS_TEST, if (r.isTest) 1 else 0)
         cv.put(Db.COLUMN_EXTRA_INFO, r.extraInfo)
         cv.put(Db.COLUMN_EXPANDED, if(r.expanded) 1 else 0)
         db.insert(tableName(), null, cv)

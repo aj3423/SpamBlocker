@@ -10,8 +10,10 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -47,9 +49,11 @@ import spam.blocker.ui.setting.api.spamCategoryNamesMap
 import spam.blocker.ui.setting.api.tagValid
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
+import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.FlowRowSpaced
 import spam.blocker.ui.widgets.OutlineCard
 import spam.blocker.ui.widgets.PopupDialog
+import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.ResImage
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.SimCardIcon
@@ -134,89 +138,93 @@ fun HistoryCard(
 ) {
     val C = LocalPalette.current
     val ctx = LocalContext.current
-    OutlineCard(modifier = M.animateContentSize() ) {
-        RowVCenterSpaced(
-            space = 2,
-            modifier = modifier.padding(8.dp)
+    OutlineCard(
+        modifier = M.animateContentSize(),
+        borderColor = if (record.isTest) Teal200 else C.cardBorder
+    ) {
+        Box(
+            modifier = M
+                .wrapContentSize()
         ) {
-            // 1. avatar
-            val contact = Contacts.findContactByRawNumber(ctx, record.peer)
-            val bmpAvatar = contact?.loadAvatar(ctx)
-            if (bmpAvatar != null) {
-                ComposeImage(
-                    bmpAvatar.asImageBitmap(), "", modifier = M
-                        .size(ItemHeight.dp)
-                        .align(Alignment.Top)
-                        .clip(RoundedCornerShape((ItemHeight / 2).dp))
-                )
-            } else {
-                // Use the hash code as color
-                val toHash = contact?.name ?: record.peer
-                val color = Color(toHash.hashCode().toLong() or 0xff808080/* for higher contrast */)
-                ResImage(
-                    R.drawable.ic_contact_circle, color = color, modifier = M
-                        .size(ItemHeight.dp)
-                        .align(Alignment.Top)
-                )
-            }
-
-            // 2. Rule indicator / Number / BlockReason / SMS Content
-            Column(
-                modifier = M.padding(start = 4.dp).weight(1f)
+            RowVCenterSpaced(
+                space = 2,
+                modifier = modifier.padding(8.dp)
             ) {
-                // Row 1: Rule indicator / Number
-                RowVCenterSpaced(2) {
-                    // Db/Rule existence indicators
-                    if(indicators.isNotEmpty())
-                        IndicatorIcons(indicators)
 
-                    // Number
-                    var t = contact?.name ?: record.peer
-                    // Display Name (CNAP)
-                    if (!record.cnap.isNullOrEmpty()) {
-                        t += " (${record.cnap})"
-                    }
-                    Text(
-                        text = t,
-                        color = if (record.isBlocked()) C.block else C.pass,
-                        fontSize = 18.sp
+                // 1. avatar
+                val contact = Contacts.findContactByRawNumber(ctx, record.peer)
+                val bmpAvatar = contact?.loadAvatar(ctx)
+                if (bmpAvatar != null) {
+                    ComposeImage(
+                        bmpAvatar.asImageBitmap(), "", modifier = M
+                            .size(ItemHeight.dp)
+                            .align(Alignment.Top)
+                            .clip(RoundedCornerShape((ItemHeight / 2).dp))
+                    )
+                } else {
+                    // Use the hash code as color
+                    val toHash = contact?.name ?: record.peer
+                    val color = Color(toHash.hashCode().toLong() or 0xff808080/* for higher contrast */)
+                    ResImage(
+                        R.drawable.ic_contact_circle, color = color, modifier = M
+                            .size(ItemHeight.dp)
+                            .align(Alignment.Top)
                     )
                 }
-                
-                // Row 2: Geo Location
-                if (G.showHistoryGeoLocation.value) {
-                    val loc = Util.numberGeoLocation(ctx, record.peer)
-                    loc?.let {
+
+                // 2. Rule indicator / Number / BlockReason / SMS Content
+                Column(
+                    modifier = M.padding(start = 4.dp).weight(1f)
+                ) {
+                    // Row 1: Rule indicator / Number
+                    RowVCenterSpaced(2) {
+                        // Db/Rule existence indicators
+                        if(indicators.isNotEmpty())
+                            IndicatorIcons(indicators)
+
+                        // Number
+                        var t = contact?.name ?: record.peer
+                        // Display Name (CNAP)
+                        if (!record.cnap.isNullOrEmpty()) {
+                            t += " (${record.cnap})"
+                        }
                         Text(
-                            text = loc,
-                            style = TextStyle(
-                                fontSize = 12.sp,
-                                color = C.textDimGrey,
-                                fontWeight = FontWeight.W500,
-                            ),
-                            modifier = M.padding(start = 4.dp),
+                            text = t,
+                            color = if (record.isBlocked()) C.block else C.pass,
+                            fontSize = 18.sp
                         )
                     }
+
+                    // Row 2: Geo Location
+                    if (G.showHistoryGeoLocation.value) {
+                        val loc = Util.numberGeoLocation(ctx, record.peer)
+                        loc?.let {
+                            Text(
+                                text = loc,
+                                style = TextStyle(
+                                    fontSize = 12.sp,
+                                    color = C.textDimGrey,
+                                    fontWeight = FontWeight.W500,
+                                ),
+                                modifier = M.padding(start = 4.dp),
+                            )
+                        }
+                    }
+
+                    // Row 3: Reason Summary
+                    val r = parseCheckResultFromDb(ctx, record.result, record.reason)
+                    r.ResultReason(record.expanded)
+
+                    // Report Number / SMS Content
+                    r.ExpandedContent(forType, record)
                 }
 
-                // Row 3: Reason Summary
-                val r = parseCheckResultFromDb(ctx, record.result, record.reason)
-                r.ResultReason(record.expanded)
-
-                // Report Number / SMS Content
-                r.ExpandedContent(forType, record)
-            }
-
-            // 3. SIM / Time / Unread Indicator
-            Box(
-                modifier = M
-                    .heightIn(min = ItemHeight.dp)
-                    .align(Alignment.Top)
-            ) {
+                // 3. SIM / Time
                 RowVCenterSpaced(
                     space = 2,
                     modifier = M.padding(end = 8.dp)
-                        .align(Alignment.Center)
+                        .align(Alignment.Top)
+                        .heightIn(ItemHeight.dp)
                 ) {
                     // SIM slot icon
                     if ((simCount >= 2 || G.forceShowSIM.value) && record.simSlot != null) {
@@ -233,18 +241,27 @@ fun HistoryCard(
                         textAlign = TextAlign.Center,
                     )
                 }
+            }
 
-
-                // Unread red dot
-                if (!record.read) {
-                    Canvas(
-                        modifier = Modifier
-                            .size(4.dp)
-                            .align(Alignment.TopEnd)
-                    ) {
-                        drawCircle(color = Salmon, radius = size.minDimension / 2)
-                    }
+            // Unread red dot
+            if (!record.read) {
+                Canvas(
+                    modifier = Modifier
+                        .size(4.dp)
+                        .align(Alignment.TopEnd)
+                        .offset(x = (-6).dp, y = (6).dp)
+                ) {
+                    drawCircle(color = Salmon, radius = size.minDimension / 2)
                 }
+            }
+
+            // Test Tube
+            if (record.isTest) {
+                ResIcon(
+                    R.drawable.ic_tube,
+                    color = Teal200,
+                    modifier = M.size(16.dp).align(Alignment.BottomEnd).offset(x = (-4).dp, y = (-4).dp)
+                )
             }
         }
     }
