@@ -112,10 +112,7 @@
     <string name="lockscreen_protection"><short>Sperrbildschirm</short></string>
     <string name="help_history_logging">
         <![CDATA[
-            Wenn deaktiviert, werden Verlaufseinträge nicht in der lokalen Datenbank protokolliert und hier nicht angezeigt.<br>
-            <br>
-            <font color="#00BFFF"><b>Expiry</b></font><br>
-            &emsp; Wenn aktiviert, laufen Verlaufseinträge nach N Tagen ab, abgelaufene Einträge werden automatisch gelöscht.
+            Wenn deaktiviert, werden Anrufe und SMS-Nachrichten nicht protokolliert und hier nicht angezeigt.
         ]]>
     </string>
     <string name="enable_history_logging">Protokoll</string>
@@ -127,6 +124,11 @@
             Obwohl es sich um ein Standardprotokoll handelt, wird RCS von jeder Messaging-App unterschiedlich implementiert.<br>
             <br>
             Eine Notlösung besteht darin, auf SMS umzuschalten.
+        ]]>
+    </string>
+    <string name="help_history_expiry">
+        <![CDATA[
+            Wenn aktiviert, verfallen Verlaufseinträge nach N Tagen, abgelaufene Einträge werden automatisch gelöscht.
         ]]>
     </string>
 </resources>

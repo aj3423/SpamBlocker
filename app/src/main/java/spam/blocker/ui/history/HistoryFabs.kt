@@ -174,7 +174,7 @@ fun HistoryFabs(
 
                             LabeledRow(
                                 labelId = R.string.expiry,
-                                helpTooltip = Str(R.string.help_log_sms_content)
+                                helpTooltip = Str(R.string.help_history_expiry)
                             ) {
                                 GreyButton(
                                     label = if (expiryEnabled) {

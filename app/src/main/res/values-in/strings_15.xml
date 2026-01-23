@@ -112,10 +112,7 @@
     <string name="lockscreen_protection"><short>Kunci layar</short></string>
     <string name="help_history_logging">
         <![CDATA[
-            Saat dinonaktifkan, catatan riwayat tidak akan dicatat di database lokal dan tidak akan ditampilkan di sini.<br>
-            <br>
-            <font color="#00BFFF"><b>Expiry</b></font><br>
-            &emsp; Saat diaktifkan, catatan riwayat akan kedaluwarsa setelah N hari, catatan yang kedaluwarsa akan dihapus secara otomatis.
+            Saat dinonaktifkan, panggilan dan pesan SMS tidak akan dicatat dan tidak akan ditampilkan di sini.
         ]]>
     </string>
     <string name="enable_history_logging">Log</string>
@@ -127,6 +124,11 @@
             Meskipun merupakan protokol standar, RCS diimplementasikan secara berbeda oleh setiap aplikasi perpesanan.<br>
             <br>
             Solusinya adalah beralih ke SMS.
+        ]]>
+    </string>
+    <string name="help_history_expiry">
+        <![CDATA[
+            Saat diaktifkan, catatan riwayat akan kedaluwarsa setelah N hari, catatan yang kedaluwarsa akan dihapus secara otomatis.
         ]]>
     </string>
 </resources>

@@ -111,10 +111,12 @@
     <string name="lockscreen_protection"><short>Lockscreen protection</short></string>
     <string name="help_history_logging">
         <![CDATA[
-            When disabled, history records will not be logged in the local database and will not be displayed here.<br>
-            <br>
-            <font color="#00BFFF"><b>Expiry</b></font><br>
-            &emsp; When enabled, history records will expire after N days, expired records will be deleted automatically.
+            When disabled, calls and SMS messages will not be logged and will not be displayed here.
+        ]]>
+    </string>
+    <string name="help_history_expiry">
+        <![CDATA[
+            When enabled, history records will expire after N days, expired records will be deleted automatically.
         ]]>
     </string>
     <string name="never_expire"><short>Never Expire</short></string>

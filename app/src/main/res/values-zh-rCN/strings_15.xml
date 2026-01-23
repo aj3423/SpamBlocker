@@ -111,10 +111,7 @@
     <string name="lockscreen_protection"><short>锁屏保护</short></string>
     <string name="help_history_logging">
         <![CDATA[
-            禁用后，历史记录将不会记录在本地数据库中，也不会在此处显示。<br>
-            <br>
-            <font color="#00BFFF"><b>有效期</b></font><br>
-            &emsp; 启用后，历史记录将在 N 天后过期，过期的记录将自动删除。
+            禁用时，通话和短信将不会被记录，也不会在此显示。
         ]]>
     </string>
     <string name="enable_history_logging">记录</string>
@@ -126,6 +123,11 @@
             尽管 RCS 是一种标准协议，但每款消息应用对它的实现方式都不同。<br>
             <br>
             一种解决方法是切换到短信。
+        ]]>
+    </string>
+    <string name="help_history_expiry">
+        <![CDATA[
+            启用后，历史记录将在 N 天后过期，过期的记录将自动删除。
         ]]>
     </string>
 </resources>

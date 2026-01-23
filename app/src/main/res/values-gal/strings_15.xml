@@ -112,10 +112,7 @@
     <string name="lockscreen_protection"><short>Protexer bloqueo</short></string>
     <string name="help_history_logging">
         <![CDATA[
-            Cando está desactivado, os rexistros do historial non se rexistrarán na base de datos local e non se mostrarán aquí.<br>
-            <br>
-            <font color="#00BFFF"><b>Caducidade</b></font><br>
-            &emsp; Cando está activado, os rexistros do historial caducarán despois de N días, os rexistros caducados eliminaranse automaticamente.
+            Cando está desactivado, as chamadas e as mensaxes SMS non se rexistrarán e non se mostrarán aquí.
         ]]>
     </string>
     <string name="enable_history_logging"><translate>Rexistrar</translate></string>
@@ -127,6 +124,11 @@
             A pesar de ser un protocolo estándar, RCS é implementado de xeito diferente por cada aplicación de mensaxería.<br>
             <br>
             Unha solución é cambiar a SMS.
+        ]]>
+    </string>
+    <string name="help_history_expiry">
+        <![CDATA[
+            Cando está activado, os rexistros do historial caducarán despois de N días, os rexistros caducados eliminaranse automaticamente.
         ]]>
     </string>
 </resources>

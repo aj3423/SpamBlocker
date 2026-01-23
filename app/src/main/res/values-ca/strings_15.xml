@@ -111,10 +111,7 @@
     <string name="lockscreen_protection"><short>Protecció pantalla bloqueig</short></string>
     <string name="help_history_logging">
         <![CDATA[
-            Quan està desactivat, els registres d\'historial no es registraran a la base de dades local i no es mostraran aquí.<br>
-            <br>
-            <font color="#00BFFF"><b>Caducitat</b></font><br>
-            &emsp; Quan està activat, els registres d\'historial caducaran després de N dies; els registres caducats s\'eliminaran automàticament.
+            Quan està desactivat, les trucades i els missatges SMS no es registraran i no es mostraran aquí.
         ]]>
     </string>
     <string name="never_expire"><short>No caduca mai</short></string>
@@ -126,6 +123,11 @@
             Tot i ser un protocol estàndard, RCS està implementat de manera diferent per cada aplicació de missatgeria.<br>
             <br>
             Una solució alternativa és canviar a SMS.
+        ]]>
+    </string>
+    <string name="help_history_expiry">
+        <![CDATA[
+            Quan està activat, els registres d\'historial caducaran després de N dies, els registres caducats s\'eliminaran automàticament.
         ]]>
     </string>
 </resources>

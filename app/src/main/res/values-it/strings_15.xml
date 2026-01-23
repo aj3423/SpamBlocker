@@ -111,10 +111,7 @@
     <string name="lockscreen_protection">Protezione schermo blocco</string>
     <string name="help_history_logging">
         <![CDATA[
-            Quando è disabilitato, i record della cronologia non verranno registrati nel database locale e non verranno visualizzati qui.<br>
-            <br>
-            <font color="#00BFFF"><b>Scadenza</b></font><br>
-            &emsp; Quando è abilitato, i record della cronologia scadranno dopo N giorni, i record scaduti verranno eliminati automaticamente.
+            Quando disabilitato, le chiamate e i messaggi SMS non verranno registrati e non saranno visualizzati qui.
         ]]>
     </string>
     <string name="enable_history_logging">Log</string>
@@ -126,6 +123,11 @@
             Nonostante sia un protocollo standard, RCS è implementato in modo diverso da ogni app di messaggistica.<br>
             <br>
             Una soluzione alternativa è passare agli SMS.
+        ]]>
+    </string>
+    <string name="help_history_expiry">
+        <![CDATA[
+            Quando abilitato, i record della cronologia scadranno dopo N giorni, i record scaduti verranno eliminati automaticamente.
         ]]>
     </string>
 </resources>

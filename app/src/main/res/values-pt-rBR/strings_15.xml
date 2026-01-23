@@ -112,10 +112,7 @@
     <string name="lockscreen_protection"><short>Tela de bloqueio</short></string>
     <string name="help_history_logging">
         <![CDATA[
-            Quando desativado, os registros do histórico não serão registrados no banco de dados local e não serão exibidos aqui.<br>
-            <br>
-            <font color="#00BFFF"><b>Expiração</b></font><br>
-            &emsp; Quando ativado, os registros do histórico expirarão após N dias, os registros expirados serão excluídos automaticamente.
+            Quando desativado, chamadas e mensagens SMS não serão registradas e não serão exibidas aqui.
         ]]>
     </string>
     <string name="enable_history_logging">Registar</string>
@@ -127,6 +124,11 @@
             Apesar de ser um protocolo padrão, o RCS é implementado de forma diferente por cada aplicativo de mensagens.<br>
             <br>
             Uma solução alternativa é mudar para SMS.
+        ]]>
+    </string>
+    <string name="help_history_expiry">
+        <![CDATA[
+            Quando ativado, os registros de histórico expirarão após N dias, e os registros expirados serão excluídos automaticamente.
         ]]>
     </string>
 </resources>

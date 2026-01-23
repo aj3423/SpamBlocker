@@ -108,10 +108,7 @@
     <string name="lockscreen_protection">Kilit ekranı koruması</string>
     <string name="help_history_logging">
         <![CDATA[
-            Devre dışı bırakıldığında, geçmiş kayıtları yerel veritabanına kaydedilmeyecek ve burada görüntülenmeyecektir.<br>
-            <br>
-            <font color="#00BFFF"><b>Sona Erme</b></font><br>
-            &emsp; Etkinleştirildiğinde, geçmiş kayıtları N gün sonra sona erecek, süresi dolan kayıtlar otomatik olarak silinecektir.
+            Devre dışı bırakıldığında, aramalar ve SMS mesajları kaydedilmeyecek ve burada görüntülenmeyecek.
         ]]>
     </string>
     <string name="enable_history_logging">Kaydet</string>
@@ -123,6 +120,11 @@
             Standart bir protokol olmasına rağmen, RCS her mesajlaşma uygulaması tarafından farklı şekilde uygulanmaktadır.<br>
             <br>
             Bir çözüm, SMS\'e geçmektir.
+        ]]>
+    </string>
+    <string name="help_history_expiry">
+        <![CDATA[
+            Etkinleştirildiğinde, geçmiş kayıtları N gün sonra süresi dolacak, süresi dolmuş kayıtlar otomatik olarak silinecek.
         ]]>
     </string>
 </resources>

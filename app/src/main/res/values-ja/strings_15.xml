@@ -109,10 +109,7 @@
     <string name="lockscreen_protection"><short>ロック画面保護</short></string>
     <string name="help_history_logging">
         <![CDATA[
-            無効にすると、履歴レコードはローカルデータベースに記録されず、ここには表示されません。<br>
-            <br>
-            <font color="#00BFFF"><b>有効期限</b></font><br>
-            &emsp; 有効にすると、履歴レコードはN日後に期限切れになり、期限切れのレコードは自動的に削除されます。
+            無効にすると、通話とSMSメッセージは記録されず、ここに表示されません。
         ]]>
     </string>
     <string name="enable_history_logging"><translate>ログ</translate></string>
@@ -124,6 +121,11 @@
             標準プロトコルであるにもかかわらず、RCSは各メッセージングアプリによって異なる方法で実装されています。<br>
             <br>
             回避策はSMSに切り替えることです。
+        ]]>
+    </string>
+    <string name="help_history_expiry">
+        <![CDATA[
+            有効にすると、履歴記録はN日後に期限切れとなり、期限切れの記録は自動的に削除されます。
         ]]>
     </string>
 </resources>

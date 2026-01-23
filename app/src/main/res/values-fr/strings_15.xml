@@ -111,10 +111,7 @@
     <string name="lockscreen_protection"><short>Écran verrouillé</short></string>
     <string name="help_history_logging">
         <![CDATA[
-            Lorsqu\'elle est désactivée, les enregistrements d\'historique ne seront pas enregistrés dans la base de données locale et ne seront pas affichés ici.<br>
-            <br>
-            <font color="#00BFFF"><b>Expiration</b></font><br>
-            &emsp; Lorsqu\'elle est activée, les enregistrements d\'historique expireront après N jours, les enregistrements expirés seront automatiquement supprimés.
+            Lorsqu\'il est désactivé, les appels et les messages SMS ne seront pas enregistrés et ne seront pas affichés ici.
         ]]>
     </string>
     <string name="enable_history_logging">Journal</string>
@@ -126,6 +123,11 @@
             Bien qu\'il s\'agisse d\'un protocole standard, RCS est implémenté différemment par chaque application de messagerie.<br>
             <br>
             Une solution consiste à passer aux SMS.
+        ]]>
+    </string>
+    <string name="help_history_expiry">
+        <![CDATA[
+            Lorsqu\'il est activé, les enregistrements d\'historique expireront après N jours, les enregistrements expirés seront supprimés automatiquement.
         ]]>
     </string>
 </resources>

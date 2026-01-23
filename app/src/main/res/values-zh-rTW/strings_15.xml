@@ -110,10 +110,7 @@
     <string name="lockscreen_protection"><short>鎖定螢幕保護</short></string>
     <string name="help_history_logging">
         <![CDATA[
-            停用時，歷史記錄不會記錄在本機資料庫中，也不會在此顯示。<br>
-            <br>
-            <font color="#00BFFF"><b>有效期限</b></font><br>
-            &emsp; 啟用時，歷史記錄將在 N 天後過期，過期的記錄將自動刪除。
+            當停用時，通話和簡訊將不會被記錄，也不會在此顯示。
         ]]>
     </string>
     <string name="never_expire"><short>永不過期</short></string>
@@ -125,6 +122,11 @@
             雖然 RCS 是標準協定，但每個訊息應用程式的實作方式都不同。<br>
             <br>
             一個替代方案是切換到 SMS。
+        ]]>
+    </string>
+    <string name="help_history_expiry">
+        <![CDATA[
+            當啟用時，歷史記錄將在 N 天後過期，過期的記錄會自動刪除。
         ]]>
     </string>
 </resources>
