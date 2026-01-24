@@ -65,6 +65,8 @@ class CallScreeningService : CallScreeningService() {
     }
 
     private fun pass(details: Details, shouldMute: Boolean = false) {
+        logi("allow call")
+
         val builder = CallResponse.Builder().apply {
             if (shouldMute)
                 setSilenceCall(true)
@@ -73,6 +75,8 @@ class CallScreeningService : CallScreeningService() {
     }
 
     private fun reject(details: Details) {
+        logi("reject call")
+
         val builder = CallResponse.Builder().apply {
             setSkipCallLog(false)
             setSkipNotification(true)
@@ -84,6 +88,8 @@ class CallScreeningService : CallScreeningService() {
     }
 
     private fun silence(details: Details) {
+        logi("silence call")
+
         val builder = CallResponse.Builder().apply {
             setSkipCallLog(false)
             setSkipNotification(true)
@@ -95,6 +101,8 @@ class CallScreeningService : CallScreeningService() {
     }
 
     private fun answerThenHangUp(rawNumber: String, r: ICheckResult, details: Details) {
+        logi("hang-up call")
+
         val ctx = this
 
         // If a call is ongoing, don't hang-up, Reject instead
@@ -133,6 +141,8 @@ class CallScreeningService : CallScreeningService() {
     }
 
     private fun doScreenCall(details: Details) {
+        logi("doScreenCall()")
+
         // Outgoing
         if (details.callDirection == Details.DIRECTION_OUTGOING) {
             updateOutgoingEmergencyTimestamp(this, details.getRawNumber())
@@ -154,6 +164,7 @@ class CallScreeningService : CallScreeningService() {
         val r = processCall(
             ctx = this, logger = null, rawNumber = rawNumber, cnap = cnap, callDetails = details, simSlot = ringingSimSlot, isTest = false
         )
+        logi("processCall() result: $r")
 
         if (r.shouldBlock()) {
             val blockType = r.getBlockType(this) // reject / silence / answer+hangup
@@ -167,6 +178,7 @@ class CallScreeningService : CallScreeningService() {
             val shouldMute = setRingtone(this, r)
             pass(details, shouldMute)
         }
+        logi("doScreenCall() finished")
     }
 
     // Return value: should mute or not
@@ -250,7 +262,7 @@ class CallScreeningService : CallScreeningService() {
         isTest: Boolean,
         logger: ILogger? = null, // for showing detailed steps to logcat or for testing purpose
     ): ICheckResult {
-        logi("Process incoming call")
+        logi("processCall()")
 
         // 0. check the number with all rules, get the result
         val r = Checker.checkCall(
