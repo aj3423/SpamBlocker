@@ -14,7 +14,7 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.rememberFileWriteChooser
 
-const val repo = "https://github.com/aj3423/SpamBlocker"
+const val REPO = "https://github.com/aj3423/SpamBlocker"
 
 @Composable
 fun About() {
@@ -30,7 +30,7 @@ fun About() {
 
                     val msg =
                         "${ctx.resources.getString(R.string.version)}:<br>&emsp;${BuildConfig.VERSION_NAME}<br><br>" +
-                                "${ctx.resources.getString(R.string.source_code)}:<br>&emsp;<a href=\"$repo\">$repo</a><br>"
+                                "${ctx.resources.getString(R.string.source_code)}:<br>&emsp;<a href=\"$REPO\">$REPO</a><br>"
 
                     HtmlText(html = msg)
                 }

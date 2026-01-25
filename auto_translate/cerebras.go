@@ -68,9 +68,9 @@ func cerebras(model, prompt string) (string, error) {
 	// fmt.Println("body: ")
 	// fmt.Println(string(body))
 
-	content, err := parseGroqResponse(body)
+	content, err := parseCerebrasResponse(body)
 	if err != nil {
-		panic(err)
+		return "", err
 	}
 
 	return strings.TrimSpace(content), nil

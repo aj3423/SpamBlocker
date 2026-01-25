@@ -476,14 +476,16 @@ fun TestRegexDialog(
     PopupDialog(
         trigger = trigger,
         buttons = {
-            BalloonQuestionMark(Str(R.string.help_test_regex))
-            StrokeButton(
-                label = Str(R.string.test),
-                color = Teal200,
-                onClick = {
-                    result.value = regexStr.regexMatchesNumber(regexTestString.value, regexFlags)
-                }
-            )
+            RowVCenterSpaced(10) {
+                BalloonQuestionMark(Str(R.string.help_test_regex))
+                StrokeButton(
+                    label = Str(R.string.test),
+                    color = Teal200,
+                    onClick = {
+                        result.value = regexStr.regexMatchesNumber(regexTestString.value, regexFlags)
+                    }
+                )
+            }
         },
     ) {
         StrInputBox(

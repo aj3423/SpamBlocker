@@ -17,14 +17,18 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import spam.blocker.BuildConfig
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.ui.M
+import spam.blocker.ui.setting.misc.REPO
 import spam.blocker.ui.theme.AppTheme
 import spam.blocker.ui.theme.Salmon
+import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
@@ -86,10 +90,21 @@ class CrashReportActivity : ComponentActivity() {
 
                         Row(
                             modifier = M.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.End
+                            horizontalArrangement = Arrangement.spacedBy(
+                                space = 10.dp,
+                                alignment = Alignment.End
+                            )
                         ) {
                             StrokeButton(label = Str(R.string.copy), color = Teal200) {
                                 Clipboard.copy(ctx, toReport)
+                            }
+
+                            val uriHandler = LocalUriHandler.current
+                            StrokeButton(
+                                label = Str(R.string.report_bug),
+                                color = SkyBlue,
+                            ) {
+                                uriHandler.openUri("$REPO/issues")
                             }
                         }
                     }
