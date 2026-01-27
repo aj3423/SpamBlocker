@@ -4,9 +4,9 @@
     <string name="bot_preset_phoneblock"><no_translate>🇩🇪 🌐 PhoneBlock</no_translate></string>
     <string name="help_bot_preset_phoneblock">
     <![CDATA[
-        Descarrega números de spam des de <a href="https://phoneblock.net">https://phoneblock.net</a> diàriament. <br>
+        Descarrega números de spam des de %s i importa\'ls a la base de dades local. <br>
         <br>
-        La llista completa es descarregarà en la primera execució, amb només actualitzacions incrementals en execucions posteriors.
+        El flux de treball s\'executa diàriament, descarrega la llista completa en la primera execució i després només realitza actualitzacions incrementals en totes les execucions següents.
     ]]>
     </string>
     <string name="workflow_not_saved">El flux de treball no s\'ha desat, desa\'l primer.</string>

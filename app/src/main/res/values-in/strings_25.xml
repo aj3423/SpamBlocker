@@ -4,9 +4,9 @@
     <string name="bot_preset_phoneblock"><no_translate>🇩🇪 🌐 PhoneBlock</no_translate></string>
     <string name="help_bot_preset_phoneblock">
     <![CDATA[
-        Unduh nomor spam dari <a href="https://phoneblock.net">https://phoneblock.net</a> setiap hari. <br>
+        Unduh nomor spam dari %s dan impor ke basis data lokal. <br>
         <br>
-        Daftar lengkap akan diunduh pada run pertama, dengan hanya pembaruan inkremental pada run berikutnya.
+        Alur kerja berjalan setiap hari, mengunduh seluruh daftar pada run pertama, kemudian hanya melakukan pembaruan inkremental pada semua run berikutnya.
     ]]>
     </string>
     <string name="workflow_not_saved">Alur kerja belum disimpan, simpan dulu.</string>

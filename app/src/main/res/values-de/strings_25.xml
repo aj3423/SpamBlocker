@@ -4,9 +4,9 @@
     <string name="bot_preset_phoneblock"><no_translate>🇩🇪 🌐 PhoneBlock</no_translate></string>
     <string name="help_bot_preset_phoneblock">
     <![CDATA[
-        Lade täglich Spam-Nummern von <a href="https://phoneblock.net">https://phoneblock.net</a> herunter. <br>
+        Lade Spam-Nummern von %s herunter und importiere sie in die lokale Datenbank. <br>
         <br>
-        Die vollständige Liste wird beim ersten Ausführen heruntergeladen, danach nur noch inkrementelle Updates bei nachfolgenden Ausführungen.
+        Der Workflow wird täglich ausgeführt, er lädt die gesamte Liste beim ersten Durchlauf herunter und führt anschließend nur inkrementelle Updates bei allen weiteren Durchläufen durch.
     ]]>
     </string>
     <string name="workflow_not_saved">Workflow nicht gespeichert, speichere ihn zuerst.</string>

@@ -4,9 +4,9 @@
     <string name="bot_preset_phoneblock"><no_translate>🇩🇪 🌐 PhoneBlock</no_translate></string>
     <string name="help_bot_preset_phoneblock">
     <![CDATA[
-        每日從 <a href="https://phoneblock.net">https://phoneblock.net</a> 下載垃圾電話號碼。 <br>
+        從 %s 下載垃圾電話號碼並匯入本機資料庫。 <br>
         <br>
-        首次執行時會下載完整清單，之後僅下載增量更新。
+        此工作流程每日執行，首次執行時會下載完整清單，之後的執行僅執行增量更新。
     ]]>
     </string>
     <string name="workflow_not_saved">工作流程未儲存，請先儲存。</string>

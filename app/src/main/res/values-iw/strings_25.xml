@@ -4,9 +4,9 @@
     <string name="bot_preset_phoneblock"><no_translate>🇩🇪 🌐 PhoneBlock</no_translate></string>
     <string name="help_bot_preset_phoneblock">
     <![CDATA[
-        להוריד מספרי ספאם מ-<a href="https://phoneblock.net">https://phoneblock.net</a> מדי יום. <br>
+        הורד מספרי ספאם מ-%s וייבא אותם למסד הנתונים המקומי. <br>
         <br>
-        הרשימה המלאה תורד בפעם הראשונה, עם עדכונים מצטברים בלבד בריצות הבאות.
+        הזרימה פועלת יומיומית, היא מורידה את הרשימה המלאה בריצה הראשונה, ולאחר מכן מבצעת רק עדכונים אינקרמנטליים בכל הרצות הבאות.
     ]]>
     </string>
     <string name="workflow_not_saved">הזרימה לא נשמרה, יש לשמור אותה תחילה.</string>

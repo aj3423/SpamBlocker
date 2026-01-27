@@ -57,7 +57,11 @@ class BotPreset(
 val BotPresets = listOf(
     // PhoneBlock offline numbers
     BotPreset(
-        tooltip = { it.getString(R.string.help_bot_preset_phoneblock) },
+        tooltip = {
+            it.getString(R.string.help_bot_preset_phoneblock).format(
+                "<a href=\"https://phoneblock.net\">https://phoneblock.net</a>"
+            )
+        },
         newInstance = { ctx ->
             Bot(
                 desc = ctx.getString(R.string.bot_preset_phoneblock),

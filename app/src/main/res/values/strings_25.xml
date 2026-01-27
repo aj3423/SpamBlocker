@@ -3,9 +3,9 @@
     <string name="bot_preset_phoneblock"><no_translate>🇩🇪 🌐 PhoneBlock</no_translate></string>
     <string name="help_bot_preset_phoneblock">
     <![CDATA[
-        Download spam numbers from <a href="https://phoneblock.net">https://phoneblock.net</a> daily. <br>
+        Download spam numbers from %s and import them into local database. <br>
         <br>
-        The full list will be downloaded on the first run, with only incremental updates on subsequent runs.
+        The workflow runs daily, it downloads the entire list on the first run, then performs only incremental updates on all subsequent runs.
     ]]>
     </string>
     <string name="workflow_not_saved">Workflow not saved, save it first.</string>

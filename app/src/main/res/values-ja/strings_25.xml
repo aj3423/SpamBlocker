@@ -4,9 +4,9 @@
     <string name="bot_preset_phoneblock"><no_translate>🇩🇪 🌐 PhoneBlock</no_translate></string>
     <string name="help_bot_preset_phoneblock">
     <![CDATA[
-        毎日 <a href="https://phoneblock.net">https://phoneblock.net</a> からスパム番号をダウンロードします。 <br>
+        %s からスパム番号をダウンロードし、ローカルデータベースにインポートします。 <br>
         <br>
-        最初の実行時に全リストがダウンロードされ、以降の実行では増分更新のみが行われます。
+        ワークフローは毎日実行され、最初の実行時に全リストをダウンロードし、その後の実行では増分更新のみを行います。
     ]]>
     </string>
     <string name="workflow_not_saved">ワークフローが保存されていません。まず保存してください。</string>

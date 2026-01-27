@@ -4,9 +4,9 @@
     <string name="bot_preset_phoneblock"><no_translate>🇩🇪 🌐 PhoneBlock</no_translate></string>
     <string name="help_bot_preset_phoneblock">
     <![CDATA[
-        Spam numaralarını <a href="https://phoneblock.net">https://phoneblock.net</a> günlük olarak indirin. <br>
+        %s adresinden spam numaralarını indir ve yerel veritabanına aktar. <br>
         <br>
-        Tam liste ilk çalıştırmada indirilecek, sonraki çalıştırmalarda sadece artımlı güncellemeler yapılacaktır.
+        İş akışı günlük çalışır, ilk çalıştırmada tüm listeyi indirir, sonraki çalıştırmalarda yalnızca artımlı güncellemeler yapar.
     ]]>
     </string>
     <string name="workflow_not_saved">İş akışı kaydedilmedi, önce kaydedin.</string>
