@@ -1,3 +1,35 @@
 <resources>
     <string name="report_bug">إبلاغ</string>
+    <string name="generate_tag">إنشاء علامة</string>
+    <string name="bot_preset_phoneblock"><no_translate>🇩🇪 🌐 PhoneBlock</no_translate></string>
+    <string name="help_bot_preset_phoneblock">
+    <![CDATA[
+        تحميل أرقام spam من <a href="https://phoneblock.net">https://phoneblock.net</a> يوميًا. <br>
+        <br>
+        سيتم تنزيل القائمة الكاملة في التشغيل الأول، مع تحديثات تدريجية فقط في التشغيلات اللاحقة.
+    ]]>
+    </string>
+    <string name="workflow_not_saved">لم يتم حفظ سير العمل، احفظه أولاً.</string>
+    <string name="default_value">القيمة الافتراضية</string>
+    <string name="save_tag">حفظ العلامة</string>
+    <string name="help_save_tag">
+    <![CDATA[
+        احفظ قيمة العلامة لإعادة استخدامها في تشغيلات سير العمل المستقبلية. <br>
+        <br>
+        هي مرتبطة بسير العمل وسيتم حذفها تلقائيًا عند حذف سير العمل. <br>
+        <br>
+        <b>حالة الاستخدام</b>: <br>
+        <font color="#888888">
+          &ensp; في السيناريوهات التي تتضمن تحديثات تدريجية، يجب حفظ متغير يشبه المؤشر وإعادة استخدامه عبر تشغيلات متتالية.
+        </font>
+    ]]>
+    </string>
+    <string name="load_tag">تحميل العلامة</string>
+    <string name="help_load_tag">
+    <![CDATA[
+        تحميل علامة تم حفظها مسبقًا.
+    ]]>
+    </string>
+    <string name="tag_is_set_to">العلامة %s تم تعيينها إلى %s</string>
+    <string name="tag_is_saved_as">العلامة %s تم حفظها كـ %s</string>
 </resources>

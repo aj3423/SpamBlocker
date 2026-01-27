@@ -1,3 +1,35 @@
 <resources>
     <string name="report_bug">Report</string>
+    <string name="bot_preset_phoneblock"><no_translate>🇩🇪 🌐 PhoneBlock</no_translate></string>
+    <string name="help_bot_preset_phoneblock">
+    <![CDATA[
+        Download spam numbers from <a href="https://phoneblock.net">https://phoneblock.net</a> daily. <br>
+        <br>
+        The full list will be downloaded on the first run, with only incremental updates on subsequent runs.
+    ]]>
+    </string>
+    <string name="workflow_not_saved">Workflow not saved, save it first.</string>
+    <string name="default_value">Default Value</string>
+    <string name="save_tag">Save Tag</string>
+    <string name="help_save_tag">
+    <![CDATA[
+        Save a tag value to reuse it in future workflow runs. <br>
+        <br>
+        It\'s tied to the workflow and will be automatically deleted when the workflow is deleted. <br>
+        <br>
+        <b>Use case</b>: <br>
+        <font color="#888888">
+          &ensp; In scenarios involving incremental updates, a pointer-like variable must be saved and reused across successive runs.
+        </font>
+    ]]>
+    </string>
+    <string name="load_tag">Load Tag</string>
+    <string name="help_load_tag">
+    <![CDATA[
+        Load a tag that was saved earlier.
+    ]]>
+    </string>
+    <string name="tag_is_set_to">Tag %s is set to %s</string>
+    <string name="tag_is_saved_as">Tag %s is saved as %s</string>
+    <string name="generate_tag">Generate Tag</string>
 </resources>

@@ -1,3 +1,35 @@
 <resources>
     <string name="report_bug">דווח</string>
+    <string name="generate_tag">צור תג</string>
+    <string name="bot_preset_phoneblock"><no_translate>🇩🇪 🌐 PhoneBlock</no_translate></string>
+    <string name="help_bot_preset_phoneblock">
+    <![CDATA[
+        להוריד מספרי ספאם מ-<a href="https://phoneblock.net">https://phoneblock.net</a> מדי יום. <br>
+        <br>
+        הרשימה המלאה תורד בפעם הראשונה, עם עדכונים מצטברים בלבד בריצות הבאות.
+    ]]>
+    </string>
+    <string name="workflow_not_saved">הזרימה לא נשמרה, יש לשמור אותה תחילה.</string>
+    <string name="default_value">ערך ברירת מחדל</string>
+    <string name="save_tag">שמור תג</string>
+    <string name="help_save_tag">
+    <![CDATA[
+        שמור ערך תג כדי להשתמש בו בריצות זרימה עתידיות. <br>
+        <br>
+        התג קשור לזרימה ויימחק אוטומטית כאשר הזרימה נמחקת. <br>
+        <br>
+        <b>מקרה שימוש</b>: <br>
+        <font color="#888888">
+          &ensp; בתרחישים הכוללים עדכונים מצטברים, יש לשמור משתנה דמוי מצביע ולשימוש חוזר בריצות רצופות.
+        </font>
+    ]]>
+    </string>
+    <string name="load_tag">טען תג</string>
+    <string name="help_load_tag">
+    <![CDATA[
+        טען תג שנשמר קודם.
+    ]]>
+    </string>
+    <string name="tag_is_set_to">התג %s מוגדר ל-%s</string>
+    <string name="tag_is_saved_as">התג %s נשמר כ-%s</string>
 </resources>

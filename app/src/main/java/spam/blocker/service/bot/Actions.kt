@@ -2676,7 +2676,7 @@ class GenerateTag(
 
     @Composable
     override fun Icon() {
-        GreyIcon(R.drawable.ic_tag)
+        GreyIcon(R.drawable.ic_tag_add)
     }
 
     @Composable
@@ -2687,7 +2687,7 @@ class GenerateTag(
             StrInputBox(
                 text = tagNameState,
                 label = { Text(Str(R.string.tag_name)) },
-                leadingIconId = R.drawable.ic_tag,
+                leadingIconId = R.drawable.ic_tag_edit,
                 onValueChange = {
                     tagName = it
                     tagNameState = it
@@ -2742,6 +2742,170 @@ class GenerateTag(
                     )
                 }
             }
+        }
+    }
+}
+
+
+@Serializable
+@SerialName("LoadBotTag")
+class LoadBotTag(
+    var tagName: String = "",
+    var defaultValue: String = "",
+) : IPermissiveAction {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+
+        val logger = aCtx.logger
+
+        val botId = aCtx.botId
+        if (botId == null) {
+            logger?.error(ctx.getString(R.string.workflow_not_saved))
+            return false
+        }
+
+        val bot = BotTable.findById(ctx, botId)
+        val value = bot?.customTags?.get(tagName) ?: defaultValue
+        aCtx.customTags[tagName] = value
+
+        logger?.debug(ctx.getString(R.string.tag_is_set_to).formatAnnotated(
+            tagName.A(DimGrey), value.A(Teal200)
+        ))
+
+        return true
+    }
+
+    override fun label(ctx: Context): String {
+        return ctx.getString(R.string.load_tag)
+    }
+
+    @Composable
+    override fun Summary(showIcon: Boolean) {
+        SummaryLabel("{${tagName}}")
+    }
+
+    override fun tooltip(ctx: Context): String {
+        return ctx.getString(R.string.help_load_tag)
+    }
+
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    @Composable
+    override fun Icon() {
+        GreyIcon(R.drawable.ic_tag_up)
+    }
+
+    @Composable
+    override fun Options() {
+        Column {
+            // Tag Name
+            var tagNameState by remember { mutableStateOf(tagName) }
+            StrInputBox(
+                text = tagNameState,
+                label = { Text(Str(R.string.tag_name)) },
+                leadingIconId = R.drawable.ic_tag_edit,
+                onValueChange = {
+                    tagName = it
+                    tagNameState = it
+                },
+                supportingTextStr = if (tagNameState.trim().startsWith("{")) {
+                    Str(R.string.invalid_tag_name)
+                } else null
+            )
+
+            // Default Value
+            var defValState by remember { mutableStateOf(defaultValue) }
+            StrInputBox(
+                text = defValState,
+                label = { Text(Str(R.string.default_value)) },
+                leadingIconId = R.drawable.ic_note,
+                onValueChange = {
+                    defaultValue = it
+                    defValState = it
+                },
+            )
+        }
+    }
+}
+
+@Serializable
+@SerialName("SaveBotTag")
+class SaveBotTag(
+    var tagName: String = "",
+) : IPermissiveAction {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+
+        val logger = aCtx.logger
+
+        val botId = aCtx.botId
+        if (botId == null) {
+            logger?.error(ctx.getString(R.string.workflow_not_saved))
+            return false
+        }
+
+        // 1. load from db
+        val tags = BotTable.findById(ctx, botId)?.customTags ?: mutableMapOf()
+        // 2. update value
+        val value = aCtx.customTags[tagName] ?: ""
+        tags[tagName] = value
+        // 3. save to db
+        BotTable.updateById(ctx, botId, customTags = tags)
+
+        logger?.debug(ctx.getString(R.string.tag_is_saved_as).formatAnnotated(
+            tagName.A(DimGrey), value.A(Teal200)
+        ))
+
+        return true
+    }
+
+    override fun label(ctx: Context): String {
+        return ctx.getString(R.string.save_tag)
+    }
+
+    @Composable
+    override fun Summary(showIcon: Boolean) {
+        SummaryLabel("{${tagName}}")
+    }
+
+    override fun tooltip(ctx: Context): String {
+        return ctx.getString(R.string.help_save_tag)
+    }
+
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    @Composable
+    override fun Icon() {
+        GreyIcon(R.drawable.ic_tag_down)
+    }
+
+    @Composable
+    override fun Options() {
+        Column {
+            // Tag Name
+            var tagNameState by remember { mutableStateOf(tagName) }
+            StrInputBox(
+                text = tagNameState,
+                label = { Text(Str(R.string.tag_name)) },
+                leadingIconId = R.drawable.ic_tag_edit,
+                onValueChange = {
+                    tagName = it
+                    tagNameState = it
+                },
+                supportingTextStr = if (tagNameState.trim().startsWith("{")) {
+                    Str(R.string.invalid_tag_name)
+                } else null
+            )
         }
     }
 }

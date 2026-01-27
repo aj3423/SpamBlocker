@@ -70,12 +70,9 @@
     ]]>
     </string>
     <string name="replace_this">これを置き換える</string>
-    <string name="generate_tag">タグ生成</string>
     <string name="help_generate_tag">
     <![CDATA[
         前のステップからコンテンツを抽出し、後のステップで再利用できるようにカスタムタグに保存します。<br>
-        <br>
-        これは、複数ステップのウェブクエリに役立ちます。<br>
         <br>
         <b>オプション</b> <br>
         <br>

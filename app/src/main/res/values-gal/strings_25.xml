@@ -1,3 +1,35 @@
 <resources>
     <string name="report_bug">Informar</string>
+    <string name="generate_tag">Xerar etiqueta</string>
+    <string name="bot_preset_phoneblock"><no_translate>🇩🇪 🌐 PhoneBlock</no_translate></string>
+    <string name="help_bot_preset_phoneblock">
+    <![CDATA[
+        Descarga números spam de <a href="https://phoneblock.net">https://phoneblock.net</a> diariamente. <br>
+        <br>
+        A lista completa descargarase na primeira execución, con só actualizacións incrementais nas execucións posteriores.
+    ]]>
+    </string>
+    <string name="workflow_not_saved">O fluxo de traballo non se gardou, gárdao primeiro.</string>
+    <string name="default_value">Valor predeterminado</string>
+    <string name="save_tag">Gardar etiqueta</string>
+    <string name="help_save_tag">
+    <![CDATA[
+        Garda un valor de etiqueta para reutilizalo nas execucións futuras do fluxo de traballo. <br>
+        <br>
+        Está ligado ao fluxo de traballo e eliminarase automaticamente cando se elimine o fluxo de traballo. <br>
+        <br>
+        <b>Casos de uso</b>: <br>
+        <font color="#888888">
+          &ensp; Nos escenarios que implican actualizacións incrementais, debe gardarse e reutilizarse unha variable tipo punteiro entre execucións sucesivas.
+        </font>
+    ]]>
+    </string>
+    <string name="load_tag">Cargar etiqueta</string>
+    <string name="help_load_tag">
+    <![CDATA[
+        Cargar unha etiqueta que se gardou anteriormente.
+    ]]>
+    </string>
+    <string name="tag_is_set_to">A etiqueta %s está configurada a %s</string>
+    <string name="tag_is_saved_as">A etiqueta %s gardouse como %s</string>
 </resources>

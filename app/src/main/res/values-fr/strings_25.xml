@@ -1,3 +1,35 @@
 <resources>
     <string name="report_bug">Signaler</string>
+    <string name="generate_tag">Générer le tag</string>
+    <string name="bot_preset_phoneblock"><no_translate>🇩🇪 🌐 PhoneBlock</no_translate></string>
+    <string name="help_bot_preset_phoneblock">
+    <![CDATA[
+        Téléchargez les numéros spam depuis https://phoneblock.net quotidiennement. <br>
+        <br>
+        La liste complète sera téléchargée lors du premier lancement, avec uniquement des mises à jour incrémentielles lors des lancements suivants.
+    ]]>
+    </string>
+    <string name="workflow_not_saved">Flux de travail non enregistré, enregistrez-le d\'abord.</string>
+    <string name="default_value">Valeur par défaut</string>
+    <string name="save_tag">Enregistrer le tag</string>
+    <string name="help_save_tag">
+    <![CDATA[
+        Enregistrez une valeur de tag pour la réutiliser lors de futures exécutions du flux de travail. <br>
+        <br>
+        Elle est liée au flux de travail et sera automatiquement supprimée lorsque le flux de travail sera supprimé. <br>
+        <br>
+        <b>Cas d\'utilisation</b> : <br>
+        <font color="#888888">
+          &ensp; Dans les scénarios impliquant des mises à jour incrémentielles, une variable de type pointeur doit être enregistrée et réutilisée lors des exécutions successives.
+        </font>
+    ]]>
+    </string>
+    <string name="load_tag">Charger le tag</string>
+    <string name="help_load_tag">
+    <![CDATA[
+        Chargez un tag qui a été enregistré précédemment.
+    ]]>
+    </string>
+    <string name="tag_is_set_to">Le tag %s est défini sur %s</string>
+    <string name="tag_is_saved_as">Le tag %s est enregistré sous %s</string>
 </resources>

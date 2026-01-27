@@ -1,3 +1,35 @@
 <resources>
     <string name="report_bug">报告</string>
+    <string name="generate_tag">生成标签</string>
+    <string name="bot_preset_phoneblock"><no_translate>🇩🇪 🌐 PhoneBlock</no_translate></string>
+    <string name="help_bot_preset_phoneblock">
+    <![CDATA[
+        每日从 <a href="https://phoneblock.net">https://phoneblock.net</a> 下载垃圾号码。 <br>
+        <br>
+        首次运行时将下载完整列表，后续运行仅进行增量更新。
+    ]]>
+    </string>
+    <string name="workflow_not_saved">工作流未保存，请先保存。</string>
+    <string name="default_value">默认值</string>
+    <string name="save_tag">保存标签</string>
+    <string name="help_save_tag">
+    <![CDATA[
+        保存标签值，以便在未来的工作流运行中重复使用。 <br>
+        <br>
+        它与工作流绑定，工作流被删除时会自动删除。 <br>
+        <br>
+        <b>使用场景</b>: <br>
+        <font color="#888888">
+          &ensp; 在增量更新的场景中，需要保存类似指针的变量并在连续运行中重复使用。
+        </font>
+    ]]>
+    </string>
+    <string name="load_tag">加载标签</string>
+    <string name="help_load_tag">
+    <![CDATA[
+        加载之前保存的标签。
+    ]]>
+    </string>
+    <string name="tag_is_set_to">标签 %s 已设置为 %s</string>
+    <string name="tag_is_saved_as">标签 %s 已保存为 %s</string>
 </resources>

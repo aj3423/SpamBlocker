@@ -56,14 +56,16 @@ class MyWorker(
         val logger = SaveableLogger()
         val workTag = getWorkTag()
 
+        // The logger is now full filled with annotated string chunk, save it to db.
+        val bot = BotTable.findByWorkUuid(ctx, workTag)
+
         val aCtx = ActionContext(
             logger = logger,
             workTag = workTag,
+            botId = bot?.id,
         )
         actions.executeAll(ctx, aCtx)
 
-        // The logger is now full filled with annotated string chunk, save it to db.
-        val bot = BotTable.findByWorkUuid(ctx, workTag)
         if (bot != null) {
             BotTable.setLastLog(ctx, bot.id, logger.serialize())
         }

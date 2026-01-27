@@ -68,12 +68,9 @@
         您可以將備份檔案託管在 GitHub 上。
     ]]>
     </string>
-    <string name="generate_tag">產生標籤</string>
     <string name="help_generate_tag">
     <![CDATA[
         從上一步驟中提取內容並將其儲存在自訂標籤中，以便在後續步驟中重複使用。<br>
-        <br>
-        這對於多步驟的網頁查詢很有幫助。<br>
         <br>
         <b>選項</b> <br>
         <br>

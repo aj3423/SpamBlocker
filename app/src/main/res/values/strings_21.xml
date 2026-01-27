@@ -73,12 +73,9 @@
     ]]>
     </string>
     <string name="replace_this">Replace this</string>
-    <string name="generate_tag">Generate Tag</string>
     <string name="help_generate_tag">
     <![CDATA[
         Extract content from the previous step and store it in a custom tag for reuse in subsequent steps. <br>
-        <br>
-        This can be helpful to multi-step web queries. <br>
         <br>
         <b>Options</b> <br>
         <br>

@@ -122,6 +122,7 @@ object Preprocessors { // for namespace only
                 rawNumber = cCtx.rawNumber,
                 smsContent = cCtx.smsContent,
                 cCtx = cCtx,
+                botId = bot.id,
             )
             // Run Trigger + Actions
             bot.triggerAndActions().executeAll(ctx, aCtx)

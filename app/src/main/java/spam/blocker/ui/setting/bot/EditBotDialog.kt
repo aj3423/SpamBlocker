@@ -48,7 +48,7 @@ fun EditBotDialog(
     popupTrigger: MutableState<Boolean>,
     onSave: Lambda1<Bot>,
     onDismiss: Lambda,
-    initial: Bot,
+    initialBot: Bot,
 ) {
     if (!popupTrigger.value) {
         return
@@ -57,9 +57,9 @@ fun EditBotDialog(
     val C = LocalPalette.current
     val ctx = LocalContext.current
 
-    var description by rememberSaveable { mutableStateOf(initial.desc) }
-    val trigger = rememberSaveableTriggerState(initial.trigger)
-    val actions = rememberSaveableActionList(initial.actions)
+    var description by rememberSaveable { mutableStateOf(initialBot.desc) }
+    val trigger = rememberSaveableTriggerState(initialBot.trigger)
+    val actions = rememberSaveableActionList(initialBot.actions)
 
 
     // if any error, disable the Save button
@@ -75,7 +75,7 @@ fun EditBotDialog(
                 color = if (anyError) C.disabled else Teal200,
                 enabled = !anyError,
                 onClick = {
-                    // Gather all required permissions for "trigger + all actions"
+                    // Gather all required permissions for the workflow
                     val requiredPermissions = (actions + trigger.value).map {
                         it.requiredPermissions(ctx)
                     }.flatten()
@@ -84,7 +84,7 @@ fun EditBotDialog(
                         if (isGranted) {
                             popupTrigger.value = false
 
-                            val newBot = initial.copy(
+                            val newBot = initialBot.copy(
                                 desc = description,
                                 trigger = trigger.value,
                                 actions = actions,
@@ -159,7 +159,7 @@ fun EditBotDialog(
                 ) {
                     Column(modifier = M.fillMaxWidth()) {
                         // Action Header
-                        ActionHeader(currentActions = actions)
+                        ActionHeader(currentActions = actions, botId = initialBot.id)
 
                         // Action List
                         ActionList(actions = actions)

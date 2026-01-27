@@ -1,3 +1,35 @@
 <resources>
     <string name="report_bug">Denunciar</string>
+    <string name="generate_tag">Gerar Tag</string>
+    <string name="bot_preset_phoneblock"><no_translate>🇩🇪 🌐 PhoneBlock</no_translate></string>
+    <string name="help_bot_preset_phoneblock">
+    <![CDATA[
+        Baixe números de spam de <a href="https://phoneblock.net">https://phoneblock.net</a> diariamente. <br>
+        <br>
+        A lista completa será baixada na primeira execução, com apenas atualizações incrementais nas execuções subsequentes.
+    ]]>
+    </string>
+    <string name="workflow_not_saved">Fluxo de trabalho não salvo, salve‑o primeiro.</string>
+    <string name="default_value">Valor Padrão</string>
+    <string name="save_tag">Salvar Tag</string>
+    <string name="help_save_tag">
+    <![CDATA[
+        Salve um valor de tag para reutilizá‑lo em execuções futuras do fluxo de trabalho. <br>
+        <br>
+        Ele está vinculado ao fluxo de trabalho e será excluído automaticamente quando o fluxo de trabalho for excluído. <br>
+        <br>
+        <b>Caso de uso</b>: <br>
+        <font color="#888888">
+          &ensp; Em cenários que envolvem atualizações incrementais, uma variável tipo ponteiro deve ser salva e reutilizada em execuções sucessivas.
+        </font>
+    ]]>
+    </string>
+    <string name="load_tag">Carregar Tag</string>
+    <string name="help_load_tag">
+    <![CDATA[
+        Carregue uma tag que foi salva anteriormente.
+    ]]>
+    </string>
+    <string name="tag_is_set_to">Tag %s está definida como %s</string>
+    <string name="tag_is_saved_as">Tag %s está salva como %s</string>
 </resources>

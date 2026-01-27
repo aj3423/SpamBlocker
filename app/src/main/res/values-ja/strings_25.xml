@@ -1,3 +1,35 @@
 <resources>
     <string name="report_bug">報告</string>
+    <string name="generate_tag">タグを生成</string>
+    <string name="bot_preset_phoneblock"><no_translate>🇩🇪 🌐 PhoneBlock</no_translate></string>
+    <string name="help_bot_preset_phoneblock">
+    <![CDATA[
+        毎日 <a href="https://phoneblock.net">https://phoneblock.net</a> からスパム番号をダウンロードします。 <br>
+        <br>
+        最初の実行時に全リストがダウンロードされ、以降の実行では増分更新のみが行われます。
+    ]]>
+    </string>
+    <string name="workflow_not_saved">ワークフローが保存されていません。まず保存してください。</string>
+    <string name="default_value">デフォルト値</string>
+    <string name="save_tag">タグを保存</string>
+    <string name="help_save_tag">
+    <![CDATA[
+        将来のワークフロー実行で再利用できるようにタグの値を保存します。 <br>
+        <br>
+        このタグはワークフローに紐付いており、ワークフローが削除されると自動的に削除されます。 <br>
+        <br>
+        <b>使用例</b>: <br>
+        <font color="#888888">
+          &ensp; 増分更新が関わるシナリオでは、ポインタのような変数を保存し、連続した実行間で再利用する必要があります。
+        </font>
+    ]]>
+    </string>
+    <string name="load_tag">タグを読み込む</string>
+    <string name="help_load_tag">
+    <![CDATA[
+        以前に保存されたタグを読み込みます。
+    ]]>
+    </string>
+    <string name="tag_is_set_to">タグ %s が %s に設定されました</string>
+    <string name="tag_is_saved_as">タグ %s が %s として保存されました</string>
 </resources>

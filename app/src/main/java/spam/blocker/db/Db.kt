@@ -31,7 +31,7 @@ class Db private constructor(
 ) : SQLiteOpenHelper(ctx, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 46
+        const val DB_VERSION = 47
         const val DB_NAME = "spam_blocker.db"
 
         // ---- regex rule table ----
@@ -81,6 +81,7 @@ class Db private constructor(
         const val TABLE_BOT = "bot"
         const val COLUMN_TRIGGER = "trigger"
         const val COLUMN_ACTIONS = "actions"
+        const val COLUMN_CUSTOM_TAGS = "custom_tags"
         const val COLUMN_WORK_UUID = "work_uuid"
         const val COLUMN_LAST_LOG = "last_log"
         const val COLUMN_LAST_LOG_TIME = "last_log_time"
@@ -215,6 +216,7 @@ class Db private constructor(
                     "$COLUMN_DESC TEXT, " +
                     "$COLUMN_TRIGGER TEXT, " +
                     "$COLUMN_ACTIONS TEXT, " +
+                    "$COLUMN_CUSTOM_TAGS TEXT, " +
                     "$COLUMN_ENABLED INTEGER, " +
                     "$COLUMN_LAST_LOG TEXT, " +
                     "$COLUMN_LAST_LOG_TIME INTEGER " +
@@ -499,6 +501,10 @@ class Db private constructor(
         if ((newVersion >= 46) && (oldVersion < 46)) {
             addColumnIfNotExist(db, TABLE_CALL, COLUMN_IS_TEST, "INTEGER")
             addColumnIfNotExist(db, TABLE_SMS, COLUMN_IS_TEST, "INTEGER")
+        }
+        // v5.3 added Bot.customTags
+        if ((newVersion >= 47) && (oldVersion < 47)) {
+            addColumnIfNotExist(db, TABLE_BOT, COLUMN_CUSTOM_TAGS, "TEXT")
         }
     }
 }

@@ -73,12 +73,9 @@
     ]]>
     </string>
     <string name="replace_this">Sostituisci questo</string>
-    <string name="generate_tag">Genera tag</string>
     <string name="help_generate_tag">
     <![CDATA[
         Estrae il contenuto dal passaggio precedente e lo memorizza in un tag personalizzato per il riutilizzo nei passaggi successivi. <br>
-        <br>
-        Questo può essere utile per query web a più passaggi. <br>
         <br>
         <b>Opzioni</b> <br>
         <br>

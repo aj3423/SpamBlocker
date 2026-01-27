@@ -201,9 +201,9 @@ class CallScreeningService : CallScreeningService() {
 
         // 3. Change the system default ringtone, it will be reset after 2 seconds
         var shouldMute = false
-        bots.forEach {
-            val aCtx = ActionContext(lastOutput = r)
-            listOf(it.trigger).executeAll(ctx, aCtx)
+        bots.forEach { bot ->
+            val aCtx = ActionContext(lastOutput = r, botId = bot.id)
+            listOf(bot.trigger).executeAll(ctx, aCtx)
             shouldMute = aCtx.shouldMute
         }
 

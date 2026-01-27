@@ -184,7 +184,7 @@ fun BotList() {
     if (editTrigger.value) {
         EditBotDialog(
             popupTrigger = editTrigger,
-            initial = clickedBot,
+            initialBot = clickedBot,
             onDismiss = { vm.reload(ctx) },
             onSave = { updatedBot ->
                 // 1. update in db

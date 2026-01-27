@@ -1,3 +1,35 @@
 <resources>
     <string name="report_bug">Informar</string>
+    <string name="generate_tag">Generar etiqueta</string>
+    <string name="bot_preset_phoneblock"><no_translate>🇩🇪 🌐 PhoneBlock</no_translate></string>
+    <string name="help_bot_preset_phoneblock">
+    <![CDATA[
+        Descarrega números de spam des de <a href="https://phoneblock.net">https://phoneblock.net</a> diàriament. <br>
+        <br>
+        La llista completa es descarregarà en la primera execució, amb només actualitzacions incrementals en execucions posteriors.
+    ]]>
+    </string>
+    <string name="workflow_not_saved">El flux de treball no s\'ha desat, desa\'l primer.</string>
+    <string name="default_value">Valor per defecte</string>
+    <string name="save_tag">Desar etiqueta</string>
+    <string name="help_save_tag">
+    <![CDATA[
+        Desa un valor d\'etiqueta per reutilitzar-lo en futures execucions del flux de treball. <br>
+        <br>
+        Està vinculat al flux de treball i s\'eliminarà automàticament quan el flux de treball sigui eliminat. <br>
+        <br>
+        <b>Cas d\'ús</b>: <br>
+        <font color="#888888">
+          &ensp; En escenaris que impliquen actualitzacions incrementals, una variable similar a un punter ha de ser desada i reutilitzada en execucions successives.
+        </font>
+    ]]>
+    </string>
+    <string name="load_tag">Carregar etiqueta</string>
+    <string name="help_load_tag">
+    <![CDATA[
+        Carrega una etiqueta que es va desar anteriorment.
+    ]]>
+    </string>
+    <string name="tag_is_set_to">L\'etiqueta %s està establerta a %s</string>
+    <string name="tag_is_saved_as">L\'etiqueta %s s\'ha desat com a %s</string>
 </resources>

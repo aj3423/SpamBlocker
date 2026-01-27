@@ -73,12 +73,9 @@
     ]]>
     </string>
     <string name="replace_this">Dies ersetzen</string>
-    <string name="generate_tag">Tag generieren</string>
     <string name="help_generate_tag">
     <![CDATA[
         Extrahieren Sie Inhalte aus dem vorherigen Schritt und speichern Sie sie in einem benutzerdefinierten Tag zur Wiederverwendung in nachfolgenden Schritten. <br>
-        <br>
-        Dies kann bei mehrstufigen Webabfragen hilfreich sein. <br>
         <br>
         <b>Optionen</b> <br>
         <br>

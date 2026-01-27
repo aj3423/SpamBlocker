@@ -14,6 +14,17 @@ import androidx.core.database.getLongOrNull
 import androidx.core.database.getStringOrNull
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.Transient
+import kotlinx.serialization.json.Json
+import spam.blocker.db.Db.Companion.COLUMN_ACTIONS
+import spam.blocker.db.Db.Companion.COLUMN_CUSTOM_TAGS
+import spam.blocker.db.Db.Companion.COLUMN_DESC
+import spam.blocker.db.Db.Companion.COLUMN_ENABLED
+import spam.blocker.db.Db.Companion.COLUMN_ID
+import spam.blocker.db.Db.Companion.COLUMN_LAST_LOG
+import spam.blocker.db.Db.Companion.COLUMN_LAST_LOG_TIME
+import spam.blocker.db.Db.Companion.COLUMN_SCHEDULE
+import spam.blocker.db.Db.Companion.COLUMN_TRIGGER
+import spam.blocker.db.Db.Companion.COLUMN_WORK_UUID
 import spam.blocker.service.bot.IAction
 import spam.blocker.service.bot.ISchedule
 import spam.blocker.service.bot.ITriggerAction
@@ -54,6 +65,10 @@ data class Bot(
     val desc: String = "",
     val trigger: ITriggerAction = Manual(),
     val actions: List<IAction> = listOf(),
+
+    // For persisting custom variables, e.g.:
+    //   PhoneBlock incremental downloading requires a dynamic variable `version`
+    val customTags: MutableMap<String, String>? = mutableMapOf(),
 
     @Transient
     val lastLog: String = "",
@@ -126,22 +141,22 @@ object BotTable {
         cursor.use {
             if (it.moveToFirst()) {
                 do {
-                    val schConfig = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_SCHEDULE)) ?: ""
+                    val schConfig = it.getStringOrNull(it.getColumnIndex(COLUMN_SCHEDULE)) ?: ""
                     val sch = schConfig.parseSchedule()
 
                     val actionsConfig =
-                        it.getStringOrNull(it.getColumnIndex(Db.COLUMN_ACTIONS)) ?: ""
+                        it.getStringOrNull(it.getColumnIndex(COLUMN_ACTIONS)) ?: ""
                     val actions = actionsConfig.parseActions()
 
                     val rec = OldBot(
-                        id = it.getLong(it.getColumnIndex(Db.COLUMN_ID)),
-                        desc = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_DESC)) ?: "",
+                        id = it.getLong(it.getColumnIndex(COLUMN_ID)),
+                        desc = it.getStringOrNull(it.getColumnIndex(COLUMN_DESC)) ?: "",
                         schedule = sch,
                         actions = actions,
-                        enabled = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_ENABLED)) == 1,
-                        workUUID = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_WORK_UUID)) ?: "",
-                        lastLog = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_LAST_LOG)) ?: "",
-                        lastLogTime = it.getLongOrNull(it.getColumnIndex(Db.COLUMN_LAST_LOG_TIME)) ?: 0,
+                        enabled = it.getIntOrNull(it.getColumnIndex(COLUMN_ENABLED)) == 1,
+                        workUUID = it.getStringOrNull(it.getColumnIndex(COLUMN_WORK_UUID)) ?: "",
+                        lastLog = it.getStringOrNull(it.getColumnIndex(COLUMN_LAST_LOG)) ?: "",
+                        lastLogTime = it.getLongOrNull(it.getColumnIndex(COLUMN_LAST_LOG_TIME)) ?: 0,
                     )
 
                     ret += rec
@@ -153,7 +168,7 @@ object BotTable {
     @SuppressLint("Range")
     fun listAll(ctx: Context, where: String = ""): List<Bot> {
 
-        val sql = "SELECT * FROM ${Db.TABLE_BOT} $where ORDER BY ${Db.COLUMN_DESC}"
+        val sql = "SELECT * FROM ${Db.TABLE_BOT} $where ORDER BY ${COLUMN_DESC}"
 
         val ret: MutableList<Bot> = mutableListOf()
 
@@ -162,20 +177,26 @@ object BotTable {
         cursor.use {
             if (it.moveToFirst()) {
                 do {
-                    val triggerConfig = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_TRIGGER)) ?: ""
+                    val triggerConfig = it.getStringOrNull(it.getColumnIndex(COLUMN_TRIGGER)) ?: ""
                     val trigger = triggerConfig.parseTrigger()
 
                     val actionsConfig =
-                        it.getStringOrNull(it.getColumnIndex(Db.COLUMN_ACTIONS)) ?: ""
+                        it.getStringOrNull(it.getColumnIndex(COLUMN_ACTIONS)) ?: ""
                     val actions = actionsConfig.parseActions()
 
+                    val customTags = it.getStringOrNull(it.getColumnIndex(COLUMN_CUSTOM_TAGS))?.let { jsonStr ->
+                        val map: MutableMap<String, String> = Json.decodeFromString(jsonStr)
+                        map
+                    }
+
                     val rec = Bot(
-                        id = it.getLong(it.getColumnIndex(Db.COLUMN_ID)),
-                        desc = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_DESC)) ?: "",
+                        id = it.getLong(it.getColumnIndex(COLUMN_ID)),
+                        desc = it.getStringOrNull(it.getColumnIndex(COLUMN_DESC)) ?: "",
                         trigger = trigger,
                         actions = actions,
-                        lastLog = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_LAST_LOG)) ?: "",
-                        lastLogTime = it.getLongOrNull(it.getColumnIndex(Db.COLUMN_LAST_LOG_TIME)) ?: 0,
+                        customTags = customTags,
+                        lastLog = it.getStringOrNull(it.getColumnIndex(COLUMN_LAST_LOG)) ?: "",
+                        lastLogTime = it.getLongOrNull(it.getColumnIndex(COLUMN_LAST_LOG_TIME)) ?: 0,
                     )
 
                     ret += rec
@@ -189,23 +210,25 @@ object BotTable {
         val db = Db.getInstance(ctx).writableDatabase
         val cv = ContentValues()
 
-        cv.put(Db.COLUMN_DESC, r.desc)
-        cv.put(Db.COLUMN_TRIGGER, r.trigger.serialize())
-        cv.put(Db.COLUMN_ACTIONS, r.actions.serialize())
-        cv.put(Db.COLUMN_LAST_LOG, r.lastLog)
-        cv.put(Db.COLUMN_LAST_LOG_TIME, r.lastLogTime)
+        cv.put(COLUMN_DESC, r.desc)
+        cv.put(COLUMN_TRIGGER, r.trigger.serialize())
+        cv.put(COLUMN_ACTIONS, r.actions.serialize())
+        cv.put(COLUMN_CUSTOM_TAGS, r.customTags?.let { Json.encodeToString(it) })
+        cv.put(COLUMN_LAST_LOG, r.lastLog)
+        cv.put(COLUMN_LAST_LOG_TIME, r.lastLogTime)
         return db.insert(Db.TABLE_BOT, null, cv)
     }
 
     fun addRecordWithId(ctx: Context, r: Bot) {
         val db = Db.getInstance(ctx).writableDatabase
         val cv = ContentValues()
-        cv.put(Db.COLUMN_ID, r.id)
-        cv.put(Db.COLUMN_DESC, r.desc)
-        cv.put(Db.COLUMN_TRIGGER, r.trigger.serialize())
-        cv.put(Db.COLUMN_ACTIONS, r.actions.serialize())
-        cv.put(Db.COLUMN_LAST_LOG, r.lastLog)
-        cv.put(Db.COLUMN_LAST_LOG_TIME, r.lastLogTime)
+        cv.put(COLUMN_ID, r.id)
+        cv.put(COLUMN_DESC, r.desc)
+        cv.put(COLUMN_TRIGGER, r.trigger.serialize())
+        cv.put(COLUMN_ACTIONS, r.actions.serialize())
+        cv.put(COLUMN_CUSTOM_TAGS, r.customTags?.let { Json.encodeToString(it) })
+        cv.put(COLUMN_LAST_LOG, r.lastLog)
+        cv.put(COLUMN_LAST_LOG_TIME, r.lastLogTime)
         db.insert(Db.TABLE_BOT, null, cv)
     }
 
@@ -215,19 +238,21 @@ object BotTable {
         desc: String? = null,
         trigger: ITriggerAction? = null,
         actions: List<IAction>? = null,
+        customTags: MutableMap<String, String>? = null,
     ): Boolean {
         val db = Db.getInstance(ctx).writableDatabase
         val cv = ContentValues()
-        desc?.let { cv.put(Db.COLUMN_DESC, it) }
-        trigger?.let { cv.put(Db.COLUMN_TRIGGER, it.serialize()) }
-        actions?.let { cv.put(Db.COLUMN_ACTIONS, it.serialize()) }
+        desc?.let { cv.put(COLUMN_DESC, it) }
+        trigger?.let { cv.put(COLUMN_TRIGGER, it.serialize()) }
+        actions?.let { cv.put(COLUMN_ACTIONS, it.serialize()) }
+        customTags?.let { cv.put(COLUMN_CUSTOM_TAGS, Json.encodeToString(it)) }
         // no need to update log
 
-        return db.update(Db.TABLE_BOT, cv, "${Db.COLUMN_ID} = $id", null) >= 0
+        return db.update(Db.TABLE_BOT, cv, "$COLUMN_ID = $id", null) >= 0
     }
 
     fun findById(ctx: Context, id: Long) : Bot? {
-        val found = listAll(ctx, "WHERE ${Db.COLUMN_ID} = $id")
+        val found = listAll(ctx, "WHERE $COLUMN_ID = $id")
         return if (found.isEmpty())
             null
         else
@@ -246,13 +271,13 @@ object BotTable {
     fun setLastLog(ctx: Context, id: Long, log: String) {
         val db = Db.getInstance(ctx).writableDatabase
         val cv = ContentValues()
-        cv.put(Db.COLUMN_LAST_LOG, log)
-        cv.put(Db.COLUMN_LAST_LOG_TIME, System.currentTimeMillis())
-        db.update(Db.TABLE_BOT, cv, "${Db.COLUMN_ID} = $id", null)
+        cv.put(COLUMN_LAST_LOG, log)
+        cv.put(COLUMN_LAST_LOG_TIME, System.currentTimeMillis())
+        db.update(Db.TABLE_BOT, cv, "$COLUMN_ID = $id", null)
     }
 
     fun deleteById(ctx: Context, id: Long): Boolean {
-        val sql = "DELETE FROM ${Db.TABLE_BOT} WHERE ${Db.COLUMN_ID} = $id"
+        val sql = "DELETE FROM ${Db.TABLE_BOT} WHERE $COLUMN_ID = $id"
         val cursor = Db.getInstance(ctx).writableDatabase.rawQuery(sql, null)
 
         return cursor.use {

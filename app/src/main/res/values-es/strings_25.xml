@@ -1,3 +1,35 @@
 <resources>
     <string name="report_bug">Reportar</string>
+    <string name="generate_tag">Generar etiqueta</string>
+    <string name="bot_preset_phoneblock"><no_translate>🇩🇪 🌐 PhoneBlock</no_translate></string>
+    <string name="help_bot_preset_phoneblock">
+    <![CDATA[
+        Descargar números de spam de <a href="https://phoneblock.net">https://phoneblock.net</a> diariamente. <br>
+        <br>
+        La lista completa se descargará en la primera ejecución, con solo actualizaciones incrementales en ejecuciones posteriores.
+    ]]>
+    </string>
+    <string name="workflow_not_saved">Flujo de trabajo no guardado, guárdalo primero.</string>
+    <string name="default_value">Valor predeterminado</string>
+    <string name="save_tag">Guardar etiqueta</string>
+    <string name="help_save_tag">
+    <![CDATA[
+        Guarda un valor de etiqueta para reutilizarlo en futuras ejecuciones del flujo de trabajo. <br>
+        <br>
+        Está vinculada al flujo de trabajo y se eliminará automáticamente cuando se elimine el flujo de trabajo. <br>
+        <br>
+        <b>Caso de uso</b>: <br>
+        <font color="#888888">
+          &ensp; En escenarios que implican actualizaciones incrementales, una variable tipo puntero debe guardarse y reutilizarse en ejecuciones sucesivas.
+        </font>
+    ]]>
+    </string>
+    <string name="load_tag">Cargar etiqueta</string>
+    <string name="help_load_tag">
+    <![CDATA[
+        Cargar una etiqueta que se guardó anteriormente.
+    ]]>
+    </string>
+    <string name="tag_is_set_to">La etiqueta %s está establecida en %s</string>
+    <string name="tag_is_saved_as">La etiqueta %s se guarda como %s</string>
 </resources>

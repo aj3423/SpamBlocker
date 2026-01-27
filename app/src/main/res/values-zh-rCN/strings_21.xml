@@ -70,12 +70,9 @@
     ]]>
     </string>
     <string name="replace_this">替换此项</string>
-    <string name="generate_tag">生成标签</string>
     <string name="help_generate_tag">
     <![CDATA[
         从上一步中提取内容并将其存储在自定义标签中，以便在后续步骤中重复使用。<br>
-        <br>
-        这有助于多步网络查询。<br>
         <br>
         <b>选项</b> <br>
         <br>

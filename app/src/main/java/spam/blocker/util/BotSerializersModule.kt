@@ -29,6 +29,7 @@ import spam.blocker.service.bot.ImportAsRegexRule
 import spam.blocker.service.bot.ImportToSpamDB
 import spam.blocker.service.bot.InterceptCall
 import spam.blocker.service.bot.InterceptSms
+import spam.blocker.service.bot.LoadBotTag
 import spam.blocker.service.bot.Manual
 import spam.blocker.service.bot.ModifyNumber
 import spam.blocker.service.bot.ModifyRules
@@ -42,6 +43,7 @@ import spam.blocker.service.bot.QuickTile
 import spam.blocker.service.bot.ReadFile
 import spam.blocker.service.bot.RegexExtract
 import spam.blocker.service.bot.Ringtone
+import spam.blocker.service.bot.SaveBotTag
 import spam.blocker.service.bot.Schedule
 import spam.blocker.service.bot.ScheduledAutoReportNumber
 import spam.blocker.service.bot.SmsEvent
@@ -106,6 +108,8 @@ val botModule = SerializersModule {
         subclass(CategoryConfig::class)
         subclass(ModifyNumber::class)
         subclass(GenerateTag::class)
+        subclass(SaveBotTag::class)
+        subclass(LoadBotTag::class)
     }
     polymorphic(IApi::class) {
         // the second param is only for being compatible with old serialized data `spam.blocker.db.QueryApi`

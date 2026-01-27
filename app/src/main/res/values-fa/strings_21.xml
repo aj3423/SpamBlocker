@@ -70,12 +70,9 @@
     ]]>
     </string>
     <string name="replace_this">این را جایگزین کنید</string>
-    <string name="generate_tag">تولید برچسب</string>
     <string name="help_generate_tag">
     <![CDATA[
         محتوا را از مرحله قبلی استخراج کرده و در یک برچسب سفارشی برای استفاده مجدد در مراحل بعدی ذخیره کنید. <br>
-        <br>
-        این می‌تواند برای جستجوهای وب چند مرحله‌ای مفید باشد. <br>
         <br>
         <b>گزینه‌ها</b> <br>
         <br>

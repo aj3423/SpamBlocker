@@ -1,3 +1,35 @@
 <resources>
     <string name="report_bug">Raporla</string>
+    <string name="generate_tag">Etiket Oluştur</string>
+    <string name="bot_preset_phoneblock"><no_translate>🇩🇪 🌐 PhoneBlock</no_translate></string>
+    <string name="help_bot_preset_phoneblock">
+    <![CDATA[
+        Spam numaralarını <a href="https://phoneblock.net">https://phoneblock.net</a> günlük olarak indirin. <br>
+        <br>
+        Tam liste ilk çalıştırmada indirilecek, sonraki çalıştırmalarda sadece artımlı güncellemeler yapılacaktır.
+    ]]>
+    </string>
+    <string name="workflow_not_saved">İş akışı kaydedilmedi, önce kaydedin.</string>
+    <string name="default_value">Varsayılan Değer</string>
+    <string name="save_tag">Etiketi Kaydet</string>
+    <string name="help_save_tag">
+    <![CDATA[
+        Gelecek iş akışı çalıştırmalarında yeniden kullanmak için bir etiket değeri kaydedin. <br>
+        <br>
+        Bu, iş akışına bağlıdır ve iş akışı silindiğinde otomatik olarak silinecektir. <br>
+        <br>
+        <b>Kullanım durumu</b>: <br>
+        <font color="#888888">
+          &ensp; Artımlı güncellemelerin olduğu senaryolarda, işaretçi benzeri bir değişkenin kaydedilmesi ve ardışık çalıştırmalarda yeniden kullanılması gerekir.
+        </font>
+    ]]>
+    </string>
+    <string name="load_tag">Etiketi Yükle</string>
+    <string name="help_load_tag">
+    <![CDATA[
+        Daha önce kaydedilmiş bir etiketi yükleyin.
+    ]]>
+    </string>
+    <string name="tag_is_set_to">Etiket %s, %s olarak ayarlandı</string>
+    <string name="tag_is_saved_as">Etiket %s, %s olarak kaydedildi</string>
 </resources>

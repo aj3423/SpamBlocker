@@ -1,3 +1,35 @@
 <resources>
     <string name="report_bug">舉報</string>
+    <string name="generate_tag">產生標籤</string>
+    <string name="bot_preset_phoneblock"><no_translate>🇩🇪 🌐 PhoneBlock</no_translate></string>
+    <string name="help_bot_preset_phoneblock">
+    <![CDATA[
+        每日從 <a href="https://phoneblock.net">https://phoneblock.net</a> 下載垃圾電話號碼。 <br>
+        <br>
+        首次執行時會下載完整清單，之後僅下載增量更新。
+    ]]>
+    </string>
+    <string name="workflow_not_saved">工作流程未儲存，請先儲存。</string>
+    <string name="default_value">預設值</string>
+    <string name="save_tag">儲存標籤</string>
+    <string name="help_save_tag">
+    <![CDATA[
+        儲存標籤值，以便在未來的工作流程執行中重複使用。 <br>
+        <br>
+        它與工作流程相關聯，當工作流程被刪除時會自動刪除。 <br>
+        <br>
+        <b>使用案例</b>: <br>
+        <font color="#888888">
+          &ensp; 在涉及增量更新的情況下，必須儲存類指標變數，並在連續執行中重複使用。
+        </font>
+    ]]>
+    </string>
+    <string name="load_tag">載入標籤</string>
+    <string name="help_load_tag">
+    <![CDATA[
+        載入先前儲存的標籤。
+    ]]>
+    </string>
+    <string name="tag_is_set_to">標籤 %s 已設定為 %s</string>
+    <string name="tag_is_saved_as">標籤 %s 已儲存為 %s</string>
 </resources>

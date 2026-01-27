@@ -20,7 +20,7 @@
             Those green or red dots between items indicate whether they are chainable or not.
         ]]>
     </string>
-    <string name="help_bot_preset_dnc">
+    <string name="help_bot_preset_dnc_daily">
         <![CDATA[
             Download spam phone numbers from
             <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">

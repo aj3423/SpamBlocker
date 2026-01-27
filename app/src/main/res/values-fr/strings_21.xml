@@ -73,12 +73,9 @@
     ]]>
     </string>
     <string name="replace_this">Remplacer ceci</string>
-    <string name="generate_tag">Générer une balise</string>
     <string name="help_generate_tag">
     <![CDATA[
         Extrayez le contenu de l\'étape précédente et stockez-le dans une balise personnalisée pour le réutiliser dans les étapes suivantes. <br>
-        <br>
-        Cela peut être utile pour les requêtes web en plusieurs étapes. <br>
         <br>
         <b>Options</b> <br>
         <br>

@@ -73,12 +73,9 @@
     ]]>
     </string>
     <string name="replace_this">החלף זאת</string>
-    <string name="generate_tag">צור תגית</string>
     <string name="help_generate_tag">
     <![CDATA[
         חלץ תוכן מהשלב הקודם ואחסן אותו בתגית מותאמת אישית לשימוש חוזר בשלבים הבאים. <br>
-        <br>
-        זה יכול להיות שימושי עבור שאילתות אינטרנט מרובות שלבים. <br>
         <br>
         <b>אפשרויות</b> <br>
         <br>

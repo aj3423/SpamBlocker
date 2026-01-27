@@ -71,12 +71,9 @@
     ]]>
     </string>
     <string name="replace_this">Substituir isto</string>
-    <string name="generate_tag">Gerar Tag</string>
     <string name="help_generate_tag">
     <![CDATA[
         Extraia o conteúdo da etapa anterior e armazene-o em uma tag personalizada para reutilização em etapas subsequentes. <br>
-        <br>
-        Isso pode ser útil para consultas web de várias etapas. <br>
         <br>
         <b>Opções</b> <br>
         <br>

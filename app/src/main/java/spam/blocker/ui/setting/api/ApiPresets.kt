@@ -67,9 +67,9 @@ data class ApiPreset(
     val leadingIconId: Int? = null,
     // Show a dialog for inputting authorization information(API_TOKEN/Username/Password).
     val newAuthConfig: () -> AuthConfig?,
-    val newApi: (Context) -> IApi,
-    // A query API can have a corresponding report API, e.g. PhoneBlock
-    // When creating the query API, also create the report API, to avoid repeatedly filling the API key.
+    val newInstance: (Context) -> IApi,
+    // APIs like PhoneBlock support both query/report.
+    // When creating the query API, also create the report API to avoid asking for API key twice.
     val newReportApi: ((Context) -> IApi)? = null,
 )
 
@@ -132,7 +132,7 @@ val ApiQueryPresets = listOf<ApiPreset>(
         tooltipId = R.string.help_api_preset_phoneblock,
         leadingIconId = R.drawable.ic_call,
         newAuthConfig = { authConfig_PhoneBlock.copy() },
-        newApi = { ctx ->
+        newInstance = { ctx ->
             QueryApi(
                 desc = ctx.getString(R.string.api_preset_phoneblock),
                 enabled = true,
@@ -160,7 +160,7 @@ val ApiQueryPresets = listOf<ApiPreset>(
             )
         },
         newReportApi = { ctx ->
-            ApiReportPresets[0].newApi(ctx)
+            ApiReportPreset_PhoneBlock.newInstance(ctx)
         }
     ),
     // Groq
@@ -186,7 +186,7 @@ val ApiQueryPresets = listOf<ApiPreset>(
                 }
             )
         },
-        newApi = { ctx ->
+        newInstance = { ctx ->
             QueryApi(
                 desc = ctx.getString(R.string.api_preset_groq),
                 enabled = true,
@@ -229,46 +229,46 @@ val ApiQueryPresets = listOf<ApiPreset>(
     ),
 )
 
-val ApiReportPresets = listOf<ApiPreset>(
-    // PhoneBlock
-    ApiPreset(
-        tooltipId = R.string.help_api_preset_phoneblock,
-        newAuthConfig = { authConfig_PhoneBlock.copy() },
-        newApi = { ctx ->
-            ReportApi(
-                desc = ctx.getString(R.string.api_preset_phoneblock),
-                enabled = true,
-                actions = listOf(
-                    InterceptCall(
-                        numberFilter = ".*",
-                        forwardType = ForwardType.Original,
-                    ),
-                    CategoryConfig(
-                        map = mapOf(
-                            tagValid to "A_LEGITIMATE",
-                            tagOther to "B_MISSED",
-                            tagSurvey to "D_POLL",
-                            tagMarketing to "E_ADVERTISING",
-                            tagPolitical to "E_ADVERTISING",
-                            tagFraud to "G_FRAUD",
-                        )
-                    ),
-                    HttpRequest(
-                        url = if (BuildConfig.DEBUG)
-                            "https://phoneblock.net/pb-test/api/rate"
-                        else
-                            "https://phoneblock.net/phoneblock/api/rate",
-                        header = "{bearer_auth({api_key})}",
-                        method = HTTP_POST,
-                        body = """
+val ApiReportPreset_PhoneBlock = ApiPreset(
+    tooltipId = R.string.help_api_preset_phoneblock,
+    newAuthConfig = { authConfig_PhoneBlock.copy() },
+    newInstance = { ctx ->
+        ReportApi(
+            desc = ctx.getString(R.string.api_preset_phoneblock),
+            enabled = true,
+            actions = listOf(
+                InterceptCall(
+                    numberFilter = ".*",
+                    forwardType = ForwardType.Original,
+                ),
+                CategoryConfig(
+                    map = mapOf(
+                        tagValid to "A_LEGITIMATE",
+                        tagOther to "B_MISSED",
+                        tagSurvey to "D_POLL",
+                        tagMarketing to "E_ADVERTISING",
+                        tagPolitical to "E_ADVERTISING",
+                        tagFraud to "G_FRAUD",
+                    )
+                ),
+                HttpRequest(
+                    url = if (BuildConfig.DEBUG)
+                        "https://phoneblock.net/pb-test/api/rate"
+                    else
+                        "https://phoneblock.net/phoneblock/api/rate",
+                    header = "{bearer_auth({api_key})}",
+                    method = HTTP_POST,
+                    body = """
                             {
                                 "phone": "00{cc}{domestic}",
                                 "rating": "{category}"
                             }
                         """.trimIndent()
-                    )
                 )
             )
-        }
-    )
+        )
+    }
+)
+val ApiReportPresets = listOf(
+    ApiReportPreset_PhoneBlock
 )

@@ -1,3 +1,35 @@
 <resources>
     <string name="report_bug">Laporkan</string>
+    <string name="generate_tag">Buat Tag</string>
+    <string name="bot_preset_phoneblock"><no_translate>🇩🇪 🌐 PhoneBlock</no_translate></string>
+    <string name="help_bot_preset_phoneblock">
+    <![CDATA[
+        Unduh nomor spam dari <a href="https://phoneblock.net">https://phoneblock.net</a> setiap hari. <br>
+        <br>
+        Daftar lengkap akan diunduh pada run pertama, dengan hanya pembaruan inkremental pada run berikutnya.
+    ]]>
+    </string>
+    <string name="workflow_not_saved">Alur kerja belum disimpan, simpan dulu.</string>
+    <string name="default_value">Nilai Default</string>
+    <string name="save_tag">Simpan Tag</string>
+    <string name="help_save_tag">
+    <![CDATA[
+        Simpan nilai tag untuk digunakan kembali pada run alur kerja di masa depan. <br>
+        <br>
+        Tag ini terikat pada alur kerja dan akan dihapus secara otomatis ketika alur kerja dihapus. <br>
+        <br>
+        <b>Kasus penggunaan</b>: <br>
+        <font color="#888888">
+          &ensp; Dalam skenario pembaruan inkremental, variabel mirip pointer harus disimpan dan digunakan kembali pada run berikutnya.
+        </font>
+    ]]>
+    </string>
+    <string name="load_tag">Muat Tag</string>
+    <string name="help_load_tag">
+    <![CDATA[
+        Muat tag yang sebelumnya disimpan.
+    ]]>
+    </string>
+    <string name="tag_is_set_to">Tag %s diatur ke %s</string>
+    <string name="tag_is_saved_as">Tag %s disimpan sebagai %s</string>
 </resources>

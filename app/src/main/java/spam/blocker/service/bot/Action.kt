@@ -55,8 +55,11 @@ val botActions = listOf(
     BackupImport(),
     PruneDatabase(),
     PruneHistory(),
-    EnableWorkflow(),
+//    EnableWorkflow(),
     EnableApp(),
+    GenerateTag(),
+    SaveBotTag(),
+    LoadBotTag(),
 )
 
 val apiActions = listOf(
@@ -68,7 +71,7 @@ val apiActions = listOf(
     ConvertNumber(),
     ImportToSpamDB(),
     CategoryConfig(),
-    GenerateTag()
+    GenerateTag(),
 )
 
 
@@ -126,6 +129,9 @@ data class ActionContext(
 
     // Should mute the ringtone for allowed call?
     var shouldMute: Boolean = false,
+
+    // Used when running bots.
+    var botId: Long? = null,
 
     // for action `Generate Tag`
     var customTags: MutableMap<String, String> = mutableMapOf(),

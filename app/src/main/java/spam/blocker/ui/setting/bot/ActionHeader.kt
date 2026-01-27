@@ -48,12 +48,13 @@ import spam.blocker.util.Lambda
 fun TestActionButton(
     actions: SnapshotStateList<IAction>,
     testingRequireNumber: Boolean = false, // testing InstantQuery requires a number
+    botId: Long? = null, // is testing bot
 ) {
     val ctx = LocalContext.current
     val C = LocalPalette.current
 
 
-    var logStr = remember { mutableStateOf(buildAnnotatedString {}) }
+    val logStr = remember { mutableStateOf(buildAnnotatedString {}) }
 
     // Log output dialog
     val logTrigger = remember { mutableStateOf(false) }
@@ -82,6 +83,7 @@ fun TestActionButton(
                             rawNumber = content,
                             smsContent = content,
                             tagCategory = tagOther,
+                            botId = botId,
                         )
                         actions.executeAll(ctx, aCtx)
                     }
@@ -161,6 +163,7 @@ fun ActionHeader(
     currentActions: SnapshotStateList<IAction>,
     availableActions: List<IAction> = botActions,
     testingRequireNumber: Boolean = false,
+    botId: Long? = null,
 ) {
     val newTrigger = remember { mutableStateOf(false) }
     PopupDialog(
@@ -191,6 +194,7 @@ fun ActionHeader(
             TestActionButton(
                 actions = currentActions,
                 testingRequireNumber = testingRequireNumber,
+                botId = botId,
             )
 
             // New

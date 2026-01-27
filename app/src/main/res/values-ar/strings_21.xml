@@ -73,12 +73,9 @@
     ]]>
     </string>
     <string name="replace_this">استبدل هذا</string>
-    <string name="generate_tag">إنشاء وسم</string>
     <string name="help_generate_tag">
     <![CDATA[
         استخراج المحتوى من الخطوة السابقة وتخزينه في وسم مخصص لإعادة استخدامه في الخطوات اللاحقة. <br>
-        <br>
-        يمكن أن يكون هذا مفيدًا لاستعلامات الويب متعددة الخطوات. <br>
         <br>
         <b>الخيارات</b> <br>
         <br>

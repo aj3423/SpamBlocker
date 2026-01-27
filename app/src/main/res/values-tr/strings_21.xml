@@ -70,12 +70,9 @@
     ]]>
     </string>
     <string name="replace_this">Bunu Değiştir</string>
-    <string name="generate_tag">Etiket Oluştur</string>
     <string name="help_generate_tag">
     <![CDATA[
         Önceki adımdan içeriği çıkarın ve sonraki adımlarda yeniden kullanım için özel bir etikette saklayın. <br>
-        <br>
-        Bu, çok adımlı web sorguları için yararlı olabilir. <br>
         <br>
         <b>Seçenekler</b> <br>
         <br>

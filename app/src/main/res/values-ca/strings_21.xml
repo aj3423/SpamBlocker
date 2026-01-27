@@ -72,12 +72,9 @@
     ]]>
     </string>
     <string name="replace_this">Reemplaça això</string>
-    <string name="generate_tag">Generar etiqueta</string>
     <string name="help_generate_tag">
     <![CDATA[
         Extreu contingut del pas anterior i emmagatzema\'l en una etiqueta personalitzada per reutilitzar-lo en passos posteriors. <br>
-        <br>
-        Això pot ser útil per a consultes web de múltiples passos. <br>
         <br>
         <b>Opcions</b> <br>
         <br>

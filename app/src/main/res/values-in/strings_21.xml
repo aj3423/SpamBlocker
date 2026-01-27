@@ -73,12 +73,9 @@
     ]]>
     </string>
     <string name="replace_this">Ganti ini</string>
-    <string name="generate_tag">Hasilkan Tag</string>
     <string name="help_generate_tag">
     <![CDATA[
         Ekstrak konten dari langkah sebelumnya dan simpan dalam tag kustom untuk digunakan kembali di langkah berikutnya. <br>
-        <br>
-        Ini dapat membantu untuk kueri web multi-langkah. <br>
         <br>
         <b>Opsi</b> <br>
         <br>

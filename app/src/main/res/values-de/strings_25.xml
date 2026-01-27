@@ -1,3 +1,35 @@
 <resources>
     <string name="report_bug">Melden</string>
+    <string name="generate_tag">Tag erzeugen</string>
+    <string name="bot_preset_phoneblock"><no_translate>🇩🇪 🌐 PhoneBlock</no_translate></string>
+    <string name="help_bot_preset_phoneblock">
+    <![CDATA[
+        Lade täglich Spam-Nummern von <a href="https://phoneblock.net">https://phoneblock.net</a> herunter. <br>
+        <br>
+        Die vollständige Liste wird beim ersten Ausführen heruntergeladen, danach nur noch inkrementelle Updates bei nachfolgenden Ausführungen.
+    ]]>
+    </string>
+    <string name="workflow_not_saved">Workflow nicht gespeichert, speichere ihn zuerst.</string>
+    <string name="default_value">Standardwert</string>
+    <string name="save_tag">Tag speichern</string>
+    <string name="help_save_tag">
+    <![CDATA[
+        Speichere einen Tag-Wert, um ihn in zukünftigen Workflow-Durchläufen wiederzuverwenden. <br>
+        <br>
+        Er ist an den Workflow gebunden und wird automatisch gelöscht, wenn der Workflow gelöscht wird. <br>
+        <br>
+        <b>Anwendungsfall</b>: <br>
+        <font color="#888888">
+          &ensp; In Szenarien mit inkrementellen Updates muss eine zeigerähnliche Variable gespeichert und über aufeinanderfolgende Durchläufe hinweg wiederverwendet werden.
+        </font>
+    ]]>
+    </string>
+    <string name="load_tag">Tag laden</string>
+    <string name="help_load_tag">
+    <![CDATA[
+        Lade einen Tag, der zuvor gespeichert wurde.
+    ]]>
+    </string>
+    <string name="tag_is_set_to">Tag %s ist auf %s gesetzt</string>
+    <string name="tag_is_saved_as">Tag %s ist als %s gespeichert</string>
 </resources>
