@@ -20,21 +20,6 @@
             Those green or red dots between items indicate whether they are chainable or not.
         ]]>
     </string>
-    <string name="help_bot_preset_dnc_daily">
-        <![CDATA[
-            Download spam phone numbers from
-            <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC - Do Not Call</no_translate> </a> every workday
-             and import to the database. <br>
-            <br>
-            <font color="#ffa500"><b>Note:</b></font> <br>
-            <font color="#888888">&ensp; The data set is typically updated each weekday by about noon Eastern time. Weekend data
-            is included in Monday\'s file and holiday data is included in the file posted the next business day. </font><br>
-            <br>
-            This is why the workflow is scheduled at 18:00, as the dataset is expected to be available by then. <br>
-            If you see a 404 error when testing, check the above link to confirm whether today\'s data has been released on their site.
-        ]]>
-    </string>
     <string name="help_bot_preset_auto_backup">
         <![CDATA[
         Auto backup settings. <br>

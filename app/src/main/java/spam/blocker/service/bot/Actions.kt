@@ -2746,7 +2746,6 @@ class GenerateTag(
     }
 }
 
-
 @Serializable
 @SerialName("LoadBotTag")
 class LoadBotTag(
@@ -2905,6 +2904,81 @@ class SaveBotTag(
                 supportingTextStr = if (tagNameState.trim().startsWith("{")) {
                     Str(R.string.invalid_tag_name)
                 } else null
+            )
+        }
+    }
+}
+
+@Serializable
+@SerialName("SetTag")
+class SetTag(
+    var tagName: String = "",
+    var tagValue: String = "",
+) : IPermissiveAction {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        aCtx.customTags[tagName] = tagValue
+
+        aCtx.logger?.debug(ctx.getString(R.string.tag_is_set_to).formatAnnotated(
+            tagName.A(DimGrey), tagValue.A(Teal200)
+        ))
+
+        return true
+    }
+
+    override fun label(ctx: Context): String {
+        return ctx.getString(R.string.set_tag)
+    }
+
+    @Composable
+    override fun Summary(showIcon: Boolean) {
+        SummaryLabel("{$tagName} = $tagValue")
+    }
+
+    override fun tooltip(ctx: Context): String {
+        return ctx.getString(R.string.help_set_tag)
+    }
+
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    @Composable
+    override fun Icon() {
+        GreyIcon(R.drawable.ic_tag_edit)
+    }
+
+    @Composable
+    override fun Options() {
+        Column {
+            // Tag Name
+            var tagNameState by remember { mutableStateOf(tagName) }
+            StrInputBox(
+                text = tagNameState,
+                label = { Text(Str(R.string.tag_name)) },
+                leadingIconId = R.drawable.ic_tag_edit,
+                onValueChange = {
+                    tagName = it
+                    tagNameState = it
+                },
+                supportingTextStr = if (tagNameState.trim().startsWith("{")) {
+                    Str(R.string.invalid_tag_name)
+                } else null
+            )
+
+            // Tag Value
+            var valueState by remember { mutableStateOf(tagValue) }
+            StrInputBox(
+                text = valueState,
+                label = { Text(Str(R.string.tag_value)) },
+                leadingIconId = R.drawable.ic_note,
+                onValueChange = {
+                    tagValue = it
+                    valueState = it
+                },
             )
         }
     }

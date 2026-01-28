@@ -73,21 +73,6 @@
     ]]>
     </string>
     <string name="replace_this">Sostituisci questo</string>
-    <string name="help_generate_tag">
-    <![CDATA[
-        Estrae il contenuto dal passaggio precedente e lo memorizza in un tag personalizzato per il riutilizzo nei passaggi successivi. <br>
-        <br>
-        <b>Opzioni</b> <br>
-        <br>
-        <font color="#00BFFF"><b>Tipo di analisi</b></font> <br>
-        Analizza il valore del tag, supporta regex e xpath. <br>
-        <br>
-        <font color="#00BFFF"><b>Nome tag</b></font> <br>
-        Il nome del tag da generare. <br>
-        Ad esempio, se il nome del tag è <font color="#03DAC5">my_token</font>,
-         allora puoi usare <font color="#03DAC5">{my_token}</font> nelle query HTTP successive. <br>
-    ]]>
-    </string>
     <string name="tag_name">Nome tag</string>
     <string name="parse_type">Tipo di analisi</string>
     <string name="failed_to_parse_tag">Impossibile analizzare il tag.</string>
@@ -101,15 +86,17 @@
     <string name="retry_attempt">Tentativo di nuovo (tentativo %s/%s)…</string>
     <string name="retry_times">Tentativi</string>
     <string name="retry_delay_millis">Ritardo tentativi (Millis)</string>
-    <string name="bot_preset_dnc_daily"><no_translate>🇺🇸 FTC-DNC</no_translate> Giornaliero</string>
-    <string name="bot_preset_dnc_initial"><no_translate>🇺🇸 FTC-DNC</no_translate> Iniziale</string>
-    <string name="help_bot_preset_dnc_initial">
+    <string name="bot_preset_dnc"><no_translate>🇺🇸 FTC-DNC</no_translate></string>
+    <string name="help_bot_preset_dnc">
     <![CDATA[
-        Scarica numeri di telefono spam degli ultimi 90 giorni da uno <a href="%s">snapshot</a> del registro <no_translate>FTC - Do Not Call</no_translate>. <br>
+        Scarica i numeri spam da una <a href="%s">istantanea</a> del %s e importali nel database locale. <br>
         <br>
-        Questo dovrebbe essere usato solo per la configurazione iniziale; per gli aggiornamenti giornalieri, usa invece il flusso di lavoro \"Giornaliero\". <br>
+        Il flusso di lavoro viene eseguito quotidianamente, scarica il set completo di dati di 90 giorni al primo avvio, poi esegue solo aggiornamenti incrementali nelle esecuzioni successive. <br>
         <br>
-        Puoi eliminare questo flusso di lavoro una volta importati i numeri di telefono.
+        <font color="#ffa500"><b>Nota:</b></font> <br>
+        <font color="#888888">&ensp; Il set di dati viene tipicamente aggiornato ogni giorno feriale verso mezzogiorno ora orientale. </font><br>
+        <br>
+        Quindi è programmato alle 18:00, poiché il set di dati dovrebbe essere disponibile entro quell\'ora. <br>
     ]]>
     </string>
     <string name="csv_missing_column">

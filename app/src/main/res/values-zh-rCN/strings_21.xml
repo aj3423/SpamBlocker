@@ -70,20 +70,6 @@
     ]]>
     </string>
     <string name="replace_this">替换此项</string>
-    <string name="help_generate_tag">
-    <![CDATA[
-        从上一步中提取内容并将其存储在自定义标签中，以便在后续步骤中重复使用。<br>
-        <br>
-        <b>选项</b> <br>
-        <br>
-        <font color="#00BFFF"><b>解析类型</b></font> <br>
-        解析标签值，支持正则表达式和XPath。<br>
-        <br>
-        <font color="#00BFFF"><b>标签名称</b></font> <br>
-        要生成的标签名称。<br>
-        例如，如果标签名称是 <font color="#03DAC5">my_token</font>，那么您可以在后续HTTP查询中使用 <font color="#03DAC5">{my_token}</font>。<br>
-    ]]>
-    </string>
     <string name="tag_name">标签名称</string>
     <string name="parse_type">解析类型</string>
     <string name="failed_to_parse_tag">解析标签失败。</string>
@@ -97,15 +83,17 @@
     <string name="retry_attempt">正在重试 (尝试 %s/%s)…</string>
     <string name="retry_times">重试次数</string>
     <string name="retry_delay_millis">重试延迟 (毫秒)</string>
-    <string name="bot_preset_dnc_daily"><no_translate>🇺🇸 FTC-DNC</no_translate> 每日</string>
-    <string name="bot_preset_dnc_initial"><no_translate>🇺🇸 FTC-DNC</no_translate> 初始</string>
-    <string name="help_bot_preset_dnc_initial">
+    <string name="bot_preset_dnc"><no_translate>🇺🇸 FTC-DNC</no_translate></string>
+    <string name="help_bot_preset_dnc">
     <![CDATA[
-        从 <a href="%s">快照</a> 中下载过去 90 天的垃圾电话号码，此快照来自 <no_translate>FTC - Do Not Call</no_translate> 注册表。 <br>
+        从 %s 的 <a href="%s">快照</a> 下载垃圾号码并导入本地数据库。 <br>
         <br>
-        这仅应用于初始设置，对于每日更新，请改用“每日”工作流程。 <br>
+        工作流每天运行，首次运行时下载完整的 90 天数据集，随后仅执行增量更新。 <br>
         <br>
-        导入电话号码后，您可以删除此工作流程。
+        <font color="#ffa500"><b>注意：</b></font> <br>
+        <font color="#888888">&ensp; 该数据集通常在每个工作日大约美国东部时间中午更新。 </font><br>
+        <br>
+        因此计划在 18:00 执行，因为预计届时数据集已可用。 <br>
     ]]>
     </string>
     <string name="csv_missing_column">

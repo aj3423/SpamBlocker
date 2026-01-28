@@ -28,6 +28,7 @@ import spam.blocker.service.bot.QuickTile
 import spam.blocker.service.bot.Ringtone
 import spam.blocker.service.bot.SaveBotTag
 import spam.blocker.service.bot.Schedule
+import spam.blocker.service.bot.SetTag
 import spam.blocker.service.bot.SmsThrottling
 import spam.blocker.service.bot.Time
 import spam.blocker.service.bot.Weekly
@@ -66,7 +67,7 @@ val BotPresets = listOf(
             Bot(
                 desc = ctx.getString(R.string.bot_preset_phoneblock),
                 trigger = Schedule(
-                    schedule = Periodically(Time(hour = 23)),
+                    schedule = Periodically(Time(hour = 23, min = 50)),
                 ),
                 actions = listOf(
                     LoadBotTag(tagName = "version", defaultValue = "0"),
@@ -93,46 +94,27 @@ val BotPresets = listOf(
             ApiReportPreset_PhoneBlock.newInstance(ctx)
         }
     ),
-    // FTC Do Not Call, initial database
+    // FTC Do Not Call
     BotPreset(
         tooltip = {
-            it.getString(R.string.help_bot_preset_dnc_initial)
+            it.getString(R.string.help_bot_preset_dnc)
                 .format(
-                    "https://github.com/aj3423/DNC_snapshot"
+                    "https://github.com/aj3423/DNC_snapshot",
+                    "<a href=\"https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data\">FTC - Do Not Call</a>"
                 )
         },
         newInstance = { ctx ->
             Bot(
-                desc = ctx.getString(R.string.bot_preset_dnc_initial),
-                trigger = Manual(),
+                desc = ctx.getString(R.string.bot_preset_dnc),
+                trigger = Schedule(schedule = Daily(Time(hour = 18))),
                 actions = listOf(
-                    HttpRequest(url = "https://raw.githubusercontent.com/aj3423/DNC_snapshot/refs/heads/master/90days.csv"),
+                    LoadBotTag(tagName = "filename", defaultValue = "90days"),
+                    HttpRequest(url = "https://raw.githubusercontent.com/aj3423/DNC_snapshot/refs/heads/master/{filename}.csv"),
                     ParseCSV(),
                     // no need to add ClearNumber here
                     ImportToSpamDB(),
-                )
-            )
-        }
-    ),
-
-    // FTC Do Not Call, updated on Monday~Friday @ 18:00:00
-    BotPreset(
-        tooltip = { it.getString(R.string.help_bot_preset_dnc_daily) },
-        newInstance = { ctx ->
-            Bot(
-                desc = ctx.getString(R.string.bot_preset_dnc_daily),
-                trigger = Schedule(
-                    enabled = true,
-                    schedule = Weekly(
-                        weekdays = listOf(MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY),
-                        time = Time(18, 0)
-                    ),
-                ),
-                actions = listOf(
-                    HttpRequest(url = "https://www.ftc.gov/sites/default/files/DNC_Complaint_Numbers_{year}-{month}-{day}.csv"),
-                    ParseCSV(columnMapping = "{'Company_Phone_Number': 'pattern'}"),
-                    // no need to add ClearNumber here
-                    ImportToSpamDB(),
+                    SetTag(tagName = "filename", tagValue = "daily"),
+                    SaveBotTag(tagName = "filename"),
                 )
             )
         }

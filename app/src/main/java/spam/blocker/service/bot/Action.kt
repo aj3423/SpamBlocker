@@ -60,6 +60,7 @@ val botActions = listOf(
     GenerateTag(),
     SaveBotTag(),
     LoadBotTag(),
+    SetTag(),
 )
 
 val apiActions = listOf(

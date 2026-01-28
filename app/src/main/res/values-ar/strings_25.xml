@@ -32,4 +32,26 @@
     </string>
     <string name="tag_is_set_to">العلامة %s تم تعيينها إلى %s</string>
     <string name="tag_is_saved_as">العلامة %s تم حفظها كـ %s</string>
+    <string name="set_tag">تعيين العلامة</string>
+    <string name="help_set_tag">
+    <![CDATA[
+        قم بتعيين قيمة العلامة يدويًا.
+    ]]>
+    </string>
+    <string name="tag_value">قيمة العلامة</string>
+    <string name="help_generate_tag">
+    <![CDATA[
+        استخراج المحتوى من الخطوة السابقة وتخزينه في وسم مخصص لإعادة استخدامه في الخطوات اللاحقة. <br>
+        <br>
+        <b>الخيارات</b> <br>
+        <br>
+        <font color="#00BFFF"><b>نوع التحليل</b></font> <br>
+        تحليل قيمة الوسم، يدعم التعبيرات النمطية و XPath. <br>
+        <br>
+        <font color="#00BFFF"><b>اسم الوسم</b></font> <br>
+        اسم الوسم الذي سيتم إنشاؤه. <br>
+        على سبيل المثال، إذا كان اسم الوسم هو <font color="#03DAC5">my_token</font>،
+         فيمكنك استخدام <font color="#03DAC5">{my_token}</font> في استعلامات HTTP اللاحقة. <br>
+    ]]>
+    </string>
 </resources>

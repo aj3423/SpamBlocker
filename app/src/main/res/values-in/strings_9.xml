@@ -21,21 +21,6 @@
         ]]>
     </string>
 
-    <string name="help_bot_preset_dnc_daily">
-        <![CDATA[
-            Unduh nomor telepon spam dari
-            <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC - Do Not Call</no_translate> </a> setiap hari kerja
-             dan impor ke database. <br>
-            <br>
-            <font color="#ffa500"><b>Catatan:</b></font> <br>
-            <font color="#888888">&ensp; Kumpulan data biasanya diperbarui setiap hari kerja sekitar tengah hari waktu Eastern. Data akhir pekan
-            disertakan dalam file hari Senin dan data hari libur disertakan dalam file yang diposting pada hari kerja berikutnya. </font><br>
-            <br>
-            Inilah sebabnya mengapa alur kerja dijadwalkan pada pukul 18:00, karena kumpulan data diharapkan sudah tersedia pada saat itu. <br>
-            Jika Anda melihat kesalahan 404 saat menguji, periksa tautan di atas untuk memastikan apakah data hari ini telah dirilis di situs mereka.
-        ]]>
-    </string>
     <string name="help_bot_preset_auto_backup">
         <![CDATA[
         Pengaturan cadangan otomatis. <br>

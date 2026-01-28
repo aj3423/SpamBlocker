@@ -21,21 +21,6 @@
         ]]>
     </string>
 
-    <string name="help_bot_preset_dnc_daily">
-        <![CDATA[
-            Laden Sie Spam-Telefonnummern von
-            <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC - Do Not Call</no_translate> </a> jeden Werktag
-             herunter und importieren Sie sie in die Datenbank. <br>
-            <br>
-            <font color="#ffa500"><b>Hinweis:</b></font> <br>
-            <font color="#888888">&ensp; Der Datensatz wird in der Regel jeden Werktag bis etwa Mittag Eastern Time aktualisiert. Wochenenddaten
-            sind in der Montagsdatei enthalten und Feiertagsdaten sind in der Datei enthalten, die am nächsten Werktag veröffentlicht wird. </font><br>
-            <br>
-            Aus diesem Grund ist der Workflow für 18:00 Uhr geplant, da der Datensatz dann voraussichtlich verfügbar ist. <br>
-            Wenn Sie beim Testen einen 404-Fehler sehen, überprüfen Sie den obigen Link, um zu bestätigen, ob die heutigen Daten auf deren Website veröffentlicht wurden.
-        ]]>
-    </string>
     <string name="help_bot_preset_auto_backup">
         <![CDATA[
         Einstellungen automatisch sichern. <br>

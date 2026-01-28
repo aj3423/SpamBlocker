@@ -14,13 +14,13 @@
     <string name="save_tag">Etiketi Kaydet</string>
     <string name="help_save_tag">
     <![CDATA[
-        Gelecek iş akışı çalıştırmalarında yeniden kullanmak için bir etiket değeri kaydedin. <br>
+        Bir etiket değerini gelecekteki iş akışı çalıştırmalarında yeniden kullanmak için kaydedin. <br>
         <br>
-        Bu, iş akışına bağlıdır ve iş akışı silindiğinde otomatik olarak silinecektir. <br>
+        İş akışıyla ilişkilidir ve iş akışı silindiğinde otomatik olarak silinecektir. <br>
         <br>
         <b>Kullanım durumu</b>: <br>
         <font color="#888888">
-          &ensp; Artımlı güncellemelerin olduğu senaryolarda, işaretçi benzeri bir değişkenin kaydedilmesi ve ardışık çalıştırmalarda yeniden kullanılması gerekir.
+          &ensp; Artımlı güncellemeler içeren senaryolarda, işaretçi benzeri bir değişkenin kaydedilmesi ve ardışık çalıştırmalarda yeniden kullanılması gerekir.
         </font>
     ]]>
     </string>
@@ -32,4 +32,26 @@
     </string>
     <string name="tag_is_set_to">Etiket %s, %s olarak ayarlandı</string>
     <string name="tag_is_saved_as">Etiket %s, %s olarak kaydedildi</string>
+    <string name="set_tag">Etiketi Ayarla</string>
+    <string name="help_set_tag">
+    <![CDATA[
+        Bir etiket değerini manuel olarak ayarlayın.
+    ]]>
+    </string>
+    <string name="tag_value">Etiket Değeri</string>
+    <string name="help_generate_tag">
+    <![CDATA[
+        Önceki adımdan içeriği çıkarın ve sonraki adımlarda yeniden kullanmak için özel bir etikete kaydedin. <br>
+        <br>
+        <b>Seçenekler</b> <br>
+        <br>
+        <font color="#00BFFF"><b>Parse Type</b></font> <br>
+        Etiket değerini ayrıştırın, regex ve xpath destekler. <br>
+        <br>
+        <font color="#00BFFF"><b>Tag Name</b></font> <br>
+        Oluşturulacak etiket adı. <br>
+        Örneğin, etiket adı <font color="#03DAC5">my_token</font>,
+         sonraki HTTP sorgularında <font color="#03DAC5">{my_token}</font> kullanabilirsiniz. <br>
+    ]]>
+    </string>
 </resources>

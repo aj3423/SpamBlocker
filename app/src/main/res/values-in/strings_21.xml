@@ -73,21 +73,6 @@
     ]]>
     </string>
     <string name="replace_this">Ganti ini</string>
-    <string name="help_generate_tag">
-    <![CDATA[
-        Ekstrak konten dari langkah sebelumnya dan simpan dalam tag kustom untuk digunakan kembali di langkah berikutnya. <br>
-        <br>
-        <b>Opsi</b> <br>
-        <br>
-        <font color="#00BFFF"><b>Tipe Penguraian</b></font> <br>
-        Uraikan nilai tag, ini mendukung regex dan xpath. <br>
-        <br>
-        <font color="#00BFFF"><b>Nama Tag</b></font> <br>
-        Nama tag yang akan dihasilkan. <br>
-        Misalnya, jika nama tag adalah <font color="#03DAC5">my_token</font>,
-         maka Anda dapat menggunakan <font color="#03DAC5">{my_token}</font> dalam kueri HTTP berikutnya. <br>
-    ]]>
-    </string>
     <string name="tag_name">Nama Tag</string>
     <string name="parse_type">Tipe Penguraian</string>
     <string name="failed_to_parse_tag">Gagal mengurai tag.</string>
@@ -101,15 +86,17 @@
     <string name="retry_attempt">Mencoba lagi (Percobaan %s/%s)…</string>
     <string name="retry_times">Jumlah Percobaan</string>
     <string name="retry_delay_millis">Jeda Percobaan (Millis)</string>
-    <string name="bot_preset_dnc_daily"><no_translate>🇺🇸 FTC-DNC</no_translate> Harian</string>
-    <string name="bot_preset_dnc_initial"><no_translate>🇺🇸 FTC-DNC</no_translate> Awal</string>
-    <string name="help_bot_preset_dnc_initial">
+    <string name="bot_preset_dnc"><no_translate>🇺🇸 FTC-DNC</no_translate></string>
+    <string name="help_bot_preset_dnc">
     <![CDATA[
-        Unduh nomor telepon spam dari 90 hari terakhir dari <a href="%s">cuplikan</a> registri <no_translate>FTC - Do Not Call</no_translate>. <br>
+        Unduh nomor spam dari <a href="%s">snapshot</a> %s dan impor ke basis data lokal. <br>
         <br>
-        Ini hanya boleh digunakan untuk pengaturan awal, untuk pembaruan harian, gunakan alur kerja \"Harian\" sebagai gantinya. <br>
+        Alur kerja berjalan setiap hari, mengunduh dataset lengkap 90 hari pada eksekusi pertama, kemudian hanya melakukan pembaruan inkremental pada eksekusi berikutnya. <br>
         <br>
-        Anda dapat menghapus alur kerja ini setelah nomor-nomor telepon diimpor.
+        <font color="#ffa500"><b>Catatan:</b></font> <br>
+        <font color="#888888">&ensp; Dataset biasanya diperbarui setiap hari kerja sekitar tengah hari waktu Timur. </font><br>
+        <br>
+        Jadi dijadwalkan pada pukul 18:00, karena dataset diharapkan tersedia pada saat itu. <br>
     ]]>
     </string>
     <string name="csv_missing_column">

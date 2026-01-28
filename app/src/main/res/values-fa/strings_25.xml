@@ -32,4 +32,26 @@
     </string>
     <string name="tag_is_set_to">برچسب %s به %s تنظیم شد</string>
     <string name="tag_is_saved_as">برچسب %s به عنوان %s ذخیره شد</string>
+    <string name="set_tag">تنظیم برچسب</string>
+    <string name="help_set_tag">
+    <![CDATA[
+        به‌صورت دستی مقدار برچسب را تنظیم کنید.
+    ]]>
+    </string>
+    <string name="tag_value">مقدار برچسب</string>
+    <string name="help_generate_tag">
+    <![CDATA[
+        محتوا را از مرحله قبلی استخراج کرده و در یک برچسب سفارشی برای استفاده مجدد در مراحل بعدی ذخیره کنید. <br>
+        <br>
+        <b>گزینه‌ها</b> <br>
+        <br>
+        <font color="#00BFFF"><b>نوع تجزیه</b></font> <br>
+        مقدار برچسب را تجزیه می‌کند، از Regex و XPath پشتیبانی می‌کند. <br>
+        <br>
+        <font color="#00BFFF"><b>نام برچسب</b></font> <br>
+        نام برچسبی که قرار است تولید شود. <br>
+        به عنوان مثال، اگر نام برچسب <font color="#03DAC5">my_token</font> باشد،
+         می‌توانید از <font color="#03DAC5">{my_token}</font> در جستجوهای HTTP بعدی استفاده کنید. <br>
+    ]]>
+    </string>
 </resources>

@@ -32,4 +32,26 @@
     </string>
     <string name="tag_is_set_to">התג %s מוגדר ל-%s</string>
     <string name="tag_is_saved_as">התג %s נשמר כ-%s</string>
+    <string name="set_tag">הגדר תג</string>
+    <string name="help_set_tag">
+    <![CDATA[
+        הגדר ערך תג ידנית.
+    ]]>
+    </string>
+    <string name="tag_value">ערך תג</string>
+    <string name="help_generate_tag">
+    <![CDATA[
+        חלץ תוכן מהשלב הקודם ואחסן אותו בתגית מותאמת אישית לשימוש חוזר בשלבים הבאים. <br>
+        <br>
+        <b>אפשרויות</b> <br>
+        <br>
+        <font color="#00BFFF"><b>סוג ניתוח</b></font> <br>
+        נתח את ערך התגית, הוא תומך בביטויים רגולריים וב-xpath. <br>
+        <br>
+        <font color="#00BFFF"><b>שם תגית</b></font> <br>
+        שם התגית ליצירה. <br>
+        לדוגמה, אם שם התגית הוא <font color="#03DAC5">my_token</font>,
+         אז תוכל להשתמש ב- <font color="#03DAC5">{my_token}</font> בשאילתות HTTP עוקבות. <br>
+    ]]>
+    </string>
 </resources>

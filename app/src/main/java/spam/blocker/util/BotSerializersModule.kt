@@ -46,6 +46,7 @@ import spam.blocker.service.bot.Ringtone
 import spam.blocker.service.bot.SaveBotTag
 import spam.blocker.service.bot.Schedule
 import spam.blocker.service.bot.ScheduledAutoReportNumber
+import spam.blocker.service.bot.SetTag
 import spam.blocker.service.bot.SmsEvent
 import spam.blocker.service.bot.SmsThrottling
 import spam.blocker.service.bot.Weekly
@@ -110,6 +111,7 @@ val botModule = SerializersModule {
         subclass(GenerateTag::class)
         subclass(SaveBotTag::class)
         subclass(LoadBotTag::class)
+        subclass(SetTag::class)
     }
     polymorphic(IApi::class) {
         // the second param is only for being compatible with old serialized data `spam.blocker.db.QueryApi`

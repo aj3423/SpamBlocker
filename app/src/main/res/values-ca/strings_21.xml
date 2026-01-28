@@ -72,21 +72,6 @@
     ]]>
     </string>
     <string name="replace_this">Reemplaça això</string>
-    <string name="help_generate_tag">
-    <![CDATA[
-        Extreu contingut del pas anterior i emmagatzema\'l en una etiqueta personalitzada per reutilitzar-lo en passos posteriors. <br>
-        <br>
-        <b>Opcions</b> <br>
-        <br>
-        <font color="#00BFFF"><b>Tipus d\'anàlisi</b></font> <br>
-        Analitza el valor de l\'etiqueta; és compatible amb expressions regulars i XPath. <br>
-        <br>
-        <font color="#00BFFF"><b>Nom de l\'etiqueta</b></font> <br>
-        El nom de l\'etiqueta a generar. <br>
-        Per exemple, si el nom de l\'etiqueta és <font color="#03DAC5">my_token</font>,
-         llavors pots utilitzar <font color="#03DAC5">{my_token}</font> en consultes HTTP posteriors. <br>
-    ]]>
-    </string>
     <string name="tag_name">Nom de l\'etiqueta</string>
     <string name="parse_type">Tipus d\'anàlisi</string>
     <string name="failed_to_parse_tag">No s\'ha pogut analitzar l\'etiqueta.</string>
@@ -100,15 +85,17 @@
     <string name="retry_attempt">Reintentant (intent %s/%s)…</string>
     <string name="retry_times">Nombre de reintents</string>
     <string name="retry_delay_millis">Retard de reintent (ms)</string>
-    <string name="bot_preset_dnc_daily"><no_translate>🇺🇸 FTC-DNC</no_translate> Diari</string>
-    <string name="bot_preset_dnc_initial"><no_translate>🇺🇸 FTC-DNC</no_translate> Inicial</string>
-    <string name="help_bot_preset_dnc_initial">
+    <string name="bot_preset_dnc"><no_translate>🇺🇸 FTC-DNC</no_translate></string>
+    <string name="help_bot_preset_dnc">
     <![CDATA[
-        Descarrega números de telèfon spam dels últims 90 dies d\'una <a href="%s">instantània</a> del registre <no_translate>FTC - Do Not Call</no_translate>. <br>
+        Descarrega números de trucades de spam d\'una <a href="%s">instantània</a> del %s i importa\'ls a la base de dades local. <br>
         <br>
-        Això només s\'ha d\'utilitzar per a la configuració inicial; per a les actualitzacions diàries, utilitza el flux de treball \"Diari\" en lloc d\'aquest. <br>
+        El flux de treball s\'executa diàriament, descarrega el conjunt de dades complet de 90 dies en la primera execució i després només realitza actualitzacions incrementals en execucions posteriors. <br>
         <br>
-        Pots eliminar aquest flux de treball un cop s\'hagin importat els números de telèfon.
+        <font color="#ffa500"><b>Nota:</b></font> <br>
+        <font color="#888888">&ensp; Normalment, el conjunt de dades s\'actualitza cada dia laborable al voltant del migdia hora de l\'Est. </font><br>
+        <br>
+        Per tant, està programat a les 18:00, ja que s\'espera que el conjunt de dades estigui disponible per aleshores. <br>
     ]]>
     </string>
     <string name="csv_missing_column">

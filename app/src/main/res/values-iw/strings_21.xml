@@ -73,21 +73,6 @@
     ]]>
     </string>
     <string name="replace_this">החלף זאת</string>
-    <string name="help_generate_tag">
-    <![CDATA[
-        חלץ תוכן מהשלב הקודם ואחסן אותו בתגית מותאמת אישית לשימוש חוזר בשלבים הבאים. <br>
-        <br>
-        <b>אפשרויות</b> <br>
-        <br>
-        <font color="#00BFFF"><b>סוג ניתוח</b></font> <br>
-        נתח את ערך התגית, הוא תומך בביטויים רגולריים וב-xpath. <br>
-        <br>
-        <font color="#00BFFF"><b>שם תגית</b></font> <br>
-        שם התגית ליצירה. <br>
-        לדוגמה, אם שם התגית הוא <font color="#03DAC5">my_token</font>,
-         אז תוכל להשתמש ב- <font color="#03DAC5">{my_token}</font> בשאילתות HTTP עוקבות. <br>
-    ]]>
-    </string>
     <string name="tag_name">שם תגית</string>
     <string name="parse_type">סוג ניתוח</string>
     <string name="failed_to_parse_tag">נכשל ניתוח התגית.</string>
@@ -101,15 +86,17 @@
     <string name="retry_attempt">מנסה שוב (ניסיון %s/%s)...</string>
     <string name="retry_times">מספר ניסיונות חוזרים</string>
     <string name="retry_delay_millis">השהיית ניסיון חוזר (אלפיות שניה)</string>
-    <string name="bot_preset_dnc_daily"><no_translate>🇺🇸 FTC-DNC</no_translate> יומי</string>
-    <string name="bot_preset_dnc_initial"><no_translate>🇺🇸 FTC-DNC</no_translate> ראשוני</string>
-    <string name="help_bot_preset_dnc_initial">
+    <string name="bot_preset_dnc"><no_translate>🇺🇸 FTC-DNC</no_translate></string>
+    <string name="help_bot_preset_dnc">
     <![CDATA[
-        הורד מספרי טלפון של שיחות ספאם מ-90 הימים האחרונים מ- <a href="%s">צילום</a> של רישום ה- <no_translate>FTC - Do Not Call</no_translate>. <br>
+        הורד מספרי ספאם מ<a href="%s">תמונת מצב</a> של %s וייבא אותם למסד הנתונים המקומי. <br>
         <br>
-        יש להשתמש בזה רק להגדרה ראשונית, לעדכונים יומיים, השתמש בזרימת העבודה \"יומי\" במקום. <br>
+        התהליך פועל יומיומית, הוא מוריד את ערכת הנתונים המלאה של 90 יום בריצה הראשונה, ולאחר מכן מבצע רק עדכונים מצטברים בריצות הבאות. <br>
         <br>
-        אתה יכול למחוק זרימת עבודה זו לאחר יבוא מספרי הטלפון.
+        <font color="#ffa500"><b>הערה:</b></font> <br>
+        <font color="#888888">&ensp; ערכת הנתונים מתעדכנת בדרך כלל בכל יום חול סביב הצהריים זמן מזרחי. </font><br>
+        <br>
+        לכן הוא מתוזמן ל‑18:00, מכיוון שצפוי שערכת הנתונים תהיה זמינה עד אז. <br>
     ]]>
     </string>
     <string name="csv_missing_column">

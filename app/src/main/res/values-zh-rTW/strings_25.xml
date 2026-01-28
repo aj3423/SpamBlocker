@@ -32,4 +32,26 @@
     </string>
     <string name="tag_is_set_to">標籤 %s 已設定為 %s</string>
     <string name="tag_is_saved_as">標籤 %s 已儲存為 %s</string>
+    <string name="set_tag">設定標籤</string>
+    <string name="help_set_tag">
+    <![CDATA[
+        手動設定標籤值。
+    ]]>
+    </string>
+    <string name="tag_value">標籤值</string>
+    <string name="help_generate_tag">
+    <![CDATA[
+        從上一步驟中提取內容並將其儲存在自訂標籤中，以便在後續步驟中重複使用。<br>
+        <br>
+        <b>選項</b> <br>
+        <br>
+        <font color="#00BFFF"><b>解析類型</b></font> <br>
+        解析標籤值，它支援正則表達式和 XPath。<br>
+        <br>
+        <font color="#00BFFF"><b>標籤名稱</b></font> <br>
+        要生成的標籤名稱。<br>
+        例如，如果標籤名稱是 <font color="#03DAC5">my_token</font>，
+         那麼您可以在後續的 HTTP 查詢中使用 <font color="#03DAC5">{my_token}</font>。<br>
+    ]]>
+    </string>
 </resources>

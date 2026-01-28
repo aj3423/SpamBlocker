@@ -68,21 +68,6 @@
         您可以將備份檔案託管在 GitHub 上。
     ]]>
     </string>
-    <string name="help_generate_tag">
-    <![CDATA[
-        從上一步驟中提取內容並將其儲存在自訂標籤中，以便在後續步驟中重複使用。<br>
-        <br>
-        <b>選項</b> <br>
-        <br>
-        <font color="#00BFFF"><b>解析類型</b></font> <br>
-        解析標籤值，它支援正則表達式和 XPath。<br>
-        <br>
-        <font color="#00BFFF"><b>標籤名稱</b></font> <br>
-        要生成的標籤名稱。<br>
-        例如，如果標籤名稱是 <font color="#03DAC5">my_token</font>，
-         那麼您可以在後續的 HTTP 查詢中使用 <font color="#03DAC5">{my_token}</font>。<br>
-    ]]>
-    </string>
     <string name="tag_name">標籤名稱</string>
     <string name="parse_type">解析類型</string>
     <string name="failed_to_parse_tag">解析標籤失敗。</string>
@@ -96,15 +81,17 @@
     <string name="retry_attempt">正在重試（嘗試 %s/%s）…</string>
     <string name="retry_times">重試次數</string>
     <string name="retry_delay_millis">重試延遲（毫秒）</string>
-    <string name="bot_preset_dnc_daily"><no_translate>🇺🇸 FTC-DNC</no_translate> 每日</string>
-    <string name="bot_preset_dnc_initial"><no_translate>🇺🇸 FTC-DNC</no_translate> 首次</string>
-    <string name="help_bot_preset_dnc_initial">
+    <string name="bot_preset_dnc"><no_translate>🇺🇸 FTC-DNC</no_translate></string>
+    <string name="help_bot_preset_dnc">
     <![CDATA[
-        從 <no_translate>FTC - Do Not Call</no_translate> 登記處的 <a href="%s">快照</a> 中下載過去 90 天的垃圾電話號碼。<br>
+        從 %s 的 <a href="%s">快照</a> 下載垃圾電話號碼，並匯入本機資料庫。 <br>
         <br>
-        這只應用於首次設定，每日更新請改用「每日」工作流程。<br>
+        工作流程每日執行，首次執行時下載完整的 90 天資料集，之後的執行僅執行增量更新。 <br>
         <br>
-        匯入電話號碼後，您可以刪除此工作流程。
+        <font color="#ffa500"><b>注意：</b></font> <br>
+        <font color="#888888">&ensp; 資料集通常在每個工作日的美東時間中午左右更新。 </font><br>
+        <br>
+        因此排程設定在 18:00，因為預計屆時資料集會可用。 <br>
     ]]>
     </string>
     <string name="csv_missing_column">

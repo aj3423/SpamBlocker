@@ -32,4 +32,26 @@
     </string>
     <string name="tag_is_set_to">Tag %s ist auf %s gesetzt</string>
     <string name="tag_is_saved_as">Tag %s ist als %s gespeichert</string>
+    <string name="set_tag">Tag festlegen</string>
+    <string name="help_set_tag">
+    <![CDATA[
+        Manuell einen Tag-Wert festlegen.
+    ]]>
+    </string>
+    <string name="tag_value">Tag-Wert</string>
+    <string name="help_generate_tag">
+    <![CDATA[
+        Extrahieren Sie Inhalte aus dem vorherigen Schritt und speichern Sie sie in einem benutzerdefinierten Tag zur Wiederverwendung in nachfolgenden Schritten. <br>
+        <br>
+        <b>Optionen</b> <br>
+        <br>
+        <font color="#00BFFF"><b>Parsertyp</b></font> <br>
+        Analysieren Sie den Tag-Wert, es unterstützt Regex und XPath. <br>
+        <br>
+        <font color="#00BFFF"><b>Tag-Name</b></font> <br>
+        Der zu generierende Tag-Name. <br>
+        Wenn der Tag-Name beispielsweise <font color="#03DAC5">my_token</font> ist,
+         dann können Sie <font color="#03DAC5">{my_token}</font> in nachfolgenden HTTP-Anfragen verwenden. <br>
+    ]]>
+    </string>
 </resources>

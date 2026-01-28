@@ -32,4 +32,26 @@
     </string>
     <string name="tag_is_set_to">タグ %s が %s に設定されました</string>
     <string name="tag_is_saved_as">タグ %s が %s として保存されました</string>
+    <string name="set_tag">タグを設定</string>
+    <string name="help_set_tag">
+    <![CDATA[
+        手動でタグの値を設定します。
+    ]]>
+    </string>
+    <string name="tag_value">タグの値</string>
+    <string name="help_generate_tag">
+    <![CDATA[
+        前のステップからコンテンツを抽出し、後のステップで再利用できるようにカスタムタグに保存します。<br>
+        <br>
+        <b>オプション</b> <br>
+        <br>
+        <font color="#00BFFF"><b>解析タイプ</b></font> <br>
+        タグ値を解析します。正規表現とXPathをサポートしています。<br>
+        <br>
+        <font color="#00BFFF"><b>タグ名</b></font> <br>
+        生成するタグ名。<br>
+        例えば、タグ名が <font color="#03DAC5">my_token</font> の場合、
+         後のHTTPクエリで <font color="#03DAC5">{my_token}</font> を使用できます。<br>
+    ]]>
+    </string>
 </resources>

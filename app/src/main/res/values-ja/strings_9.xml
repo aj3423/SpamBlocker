@@ -20,19 +20,6 @@
         ]]>
     </string>
 
-    <string name="help_bot_preset_dnc_daily">
-        <![CDATA[
-            迷惑電話番号を
-            <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC - Do Not Call</no_translate> </a> から毎日ダウンロードし、データベースにインポートします。<br>
-            <br>
-            <font color="#ffa500"><b>注:</b></font> <br>
-            <font color="#888888">&ensp; データセットは通常、東部時間の正午ごろまでに平日毎日更新されます。週末のデータは月曜日のファイルに含まれ、休日のデータは次の営業日に投稿されるファイルに含まれます。 </font><br>
-            <br>
-            このため、データセットがその時刻までに利用可能になると予想されるため、ワークフローは18:00にスケジュールされています。<br>
-            テスト時に404エラーが表示された場合は、上記のリンクを確認し、今日のデータがサイトで公開されているか確認してください。
-        ]]>
-    </string>
     <string name="help_bot_preset_auto_backup">
         <![CDATA[
         自動バックアップ設定。<br>

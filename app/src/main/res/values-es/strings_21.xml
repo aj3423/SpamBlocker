@@ -73,21 +73,6 @@
     ]]>
     </string>
     <string name="replace_this">Reemplazar esto</string>
-    <string name="help_generate_tag">
-    <![CDATA[
-        Extrae contenido del paso anterior y almacénalo en una etiqueta personalizada para reutilizarlo en pasos posteriores. <br>
-        <br>
-        <b>Opciones</b> <br>
-        <br>
-        <font color="#00BFFF"><b>Tipo de Análisis</b></font> <br>
-        Analiza el valor de la etiqueta, soporta expresiones regulares y xpath. <br>
-        <br>
-        <font color="#00BFFF"><b>Nombre de la Etiqueta</b></font> <br>
-        El nombre de la etiqueta a generar. <br>
-        Por ejemplo, si el nombre de la etiqueta es <font color="#03DAC5">my_token</font>,
-         entonces puedes usar <font color="#03DAC5">{my_token}</font> en consultas HTTP posteriores. <br>
-    ]]>
-    </string>
     <string name="tag_name">Nombre de la Etiqueta</string>
     <string name="parse_type">Tipo de Análisis</string>
     <string name="failed_to_parse_tag">Error al analizar la etiqueta.</string>
@@ -101,15 +86,17 @@
     <string name="retry_attempt">Reintentando (Intento %s/%s)…</string>
     <string name="retry_times">Número de Reintentos</string>
     <string name="retry_delay_millis">Retraso de Reintento (Milisegundos)</string>
-    <string name="bot_preset_dnc_daily"><no_translate>🇺🇸 FTC-DNC</no_translate> Diario</string>
-    <string name="bot_preset_dnc_initial"><no_translate>🇺🇸 FTC-DNC</no_translate> Inicial</string>
-    <string name="help_bot_preset_dnc_initial">
+    <string name="bot_preset_dnc"><no_translate>🇺🇸 FTC-DNC</no_translate></string>
+    <string name="help_bot_preset_dnc">
     <![CDATA[
-        Descarga números spam de los últimos 90 días desde una <a href="%s">instantánea</a> del registro <no_translate>FTC - Do Not Call</no_translate>. <br>
+        Descarga números de spam desde una <a href="%s">instantánea</a> del %s e impórtalos a la base de datos local. <br>
         <br>
-        Esto solo debe usarse para la configuración inicial; para actualizaciones diarias, usa el flujo de trabajo \"Diario\" en su lugar. <br>
+        El flujo de trabajo se ejecuta diariamente, descarga el conjunto de datos completo de 90 días en la primera ejecución, y luego realiza solo actualizaciones incrementales en ejecuciones posteriores. <br>
         <br>
-        Puedes eliminar este flujo de trabajo una vez que los números se hayan importado.
+        <font color="#ffa500"><b>Nota:</b></font> <br>
+        <font color="#888888">&ensp; El conjunto de datos se actualiza típicamente cada día laborable alrededor del mediodía, hora del Este. </font><br>
+        <br>
+        Por lo tanto, está programado a las 18:00, ya que se espera que el conjunto de datos esté disponible para entonces. <br>
     ]]>
     </string>
     <string name="csv_missing_column">

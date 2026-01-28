@@ -32,4 +32,26 @@
     </string>
     <string name="tag_is_set_to">Тег %s установлен в %s</string>
     <string name="tag_is_saved_as">Тег %s сохранён как %s</string>
+    <string name="set_tag">Установить тег</string>
+    <string name="help_set_tag">
+    <![CDATA[
+        Вручную установить значение тега.
+    ]]>
+    </string>
+    <string name="tag_value">Значение тега</string>
+    <string name="help_generate_tag">
+    <![CDATA[
+        Извлеките содержимое из предыдущего шага и сохраните его в пользовательском теге для повторного использования в последующих шагах. <br>
+        <br>
+        <b>Опции</b> <br>
+        <br>
+        <font color="#00BFFF"><b>Тип парсинга</b></font> <br>
+        Парсит значение тега, поддерживает регулярные выражения и xpath. <br>
+        <br>
+        <font color="#00BFFF"><b>Имя тега</b></font> <br>
+        Имя генерируемого тега. <br>
+        Например, если имя тега — <font color="#03DAC5">my_token</font>,
+         то вы можете использовать <font color="#03DAC5">{my_token}</font> в последующих HTTP-запросах. <br>
+    ]]>
+    </string>
 </resources>

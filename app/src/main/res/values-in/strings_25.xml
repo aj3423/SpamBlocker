@@ -32,4 +32,26 @@
     </string>
     <string name="tag_is_set_to">Tag %s diatur ke %s</string>
     <string name="tag_is_saved_as">Tag %s disimpan sebagai %s</string>
+    <string name="set_tag">Atur Tag</string>
+    <string name="help_set_tag">
+    <![CDATA[
+        Atur nilai tag secara manual.
+    ]]>
+    </string>
+    <string name="tag_value">Nilai Tag</string>
+    <string name="help_generate_tag">
+    <![CDATA[
+        Ekstrak konten dari langkah sebelumnya dan simpan dalam tag kustom untuk digunakan kembali di langkah berikutnya. <br>
+        <br>
+        <b>Opsi</b> <br>
+        <br>
+        <font color="#00BFFF"><b>Tipe Penguraian</b></font> <br>
+        Uraikan nilai tag, ini mendukung regex dan xpath. <br>
+        <br>
+        <font color="#00BFFF"><b>Nama Tag</b></font> <br>
+        Nama tag yang akan dihasilkan. <br>
+        Misalnya, jika nama tag adalah <font color="#03DAC5">my_token</font>,
+         maka Anda dapat menggunakan <font color="#03DAC5">{my_token}</font> dalam kueri HTTP berikutnya. <br>
+    ]]>
+    </string>
 </resources>

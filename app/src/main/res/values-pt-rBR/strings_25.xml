@@ -32,4 +32,26 @@
     </string>
     <string name="tag_is_set_to">Tag %s está definida como %s</string>
     <string name="tag_is_saved_as">Tag %s está salva como %s</string>
+    <string name="set_tag">Definir Tag</string>
+    <string name="help_set_tag">
+    <![CDATA[
+        Defina manualmente um valor de tag.
+    ]]>
+    </string>
+    <string name="tag_value">Valor da Tag</string>
+    <string name="help_generate_tag">
+    <![CDATA[
+        Extraia o conteúdo da etapa anterior e armazene-o em uma tag personalizada para reutilização em etapas subsequentes. <br>
+        <br>
+        <b>Opções</b> <br>
+        <br>
+        <font color="#00BFFF"><b>Tipo de Análise</b></font> <br>
+        Analise o valor da tag; ele suporta regex e xpath. <br>
+        <br>
+        <font color="#00BFFF"><b>Nome da Tag</b></font> <br>
+        O nome da tag a ser gerada. <br>
+        Por exemplo, se o nome da tag for <font color="#03DAC5">my_token</font>,
+         então você poderá usar <font color="#03DAC5">{my_token}</font> em consultas HTTP subsequentes. <br>
+    ]]>
+    </string>
 </resources>

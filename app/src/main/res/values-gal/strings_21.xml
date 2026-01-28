@@ -73,21 +73,6 @@
     ]]>
     </string>
     <string name="replace_this">Substituír isto</string>
-    <string name="help_generate_tag">
-    <![CDATA[
-        Extrae contido do paso anterior e almacénao nunha etiqueta personalizada para reutilizalo en pasos posteriores. <br>
-        <br>
-        <b>Opcións</b> <br>
-        <br>
-        <font color="#00BFFF"><b>Tipo de análise</b></font> <br>
-        Analiza o valor da etiqueta, soporta regex e xpath. <br>
-        <br>
-        <font color="#00BFFF"><b>Nome da etiqueta</b></font> <br>
-        O nome da etiqueta a xerar. <br>
-        Por exemplo, se o nome da etiqueta é <font color="#03DAC5">my_token</font>,
-         entón podes usar <font color="#03DAC5">{my_token}</font> en consultas HTTP posteriores. <br>
-    ]]>
-    </string>
     <string name="tag_name">Nome da etiqueta</string>
     <string name="parse_type">Tipo de análise</string>
     <string name="failed_to_parse_tag">Non se puido analizar a etiqueta.</string>
@@ -101,15 +86,17 @@
     <string name="retry_attempt">Reintentando (Intento %s/%s)…</string>
     <string name="retry_times">Veces a Reintentar</string>
     <string name="retry_delay_millis">Atraso de Reintento (Milisegundos)</string>
-    <string name="bot_preset_dnc_daily"><no_translate>🇺🇸 FTC-DNC</no_translate> Diario</string>
-    <string name="bot_preset_dnc_initial"><no_translate>🇺🇸 FTC-DNC</no_translate> Inicial</string>
-    <string name="help_bot_preset_dnc_initial">
+    <string name="bot_preset_dnc"><no_translate>🇺🇸 FTC-DNC</no_translate></string>
+    <string name="help_bot_preset_dnc">
     <![CDATA[
-        Descargar números de spam dos últimos 90 días dunha <a href="%s">instantánea</a> do rexistro <no_translate>FTC - Do Not Call</no_translate>. <br>
+        Descarga números de spam dende un <a href="%s">instantánea</a> do %s e impórtaos na base de datos local. <br>
         <br>
-        Isto só debe usarse para a configuración inicial; para actualizacións diarias, use o fluxo de traballo \"Diario\" no seu lugar. <br>
+        O fluxo de traballo execútase diariamente, descarga o conxunto de datos completo de 90 días na primeira execución e, a partir da segunda, só realiza actualizacións incrementais. <br>
         <br>
-        Podes eliminar este fluxo de traballo unha vez que os números sexan importados.
+        <font color="#ffa500"><b>Nota:</b></font> <br>
+        <font color="#888888">&ensp; O conxunto de datos actualízase normalmente cada día laborable ao redor do mediodía hora do Leste. </font><br>
+        <br>
+        Así que está programado ás 18:00, xa que se espera que o conxunto de datos estea dispoñible para esa hora. <br>
     ]]>
     </string>
     <string name="csv_missing_column">

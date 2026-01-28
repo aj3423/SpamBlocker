@@ -32,4 +32,25 @@
     </string>
     <string name="tag_is_set_to">标签 %s 已设置为 %s</string>
     <string name="tag_is_saved_as">标签 %s 已保存为 %s</string>
+    <string name="set_tag">设置标签</string>
+    <string name="help_set_tag">
+    <![CDATA[
+        手动设置标签值。
+    ]]>
+    </string>
+    <string name="tag_value">标签值</string>
+    <string name="help_generate_tag">
+    <![CDATA[
+        从上一步中提取内容并将其存储在自定义标签中，以便在后续步骤中重复使用。<br>
+        <br>
+        <b>选项</b> <br>
+        <br>
+        <font color="#00BFFF"><b>解析类型</b></font> <br>
+        解析标签值，支持正则表达式和XPath。<br>
+        <br>
+        <font color="#00BFFF"><b>标签名称</b></font> <br>
+        要生成的标签名称。<br>
+        例如，如果标签名称是 <font color="#03DAC5">my_token</font>，那么您可以在后续HTTP查询中使用 <font color="#03DAC5">{my_token}</font>。<br>
+    ]]>
+    </string>
 </resources>

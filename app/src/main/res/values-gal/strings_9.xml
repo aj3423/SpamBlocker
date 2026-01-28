@@ -21,20 +21,6 @@
         ]]>
     </string>
 
-    <string name="help_bot_preset_dnc_daily">
-        <![CDATA[
-            Descarga números de teléfono de spam de
-            <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC - Do Not Call</no_translate> </a> todos os días laborables
-             e impórtaos na base de datos. <br>
-            <br>
-            <font color="#ffa500"><b>Nota:</b></font> <br>
-            <font color="#888888">&ensp; O conxunto de datos adoita actualizarse todos os días laborables arredor do mediodía, hora do Leste. Os datos da fin de semana inclúense no ficheiro do luns e os datos de vacacións inclúense no ficheiro publicado o seguinte día laborable. </font><br>
-            <br>
-            É por iso que o fluxo de traballo está programado para as 18:00, xa que se espera que o conxunto de datos estea dispoñible para entón. <br>
-            Se ves un erro 404 ao facer a proba, comproba a ligazón anterior para confirmar se os datos de hoxe foron publicados no seu sitio.
-        ]]>
-    </string>
     <string name="help_bot_preset_auto_backup">
         <![CDATA[
         Configuración da copia de seguridade automática. <br>

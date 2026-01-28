@@ -32,4 +32,26 @@
     </string>
     <string name="tag_is_set_to">L\'etiqueta %s està establerta a %s</string>
     <string name="tag_is_saved_as">L\'etiqueta %s s\'ha desat com a %s</string>
+    <string name="set_tag">Estableix etiqueta</string>
+    <string name="help_set_tag">
+    <![CDATA[
+        Estableix manualment un valor d\'etiqueta.
+    ]]>
+    </string>
+    <string name="tag_value">Valor d\'etiqueta</string>
+    <string name="help_generate_tag">
+    <![CDATA[
+        Extreu contingut del pas anterior i emmagatzema\'l en una etiqueta personalitzada per reutilitzar-lo en passos posteriors. <br>
+        <br>
+        <b>Opcions</b> <br>
+        <br>
+        <font color="#00BFFF"><b>Tipus d\'anàlisi</b></font> <br>
+        Analitza el valor de l\'etiqueta; és compatible amb expressions regulars i XPath. <br>
+        <br>
+        <font color="#00BFFF"><b>Nom de l\'etiqueta</b></font> <br>
+        El nom de l\'etiqueta a generar. <br>
+        Per exemple, si el nom de l\'etiqueta és <font color="#03DAC5">my_token</font>,
+         llavors pots utilitzar <font color="#03DAC5">{my_token}</font> en consultes HTTP posteriors. <br>
+    ]]>
+    </string>
 </resources>

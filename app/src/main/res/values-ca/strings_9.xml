@@ -21,21 +21,6 @@
         ]]>
     </string>
 
-    <string name="help_bot_preset_dnc_daily">
-        <![CDATA[
-            Descarrega números de telèfon de trucades brossa de
-            <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC - Do Not Call</no_translate> </a> cada dia laborable
-             i importa\'ls a la base de dades. <br>
-            <br>
-            <font color="#ffa500"><b>Nota:</b></font> <br>
-            <font color="#888888">&ensp; El conjunt de dades s\'actualitza normalment cada dia laborable al voltant del migdia, hora de l\'est. Les dades de cap de setmana
-            s\'inclouen al fitxer de dilluns i les dades de dies festius s\'inclouen al fitxer publicat el següent dia laborable. </font><br>
-            <br>
-            Per això, el flux de treball està programat a les 18:00, ja que s\'espera que el conjunt de dades estigui disponible aleshores. <br>
-            Si veus un error 404 en provar, comprova l\'enllaç anterior per confirmar si les dades d\'avui s\'han publicat al seu lloc.
-        ]]>
-    </string>
     <string name="help_bot_preset_auto_backup">
         <![CDATA[
         Configuració de la còpia de seguretat automàtica. <br>

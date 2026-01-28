@@ -49,6 +49,8 @@ var move string
 
 var to string
 
+var custom string
+
 var only string
 
 var prune bool
@@ -201,7 +203,8 @@ func translate_text(lang string, content_to_translate string) (string, error) {
 		"If the content contains tags <no_translate> and </no_translate>, keep it as it is. " +
 		`Don't remove the \n. ` +
 		use_short +
-		"Show me the raw result only:\n" +
+		custom +
+		"Show me the raw result only:\n\n" +
 		"%s"
 	prompt := fmt.Sprintf(
 		prompt_template, lang, nameMap[lang], content_to_translate)
@@ -472,6 +475,7 @@ func setup() {
 	flag.StringVar(&del, "del", "", "-del tag")
 	flag.StringVar(&move, "move", "", "-move tag -to strings_1.xml")
 	flag.StringVar(&to, "to", "", "")
+	flag.StringVar(&custom, "custom", "", "")
 	flag.BoolVar(&short, "short", false, "force short, usually used together with -only")
 	flag.BoolVar(&abbrev, "abbrev", false, "force abberv, usually used together with -only")
 	flag.BoolVar(&verb, "verb", false, "show prompt")

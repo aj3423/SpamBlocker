@@ -21,21 +21,6 @@
         ]]>
     </string>
 
-    <string name="help_bot_preset_dnc_daily">
-        <![CDATA[
-            Téléchargez les numéros de téléphone de spam depuis
-            <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC - Do Not Call</no_translate> </a> chaque jour ouvré
-             et importez-les dans la base de données. <br>
-            <br>
-            <font color="#ffa500"><b>Remarque :</b></font> <br>
-            <font color="#888888">&ensp; Le jeu de données est généralement mis à jour chaque jour de la semaine vers midi, heure de l\'Est. Les données du week-end
-            sont incluses dans le fichier du lundi et les données des jours fériés sont incluses dans le fichier publié le jour ouvrable suivant. </font><br>
-            <br>
-            C\'est pourquoi le flux de travail est programmé à 18h00, car le jeu de données devrait être disponible à ce moment-là. <br>
-            Si vous voyez une erreur 404 lors du test, vérifiez le lien ci-dessus pour confirmer si les données du jour ont été publiées sur leur site.
-        ]]>
-    </string>
     <string name="help_bot_preset_auto_backup">
         <![CDATA[
         Paramètres de sauvegarde automatique. <br>

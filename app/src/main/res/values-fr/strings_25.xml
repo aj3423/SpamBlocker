@@ -32,4 +32,26 @@
     </string>
     <string name="tag_is_set_to">Le tag %s est défini sur %s</string>
     <string name="tag_is_saved_as">Le tag %s est enregistré sous %s</string>
+    <string name="set_tag">Définir le tag</string>
+    <string name="help_set_tag">
+    <![CDATA[
+        Définir manuellement une valeur de tag.
+    ]]>
+    </string>
+    <string name="tag_value">Valeur du tag</string>
+    <string name="help_generate_tag">
+    <![CDATA[
+        Extrayez le contenu de l\'étape précédente et stockez-le dans une balise personnalisée pour le réutiliser dans les étapes suivantes. <br>
+        <br>
+        <b>Options</b> <br>
+        <br>
+        <font color="#00BFFF"><b>Type d\'analyse</b></font> <br>
+        Analysez la valeur de la balise, elle prend en charge les expressions régulières et xpath. <br>
+        <br>
+        <font color="#00BFFF"><b>Nom de la balise</b></font> <br>
+        Le nom de la balise à générer. <br>
+        Par exemple, si le nom de la balise est <font color="#03DAC5">my_token</font>,
+         alors vous pouvez utiliser <font color="#03DAC5">{my_token}</font> dans les requêtes HTTP suivantes. <br>
+    ]]>
+    </string>
 </resources>

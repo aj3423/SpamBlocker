@@ -70,21 +70,6 @@
     ]]>
     </string>
     <string name="replace_this">Bunu Değiştir</string>
-    <string name="help_generate_tag">
-    <![CDATA[
-        Önceki adımdan içeriği çıkarın ve sonraki adımlarda yeniden kullanım için özel bir etikette saklayın. <br>
-        <br>
-        <b>Seçenekler</b> <br>
-        <br>
-        <font color="#00BFFF"><b>Ayrıştırma Türü</b></font> <br>
-        Etiket değerini ayrıştırın, regex ve xpath\'i destekler. <br>
-        <br>
-        <font color="#00BFFF"><b>Etiket Adı</b></font> <br>
-        Oluşturulacak etiket adı. <br>
-        Örneğin, etiket adı <font color="#03DAC5">my_token</font> ise,
-         sonraki HTTP sorgularında <font color="#03DAC5">{my_token}</font> kullanabilirsiniz. <br>
-    ]]>
-    </string>
     <string name="tag_name">Etiket Adı</string>
     <string name="parse_type">Ayrıştırma Türü</string>
     <string name="failed_to_parse_tag">Etiket ayrıştırılamadı.</string>
@@ -98,15 +83,17 @@
     <string name="retry_attempt">Yeniden deneniyor (Deneme %s/%s)…</string>
     <string name="retry_times">Yeniden Deneme Sayısı</string>
     <string name="retry_delay_millis">Yeniden Deneme Gecikmesi (Milisaniye)</string>
-    <string name="bot_preset_dnc_daily"><no_translate>🇺🇸 FTC-DNC</no_translate> Günlük</string>
-    <string name="bot_preset_dnc_initial"><no_translate>🇺🇸 FTC-DNC</no_translate> İlk</string>
-    <string name="help_bot_preset_dnc_initial">
+    <string name="bot_preset_dnc"><no_translate>🇺🇸 FTC-DNC</no_translate></string>
+    <string name="help_bot_preset_dnc">
     <![CDATA[
-        <no_translate>FTC - Do Not Call</no_translate> kaydının bir <a href="%s">anlık görüntüsünden</a> son 90 gündeki spam numaralarını indirin. <br>
+        Spam numaralarını %s\'in bir <a href="%s">anlık görüntüsünden</a> indirip yerel veritabanına aktarın. <br>
         <br>
-        Bu sadece ilk kurulum için kullanılmalıdır, günlük güncellemeler için bunun yerine \"Günlük\" iş akışını kullanın. <br>
+        İş akışı günlük çalışır, ilk çalıştırmada tam 90 günlük veri kümesini indirir, sonraki çalıştırmalarda ise yalnızca artımlı güncellemeler yapar. <br>
         <br>
-        Numaralar içe aktarıldığında bu iş akışını silebilirsiniz.
+        <font color="#ffa500"><b>Not:</b></font> <br>
+        <font color="#888888">&ensp; Veri kümesi genellikle her iş gününde öğlen civarı Doğu saatine göre güncellenir. </font><br>
+        <br>
+        Bu nedenle saat 18:00\'de planlanmıştır, çünkü veri kümesinin o saatlerde mevcut olması beklenmektedir. <br>
     ]]>
     </string>
     <string name="csv_missing_column">

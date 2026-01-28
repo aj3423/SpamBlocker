@@ -32,4 +32,26 @@
     </string>
     <string name="tag_is_set_to">Тег %s встановлено в %s</string>
     <string name="tag_is_saved_as">Тег %s збережено як %s</string>
+    <string name="set_tag">Встановити тег</string>
+    <string name="help_set_tag">
+    <![CDATA[
+        Вручну встановити значення тегу.
+    ]]>
+    </string>
+    <string name="tag_value">Значення тегу</string>
+    <string name="help_generate_tag">
+    <![CDATA[
+        Витягніть вміст з попереднього кроку та збережіть його в користувацькому тезі для повторного використання в наступних кроках. <br>
+        <br>
+        <b>Параметри</b> <br>
+        <br>
+        <font color="#00BFFF"><b>Тип розбору</b></font> <br>
+        Розбирає значення тегу, підтримує регулярні вирази та xpath. <br>
+        <br>
+        <font color="#00BFFF"><b>Ім\'я тегу</b></font> <br>
+        Ім\'я тегу для генерації. <br>
+        Наприклад, якщо ім\'я тегу <font color="#03DAC5">my_token</font>,
+         то ви можете використовувати <font color="#03DAC5">{my_token}</font> у наступних HTTP-запитах. <br>
+    ]]>
+    </string>
 </resources>

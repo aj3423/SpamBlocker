@@ -21,20 +21,6 @@
         ]]>
     </string>
 
-    <string name="help_bot_preset_dnc_daily">
-        <![CDATA[
-            每個工作日從
-            <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC - Do Not Call</no_translate></a>
-            下載騷擾電話號碼並匯入資料庫。<br>
-            <br>
-            <font color="#ffa500"><b>注意：</b></font><br>
-            <font color="#888888">&ensp; 該資料集通常在每個工作日的東部時間中午左右更新。週末的資料會包含在週一的檔案中，假日的資料則包含在下一個工作日發布的檔案中。</font><br>
-            <br>
-            這就是為什麼工作流程會排程在 18:00 執行，因為預計屆時資料集已經可用。<br>
-            如果在測試時看到 404 錯誤，請檢查上面的連結以確認今天的資料是否已在其網站上發布。
-        ]]>
-    </string>
     <string name="help_bot_preset_auto_backup">
         <![CDATA[
         自動備份設定。<br>

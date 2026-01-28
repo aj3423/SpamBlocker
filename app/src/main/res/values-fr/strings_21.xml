@@ -73,21 +73,6 @@
     ]]>
     </string>
     <string name="replace_this">Remplacer ceci</string>
-    <string name="help_generate_tag">
-    <![CDATA[
-        Extrayez le contenu de l\'étape précédente et stockez-le dans une balise personnalisée pour le réutiliser dans les étapes suivantes. <br>
-        <br>
-        <b>Options</b> <br>
-        <br>
-        <font color="#00BFFF"><b>Type d\'analyse</b></font> <br>
-        Analysez la valeur de la balise, elle prend en charge les expressions régulières et xpath. <br>
-        <br>
-        <font color="#00BFFF"><b>Nom de la balise</b></font> <br>
-        Le nom de la balise à générer. <br>
-        Par exemple, si le nom de la balise est <font color="#03DAC5">my_token</font>,
-         alors vous pouvez utiliser <font color="#03DAC5">{my_token}</font> dans les requêtes HTTP suivantes. <br>
-    ]]>
-    </string>
     <string name="tag_name">Nom de la balise</string>
     <string name="parse_type">Type d\'analyse</string>
     <string name="failed_to_parse_tag">Échec de l\'analyse de la balise.</string>
@@ -101,15 +86,17 @@
     <string name="retry_attempt">Nouvel essai (Tentative %s/%s)…</string>
     <string name="retry_times">Nombre de tentatives</string>
     <string name="retry_delay_millis">Délai de nouvelle tentative (ms)</string>
-    <string name="bot_preset_dnc_daily"><no_translate>🇺🇸 FTC-DNC</no_translate> Quotidien</string>
-    <string name="bot_preset_dnc_initial"><no_translate>🇺🇸 FTC-DNC</no_translate> Initial</string>
-    <string name="help_bot_preset_dnc_initial">
+    <string name="bot_preset_dnc"><no_translate>🇺🇸 FTC-DNC</no_translate></string>
+    <string name="help_bot_preset_dnc">
     <![CDATA[
-        Téléchargez les numéros de téléphone spam des 90 derniers jours à partir d\'un <a href="%s">instantané</a> du registre <no_translate>FTC - Do Not Call</no_translate>. <br>
+        Téléchargez les numéros de spam à partir d\'un <a href="%s">instantané</a> du %s et importez-les dans la base de données locale. <br>
         <br>
-        Ceci ne doit être utilisé que pour la configuration initiale, pour les mises à jour quotidiennes, utilisez plutôt le flux de travail \"Quotidien\". <br>
+        Le flux de travail s\'exécute quotidiennement, il télécharge l\'ensemble complet de données de 90 jours lors de la première exécution, puis effectue uniquement des mises à jour incrémentielles lors des exécutions suivantes. <br>
         <br>
-        Vous pouvez supprimer ce flux de travail une fois que les numéros de téléphone sont importés.
+        <font color="#ffa500"><b>Note :</b></font> <br>
+        <font color="#888888">&ensp; L\'ensemble de données est généralement mis à jour chaque jour de la semaine aux alentours de midi, heure de l\'Est. </font><br>
+        <br>
+        Il est donc programmé à 18 h, car l\'ensemble de données devrait être disponible d\'ici là. <br>
     ]]>
     </string>
     <string name="csv_missing_column">
