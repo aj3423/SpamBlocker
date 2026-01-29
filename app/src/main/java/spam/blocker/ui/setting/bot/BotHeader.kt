@@ -134,23 +134,24 @@ fun BotHeader(
                 initialBotToEdit.value = bot
                 afterCreated.value = preset.afterCreated
 
-                // If the preset requires authorization, such as API_KEY/username/password,
-                //  show a dialog asking for it.
-                // Otherwise, create the actions directly.
-                val authConfig = preset.newAuthConfig
-                if (authConfig == null) {
-                    val requiredPermissions = bot.triggerAndActions().map {
-                        it.requiredPermissions(ctx)
-                    }.flatten()
-                    G.permissionChain.ask(ctx, requiredPermissions) { isGranted ->
-                        if (isGranted) {
+                val requiredPermissions = bot.triggerAndActions().map {
+                    it.requiredPermissions(ctx)
+                }.flatten() + preset.requiredPermissions
+
+                G.permissionChain.ask(ctx, requiredPermissions) { isGranted ->
+                    if (isGranted) {
+                        // If the preset requires authorization, such as API_KEY/username/password,
+                        //  show a dialog asking for it.
+                        // Otherwise, create the actions directly.
+                        val authConfig = preset.newAuthConfig
+                        if (authConfig == null) {
                             addBotToDB(ctx, bot)
                             preset.afterCreated?.let { it(ctx) }
+                        } else {
+                            // If it requires authorization, show a config dialog
+                            authFormTrigger.value = true
                         }
                     }
-                } else {
-                    // If it requires authorization, show a config dialog
-                    authFormTrigger.value = true
                 }
             }
         }

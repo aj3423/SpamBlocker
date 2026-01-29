@@ -41,6 +41,7 @@ import spam.blocker.ui.theme.Teal200
 import spam.blocker.util.A
 import spam.blocker.util.Clipboard
 import spam.blocker.util.Contacts
+import spam.blocker.util.CountryCode
 import spam.blocker.util.ILogger
 import spam.blocker.util.Now
 import spam.blocker.util.Permission
@@ -344,8 +345,26 @@ class Checker { // for namespace only
                     )
             )
 
-            val record = SpamTable.findByNumber(ctx, rawNumber) ?:
-                    SpamTable.findByNumber(ctx, Util.clearNumber(rawNumber))
+            // 1. check rawNumber
+            var record = SpamTable.findByNumber(ctx, rawNumber)
+
+            // 2. if not found, clear leading `+` and 0s, then check again
+            if (record == null) {
+                record = SpamTable.findByNumber(ctx, Util.clearNumber(rawNumber))
+            }
+
+            if (record == null) {
+                val cc = CountryCode.current(ctx)
+                cc?.let {
+                    // 3. prepend country code and check again
+                    record = SpamTable.findByNumber(ctx, "$cc$rawNumber") // e.g. 331111111
+
+                    // 4. try again with a leading plus: + CC rawNumber
+                    if (record == null) {
+                        record = SpamTable.findByNumber(ctx, "+$cc$rawNumber") // e.g. +331111111
+                    }
+                }
+            }
 
             if (record != null) {
                 logger?.error(
