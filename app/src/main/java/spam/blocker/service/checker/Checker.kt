@@ -684,6 +684,12 @@ class Checker { // for namespace only
         override fun check(cCtx: CheckContext): ICheckResult? {
             val logger = cCtx.logger
 
+            val spf = spf.RecentApps(ctx)
+            val enabledApps = spf.getList()
+            if (enabledApps.isEmpty()) {
+                return null
+            }
+
             logger?.debug(
                 ctx.getString(R.string.checking_template)
                     .formatAnnotated(
@@ -691,8 +697,6 @@ class Checker { // for namespace only
                         priority().toString().A(LightMagenta)
                     )
             )
-
-            val spf = spf.RecentApps(ctx)
 
             val duration = spf.getInXMin() // in minutes
 
@@ -704,7 +708,7 @@ class Checker { // for namespace only
             //    20 -> [pkg.b],
             //  }
             //  So it only queries db twice: for 5 min and 20 min.
-            val aggregation = spf.getList().groupBy {
+            val aggregation = enabledApps.groupBy {
                 it.duration ?: duration
             }.mapValues { (_, values) ->
                 values.map { it.pkgName }
@@ -738,6 +742,12 @@ class Checker { // for namespace only
         override fun check(cCtx: CheckContext): ICheckResult? {
             val logger = cCtx.logger
 
+            val spf = spf.MeetingMode(ctx)
+
+            val appInfos = spf.getList()
+            if (appInfos.isEmpty())
+                return null
+
             logger?.debug(
                 ctx.getString(R.string.checking_template)
                     .formatAnnotated(
@@ -745,10 +755,6 @@ class Checker { // for namespace only
                         priority().toString().A(LightMagenta)
                     )
             )
-
-            val spf = spf.MeetingMode(ctx)
-
-            val appInfos = spf.getList()
 
             val eventsMap = getAppsEvents(ctx, appInfos.map { it.pkgName }.toSet())
 

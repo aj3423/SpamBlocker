@@ -332,7 +332,6 @@ open class HttpRequest(
     @Composable
     override fun Summary(showIcon: Boolean) {
         RowVCenterSpaced(4) {
-            GreyIcon20(R.drawable.ic_link)
             SummaryLabel(" $url")
         }
     }
@@ -901,7 +900,7 @@ class ParseXML(
 
     @Composable
     override fun Summary(showIcon: Boolean) {
-        SummaryLabel("XPath: $xpath")
+        SummaryLabel(xpath)
     }
 
     override fun tooltip(ctx: Context): String {
@@ -972,10 +971,7 @@ class RegexExtract(
 
     @Composable
     override fun Summary(showIcon: Boolean) {
-        val ctx = LocalContext.current
-
-        val label = Str(R.string.regex_pattern)
-        SummaryLabel("$label: $pattern")
+        SummaryLabel(pattern)
     }
 
     override fun tooltip(ctx: Context): String {
@@ -2654,10 +2650,10 @@ class GenerateTag(
     override fun Summary(showIcon: Boolean) {
         when(parseType) {
             0 -> {
-                SummaryLabel("{${tagName}} = RegEx: $regex")
+                SummaryLabel("{${tagName}} = $regex")
             }
             1 -> {
-                SummaryLabel("{${tagName}} = XPath: $xpath")
+                SummaryLabel("{${tagName}} = $xpath")
             }
         }
     }
@@ -2779,7 +2775,7 @@ class LoadBotTag(
 
     @Composable
     override fun Summary(showIcon: Boolean) {
-        SummaryLabel("{${tagName}}")
+        SummaryLabel("{${tagName}} ?= $defaultValue")
     }
 
     override fun tooltip(ctx: Context): String {
