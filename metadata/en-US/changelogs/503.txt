@@ -1,0 +1,16 @@
+Enhancements:
+- History Logs
+  - Highlight test records to differentiate from real ones
+
+- New workflows
+  - PhoneBlock 
+    Download numbers for offline use
+  - FTC-DNC
+    "Initial" and "Daily" workflows are merged into one
+
+- Database
+  - Auto-detect country code, e.g. 
+    "+33111" in DB matches incoming number "111" when detected CC = "33"
+
+Fix:
+- Wrong tooltip for history expiry 

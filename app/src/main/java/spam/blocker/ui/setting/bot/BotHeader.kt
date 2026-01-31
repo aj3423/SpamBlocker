@@ -25,10 +25,9 @@ import spam.blocker.ui.widgets.MenuButton
 import spam.blocker.ui.widgets.Str
 import spam.blocker.util.BotJson
 import spam.blocker.util.Lambda1
+import spam.blocker.util.spf
 import java.util.UUID
 
-// The row:
-//         ? [Test] [New]
 @Composable
 fun BotHeader(
     vm: BotViewModel,
@@ -46,7 +45,8 @@ fun BotHeader(
         G.botVM.reload(ctx)
 
         // 3. expand the list
-        vm.listCollapsed.value = false
+        if(vm.listCollapsed.value)
+            vm.toggleCollapse(ctx)
 
         // 4. re-schedule it
         reScheduleBot(ctx, newBot)
