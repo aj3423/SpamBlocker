@@ -54,4 +54,5 @@
          אז תוכל להשתמש ב- <font color="#03DAC5">{my_token}</font> בשאילתות HTTP עוקבות. <br>
     ]]>
     </string>
+    <string name="max">מקס</string>
 </resources>

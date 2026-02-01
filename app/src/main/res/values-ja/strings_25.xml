@@ -54,4 +54,5 @@
          後のHTTPクエリで <font color="#03DAC5">{my_token}</font> を使用できます。<br>
     ]]>
     </string>
+    <string name="max">最大</string>
 </resources>

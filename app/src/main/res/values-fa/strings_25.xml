@@ -54,4 +54,5 @@
          می‌توانید از <font color="#03DAC5">{my_token}</font> در جستجوهای HTTP بعدی استفاده کنید. <br>
     ]]>
     </string>
+    <string name="max">حداکثر</string>
 </resources>

@@ -54,4 +54,5 @@
          llavors pots utilitzar <font color="#03DAC5">{my_token}</font> en consultes HTTP posteriors. <br>
     ]]>
     </string>
+    <string name="max">Màx</string>
 </resources>

@@ -53,4 +53,5 @@
         例如，如果标签名称是 <font color="#03DAC5">my_token</font>，那么您可以在后续HTTP查询中使用 <font color="#03DAC5">{my_token}</font>。<br>
     ]]>
     </string>
+    <string name="max">最大</string>
 </resources>

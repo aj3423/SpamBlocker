@@ -54,4 +54,5 @@
          то ви можете використовувати <font color="#03DAC5">{my_token}</font> у наступних HTTP-запитах. <br>
     ]]>
     </string>
+    <string name="max">Максимум</string>
 </resources>

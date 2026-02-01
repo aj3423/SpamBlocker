@@ -54,4 +54,5 @@
          فيمكنك استخدام <font color="#03DAC5">{my_token}</font> في استعلامات HTTP اللاحقة. <br>
     ]]>
     </string>
+    <string name="max">الحد الأقصى</string>
 </resources>

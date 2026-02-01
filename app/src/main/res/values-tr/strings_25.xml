@@ -54,4 +54,5 @@
          sonraki HTTP sorgularında <font color="#03DAC5">{my_token}</font> kullanabilirsiniz. <br>
     ]]>
     </string>
+    <string name="max">Maks</string>
 </resources>

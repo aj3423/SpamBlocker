@@ -193,7 +193,7 @@ class Checker { // for namespace only
                 ctx.getString(R.string.checking_template)
                     .formatAnnotated(
                         ctx.getString(R.string.emergency_call).A(SkyBlue),
-                        priority().toString().A(LightMagenta)
+                        ctx.getString(R.string.max).A(LightMagenta)
                     )
             )
             if (callDetails == null) {// there is no callDetail when testing
@@ -235,7 +235,7 @@ class Checker { // for namespace only
                 ctx.getString(R.string.checking_template)
                     .formatAnnotated(
                         ctx.getString(R.string.emergency_situation).A(SkyBlue),
-                        priority().toString().A(LightMagenta)
+                        ctx.getString(R.string.max).A(LightMagenta)
                     )
             )
 
