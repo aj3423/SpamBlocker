@@ -26,7 +26,7 @@ jobs:
           node-version: '24'
 
       - name: Install Dependencies
-        run: npm install @actions/core @actions/github
+        run: npm install @actions/core@1.11.1 @actions/github@6.0.0
 
       - name: Run Collection Script
         id: collect
