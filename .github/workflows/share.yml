@@ -3,13 +3,18 @@ name: Share regex/workflow on wiki
 on:
   issues:
     types: [opened, edited, deleted]
+  workflow_dispatch:
+
 
 permissions:
   contents: write
 
 jobs:
   collect-issues:
-    if: github.event.action == 'deleted' || contains(github.event.issue.labels.*.name, 'share regex/workflow') 
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      github.event.action == 'deleted' ||
+      contains(github.event.issue.labels.*.name, 'share regex/workflow') 
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
