@@ -97,7 +97,7 @@ fun SettingScreen() {
     val spf = spf.Global(ctx)
     var alsoShowText by remember {
         mutableStateOf(
-            isFreshInstall(ctx) && !spf.isTestIconClicked()
+            isFreshInstall(ctx) && !spf.isTestIconClicked
         )
     }
     FabWrapper(
@@ -114,7 +114,7 @@ fun SettingScreen() {
                 ) {
                     testingTrigger.value = true
 
-                    spf.setTestIconClicked(true)
+                    spf.isTestIconClicked = true
                     alsoShowText = false
                 }
             }

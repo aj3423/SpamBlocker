@@ -147,7 +147,7 @@ interface ICheckResult {
             Def.ForSms -> {
                 val smsContent = record.extraInfo
                 if (smsContent != null) {
-                    val initialSmsRows = spf.HistoryOptions(ctx).getInitialSmsRowCount()
+                    val initialSmsRows = spf.HistoryOptions(ctx).initialSmsRowCount
                     ExtraInfoWithDivider(
                         text = smsContent,
                         maxLines = if (record.expanded) Int.MAX_VALUE else initialSmsRows,
@@ -163,7 +163,7 @@ interface ICheckResult {
 
     // For "Answer + Hang up", returns the delay before "Hang Up"
     fun hangUpDelay(ctx: Context): Int {
-        return spf.BlockType(ctx).getDelay().toIntOrNull() ?: DEFAULT_HANG_UP_DELAY
+        return spf.BlockType(ctx).delay.toIntOrNull() ?: DEFAULT_HANG_UP_DELAY
     }
 
     // Prepare the content to be saved in database, as the `HistoryTable.reason` column
@@ -173,7 +173,7 @@ interface ICheckResult {
 
     // The default block type when it's not overridden by per rule block type.
     fun getBlockType(ctx: Context): Int {
-        return spf.BlockType(ctx).getType()
+        return spf.BlockType(ctx).type
     }
 
     // The default notification channel for default call/sms, when it's not overridden by per rule type
@@ -182,9 +182,9 @@ interface ICheckResult {
         val spf = spf.Notification(ctx)
 
         val channelId = when (showType) {
-            ShowType.SPAM_CALL -> spf.getSpamCallChannelId()
-            ShowType.SPAM_SMS -> spf.getSpamSmsChannelId()
-            ShowType.VALID_SMS -> spf.getValidSmsChannelId()
+            ShowType.SPAM_CALL -> spf.spamCallChannelId
+            ShowType.SPAM_SMS -> spf.spamSmsChannelId
+            ShowType.VALID_SMS -> spf.validSmsChannelId
         }
 
         val channel = ChannelTable.findByChannelId(ctx, channelId)

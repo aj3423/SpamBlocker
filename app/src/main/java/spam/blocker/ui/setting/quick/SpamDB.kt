@@ -68,9 +68,9 @@ fun reScheduleSpamDBCleanup(ctx: Context) {
 
     val spf = spf.SpamDB(ctx)
 
-    val isEnabled = spf.isEnabled()
-    val expiryEnabled = spf.isExpiryEnabled()
-    val ttl = spf.getTTL()
+    val isEnabled = spf.isEnabled
+    val expiryEnabled = spf.isExpiryEnabled
+    val ttl = spf.ttl
 
     if (isEnabled && expiryEnabled && ttl >= 0) {
         MyWorkManager.schedule(
@@ -122,10 +122,10 @@ fun SpamDB() {
     val ctx = LocalContext.current
     val spf = spf.SpamDB(ctx)
 
-    var isEnabled by remember { mutableStateOf(spf.isEnabled()) }
-    var expiryEnabled by remember { mutableStateOf(spf.isExpiryEnabled()) }
-    var ttl by remember { mutableIntStateOf(spf.getTTL()) }
-    var priority by remember { mutableIntStateOf(spf.getPriority()) }
+    var isEnabled by remember { mutableStateOf(spf.isEnabled) }
+    var expiryEnabled by remember { mutableStateOf(spf.isExpiryEnabled) }
+    var ttl by remember { mutableIntStateOf(spf.ttl) }
+    var priority by remember { mutableIntStateOf(spf.priority) }
 
     val popupTrigger = rememberSaveable { mutableStateOf(false) }
     var total by remember { mutableIntStateOf(SpamTable.count(ctx)) }
@@ -154,8 +154,8 @@ fun SpamDB() {
     PopupDialog(
         trigger = popupTrigger,
         onDismiss = {
-            spf.setExpiryEnabled(expiryEnabled)
-            spf.setTTL(ttl)
+            spf.isExpiryEnabled = expiryEnabled
+            spf.ttl = ttl
             reScheduleSpamDBCleanup(ctx)
         }
     ) {
@@ -206,7 +206,7 @@ fun SpamDB() {
             PriorityBox(priority) { newValue, hasError ->
                 if (!hasError) {
                     priority = newValue!!
-                    spf.setPriority(newValue)
+                    spf.priority = newValue
                 }
             }
 
@@ -277,7 +277,7 @@ fun SpamDB() {
                 )
             }
             SwitchBox(isEnabled) { isTurningOn ->
-                spf.setEnabled(isTurningOn)
+                spf.isEnabled = isTurningOn
                 isEnabled = isTurningOn
             }
         }

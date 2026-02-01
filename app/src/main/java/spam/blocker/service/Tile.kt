@@ -10,7 +10,7 @@ class Tile : TileService() {
 
     private fun update() {
         val spf = spf.Global(this)
-        val enabled = spf.isGloballyEnabled()
+        val enabled = spf.isGloballyEnabled
         qsTile.state = if (enabled) STATE_ACTIVE else STATE_INACTIVE
 
         qsTile.updateTile()
@@ -21,10 +21,11 @@ class Tile : TileService() {
 
     override fun onClick() {
         val spf = spf.Global(this)
-        spf.toggleGloballyEnabled()
+        val curr = spf.isGloballyEnabled
+        spf.isGloballyEnabled = !curr
 
         update()
 
-        G.globallyEnabled.value = spf.isGloballyEnabled()
+        G.globallyEnabled.value = !curr
     }
 }

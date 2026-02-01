@@ -26,9 +26,9 @@ fun Dialed() {
     val ctx = LocalContext.current
     val spf = spf.Dialed(ctx)
 
-    var isEnabled by remember { mutableStateOf(spf.isEnabled() && Permission.callLog.isGranted) }
-    var smsEnabled by remember(Permission.readSMS.isGranted) { mutableStateOf(spf.isSmsEnabled() && Permission.readSMS.isGranted) }
-    var inXDay by remember { mutableIntStateOf(spf.getDays()) }
+    var isEnabled by remember { mutableStateOf(spf.isEnabled && Permission.callLog.isGranted) }
+    var smsEnabled by remember(Permission.readSMS.isGranted) { mutableStateOf(spf.isSmsEnabled && Permission.readSMS.isGranted) }
+    var inXDay by remember { mutableIntStateOf(spf.days) }
 
     // popup
     val popupTrigger = rememberSaveable { mutableStateOf(false) }
@@ -41,7 +41,7 @@ fun Dialed() {
                 onValueChange = { newValue, hasError ->
                     if (!hasError) {
                         inXDay = newValue!!
-                        spf.setDays(newValue)
+                        spf.days = newValue
                     }
                 },
                 labelId = R.string.within_days,
@@ -57,12 +57,12 @@ fun Dialed() {
                                 listOf(PermissionWrapper(Permission.readSMS))
                             ) { granted ->
                                 if (granted) {
-                                    spf.setSmsEnabled(true)
+                                    spf.isSmsEnabled = true
                                     smsEnabled = true
                                 }
                             }
                         } else {
-                            spf.setSmsEnabled(false)
+                            spf.isSmsEnabled = false
                             smsEnabled = false
                         }
                     }
@@ -101,12 +101,12 @@ fun Dialed() {
                         )
                     ) { granted ->
                         if (granted) {
-                            spf.setEnabled(true)
+                            spf.isEnabled = true
                             isEnabled = true
                         }
                     }
                 } else {
-                    spf.setEnabled(false)
+                    spf.isEnabled = false
                     isEnabled = false
                 }
             }

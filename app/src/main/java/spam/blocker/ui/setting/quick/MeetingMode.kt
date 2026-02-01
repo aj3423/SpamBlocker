@@ -66,7 +66,7 @@ private fun PopupMeetingConfig(
             PriorityBox(priority.value) { newValue, hasError ->
                 if (!hasError) {
                     priority.value = newValue!!
-                    spf.MeetingMode(ctx).setPriority(newValue)
+                    spf.MeetingMode(ctx).priority = newValue
                 }
             }
         }
@@ -79,7 +79,7 @@ fun MeetingMode() {
     val ctx = LocalContext.current
     val spf = spf.MeetingMode(ctx)
 
-    val priority = remember { mutableIntStateOf(spf.getPriority()) }
+    val priority = remember { mutableIntStateOf(spf.priority) }
 
     val buttonPopupTrigger = rememberSaveable { mutableStateOf(false) }
     val appsPopupTrigger = rememberSaveable { mutableStateOf(false) }

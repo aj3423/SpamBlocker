@@ -369,10 +369,10 @@ class Db private constructor(
             // 0. Set the default Call/SMS channel to `None` if the previous channels
             //   are disabled in system settings
             if(isChannelDisabled(ctx, "Default spam call")) {
-                spf.Notification(ctx).setSpamCallChannelId(CHANNEL_NONE)
+                spf.Notification(ctx).spamCallChannelId = CHANNEL_NONE
             }
             if(isChannelDisabled(ctx, "Default spam SMS")) {
-                spf.Notification(ctx).setSpamSmsChannelId(CHANNEL_NONE)
+                spf.Notification(ctx).spamSmsChannelId = CHANNEL_NONE
             }
 
             // 1. delete all previous channels

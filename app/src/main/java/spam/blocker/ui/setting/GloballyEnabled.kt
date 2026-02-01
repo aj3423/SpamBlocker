@@ -46,22 +46,22 @@ fun GloballyEnabled() {
     val C = LocalPalette.current
     val spf = spf.Global(ctx)
 
-    var collapsed by remember { mutableStateOf(spf.isCollapsed()) }
+    var collapsed by remember { mutableStateOf(spf.isCollapsed) }
     fun expand() {
         collapsed = false
-        spf.setCollapsed(false)
+        spf.isCollapsed = false
     }
     fun collapse() {
         collapsed = true
-        spf.setCollapsed(true)
+        spf.isCollapsed = true
     }
     fun toggleCollapse() {
         collapsed = !collapsed
-        spf.setCollapsed(collapsed)
+        spf.isCollapsed = collapsed
     }
     fun checkMmsState(): Boolean {
         return G.smsEnabled.value
-                && spf.isMmsEnabled()
+                && spf.isMmsEnabled
                 && Permission.receiveMMS.isGranted
                 && Permission.readSMS.isGranted
     }
@@ -76,7 +76,7 @@ fun GloballyEnabled() {
             icon = { ResIcon(R.drawable.ic_warning, color = Color.Unspecified) },
             buttons = {
                 StrokeButton(label = Str(R.string.dismiss), color = Orange) {
-                    spf.dismissDoubleSMSWarning()
+                    spf.isDoubleSMSWarningDismissed
                     doubleSmsWarningTrigger.value = false
                 }
                 Spacer(modifier = M.width(10.dp))
@@ -94,8 +94,8 @@ fun GloballyEnabled() {
     LifecycleResumeEffect(G.smsEnabled.value) {
         if (G.smsEnabled.value) {
             if (Build.VERSION.SDK_INT >= Def.ANDROID_13) {
-                if (isDefaultSmsAppNotificationEnabled(ctx) && spf.isGloballyEnabled() && spf.isSmsEnabled()) {
-                    if (!spf.isDoubleSMSWarningDismissed()) {
+                if (isDefaultSmsAppNotificationEnabled(ctx) && spf.isGloballyEnabled && spf.isSmsEnabled) {
+                    if (!spf.isDoubleSMSWarningDismissed) {
                         doubleSmsWarningTrigger.value = true
                     }
                 }
@@ -147,7 +147,7 @@ fun GloballyEnabled() {
                         }
                     }
                     SwitchBox(G.globallyEnabled.value) { enabled ->
-                        spf.setGloballyEnabled(enabled)
+                        spf.isGloballyEnabled = enabled
                         G.globallyEnabled.value = enabled
                         if (enabled) {
                             if (!G.callEnabled.value && !G.smsEnabled.value) {
@@ -173,12 +173,12 @@ fun GloballyEnabled() {
                                     )
                                 ) { granted ->
                                     if (granted) {
-                                        spf.setCallEnabled(true)
+                                        spf.isCallEnabled = true
                                         G.callEnabled.value = true
                                     }
                                 }
                             } else {
-                                spf.setCallEnabled(false)
+                                spf.isCallEnabled = false
                                 G.callEnabled.value = false
                             }
                         })
@@ -199,12 +199,12 @@ fun GloballyEnabled() {
                                     )
                                 ) { granted ->
                                     if (granted) {
-                                        spf.setSmsEnabled(true)
+                                        spf.isSmsEnabled = true
                                         G.smsEnabled.value = true
                                     }
                                 }
                             } else {
-                                spf.setSmsEnabled(false)
+                                spf.isSmsEnabled = false
                                 G.smsEnabled.value = false
                             }
                         })
@@ -226,12 +226,12 @@ fun GloballyEnabled() {
                                         )
                                     ) { granted ->
                                         if (granted) {
-                                            spf.setMmsEnabled(true)
+                                            spf.isMmsEnabled = true
                                             mmsEnabled = checkMmsState()
                                         }
                                     }
                                 } else {
-                                    spf.setMmsEnabled(false)
+                                    spf.isMmsEnabled = false
                                     mmsEnabled = checkMmsState()
                                 }
                             })

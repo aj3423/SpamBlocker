@@ -59,7 +59,7 @@ class CallScreeningService : CallScreeningService() {
             val spf = spf.EmergencySituation(ctx)
             val extraNumbers = spf.getExtraNumbers()
             if (Util.isEmergencyNumber(ctx, rawNumber) || extraNumbers.contains(rawNumber)) {
-                spf.setTimestamp(System.currentTimeMillis())
+                spf.timestamp = System.currentTimeMillis()
             }
         }
     }
@@ -116,9 +116,9 @@ class CallScreeningService : CallScreeningService() {
 
         // save 'number/current time/hang up delay' to shared pref, they will be read soon in CallStateReceiver
         spf.Temporary(ctx).apply {
-            setLastCallToBlock(Util.clearNumber(rawNumber))
-            setLastCallTime(now)
-            setHangUpDelay(r.hangUpDelay(ctx))
+            lastCallToBlock = Util.clearNumber(rawNumber)
+            lastCallTime = now
+            hangUpDelay = r.hangUpDelay(ctx)
         }
 
         // let it ring silently in the background, it will be answered in the CallStateReceiver immediately
@@ -152,7 +152,7 @@ class CallScreeningService : CallScreeningService() {
         if (details.callDirection != Details.DIRECTION_INCOMING)
             return
 
-        if (!spf.Global(this).isGloballyEnabled() || !spf.Global(this).isCallEnabled()) {
+        if (!spf.Global(this).isGloballyEnabled || !spf.Global(this).isCallEnabled) {
             pass(details)
             return
         }
@@ -197,7 +197,7 @@ class CallScreeningService : CallScreeningService() {
 
         // 2. Save the current ringtone to shared prefs
         val current = RingtoneUtil.getCurrent(ctx)
-        spf.Temporary(ctx).setRingtone(current.toString())
+        spf.Temporary(ctx).ringtone = current.toString()
 
         // 3. Change the system default ringtone, it will be reset after 2 seconds
         var shouldMute = false
@@ -211,7 +211,7 @@ class CallScreeningService : CallScreeningService() {
     }
 
     private fun logToHistoryDb(ctx: Context, r: ICheckResult, rawNumber: String, cnap: String?, simSlot: Int?, isTest: Boolean) {
-        val isDbLogEnabled = spf.HistoryOptions(ctx).isLoggingEnabled()
+        val isDbLogEnabled = spf.HistoryOptions(ctx).isLoggingEnabled
         if (!isDbLogEnabled)
             return
 

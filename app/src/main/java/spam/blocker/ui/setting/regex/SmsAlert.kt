@@ -42,10 +42,10 @@ fun SmsAlert() {
     val C = LocalPalette.current
     val spf = spf.SmsAlert(ctx)
 
-    var isEnabled by remember { mutableStateOf(spf.isEnabled() && Permission.receiveSMS.isGranted) }
-    var duration by remember { mutableIntStateOf(spf.getDuration()) }
-    var regexStr by remember { mutableStateOf(spf.getRegexStr()) }
-    var regexFlags = remember { mutableIntStateOf(spf.getRegexFlags()) }
+    var isEnabled by remember { mutableStateOf(spf.isEnabled && Permission.receiveSMS.isGranted) }
+    var duration by remember { mutableIntStateOf(spf.duration) }
+    var regexStr by remember { mutableStateOf(spf.regexStr) }
+    var regexFlags = remember { mutableIntStateOf(spf.regexFlags) }
 
     // Edit Duration Dialog
     val editTrigger = rememberSaveable { mutableStateOf(false) }
@@ -59,7 +59,7 @@ fun SmsAlert() {
             onValueChange = { newVal, hasErr ->
                 if (newVal != null) {
                     duration = newVal
-                    spf.setDuration(duration)
+                    spf.duration = duration
                 }
             },
             leadingIconId = R.drawable.ic_duration,
@@ -71,26 +71,26 @@ fun SmsAlert() {
             onRegexStrChange = { newVal, hasErr ->
                 if (!hasErr) {
                     regexStr = newVal
-                    spf.setRegexStr(regexStr)
+                    spf.regexStr = regexStr
                 }
             },
             onFlagsChange = {
                 regexFlags.intValue = it
-                spf.setRegexFlags(it)
+                spf.regexFlags = it
             },
             testable = true,
             leadingIcon = { GreyIcon18(R.drawable.ic_open_msg) }
         )
     }
 
-    var collapsed by remember { mutableStateOf(spf.isCollapsed()) }
+    var collapsed by remember { mutableStateOf(spf.isCollapsed) }
 
     LabeledRow(
         labelId = R.string.sms_alert,
         isCollapsed = collapsed,
         toggleCollapse = {
             collapsed = !collapsed
-            spf.setCollapsed(collapsed)
+            spf.isCollapsed = collapsed
         },
         helpTooltip = Str(R.string.help_sms_alert),
         content = {
@@ -112,12 +112,12 @@ fun SmsAlert() {
                         )
                     ) { granted ->
                         if (granted) {
-                            spf.setEnabled(true)
+                            spf.isEnabled = true
                             isEnabled = true
                         }
                     }
                 } else {
-                    spf.setEnabled(false)
+                    spf.isEnabled = false
                     isEnabled = false
                 }
             }

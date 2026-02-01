@@ -33,9 +33,9 @@ fun Answered() {
     val ctx = LocalContext.current
     val spf = spf.Answered(ctx)
 
-    var isEnabled by remember { mutableStateOf(spf.isEnabled() && Permission.callLog.isGranted) }
-    var minDuration by remember { mutableIntStateOf(spf.getMinDuration()) }
-    var inXDay by remember { mutableIntStateOf(spf.getDays()) }
+    var isEnabled by remember { mutableStateOf(spf.isEnabled && Permission.callLog.isGranted) }
+    var minDuration by remember { mutableIntStateOf(spf.minDuration) }
+    var inXDay by remember { mutableIntStateOf(spf.days) }
 
     // config popup
     val configTrigger = rememberSaveable { mutableStateOf(false) }
@@ -48,7 +48,7 @@ fun Answered() {
                 onValueChange = { newValue, hasError ->
                     if (!hasError) {
                         inXDay = newValue!!
-                        spf.setDays(newValue)
+                        spf.days = newValue
                     }
                 },
                 labelId = R.string.within_days,
@@ -59,7 +59,7 @@ fun Answered() {
                 onValueChange = { newValue, hasError ->
                     if (!hasError) {
                         minDuration = newValue!!
-                        spf.setMinDuration(newValue)
+                        spf.minDuration = newValue
                     }
                 },
                 labelId = R.string.minimal_duration,
@@ -79,7 +79,7 @@ fun Answered() {
             )
         ) { granted ->
             if (granted) {
-                spf.setEnabled(true)
+                spf.isEnabled = true
                 isEnabled = true
             }
         }
@@ -95,7 +95,7 @@ fun Answered() {
                 label = Str(R.string.acknowledged),
                 color = Teal200
             ) {
-                spf.setWarningAcknowledged(true)
+                spf.isWarningAcknowledged = true
                 warningTrigger.value = false
                 askForPermission()
             }
@@ -138,14 +138,14 @@ fun Answered() {
             }
             SwitchBox(isEnabled) { isTurningOn ->
                 if (isTurningOn) {
-                    val acknowledged = spf.isWarningAcknowledged()
+                    val acknowledged = spf.isWarningAcknowledged
                     if (acknowledged) {
                         askForPermission()
                     } else {
                         warningTrigger.value = true
                     }
                 } else {
-                    spf.setEnabled(false)
+                    spf.isEnabled = false
                     isEnabled = false
                 }
             }

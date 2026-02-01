@@ -39,9 +39,9 @@ open class RegexViewModel(
         listCollapsed.value = !listCollapsed.value
         val spf = spf.RegexOptions(ctx)
         when (forType) {
-            Def.ForNumber -> spf.setNumberCollapsed(listCollapsed.value)
-            Def.ForSms -> spf.setContentCollapsed(listCollapsed.value)
-            else -> spf.setQuickCopyCollapsed(listCollapsed.value)
+            Def.ForNumber -> spf.isNumberCollapsed = listCollapsed.value
+            Def.ForSms -> spf.isContentCollapsed = listCollapsed.value
+            else -> spf.isQuickCopyCollapsed = listCollapsed.value
         }
     }
 
@@ -49,9 +49,9 @@ open class RegexViewModel(
         val spf = spf.RegexOptions(ctx)
 
         listCollapsed.value = when (forType) {
-            Def.ForNumber -> spf.isNumberCollapsed()
-            Def.ForSms -> spf.isContentCollapsed()
-            else -> spf.isQuickCopyCollapsed()
+            Def.ForNumber -> spf.isNumberCollapsed
+            Def.ForSms -> spf.isContentCollapsed
+            else -> spf.isQuickCopyCollapsed
         }
     }
 

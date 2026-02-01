@@ -35,10 +35,10 @@ fun Contacts() {
 
     val spf = spf.Contact(ctx)
 
-    var isEnabled by remember { mutableStateOf(spf.isEnabled() && Permission.contacts.isGranted) }
-    var isStrict by remember { mutableStateOf(spf.isStrict()) }
-    var priLenient by remember { mutableIntStateOf(spf.getLenientPriority()) }
-    var priStrict by remember { mutableIntStateOf(spf.getStrictPriority()) }
+    var isEnabled by remember { mutableStateOf(spf.isEnabled && Permission.contacts.isGranted) }
+    var isStrict by remember { mutableStateOf(spf.isStrict) }
+    var priLenient by remember { mutableIntStateOf(spf.lenientPriority) }
+    var priStrict by remember { mutableIntStateOf(spf.strictPriority) }
 
     val popupTrigger = rememberSaveable { mutableStateOf(false) }
 
@@ -54,7 +54,7 @@ fun Contacts() {
 
                     RadioGroup(items = items, selectedIndex = if (isStrict) 1 else 0) { clickedIdx ->
                         isStrict = clickedIdx == 1
-                        spf.setStrict(isStrict)
+                        spf.isStrict = isStrict
                     }
                 }
 
@@ -62,7 +62,7 @@ fun Contacts() {
                     PriorityBox(priStrict) { newValue, hasError ->
                         if (!hasError) {
                             priStrict = newValue!!
-                            spf.setStrictPriority(newValue)
+                            spf.strictPriority = newValue
                         }
                     }
 
@@ -70,7 +70,7 @@ fun Contacts() {
                     PriorityBox(priLenient)  { newValue, hasError ->
                         if (!hasError) {
                             priLenient = newValue!!
-                            spf.setLenientPriority(newValue)
+                            spf.lenientPriority = newValue
                         }
                     }
                 }
@@ -112,12 +112,12 @@ fun Contacts() {
                         listOf(PermissionWrapper(Permission.contacts))
                     ) { granted ->
                         if (granted) {
-                            spf.setEnabled(true)
+                            spf.isEnabled = true
                             isEnabled = true
                         }
                     }
                 } else {
-                    spf.setEnabled(false)
+                    spf.isEnabled = false
                     isEnabled = false
                 }
             }

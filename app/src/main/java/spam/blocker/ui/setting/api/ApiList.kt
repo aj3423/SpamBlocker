@@ -73,11 +73,11 @@ fun ApiList(vm: ApiViewModel) {
     val spf = spf.ApiQueryOptions(ctx)
     val priorityTrigger = remember { mutableStateOf(false) }
     PopupDialog(priorityTrigger) {
-        var apiPriority by remember { mutableIntStateOf(spf.getPriority()) }
+        var apiPriority by remember { mutableIntStateOf(spf.priority) }
         PriorityBox(apiPriority) { newValue, hasError ->
             if (!hasError) {
                 apiPriority = newValue!!
-                spf.setPriority(apiPriority)
+                spf.priority = apiPriority
                 G.apiQueryVM.reloadDb(ctx)
             }
         }

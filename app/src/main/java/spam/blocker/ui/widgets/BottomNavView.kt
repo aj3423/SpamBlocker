@@ -76,7 +76,7 @@ fun BottomBar(vm: BottomBarViewModel) {
         mutableFloatStateOf(0F)
     }
 
-    var currentRoute = remember { spf.Global(ctx).getActiveTab() }
+    var currentRoute = remember { spf.Global(ctx).activeTab }
 
     val density = LocalDensity.current
     Box(

@@ -96,14 +96,14 @@ fun RegexSettingsPopup(
             labelId = null,
             helpTooltip = Str(R.string.help_max_none_scroll_items)
         ) {
-            var max by remember { mutableIntStateOf(spf.getMaxNoneScrollRows()) }
+            var max by remember { mutableIntStateOf(spf.maxNoneScrollRows) }
             NumberInputBox(
                 intValue = max,
                 label = { Text(Str(R.string.label_max_none_scroll_items)) },
                 onValueChange = { newVal, hasError ->
                     if (!hasError) {
                         max = newVal!!
-                        spf.setMaxNoneScrollRows(max)
+                        spf.maxNoneScrollRows = max
                         dirty = true
                     }
                 }
@@ -115,14 +115,14 @@ fun RegexSettingsPopup(
             labelId = null,
             helpTooltip = Str(R.string.help_max_scroll_height)
         ) {
-            var height by remember { mutableIntStateOf(spf.getRuleListHeightPercentage()) }
+            var height by remember { mutableIntStateOf(spf.ruleListHeightPercentage) }
             NumberInputBox(
                 intValue = height,
                 label = { Text(Str(R.string.label_max_scroll_height)) },
                 onValueChange = { newVal, hasError ->
                     if (!hasError) {
                         height = newVal!!
-                        spf.setRuleListHeightPercentage(height)
+                        spf.ruleListHeightPercentage = height
                         dirty = true
                     }
                 }
@@ -134,14 +134,14 @@ fun RegexSettingsPopup(
             labelId = null,
             helpTooltip = Str(R.string.help_max_regex_lines)
         ) {
-            var rows by remember { mutableIntStateOf(spf.getMaxRegexRows()) }
+            var rows by remember { mutableIntStateOf(spf.maxRegexRows) }
             NumberInputBox(
                 intValue = rows,
                 label = { Text(Str(R.string.label_max_regex_lines)) },
                 onValueChange = { newVal, hasError ->
                     if (!hasError) {
                         rows = newVal!!
-                        spf.setMaxRegexRows(rows)
+                        spf.maxRegexRows = rows
                         dirty = true
                     }
                 }
@@ -153,14 +153,14 @@ fun RegexSettingsPopup(
             labelId = null,
             helpTooltip = Str(R.string.help_max_desc_lines)
         ) {
-            var rows by remember { mutableIntStateOf(spf.getMaxDescRows()) }
+            var rows by remember { mutableIntStateOf(spf.maxDescRows) }
             NumberInputBox(
                 intValue = rows,
                 label = { Text(Str(R.string.label_max_desc_lines)) },
                 onValueChange = { newVal, hasError ->
                     if (!hasError) {
                         rows = newVal!!
-                        spf.setMaxDescRows(rows)
+                        spf.maxDescRows = rows
                         dirty = true
                     }
                 }
@@ -331,12 +331,12 @@ fun RegexList(
     //   show as normal Column (dynamic height)
     // else
     //   show as LazyColumn (Fixed height)
-    val useLazy = vm.rules.size > spf.getMaxNoneScrollRows()
+    val useLazy = vm.rules.size > spf.maxNoneScrollRows
     if (useLazy) { // LazyColumn
         val lazyState = rememberLazyListState()
 
         // Calculate x% of the screen height
-        val percentage = spf.getRuleListHeightPercentage()
+        val percentage = spf.ruleListHeightPercentage
 
         LazyScrollbar(
             state = lazyState,

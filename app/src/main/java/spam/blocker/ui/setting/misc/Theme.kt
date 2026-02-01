@@ -24,7 +24,7 @@ fun Theme() {
             LabelItem(
                 label = label,
                 onClick = {
-                    spf.setThemeType(index)
+                    spf.themeType = index
                     G.themeType.intValue = index
                 }
             )

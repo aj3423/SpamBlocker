@@ -49,24 +49,24 @@ class Global : IConfig {
 
     override fun load(ctx: Context) {
         val spf = spf.Global(ctx)
-        enabled = spf.isGloballyEnabled()
-        collapsed = spf.isCollapsed()
-        callEnabled = spf.isCallEnabled()
-        smsEnabled = spf.isSmsEnabled()
-        mmsEnabled = spf.isMmsEnabled()
+        enabled = spf.isGloballyEnabled
+        collapsed = spf.isCollapsed
+        callEnabled = spf.isCallEnabled
+        smsEnabled = spf.isSmsEnabled
+        mmsEnabled = spf.isMmsEnabled
 
-        isTestingIconClicked = spf.isTestIconClicked()
+        isTestingIconClicked = spf.isTestIconClicked
     }
 
     override fun apply(ctx: Context) {
         spf.Global(ctx).apply {
-            setGloballyEnabled(enabled)
-            setCollapsed(collapsed)
-            setCallEnabled(callEnabled)
-            setSmsEnabled(smsEnabled)
-            setMmsEnabled(mmsEnabled)
+            isGloballyEnabled = enabled
+            isCollapsed = collapsed
+            isCallEnabled = callEnabled
+            isSmsEnabled = smsEnabled
+            isMmsEnabled = mmsEnabled
 
-            setTestIconClicked(isTestingIconClicked)
+            isTestIconClicked = isTestingIconClicked
         }
     }
 }
@@ -86,30 +86,31 @@ class HistoryOptions : IConfig {
 
     override fun load(ctx: Context) {
         val spf = spf.HistoryOptions(ctx)
-        showPassed = spf.getShowPassed()
-        showBlocked = spf.getShowBlocked()
-        showIndicator = spf.getShowIndicator()
-        showGeoLocation = spf.getShowGeoLocation()
-        forceShowSim = spf.getForceShowSim()
-        loggingEnabled = spf.isLoggingEnabled()
-        expiryEnabled = spf.isExpiryEnabled()
-        ttl = spf.getTTL()
-        logSmsContent = spf.isLogSmsContentEnabled()
-        initialSmsRowCount = spf.getInitialSmsRowCount()
+        showPassed = spf.showPassed
+        showBlocked = spf.showBlocked
+        showIndicator = spf.showIndicator
+        showGeoLocation = spf.showGeoLocation
+        forceShowSim = spf.forceShowSim
+        loggingEnabled = spf.isLoggingEnabled
+        expiryEnabled = spf.isExpiryEnabled
+        ttl = spf.ttl
+        logSmsContent = spf.isLogSmsContentEnabled
+        initialSmsRowCount = spf.initialSmsRowCount
     }
 
     override fun apply(ctx: Context) {
+        val me = this
         spf.HistoryOptions(ctx).apply {
-            setShowPassed(showPassed)
-            setShowBlocked(showBlocked)
-            setShowIndicator(showIndicator)
-            setShowGeoLocation(showGeoLocation)
-            setForceShowSim(forceShowSim)
-            setLoggingEnabled(loggingEnabled)
-            setExpiryEnabled(expiryEnabled)
-            setTTL(ttl)
-            setLogSmsContentEnabled(logSmsContent)
-            setInitialSmsRowCount(initialSmsRowCount)
+            showPassed = me.showPassed
+            showBlocked = me.showBlocked
+            showIndicator = me.showIndicator
+            showGeoLocation = me.showGeoLocation
+            forceShowSim = me.forceShowSim
+            isLoggingEnabled = me.loggingEnabled
+            isExpiryEnabled = me.expiryEnabled
+            ttl = me.ttl
+            isLogSmsContentEnabled = me.logSmsContent
+            initialSmsRowCount = me.initialSmsRowCount
         }
     }
 }
@@ -126,24 +127,25 @@ class RegexOptions : IConfig {
 
     override fun load(ctx: Context) {
         val spf = spf.RegexOptions(ctx)
-        numberCollapsed = spf.isNumberCollapsed()
-        contentCollapsed = spf.isContentCollapsed()
-        quickCopyCollapsed = spf.isQuickCopyCollapsed()
-        maxNoneScrollRows = spf.getMaxNoneScrollRows()
-        maxRegexRows = spf.getMaxRegexRows()
-        maxDescRows = spf.getMaxDescRows()
-        listHeightPercentage = spf.getRuleListHeightPercentage()
+        numberCollapsed = spf.isNumberCollapsed
+        contentCollapsed = spf.isContentCollapsed
+        quickCopyCollapsed = spf.isQuickCopyCollapsed
+        maxNoneScrollRows = spf.maxNoneScrollRows
+        maxRegexRows = spf.maxRegexRows
+        maxDescRows = spf.maxDescRows
+        listHeightPercentage = spf.ruleListHeightPercentage
     }
 
     override fun apply(ctx: Context) {
+        val me = this
         spf.RegexOptions(ctx).apply {
-            setNumberCollapsed(numberCollapsed)
-            setContentCollapsed(contentCollapsed)
-            setQuickCopyCollapsed(quickCopyCollapsed)
-            setMaxNoneScrollRows(maxNoneScrollRows)
-            setMaxRegexRows(maxRegexRows)
-            setMaxDescRows(maxDescRows)
-            setRuleListHeightPercentage(listHeightPercentage)
+            isNumberCollapsed = me.numberCollapsed
+            isContentCollapsed = me.contentCollapsed
+            isQuickCopyCollapsed = me.quickCopyCollapsed
+            maxNoneScrollRows = me.maxNoneScrollRows
+            maxRegexRows = me.maxRegexRows
+            maxDescRows = me.maxDescRows
+            ruleListHeightPercentage = me.listHeightPercentage
         }
     }
 }
@@ -178,22 +180,23 @@ class SmsAlert : IConfig {
 
     override fun load(ctx: Context) {
         val spf = spf.SmsAlert(ctx)
-        enabled = spf.isEnabled()
-        collapsed = spf.isCollapsed()
-        duration = spf.getDuration()
-        regexStr = spf.getRegexStr()
-        regexFlags = spf.getRegexFlags()
-        timestamp = spf.getTimestamp()
+        enabled = spf.isEnabled
+        collapsed = spf.isCollapsed
+        duration = spf.duration
+        regexStr = spf.regexStr
+        regexFlags = spf.regexFlags
+        timestamp = spf.timestamp
     }
 
     override fun apply(ctx: Context) {
+        val me = this
         spf.SmsAlert(ctx).apply {
-            setEnabled(enabled)
-            setCollapsed(collapsed)
-            setDuration(duration)
-            setRegexStr(regexStr)
-            setRegexFlags(regexFlags)
-            setTimestamp(timestamp)
+            isEnabled = me.enabled
+            isCollapsed = me.collapsed
+            duration = me.duration
+            regexStr = me.regexStr
+            regexFlags = me.regexFlags
+            timestamp = me.timestamp
         }
     }
 }
@@ -209,24 +212,25 @@ class SmsBomb : IConfig {
 
     override fun load(ctx: Context) {
         val spf = spf.SmsBomb(ctx)
-        enabled = spf.isEnabled()
-        collapsed = spf.isCollapsed()
-        duration = spf.getInterval()
-        regexStr = spf.getRegexStr()
-        regexFlags = spf.getRegexFlags()
-        timestamp = spf.getTimestamp()
-        lockscreenProtection = spf.isLockScreenProtectionEnabled()
+        enabled = spf.isEnabled
+        collapsed = spf.isCollapsed
+        duration = spf.interval
+        regexStr = spf.regexStr
+        regexFlags = spf.regexFlags
+        timestamp = spf.timestamp
+        lockscreenProtection = spf.isLockScreenProtectionEnabled
     }
 
     override fun apply(ctx: Context) {
+        val me = this
         spf.SmsBomb(ctx).apply {
-            setEnabled(enabled)
-            setCollapsed(collapsed)
-            setInterval(duration)
-            setRegexStr(regexStr)
-            setRegexFlags(regexFlags)
-            setTimestamp(timestamp)
-            setLockScreenProtectionEnabled(lockscreenProtection)
+            isEnabled = me.enabled
+            isCollapsed = me.collapsed
+            interval = me.duration
+            regexStr = me.regexStr
+            regexFlags = me.regexFlags
+            timestamp = me.timestamp
+            isLockScreenProtectionEnabled = me.lockscreenProtection
         }
     }
 }
@@ -242,22 +246,23 @@ class EmergencySituation : IConfig {
 
     override fun load(ctx: Context) {
         val spf = spf.EmergencySituation(ctx)
-        enabled = spf.isEnabled()
-        stirEnabled = spf.isStirEnabled()
-        collapsed = spf.isCollapsed()
-        duration = spf.getDuration()
+        enabled = spf.isEnabled
+        stirEnabled = spf.isStirEnabled
+        collapsed = spf.isCollapsed
+        duration = spf.duration
         extraNumbers = spf.getExtraNumbers()
-        timestamp = spf.getTimestamp()
+        timestamp = spf.timestamp
     }
 
     override fun apply(ctx: Context) {
+        val me = this
         spf.EmergencySituation(ctx).apply {
-            setEnabled(enabled)
-            setStirEnabled(stirEnabled)
-            setCollapsed(collapsed)
-            setDuration(duration)
-            setExtraNumbers(extraNumbers)
-            setTimestamp(timestamp)
+            isEnabled = me.enabled
+            isStirEnabled = me.stirEnabled
+            isCollapsed = me.collapsed
+            duration = me.duration
+            setExtraNumbers(me.extraNumbers)
+            timestamp = me.timestamp
         }
     }
 }
@@ -269,14 +274,15 @@ class BotOptions : IConfig {
 
     override fun load(ctx: Context) {
         val spf = spf.BotOptions(ctx)
-        listCollapsed = spf.isListCollapsed()
+        listCollapsed = spf.isListCollapsed
         dynamicTile0Enabled = spf.isDynamicTileEnabled(0)
     }
 
     override fun apply(ctx: Context) {
+        val me = this
         spf.BotOptions(ctx).apply {
-            setListCollapsed(listCollapsed)
-            setDynamicTileEnabled(0, dynamicTile0Enabled)
+            isListCollapsed = me.listCollapsed
+            setDynamicTileEnabled(0, me.dynamicTile0Enabled)
         }
     }
 }
@@ -285,11 +291,11 @@ class BotOptions : IConfig {
 class Theme : IConfig {
     var type = 0
     override fun load(ctx: Context) {
-        type = spf.Global(ctx).getThemeType()
+        type = spf.Global(ctx).themeType
     }
 
     override fun apply(ctx: Context) {
-        spf.Global(ctx).setThemeType(type)
+        spf.Global(ctx).themeType = type
     }
 }
 
@@ -297,11 +303,11 @@ class Theme : IConfig {
 class Language : IConfig {
     var lang = ""
     override fun load(ctx: Context) {
-        lang = spf.Global(ctx).getLanguage()
+        lang = spf.Global(ctx).language
     }
 
     override fun apply(ctx: Context) {
-        spf.Global(ctx).setLanguage(lang)
+        spf.Global(ctx).language = lang
     }
 }
 
@@ -313,18 +319,20 @@ class Contact : IConfig {
     var strictPriority = 0
     override fun load(ctx: Context) {
         val spf = spf.Contact(ctx)
-        enabled = spf.isEnabled()
-        isExcusive = spf.isStrict()
-        permissivePriority = spf.getLenientPriority()
-        strictPriority = spf.getStrictPriority()
+        enabled = spf.isEnabled
+        isExcusive = spf.isStrict
+        permissivePriority = spf.lenientPriority
+        strictPriority = spf.strictPriority
     }
 
     override fun apply(ctx: Context) {
-        val spf = spf.Contact(ctx)
-        spf.setEnabled(enabled)
-        spf.setStrict(isExcusive)
-        spf.setLenientPriority(permissivePriority)
-        spf.setStrictPriority(strictPriority)
+        val me = this
+        spf.Contact(ctx).apply {
+            isEnabled = me.enabled
+            isStrict = me.isExcusive
+            lenientPriority = me.permissivePriority
+            strictPriority = me.strictPriority
+        }
     }
 }
 
@@ -352,16 +360,16 @@ class STIR : IConfig {
 
     override fun load(ctx: Context) {
         val spf = spf.Stir(ctx)
-        enabled = spf.isEnabled()
-        includeUnverified = spf.isIncludeUnverified()
-        strictPriority = spf.getPriority()
+        enabled = spf.isEnabled
+        includeUnverified = spf.isIncludeUnverified
+        strictPriority = spf.priority
     }
 
     override fun apply(ctx: Context) {
         val spf = spf.Stir(ctx)
-        spf.setEnabled(enabled)
-        spf.setIncludeUnverified(includeUnverified)
-        spf.setPriority(strictPriority)
+        spf.isEnabled = enabled
+        spf.isIncludeUnverified = includeUnverified
+        spf.priority = strictPriority
     }
 }
 @Serializable
@@ -373,18 +381,19 @@ class SpamDB : IConfig {
 
     override fun load(ctx: Context) {
         val spf = spf.SpamDB(ctx)
-        enabled = spf.isEnabled()
-        expiryEnabled = spf.isExpiryEnabled()
-        priority = spf.getPriority()
-        ttl = spf.getTTL()
+        enabled = spf.isEnabled
+        expiryEnabled = spf.isExpiryEnabled
+        priority = spf.priority
+        ttl = spf.ttl
     }
 
     override fun apply(ctx: Context) {
+        val me = this
         spf.SpamDB(ctx).apply {
-            setEnabled(enabled)
-            setExpiryEnabled(expiryEnabled)
-            setPriority(priority)
-            setTTL(ttl)
+            isEnabled = me.enabled
+            isExpiryEnabled = me.expiryEnabled
+            priority = me.priority
+            ttl = me.ttl
         }
     }
 }
@@ -396,16 +405,16 @@ class RepeatedCall : IConfig {
     var inXMin = 0
     override fun load(ctx: Context) {
         val spf = spf.RepeatedCall(ctx)
-        enabled = spf.isEnabled()
-        times = spf.getTimes()
-        inXMin = spf.getInXMin()
+        enabled = spf.isEnabled
+        times = spf.times
+        inXMin = spf.inXMin
     }
 
     override fun apply(ctx: Context) {
         val spf = spf.RepeatedCall(ctx)
-        spf.setEnabled(enabled)
-        spf.setTimes(times)
-        spf.setInXMin(inXMin)
+        spf.isEnabled = enabled
+        spf.times = times
+        spf.inXMin = inXMin
     }
 }
 
@@ -416,16 +425,16 @@ class Dialed : IConfig {
     var inXDay = 0
     override fun load(ctx: Context) {
         val spf = spf.Dialed(ctx)
-        enabled = spf.isEnabled()
-        smsEnabled = spf.isSmsEnabled()
-        inXDay = spf.getDays()
+        enabled = spf.isEnabled
+        smsEnabled = spf.isSmsEnabled
+        inXDay = spf.days
     }
 
     override fun apply(ctx: Context) {
         val spf = spf.Dialed(ctx)
-        spf.setEnabled(enabled)
-        spf.setSmsEnabled(smsEnabled)
-        spf.setDays(inXDay)
+        spf.isEnabled = enabled
+        spf.isSmsEnabled = smsEnabled
+        spf.days = inXDay
     }
 }
 
@@ -437,18 +446,18 @@ class Answered : IConfig {
     var inXDay = 0
     override fun load(ctx: Context) {
         val spf = spf.Answered(ctx)
-        warningAcknowledged = spf.isWarningAcknowledged()
-        enabled = spf.isEnabled()
-        minDuration = spf.getMinDuration()
-        inXDay = spf.getDays()
+        warningAcknowledged = spf.isWarningAcknowledged
+        enabled = spf.isEnabled
+        minDuration = spf.minDuration
+        inXDay = spf.days
     }
 
     override fun apply(ctx: Context) {
         val spf = spf.Answered(ctx)
-        spf.setWarningAcknowledged(warningAcknowledged)
-        spf.setEnabled(enabled)
-        spf.setMinDuration(minDuration)
-        spf.setDays(inXDay)
+        spf.isWarningAcknowledged = warningAcknowledged
+        spf.isEnabled = enabled
+        spf.minDuration = minDuration
+        spf.days = inXDay
     }
 }
 
@@ -458,14 +467,14 @@ class BlockType : IConfig {
     var config = ""
     override fun load(ctx: Context) {
         val spf = spf.BlockType(ctx)
-        type = spf.getType()
-        config = spf.getDelay()
+        type = spf.type
+        config = spf.delay
     }
 
     override fun apply(ctx: Context) {
         val spf = spf.BlockType(ctx)
-        spf.setType(type)
-        spf.setDelay(config)
+        spf.type = type
+        spf.delay = config
     }
 }
 
@@ -482,10 +491,10 @@ class Notification : IConfig {
 
     override fun load(ctx: Context) {
         val spf = spf.Notification(ctx)
-        spamCallChannel = spf.getSpamCallChannelId()
-        spamSmsChannel = spf.getSpamSmsChannelId()
-        validSmsChannel = spf.getValidSmsChannelId()
-        activeSmsChatChannel = spf.getActiveSmsChatChannelId()
+        spamCallChannel = spf.spamCallChannelId
+        spamSmsChannel = spf.spamSmsChannelId
+        validSmsChannel = spf.validSmsChannelId
+        activeSmsChatChannel = spf.smsChatChannelId
         channels.clear()
         channels.addAll(ChannelTable.listAll(ctx))
     }
@@ -493,10 +502,10 @@ class Notification : IConfig {
     override fun apply(ctx: Context) {
         // 1. spf
         spf.Notification(ctx).apply {
-            setSpamCallChannelId(spamCallChannel)
-            setSpamSmsChannelId(spamSmsChannel)
-            setValidSmsChannelId(validSmsChannel)
-            setActiveSmsChatChannelId(activeSmsChatChannel)
+            spamCallChannelId = spamCallChannel
+            spamSmsChannelId = spamSmsChannel
+            validSmsChannelId = validSmsChannel
+            smsChatChannelId = activeSmsChatChannel
         }
         // 2. Table and System channels
         ChannelTable.clearAll(ctx)
@@ -518,22 +527,22 @@ class OffTime : IConfig {
     override fun load(ctx: Context) {
         val spf = spf.OffTime(ctx)
 
-        enabled = spf.isEnabled()
+        enabled = spf.isEnabled
 
-        stHour = spf.getStartHour()
-        stMin = spf.getStartMin()
-        etHour = spf.getEndHour()
-        etMin = spf.getEndMin()
+        stHour = spf.startHour
+        stMin = spf.startMin
+        etHour = spf.endHour
+        etMin = spf.endMin
     }
 
     override fun apply(ctx: Context) {
         spf.OffTime(ctx).apply {
-            setEnabled(enabled)
+            isEnabled = enabled
 
-            setStartHour(stHour)
-            setStartMin(stMin)
-            setEndHour(etHour)
-            setEndMin(etMin)
+            startHour = stHour
+            startMin = stMin
+            endHour = etHour
+            endMin = etMin
         }
     }
 }
@@ -546,13 +555,13 @@ class RecentApps : IConfig {
         val spf = spf.RecentApps(ctx)
         list.clear()
         list.addAll(spf.getList())
-        inXMin = spf.getInXMin()
+        inXMin = spf.inXMin
     }
 
     override fun apply(ctx: Context) {
         val spf = spf.RecentApps(ctx)
         spf.setList(list)
-        spf.setInXMin(inXMin)
+        spf.inXMin = inXMin
     }
 }
 
@@ -564,13 +573,13 @@ class MeetingMode : IConfig {
         val spf = spf.MeetingMode(ctx)
         list.clear()
         list.addAll(spf.getList())
-        priority = spf.getPriority()
+        priority = spf.priority
     }
 
     override fun apply(ctx: Context) {
         val spf = spf.MeetingMode(ctx)
         spf.setList(list)
-        spf.setPriority(priority)
+        spf.priority = priority
     }
 }
 
@@ -624,8 +633,8 @@ class ApiQuery : IConfig {
         apis.clear()
         apis.addAll(G.apiQueryVM.table.listAll(ctx).map { it as QueryApi })
         val spf = spf.ApiQueryOptions(ctx)
-        listCollapsed = spf.isListCollapsed()
-        priority = spf.getPriority()
+        listCollapsed = spf.isListCollapsed
+        priority = spf.priority
     }
 
     override fun apply(ctx: Context) {
@@ -634,10 +643,9 @@ class ApiQuery : IConfig {
         apis.forEach {
             table.addRecordWithId(ctx, it)
         }
-        spf.ApiQueryOptions(ctx).apply {
-            setListCollapsed(listCollapsed)
-            setPriority(priority)
-        }
+        val spf = spf.ApiQueryOptions(ctx)
+        spf.isListCollapsed = listCollapsed
+        spf.priority = priority
     }
 }
 @Serializable
@@ -648,7 +656,7 @@ class ApiReport : IConfig {
     override fun load(ctx: Context) {
         apis.clear()
         apis.addAll(G.apiReportVM.table.listAll(ctx).map { it as ReportApi })
-        listCollapsed = spf.ApiReportOptions(ctx).isListCollapsed()
+        listCollapsed = spf.ApiReportOptions(ctx).isListCollapsed
     }
 
     override fun apply(ctx: Context) {
@@ -657,7 +665,7 @@ class ApiReport : IConfig {
         apis.forEach {
             table.addRecordWithId(ctx, it)
         }
-        spf.ApiReportOptions(ctx).setListCollapsed(listCollapsed)
+        spf.ApiReportOptions(ctx).isListCollapsed = listCollapsed
     }
 }
 

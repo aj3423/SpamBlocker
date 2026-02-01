@@ -55,7 +55,7 @@ fun BlockType() {
     val spf = spf.BlockType(ctx)
 
     val selected = remember {
-        mutableIntStateOf(spf.getType())
+        mutableIntStateOf(spf.type)
     }
 
     val options = remember {
@@ -72,7 +72,7 @@ fun BlockType() {
                 onClick = {
                     when (index) {
                         0, 1 -> { // Reject, Silence
-                            spf.setType(index)
+                            spf.type = index
                             selected.intValue = index
                         }
 
@@ -87,10 +87,10 @@ fun BlockType() {
                                 )
                             ) { granted ->
                                 if (granted) {
-                                    spf.setType(index)
+                                    spf.type = index
                                     selected.intValue = index
                                 } else {
-                                    selected.intValue = spf.getType()
+                                    selected.intValue = spf.type
                                 }
                             }
                         }
@@ -111,10 +111,10 @@ fun BlockType() {
 
                 if (selected.intValue == Def.BLOCK_TYPE_ANSWER_AND_HANGUP) {
                     val delay = remember {
-                        mutableIntStateOf(spf.getDelay().toIntOrNull() ?: DEFAULT_HANG_UP_DELAY)
+                        mutableIntStateOf(spf.delay.toIntOrNull() ?: DEFAULT_HANG_UP_DELAY)
                     }
                     LaunchedEffect(delay.intValue) {
-                        spf.setDelay(delay.intValue.toString())
+                        spf.delay = delay.intValue.toString()
                     }
 
                     val popupTrigger = rememberSaveable { mutableStateOf(false) }

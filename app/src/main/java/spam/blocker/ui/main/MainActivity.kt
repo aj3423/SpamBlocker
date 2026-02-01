@@ -70,12 +70,12 @@ class MainActivity : ComponentActivity() {
         val spf = spf.Global(ctx)
 
         // language
-        Util.setLocale(ctx, spf.getLanguage())
+        Util.setLocale(ctx, spf.language)
 
-        val lastTab = spf.getActiveTab()
+        val lastTab = spf.activeTab
 
         G.bottomBarVM = BottomBarViewModel(
-            onTabSelected = { spf.setActiveTab(it) },
+            onTabSelected = { spf.activeTab = it },
             onTabReSelected = {
                 when (it) {
                     Def.CALL_TAB_ROUTE -> Launcher.launchCallApp(this)
@@ -201,7 +201,7 @@ class MainActivity : ComponentActivity() {
     @Composable
     private fun checkWorkProfile() {
         val spf = spf.Global(this)
-        val alreadyShown by remember { mutableStateOf(spf.hasPromptedForRunningInWorkProfile()) }
+        val alreadyShown by remember { mutableStateOf(spf.hasPromptedForRunningInWorkProfile) }
         val runningInWorkProf by remember { mutableStateOf(Util.isRunningInWorkProfile(this)) }
 
         val trigger = remember {
@@ -220,7 +220,7 @@ class MainActivity : ComponentActivity() {
                         color = DarkOrange,
                     ) {
                         trigger.value = false
-                        spf.setPromptedForRunningInWorkProfile()
+                        spf.hasPromptedForRunningInWorkProfile = true
                     }
                 }
             )

@@ -159,10 +159,10 @@ fun EditChannelDialog(
                         .map { ctx.getString(R.string.regex_pattern) + " " + it.summary() }
                         .toMutableList()
                     val spf = spf.Notification(ctx)
-                    if (spf.getSpamCallChannelId() == chId) {
+                    if (spf.spamCallChannelId == chId) {
                         usedByRules += ctx.getString(R.string.call)
                     }
-                    if (spf.getSpamSmsChannelId() == chId || spf.getValidSmsChannelId() == chId) {
+                    if (spf.spamSmsChannelId == chId || spf.validSmsChannelId == chId) {
                         usedByRules += ctx.getString(R.string.sms)
                     }
                     if (usedByRules.isNotEmpty()) {
@@ -509,12 +509,12 @@ fun Notification() {
     val spf = spf.Notification(ctx)
 
     // Call
-    var spamCallChannelId by remember { mutableStateOf(spf.getSpamCallChannelId()) }
+    var spamCallChannelId by remember { mutableStateOf(spf.spamCallChannelId) }
 
     // SMS
-    var spamSmsChannelId by remember { mutableStateOf(spf.getSpamSmsChannelId()) }
-    var validSmsChannelId by remember { mutableStateOf(spf.getValidSmsChannelId()) }
-    var activeSmsChatChannelId by remember { mutableStateOf(spf.getActiveSmsChatChannelId()) }
+    var spamSmsChannelId by remember { mutableStateOf(spf.spamSmsChannelId) }
+    var validSmsChannelId by remember { mutableStateOf(spf.validSmsChannelId) }
+    var activeSmsChatChannelId by remember { mutableStateOf(spf.smsChatChannelId) }
 
     // Call config popup
     val configTrigger = rememberSaveable { mutableStateOf(false) }
@@ -535,7 +535,7 @@ fun Notification() {
                             ChannelPicker(
                                 spamCallChannelId,
                             ) { _, newCh ->
-                                spf.setSpamCallChannelId(newCh.channelId)
+                                spf.spamCallChannelId = newCh.channelId
                                 spamCallChannelId = newCh.channelId
                             }
                         }
@@ -555,7 +555,7 @@ fun Notification() {
                                 ChannelPicker(
                                     validSmsChannelId,
                                 ) { _, ch ->
-                                    spf.setValidSmsChannelId(ch.channelId)
+                                    spf.validSmsChannelId = ch.channelId
                                     validSmsChannelId = ch.channelId
                                 }
                             }
@@ -566,7 +566,7 @@ fun Notification() {
                                 ChannelPicker(
                                     spamSmsChannelId,
                                 ) { _, ch ->
-                                    spf.setSpamSmsChannelId(ch.channelId)
+                                    spf.spamSmsChannelId = ch.channelId
                                     spamSmsChannelId = ch.channelId
                                 }
                             }
@@ -577,7 +577,7 @@ fun Notification() {
                                 ChannelPicker(
                                     activeSmsChatChannelId,
                                 ) { _, ch ->
-                                    spf.setActiveSmsChatChannelId(ch.channelId)
+                                    spf.smsChatChannelId = ch.channelId
                                     activeSmsChatChannelId = ch.channelId
                                 }
                             }

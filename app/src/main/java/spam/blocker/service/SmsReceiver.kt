@@ -47,7 +47,7 @@ open class SmsReceiver : BroadcastReceiver() {
     override fun onReceive(ctx: Context, intent: Intent) {
         logi("Received SMS")
 
-        if (!spf.Global(ctx).isGloballyEnabled() || !spf.Global(ctx).isSmsEnabled()) {
+        if (!spf.Global(ctx).isGloballyEnabled || !spf.Global(ctx).isSmsEnabled) {
             return
         }
         val action = intent.action
@@ -82,7 +82,7 @@ open class SmsReceiver : BroadcastReceiver() {
         run {
             // 1. log to history db
             val spf = spf.HistoryOptions(ctx)
-            val isLogEnabled = spf.isLoggingEnabled()
+            val isLogEnabled = spf.isLoggingEnabled
             if (isLogEnabled) {
                 val recordId = SmsTable().addNewRecord(
                     ctx, HistoryRecord(
@@ -91,7 +91,7 @@ open class SmsReceiver : BroadcastReceiver() {
                         result = r.type,
                         reason = r.reasonToDb(),
                         simSlot = simSlot,
-                        extraInfo = if (spf.isLogSmsContentEnabled()) messageBody else null,
+                        extraInfo = if (spf.isLogSmsContentEnabled) messageBody else null,
                         isTest = isTest,
                     )
                 )
@@ -104,12 +104,12 @@ open class SmsReceiver : BroadcastReceiver() {
         // 3. update SmsAlert timestamp to SharedPref if it's enabled
         run {
             val spf = spf.SmsAlert(ctx)
-            val regex = spf.getRegexStr()
-            if (spf.isEnabled()) {
-                val flags = spf.getRegexFlags()
+            val regex = spf.regexStr
+            if (spf.isEnabled) {
+                val flags = spf.regexFlags
                 val matches = regex.regexMatches(messageBody, flags)
                 if (matches) {
-                    spf.setTimestamp(Now.currentMillis())
+                    spf.timestamp = Now.currentMillis()
                 }
             }
         }
@@ -162,7 +162,7 @@ open class SmsReceiver : BroadcastReceiver() {
                 ctx,
                 showType = ShowType.VALID_SMS,
                 channel = if (isActiveSmsChat) {
-                    val activeChannelId = spf.Notification(ctx).getActiveSmsChatChannelId()
+                    val activeChannelId = spf.Notification(ctx).smsChatChannelId
 
                     ChannelTable.findByChannelId(ctx, activeChannelId)
                         ?: missingChannel()

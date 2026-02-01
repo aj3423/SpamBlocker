@@ -28,8 +28,8 @@ open class HistoryViewModel(
         records.clear()
 
         val spf = spf.HistoryOptions(ctx)
-        val showPassed = spf.getShowPassed()
-        val showBlocked = spf.getShowBlocked()
+        val showPassed = spf.showPassed
+        val showBlocked = spf.showBlocked
 
         // Fuzzy search
         // `aaa bbb` -> `.*aaa.*bbb.*`

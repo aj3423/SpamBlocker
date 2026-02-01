@@ -60,7 +60,7 @@ fun Language() {
     val spf = spf.Global(ctx)
 
     var currLangCode by remember {
-        mutableStateOf(spf.getLanguage())
+        mutableStateOf(spf.language)
     }
 
     val items = remember {
@@ -77,7 +77,7 @@ fun Language() {
                     { ResIcon(lang.iconId, modifier = M.size(20.dp), color = Color.Unspecified) }
                 } else null,
                 onClick = {
-                    spf.setLanguage(lang.code)
+                    spf.language = lang.code
 
                     if (Build.VERSION.SDK_INT >= ANDROID_13) {
                         Util.setLocale(ctx, lang.code)

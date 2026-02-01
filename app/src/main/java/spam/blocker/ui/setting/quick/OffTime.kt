@@ -22,24 +22,24 @@ fun OffTime() {
     val ctx = LocalContext.current
     val spf = spf.OffTime(ctx)
 
-    var isEnabled by remember { mutableStateOf(spf.isEnabled()) }
+    var isEnabled by remember { mutableStateOf(spf.isEnabled) }
 
     val popupTrigger = rememberSaveable { mutableStateOf(false) }
 
-    var sHour by remember { mutableIntStateOf(spf.getStartHour()) }
-    var sMin by remember { mutableIntStateOf(spf.getStartMin()) }
-    var eHour by remember { mutableIntStateOf(spf.getEndHour()) }
-    var eMin by remember { mutableIntStateOf(spf.getEndMin()) }
+    var sHour by remember { mutableIntStateOf(spf.startHour) }
+    var sMin by remember { mutableIntStateOf(spf.startMin) }
+    var eHour by remember { mutableIntStateOf(spf.endHour) }
+    var eMin by remember { mutableIntStateOf(spf.endMin) }
 
     if (popupTrigger.value) {
         TimeRangePicker(
             trigger = popupTrigger,
             sHour, sMin, eHour, eMin,
         ) { sH, sM, eH, eM ->
-            spf.setStartHour(sH)
-            spf.setStartMin(sM)
-            spf.setEndHour(eH)
-            spf.setEndMin(eM)
+            spf.startHour = sH
+            spf.startMin = sM
+            spf.endHour = eH
+            spf.endMin = eM
             sHour = sH
             sMin = sM
             eHour = eH
@@ -60,7 +60,7 @@ fun OffTime() {
                 }
             }
             SwitchBox(isEnabled) { isTurningOn ->
-                spf.setEnabled(isTurningOn)
+                spf.isEnabled = isTurningOn
                 isEnabled = isTurningOn
             }
         }

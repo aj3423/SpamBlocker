@@ -45,7 +45,7 @@ class MyWorker(
     private fun setLocale() {
         val spf = spf.Global(ctx)
         // language
-        Util.setLocale(ctx, spf.getLanguage())
+        Util.setLocale(ctx, spf.language)
     }
 
     private fun runActions() {

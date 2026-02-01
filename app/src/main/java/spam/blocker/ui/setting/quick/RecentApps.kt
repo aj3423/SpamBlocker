@@ -207,7 +207,7 @@ private fun PopupConfig(
                 onValueChange = { newValue, hasError ->
                     if (!hasError) {
                         inXMin.value = newValue
-                        spf.RecentApps(ctx).setInXMin(newValue!!)
+                        spf.RecentApps(ctx).inXMin = newValue!!
                     }
                 },
                 labelId = R.string.within_minutes,
@@ -221,7 +221,7 @@ fun RecentApps() {
     val ctx = LocalContext.current
     val spf = spf.RecentApps(ctx)
 
-    val defaultInXMin = remember { mutableStateOf<Int?>(spf.getInXMin()) }
+    val defaultInXMin = remember { mutableStateOf<Int?>(spf.inXMin) }
 
     val buttonPopupTrigger = rememberSaveable { mutableStateOf(false) }
     val appsPopupTrigger = rememberSaveable { mutableStateOf(false) }

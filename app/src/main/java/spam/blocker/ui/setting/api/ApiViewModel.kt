@@ -25,9 +25,9 @@ open class ApiViewModel(
         apis.addAll(all)
 
         listCollapsed.value = if (forType == Def.ForApiQuery)
-            spf.ApiQueryOptions(ctx).isListCollapsed()
+            spf.ApiQueryOptions(ctx).isListCollapsed
         else
-            spf.ApiReportOptions(ctx).isListCollapsed()
+            spf.ApiReportOptions(ctx).isListCollapsed
     }
 
     fun toggleCollapse(ctx: Context) {
@@ -38,8 +38,8 @@ open class ApiViewModel(
 
         listCollapsed.value = !listCollapsed.value
         when(forType) {
-            Def.ForApiQuery -> spf.ApiQueryOptions(ctx).setListCollapsed(listCollapsed.value)
-            Def.ForApiReport -> spf.ApiReportOptions(ctx).setListCollapsed(listCollapsed.value)
+            Def.ForApiQuery -> spf.ApiQueryOptions(ctx).isListCollapsed = listCollapsed.value
+            Def.ForApiReport -> spf.ApiReportOptions(ctx).isListCollapsed = listCollapsed.value
         }
     }
 }

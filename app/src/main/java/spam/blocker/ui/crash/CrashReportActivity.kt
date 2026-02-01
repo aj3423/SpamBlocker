@@ -44,7 +44,7 @@ class CrashReportActivity : ComponentActivity() {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
 
-        G.themeType.intValue = spf.Global(this).getThemeType()
+        G.themeType.intValue = spf.Global(this).themeType
 
         val ctx = this
 

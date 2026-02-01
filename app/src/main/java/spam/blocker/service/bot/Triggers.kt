@@ -1103,10 +1103,10 @@ class Ringtone(
     private fun resetRingtone(ctx: Context) {
         // 1. check if it was set in CallScreeningService
         val spf = spf.Temporary(ctx)
-        val previousRingtone = spf.getRingtone()
+        val previousRingtone = spf.ringtone
         if (previousRingtone.isEmpty())
             return
-        spf.setRingtone("") // clear in spf
+        spf.ringtone = "" // clear in spf
 
         // 2. check permission
         if (!Permission.writeSettings.isGranted)

@@ -32,10 +32,10 @@ fun RepeatedCall() {
     val C = LocalPalette.current
     val spf = spf.RepeatedCall(ctx)
 
-    var isEnabled by remember { mutableStateOf(spf.isEnabled() && Permission.callLog.isGranted) }
-    var smsEnabled by remember(Permission.readSMS.isGranted) { mutableStateOf(spf.isSmsEnabled() && Permission.readSMS.isGranted) }
-    var times by remember { mutableStateOf<Int?>(spf.getTimes()) }
-    var inXMin by remember { mutableStateOf<Int?>(spf.getInXMin()) }
+    var isEnabled by remember { mutableStateOf(spf.isEnabled && Permission.callLog.isGranted) }
+    var smsEnabled by remember(Permission.readSMS.isGranted) { mutableStateOf(spf.isSmsEnabled && Permission.readSMS.isGranted) }
+    var times by remember { mutableStateOf<Int?>(spf.times) }
+    var inXMin by remember { mutableStateOf<Int?>(spf.inXMin) }
 
     val popupTrigger = rememberSaveable { mutableStateOf(false) }
 
@@ -48,7 +48,7 @@ fun RepeatedCall() {
                     onValueChange = { newValue, hasError ->
                         if (!hasError) {
                             times = newValue
-                            spf.setTimes(newValue!!)
+                            spf.times = newValue!!
                         }
                     },
                     labelId = R.string.times,
@@ -62,7 +62,7 @@ fun RepeatedCall() {
                     onValueChange = { newValue, hasError ->
                         if (!hasError) {
                             inXMin = newValue!!
-                            spf.setInXMin(newValue)
+                            spf.inXMin = newValue
                         }
                     },
                     labelId = R.string.within_minutes,
@@ -78,12 +78,12 @@ fun RepeatedCall() {
                                     listOf(PermissionWrapper(Permission.readSMS))
                                 ) { granted ->
                                     if (granted) {
-                                        spf.setSmsEnabled(true)
+                                        spf.isSmsEnabled = true
                                         smsEnabled = true
                                     }
                                 }
                             } else {
-                                spf.setSmsEnabled(false)
+                                spf.isSmsEnabled = false
                                 smsEnabled = false
                             }
                         }
@@ -122,12 +122,12 @@ fun RepeatedCall() {
                         )
                     ) { granted ->
                         if (granted) {
-                            spf.setEnabled(true)
+                            spf.isEnabled = true
                             isEnabled = true
                         }
                     }
                 } else {
-                    spf.setEnabled(false)
+                    spf.isEnabled = false
                     isEnabled = false
                 }
             }

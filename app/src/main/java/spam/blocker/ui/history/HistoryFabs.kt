@@ -49,9 +49,9 @@ fun reScheduleHistoryCleanup(ctx: Context) {
 
     val spf = spf.HistoryOptions(ctx)
 
-    val loggingEnabled = spf.isLoggingEnabled()
-    val expiryEnabled = spf.isExpiryEnabled()
-    val ttl = spf.getTTL()
+    val loggingEnabled = spf.isLoggingEnabled
+    val expiryEnabled = spf.isExpiryEnabled
+    val ttl = spf.ttl
 
     if (loggingEnabled && expiryEnabled && ttl >= 0) {
         MyWorkManager.schedule(
@@ -74,11 +74,11 @@ fun HistoryFabs(
     val ctx = LocalContext.current
     val spf = spf.HistoryOptions(ctx)
 
-    var loggingEnabled by remember { mutableStateOf(spf.isLoggingEnabled()) }
-    var expiryEnabled by remember { mutableStateOf(spf.isExpiryEnabled()) }
-    var ttl by rememberSaveable { mutableIntStateOf(spf.getTTL()) }
-    var logSmsContent by rememberSaveable { mutableStateOf(spf.isLogSmsContentEnabled()) }
-    var rows by rememberSaveable { mutableStateOf<Int?>(spf.getInitialSmsRowCount()) }
+    var loggingEnabled by remember { mutableStateOf(spf.isLoggingEnabled) }
+    var expiryEnabled by remember { mutableStateOf(spf.isExpiryEnabled) }
+    var ttl by rememberSaveable { mutableIntStateOf(spf.ttl) }
+    var logSmsContent by rememberSaveable { mutableStateOf(spf.isLogSmsContentEnabled) }
+    var rows by rememberSaveable { mutableStateOf<Int?>(spf.initialSmsRowCount) }
 
     val settingPopupTrigger = rememberSaveable { mutableStateOf(false) }
 
@@ -99,7 +99,7 @@ fun HistoryFabs(
                         ) {
                             // Enabled
                             SwitchBox(checked = loggingEnabled, onCheckedChange = { isOn ->
-                                spf.setLoggingEnabled(isOn)
+                                spf.isLoggingEnabled = isOn
                                 loggingEnabled = isOn
 
                                 reScheduleHistoryCleanup(ctx)
@@ -120,7 +120,7 @@ fun HistoryFabs(
                                         onValueChange = { newVal, hasError ->
                                             if (!hasError) {
                                                 rows = newVal
-                                                spf.setInitialSmsRowCount(rows!!)
+                                                spf.initialSmsRowCount = rows!!
                                                 vm.reload(ctx)
                                             }
                                         }
@@ -133,7 +133,7 @@ fun HistoryFabs(
                                 }
                                 SwitchBox(checked = logSmsContent, onCheckedChange = { isOn ->
                                     logSmsContent = isOn
-                                    spf.setLogSmsContentEnabled(isOn)
+                                    spf.isLogSmsContentEnabled = isOn
                                     vm.reload(ctx)
                                 })
                             }
@@ -148,7 +148,7 @@ fun HistoryFabs(
                                 // Expiry Enabled
                                 LabeledRow(R.string.expiry) {
                                     SwitchBox(checked = expiryEnabled, onCheckedChange = { isOn ->
-                                        spf.setExpiryEnabled(isOn)
+                                        spf.isExpiryEnabled = isOn
                                         expiryEnabled = isOn
                                         reScheduleHistoryCleanup(ctx)
                                     })
@@ -161,7 +161,7 @@ fun HistoryFabs(
                                         onValueChange = { newValue, hasError ->
                                             if (!hasError) {
                                                 ttl = newValue!!
-                                                spf.setTTL(newValue)
+                                                spf.ttl = newValue
                                                 reScheduleHistoryCleanup(ctx)
                                             }
                                         },
@@ -197,14 +197,14 @@ fun HistoryFabs(
                         // Allowed
                         LabeledRow(labelId = R.string.allowed_records) {
                             SwitchBox(checked = G.showHistoryPassed.value, onCheckedChange = { isOn ->
-                                spf.setShowPassed(isOn)
+                                spf.showPassed = isOn
                                 G.showHistoryPassed.value = isOn
                             })
                         }
                         // Blocked
                         LabeledRow(labelId = R.string.blocked_records) {
                             SwitchBox(checked = G.showHistoryBlocked.value, onCheckedChange = { isOn ->
-                                spf.setShowBlocked(isOn)
+                                spf.showBlocked = isOn
                                 G.showHistoryBlocked.value = isOn
                             })
                         }
@@ -215,7 +215,7 @@ fun HistoryFabs(
                             helpTooltip = Str(R.string.help_show_rule_indicator),
                         ) {
                             SwitchBox(checked = G.showHistoryIndicator.value, onCheckedChange = { isOn ->
-                                spf.setShowIndicator(isOn)
+                                spf.showIndicator = isOn
                                 G.showHistoryIndicator.value = isOn
                             })
                         }
@@ -231,7 +231,7 @@ fun HistoryFabs(
                                         LabelItem(label = ctx.getString(strId)) {
                                             when (idx) {
                                                 0 -> {
-                                                    spf.setForceShowSim(false)
+                                                    spf.forceShowSim = false
                                                     G.forceShowSIM.value = false
                                                 }
                                                 1 -> {
@@ -240,7 +240,7 @@ fun HistoryFabs(
                                                         listOf(PermissionWrapper(Permission.phoneState))
                                                     ) { granted ->
                                                         if (granted) {
-                                                            spf.setForceShowSim(true)
+                                                            spf.forceShowSim = true
                                                             G.forceShowSIM.value = true
                                                         }
                                                     }
@@ -265,7 +265,7 @@ fun HistoryFabs(
                             labelId = R.string.geo_location,
                         ) {
                             SwitchBox(checked = G.showHistoryGeoLocation.value, onCheckedChange = { isOn ->
-                                spf.setShowGeoLocation(isOn)
+                                spf.showGeoLocation = isOn
                                 G.showHistoryGeoLocation.value = isOn
                             })
                         }

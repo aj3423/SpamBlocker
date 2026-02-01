@@ -143,7 +143,7 @@ fun IndicatorsWrapper(
             run {
                 if (SpamTable.findByNumber(ctx, number) != null) {
                     add(
-                        Indicator(type = RESULT_BLOCKED_BY_SPAM_DB, priority = spf.SpamDB(ctx).getPriority())
+                        Indicator(type = RESULT_BLOCKED_BY_SPAM_DB, priority = spf.SpamDB(ctx).priority)
                     )
                 }
             }

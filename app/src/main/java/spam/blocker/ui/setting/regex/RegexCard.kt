@@ -65,7 +65,7 @@ fun RegexCard(
                         fontWeight = FontWeight.Bold,
                         fontSize = 18.sp,
                         modifier = M.padding(top = 2.dp),
-                        maxLines = spf.getMaxRegexRows(),
+                        maxLines = spf.maxRegexRows,
                         overflow = TextOverflow.Ellipsis
                     )
                 }
@@ -75,7 +75,7 @@ fun RegexCard(
                     Text(
                         text = rule.description,
                         fontSize = 18.sp,
-                        maxLines = spf.getMaxDescRows(),
+                        maxLines = spf.maxDescRows,
                         overflow = TextOverflow.Ellipsis,
                         color = C.textGrey,
                         modifier = M.padding(start = 10.dp),

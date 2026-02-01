@@ -49,14 +49,14 @@ fun EmergencySituation() {
     val ctx = LocalContext.current
     val spf = spf.EmergencySituation(ctx)
 
-    var isEnabled by rememberSaveable { mutableStateOf(spf.isEnabled()) }
-    var isStirEnabled by rememberSaveable { mutableStateOf(spf.isStirEnabled()) }
+    var isEnabled by rememberSaveable { mutableStateOf(spf.isEnabled) }
+    var isStirEnabled by rememberSaveable { mutableStateOf(spf.isStirEnabled) }
     var extraNumbers by rememberSaveable { mutableStateOf(spf.getExtraNumbers().joinToString(", ")) }
-    var duration by rememberSaveable { mutableIntStateOf(spf.getDuration()) }
-    var collapsed by rememberSaveable { mutableStateOf(spf.isCollapsed()) }
+    var duration by rememberSaveable { mutableIntStateOf(spf.duration) }
+    var collapsed by rememberSaveable { mutableStateOf(spf.isCollapsed) }
 
     fun calcTimeLeft(): Long {
-        val lastEccCallTime: Long = spf.getTimestamp()
+        val lastEccCallTime: Long = spf.timestamp
         val duration: Long = (duration * 60 * 1000).toLong()
         val now = System.currentTimeMillis()
         return lastEccCallTime + duration - now
@@ -73,7 +73,7 @@ fun EmergencySituation() {
             StrokeButton(label = Str(R.string.reset), color = Salmon) {
                 resetConfirm.value = false
                 timeLeft = 0
-                spf.setTimestamp(timeLeft)
+                spf.timestamp = timeLeft
             }
         }
     ) {
@@ -142,7 +142,7 @@ fun EmergencySituation() {
                 LabeledRow(labelId = R.string.check_stir_attestation) {
                     SwitchBox(isStirEnabled) { isTurningOn ->
                         isStirEnabled = isTurningOn
-                        spf.setStirEnabled(isStirEnabled)
+                        spf.isStirEnabled = isStirEnabled
                     }
                 }
 
@@ -152,7 +152,7 @@ fun EmergencySituation() {
                     onValueChange = { newValue, hasError ->
                         if (!hasError) {
                             duration = newValue!!
-                            spf.setDuration(duration)
+                            spf.duration = duration
                         }
                     },
                     labelId = R.string.within_minutes,
@@ -182,7 +182,7 @@ fun EmergencySituation() {
         isCollapsed = collapsed && extraNumbers.isNotBlank(),
         toggleCollapse = {
             collapsed = !collapsed
-            spf.setCollapsed(collapsed)
+            spf.isCollapsed = collapsed
         },
         helpTooltip = Str(R.string.help_emergency_situation),
         content = {
@@ -195,7 +195,7 @@ fun EmergencySituation() {
                 }
             }
             SwitchBox(isEnabled) { isTurningOn ->
-                spf.setEnabled(isTurningOn)
+                spf.isEnabled = isTurningOn
                 isEnabled = isTurningOn
             }
         }

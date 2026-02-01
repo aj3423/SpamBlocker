@@ -81,7 +81,7 @@ class NotificationListenerService : NotificationListenerService() {
             return
 
         // Get the record with max duration
-        var max = records.maxBy {
+        val max = records.maxBy {
             it.duration
         }
 
@@ -89,17 +89,15 @@ class NotificationListenerService : NotificationListenerService() {
         val spf = spf.PushAlert(this)
 
         // Ignore if the new expire time is less than the previous time
-        val prevExpireTime = spf.getExpireTime()
+        val prevExpireTime = spf.expireTime
         val newExpireTime = postTime + max.duration.toLong() * 60 * 1000
         if (newExpireTime <= prevExpireTime)
             return
 
 //        logi("push alert update, regex = ${max.body}, content: $body, expire: $newExpireTime")
 
-        spf.apply {
-            setPkgName(pkgName)
-            setBody(body)
-            setExpireTime(newExpireTime)
-        }
+        spf.pkgName = pkgName
+        spf.body = body
+        spf.expireTime = newExpireTime
     }
 }

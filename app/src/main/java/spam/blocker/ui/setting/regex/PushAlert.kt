@@ -78,7 +78,7 @@ object PushAlertViewModel {
         }
         listCollapsed.value = !listCollapsed.value
         val spf = spf.PushAlert(ctx)
-        spf.setCollapsed(listCollapsed.value)
+        spf.isCollapsed = listCollapsed.value
     }
 
 //    fun reloadOptions(ctx: Context) {

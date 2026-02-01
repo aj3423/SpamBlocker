@@ -1778,7 +1778,7 @@ class EnableApp(
 ) : IPermissiveAction {
 
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-        spf.Global(ctx).setGloballyEnabled(enable)
+        spf.Global(ctx).isGloballyEnabled = enable
         G.globallyEnabled.value = enable
 
         aCtx.logger?.debug("${ctx.getString(R.string.action_enable_app)}: $enable")

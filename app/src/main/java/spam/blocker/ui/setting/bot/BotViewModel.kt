@@ -18,7 +18,7 @@ class BotViewModel {
         val all = BotTable.listAll(ctx)
         bots.addAll(all)
 
-        listCollapsed.value = spf.BotOptions(ctx).isListCollapsed()
+        listCollapsed.value = spf.BotOptions(ctx).isListCollapsed
     }
 
     fun toggleCollapse(ctx: Context) {
@@ -28,6 +28,6 @@ class BotViewModel {
         }
 
         listCollapsed.value = !listCollapsed.value
-        spf.BotOptions(ctx).setListCollapsed(listCollapsed.value)
+        spf.BotOptions(ctx).isListCollapsed = listCollapsed.value
     }
 }

@@ -26,6 +26,7 @@ import android.provider.Telephony
 import android.provider.Telephony.Sms
 import android.telephony.TelephonyManager
 import androidx.annotation.RequiresApi
+import androidx.core.content.edit
 import androidx.core.database.getStringOrNull
 import com.google.i18n.phonenumbers.PhoneNumberUtil
 import com.google.i18n.phonenumbers.geocoding.PhoneNumberOfflineGeocoder
@@ -650,9 +651,9 @@ object Util {
     // returns `true` if it's the first time
     fun doOnce(ctx: Context, tag: String, doSomething: () -> Unit): Boolean {
         val spf = spf.SharedPref(ctx)
-        val alreadyExist = spf.readBoolean(tag, false)
+        val alreadyExist = spf.prefs.getBoolean(tag, false)
         if (!alreadyExist) {
-            spf.writeBoolean(tag, true)
+            spf.prefs.edit { putBoolean(tag, true) }
             doSomething()
             return true
         }

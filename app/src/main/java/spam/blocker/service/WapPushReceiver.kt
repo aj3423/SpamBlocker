@@ -33,7 +33,7 @@ class WapPushReceiver : SmsReceiver() {
         logi("Received WapPush")
 
         val spf = spf.Global(ctx)
-        if (!spf.isGloballyEnabled() || !spf.isSmsEnabled() || !spf.isMmsEnabled()) {
+        if (!spf.isGloballyEnabled || !spf.isSmsEnabled || !spf.isMmsEnabled) {
             return
         }
 

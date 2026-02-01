@@ -68,7 +68,7 @@ fun ApiCard(
             // [Priority]
             if (forType == Def.ForApiQuery) {
                 RowVCenterSpaced(6) {
-                    val priority = spf.ApiQueryOptions(ctx).getPriority()
+                    val priority = spf.ApiQueryOptions(ctx).priority
                     ResIcon(R.drawable.ic_priority, color = LightMagenta, modifier = M.size(18.dp).offset(6.dp))
                     Text(
                         text = "$priority",

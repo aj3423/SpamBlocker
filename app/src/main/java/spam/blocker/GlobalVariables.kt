@@ -61,10 +61,10 @@ object G {
         // Global switches
         run {
             val spf = spf.Global(ctx)
-            globallyEnabled.value = spf.isGloballyEnabled()
-            callEnabled.value = spf.isCallEnabled() && Permission.callScreening.isGranted
-            smsEnabled.value = spf.isSmsEnabled() && Permission.receiveSMS.isGranted
-            themeType.intValue = spf.getThemeType()
+            globallyEnabled.value = spf.isGloballyEnabled
+            callEnabled.value = spf.isCallEnabled && Permission.callScreening.isGranted
+            smsEnabled.value = spf.isSmsEnabled && Permission.receiveSMS.isGranted
+            themeType.intValue = spf.themeType
         }
 
         // Workflow switches
@@ -76,11 +76,11 @@ object G {
         // History options
         run {
             val spf = spf.HistoryOptions(ctx)
-            showHistoryIndicator.value = spf.getShowIndicator()
-            showHistoryGeoLocation.value = spf.getShowGeoLocation()
-            forceShowSIM.value = spf.getForceShowSim()
-            showHistoryPassed.value = spf.getShowPassed()
-            showHistoryBlocked.value = spf.getShowBlocked()
+            showHistoryIndicator.value = spf.showIndicator
+            showHistoryGeoLocation.value = spf.showGeoLocation
+            forceShowSIM.value = spf.forceShowSim
+            showHistoryPassed.value = spf.showPassed
+            showHistoryBlocked.value = spf.showBlocked
         }
 
         // Notifications

@@ -29,9 +29,9 @@ fun Stir() {
     val C = LocalPalette.current
     val spf = spf.Stir(ctx)
 
-    var isEnabled by remember { mutableStateOf(spf.isEnabled()) }
-    var includeUnverified by remember { mutableStateOf(spf.isIncludeUnverified()) }
-    var priority by remember { mutableIntStateOf(spf.getPriority()) }
+    var isEnabled by remember { mutableStateOf(spf.isEnabled) }
+    var includeUnverified by remember { mutableStateOf(spf.isIncludeUnverified) }
+    var priority by remember { mutableIntStateOf(spf.priority) }
 
     val popupTrigger = rememberSaveable { mutableStateOf(false) }
 
@@ -42,13 +42,13 @@ fun Stir() {
                 LabeledRow(labelId = R.string.stir_include_unverified) {
                     SwitchBox(checked = includeUnverified, onCheckedChange = { isTurningOn ->
                         includeUnverified = isTurningOn
-                        spf.setIncludeUnverified(isTurningOn)
+                        spf.isIncludeUnverified = isTurningOn
                     })
                 }
                 PriorityBox(priority) { newValue, hasError ->
                     if (!hasError) {
                         priority = newValue!!
-                        spf.setPriority(newValue)
+                        spf.priority = newValue
                     }
                 }
             }
@@ -80,7 +80,7 @@ fun Stir() {
                 }
             }
             SwitchBox(isEnabled) { isTurningOn ->
-                spf.setEnabled(isTurningOn)
+                spf.isEnabled = isTurningOn
                 isEnabled = isTurningOn
             }
         }

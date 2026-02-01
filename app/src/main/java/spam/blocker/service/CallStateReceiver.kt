@@ -23,14 +23,14 @@ class CallStateReceiver : BroadcastReceiver() {
         val spf = spf.Temporary(ctx)
 
         // 1. Check if the number matches
-        val numToBlock = spf.getLastCallToBlock()
+        val numToBlock = spf.lastCallToBlock
         if (numToBlock != Util.clearNumber(currNumber)) {
             return false
         }
 
         // 2. Check if the time since the `lastCalledTime` is less than 5 seconds,
         //   answer the call and hang up
-        val lastCalledTime = spf.getLastCallTime()
+        val lastCalledTime = spf.lastCallTime
         val now = System.currentTimeMillis()
         val tolerance = 5000 // 5 seconds
         return (now - lastCalledTime) < tolerance
@@ -70,7 +70,7 @@ class CallStateReceiver : BroadcastReceiver() {
 
                     if (block) {
                         // Schedule a delayed hang-up task.
-                        val delay = spf.getHangUpDelay().toLong() * 1000
+                        val delay = spf.hangUpDelay.toLong() * 1000
 
                         handler.postDelayed({
                             endCall(ctx)
