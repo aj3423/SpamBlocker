@@ -54,5 +54,5 @@
          maka Anda dapat menggunakan <font color="#03DAC5">{my_token}</font> dalam kueri HTTP berikutnya. <br>
     ]]>
     </string>
-    <string name="max">Maks</string>
+    <string name="max"><short>Maks</short></string>
 </resources>

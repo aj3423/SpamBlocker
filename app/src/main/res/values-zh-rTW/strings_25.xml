@@ -54,5 +54,5 @@
          那麼您可以在後續的 HTTP 查詢中使用 <font color="#03DAC5">{my_token}</font>。<br>
     ]]>
     </string>
-    <string name="max">最大</string>
+    <string name="max"><short>最大</short></string>
 </resources>
