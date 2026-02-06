@@ -21,13 +21,7 @@
     <string name="days">Tage</string>
     <string name="help_log_sms_content">
         <![CDATA[
-        Wenn aktiviert, wird der SMS-Inhalt ebenfalls in der Datenbank protokolliert und in dieser Liste angezeigt, er wird nicht in der Datenbank protokolliert, wenn er deaktiviert ist.<br>
-        <br>
-        - Wenn aktiviert:<br>
-        &emsp; <b>Tippen</b> Sie, um die vollständige Nachricht zu erweitern/einzuklappen.<br>
-        <br>
-        - Wenn deaktiviert:<br>
-        &emsp; <b>Tippen</b> Sie, um die Konversation in der Standard-App zu öffnen.
+        Wenn aktiviert, wird der SMS-Inhalt ebenfalls in der Datenbank protokolliert und in dieser Liste angezeigt, er wird nicht in der Datenbank protokolliert, wenn er deaktiviert ist.
         ]]>
     </string>
 

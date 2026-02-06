@@ -21,13 +21,7 @@
     <string name="days">Hari</string>
     <string name="help_log_sms_content">
         <![CDATA[
-        Jika diaktifkan, isi SMS juga akan masuk ke dalam basis data dan ditampilkan dalam daftar ini, namun tidak akan masuk ke dalam basis data jika dinonaktifkan.<br>
-        <br>
-        - Jika diaktifkan:<br>
-        &emsp; <b>Ketuk</b> untuk memperluas/memperkecil pesan keseluruhan.<br>
-        <br>
-        - Jika dinonaktifkan:<br>
-        &emsp; <b>Ketuk</b> untuk membuka percakapan di aplikasi default.
+        Jika diaktifkan, isi SMS juga akan masuk ke dalam basis data dan ditampilkan dalam daftar ini, namun tidak akan masuk ke dalam basis data jika dinonaktifkan.
         ]]>
     </string>
     <string name="copy_number">Salin nomor</string>

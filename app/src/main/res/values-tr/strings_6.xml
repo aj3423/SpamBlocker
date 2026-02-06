@@ -21,13 +21,7 @@
     <string name="days">Günler</string>
     <string name="help_log_sms_content">
         <![CDATA[
-        Açık olduğunda, SMS içeriği de veritabanına kaydedilecek ve bu listede görüntülenecektir; kapalı olduğunda ise veritabanına kaydedilmeyecektir.<br>
-        <br>
-        - Etkinleştirildiğinde:<br>
-        &emsp; <b>Tap</b> tam mesajı genişletmek/küçültmek için.<br>
-        <br>
-        - Devre dışı bırakıldığında:<br>
-        &emsp; <b>Tap</b> konuşmayı varsayılan uygulamada açmak için.
+        Açık olduğunda, SMS içeriği de veritabanına kaydedilecek ve bu listede görüntülenecektir; kapalı olduğunda ise veritabanına kaydedilmeyecektir.
         ]]>
     </string>
 

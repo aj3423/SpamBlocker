@@ -21,13 +21,7 @@
     <string name="days">Giorni</string>
     <string name="help_log_sms_content">
         <![CDATA[
-        Se abilitato, il contenuto degli SMS verrà anche registrato nel database e visualizzato in questo elenco, non verrà registrato nel database se disabilitato.<br>
-        <br>
-        - Se abilitato:<br>
-        &emsp; <b>Tocca</b> per espandere/comprimere il messaggio completo.<br>
-        <br>
-        - Se disabilitato:<br>
-        &emsp; <b>Tocca</b> per aprire la conversazione nell\'app predefinita.
+        Se abilitato, il contenuto degli SMS verrà anche registrato nel database e visualizzato in questo elenco, non verrà registrato nel database se disabilitato.
         ]]>
     </string>
 

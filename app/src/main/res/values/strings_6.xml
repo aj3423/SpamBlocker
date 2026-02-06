@@ -19,13 +19,7 @@
     <string name="days">Days</string>
     <string name="help_log_sms_content">
         <![CDATA[
-        When enabled, the SMS content will also be logged in the database and displayed in this list, it will not be logged in database when disabled.<br>
-        <br>
-        - When enabled:<br>
-        &emsp; <b>Tap</b> to expand/collapse the full message.<br>
-        <br>
-        - When disabled:<br>
-        &emsp; <b>Tap</b> to open the conversation in the default app.
+        When enabled, the SMS content will also be logged in the database and displayed in this list, it will not be logged in database when disabled.
         ]]>
     </string>
     <string name="copy_number">Copy number</string>

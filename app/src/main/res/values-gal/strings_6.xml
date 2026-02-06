@@ -21,13 +21,7 @@
     <string name="days">Días</string>
     <string name="help_log_sms_content">
         <![CDATA[
-        Cando está habilitado, o contido do SMS tamén se rexistrará na base de datos e se mostrará nesta lista, non se rexistrará na base de datos cando estea desactivado.<br>
-        <br>
-        - Cando está habilitado:<br>
-        &emsp; <b>Toca</b> para expandir/colapsar a mensaxe completa.<br>
-        <br>
-        - Cando está desactivado:<br>
-        &emsp; <b>Toca</b> para abrir a conversa na aplicación predeterminada.
+        Cando está habilitado, o contido do SMS tamén se rexistrará na base de datos e se mostrará nesta lista, non se rexistrará na base de datos cando estea desactivado.
         ]]>
     </string>
 

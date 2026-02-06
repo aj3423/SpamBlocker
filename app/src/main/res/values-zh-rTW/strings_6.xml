@@ -21,13 +21,7 @@
     <string name="days">天</string>
     <string name="help_log_sms_content">
         <![CDATA[
-        啟用時，簡訊內容也會記錄在資料庫中並顯示在此清單中，停用時則不會記錄在資料庫中。<br>
-        <br>
-        - 啟用時：<br>
-        &emsp; <b>點選</b>可展開/摺疊完整訊息。<br>
-        <br>
-        - 停用時：<br>
-        &emsp; <b>點選</b>可在預設應用程式中開啟對話。
+        啟用時，簡訊內容也會記錄在資料庫中並顯示在此清單中，停用時則不會記錄在資料庫中。
         ]]>
     </string>
     <string name="copy_number">複製號碼</string>

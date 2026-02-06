@@ -21,13 +21,7 @@
     <string name="days">Jours</string>
     <string name="help_log_sms_content">
         <![CDATA[
-        Lorsque cette option est activée, le contenu des SMS sera également enregistré dans la base de données et affiché dans cette liste, il ne sera pas enregistré dans la base de données lorsqu\'elle est désactivée.<br>
-        <br>
-        - Lorsqu\'elle est activée:<br>
-        &emsp; <b>Appuyez</b> pour développer/réduire le message complet.<br>
-        <br>
-        - Lorsqu\'elle est désactivée:<br>
-        &emsp; <b>Appuyez</b> pour ouvrir la conversation dans l\'application par défaut.
+        Lorsque cette option est activée, le contenu des SMS sera également enregistré dans la base de données et affiché dans cette liste, il ne sera pas enregistré dans la base de données lorsqu\'elle est désactivée.
         ]]>
     </string>
 

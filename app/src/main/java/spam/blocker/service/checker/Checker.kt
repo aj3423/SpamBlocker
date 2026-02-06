@@ -33,6 +33,7 @@ import spam.blocker.service.bot.QuickTile
 import spam.blocker.service.bot.SmsEvent
 import spam.blocker.service.bot.SmsThrottling
 import spam.blocker.service.bot.executeAll
+import spam.blocker.ui.theme.DimGrey
 import spam.blocker.ui.theme.Emerald
 import spam.blocker.ui.theme.LightMagenta
 import spam.blocker.ui.theme.Salmon
@@ -506,7 +507,7 @@ class Checker { // for namespace only
             }
 
 
-            logger?.debug("${ctx.getString(R.string.call)}: $nCalls, ${ctx.getString(R.string.sms)}: $nSMSs")
+            logger?.debug("${ctx.getString(R.string.call)}: $nCalls, ${ctx.getString(R.string.sms)}: $nSMSs".A(DimGrey))
 
             // check
             if (nCalls + nSMSs >= times) {
@@ -564,7 +565,7 @@ class Checker { // for namespace only
                 )
             else
                 0
-            logger?.debug("${ctx.getString(R.string.call)}: $nCalls, ${ctx.getString(R.string.sms)}: $nSMSs")
+            logger?.debug("${ctx.getString(R.string.call)}: $nCalls, ${ctx.getString(R.string.sms)}: $nSMSs".A(DimGrey))
 
             if (nCalls + nSMSs > 0) {
                 logger?.success(
@@ -615,7 +616,7 @@ class Checker { // for namespace only
                 it.duration >= minDuration
             }.size
 
-            logger?.debug("${ctx.getString(R.string.call)}: $nCalls")
+            logger?.debug("${ctx.getString(R.string.call)}: $nCalls".A(DimGrey))
 
             if (nCalls > 0) {
                 logger?.success(
