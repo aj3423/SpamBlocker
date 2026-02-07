@@ -112,6 +112,8 @@ class CallScreeningService : CallScreeningService() {
             return
         }
 
+        Thread.sleep(3000)
+
         val now = System.currentTimeMillis()
 
         // save 'number/current time/hang up delay' to shared pref, they will be read soon in CallStateReceiver
