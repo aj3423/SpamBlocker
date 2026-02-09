@@ -100,6 +100,7 @@ import spam.blocker.util.resolveTimeTags
 import spam.blocker.util.spf
 import spam.blocker.util.toMap
 import spam.blocker.util.toStringMap
+import spam.blocker.util.unescapeUnicode
 import java.io.BufferedReader
 import java.io.ByteArrayInputStream
 import java.io.InputStreamReader
@@ -2086,14 +2087,14 @@ class ParseQueryResult(
 ) : IPermissiveAction {
 
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-        var input = if (aCtx.lastOutput is ByteArray) {
+        val input = if (aCtx.lastOutput is ByteArray) {
             aCtx.lastOutput as ByteArray
         } else {
             aCtx.lastParsedQueryData!!
         }
         aCtx.lastParsedQueryData = input // Save for following `ParseQueryResult` actions
 
-        val html = String(input)
+        val html = String(input).unescapeUnicode()
 
         aCtx.logger?.debug(label(ctx))
 

@@ -69,6 +69,13 @@ fun String.escape(): String {
         .replace("\r", "\\r")
         .replace("\t", "\\t")
 }
+fun String.unescapeUnicode(): String {
+    return replace(Regex("""\\u([0-9A-Fa-f]{4})""")) { match ->
+        val code = match.groupValues[1].toInt(16)
+        code.toChar().toString()
+    }
+}
+
 // parse json -> map
 private fun toValue(element: Any) = when (element) {
     JSONObject.NULL -> null
