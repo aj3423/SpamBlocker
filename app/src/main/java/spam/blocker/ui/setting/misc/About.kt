@@ -12,6 +12,7 @@ import spam.blocker.R
 import spam.blocker.ui.setting.SettingRow
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.widgets.FileWriteChooser
+import spam.blocker.ui.widgets.FileWriteTrigger
 import spam.blocker.ui.widgets.HtmlText
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.Str
@@ -40,14 +41,10 @@ fun About() {
             )
         }
 
-        val trigger = remember { mutableStateOf(false) }
-        var filename by remember { mutableStateOf("") }
-        var bytes by remember { mutableStateOf("".toByteArray()) }
+        val trigger = remember { mutableStateOf<FileWriteTrigger?>(null) }
 
         FileWriteChooser(
             trigger = trigger,
-            filename = filename,
-            bytes = bytes,
         )
 
         StrokeButton(
@@ -57,10 +54,10 @@ fun About() {
                 popupTrigger.value = true
             },
             onLongClick = {
-                filename = "SpamBlocker.log"
-                bytes = Logcat.collect().toByteArray()
-
-                trigger.value = true
+                trigger.value = FileWriteTrigger(
+                    filename = "SpamBlocker.log",
+                    bytes = Logcat.collect().toByteArray(),
+                )
             }
         )
     }

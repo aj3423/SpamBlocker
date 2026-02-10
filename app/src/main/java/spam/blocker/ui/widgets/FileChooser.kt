@@ -25,11 +25,14 @@ private val downloadsUri = DocumentsContract.buildDocumentUri(
     "primary:Download"
 )
 
+data class FileWriteTrigger(
+    val filename: String,
+    val bytes: ByteArray,
+)
+
 @Composable
 fun FileWriteChooser(
-    trigger: MutableState<Boolean>,
-    filename: String,
-    bytes: ByteArray,
+    trigger: MutableState<FileWriteTrigger?>,
 ) {
     val ctx = LocalContext.current
 
@@ -38,22 +41,24 @@ fun FileWriteChooser(
     ) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
             result.data?.data?.also { uri ->
-                writeDataToUri(ctx, uri, bytes)
+                trigger.value?.let {
+                    writeDataToUri(ctx, uri, it.bytes)
+                }
             }
         }
+        trigger.value = null
     }
     LaunchedEffect(trigger.value) {
-        if (trigger.value) {
+        if (trigger.value != null) {
             val intent = Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
                 addCategory(Intent.CATEGORY_OPENABLE)
                 type = "*/*"
-                putExtra(Intent.EXTRA_TITLE, filename)
+                putExtra(Intent.EXTRA_TITLE, trigger.value!!.filename)
                 putExtra(Intent.EXTRA_MIME_TYPES, arrayOf("application/octet-stream", "application/gzip"))
                 putExtra(DocumentsContract.EXTRA_INITIAL_URI, downloadsUri)
             }
             launcher.launch(intent)
         }
-        trigger.value = false
     }
 }
 

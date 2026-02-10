@@ -22,6 +22,7 @@ import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.FileWriteChooser
+import spam.blocker.ui.widgets.FileWriteTrigger
 import spam.blocker.ui.widgets.FlowRowSpaced
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.LabelItem
@@ -43,28 +44,26 @@ import java.time.format.DateTimeFormatter
 fun ExportButton() {
     val ctx = LocalContext.current
 
-    val trigger = remember { mutableStateOf(false) }
-    var filename by remember { mutableStateOf("") }
-    var bytes by remember { mutableStateOf("".toByteArray()) }
+    val trigger = remember { mutableStateOf<FileWriteTrigger?>(null) }
 
     FileWriteChooser(
         trigger = trigger,
-        filename = filename,
-        bytes = bytes,
     )
 
     fun chooseExportFile(includeSpamDB: Boolean) {
         // prepare file name
         val formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd")
         val ymd = LocalDate.now().format(formatter)
-        filename = "SpamBlocker.${ymd}${if (includeSpamDB) ".db" else ""}.gz"
+        val fn = "SpamBlocker.${ymd}${if (includeSpamDB) ".db" else ""}.gz"
 
         // prepare file content
         val curr = Configs()
         curr.load(ctx, includeSpamDB)
-        bytes = curr.toByteArray()
+        val compressed = curr.toByteArray()
 
-        trigger.value = true
+        trigger.value = FileWriteTrigger(
+            filename = fn, bytes = compressed
+        )
     }
 
     DropdownWrapper(

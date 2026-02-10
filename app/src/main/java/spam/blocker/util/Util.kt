@@ -602,6 +602,7 @@ object Util {
         return try {
             ctx.contentResolver.openOutputStream(uri)?.use { outputStream ->
                 outputStream.write(dataToWrite)
+                outputStream.flush()
             }
             true
         } catch (_: IOException) {
