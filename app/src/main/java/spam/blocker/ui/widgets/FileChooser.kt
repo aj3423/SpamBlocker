@@ -2,16 +2,16 @@ package spam.blocker.ui.widgets
 
 import android.app.Activity
 import android.content.Intent
-import android.net.Uri
 import android.provider.DocumentsContract
 import androidx.activity.compose.ManagedActivityResultLauncher
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
-import spam.blocker.util.Lambda1
 import spam.blocker.util.Lambda2
 import spam.blocker.util.Util.basename
 import spam.blocker.util.Util.getFilename
@@ -25,50 +25,36 @@ private val downloadsUri = DocumentsContract.buildDocumentUri(
     "primary:Download"
 )
 
-// Show file choose dialog, and write data to the selected file
-class FileWriteChooser {
-    private lateinit var launcher : ManagedActivityResultLauncher<Intent, ActivityResult>
+@Composable
+fun FileWriteChooser(
+    trigger: MutableState<Boolean>,
+    filename: String,
+    bytes: ByteArray,
+) {
+    val ctx = LocalContext.current
 
-    private lateinit var bytes: ByteArray
-
-    @Composable
-    fun Compose() {
-        val ctx = LocalContext.current
-
-        launcher = rememberLauncherForActivityResult(
-            ActivityResultContracts.StartActivityForResult()
-        ) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                result.data?.data?.also { uri ->
-                    writeDataToUri(ctx, uri, bytes)
-                }
+    val launcher = rememberLauncherForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            result.data?.data?.also { uri ->
+                writeDataToUri(ctx, uri, bytes)
             }
         }
     }
-
-    fun popup(
-        filename: String,
-        bytes: ByteArray,
-        // Don't save any `callback` as a lazyinit class member, after the bytes is saved, it returns back
-        //  to the app and it recomposes, laziinited members are gone, which leads to a crash.
-//        callback:
-    ) {
-        this.bytes = bytes
-
-        val intent = Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
-            addCategory(Intent.CATEGORY_OPENABLE)
-            type = "*/*"
-            putExtra(Intent.EXTRA_TITLE, filename)
-            putExtra(Intent.EXTRA_MIME_TYPES, arrayOf("application/octet-stream", "application/gzip"))
-            putExtra(DocumentsContract.EXTRA_INITIAL_URI, downloadsUri)
+    LaunchedEffect(trigger.value) {
+        if (trigger.value) {
+            val intent = Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
+                addCategory(Intent.CATEGORY_OPENABLE)
+                type = "*/*"
+                putExtra(Intent.EXTRA_TITLE, filename)
+                putExtra(Intent.EXTRA_MIME_TYPES, arrayOf("application/octet-stream", "application/gzip"))
+                putExtra(DocumentsContract.EXTRA_INITIAL_URI, downloadsUri)
+            }
+            launcher.launch(intent)
         }
-        launcher.launch(intent)
+        trigger.value = false
     }
-}
-
-@Composable
-fun rememberFileWriteChooser() : FileWriteChooser {
-    return remember { FileWriteChooser() }
 }
 
 

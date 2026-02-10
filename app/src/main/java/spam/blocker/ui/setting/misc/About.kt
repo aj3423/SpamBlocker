@@ -1,19 +1,21 @@
 package spam.blocker.ui.setting.misc
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import spam.blocker.BuildConfig
 import spam.blocker.R
 import spam.blocker.ui.setting.SettingRow
 import spam.blocker.ui.theme.SkyBlue
+import spam.blocker.ui.widgets.FileWriteChooser
 import spam.blocker.ui.widgets.HtmlText
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
-import spam.blocker.ui.widgets.rememberFileWriteChooser
-import spam.blocker.util.Util.writeDataToUri
 
 const val REPO = "https://github.com/aj3423/SpamBlocker"
 
@@ -38,8 +40,15 @@ fun About() {
             )
         }
 
-        val fileWriter = rememberFileWriteChooser()
-        fileWriter.Compose()
+        val trigger = remember { mutableStateOf(false) }
+        var filename by remember { mutableStateOf("") }
+        var bytes by remember { mutableStateOf("".toByteArray()) }
+
+        FileWriteChooser(
+            trigger = trigger,
+            filename = filename,
+            bytes = bytes,
+        )
 
         StrokeButton(
             label = Str(R.string.about),
@@ -48,13 +57,10 @@ fun About() {
                 popupTrigger.value = true
             },
             onLongClick = {
-                val fn = "SpamBlocker.log"
-                val content = Logcat.collect().toByteArray()
+                filename = "SpamBlocker.log"
+                bytes = Logcat.collect().toByteArray()
 
-                fileWriter.popup(
-                    filename = fn,
-                    bytes = content,
-                )
+                trigger.value = true
             }
         )
     }
