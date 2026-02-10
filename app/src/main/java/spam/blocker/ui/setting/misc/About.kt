@@ -53,12 +53,9 @@ fun About() {
 
                 fileWriter.popup(
                     filename = fn,
-                ) { uri ->
-                    uri?.let {
-                        writeDataToUri(ctx, uri, content)
-                    }
-                }
-            },
+                    bytes = content,
+                )
+            }
         )
     }
 }

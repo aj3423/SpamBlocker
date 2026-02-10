@@ -72,7 +72,6 @@ import spam.blocker.ui.widgets.SummaryLabel
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.A
 import spam.blocker.util.AdbLogger
-import spam.blocker.util.Algorithm.decompressToString
 import spam.blocker.util.CSVParser
 import spam.blocker.util.CountryCode
 import spam.blocker.util.Now

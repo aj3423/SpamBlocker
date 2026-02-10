@@ -29,28 +29,31 @@ private val downloadsUri = DocumentsContract.buildDocumentUri(
 class FileWriteChooser {
     private lateinit var launcher : ManagedActivityResultLauncher<Intent, ActivityResult>
 
-    private lateinit var onResult: Lambda1<Uri?>
+    private lateinit var bytes: ByteArray
 
     @Composable
     fun Compose() {
+        val ctx = LocalContext.current
+
         launcher = rememberLauncherForActivityResult(
             ActivityResultContracts.StartActivityForResult()
         ) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 result.data?.data?.also { uri ->
-                    onResult.invoke(uri)
+                    writeDataToUri(ctx, uri, bytes)
                 }
-            } else {
-                onResult.invoke(null)
             }
         }
     }
 
     fun popup(
         filename: String,
-        onResult: Lambda1<Uri?>
+        bytes: ByteArray,
+        // Don't save any `callback` as a lazyinit class member, after the bytes is saved, it returns back
+        //  to the app and it recomposes, laziinited members are gone, which leads to a crash.
+//        callback:
     ) {
-        this.onResult = onResult
+        this.bytes = bytes
 
         val intent = Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
             addCategory(Intent.CATEGORY_OPENABLE)

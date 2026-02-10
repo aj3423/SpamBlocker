@@ -1,7 +1,6 @@
 package spam.blocker.config
 
 import android.content.Context
-import android.net.Uri
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -30,10 +29,8 @@ import spam.blocker.util.Permission
 import spam.blocker.util.spf
 import spam.blocker.util.spf.MeetingAppInfo
 import spam.blocker.util.spf.RecentAppInfo
-import java.io.BufferedOutputStream
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
-import java.io.OutputStream
 import java.util.zip.GZIPInputStream
 import java.util.zip.GZIPOutputStream
 

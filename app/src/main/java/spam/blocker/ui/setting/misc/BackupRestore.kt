@@ -31,8 +31,6 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.rememberFileReadChooser
 import spam.blocker.ui.widgets.rememberFileWriteChooser
-import spam.blocker.util.Algorithm.b64Decode
-import spam.blocker.util.Algorithm.decompressToString
 import spam.blocker.util.Launcher
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionWrapper
@@ -61,12 +59,9 @@ fun ExportButton() {
         val compressed = curr.toByteArray()
 
         fileWriter.popup(
-            filename = fn
-        ) { uri ->
-            uri?.let {
-                writeDataToUri(ctx, uri, compressed)
-            }
-        }
+            filename = fn,
+            bytes = compressed
+        )
     }
 
     DropdownWrapper(
