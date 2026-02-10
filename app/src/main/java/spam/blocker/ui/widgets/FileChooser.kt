@@ -2,6 +2,7 @@ package spam.blocker.ui.widgets
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.provider.DocumentsContract
 import androidx.activity.compose.ManagedActivityResultLauncher
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -28,33 +29,27 @@ private val downloadsUri = DocumentsContract.buildDocumentUri(
 class FileWriteChooser {
     private lateinit var launcher : ManagedActivityResultLauncher<Intent, ActivityResult>
 
-    private lateinit var content: ByteArray
-    private var onResult: Lambda1<Boolean>? = null
+    private lateinit var onResult: Lambda1<Uri?>
 
     @Composable
     fun Compose() {
-        val ctx = LocalContext.current
-
         launcher = rememberLauncherForActivityResult(
             ActivityResultContracts.StartActivityForResult()
         ) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 result.data?.data?.also { uri ->
-                    writeDataToUri(ctx, uri, content)
-                    onResult?.invoke(true)
+                    onResult.invoke(uri)
                 }
             } else {
-                onResult?.invoke(false)
+                onResult.invoke(null)
             }
         }
     }
 
     fun popup(
         filename: String,
-        content: ByteArray,
-        onResult: Lambda1<Boolean>? = null
+        onResult: Lambda1<Uri?>
     ) {
-        this.content = content
         this.onResult = onResult
 
         val intent = Intent(Intent.ACTION_CREATE_DOCUMENT).apply {

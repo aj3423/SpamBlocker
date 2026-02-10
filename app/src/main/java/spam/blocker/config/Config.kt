@@ -1,8 +1,12 @@
 package spam.blocker.config
 
 import android.content.Context
+import android.net.Uri
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.decodeFromStream
+import kotlinx.serialization.json.encodeToStream
 import spam.blocker.G
 import spam.blocker.db.Bot
 import spam.blocker.db.BotTable
@@ -26,6 +30,12 @@ import spam.blocker.util.Permission
 import spam.blocker.util.spf
 import spam.blocker.util.spf.MeetingAppInfo
 import spam.blocker.util.spf.RecentAppInfo
+import java.io.BufferedOutputStream
+import java.io.ByteArrayInputStream
+import java.io.ByteArrayOutputStream
+import java.io.OutputStream
+import java.util.zip.GZIPInputStream
+import java.util.zip.GZIPOutputStream
 
 
 interface IConfig {
@@ -799,14 +809,32 @@ class Configs {
         all(includeSpamDB).forEach { it.apply(ctx) }
     }
 
-    fun toJsonString(): String {
-        return BotJson.encodeToString(this)
+    @OptIn(ExperimentalSerializationApi::class)
+    fun toByteArray(): ByteArray {
+        val me = this
+        return ByteArrayOutputStream(128 * 1024).use { baos ->  // optional initial size hint
+            GZIPOutputStream(baos).apply {
+                BotJson.encodeToStream(serializer(), me, this)
+                finish()  // explicit finish (good practice)
+            }
+            baos.toByteArray()
+        }
     }
 
     companion object {
-        fun createFromJson(jsonStr: String) : Configs {
-            val newCfg = BotJson.decodeFromString<Configs>(jsonStr)
-            return newCfg
+        @OptIn(ExperimentalSerializationApi::class)
+        fun fromByteArray(bytes: ByteArray) : Configs {
+//            val newCfg = BotJson.decodeFromString<Configs>(jsonStr)
+//            return newCfg
+
+            return ByteArrayInputStream(bytes).use { input ->
+                GZIPInputStream(input).use { gzip ->
+                    BotJson.decodeFromStream(
+                        deserializer = Configs.serializer(),
+                        stream = gzip
+                    )
+                }
+            }
         }
     }
 }

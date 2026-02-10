@@ -69,6 +69,10 @@ fun String.escape(): String {
         .replace("\r", "\\r")
         .replace("\t", "\\t")
 }
+// replace 
+//   \u041d\u0435\u0436\u0435\u043b\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0439
+// -> 
+//   Нежелательный
 fun String.unescapeUnicode(): String {
     return replace(Regex("""\\u([0-9A-Fa-f]{4})""")) { match ->
         val code = match.groupValues[1].toInt(16)

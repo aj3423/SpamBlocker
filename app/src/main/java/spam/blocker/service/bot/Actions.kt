@@ -72,7 +72,6 @@ import spam.blocker.ui.widgets.SummaryLabel
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.A
 import spam.blocker.util.AdbLogger
-import spam.blocker.util.Algorithm.compressString
 import spam.blocker.util.Algorithm.decompressToString
 import spam.blocker.util.CSVParser
 import spam.blocker.util.CountryCode
@@ -518,7 +517,7 @@ class BackupExport(
         // Generate config data bytes
         val curr = Configs()
         curr.load(ctx, includeSpamDB)
-        val compressed = compressString(curr.toJsonString())
+        val compressed = curr.toByteArray()
 
         aCtx.logger?.debug(ctx.getString(R.string.action_backup_export))
 
@@ -532,8 +531,6 @@ class BackupExport(
 
     @Composable
     override fun Summary(showIcon: Boolean) {
-        val ctx = LocalContext.current
-
         val yes = Str(R.string.yes)
         val no = Str(R.string.no)
         SummaryLabel(Str(R.string.include_spam_db) + ": ${if (includeSpamDB) yes else no}")
@@ -580,8 +577,7 @@ class BackupImport(
         val input = aCtx.lastOutput as ByteArray
 
         try {
-            val jsonStr = decompressToString(input)
-            val newCfg = Configs.createFromJson(jsonStr)
+            val newCfg = Configs.fromByteArray(input)
             newCfg.apply(ctx, includeSpamDB)
 
             aCtx.logger?.debug(ctx.getString(R.string.action_backup_import))

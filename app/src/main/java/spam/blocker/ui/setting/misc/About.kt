@@ -13,6 +13,7 @@ import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.rememberFileWriteChooser
+import spam.blocker.util.Util.writeDataToUri
 
 const val REPO = "https://github.com/aj3423/SpamBlocker"
 
@@ -52,8 +53,11 @@ fun About() {
 
                 fileWriter.popup(
                     filename = fn,
-                    content = content,
-                )
+                ) { uri ->
+                    uri?.let {
+                        writeDataToUri(ctx, uri, content)
+                    }
+                }
             },
         )
     }

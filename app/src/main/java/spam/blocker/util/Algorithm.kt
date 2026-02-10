@@ -15,14 +15,6 @@ fun ByteArray.toHexString(): String {
 
 object Algorithm {
 
-    fun compressString(data: String): ByteArray {
-        val bos = ByteArrayOutputStream(data.length)
-        val gzip = GZIPOutputStream(bos)
-        gzip.write(data.toByteArray())
-        gzip.close()
-        return bos.toByteArray()
-    }
-
     fun decompressToString(compressed: ByteArray): String {
         val bis = ByteArrayInputStream(compressed)
         val gis = GZIPInputStream(bis)

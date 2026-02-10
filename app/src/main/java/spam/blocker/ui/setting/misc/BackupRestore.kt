@@ -32,11 +32,11 @@ import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.rememberFileReadChooser
 import spam.blocker.ui.widgets.rememberFileWriteChooser
 import spam.blocker.util.Algorithm.b64Decode
-import spam.blocker.util.Algorithm.compressString
 import spam.blocker.util.Algorithm.decompressToString
 import spam.blocker.util.Launcher
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionWrapper
+import spam.blocker.util.Util.writeDataToUri
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -58,12 +58,15 @@ fun ExportButton() {
         // prepare file content
         val curr = Configs()
         curr.load(ctx, includeSpamDB)
-        val content = compressString(curr.toJsonString())
+        val compressed = curr.toByteArray()
 
         fileWriter.popup(
-            filename = fn,
-            content = content,
-        )
+            filename = fn
+        ) { uri ->
+            uri?.let {
+                writeDataToUri(ctx, uri, compressed)
+            }
+        }
     }
 
     DropdownWrapper(
@@ -174,12 +177,12 @@ fun ImportButton() {
     fun chooseImportFile(includeSpamDB: Boolean) {
         fileReader.popup(
             mimeTypes = arrayOf("application/octet-stream", "application/gzip")
-        ) { _, raw ->
-            if (raw == null)
+        ) { _, bytes ->
+            if (bytes == null)
                 return@popup
 
-            fun onDecodeSuccess(str: String) {
-                val newCfg = Configs.createFromJson(str)
+            try {
+                val newCfg = Configs.fromByteArray(bytes)
                 newCfg.apply(ctx, includeSpamDB)
 
                 prevPermissions = newCfg.permissions.allEnabledNames
@@ -189,32 +192,10 @@ fun ImportButton() {
                 // Fire an event to notify the configuration has changed,
                 // for example, the history cleanup schedule should restart
                 Events.configImported.fire()
-            }
-
-            fun onDecodeFail(err: String) {
+            } catch (e: Exception) {
                 succeeded = false
-                errorStr = err
+                errorStr = e.message ?: ""
                 resultTrigger.value = true
-            }
-
-            try {
-                // for history compatibility, text file contains b64(gzip)
-                val jsonStr = decompressToString(b64Decode(String(raw)))
-                onDecodeSuccess(jsonStr)
-            } catch (_: Exception) {
-                try {
-                    // try gzip compressed
-                    val jsonStr = decompressToString(raw)
-                    onDecodeSuccess(jsonStr)
-                } catch (e: Exception) {
-                    // try plain json string
-                    try {
-                        val jsonStr = String(raw)
-                        onDecodeSuccess(jsonStr)
-                    } catch (e: Exception) {
-                        onDecodeFail(e.message ?: "")
-                    }
-                }
             }
         }
     }
