@@ -8,10 +8,9 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
+import spam.blocker.util.Lambda1
 import spam.blocker.util.Lambda2
 import spam.blocker.util.Util.basename
 import spam.blocker.util.Util.getFilename
@@ -25,42 +24,49 @@ private val downloadsUri = DocumentsContract.buildDocumentUri(
     "primary:Download"
 )
 
-data class FileWriteTrigger(
-    val filename: String,
-    val bytes: ByteArray,
-)
+// Show file choose dialog, and write data to the selected file
+class FileWriteChooser {
+    private lateinit var launcher : ManagedActivityResultLauncher<Intent, ActivityResult>
 
-@Composable
-fun FileWriteChooser(
-    trigger: MutableState<FileWriteTrigger?>,
-) {
-    val ctx = LocalContext.current
+    private lateinit var content: ByteArray
 
-    val launcher = rememberLauncherForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            result.data?.data?.also { uri ->
-                trigger.value?.let {
-                    writeDataToUri(ctx, uri, it.bytes)
+    @Composable
+    fun Compose() {
+        val ctx = LocalContext.current
+
+        launcher = rememberLauncherForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                result.data?.data?.also { uri ->
+                    writeDataToUri(ctx, uri, content)
                 }
             }
         }
-        trigger.value = null
     }
-    LaunchedEffect(trigger.value) {
-        if (trigger.value != null) {
-            val intent = Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
-                addCategory(Intent.CATEGORY_OPENABLE)
-                type = "*/*"
-                putExtra(Intent.EXTRA_TITLE, trigger.value!!.filename)
-                putExtra(Intent.EXTRA_MIME_TYPES, arrayOf("application/octet-stream", "application/gzip"))
-                putExtra(DocumentsContract.EXTRA_INITIAL_URI, downloadsUri)
-            }
-            launcher.launch(intent)
+
+    fun popup(
+        filename: String,
+        content: ByteArray,
+    ) {
+        this.content = content
+
+        val intent = Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
+            addCategory(Intent.CATEGORY_OPENABLE)
+            type = "*/*"
+            putExtra(Intent.EXTRA_TITLE, filename)
+            putExtra(Intent.EXTRA_MIME_TYPES, arrayOf("application/octet-stream", "application/gzip"))
+            putExtra(DocumentsContract.EXTRA_INITIAL_URI, downloadsUri)
         }
+        launcher.launch(intent)
     }
 }
+
+@Composable
+fun rememberFileWriteChooser() : FileWriteChooser {
+    return remember { FileWriteChooser() }
+}
+
 
 
 // Show file choose dialog, load data from the selected file

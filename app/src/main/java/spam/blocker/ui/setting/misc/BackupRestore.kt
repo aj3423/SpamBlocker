@@ -21,8 +21,6 @@ import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.DropdownWrapper
-import spam.blocker.ui.widgets.FileWriteChooser
-import spam.blocker.ui.widgets.FileWriteTrigger
 import spam.blocker.ui.widgets.FlowRowSpaced
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.LabelItem
@@ -32,6 +30,7 @@ import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.rememberFileReadChooser
+import spam.blocker.ui.widgets.rememberFileWriteChooser
 import spam.blocker.util.Launcher
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionWrapper
@@ -44,11 +43,8 @@ import java.time.format.DateTimeFormatter
 fun ExportButton() {
     val ctx = LocalContext.current
 
-    val trigger = remember { mutableStateOf<FileWriteTrigger?>(null) }
-
-    FileWriteChooser(
-        trigger = trigger,
-    )
+    val fileWriter = rememberFileWriteChooser()
+    fileWriter.Compose()
 
     fun chooseExportFile(includeSpamDB: Boolean) {
         // prepare file name
@@ -61,8 +57,9 @@ fun ExportButton() {
         curr.load(ctx, includeSpamDB)
         val compressed = curr.toByteArray()
 
-        trigger.value = FileWriteTrigger(
-            filename = fn, bytes = compressed
+        fileWriter.popup(
+            filename = fn,
+            content = compressed,
         )
     }
 
@@ -71,7 +68,7 @@ fun ExportButton() {
             LabelItem(
                 label = Str(R.string.include_spam_db)
             ) {
-                chooseExportFile(true)
+                chooseExportFile(includeSpamDB = true)
             }
         )
     ) { expanded ->
@@ -79,7 +76,7 @@ fun ExportButton() {
             label = Str(R.string.export),
             color = Teal200,
             onClick = {
-                chooseExportFile(false)
+                chooseExportFile(includeSpamDB = false)
             },
             onLongClick = {
                 expanded.value = true
