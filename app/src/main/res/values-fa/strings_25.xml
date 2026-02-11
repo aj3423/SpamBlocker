@@ -55,4 +55,9 @@
     ]]>
     </string>
     <string name="max"><short>حد</short></string>
+    <string name="exporting_database">
+    <![CDATA[
+        در حال استخراج %s شماره از پایگاه داده، این ممکن است حدود %s ثانیه طول بکشد.
+    ]]>
+    </string>
 </resources>

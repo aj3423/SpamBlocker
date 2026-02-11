@@ -58,6 +58,7 @@ fun PopupDialog(
     title: (@Composable () -> Unit)? = null,
     icon: (@Composable () -> Unit)? = null,
     onDismiss: Lambda? = null,
+    manuallyDismissable: Boolean = true,
     buttons: (@Composable RowScope.() -> Unit)? = null,
     popupSize: PopupSize? = null,
     scrollEnabled: Boolean = true,
@@ -67,7 +68,9 @@ fun PopupDialog(
 
         Dialog(
             onDismissRequest = {
-                trigger.value = false
+                if (manuallyDismissable) {
+                    trigger.value = false
+                }
                 onDismiss?.invoke()
             },
 

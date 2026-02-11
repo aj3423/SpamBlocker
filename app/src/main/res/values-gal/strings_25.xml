@@ -55,4 +55,9 @@
     ]]>
     </string>
     <string name="max"><short>Máx</short></string>
+    <string name="exporting_database">
+    <![CDATA[
+        Exportando %s números da base de datos, isto pode levar aproximadamente %s segundos.
+    ]]>
+    </string>
 </resources>

@@ -54,4 +54,9 @@
     ]]>
     </string>
     <string name="max"><short>最大</short></string>
+    <string name="exporting_database">
+    <![CDATA[
+        正在从数据库导出 %s 条号码，这可能需要大约 %s 秒。
+    ]]>
+    </string>
 </resources>

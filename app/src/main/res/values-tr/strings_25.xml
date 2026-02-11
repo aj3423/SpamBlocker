@@ -55,4 +55,9 @@
     ]]>
     </string>
     <string name="max"><short>Maks</short></string>
+    <string name="exporting_database">
+    <![CDATA[
+        Veritabanından %s numara dışa aktarılıyor, bu yaklaşık %s saniye sürebilir.
+    ]]>
+    </string>
 </resources>
