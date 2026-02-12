@@ -8,6 +8,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -19,6 +24,9 @@ import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.RegexRule
 import spam.blocker.def.Def
+import spam.blocker.def.Def.FLAG_REGEX_FOR_CNAP
+import spam.blocker.def.Def.ForNumber
+import spam.blocker.def.Def.ForSms
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.quick.ChannelIcons
 import spam.blocker.ui.theme.LightMagenta
@@ -124,8 +132,19 @@ fun RegexCard(
                 RowVCenterSpaced(space = 8) {
 
                     // [NotifyType]
-                    val ch = G.notificationChannels.find { it.channelId == rule.channel }
-                    ChannelIcons(ch?.importance, ch?.mute)
+                    val forCNAP = forType == ForNumber && rule.patternFlags.hasFlag(FLAG_REGEX_FOR_CNAP)
+                    val applyToSms = rule.isForSms()
+
+                    val visible = when (forType) {
+                        ForNumber -> rule.isBlacklist || (!forCNAP && applyToSms)
+                        ForSms   -> true
+                        else     -> false
+                    }
+
+                    if (visible) {
+                        val ch = G.notificationChannels.find { it.channelId == rule.channel }
+                        ChannelIcons(ch?.importance, ch?.mute)
+                    }
 
                     // [Priority]
                     ResIcon(R.drawable.ic_priority, color = LightMagenta, modifier = M.size(18.dp).offset(6.dp))

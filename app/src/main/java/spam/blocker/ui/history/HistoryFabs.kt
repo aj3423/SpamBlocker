@@ -447,6 +447,7 @@ fun HistoryFabs(
         Fab(
             visible = visible,
             iconId = R.drawable.ic_settings,
+            iconSize = 36,
             bgColor = SkyBlue
         ) {
             settingPopupTrigger.value = true
@@ -478,6 +479,7 @@ fun HistoryFabs(
         Fab(
             visible = visible,
             iconId = R.drawable.ic_recycle_bin,
+            iconSize = 36,
             bgColor = Salmon
         ) {
             deleteConfirm.value = true

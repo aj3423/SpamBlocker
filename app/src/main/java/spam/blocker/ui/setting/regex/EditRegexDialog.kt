@@ -44,6 +44,8 @@ import spam.blocker.def.Def.FLAG_REGEX_FOR_CNAP
 import spam.blocker.def.Def.FLAG_REGEX_FOR_CONTACT
 import spam.blocker.def.Def.FLAG_REGEX_FOR_CONTACT_GROUP
 import spam.blocker.def.Def.FLAG_REGEX_FOR_GEO_LOCATION
+import spam.blocker.def.Def.ForNumber
+import spam.blocker.def.Def.ForSms
 import spam.blocker.def.Def.MAP_REGEX_FLAGS
 import spam.blocker.ui.LaunchedEffectOnlyOnChange
 import spam.blocker.ui.M
@@ -645,17 +647,9 @@ fun EditRegexDialog(
                 // Notification Type
                 AnimatedVisibleV(
                     visible = when (forType) {
-                        Def.ForNumber -> {
-                            if (whiteOrBlack == 0) { // allow
-                                !forCNAP && applyToSms
-                            } else { // block
-                                true
-                            }
-                        }
-                        Def.ForSms -> {
-                            true
-                        }
-                        else -> false
+                        ForNumber -> whiteOrBlack != 0 || (!forCNAP && applyToSms)
+                        ForSms   -> true
+                        else     -> false
                     }
                 ) {
                     // Auto change the current channelId to "Allow" or "Block" when user select `whitelist/blacklist`
