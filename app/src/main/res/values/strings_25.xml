@@ -75,4 +75,42 @@
     ]]>
     </string>
     <string name="invalid_value_see_tooltip">Invalid value, see the tooltip for help</string>
+    <string name="faq"><short>FAQ</short></string>
+    <string name="faq_priority">
+    <![CDATA[
+        Each filter has its priority value, as the term implies, it dictates the order in which the call is checked. <br>
+        <br>
+        By Default, <br>
+        <br>
+        - <font color="#03DAC5">Whitelist rules</font> have priority <font color="#ea86ff">10</font> <br>
+        &ensp; <font color="#888888">E.g. Contacts(Lenient), RepeatedCall, RecentApps, etc </font><br>
+        <br>
+        - <font color="#fa7f71">Blacklist rules</font> have priority <font color="#ea86ff">0</font> <br>
+        &ensp; <font color="#888888">E.g. STIR, Database, etc </font> <br>
+        <br>
+        When they are both enabled, whitelist rules will override blacklist rules as 10 > 0. <br>
+        <br>
+        For regex rules, the priority can be set to any number between <font color="#ea86ff">-2147483648</font>
+          and <font color="#ea86ff">2147483647</font>. <br>
+        Different rules can have the same priority as long as they are the same type, however,
+          <font color="#ffa500"><b>never assign the same priority to both
+          whitelist and blacklist rules</b></font>, it can cause random behavior. <br>
+        <br>
+        The feature <font color="#00BFFF">Meeting Mode</font> has priority <font color="#ea86ff">20</font> by default,
+          because it\'s supposed to block any calls during a meeting. <br>
+        And <font color="#ea86ff">-1</font> for <font color="#00BFFF">Instant Query</font>,
+          so it only gets checked after the call has passed all local filters. <br>
+        <br>
+        <b>Use cases</b> of customizing the priority: <br>
+        <br>
+        - <font color="#888888">Always block a particular number, no matter if it repeats</font> <br>
+         &ensp; Set a rule with priority > 10 to override <font color="#00BFFF">Repeated Call</font>. <br>
+        <br>
+        - <font color="#888888">Always allow a number</font> <br>
+         &ensp; Set it to > 20 to override <font color="#00BFFF">Meeting Mode</font>. <br>
+        <br>
+        - <font color="#888888">Test a regex rule</font> <br>
+         &ensp; Set it to 999 to override all other filters so you don\'t have to temporarily disable them one by one.
+    ]]>
+    </string>
 </resources>

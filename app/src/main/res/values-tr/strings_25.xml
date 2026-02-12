@@ -75,4 +75,39 @@
     ]]>
     </string>
     <string name="invalid_value_see_tooltip">Geçersiz değer, yardım için araç ipucuna bakın</string>
+    <string name="faq"><short>SSS</short></string>
+    <string name="faq_priority">
+    <![CDATA[
+        Her filtre, terimin ima ettiği gibi, öncelik değerine sahiptir; bu, aramanın kontrol edildiği sırayı belirler. <br>
+        <br>
+        Varsayılan olarak, <br>
+        <br>
+        - <font color="#03DAC5">Beyaz liste kuralları</font> önceliği <font color="#ea86ff">10</font> <br>
+        &ensp; <font color="#888888">Örn. Kişiler (Hoşgörülü), Tekrarlayan Arama, Son Kullanılan Uygulamalar, vb </font><br>
+        <br>
+        - <font color="#fa7f71">Kara liste kuralları</font> önceliği <font color="#ea86ff">0</font> <br>
+        &ensp; <font color="#888888">Örn. STIR, Veritabanı, vb </font> <br>
+        <br>
+        Her ikisi de etkin olduğunda, beyaz liste kuralları kara liste kurallarını geçersiz kılar çünkü 10 > 0. <br>
+        <br>
+        Regex kuralları için öncelik, <font color="#ea86ff">-2147483648</font>
+          ve <font color="#ea86ff">2147483647</font> arasında herhangi bir sayı olarak ayarlanabilir. <br>
+        Farklı kurallar aynı türde oldukları sürece aynı önceliğe sahip olabilir, ancak <font color="#ffa500"><b>beyaz liste ve kara liste kurallarına aynı önceliği asla atamayın</b></font>, bu rastgele davranışa neden olabilir. <br>
+        <br>
+        <font color="#00BFFF">Meeting Mode</font> özelliği varsayılan olarak öncelik <font color="#ea86ff">20</font>\'ye sahiptir, çünkü toplantı sırasında tüm aramaları engellemesi gerekir. <br>
+        Ve <font color="#ea86ff">-1</font> <font color="#00BFFF">Instant Query</font> için,
+          böylece arama tüm yerel filtrelerden geçtiğinde kontrol edilir. <br>
+        <br>
+        <b>Önceliği özelleştirmenin kullanım durumları</b>: <br>
+        <br>
+        - <font color="#888888">Tekrarlansa da belirli bir number\'ı her zaman engelle</font> <br>
+         &ensp; Önceliği > 10 olan bir kural ayarlayarak <font color="#00BFFF">Repeated Call</font>\'ı geçersiz kıl. <br>
+        <br>
+        - <font color="#888888">Bir number\'ı her zaman izin ver</font> <br>
+         &ensp; Önceliği > 20 olarak ayarlayarak <font color="#00BFFF">Meeting Mode</font>\'ı geçersiz kıl. <br>
+        <br>
+        - <font color="#888888">Bir regex kuralını test et</font> <br>
+         &ensp; Önceliği 999 yaparak diğer tüm filtreleri geçersiz kıl; böylece onları tek tek geçici olarak devre dışı bırakmak zorunda kalmazsınız.
+    ]]>
+    </string>
 </resources>

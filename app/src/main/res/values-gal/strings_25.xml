@@ -74,4 +74,40 @@
     ]]>
     </string>
     <string name="invalid_value_see_tooltip">Valor inválido, consulte a información emerxente para obter axuda</string>
+    <string name="faq"><short>PMF</short></string>
+    <string name="faq_priority">
+    <![CDATA[
+        Cada filtro ten o seu valor de prioridade, como indica o termo, determina a orde na que se verifica a chamada. <br>
+        <br>
+        Por defecto, <br>
+        <br>
+        - <font color="#03DAC5">Regras de lista branca</font> teñen prioridade <font color="#ea86ff">10</font> <br>
+        &ensp; <font color="#888888">Por exemplo, Contactos (Tolerante), Chamada Repetida, Aplicacións Recentes, etc </font><br>
+        <br>
+        - <font color="#fa7f71">Regras de lista negra</font> teñen prioridade <font color="#ea86ff">0</font> <br>
+        &ensp; <font color="#888888">Por exemplo, STIR, Base de datos, etc </font> <br>
+        <br>
+        Cando ambas están activas, as regras de lista branca sobrescribirán as de lista negra xa que 10 > 0. <br>
+        <br>
+        Para as regras regex, a prioridade pode establecerse a calquera número entre <font color="#ea86ff">-2147483648</font>
+          e <font color="#ea86ff">2147483647</font>. <br>
+        Distintas regras poden ter a mesma prioridade sempre que sexan do mesmo tipo, pero nunca asigna a mesma prioridade tanto ás regras de lista branca como ás de lista negra, pois pode provocar un comportamento aleatorio. <font color="#ffa500"><b>nunca asigne a mesma prioridade a ambas as regras de lista branca e lista negra</b></font>, pode causar comportamento aleatorio. <br>
+        <br>
+        A funcionalidade <font color="#00BFFF">Modo Reunión</font> ten prioridade <font color="#ea86ff">20</font> por defecto,
+          porque supón bloquear calquera chamada durante unha reunión. <br>
+        E <font color="#ea86ff">-1</font> para <font color="#00BFFF">Consulta Instantánea</font>,
+          polo que só se verifica despois de que a chamada pase todos os filtros locais. <br>
+        <br>
+        <b>Casos de uso</b> da personalización da prioridade: <br>
+        <br>
+        - <font color="#888888">Bloquear sempre un número concreto, sen importar se se repite</font> <br>
+         &ensp; Establece unha regra con prioridade > 10 para sobrescribir <font color="#00BFFF">Chamada Repetida</font>. <br>
+        <br>
+        - <font color="#888888">Permitir sempre un número</font> <br>
+         &ensp; Estabeléceo en > 20 para sobrescribir <font color="#00BFFF">Modo Reunión</font>. <br>
+        <br>
+        - <font color="#888888">Probar unha regra regex</font> <br>
+         &ensp; Estabeléceo en 999 para sobrescribir todos os demais filtros de modo que non teñas que desactivalos temporalmente un a un.
+    ]]>
+    </string>
 </resources>

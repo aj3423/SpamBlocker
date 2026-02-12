@@ -34,7 +34,7 @@ import spam.blocker.ui.setting.api.ApiQueryPresets
 import spam.blocker.ui.setting.api.ApiReportPresets
 import spam.blocker.ui.setting.bot.BotHeader
 import spam.blocker.ui.setting.bot.BotList
-import spam.blocker.ui.setting.misc.About
+import spam.blocker.ui.setting.misc.About_Faq
 import spam.blocker.ui.setting.misc.BackupRestore
 import spam.blocker.ui.setting.misc.Language
 import spam.blocker.ui.setting.misc.Theme
@@ -254,7 +254,7 @@ fun SettingScreen() {
                         Theme()
                         Language()
                         BackupRestore()
-                        About()
+                        About_Faq()
                     }
                 }
             }

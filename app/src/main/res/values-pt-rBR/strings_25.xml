@@ -75,4 +75,41 @@
     ]]>
     </string>
     <string name="invalid_value_see_tooltip">Valor inválido, veja a dica de ferramenta para ajuda</string>
+    <string name="faq"><short>Perguntas</short></string>
+    <string name="faq_priority">
+    <![CDATA[
+        Cada filtro tem seu valor de prioridade, como o termo indica, ele determina a ordem em que a chamada é verificada. <br>
+        <br>
+        Por padrão, <br>
+        <br>
+        - <font color="#03DAC5">Regras de lista branca</font> têm prioridade <font color="#ea86ff">10</font> <br>
+        &ensp; <font color="#888888">Ex.: Contatos (Flexível), Chamada Repetida, Apps Recentes, etc </font><br>
+        <br>
+        - <font color="#fa7f71">Regras de lista negra</font> têm prioridade <font color="#ea86ff">0</font> <br>
+        &ensp; <font color="#888888">Ex.: STIR, Banco de Dados, etc </font> <br>
+        <br>
+        Quando ambos estão habilitados, as regras de lista branca substituirão as regras de lista negra, pois 10 > 0. <br>
+        <br>
+        Para regras regex, a prioridade pode ser definida para qualquer número entre <font color="#ea86ff">-2147483648</font>
+          e <font color="#ea86ff">2147483647</font>. <br>
+        Regras diferentes podem ter a mesma prioridade, contanto que sejam do mesmo tipo, porém,
+          <font color="#ffa500"><b>nunca atribua a mesma prioridade tanto às regras de lista branca quanto às de lista negra</b></font>, isso pode causar comportamento aleatório. <br>
+        <br>
+        O recurso <font color="#00BFFF">Modo de Reunião</font> tem prioridade <font color="#ea86ff">20</font> por padrão,
+          pois deve bloquear quaisquer chamadas durante uma reunião. <br>
+        E <font color="#ea86ff">-1</font> para <font color="#00BFFF">Consulta Instantânea</font>,
+          assim ele só é verificado depois que a chamada passou por todos os filtros locais. <br>
+        <br>
+        <b>Casos de uso</b> de personalização da prioridade: <br>
+        <br>
+        - <font color="#888888">Sempre bloquear um número específico, não importa se ele se repete</font> <br>
+         &ensp; Defina uma regra com prioridade > 10 para substituir <font color="#00BFFF">Chamada Repetida</font>. <br>
+        <br>
+        - <font color="#888888">Sempre permitir um número</font> <br>
+         &ensp; Defina > 20 para substituir <font color="#00BFFF">Modo de Reunião</font>. <br>
+        <br>
+        - <font color="#888888">Testar uma regra regex</font> <br>
+         &ensp; Defina 999 para substituir todos os outros filtros, assim você não precisa desativá-los temporariamente um a um.
+    ]]>
+    </string>
 </resources>

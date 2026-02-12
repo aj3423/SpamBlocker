@@ -75,4 +75,42 @@
     ]]>
     </string>
     <string name="invalid_value_see_tooltip">قيمة غير صالحة، راجع التلميح للمساعدة</string>
+    <string name="faq"><short>الأس</short></string>
+    <string name="faq_priority">
+    <![CDATA[
+        كل مرشح له قيمة أولوية، كما يوحي المصطلح، تحدد ترتيب فحص المكالمة. <br>
+        <br>
+        افتراضيًا، <br>
+        <br>
+        - <font color="#03DAC5">Whitelist rules</font> have priority <font color="#ea86ff">10</font> <br>
+        &ensp; <font color="#888888">مثال: جهات الاتصال (متساهلة)، RepeatedCall، RecentApps، إلخ </font><br>
+        <br>
+        - <font color="#fa7f71">Blacklist rules</font> have priority <font color="#ea86ff">0</font> <br>
+        &ensp; <font color="#888888">مثال: STIR، Database، إلخ </font> <br>
+        <br>
+        عندما يتم تمكينهما معًا، تتفوق قواعد القائمة البيضاء على قواعد القائمة السوداء لأن 10 > 0. <br>
+        <br>
+        بالنسبة لقواعد regex، يمكن ضبط الأولوية على أي رقم بين <font color="#ea86ff">-2147483648</font>
+          و <font color="#ea86ff">2147483647</font>. <br>
+        يمكن لقواعد مختلفة أن تكون لها نفس الأولوية طالما أنها من نفس النوع، ومع ذلك،
+          <font color="#ffa500"><b>لا تقم أبدًا بتعيين نفس الأولوية لكل من
+          whitelist و blacklist</b></font>، فقد يسبب ذلك سلوكًا عشوائيًا. <br>
+        <br>
+        الميزة <font color="#00BFFF">Meeting Mode</font> لها أولوية <font color="#ea86ff">20</font> افتراضيًا،
+          لأنها تهدف إلى حظر أي مكالمات أثناء الاجتماع. <br>
+        و <font color="#ea86ff">-1</font> ل<font color="#00BFFF">Instant Query</font>،
+          بحيث يتم فحصها فقط بعد أن تمر المكالمة بجميع الفلاتر المحلية. <br>
+        <br>
+        <b>حالات الاستخدام</b> لتخصيص الأولوية: <br>
+        <br>
+        - <font color="#888888">حظر رقم معين دائمًا، بغض النظر إذا تكرر</font> <br>
+         &ensp; قم بتعيين قاعدة بأولوية > 10 لتجاوز <font color="#00BFFF">Repeated Call</font>. <br>
+        <br>
+        - <font color="#888888">السماح برقم دائمًا</font> <br>
+         &ensp; قم بتعيينه إلى > 20 لتجاوز <font color="#00BFFF">Meeting Mode</font>. <br>
+        <br>
+        - <font color="#888888">اختبار قاعدة regex</font> <br>
+         &ensp; قم بتعيينه إلى 999 لتجاوز جميع الفلاتر الأخرى حتى لا تحتاج إلى تعطيلها مؤقتًا واحدةً تلو الأخرى.
+    ]]>
+    </string>
 </resources>

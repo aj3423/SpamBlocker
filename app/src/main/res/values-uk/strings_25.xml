@@ -74,4 +74,40 @@
     ]]>
     </string>
     <string name="invalid_value_see_tooltip">Недійсне значення, перегляньте підказку для допомоги</string>
+    <string name="faq"><short>ЧаП</short></string>
+    <string name="faq_priority">
+    <![CDATA[
+        Кожен фільтр має значення пріоритету, як випливає з назви, воно визначає порядок, у якому перевіряється виклик. <br>
+        <br>
+        За замовчуванням, <br>
+        <br>
+        - <font color="#03DAC5">Whitelist rules</font> have priority <font color="#ea86ff">10</font> <br>
+        &ensp; <font color="#888888">E.g. Contacts(Lenient), RepeatedCall, RecentApps, etc </font><br>
+        <br>
+        - <font color="#fa7f71">Blacklist rules</font> have priority <font color="#ea86ff">0</font> <br>
+        &ensp; <font color="#888888">E.g. STIR, Database, etc </font> <br>
+        <br>
+        Коли обидва увімкнені, правила білого списку переважають правила чорного списку, оскільки 10 > 0. <br>
+        <br>
+        Для правил regex пріоритет можна встановити будь‑яким числом між <font color="#ea86ff">-2147483648</font>
+          і <font color="#ea86ff">2147483647</font>. <br>
+        Різні правила можуть мати однаковий пріоритет, якщо вони одного типу, проте <font color="#ffa500"><b>ніколи не призначайте однаковий пріоритет і правилам білого, і чорного списку</b></font>, це може призвести до випадкової поведінки. <br>
+        <br>
+        Функція <font color="#00BFFF">Meeting Mode</font> має пріоритет <font color="#ea86ff">20</font> за замовчуванням,
+          тому що вона повинна блокувати всі виклики під час зустрічі. <br>
+        А <font color="#ea86ff">-1</font> для <font color="#00BFFF">Instant Query</font>,
+          тому вона перевіряється лише після того, як виклик пройшов усі локальні фільтри. <br>
+        <br>
+        <b>Випадки використання</b> налаштування пріоритету: <br>
+        <br>
+        - <font color="#888888">Always block a particular number, no matter if it repeats</font> <br>
+         &ensp; Встановіть правило з пріоритетом > 10, щоб переважити <font color="#00BFFF">Repeated Call</font>. <br>
+        <br>
+        - <font color="#888888">Always allow a number</font> <br>
+         &ensp; Встановіть його > 20, щоб переважити <font color="#00BFFF">Meeting Mode</font>. <br>
+        <br>
+        - <font color="#888888">Test a regex rule</font> <br>
+         &ensp; Встановіть його 999, щоб переважити всі інші фільтри, і не доведеться тимчасово вимикати їх по одному.
+    ]]>
+    </string>
 </resources>

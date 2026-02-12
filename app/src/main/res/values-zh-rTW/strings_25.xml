@@ -74,4 +74,39 @@
     ]]>
     </string>
     <string name="invalid_value_see_tooltip">無效的值，請參閱工具提示以獲得說明</string>
+    <string name="faq"><short>常見問答</short></string>
+    <string name="faq_priority">
+    <![CDATA[
+        每個過濾器都有其優先權值，顧名思義，它決定了檢查電話的順序。 <br>
+        <br>
+        預設情況下， <br>
+        <br>
+        - <font color="#03DAC5">白名單規則</font>的優先權為 <font color="#ea86ff">10</font> <br>
+        &ensp; <font color="#888888">例如：聯絡人（寬鬆）、重複來電、最近使用的應用程式等 </font><br>
+        <br>
+        - <font color="#fa7f71">黑名單規則</font>的優先權為 <font color="#ea86ff">0</font> <br>
+        &ensp; <font color="#888888">例如：STIR、資料庫等 </font> <br>
+        <br>
+        當兩者同時啟用時，白名單規則會覆蓋黑名單規則，因為 10 > 0。 <br>
+        <br>
+        對於正規表達式規則，優先權可設定為介於 <font color="#ea86ff">-2147483648</font>
+          和 <font color="#ea86ff">2147483647</font> 之間的任意數字。 <br>
+        不同的規則只要屬於相同類型即可擁有相同的優先權，然而，
+          <font color="#ffa500"><b>千萬不要將相同的優先權同時指派給白名單與黑名單規則</b></font>，否則可能導致不穩定的行為。 <br>
+        <br>
+        功能 <font color="#00BFFF">會議模式</font>的預設優先權為 <font color="#ea86ff">20</font>，因為它應在會議期間阻擋所有電話。 <br>
+        而 <font color="#ea86ff">-1</font> 為 <font color="#00BFFF">即時查詢</font>的優先權，讓它僅在電話通過所有本地過濾器後才被檢查。 <br>
+        <br>
+        <b>自訂優先權的使用情境</b>： <br>
+        <br>
+        - <font color="#888888">無論是否重複，都永遠阻擋特定號碼</font> <br>
+         &ensp; 設定優先權大於 10 的規則以覆蓋 <font color="#00BFFF">重複來電</font>。 <br>
+        <br>
+        - <font color="#888888">永遠允許某個號碼</font> <br>
+         &ensp; 將其優先權設為大於 20，以覆蓋 <font color="#00BFFF">會議模式</font>。 <br>
+        <br>
+        - <font color="#888888">測試正規表達式規則</font> <br>
+         &ensp; 將其設為 999，以覆蓋所有其他過濾器，免除逐一暫時停用的麻煩。
+    ]]>
+    </string>
 </resources>
