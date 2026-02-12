@@ -16,10 +16,12 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.def.Def
 import spam.blocker.ui.M
+import spam.blocker.ui.history.HistoryOptions.historyTimeColors
+import spam.blocker.ui.history.HistoryOptions.showHistoryIndicator
+import spam.blocker.ui.history.HistoryOptions.showHistoryTimeColor
 import spam.blocker.ui.widgets.BgLaunchApp
 import spam.blocker.ui.widgets.LazyScrollbar
 import spam.blocker.ui.widgets.LeftDeleteSwipeWrapper
@@ -46,15 +48,8 @@ fun HistoryList(
     }
 
     // Just a short alias, that G.xxx it too long
-    var showIndicator by remember(G.showHistoryIndicator.value) {
-        mutableStateOf(G.showHistoryIndicator.value)
-    }
-    val timeColors = remember {
-        if(spf.showTimeColor) {
-            spf.loadTimeColors()
-        } else {
-            null
-        }
+    var showIndicator by remember(showHistoryIndicator.value) {
+        mutableStateOf(showHistoryIndicator.value)
     }
 
     LazyScrollbar(state = lazyState) {
@@ -124,7 +119,7 @@ fun HistoryList(
                                 record = record,
                                 indicators = indicators.value,
                                 simCount = simCount,
-                                timeColors = timeColors,
+                                timeColors = if(showHistoryTimeColor.value) historyTimeColors else null,
                                 modifier = M.combinedClickable(
                                     onClick = {
                                         if (!record.read) {

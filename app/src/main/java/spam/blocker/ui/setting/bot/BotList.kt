@@ -61,7 +61,6 @@ import spam.blocker.util.PermissiveJson
 import spam.blocker.util.SaveableLogger
 import spam.blocker.util.TimeUtils.durationString
 import spam.blocker.util.TimeUtils.formatTime
-import spam.blocker.util.Util
 import spam.blocker.util.applyAnnotatedMarkups
 import spam.blocker.util.formatAnnotated
 import java.time.Duration

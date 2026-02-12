@@ -5,15 +5,14 @@ import android.content.SharedPreferences
 import androidx.compose.ui.graphics.toArgb
 import androidx.core.content.edit
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import spam.blocker.db.Notification.CHANNEL_HIGH
 import spam.blocker.db.Notification.CHANNEL_HIGH_MUTED
 import spam.blocker.db.Notification.CHANNEL_LOW
 import spam.blocker.def.Def
 import spam.blocker.def.Def.DEFAULT_HANG_UP_DELAY
+import spam.blocker.ui.theme.Emerald
 import spam.blocker.ui.theme.MayaBlue
-import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.util.TimeUtils.FreshnessColor
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
@@ -183,12 +182,16 @@ class spf { // for namespace only
         var timeColors by str(
             "time_colors",
             Json.encodeToString(listOf(
-                FreshnessColor("10min", SkyBlue.toArgb()),
+                FreshnessColor("10min", Emerald.toArgb()),
                 FreshnessColor("today", MayaBlue.toArgb()),
             ))
         )
         fun loadTimeColors() : List<FreshnessColor> {
-            return Json.decodeFromString<List<FreshnessColor>>(timeColors)
+            return try {
+                Json.decodeFromString<List<FreshnessColor>>(timeColors)
+            } catch (_: Exception) {
+                listOf()
+            }
         }
         fun saveTimeColors(list: List<FreshnessColor>) {
             val sorted = list.sorted()

@@ -27,7 +27,6 @@
     <string name="copy_number"><translate>Copia el número</translate></string>
     <string name="add_num_to_regex_rule"><translate>Afegeix el número a la regla regex</translate></string>
     <string name="add_num_to_db"><translate>Afegeix el número a la base de dades de correu brossa</translate></string>
-    <string name="mark_all_as_read"><translate>Marca-ho tot com a llegit</translate></string>
     <string name="remove_db_number"><translate>Suprimeix el número de la base de dades de correu brossa</translate></string>
 
     <string name="language"><translate>Idioma</translate></string>

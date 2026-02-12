@@ -27,7 +27,6 @@
     <string name="copy_number">複製號碼</string>
     <string name="add_num_to_regex_rule">將號碼新增至正規表示式規則</string>
     <string name="add_num_to_db">將號碼新增至騷擾號碼資料庫</string>
-    <string name="mark_all_as_read">全部標示為已讀</string>
     <string name="remove_db_number">從騷擾號碼資料庫刪除號碼</string>
 
     <string name="language">語言</string>

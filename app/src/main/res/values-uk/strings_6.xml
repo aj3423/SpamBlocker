@@ -67,5 +67,4 @@
     <string name="copy_number">Скопіювати номер</string>
     <string name="add_num_to_regex_rule">Додати номер до правила регулярного виразу</string>
     <string name="add_num_to_db">Додати номер до бази даних спаму</string>
-    <string name="mark_all_as_read">Позначити всі як прочитані</string>
 </resources>

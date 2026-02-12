@@ -15,7 +15,6 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.ui.widgets.TimeRangePicker
 import spam.blocker.util.TimeUtils.timeRangeStr
-import spam.blocker.util.Util
 import spam.blocker.util.spf
 
 @Composable

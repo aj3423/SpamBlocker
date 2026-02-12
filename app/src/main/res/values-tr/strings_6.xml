@@ -67,5 +67,4 @@
     <string name="copy_number">Numarayı kopyala</string>
     <string name="add_num_to_regex_rule">Numarayı regex kuralına ekle</string>
     <string name="add_num_to_db">Numarayı spam veritabanına ekle</string>
-    <string name="mark_all_as_read">Tümünü okundu olarak işaretle</string>
 </resources>

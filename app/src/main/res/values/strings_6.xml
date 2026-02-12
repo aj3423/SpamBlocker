@@ -25,7 +25,6 @@
     <string name="copy_number">Copy number</string>
     <string name="add_num_to_regex_rule">Add number to regex rule</string>
     <string name="add_num_to_db">Add number to spam database</string>
-    <string name="mark_all_as_read">Mark all as read</string>
     <string name="remove_db_number">Delete number from spam database</string>
 
     <string name="language">Language</string>

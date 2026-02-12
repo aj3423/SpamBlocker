@@ -9,7 +9,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import spam.blocker.Events
-import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.ContentRegexTable
 import spam.blocker.db.NumberRegexTable
@@ -34,6 +33,7 @@ import spam.blocker.service.checker.Checker
 import spam.blocker.service.checker.IChecker
 import spam.blocker.service.checker.toChecker
 import spam.blocker.ui.M
+import spam.blocker.ui.history.HistoryOptions.showHistoryIndicator
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowVCenterSpaced
@@ -101,8 +101,8 @@ fun IndicatorsWrapper(
     val ctx = LocalContext.current
 
     // Just a short alias, that G.xxx it too long
-    var showIndicator by remember(G.showHistoryIndicator.value) {
-        mutableStateOf(G.showHistoryIndicator.value)
+    var showIndicator by remember(showHistoryIndicator.value) {
+        mutableStateOf(showHistoryIndicator.value)
     }
 
     var onRefresh by remember { mutableStateOf(false) }

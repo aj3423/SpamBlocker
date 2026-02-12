@@ -27,7 +27,6 @@
     <string name="copy_number">نسخ الرقم</string>
     <string name="add_num_to_regex_rule">إضافة الرقم إلى قاعدة التعبير النمطي</string>
     <string name="add_num_to_db">إضافة الرقم إلى قاعدة بيانات الرسائل المزعجة</string>
-    <string name="mark_all_as_read">تعليم الكل كمقروء</string>
     <string name="remove_db_number">حذف الرقم من قاعدة بيانات الرسائل المزعجة</string>
 
     <string name="language">اللغة</string>

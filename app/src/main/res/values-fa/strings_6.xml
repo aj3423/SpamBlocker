@@ -67,5 +67,4 @@
     <string name="copy_number">کپی شماره</string>
     <string name="add_num_to_regex_rule">افزودن شماره به قانون Regex</string>
     <string name="add_num_to_db">افزودن شماره به پایگاه داده اسپم</string>
-    <string name="mark_all_as_read">علامت‌گذاری همه به عنوان خوانده شده</string>
 </resources>

@@ -7,7 +7,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -23,6 +22,13 @@ import spam.blocker.service.bot.Daily
 import spam.blocker.service.bot.MyWorkManager
 import spam.blocker.service.bot.PruneHistory
 import spam.blocker.service.bot.serialize
+import spam.blocker.ui.history.HistoryOptions.forceShowSIM
+import spam.blocker.ui.history.HistoryOptions.historyTimeColors
+import spam.blocker.ui.history.HistoryOptions.showHistoryBlocked
+import spam.blocker.ui.history.HistoryOptions.showHistoryGeoLocation
+import spam.blocker.ui.history.HistoryOptions.showHistoryIndicator
+import spam.blocker.ui.history.HistoryOptions.showHistoryPassed
+import spam.blocker.ui.history.HistoryOptions.showHistoryTimeColor
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
@@ -220,14 +226,7 @@ fun HistoryFabs(
     var ttl by remember { mutableIntStateOf(spf.ttl) }
     var logSmsContent by remember { mutableStateOf(spf.isLogSmsContentEnabled) }
     var rows by remember { mutableStateOf<Int?>(spf.initialSmsRowCount) }
-    var showTimeColor by remember { mutableStateOf(spf.showTimeColor) }
-    val timeColors = remember(showTimeColor) {
-        mutableStateListOf<FreshnessColor>().apply {
-            if (showTimeColor) {
-                addAll(spf.loadTimeColors())
-            }
-        }
-    }
+
 
     val settingPopupTrigger = remember { mutableStateOf(false) }
 
@@ -345,16 +344,16 @@ fun HistoryFabs(
                     Column {
                         // Allowed
                         LabeledRow(labelId = R.string.allowed_records) {
-                            SwitchBox(checked = G.showHistoryPassed.value, onCheckedChange = { isOn ->
+                            SwitchBox(checked = showHistoryPassed.value, onCheckedChange = { isOn ->
                                 spf.showPassed = isOn
-                                G.showHistoryPassed.value = isOn
+                                showHistoryPassed.value = isOn
                             })
                         }
                         // Blocked
                         LabeledRow(labelId = R.string.blocked_records) {
-                            SwitchBox(checked = G.showHistoryBlocked.value, onCheckedChange = { isOn ->
+                            SwitchBox(checked = showHistoryBlocked.value, onCheckedChange = { isOn ->
                                 spf.showBlocked = isOn
-                                G.showHistoryBlocked.value = isOn
+                                showHistoryBlocked.value = isOn
                             })
                         }
 
@@ -363,9 +362,9 @@ fun HistoryFabs(
                             labelId = R.string.rule_indicator,
                             helpTooltip = Str(R.string.help_show_rule_indicator),
                         ) {
-                            SwitchBox(checked = G.showHistoryIndicator.value, onCheckedChange = { isOn ->
+                            SwitchBox(checked = showHistoryIndicator.value, onCheckedChange = { isOn ->
                                 spf.showIndicator = isOn
-                                G.showHistoryIndicator.value = isOn
+                                showHistoryIndicator.value = isOn
                             })
                         }
 
@@ -381,7 +380,7 @@ fun HistoryFabs(
                                             when (idx) {
                                                 0 -> {
                                                     spf.forceShowSim = false
-                                                    G.forceShowSIM.value = false
+                                                    forceShowSIM.value = false
                                                 }
                                                 1 -> {
                                                     G.permissionChain.ask(
@@ -390,7 +389,7 @@ fun HistoryFabs(
                                                     ) { granted ->
                                                         if (granted) {
                                                             spf.forceShowSim = true
-                                                            G.forceShowSIM.value = true
+                                                            forceShowSIM.value = true
                                                         }
                                                     }
                                                 }
@@ -398,9 +397,9 @@ fun HistoryFabs(
                                         }
                                     }
                             }
-                            var selected by remember(G.forceShowSIM.value) {
+                            var selected by remember(forceShowSIM.value) {
                                 mutableIntStateOf(
-                                    if (G.forceShowSIM.value) 1 else 0
+                                    if (forceShowSIM.value) 1 else 0
                                 )
                             }
                             ComboBox(
@@ -413,29 +412,29 @@ fun HistoryFabs(
                         LabeledRow(
                             labelId = R.string.geo_location,
                         ) {
-                            SwitchBox(checked = G.showHistoryGeoLocation.value, onCheckedChange = { isOn ->
+                            SwitchBox(checked = showHistoryGeoLocation.value, onCheckedChange = { isOn ->
                                 spf.showGeoLocation = isOn
-                                G.showHistoryGeoLocation.value = isOn
+                                showHistoryGeoLocation.value = isOn
                             })
                         }
 
                         // Time Color
                         val timeColorTrigger = remember { mutableStateOf(false) }
-                        EditTimeColorsDialog(timeColorTrigger, timeColors)
+                        EditTimeColorsDialog(timeColorTrigger, historyTimeColors)
                         LabeledRow(
                             labelId = R.string.time_color,
                             helpTooltip = Str(R.string.help_time_color)
                         ) {
-                            if (showTimeColor) {
+                            if (showHistoryTimeColor.value) {
                                 ColorButton(
-                                    color = timeColors.lastOrNull()?.argb ?: C.textGrey.toArgb()
+                                    color = historyTimeColors.lastOrNull()?.argb ?: C.textGrey.toArgb()
                                 ) {
                                     timeColorTrigger.value = true
                                 }
                             }
-                            SwitchBox(checked = showTimeColor, onCheckedChange = { isOn ->
+                            SwitchBox(checked = showHistoryTimeColor.value, onCheckedChange = { isOn ->
                                 spf.showTimeColor = isOn
-                                showTimeColor = isOn
+                                showHistoryTimeColor.value = isOn
                             })
                         }
                     }

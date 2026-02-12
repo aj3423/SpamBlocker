@@ -9,9 +9,10 @@ import spam.blocker.db.HistoryRecord
 import spam.blocker.db.HistoryTable
 import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
+import spam.blocker.ui.history.HistoryOptions.showHistoryBlocked
+import spam.blocker.ui.history.HistoryOptions.showHistoryPassed
 import spam.blocker.util.Contacts
 import spam.blocker.util.regexMatches
-import spam.blocker.util.spf
 
 /*
   To simplify the code, this view model is used in GlobalVariables instead of viewModel<...>().
@@ -27,9 +28,8 @@ open class HistoryViewModel(
     fun reload(ctx: Context) {
         records.clear()
 
-        val spf = spf.HistoryOptions(ctx)
-        val showPassed = spf.showPassed
-        val showBlocked = spf.showBlocked
+        val showPassed = showHistoryPassed.value
+        val showBlocked = showHistoryBlocked.value
 
         // Fuzzy search
         // `aaa bbb` -> `.*aaa.*bbb.*`
@@ -50,6 +50,13 @@ open class HistoryViewModel(
 
             show && filtered
         })
+    }
+    fun markAllAsRead() {
+        val read = records.map { it.copy(read = true) }
+        records.apply {
+            clear()
+            addAll(read)
+        }
     }
 }
 

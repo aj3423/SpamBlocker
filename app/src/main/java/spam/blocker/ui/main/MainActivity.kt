@@ -29,6 +29,8 @@ import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.def.Def
 import spam.blocker.ui.M
+import spam.blocker.ui.history.HistoryOptions.showHistoryBlocked
+import spam.blocker.ui.history.HistoryOptions.showHistoryPassed
 import spam.blocker.ui.history.HistoryScreen
 import spam.blocker.ui.setting.SettingScreen
 import spam.blocker.ui.theme.AppTheme
@@ -47,6 +49,7 @@ import spam.blocker.ui.widgets.SwipeInfo
 import spam.blocker.ui.widgets.TabItem
 import spam.blocker.util.Launcher
 import spam.blocker.util.Util
+import spam.blocker.util.logi
 import spam.blocker.util.spf
 
 
@@ -78,8 +81,15 @@ class MainActivity : ComponentActivity() {
             onTabSelected = { spf.activeTab = it },
             onTabReSelected = {
                 when (it) {
-                    Def.CALL_TAB_ROUTE -> Launcher.launchCallApp(this)
-                    Def.SMS_TAB_ROUTE -> Launcher.launchSMSApp(this)
+                    Def.CALL_TAB_ROUTE -> {Launcher.launchCallApp(this)}
+                    Def.SMS_TAB_ROUTE -> {Launcher.launchSMSApp(this)}
+                }
+            },
+            onTabLeave = {
+                logi("leaving tab: $it")
+                when (it) {
+                    Def.CALL_TAB_ROUTE -> G.callVM.markAllAsRead()
+                    Def.SMS_TAB_ROUTE -> G.smsVM.markAllAsRead()
                 }
             },
             tabItems = listOf(
@@ -146,7 +156,7 @@ class MainActivity : ComponentActivity() {
         val ctx = LocalContext.current
 
         // Load all records to show unread badge in the bottom bar.
-        LaunchedEffect(G.showHistoryPassed.value, G.showHistoryBlocked.value) {
+        LaunchedEffect(showHistoryPassed.value, showHistoryBlocked.value) {
             G.callVM.reload(ctx)
             G.smsVM.reload(ctx)
         }

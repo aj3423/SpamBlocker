@@ -27,7 +27,6 @@
     <string name="copy_number">Salin nomor</string>
     <string name="add_num_to_regex_rule">Tambahkan nomor ke aturan regex</string>
     <string name="add_num_to_db">Tambahkan nomor ke basis data spam</string>
-    <string name="mark_all_as_read">Tandai semua telah dibaca</string>
     <string name="remove_db_number">Hapus nomor dari basis data spam</string>
 
     <string name="language">Bahasa</string>

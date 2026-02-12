@@ -67,5 +67,4 @@
     <string name="copy_number">Nummer kopieren</string>
     <string name="add_num_to_regex_rule">Nummer zu Regex-Regel hinzufügen</string>
     <string name="add_num_to_db">Nummer zur Spam-Datenbank hinzufügen</string>
-    <string name="mark_all_as_read">Alle als gelesen markieren</string>
 </resources>

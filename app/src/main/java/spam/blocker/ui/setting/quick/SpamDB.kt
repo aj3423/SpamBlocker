@@ -55,7 +55,6 @@ import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwipeInfo
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.TimeUtils.formatTime
-import spam.blocker.util.Util
 import spam.blocker.util.spf
 import java.text.NumberFormat
 

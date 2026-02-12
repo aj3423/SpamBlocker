@@ -27,7 +27,6 @@
     <string name="copy_number">העתק מספר</string>
     <string name="add_num_to_regex_rule">הוסף מספר לחוק Regex</string>
     <string name="add_num_to_db">הוסף מספר למאגר נתוני ספאם</string>
-    <string name="mark_all_as_read">סמן הכל כנקרא</string>
     <string name="remove_db_number">מחק מספר ממאגר נתוני ספאם</string>
 
     <string name="language">שפה</string>

@@ -63,7 +63,8 @@ data class TabItem(
 data class BottomBarViewModel(
     val tabItems: List<TabItem>,
     val onTabSelected: Lambda1<String>,
-    val onTabReSelected: Lambda1<String>
+    val onTabReSelected: Lambda1<String>,
+    val onTabLeave: Lambda1<String>,
 )
 
 @Composable
@@ -107,7 +108,6 @@ fun BottomBar(vm: BottomBarViewModel) {
                     shape = RoundedCornerShape(30.dp),
                     modifier = M.fillMaxHeight()
                 ) {
-
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center,
@@ -119,6 +119,8 @@ fun BottomBar(vm: BottomBarViewModel) {
                                 if (currentRoute == tab.route) { // reselect current tab
                                     vm.onTabReSelected(tab.route)
                                 } else { // select new tab
+                                    vm.onTabLeave(currentRoute)
+
                                     // hide the previous tab
                                     vm.tabItems.find { it.route == currentRoute }?.isSelected?.value =
                                         false

@@ -68,5 +68,4 @@
     <string name="copy_number">番号をコピー</string>
     <string name="add_num_to_regex_rule">正規表現ルールに番号を追加</string>
     <string name="add_num_to_db">迷惑電話データベースに番号を追加</string>
-    <string name="mark_all_as_read">すべて既読にする</string>
 </resources>

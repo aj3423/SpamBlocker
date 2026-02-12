@@ -26,8 +26,6 @@ import android.provider.Telephony
 import android.provider.Telephony.Sms
 import android.telephony.TelephonyManager
 import androidx.annotation.RequiresApi
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.core.content.edit
 import androidx.core.database.getStringOrNull
 import com.google.i18n.phonenumbers.PhoneNumberUtil
@@ -43,14 +41,6 @@ import spam.blocker.def.Def
 import spam.blocker.def.Def.ANDROID_13
 import java.io.File
 import java.io.IOException
-import java.text.SimpleDateFormat
-import java.time.Duration
-import java.time.Instant
-import java.time.LocalDateTime
-import java.time.Year
-import java.time.ZoneId
-import java.util.Calendar
-import java.util.Date
 import java.util.Locale
 import java.util.UUID
 import java.util.regex.Pattern

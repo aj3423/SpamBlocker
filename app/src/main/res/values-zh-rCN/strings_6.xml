@@ -67,5 +67,4 @@
     <string name="copy_number">复制号码</string>
     <string name="add_num_to_regex_rule">将号码添加到正则表达式规则</string>
     <string name="add_num_to_db">将号码添加到垃圾电话数据库</string>
-    <string name="mark_all_as_read">标记全部为已读</string>
 </resources>
