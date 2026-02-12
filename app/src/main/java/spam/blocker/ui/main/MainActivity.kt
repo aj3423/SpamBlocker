@@ -49,7 +49,6 @@ import spam.blocker.ui.widgets.SwipeInfo
 import spam.blocker.ui.widgets.TabItem
 import spam.blocker.util.Launcher
 import spam.blocker.util.Util
-import spam.blocker.util.logi
 import spam.blocker.util.spf
 
 
@@ -86,7 +85,6 @@ class MainActivity : ComponentActivity() {
                 }
             },
             onTabLeave = {
-                logi("leaving tab: $it")
                 when (it) {
                     Def.CALL_TAB_ROUTE -> G.callVM.markAllAsRead()
                     Def.SMS_TAB_ROUTE -> G.smsVM.markAllAsRead()

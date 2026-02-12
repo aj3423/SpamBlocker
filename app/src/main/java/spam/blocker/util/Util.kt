@@ -26,6 +26,11 @@ import android.provider.Telephony
 import android.provider.Telephony.Sms
 import android.telephony.TelephonyManager
 import androidx.annotation.RequiresApi
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.withStyle
 import androidx.core.content.edit
 import androidx.core.database.getStringOrNull
 import com.google.i18n.phonenumbers.PhoneNumberUtil
@@ -302,6 +307,135 @@ object Util {
 
         return opts
     }
+
+    /* This function matches any `.` followed by a quantifier, including:
+        .*  .+  .?  .{n}  .{n,}  .{n,m}  .*?  .+?  .??  .{n,m}?  .*+  .++  .?+
+       and wrap them with ()
+       e.g.:  `.*verif.*\\d+.*`  ->  `(.*)verif(.*)\\d+(.*)`
+    */
+    fun wrapDotQuantifiers(pattern: String): String {
+        val dotQuantifierRegex = Regex(
+            """\.(?:(?:[?*+]|(?:\+\?|\*\?|\?\?)|\{[0-9]+(?:,[0-9]*)?\})(?:[?+])?)"""
+        )
+
+        val result = StringBuilder()
+        var lastEnd = 0
+
+        dotQuantifierRegex.findAll(pattern).forEach { match ->
+            // Add the text before this match
+            result.append(pattern.substring(lastEnd, match.range.first))
+
+            // Add the wrapped version: (.*?) or (.+?) etc.
+            val captured = "(${match.value})"
+            result.append(captured)
+
+            lastEnd = match.range.last + 1
+        }
+
+        // Add the remaining part after last match
+        if (lastEnd < pattern.length) {
+            result.append(pattern.substring(lastEnd))
+        }
+
+        return result.toString()
+    }
+
+    /*
+        Highlight keywords in SMS that was matched by the regex
+     */
+    fun highlightMatchedText(
+        text: String,
+        regexStr: String,
+        regexFlags: Int,
+        highlightColor: Color,
+        textColor: Color
+    ): AnnotatedString {
+        val opts = flagsToRegexOptions(regexFlags)
+        val result = regexStr.toRegex(opts).matchEntire(text)
+
+        if (result == null) {
+            return buildAnnotatedString {
+                append(text)
+            }
+        }
+
+        if (result.groups.size > 1) {
+            return buildAnnotatedString {
+                append(text)   // ← put full text first
+
+                result.groups.forEachIndexed { index, group ->
+                    // Skip group 0 (whole match), highlight all real capturing groups
+                    if (index == 0 || group == null) return@forEachIndexed
+
+                    addStyle(
+                        style = SpanStyle(
+                            color = highlightColor,
+//                    fontWeight = FontWeight.Bold
+                        ),
+                        start = group.range.first,
+                        end = group.range.last + 1
+                    )
+                }
+            }
+
+        } else {
+            return highlightMatchedText_inversed(
+                text = text, regexStr = regexStr, regexFlags = regexFlags,
+                highlightColor = highlightColor, textColor = textColor)
+        }
+    }
+    /*
+      Instead of highlighting concrete text, this function highlights the wildcards.
+      For example:
+        SMS content: `your verification code is: 12345, ...`
+        RegEx: `.*verif.*?\d+.*`
+
+      It's impossible to highlight text "verif" and "12345" in Red and other parts in Grey,
+       so instead, use Red for the entire string and highlight the those  .*, .*?, .* in Grey.
+
+      Steps:
+        1. wrap all wildcards with ()
+          `.*verif.*?\d+.*`  ->   `(.*)verif(.*?)\d+(.*)`
+        2. match with the text
+        3. highlight all matched groups in Grey
+        4. highlight the rest in Red ("verif" and "12345")
+     */
+    private fun highlightMatchedText_inversed(
+        text: String,
+        regexStr: String,
+        regexFlags: Int,
+        highlightColor: Color,
+        textColor: Color,
+    ): AnnotatedString = buildAnnotatedString {
+        // use `highlightColor` for the full text
+        withStyle(style = SpanStyle(color = highlightColor)) {
+            append(text) // ← put full text first
+        }
+        val qRegexStr = wrapDotQuantifiers(regexStr)
+
+        val opts = flagsToRegexOptions(regexFlags)
+        val result = qRegexStr.toRegex(opts).matchEntire(text)
+
+        if (result == null) {
+            return@buildAnnotatedString
+        } else {
+            result.groups.forEachIndexed { index, group ->
+                logi("index: $index, group: $group")
+                // Skip group 0 (whole match), highlight all real capturing groups
+                if (index == 0 || group == null) return@forEachIndexed
+
+                addStyle(
+                    style = SpanStyle(
+                        color = textColor,
+//                    fontWeight = FontWeight.Bold
+                    ),
+                    start = group.range.first,
+                    end = group.range.last + 1
+                )
+            }
+        }
+    }
+
 
     private var cacheAppList: List<AppInfo>? = null
     private val lock_1 = Any()

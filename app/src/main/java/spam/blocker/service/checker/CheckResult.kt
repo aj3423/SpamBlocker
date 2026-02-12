@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -68,16 +69,18 @@ import spam.blocker.ui.widgets.GreyText
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
+import spam.blocker.util.A
 import spam.blocker.util.AppIcon
 import spam.blocker.util.Notification.ShowType
 import spam.blocker.util.Notification.missingChannel
 import spam.blocker.util.PermissiveJson
 import spam.blocker.util.PermissivePrettyJson
+import spam.blocker.util.Util.highlightMatchedText
 import spam.blocker.util.spf
 
 
 @Composable
-fun ExtraInfoWithDivider(text: String, maxLines: Int) {
+fun ExtraInfoWithDivider(text: AnnotatedString, maxLines: Int) {
     val C = LocalPalette.current
 
     if(text.isNotEmpty() && maxLines > 0) {
@@ -121,6 +124,7 @@ interface ICheckResult {
     @Composable
     fun ExpandedContent(forType: Int, record: HistoryRecord) {
         val ctx = LocalContext.current
+        val C = LocalPalette.current
 
         when(forType) {
             // "Report Number" button
@@ -147,10 +151,9 @@ interface ICheckResult {
             Def.ForSms -> {
                 val smsContent = record.extraInfo
                 if (smsContent != null) {
-                    val initialSmsRows = spf.HistoryOptions(ctx).initialSmsRowCount
                     ExtraInfoWithDivider(
-                        text = smsContent,
-                        maxLines = if (record.expanded) Int.MAX_VALUE else initialSmsRows,
+                        text = smsContent.A(),
+                        maxLines = if (record.expanded) Int.MAX_VALUE else spf.HistoryOptions(ctx).initialSmsRowCount,
                     )
                 }
             }
@@ -404,7 +407,7 @@ class ByApiQuery(
                 echo
             }
             ExtraInfoWithDivider(
-                text = prettyEcho,
+                text = prettyEcho.A(),
                 maxLines = 20,
             )
         }
@@ -457,6 +460,39 @@ class ByRegexRule(
 
         return ChannelTable.findByChannelId(ctx, rule.channel)
             ?: missingChannel()
+    }
+
+    // Highlight keywords that blocked the SMS (if it's blocked by content regex rule)
+    @Composable
+    override fun ExpandedContent(forType: Int, record: HistoryRecord) {
+        val ctx = LocalContext.current
+        val C = LocalPalette.current
+
+        when(forType) {
+            Def.ForSms -> {
+                val smsContent = record.extraInfo
+                val isBySmsRule = type in listOf(
+                    RESULT_ALLOWED_BY_CONTENT_RULE,
+                    RESULT_BLOCKED_BY_CONTENT_RULE
+                )
+
+                if (smsContent != null && isBySmsRule && rule != null) {
+                    ExtraInfoWithDivider(
+                        text = highlightMatchedText(
+                            text = smsContent,
+                            regexStr = rule.pattern,
+                            regexFlags = rule.patternFlags,
+                            highlightColor = if(rule.isBlacklist) C.block else C.pass,
+                            textColor = C.textGrey
+                        ),
+                        maxLines = if (record.expanded) Int.MAX_VALUE else spf.HistoryOptions(ctx).initialSmsRowCount,
+                    )
+                } else {
+                    super.ExpandedContent(forType, record)
+                }
+            }
+            else -> super.ExpandedContent(forType, record)
+        }
     }
 
     override fun resultReasonStr(ctx: Context): String {
