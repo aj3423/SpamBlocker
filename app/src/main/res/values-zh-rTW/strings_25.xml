@@ -60,4 +60,18 @@
         正在從資料庫匯出 %s 個號碼，這可能需要大約 %s 秒。
     ]]>
     </string>
+    <string name="time_color">時間顏色</string>
+    <string name="help_time_color">
+    <![CDATA[
+        根據記錄的最近程度突出顯示時間戳記，讓檢視最近的記錄更容易。
+    ]]>
+    </string>
+    <string name="help_time_color_values">
+    <![CDATA[
+        必須是 <font color="#00BFFF"><no_translate>today</no_translate></font> 或者是一個數字後接 <b><no_translate>min</no_translate></b>
+        （例如 <font color="#00BFFF"><no_translate>5min</no_translate></font>，
+        <font color="#00BFFF"><no_translate>120min</no_translate></font>）
+    ]]>
+    </string>
+    <string name="invalid_value_see_tooltip">無效的值，請參閱工具提示以獲得說明</string>
 </resources>

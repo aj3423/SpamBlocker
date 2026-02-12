@@ -75,14 +75,14 @@ fun ExportButton() {
         val ymd = LocalDate.now().format(formatter)
         val fn = "SpamBlocker.${ymd}${if (includeSpamDB) ".db" else ""}.gz"
 
-        progressTrigger.value = true
+        if (includeSpamDB) progressTrigger.value = true
 
         // prepare file content
         val curr = Configs()
         curr.load(ctx, includeSpamDB)
         val compressed = curr.toByteArray()
 
-        progressTrigger.value = false
+        if (includeSpamDB) progressTrigger.value = false
 
         fileWriter.popup(
             filename = fn,

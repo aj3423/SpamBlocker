@@ -60,4 +60,19 @@
         جارٍ تصدير %s أرقام من قاعدة البيانات، قد يستغرق ذلك حوالي %s ثانية.
     ]]>
     </string>
+    <string name="time_color">لون الوقت</string>
+    <string name="help_time_color">
+    <![CDATA[
+        قم بتمييز الطابع الزمني بناءً على مدى حداثة السجل، مما يسهل مراجعة السجلات الأخيرة.
+    ]]>
+    </string>
+    <string name="help_time_color_values">
+    <![CDATA[
+        يجب أن يكون إما <font color="#00BFFF"><no_translate>today</no_translate></font> أو
+        رقم متبوع بـ <b><no_translate>min</no_translate></b>
+        (مثال: <font color="#00BFFF"><no_translate>5min</no_translate></font>,
+        <font color="#00BFFF"><no_translate>120min</no_translate></font>)
+    ]]>
+    </string>
+    <string name="invalid_value_see_tooltip">قيمة غير صالحة، راجع التلميح للمساعدة</string>
 </resources>

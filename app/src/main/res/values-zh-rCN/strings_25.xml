@@ -59,4 +59,18 @@
         正在从数据库导出 %s 条号码，这可能需要大约 %s 秒。
     ]]>
     </string>
+    <string name="time_color">时间颜色</string>
+    <string name="help_time_color">
+    <![CDATA[
+        根据记录的最近程度突出显示时间戳，使审阅最近记录更容易。
+    ]]>
+    </string>
+    <string name="help_time_color_values">
+    <![CDATA[
+        必须是 <font color="#00BFFF"><no_translate>today</no_translate></font> 或者一个后跟 <b><no_translate>min</no_translate></b> 的数字
+        （例如 <font color="#00BFFF"><no_translate>5min</no_translate></font>，
+        <font color="#00BFFF"><no_translate>120min</no_translate></font>）
+    ]]>
+    </string>
+    <string name="invalid_value_see_tooltip">无效的值，请查看工具提示获取帮助</string>
 </resources>

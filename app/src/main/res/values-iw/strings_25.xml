@@ -60,4 +60,18 @@
         מייצא %s מספרים מהמסד נתונים, זה עשוי לקחת כ-%s שניות.
     ]]>
     </string>
+    <string name="time_color">צבע זמן</string>
+    <string name="help_time_color">
+    <![CDATA[
+        הדגש את חותמת הזמן בהתבסס על כמה הרישום עדכני, מה שמקל על סקירת רישומים עדכניים.
+    ]]>
+    </string>
+    <string name="help_time_color_values">
+    <![CDATA[
+        חייב להיות או <font color="#00BFFF"><no_translate>today</no_translate></font> או מספר שמלווה ב-<b><no_translate>min</no_translate></b>
+        (למשל <font color="#00BFFF"><no_translate>5min</no_translate></font>,
+        <font color="#00BFFF"><no_translate>120min</no_translate></font>)
+    ]]>
+    </string>
+    <string name="invalid_value_see_tooltip">ערך לא תקין, ראה את תיאור העזרה</string>
 </resources>

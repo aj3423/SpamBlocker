@@ -60,4 +60,19 @@
         Exporting %s numbers from the database, this might take around %s seconds.
     ]]>
     </string>
+    <string name="time_color">Time Color</string>
+    <string name="help_time_color">
+    <![CDATA[
+        Highlight the timestamp based on how recent the record is, making it easier to review recent records.
+    ]]>
+    </string>
+    <string name="help_time_color_values">
+    <![CDATA[
+        Must be either <font color="#00BFFF"><no_translate>today</no_translate></font> or
+        a number followed by <b><no_translate>min</no_translate></b>
+        (e.g. <font color="#00BFFF"><no_translate>5min</no_translate></font>,
+        <font color="#00BFFF"><no_translate>120min</no_translate></font>)
+    ]]>
+    </string>
+    <string name="invalid_value_see_tooltip">Invalid value, see the tooltip for help</string>
 </resources>

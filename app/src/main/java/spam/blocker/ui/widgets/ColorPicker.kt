@@ -58,10 +58,42 @@ import spam.blocker.ui.M
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.Teal200
+import spam.blocker.util.Lambda
 import spam.blocker.util.Lambda1
 import android.graphics.Color as AndroidColor
 
 private const val AREA_WIDTH = 260 // .dp
+
+@Composable
+fun ColorButton(
+    color: Int?,
+    defaultText: String? = null,
+    enabled: Boolean = true,
+    onClick: Lambda
+) {
+    StrokeButton(
+        label = if (color == null) defaultText else null,
+        color = LocalPalette.current.textGrey,
+        enabled = enabled,
+        contentPadding = PaddingValues(
+            horizontal = if (color == null) BUTTON_H_PADDING.dp else 0.dp, vertical = 0.dp
+        ),
+        icon = if (color == null) {
+            null
+        } else {
+            {
+                Box(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .width(60.dp)
+                        .clip(RoundedCornerShape(BUTTON_CORNER_RADIUS.dp))
+                        .background(Color(color))
+                )
+            }
+        },
+        onClick = onClick
+    )
+}
 
 @Composable
 fun ColorPickerButton(
@@ -81,31 +113,16 @@ fun ColorPickerButton(
         onSelect = onSelect,
     )
 
-    val C = LocalPalette.current
-    StrokeButton(
-        label = if (color == null) defaultText else null,
-        color = C.textGrey,
+    ColorButton(
+        color = color,
+        defaultText = defaultText,
         enabled = enabled,
-        contentPadding = PaddingValues(
-            horizontal = if (color == null) BUTTON_H_PADDING.dp else 0.dp, vertical = 0.dp
-        ),
-        icon = if (color == null) {
-            null
-        } else {
-            {
-                Box(
-                    modifier = Modifier
-                        .fillMaxHeight()
-                        .width(60.dp)
-                        .clip(RoundedCornerShape(BUTTON_CORNER_RADIUS.dp))
-                        .background(Color(color))
-                )
-            }
-        }
     ) {
         trigger.value = true
     }
 }
+
+
 @Composable
 fun ColorPickerPopup(
     trigger: MutableState<Boolean>,

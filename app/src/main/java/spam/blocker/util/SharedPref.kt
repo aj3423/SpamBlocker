@@ -2,13 +2,19 @@ package spam.blocker.util
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.compose.ui.graphics.toArgb
 import androidx.core.content.edit
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import spam.blocker.db.Notification.CHANNEL_HIGH
 import spam.blocker.db.Notification.CHANNEL_HIGH_MUTED
 import spam.blocker.db.Notification.CHANNEL_LOW
 import spam.blocker.def.Def
 import spam.blocker.def.Def.DEFAULT_HANG_UP_DELAY
+import spam.blocker.ui.theme.MayaBlue
+import spam.blocker.ui.theme.SkyBlue
+import spam.blocker.util.TimeUtils.FreshnessColor
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
@@ -172,6 +178,22 @@ class spf { // for namespace only
 
         var isLogSmsContentEnabled by bool("log_sms_content")
         var initialSmsRowCount by int("initial_sms_row_count", 1)
+
+        var showTimeColor by bool("show_time_color", false)
+        var timeColors by str(
+            "time_colors",
+            Json.encodeToString(listOf(
+                FreshnessColor("10min", SkyBlue.toArgb()),
+                FreshnessColor("today", MayaBlue.toArgb()),
+            ))
+        )
+        fun loadTimeColors() : List<FreshnessColor> {
+            return Json.decodeFromString<List<FreshnessColor>>(timeColors)
+        }
+        fun saveTimeColors(list: List<FreshnessColor>) {
+            val sorted = list.sorted()
+            timeColors = Json.encodeToString(sorted)
+        }
     }
 
     class Stir(ctx: Context) : SharedPref(ctx) {

@@ -60,4 +60,18 @@
         Експортування %s номерів з бази даних, це може зайняти приблизно %s секунд.
     ]]>
     </string>
+    <string name="time_color">Колір часу</string>
+    <string name="help_time_color">
+    <![CDATA[
+        Підсвітити мітку часу залежно від того, наскільки запис є недавнім, щоб полегшити перегляд останніх записів.
+    ]]>
+    </string>
+    <string name="help_time_color_values">
+    <![CDATA[
+        Повинно бути або <font color="#00BFFF"><no_translate>today</no_translate></font>, або число, за яким слідує <b><no_translate>min</no_translate></b>
+        (наприклад, <font color="#00BFFF"><no_translate>5min</no_translate></font>,
+        <font color="#00BFFF"><no_translate>120min</no_translate></font>)
+    ]]>
+    </string>
+    <string name="invalid_value_see_tooltip">Недійсне значення, перегляньте підказку для допомоги</string>
 </resources>

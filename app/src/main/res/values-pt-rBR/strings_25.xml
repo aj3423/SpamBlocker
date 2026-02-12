@@ -60,4 +60,19 @@
         Exportando %s números do banco de dados, isso pode levar cerca de %s segundos.
     ]]>
     </string>
+    <string name="time_color">Cor do Tempo</string>
+    <string name="help_time_color">
+    <![CDATA[
+        Realce o carimbo de horário com base na recência do registro, facilitando a revisão de registros recentes.
+    ]]>
+    </string>
+    <string name="help_time_color_values">
+    <![CDATA[
+        Deve ser <font color="#00BFFF"><no_translate>today</no_translate></font> ou
+        um número seguido de <b><no_translate>min</no_translate></b>
+        (ex.: <font color="#00BFFF"><no_translate>5min</no_translate></font>,
+        <font color="#00BFFF"><no_translate>120min</no_translate></font>)
+    ]]>
+    </string>
+    <string name="invalid_value_see_tooltip">Valor inválido, veja a dica de ferramenta para ajuda</string>
 </resources>

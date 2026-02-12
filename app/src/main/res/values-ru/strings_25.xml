@@ -60,4 +60,19 @@
         Экспорт %s номеров из базы данных, это может занять около %s секунд.
     ]]>
     </string>
+    <string name="time_color">Цвет времени</string>
+    <string name="help_time_color">
+    <![CDATA[
+        Подсвечивайте метку времени в зависимости от того, насколько свежая запись, чтобы было проще просматривать недавние записи.
+    ]]>
+    </string>
+    <string name="help_time_color_values">
+    <![CDATA[
+        Должно быть либо <font color="#00BFFF"><no_translate>today</no_translate></font> либо
+        число, за которым следует <b><no_translate>min</no_translate></b>
+        (например <font color="#00BFFF"><no_translate>5min</no_translate></font>,
+        <font color="#00BFFF"><no_translate>120min</no_translate></font>)
+    ]]>
+    </string>
+    <string name="invalid_value_see_tooltip">Недопустимое значение, см. подсказку для справки</string>
 </resources>

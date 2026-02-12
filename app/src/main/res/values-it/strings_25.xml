@@ -60,4 +60,19 @@
         Esportazione di %s numeri dal database, potrebbe richiedere circa %s secondi.
     ]]>
     </string>
+    <string name="time_color">Colore del tempo</string>
+    <string name="help_time_color">
+    <![CDATA[
+        Evidenzia il timestamp in base a quanto è recente il record, facilitando la revisione dei record recenti.
+    ]]>
+    </string>
+    <string name="help_time_color_values">
+    <![CDATA[
+        Deve essere o <font color="#00BFFF"><no_translate>today</no_translate></font> o
+        un numero seguito da <b><no_translate>min</no_translate></b>
+        (ad es. <font color="#00BFFF"><no_translate>5min</no_translate></font>,
+        <font color="#00BFFF"><no_translate>120min</no_translate></font>)
+    ]]>
+    </string>
+    <string name="invalid_value_see_tooltip">Valore non valido, vedere il tooltip per aiuto</string>
 </resources>

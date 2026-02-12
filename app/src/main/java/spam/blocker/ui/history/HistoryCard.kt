@@ -57,6 +57,9 @@ import spam.blocker.ui.widgets.SimCardIcon
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.Contacts
 import spam.blocker.util.JetpackTextLogger
+import spam.blocker.util.TimeUtils.FreshnessColor
+import spam.blocker.util.TimeUtils.formatTime
+import spam.blocker.util.TimeUtils.timeColor
 import spam.blocker.util.Util
 import spam.blocker.util.logi
 import androidx.compose.foundation.Image as ComposeImage
@@ -131,6 +134,7 @@ fun HistoryCard(
     record: HistoryRecord,
     indicators: Indicators,
     simCount: Int,
+    timeColors: List<FreshnessColor>?,
     modifier: Modifier,
 ) {
     val C = LocalPalette.current
@@ -231,10 +235,15 @@ fun HistoryCard(
                     }
 
                     // time
+                    val color = if (timeColors.isNullOrEmpty()) {
+                        C.textGrey
+                    } else {
+                        timeColor(record.time, timeColors) ?: C.textGrey
+                    }
                     Text(
-                        text = Util.formatTime(ctx, record.time),
+                        text = formatTime(ctx, record.time),
                         fontSize = 14.sp,
-                        color = C.textGrey,
+                        color = color,
                         textAlign = TextAlign.Center,
                     )
                 }

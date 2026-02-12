@@ -27,6 +27,7 @@ import spam.blocker.ui.widgets.SnackBar
 import spam.blocker.ui.widgets.SwipeInfo
 import spam.blocker.util.Launcher
 import spam.blocker.util.SimUtils
+import spam.blocker.util.spf
 
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -36,6 +37,7 @@ fun HistoryList(
     vm: HistoryViewModel,
 ) {
     val ctx = LocalContext.current
+    val spf = spf.HistoryOptions(ctx)
 
     val coroutineScope = rememberCoroutineScope()
 
@@ -46,6 +48,13 @@ fun HistoryList(
     // Just a short alias, that G.xxx it too long
     var showIndicator by remember(G.showHistoryIndicator.value) {
         mutableStateOf(G.showHistoryIndicator.value)
+    }
+    val timeColors = remember {
+        if(spf.showTimeColor) {
+            spf.loadTimeColors()
+        } else {
+            null
+        }
     }
 
     LazyScrollbar(state = lazyState) {
@@ -115,6 +124,7 @@ fun HistoryList(
                                 record = record,
                                 indicators = indicators.value,
                                 simCount = simCount,
+                                timeColors = timeColors,
                                 modifier = M.combinedClickable(
                                     onClick = {
                                         if (!record.read) {

@@ -2,14 +2,19 @@ package spam.blocker.ui.history
 
 import android.content.Context
 import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import spam.blocker.G
 import spam.blocker.R
@@ -22,9 +27,14 @@ import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.SkyBlue
+import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.AnimatedVisibleV
+import spam.blocker.ui.widgets.ColorButton
+import spam.blocker.ui.widgets.ColorPickerButton
 import spam.blocker.ui.widgets.ComboBox
+import spam.blocker.ui.widgets.DimGreyText
 import spam.blocker.ui.widgets.Fab
+import spam.blocker.ui.widgets.FlowRowSpaced
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.GreyText
@@ -35,10 +45,13 @@ import spam.blocker.ui.widgets.PopupSize
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Section
 import spam.blocker.ui.widgets.Str
+import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
+import spam.blocker.util.Lambda2
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionWrapper
+import spam.blocker.util.TimeUtils.FreshnessColor
 import spam.blocker.util.spf
 
 
@@ -63,6 +76,134 @@ fun reScheduleHistoryCleanup(ctx: Context) {
     }
 }
 
+@Composable
+fun EditSingleTimeColorsDialog(
+    trigger: MutableState<Boolean>,
+    initial: FreshnessColor,
+    onResult: Lambda2<FreshnessColor?, Boolean> // Pair<new item, isDelete, isAddOrEdit>
+) {
+    var dur by remember(initial) { mutableStateOf(initial.durationMin) }
+    var color by remember(initial) { mutableIntStateOf(initial.argb) }
+
+    PopupDialog(
+        trigger = trigger,
+        buttons = {
+            RowVCenterSpaced(8) {
+                StrokeButton(
+                    label = Str(R.string.delete),
+                    color = Salmon,
+                ) {
+                    trigger.value = false
+                    onResult(null, true)
+                }
+                StrokeButton(
+                    label = Str(R.string.ok),
+                    color = Teal200,
+                ) {
+                    trigger.value = false
+
+                    val r = FreshnessColor(dur, color)
+                    if (r.isValid())
+                        onResult(r, false)
+                    else
+                        onResult(null, false)
+                }
+            }
+        }
+    ) {
+        StrInputBox(
+            text = initial.durationMin,
+            label = { Text(Str(R.string.duration)) },
+            leadingIconId = R.drawable.ic_duration,
+            supportingTextStr = if(!FreshnessColor(dur).isValid()) Str(R.string.invalid_value_see_tooltip) else null,
+            placeholder = { DimGreyText("10min") },
+            helpTooltip = Str(R.string.help_time_color_values),
+            onValueChange = { dur = it }
+        )
+        LabeledRow(
+            labelId = R.string.time_color,
+        ) {
+            ColorPickerButton(
+                color = color,
+            ) {
+                it?.let { color = it }
+            }
+        }
+    }
+}
+
+@Composable
+fun EditTimeColorsDialog(
+    trigger: MutableState<Boolean>,
+    timeColors: SnapshotStateList<FreshnessColor>,
+) {
+    val ctx = LocalContext.current
+    val spf = spf.HistoryOptions(ctx)
+
+    var editing by remember { mutableStateOf(FreshnessColor()) }
+    var editingIndex by remember { mutableStateOf<Int?>(null) }
+
+    val editSingleTrigger = remember { mutableStateOf(false) }
+
+    EditSingleTimeColorsDialog(
+        trigger = editSingleTrigger,
+        initial = editing,
+        onResult = { newFc, isDeleted ->
+            if (isDeleted) {
+                editingIndex?.let {
+                    timeColors.removeAt(it)
+                }
+            } else {
+                newFc?.let {
+                    if (newFc.isValid()) {
+                        // 1. update the list
+                        if (editingIndex != null) { // override
+                            timeColors[editingIndex!!] = newFc
+                        } else { // add
+                            timeColors.add(newFc)
+                        }
+                        timeColors.sort()
+                    }
+                }
+            }
+
+            // save to spf
+            spf.saveTimeColors(timeColors)
+        }
+    )
+
+    PopupDialog(
+        trigger = trigger,
+        buttons = {
+            StrokeButton(
+                label = "+",
+                color = LocalPalette.current.textGrey,
+            ) {
+                editing = FreshnessColor()
+                editingIndex = null
+                editSingleTrigger.value = true
+            }
+        }
+    ) {
+
+        // time color buttons
+        FlowRowSpaced(
+            space = 20,
+            vSpace = 30,
+        ) {
+            timeColors.forEachIndexed { index, fc ->
+                StrokeButton(
+                    label = fc.durationMin,
+                    color = Color(fc.argb),
+                ) {
+                    editing = fc
+                    editingIndex = index
+                    editSingleTrigger.value = true
+                }
+            }
+        }
+    }
+}
 
 @Composable
 fun HistoryFabs(
@@ -76,11 +217,19 @@ fun HistoryFabs(
 
     var loggingEnabled by remember { mutableStateOf(spf.isLoggingEnabled) }
     var expiryEnabled by remember { mutableStateOf(spf.isExpiryEnabled) }
-    var ttl by rememberSaveable { mutableIntStateOf(spf.ttl) }
-    var logSmsContent by rememberSaveable { mutableStateOf(spf.isLogSmsContentEnabled) }
-    var rows by rememberSaveable { mutableStateOf<Int?>(spf.initialSmsRowCount) }
+    var ttl by remember { mutableIntStateOf(spf.ttl) }
+    var logSmsContent by remember { mutableStateOf(spf.isLogSmsContentEnabled) }
+    var rows by remember { mutableStateOf<Int?>(spf.initialSmsRowCount) }
+    var showTimeColor by remember { mutableStateOf(spf.showTimeColor) }
+    val timeColors = remember(showTimeColor) {
+        mutableStateListOf<FreshnessColor>().apply {
+            if (showTimeColor) {
+                addAll(spf.loadTimeColors())
+            }
+        }
+    }
 
-    val settingPopupTrigger = rememberSaveable { mutableStateOf(false) }
+    val settingPopupTrigger = remember { mutableStateOf(false) }
 
     PopupDialog(
         trigger = settingPopupTrigger,
@@ -267,6 +416,26 @@ fun HistoryFabs(
                             SwitchBox(checked = G.showHistoryGeoLocation.value, onCheckedChange = { isOn ->
                                 spf.showGeoLocation = isOn
                                 G.showHistoryGeoLocation.value = isOn
+                            })
+                        }
+
+                        // Time Color
+                        val timeColorTrigger = remember { mutableStateOf(false) }
+                        EditTimeColorsDialog(timeColorTrigger, timeColors)
+                        LabeledRow(
+                            labelId = R.string.time_color,
+                            helpTooltip = Str(R.string.help_time_color)
+                        ) {
+                            if (showTimeColor) {
+                                ColorButton(
+                                    color = timeColors.lastOrNull()?.argb ?: C.textGrey.toArgb()
+                                ) {
+                                    timeColorTrigger.value = true
+                                }
+                            }
+                            SwitchBox(checked = showTimeColor, onCheckedChange = { isOn ->
+                                spf.showTimeColor = isOn
+                                showTimeColor = isOn
                             })
                         }
                     }

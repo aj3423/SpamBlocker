@@ -60,4 +60,19 @@
         データベースから %s 件の番号をエクスポートしています。これには約 %s 秒かかる可能性があります。
     ]]>
     </string>
+    <string name="time_color">時間の色</string>
+    <string name="help_time_color">
+    <![CDATA[
+        レコードの新しさに基づいてタイムスタンプをハイライトし、最近のレコードの確認を容易にします。
+    ]]>
+    </string>
+    <string name="help_time_color_values">
+    <![CDATA[
+        次のいずれかである必要があります <font color="#00BFFF"><no_translate>today</no_translate></font> または
+        <b><no_translate>min</no_translate></b> が付いた数値
+        (例: <font color="#00BFFF"><no_translate>5min</no_translate></font>,
+        <font color="#00BFFF"><no_translate>120min</no_translate></font>)
+    ]]>
+    </string>
+    <string name="invalid_value_see_tooltip">無効な値です。ヘルプはツールチップをご覧ください</string>
 </resources>

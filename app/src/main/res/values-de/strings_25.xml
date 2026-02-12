@@ -60,4 +60,19 @@
         Exportiere %s Nummern aus der Datenbank, das kann etwa %s Sekunden dauern.
     ]]>
     </string>
+    <string name="time_color">Zeitfarbe</string>
+    <string name="help_time_color">
+    <![CDATA[
+        Markiere den Zeitstempel basierend darauf, wie aktuell der Eintrag ist, um die Überprüfung neuer Einträge zu erleichtern.
+    ]]>
+    </string>
+    <string name="help_time_color_values">
+    <![CDATA[
+        Muss entweder <font color="#00BFFF"><no_translate>today</no_translate></font> oder
+        eine Zahl gefolgt von <b><no_translate>min</no_translate></b>
+        (z. B. <font color="#00BFFF"><no_translate>5min</no_translate></font>,
+        <font color="#00BFFF"><no_translate>120min</no_translate></font>)
+    ]]>
+    </string>
+    <string name="invalid_value_see_tooltip">Ungültiger Wert, siehe den Tooltip für Hilfe</string>
 </resources>

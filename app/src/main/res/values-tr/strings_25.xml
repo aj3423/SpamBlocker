@@ -60,4 +60,19 @@
         Veritabanından %s numara dışa aktarılıyor, bu yaklaşık %s saniye sürebilir.
     ]]>
     </string>
+    <string name="time_color">Zaman Rengi</string>
+    <string name="help_time_color">
+    <![CDATA[
+        Kayıt ne kadar yeni ise zaman damgasını vurgulayın, böylece son kayıtları incelemek daha kolay olur.
+    ]]>
+    </string>
+    <string name="help_time_color_values">
+    <![CDATA[
+        Ya <font color="#00BFFF"><no_translate>today</no_translate></font> olmalı ya da
+        bir sayı <b><no_translate>min</no_translate></b> ile
+        (ör. <font color="#00BFFF"><no_translate>5min</no_translate></font>,
+        <font color="#00BFFF"><no_translate>120min</no_translate></font>)
+    ]]>
+    </string>
+    <string name="invalid_value_see_tooltip">Geçersiz değer, yardım için araç ipucuna bakın</string>
 </resources>

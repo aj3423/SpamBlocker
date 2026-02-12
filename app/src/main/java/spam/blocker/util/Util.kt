@@ -26,6 +26,8 @@ import android.provider.Telephony
 import android.provider.Telephony.Sms
 import android.telephony.TelephonyManager
 import androidx.annotation.RequiresApi
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.core.content.edit
 import androidx.core.database.getStringOrNull
 import com.google.i18n.phonenumbers.PhoneNumberUtil
@@ -157,102 +159,6 @@ object Util {
         }
     }
 
-    fun isSameYearAsNow(timestamp: Long): Boolean {
-        return Year.from(
-            Instant.ofEpochMilli(timestamp).atZone(ZoneId.systemDefault())
-        ) == Year.now()
-    }
-    fun fullDateString(timestamp: Long): String {
-        val format = if (isSameYearAsNow(timestamp)) {
-            "MM-dd\nHH:mm" // don't show the YEAR
-        } else {
-            "yyyy-MM-dd\nHH:mm"
-        }
-        val dateFormat = SimpleDateFormat(format, Locale.getDefault())
-        val date = Date(timestamp)
-        return dateFormat.format(date)
-    }
-
-    fun hourMin(timestamp: Long): String {
-        val dateFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
-        val date = Date(timestamp)
-        return dateFormat.format(date)
-    }
-
-    fun isToday(timestampMillis: Long): Boolean {
-        val now = LocalDateTime.now()
-
-        // Convert the timestamp in milliseconds to a LocalDateTime object
-        val then = LocalDateTime.ofInstant(
-            Instant.ofEpochMilli(timestampMillis), ZoneId.systemDefault()
-        )
-
-        return now.year == then.year && now.month == then.month && now.dayOfMonth == then.dayOfMonth
-    }
-
-    fun isYesterday(timestampMillis: Long): Boolean {
-        val now = LocalDateTime.now()
-
-        // Convert the timestamp in milliseconds to a LocalDateTime object
-        val then = LocalDateTime.ofInstant(
-            Instant.ofEpochMilli(timestampMillis),
-            ZoneId.systemDefault()
-        )
-
-        // Check if the difference between now and then is less than 24 hours
-        return now.minusDays(1) <= then && then < now
-    }
-
-    // For history record time
-    fun dayOfWeekString(ctx: Context, timestamp: Long): String {
-        val calendar = Calendar.getInstance()
-        calendar.timeInMillis = timestamp
-        val dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
-        val daysArray = ctx.resources.getStringArray(R.array.weekdays_abbrev).asList()
-        return daysArray[dayOfWeek - 1]
-    }
-
-    // For history record time.
-    fun isWithinAWeek(timestamp: Long): Boolean {
-        val currentTimeMillis = System.currentTimeMillis()
-        val difference = currentTimeMillis - timestamp
-        val millisecondsInWeek = 7 * 24 * 60 * 60 * 1000 // 7 days in milliseconds
-        return difference <= millisecondsInWeek
-    }
-
-    fun formatTime(ctx: Context, timestamp: Long): String {
-        return if (isToday(timestamp)) {
-            hourMin(timestamp)
-        } else if (isYesterday(timestamp)) {
-            ctx.getString(R.string.yesterday_abbrev) + "\n" + hourMin(timestamp)
-        } else if (isWithinAWeek(timestamp)) {
-            dayOfWeekString(ctx, timestamp) + "\n" + hourMin(timestamp)
-        } else {
-            fullDateString(timestamp)
-        }
-    }
-
-    val MIN: Long = 60
-    val HOUR: Long = 60 * MIN
-    val DAY: Long = 24 * HOUR
-
-    fun durationString(ctx: Context, dur: Duration): String {
-        val parts = mutableListOf<String>()
-
-        val days = dur.seconds / DAY
-        val hours = dur.seconds % DAY / HOUR
-        val minutes = dur.seconds % HOUR / MIN
-        val seconds = dur.seconds % MIN
-
-        if (days > 0) {
-            val nDays = ctx.resources.getQuantityString(R.plurals.days, days.toInt(), days)
-            parts += "$nDays "
-        }
-        parts += "%02d:%02d:%02d".format(hours, minutes, seconds)
-
-        return parts.joinToString(" ")
-    }
-
     fun isInternationalNumber(number: String): Boolean {
         return "^\\+\\d+$".toRegex().matches(number)
     }
@@ -341,46 +247,6 @@ object Util {
             str.substring(0, limit) + if (showEllipsis) "…" else ""
         else
             str
-    }
-
-    // for display on Util
-    @SuppressLint("DefaultLocale")
-    fun timeRangeStr(
-        ctx: Context,
-        stHour: Int, stMin: Int, etHour: Int, etMin: Int
-    ): String {
-        if (stHour == 0 && stMin == 0 && etHour == 0 && etMin == 0)
-            return ctx.getString(R.string.entire_day)
-        return String.format("%02d:%02d - %02d:%02d", stHour, stMin, etHour, etMin)
-    }
-
-    fun currentHourMin(): Pair<Int, Int> {
-        val calendar = Calendar.getInstance()
-        val currHour = calendar.get(Calendar.HOUR_OF_DAY)
-        val currMinute = calendar.get(Calendar.MINUTE)
-        return Pair(currHour, currMinute)
-    }
-
-    fun currentHourMinSec(): Triple<Int, Int, Int> {
-        val calendar = Calendar.getInstance()
-        val currHour = calendar.get(Calendar.HOUR_OF_DAY)
-        val currMinute = calendar.get(Calendar.MINUTE)
-        val currSecond = calendar.get(Calendar.SECOND)
-        return Triple(currHour, currMinute, currSecond)
-    }
-
-    fun isCurrentTimeWithinRange(stHour: Int, stMin: Int, etHour: Int, etMin: Int): Boolean {
-        val (currHour, currMinute) = currentHourMin()
-        val curr = currHour * 60 + currMinute
-
-        val rangeStart = stHour * 60 + stMin
-        val rangeEnd = etHour * 60 + etMin
-
-        return if (rangeStart <= rangeEnd) {
-            curr in rangeStart..rangeEnd
-        } else {
-            curr >= rangeStart || curr <= rangeEnd
-        }
     }
 
     private fun isRegexValid(regex: String): Boolean {

@@ -60,4 +60,18 @@
         Exportando %s números da base de datos, isto pode levar aproximadamente %s segundos.
     ]]>
     </string>
+    <string name="time_color">Cor do tempo</string>
+    <string name="help_time_color">
+    <![CDATA[
+        Resalta a marca de tempo segundo o recente do rexistro, facilitando a revisión dos rexistros recentes.
+    ]]>
+    </string>
+    <string name="help_time_color_values">
+    <![CDATA[
+        Debe ser <font color="#00BFFF"><no_translate>today</no_translate></font> ou un número seguido de <b><no_translate>min</no_translate></b>
+        (p.ex. <font color="#00BFFF"><no_translate>5min</no_translate></font>,
+        <font color="#00BFFF"><no_translate>120min</no_translate></font>)
+    ]]>
+    </string>
+    <string name="invalid_value_see_tooltip">Valor inválido, consulte a información emerxente para obter axuda</string>
 </resources>

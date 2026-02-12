@@ -49,6 +49,7 @@ import spam.blocker.util.Permission
 import spam.blocker.util.PhoneNumber
 import spam.blocker.util.SaveableLogger
 import spam.blocker.util.TimeSchedule
+import spam.blocker.util.TimeUtils.isCurrentTimeWithinRange
 import spam.blocker.util.Util
 import spam.blocker.util.Util.countHistorySMSByNumber
 import spam.blocker.util.Util.getAppsEvents
@@ -664,7 +665,7 @@ class Checker { // for namespace only
                 return ByOffTime()
             }
 
-            if (Util.isCurrentTimeWithinRange(stHour, stMin, etHour, etMin)) {
+            if (isCurrentTimeWithinRange(stHour, stMin, etHour, etMin)) {
                 logger?.success(
                     ctx.getString(R.string.allowed_by).format(ctx.getString(R.string.off_time))
                 )

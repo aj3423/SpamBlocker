@@ -59,6 +59,8 @@ import spam.blocker.util.A
 import spam.blocker.util.BotPrettyJson
 import spam.blocker.util.PermissiveJson
 import spam.blocker.util.SaveableLogger
+import spam.blocker.util.TimeUtils.durationString
+import spam.blocker.util.TimeUtils.formatTime
 import spam.blocker.util.Util
 import spam.blocker.util.applyAnnotatedMarkups
 import spam.blocker.util.formatAnnotated
@@ -90,7 +92,7 @@ fun CountdownMenuItem(bot: Bot) {
 
             "$stateStr\n$stopReasonStr"
         } else { // Show countdown if it's still running
-            Util.durationString(
+            durationString(
                 ctx,
                 Duration.between(Instant.now(), Instant.ofEpochMilli(nextTick))
             )
@@ -153,15 +155,19 @@ fun BotLog(
     PopupDialog(
         trigger = trigger,
     ) {
-        Text(
-            text = if (logTime == 0L) {
-                Str(R.string.not_executed_yet).A()
-            } else {
-                "${Str(R.string.executed_at)} ${Util.formatTime(ctx, logTime)}\n\n"
+        if (logTime == 0L) {
+            Text(
+                text = Str(R.string.not_executed_yet).A(),
+                color = LocalPalette.current.textGrey,
+            )
+        } else {
+            Text(
+                text = "${Str(R.string.executed_at)} ${formatTime(ctx, logTime)}\n\n"
                     .formatAnnotated(annotatedLog)
-            },
-            color = LocalPalette.current.textGrey,
-        )
+                ,
+                color = LocalPalette.current.textGrey,
+            )
+        }
     }
 }
 

@@ -14,6 +14,7 @@ import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.ui.widgets.TimeRangePicker
+import spam.blocker.util.TimeUtils.timeRangeStr
 import spam.blocker.util.Util
 import spam.blocker.util.spf
 
@@ -52,7 +53,7 @@ fun OffTime() {
         content = {
             if (isEnabled) {
                 GreyButton(
-                    label = Util.timeRangeStr(
+                    label = timeRangeStr(
                         ctx, sHour, sMin, eHour, eMin
                     ),
                 ) {

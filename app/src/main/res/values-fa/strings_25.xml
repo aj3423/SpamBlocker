@@ -60,4 +60,18 @@
         در حال استخراج %s شماره از پایگاه داده، این ممکن است حدود %s ثانیه طول بکشد.
     ]]>
     </string>
+    <string name="time_color">رنگ زمان</string>
+    <string name="help_time_color">
+    <![CDATA[
+        برچسب زمان را بر اساس تازگی رکورد برجسته کنید تا مرور رکوردهای اخیر آسان‌تر شود.
+    ]]>
+    </string>
+    <string name="help_time_color_values">
+    <![CDATA[
+        باید یا <font color="#00BFFF"><no_translate>today</no_translate></font> باشد یا عددی به دنبال <b><no_translate>min</no_translate></b>
+        (مثلاً <font color="#00BFFF"><no_translate>5min</no_translate></font>,
+        <font color="#00BFFF"><no_translate>120min</no_translate></font>)
+    ]]>
+    </string>
+    <string name="invalid_value_see_tooltip">مقدار نامعتبر، برای راهنمایی نکته ابزار را ببینید</string>
 </resources>

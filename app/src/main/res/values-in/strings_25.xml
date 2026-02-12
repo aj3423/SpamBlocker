@@ -60,4 +60,19 @@
         Mengekspor %s nomor dari basis data, ini mungkin memakan sekitar %s detik.
     ]]>
     </string>
+    <string name="time_color">Warna Waktu</string>
+    <string name="help_time_color">
+    <![CDATA[
+        Sorot stempel waktu berdasarkan seberapa baru catatan tersebut, memudahkan peninjauan catatan terbaru.
+    ]]>
+    </string>
+    <string name="help_time_color_values">
+    <![CDATA[
+        Harus berupa <font color="#00BFFF"><no_translate>today</no_translate></font> atau
+        angka yang diikuti <b><no_translate>min</no_translate></b>
+        (misalnya <font color="#00BFFF"><no_translate>5min</no_translate></font>,
+        <font color="#00BFFF"><no_translate>120min</no_translate></font>)
+    ]]>
+    </string>
+    <string name="invalid_value_see_tooltip">Nilai tidak valid, lihat tooltip untuk bantuan</string>
 </resources>

@@ -3,6 +3,7 @@ package spam.blocker.util
 import android.annotation.SuppressLint
 import android.content.Context
 import spam.blocker.R
+import spam.blocker.util.TimeUtils.timeRangeStr
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneId
@@ -37,7 +38,7 @@ class TimeSchedule {
         val labels = ctx.resources.getStringArray(R.array.weekdays_abbrev)
         val days = weekdays.sorted()
 
-        val rangeStr = Util.timeRangeStr(ctx, startHour, startMin, endHour, endMin)
+        val rangeStr = timeRangeStr(ctx, startHour, startMin, endHour, endMin)
         if (isEveryday()) // every day, ignore the day string
             return rangeStr
         if (days == listOf(2, 3, 4, 5, 6))

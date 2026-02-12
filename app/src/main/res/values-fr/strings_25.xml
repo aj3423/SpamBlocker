@@ -60,4 +60,19 @@
         Exportation de %s numéros depuis la base de données, cela peut prendre environ %s secondes.
     ]]>
     </string>
+    <string name="time_color">Couleur du temps</string>
+    <string name="help_time_color">
+    <![CDATA[
+        Mettez en surbrillance l\'horodatage en fonction de la récence de l\'enregistrement, ce qui facilite la révision des enregistrements récents.
+    ]]>
+    </string>
+    <string name="help_time_color_values">
+    <![CDATA[
+        Doit être soit <font color="#00BFFF"><no_translate>today</no_translate></font> ou
+        un nombre suivi de <b><no_translate>min</no_translate></b>
+        (par ex. <font color="#00BFFF"><no_translate>5min</no_translate></font>,
+        <font color="#00BFFF"><no_translate>120min</no_translate></font>)
+    ]]>
+    </string>
+    <string name="invalid_value_see_tooltip">Valeur invalide, voir l\'infobulle pour obtenir de l\'aide</string>
 </resources>

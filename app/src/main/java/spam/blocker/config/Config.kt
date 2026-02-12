@@ -90,6 +90,8 @@ class HistoryOptions : IConfig {
     var ttl = -1
     var logSmsContent = false
     var initialSmsRowCount = 1
+    var showTimeColor = false
+    var timeColors = ""
 
     override fun load(ctx: Context) {
         val spf = spf.HistoryOptions(ctx)
@@ -103,6 +105,8 @@ class HistoryOptions : IConfig {
         ttl = spf.ttl
         logSmsContent = spf.isLogSmsContentEnabled
         initialSmsRowCount = spf.initialSmsRowCount
+        showTimeColor = spf.showTimeColor
+        timeColors = spf.timeColors
     }
 
     override fun apply(ctx: Context) {
@@ -118,6 +122,8 @@ class HistoryOptions : IConfig {
             ttl = me.ttl
             isLogSmsContentEnabled = me.logSmsContent
             initialSmsRowCount = me.initialSmsRowCount
+            showTimeColor = me.showTimeColor
+            timeColors = me.timeColors
         }
     }
 }
