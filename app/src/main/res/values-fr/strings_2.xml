@@ -1,13 +1,15 @@
 <resources>
     <string name="contact">Contact</string>
     <string name="non_contact">Non Contact</string>
-    <string name="lenient">Souple</string>
-    <string name="strict">Strict</string>
     <string name="help_contacts">
         <![CDATA[
         Autoriser les numéros de contact. <br>
         <br>
-        Cela s\'applique aux appels et aux messages SMS.
+        Cela s\'applique aux appels et aux messages SMS. <br>
+        <br>
+        <font color="#ea86ff"><b>Priorité par défaut</b></font>: <br>
+        &ensp; Autoriser: <font color="#ea86ff"><b>10</b></font> <br>
+        &ensp; Bloquer: <font color="#ea86ff"><b>0</b></font>
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
@@ -17,23 +19,26 @@
     <string name="spoof">Appel falsifié</string>
     <string name="help_stir">
         <![CDATA[
-        Il bloque les appels qui échouent à l\'attestation STIR/SHAKEN, indiquant qu\'ils sont très probablement usurpés. <br>
+        Bloquez les appels qui échouent à l\'attestation STIR/SHAKEN car ils sont très probablement usurpés. <br>
         <br>
-        L\'attestation STIR/SHAKEN nécessite <b>Android 11+</b> et le <b>support de l\'opérateur</b>. <br>
+        Nécessite <b>Android 11+</b> et <b>prise en charge par l\'opérateur</b>. <br>
         <br>
-        <b>Options :</b> <br>
+        <b>Options :</b> <br>
         <br>
-        <font color="#00BFFF"><b>Inclure non vérifiés</b></font> <br>
-        Lorsqu\'activée, les appels non vérifiés seront également bloqués. Cela signifie que l\'appel ne peut pas être validé,
-          ou que l\'opérateur ou votre appareil ne prend pas en charge l\'attestation STIR. <br>
-        <b>Cas d\'utilisation</b> : <br>
-        &ensp; Pour un endroit qui applique l\'attestation STIR, un numéro non vérifié est susceptible d\'être un spam. <br>
+        <font color="#00BFFF"><b>Inclure les non vérifiés</b></font> <br>
+        Bloquez également les appels non vérifiés, ce qui signifie que l\'appel ne peut pas être validé, ou que l\'opérateur ou votre appareil ne prend pas en charge l\'attestation STIR. <br>
         <br>
-        <font color="#ea86ff"><b>Priorité par défaut : 0</b></font> <br>
-        Un <b>cas d\'utilisation</b> pour personnaliser les priorités :<br>
+        <b>Cas d\'utilisation</b> : <br>
+        <font color="#888888">
+          &ensp; Pour les pays qui imposent l\'attestation STIR, les numéros non vérifiés sont probablement du spam. <br>
+        </font>
         <br>
-        1. Toujours autoriser les contacts. <br>
-          &emsp; - Contacts(Souple), priorité <font color="#ea86ff">12</font> <br>
+        <font color="#ea86ff"><b>Priorité par défaut : 0</b></font> <br>
+        <br>
+        Un <b>cas d\'utilisation</b> pour personnaliser la priorité :<br>
+        <br>
+        1. Autoriser toujours les contacts. <br>
+          &emsp; - Contacts, priorité <font color="#ea86ff">12</font> <br>
         2. Bloquer les appels qui échouent STIR, même s\'ils se répètent. <br>
           &emsp; - STIR, priorité <font color="#ea86ff">11</font> <br>
         3. Autoriser les appels qui se répètent. <br>

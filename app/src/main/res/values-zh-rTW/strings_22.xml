@@ -4,7 +4,7 @@
     <![CDATA[
     如果號碼因以下原因被封鎖，將會自動回報： <br>
     <br>
-    &ensp; - <font color="#fa7f71">非聯絡人</font> (嚴格聯絡人模式) <br>
+    &ensp; - <font color="#fa7f71">非聯絡人</font>  <br>
     &ensp; - <font color="#fa7f71">STIR/SHAKEN</font> 驗證 <br>
     &ensp; - <font color="#fa7f71">號碼規則</font> <br>
     <br>

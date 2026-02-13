@@ -1,13 +1,15 @@
 <resources>
     <string name="contact">聯絡人</string>
     <string name="non_contact">非聯絡人</string>
-    <string name="lenient">寬鬆</string>
-    <string name="strict">嚴格</string>
     <string name="help_contacts">
         <![CDATA[
-        允許聯絡電話號碼。 <br>
+        允許聯絡人號碼。 <br>
         <br>
-        適用於通話與簡訊。
+        適用於通話與簡訊。 <br>
+        <br>
+        <font color="#ea86ff"><b>預設優先權</b></font>: <br>
+        &ensp; 允許: <font color="#ea86ff"><b>10</b></font> <br>
+        &ensp; 封鎖: <font color="#ea86ff"><b>0</b></font>
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
@@ -17,26 +19,30 @@
     <string name="spoof">偽造來電</string>
     <string name="help_stir">
         <![CDATA[
-        封鎖未獲 STIR/SHAKEN 認證的來電，這類來電很可能是冒名撥號。<br>
+        阻止未通過 STIR/SHAKEN 驗證的電話，因為它們很可能是偽造的。 <br>
         <br>
-        STIR/SHAKEN 認證需要 <b>Android 11+</b> 與 <b>電信業者支援</b>。<br>
+        需要 <b>Android 11+</b> 和 <b>運營商支援</b>。 <br>
         <br>
-        <b>選項：</b><br>
+        <b>選項：</b> <br>
         <br>
-        <font color="#00BFFF"><b>包含未驗證</b></font><br>
-        啟用後會封鎖未驗證的來電，代表該通話無法驗證，或是業者／裝置尚未支援 STIR 認證。<br>
-        <b>使用情境</b>：<br>
-        &ensp; 在嚴格要求 STIR 認證的地區，未驗證的來電通常是騷擾電話。<br>
+        <font color="#00BFFF"><b>包含未驗證的電話</b></font> <br>
+        同時阻止未驗證的電話，這表示電話無法驗證，或是運營商或您的裝置不支援 STIR 驗證。 <br>
         <br>
-        <font color="#ea86ff"><b>預設優先順序：0</b></font><br>
-        自訂優先順序範例：<br>
+        <b>使用情境</b>： <br>
+        <font color="#888888">
+          &ensp; 對於實施 STIR 驗證的國家，未驗證的號碼很可能是垃圾電話。 <br>
+        </font>
         <br>
-        1. 永遠允許聯絡人：<br>
-          &emsp; 聯絡人（寬鬆），優先順序 <font color="#ea86ff">12</font><br>
-        2. 即使重複來電，只要 STIR 失敗就封鎖：<br>
-          &emsp; STIR，優先順序 <font color="#ea86ff">11</font><br>
-        3. 允許重複來電：<br>
-          &emsp; 重複來電，優先順序 <font color="#ea86ff">10</font><br>
+        <font color="#ea86ff"><b>預設優先權：0</b></font> <br>
+        <br>
+        自訂優先權的<b>使用情境</b>：<br>
+        <br>
+        1. 永遠允許聯絡人。 <br>
+          &emsp; - 聯絡人，優先權 <font color="#ea86ff">12</font> <br>
+        2. 阻止未通過 STIR 的電話，即使它們重複撥打。 <br>
+          &emsp; - STIR，優先權 <font color="#ea86ff">11</font> <br>
+        3. 允許重複的電話。 <br>
+          &emsp; - 重複電話，優先權 <font color="#ea86ff">10</font> <br>
         ]]>
     </string>
     <string name="failed_to_import_from_csv">

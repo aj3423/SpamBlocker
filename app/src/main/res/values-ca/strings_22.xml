@@ -4,7 +4,7 @@
     <![CDATA[
     Denuncia automàticament el número si és bloquejat per les raons següents: <br>
     <br>
-    &ensp; - <font color="#fa7f71">No-contactes</font> (Mode estricte de contactes) <br>
+    &ensp; - <font color="#fa7f71">No-contactes</font> <br>
     &ensp; - <font color="#fa7f71">STIR/SHAKEN</font> certificació <br>
     &ensp; - <font color="#fa7f71">Regex de números</font> <br>
     <br>

@@ -130,7 +130,7 @@ fun Contacts() {
 
                                 RowVCenterSpaced(2) {
                                     ResIcon(
-                                        R.drawable.ic_unknown_call,
+                                        R.drawable.ic_question,
                                         modifier = M.size(16.dp),
                                         color = Salmon
                                     )

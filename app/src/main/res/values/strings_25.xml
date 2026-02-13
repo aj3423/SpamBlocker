@@ -83,7 +83,7 @@
         By Default, <br>
         <br>
         - <font color="#03DAC5">Whitelist rules</font> have priority <font color="#ea86ff">10</font> <br>
-        &ensp; <font color="#888888">E.g. Contacts(Lenient), RepeatedCall, RecentApps, etc </font><br>
+        &ensp; <font color="#888888">E.g. Contacts, RepeatedCall, RecentApps, etc </font><br>
         <br>
         - <font color="#fa7f71">Blacklist rules</font> have priority <font color="#ea86ff">0</font> <br>
         &ensp; <font color="#888888">E.g. STIR, Database, etc </font> <br>

@@ -88,7 +88,7 @@ fun BalloonQuestionMark(tooltip: String, size: Int = 18) {
     ) { tooltipState ->
         val scope = rememberCoroutineScope()
         ResImage(
-            R.drawable.ic_question, ColdGrey, M
+            R.drawable.ic_question_circle, ColdGrey, M
                 .width(size.dp)
                 .clickable { // put before `.padding` for larger clicking area
                     scope.launch {

@@ -4,7 +4,7 @@
     <![CDATA[
     Denunciar automaticamente o número se ele for bloqueado pelos seguintes motivos: <br>
     <br>
-    &ensp; - <font color="#fa7f71">Não-Contatos</font> (Modo Estrito de Contatos) <br>
+    &ensp; - <font color="#fa7f71">Não-Contatos</font>  <br>
     &ensp; - <font color="#fa7f71">Atestado STIR/SHAKEN</font> <br>
     &ensp; - <font color="#fa7f71">Regex do Número</font> <br>
     <br>

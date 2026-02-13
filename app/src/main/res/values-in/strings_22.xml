@@ -4,7 +4,7 @@
     <![CDATA[
     Lapor otomatis nomor jika diblokir karena alasan berikut: <br>
     <br>
-    &ensp; - <font color="#fa7f71">Bukan Kontak</font> (mode Ketat Kontak) <br>
+    &ensp; - <font color="#fa7f71">Bukan Kontak</font>  <br>
     &ensp; - <font color="#fa7f71">Atetasi STIR/SHAKEN</font> <br>
     &ensp; - <font color="#fa7f71">Regex Nomor</font> <br>
     <br>

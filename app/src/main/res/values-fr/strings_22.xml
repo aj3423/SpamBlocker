@@ -4,7 +4,7 @@
     <![CDATA[
     Rapporter automatiquement le numéro s\'il est bloqué pour les raisons suivantes : <br>
     <br>
-    &ensp; - <font color="#fa7f71">Hors contacts</font> (Mode strict des contacts) <br>
+    &ensp; - <font color="#fa7f71">Hors contacts</font>  <br>
     &ensp; - <font color="#fa7f71">Attestation STIR/SHAKEN</font> <br>
     &ensp; - <font color="#fa7f71">Regex de numéro</font> <br>
     <br>

@@ -36,7 +36,7 @@
         <br>
 		2. 次のものによってブロックされた電話番号は<font color="#03DAC5"><b>報告します</b></font>:<br>
         <br>
-        - <font color="#03DAC5">非連絡先</font>(厳格)<br>
+        - <font color="#03DAC5">非連絡先</font><br>
         - <font color="#03DAC5">STIR認証</font><br>
         - <font color="#03DAC5">電話番号正規表現</font><br>
         <br>

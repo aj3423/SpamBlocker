@@ -204,7 +204,7 @@ fun ComboBox(
     displayType: ComboDisplayType = ComboDisplayType.Label, // show label/icon/both
     color: Color = LocalPalette.current.textGrey,
     warning: (@Composable () -> Unit)? = {
-        ResIcon(R.drawable.ic_question, color = DarkOrange, modifier = M.size(18.dp))
+        ResIcon(R.drawable.ic_question_circle, color = DarkOrange, modifier = M.size(18.dp))
     },
     footerOffset: Pair<Int, Int> = Pair(-4, -4),
     footerSize: Int = 6,

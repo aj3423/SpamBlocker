@@ -4,7 +4,7 @@
     <![CDATA[
     Автоматично повідомляти про номер, якщо його заблоковано з таких причин: <br>
     <br>
-    &ensp; - <font color="#fa7f71">Неконтакти</font> (Суворий режим контактів) <br>
+    &ensp; - <font color="#fa7f71">Неконтакти</font>  <br>
     &ensp; - <font color="#fa7f71">STIR/SHAKEN</font> атестація <br>
     &ensp; - <font color="#fa7f71">Регулярний вираз номера</font> <br>
     <br>

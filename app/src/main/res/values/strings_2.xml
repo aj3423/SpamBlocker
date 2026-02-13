@@ -1,13 +1,15 @@
 <resources>
     <string name="contact">Contact</string>
     <string name="non_contact">Non Contact</string>
-    <string name="lenient">Lenient</string>
-    <string name="strict">Strict</string>
     <string name="help_contacts">
         <![CDATA[
         Allow contact numbers. <br>
         <br>
-        It applies to both calls and SMS messages.
+        It applies to both calls and SMS messages. <br>
+        <br>
+        <font color="#ea86ff"><b>Default Priority</b></font>: <br>
+        &ensp; Allow: <font color="#ea86ff"><b>10</b></font> <br>
+        &ensp; Block: <font color="#ea86ff"><b>0</b></font>
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
@@ -17,23 +19,27 @@
     <string name="spoof">Spoof Call</string>
     <string name="help_stir">
         <![CDATA[
-        It blocks calls that fail STIR/SHAKEN attestation, indicating they are very likely spoofed. <br>
+        Block calls that fail STIR/SHAKEN attestation as they are very likely spoofed. <br>
         <br>
-        STIR/SHAKEN attestation requires <b>Android 11+</b> and <b>carrier support</b>. <br>
+        Requires <b>Android 11+</b> and <b>carrier support</b>. <br>
         <br>
         <b>Options:</b> <br>
         <br>
         <font color="#00BFFF"><b>Include Unverified</b></font> <br>
-        When enabled, unverified calls will also be blocked. It means the call cannot be validated,
-          or the carrier or your device does not support STIR attestation. <br>
+        Also block unverified calls, which means the call cannot be validated, or,
+          the carrier or your device does not support STIR attestation. <br>
+        <br>
         <b>Use case</b>: <br>
-        &ensp; For a place that enforces STIR attestation, an unverified number is likely to be spam. <br>
+        <font color="#888888">
+          &ensp; For countries that enforce STIR attestation, unverified numbers are likely spam. <br>
+        </font>
         <br>
         <font color="#ea86ff"><b>Default Priority: 0</b></font> <br>
-        A <b>use case</b> for customizing the priorities:<br>
+        <br>
+        A <b>use case</b> for customizing the priority:<br>
         <br>
         1. Always allow contacts. <br>
-          &emsp; - Contacts(Lenient), priority <font color="#ea86ff">12</font> <br>
+          &emsp; - Contacts, priority <font color="#ea86ff">12</font> <br>
         2. Block calls fail STIR, even if they repeat. <br>
           &emsp; - STIR, priority <font color="#ea86ff">11</font> <br>
         3. Allow calls that repeat. <br>

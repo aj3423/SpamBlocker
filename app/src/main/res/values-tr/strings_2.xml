@@ -1,13 +1,15 @@
 <resources>
     <string name="contact">Kişiler</string>
     <string name="non_contact">Rehberde Olmayan</string>
-    <string name="lenient">Esnek</string>
-    <string name="strict">Katı</string>
     <string name="help_contacts">
         <![CDATA[
         Kişi numaralarına izin ver. <br>
         <br>
-        Hem aramalara hem de SMS mesajlarına uygulanır.
+        Hem aramalara hem de SMS mesajlarına uygulanır. <br>
+        <br>
+        <font color="#ea86ff"><b>Varsayılan Öncelik</b></font>: <br>
+        &ensp; İzin: <font color="#ea86ff"><b>10</b></font> <br>
+        &ensp; Engelle: <font color="#ea86ff"><b>0</b></font>
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
@@ -17,23 +19,27 @@
     <string name="spoof">Sahte Arama</string>
     <string name="help_stir">
         <![CDATA[
-        STIR/SHAKEN tasdikini geçemeyen aramaları engeller, bu da onların büyük olasılıkla sahte olduğunu gösterir. <br>
+        STIR/SHAKEN doğrulamasını geçemeyen aramaları engelleyin, çünkü bunlar büyük olasılıkla sahte. <br>
         <br>
-        STIR/SHAKEN tasdiki <b>Android 11+</b> ve <b>operatör desteği</b> gerektirir. <br>
+        Gerektirir <b>Android 11+</b> ve <b>operatör desteği</b>. <br>
         <br>
         <b>Seçenekler:</b> <br>
         <br>
         <font color="#00BFFF"><b>Doğrulanmamışları Dahil Et</b></font> <br>
-        Etkinleştirildiğinde, doğrulanmamış aramalar da engellenir. Bu, aramanın doğrulanamadığı veya operatörün ya da cihazınızın STIR tasdikini desteklemediği anlamına gelir. <br>
-        <b>Kullanım senaryosu</b>: <br>
-        &ensp; STIR tasdikini uygulayan bir yer için, doğrulanmamış bir numaranın spam (istenmeyen arama) olması muhtemeldir. <br>
+        Ayrıca doğrulanmamış aramaları engelleyin; bu, aramanın doğrulanamadığı veya operatörünüzün ya da cihazınızın STIR doğrulamasını desteklemediği anlamına gelir. <br>
+        <br>
+        <b>Kullanım Durumu</b>: <br>
+        <font color="#888888">
+          &ensp; STIR doğrulamasını zorunlu kılan ülkelerde, doğrulanmamış numaralar büyük olasılıkla spam\'dir. <br>
+        </font>
         <br>
         <font color="#ea86ff"><b>Varsayılan Öncelik: 0</b></font> <br>
-        Öncelikleri özelleştirmek için bir <b>kullanım senaryosu</b>:<br>
         <br>
-        1. Kişilere her zaman izin ver. <br>
-          &emsp; - Kişiler(Esnek), öncelik <font color="#ea86ff">12</font> <br>
-        2. STIR\'ı geçemeyen aramaları, tekrarlansalar bile engelle. <br>
+        Önceliği özelleştirmek için bir <b>kullanım durumu</b>:<br>
+        <br>
+        1. Kişileri her zaman izin ver. <br>
+          &emsp; - Kişiler, öncelik <font color="#ea86ff">12</font> <br>
+        2. STIR\'i geçemeyen aramaları engelle, tekrarlansa bile. <br>
           &emsp; - STIR, öncelik <font color="#ea86ff">11</font> <br>
         3. Tekrarlanan aramalara izin ver. <br>
           &emsp; - Tekrarlanan Arama, öncelik <font color="#ea86ff">10</font> <br>

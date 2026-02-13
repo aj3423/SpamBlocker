@@ -38,7 +38,7 @@
         <br>
 		2. <font color="#03DAC5"><b>Sí</b></font> que informarà dels números bloquejats per:<br>
         <br>
-        - <font color="#03DAC5">No-contacte</font>(Estricte)<br>
+        - <font color="#03DAC5">No-contacte</font><br>
         - <font color="#03DAC5">Atestació STIR</font><br>
         - <font color="#03DAC5">Regex de número</font><br>
         <br>

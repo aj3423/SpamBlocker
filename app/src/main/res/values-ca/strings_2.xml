@@ -1,13 +1,15 @@
 <resources>
     <string name="contact">Contacte</string>
     <string name="non_contact">No contacte</string>
-    <string name="lenient">Tolerant</string>
-    <string name="strict">Estricte</string>
     <string name="help_contacts">
         <![CDATA[
-        Permet números de contacte. <br>
+        Permetre números de contacte. <br>
         <br>
-        S\'aplica tant a trucades com a missatges SMS.
+        S\'aplica tant a trucades com a missatges SMS. <br>
+        <br>
+        <font color="#ea86ff"><b>Prioritat per defecte</b></font>: <br>
+        &ensp; Permetre: <font color="#ea86ff"><b>10</b></font> <br>
+        &ensp; Bloquejar: <font color="#ea86ff"><b>0</b></font>
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
@@ -17,26 +19,29 @@
     <string name="spoof">Trucada falsa</string>
     <string name="help_stir">
         <![CDATA[
-        Bloqueja les trucades que no superen l\'autenticació STIR/SHAKEN, indicant que és molt probable que siguin fraudulentes. <br>
+        Bloqueja trucades que fallin l\'attestació STIR/SHAKEN ja que són molt probablement falsificades. <br>
         <br>
-        L\'autenticació STIR/SHAKEN requereix <b>Android 11+</b> i <b>compatibilitat de l\'operador</b>. <br>
+        Requereix <b>Android 11+</b> i <b>suport de l\'operador</b>. <br>
         <br>
         <b>Opcions:</b> <br>
         <br>
-        <font color="#00BFFF"><b>Incloure no verificats</b></font> <br>
-        Quan està activat, les trucades no verificades també seran bloquejades. Significa que la trucada no es pot validar,
-          o que l\'operador o el teu dispositiu no és compatible amb l\'autenticació STIR. <br>
+        <font color="#00BFFF"><b>Incloure no verificades</b></font> <br>
+        Bloqueja també trucades no verificades, la qual cosa significa que la trucada no es pot validar, o que l\'operador o el teu dispositiu no admeten l\'attestació STIR. <br>
+        <br>
         <b>Cas d\'ús</b>: <br>
-        &ensp; En un lloc on es fa complir l\'autenticació STIR, és probable que un número no verificat sigui spam. <br>
+        <font color="#888888">
+          &ensp; Per a països que imposen l\'attestació STIR, els números no verificats són probablement spam. <br>
+        </font>
         <br>
         <font color="#ea86ff"><b>Prioritat per defecte: 0</b></font> <br>
-        Un <b>cas d\'ús</b> per personalitzar les prioritats:<br>
         <br>
-        1. Permetre sempre els contactes. <br>
-          &emsp; - Contactes (Lleuger), prioritat <font color="#ea86ff">12</font> <br>
-        2. Bloqueja les trucades que fallen STIR, encara que es repeteixin. <br>
+        Un cas d\'ús per personalitzar la prioritat:<br>
+        <br>
+        1. Permet sempre els contactes. <br>
+          &emsp; - Contactes, prioritat <font color="#ea86ff">12</font> <br>
+        2. Bloqueja trucades que fallin STIR, fins i tot si es repeteixen. <br>
           &emsp; - STIR, prioritat <font color="#ea86ff">11</font> <br>
-        3. Permetre les trucades que es repeteixen. <br>
+        3. Permet trucades que es repeteixen. <br>
           &emsp; - Trucada repetida, prioritat <font color="#ea86ff">10</font> <br>
         ]]>
     </string>

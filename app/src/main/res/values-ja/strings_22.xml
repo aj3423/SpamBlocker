@@ -4,7 +4,7 @@
     <![CDATA[
     電話番号が以下の理由でブロックされた場合、自動的に報告します。<br>
     <br>
-    &ensp; - <font color="#fa7f71">非連絡先</font> (連絡先厳格モード)<br>
+    &ensp; - <font color="#fa7f71">非連絡先</font> <br>
     &ensp; - <font color="#fa7f71">STIR/SHAKEN</font> 証明<br>
     &ensp; - <font color="#fa7f71">電話番号の正規表現</font><br>
     <br>

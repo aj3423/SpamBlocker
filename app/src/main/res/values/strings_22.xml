@@ -4,7 +4,7 @@
     <![CDATA[
     Auto report the number if it\'s blocked by following reasons: <br>
     <br>
-    &ensp; - <font color="#fa7f71">Non-Contacts</font> (Contacts Strict mode) <br>
+    &ensp; - <font color="#fa7f71">Non-Contacts</font>  <br>
     &ensp; - <font color="#fa7f71">STIR/SHAKEN</font> attestation <br>
     &ensp; - <font color="#fa7f71">Number Regex</font> <br>
     <br>

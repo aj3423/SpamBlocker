@@ -4,7 +4,7 @@
     <![CDATA[
     דווח אוטומטית על המספר אם הוא נחסם מהסיבות הבאות: <br>
     <br>
-    &ensp; - <font color="#fa7f71">לא אנשי קשר</font> (מצב קפדני של אנשי קשר) <br>
+    &ensp; - <font color="#fa7f71">לא אנשי קשר</font>  <br>
     &ensp; - <font color="#fa7f71">אימות STIR/SHAKEN</font> <br>
     &ensp; - <font color="#fa7f71">רג\'קס של מספרים</font> <br>
     <br>

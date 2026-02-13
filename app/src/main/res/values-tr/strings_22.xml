@@ -4,7 +4,7 @@
     <![CDATA[
     Numara aşağıdaki nedenlerle engellenirse otomatik olarak rapor edilsin: <br>
     <br>
-    &ensp; - <font color="#fa7f71">Kişi Olmayanlar</font> (Kişiler Katı modu) <br>
+    &ensp; - <font color="#fa7f71">Kişi Olmayanlar</font>  <br>
     &ensp; - <font color="#fa7f71">STIR/SHAKEN</font> onayı <br>
     &ensp; - <font color="#fa7f71">Numara Regex</font> <br>
     <br>

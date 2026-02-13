@@ -38,7 +38,7 @@
         <br>
 		2. הוא <font color="#03DAC5"><b>ידווח</b></font> על מספרי טלפון שנחסמו על ידי:<br>
         <br>
-        - <font color="#03DAC5">לא איש קשר</font>(קפדני)<br>
+        - <font color="#03DAC5">לא איש קשר</font><br>
         - <font color="#03DAC5">אישור STIR</font><br>
         - <font color="#03DAC5">Regex של מספר טלפון</font><br>
         <br>

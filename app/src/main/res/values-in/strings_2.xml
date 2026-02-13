@@ -1,13 +1,15 @@
 <resources>
     <string name="contact">Kontak</string>
     <string name="non_contact">Non Kontak</string>
-    <string name="lenient">Lunak</string>
-    <string name="strict">Ketat</string>
     <string name="help_contacts">
         <![CDATA[
         Izinkan nomor kontak. <br>
         <br>
-        Ini berlaku untuk panggilan dan pesan SMS.
+        Berlaku untuk panggilan dan pesan SMS. <br>
+        <br>
+        <font color="#ea86ff"><b>Prioritas Default</b></font>: <br>
+        &ensp; Izinkan: <font color="#ea86ff"><b>10</b></font> <br>
+        &ensp; Blokir: <font color="#ea86ff"><b>0</b></font>
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
@@ -17,23 +19,27 @@
     <string name="spoof">Panggilan palsu</string>
     <string name="help_stir">
         <![CDATA[
-        Ini memblokir panggilan yang gagal atestasi STIR/SHAKEN, menunjukkan bahwa mereka kemungkinan besar adalah penipuan. <br>
+        Blokir panggilan yang gagal attestasi STIR/SHAKEN karena sangat mungkin dipalsukan. <br>
         <br>
-        Atestasi STIR/SHAKEN memerlukan <b>Android 11+</b> dan <b>dukungan operator</b>. <br>
+        Memerlukan <b>Android 11+</b> dan <b>dukungan operator</b>. <br>
         <br>
-        <b>Pilihan:</b> <br>
+        <b>Opsi:</b> <br>
         <br>
-        <font color="#00BFFF"><b>Sertakan Tidak Terverifikasi</b></font> <br>
-        Saat diaktifkan, panggilan yang tidak terverifikasi juga akan diblokir. Ini berarti panggilan tidak dapat divalidasi,
-          atau operator atau perangkat Anda tidak mendukung atestasi STIR. <br>
+        <font color="#00BFFF"><b>Termasuk Tidak Terverifikasi</b></font> <br>
+        Juga blokir panggilan tidak terverifikasi, yang berarti panggilan tidak dapat divalidasi, atau,
+          operator atau perangkat Anda tidak mendukung attestasi STIR. <br>
+        <br>
         <b>Kasus penggunaan</b>: <br>
-        &ensp; Untuk tempat yang memberlakukan atestasi STIR, nomor telepon yang tidak terverifikasi kemungkinan besar adalah spam. <br>
+        <font color="#888888">
+          &ensp; Untuk negara yang menerapkan attestasi STIR, nomor tidak terverifikasi kemungkinan merupakan spam. <br>
+        </font>
         <br>
         <font color="#ea86ff"><b>Prioritas Default: 0</b></font> <br>
-        A <b>kasus penggunaan</b> untuk menyesuaikan prioritas:<br>
+        <br>
+        <b>Kasus penggunaan</b> untuk menyesuaikan prioritas:<br>
         <br>
         1. Selalu izinkan kontak. <br>
-          &emsp; - Kontak (Lunak), prioritas <font color="#ea86ff">12</font> <br>
+          &emsp; - Kontak, prioritas <font color="#ea86ff">12</font> <br>
         2. Blokir panggilan yang gagal STIR, bahkan jika mereka berulang. <br>
           &emsp; - STIR, prioritas <font color="#ea86ff">11</font> <br>
         3. Izinkan panggilan yang berulang. <br>

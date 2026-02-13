@@ -4,7 +4,7 @@
     <![CDATA[
     Segnala automaticamente il numero se bloccato per i seguenti motivi: <br>
     <br>
-    &ensp; - <font color="#fa7f71">Non-Contatti</font> (Modalità Contatti Rigorosa) <br>
+    &ensp; - <font color="#fa7f71">Non-Contatti</font>  <br>
     &ensp; - <font color="#fa7f71">STIR/SHAKEN</font> attestazione <br>
     &ensp; - <font color="#fa7f71">Espressione Regolare Numero</font> <br>
     <br>

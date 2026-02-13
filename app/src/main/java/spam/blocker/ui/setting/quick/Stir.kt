@@ -1,6 +1,7 @@
 package spam.blocker.ui.setting.quick
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -10,7 +11,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 import spam.blocker.R
+import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
@@ -18,6 +21,7 @@ import spam.blocker.ui.widgets.Button
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.PriorityBox
 import spam.blocker.ui.widgets.PriorityLabel
+import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.SwitchBox
@@ -63,18 +67,19 @@ fun Stir() {
                 Button(
                     content = {
                         RowVCenterSpaced(6) {
-                            Text(
-                                text = Str(
-                                    if (includeUnverified) R.string.strict else R.string.lenient
-                                ),
-                                color = Salmon,
-                            )
+                            ResIcon(R.drawable.ic_incognito, color = Salmon, modifier = M.size(16.dp))
+                            if (includeUnverified) {
+                                ResIcon(
+                                    R.drawable.ic_question,
+                                    modifier = M.size(16.dp),
+                                    color = Salmon
+                                )
+                            }
                             if (priority != 0) {
                                 PriorityLabel(priority)
                             }
                         }
                     },
-//                    borderColor = if (isStrict) Salmon else C.textGrey
                 ) {
                     popupTrigger.value = true
                 }

@@ -38,7 +38,7 @@
         <br>
 		2. 它<font color="#03DAC5"><b>將會</b></font>回報被以下方式封鎖的號碼：<br>
         <br>
-        - <font color="#03DAC5">非聯絡人</font>（嚴格）<br>
+        - <font color="#03DAC5">非聯絡人</font><br>
         - <font color="#03DAC5">STIR 認證</font><br>
         - <font color="#03DAC5">號碼正規表達式</font><br>
         <br>

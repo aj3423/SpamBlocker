@@ -4,7 +4,7 @@
     <![CDATA[
     Die Nummer automatisch melden, wenn sie aus folgenden Gründen blockiert wurde: <br>
     <br>
-    &ensp; - <font color="#fa7f71">Nicht-Kontakte</font> (Kontakte-Strict-Modus) <br>
+    &ensp; - <font color="#fa7f71">Nicht-Kontakte</font>  <br>
     &ensp; - <font color="#fa7f71">STIR/SHAKEN-Bescheinigung</font> <br>
     &ensp; - <font color="#fa7f71">Nummern-Regex</font> <br>
     <br>

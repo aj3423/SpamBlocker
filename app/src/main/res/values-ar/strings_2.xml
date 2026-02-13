@@ -1,13 +1,15 @@
 <resources>
     <string name="contact">جهات الاتصال</string>
     <string name="non_contact">جهات غير مسجلة</string>
-    <string name="lenient">متساهل</string>
-    <string name="strict">صارم</string>
     <string name="help_contacts">
         <![CDATA[
         السماح بأرقام جهات الاتصال. <br>
-        
-        ينطبق على كل من المكالمات ورسائل SMS.
+        <br>
+        ينطبق على كل من المكالمات ورسائل SMS. <br>
+        <br>
+        <font color="#ea86ff"><b>الأولوية الافتراضية</b></font>: <br>
+        &ensp; السماح: <font color="#ea86ff"><b>10</b></font> <br>
+        &ensp; الحظر: <font color="#ea86ff"><b>0</b></font>
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
@@ -17,27 +19,30 @@
     <string name="spoof">مكالمة احتيالية</string>
     <string name="help_stir">
         <![CDATA[
-        يحظر المكالمات التي تفشل في مصادقة STIR/SHAKEN، مما يشير إلى أنها مكالمات انتحال على الأرجح. <br>
+        احظر المكالمات التي تفشل في توثيق STIR/SHAKEN لأنها على الأرجح مزيفة. <br>
         <br>
-        تتطلب مصادقة STIR/SHAKEN <b>أندرويد 11+</b> و<b>دعم من شركة الاتصالات</b>. <br>
+        يتطلب <b>Android 11+</b> و<b>دعم المشغل</b>. <br>
         <br>
         <b>الخيارات:</b> <br>
         <br>
-        <font color="#00BFFF"><b>تضمين غير المتحقق منها</b></font> <br>
-        عند التمكين، سيتم أيضًا حظر المكالمات غير المتحقق منها. هذا يعني أنه لا يمكن التحقق من صحة المكالمة،
-          أو أن شركة الاتصالات أو جهازك لا يدعمان مصادقة STIR. <br>
+        <font color="#00BFFF"><b>تضمين غير موثوق</b></font> <br>
+        احظر أيضًا المكالمات غير الموثوقة، مما يعني أن المكالمة لا يمكن التحقق منها، أو أن المشغل أو جهازك لا يدعم توثيق STIR. <br>
+        <br>
         <b>حالة الاستخدام</b>: <br>
-        &ensp; في الأماكن التي تفرض مصادقة STIR، من المرجح أن يكون الرقم غير المتحقق منه مكالمة سبام. <br>
+        <font color="#888888">
+          &ensp; في البلدان التي تفرض توثيق STIR، الأرقام غير الموثوقة غالبًا ما تكون مكالمات غير مرغوب فيها. <br>
+        </font>
         <br>
         <font color="#ea86ff"><b>الأولوية الافتراضية: 0</b></font> <br>
-        <b>حالة استخدام</b> لتخصيص الأولويات:<br>
         <br>
-        1. السماح دائمًا لجهات الاتصال. <br>
-          &emsp; - جهات الاتصال (متساهل)، أولوية <font color="#ea86ff">12</font> <br>
-        2. حظر المكالمات التي تفشل في STIR، حتى لو تكررت. <br>
-          &emsp; - STIR، أولوية <font color="#ea86ff">11</font> <br>
+        حالة استخدام لتخصيص الأولوية:<br>
+        <br>
+        1. السماح دائمًا بجهات الاتصال. <br>
+          &emsp; - جهات الاتصال، الأولوية <font color="#ea86ff">12</font> <br>
+        2. حظر المكالمات التي تفشل STIR، حتى لو تكررت. <br>
+          &emsp; - STIR، الأولوية <font color="#ea86ff">11</font> <br>
         3. السماح بالمكالمات المتكررة. <br>
-          &emsp; - المكالمات المتكررة، أولوية <font color="#ea86ff">10</font> <br>
+          &emsp; - المكالمة المتكررة، الأولوية <font color="#ea86ff">10</font> <br>
         ]]>
     </string>
     <string name="failed_to_import_from_csv">

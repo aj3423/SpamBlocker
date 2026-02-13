@@ -100,7 +100,7 @@ fun ChannelIcons(
             }
         }
     } else {
-        ResIcon(R.drawable.ic_question, modifier = M.size(16.dp), color = DarkOrange)
+        ResIcon(R.drawable.ic_question_circle, modifier = M.size(16.dp), color = DarkOrange)
     }
 }
 

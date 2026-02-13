@@ -1,13 +1,15 @@
 <resources>
     <string name="contact">Kontakt</string>
     <string name="non_contact">Nicht Kontakt</string>
-    <string name="lenient">Nachsichtig</string>
-    <string name="strict">Streng</string>
     <string name="help_contacts">
         <![CDATA[
         Erlaube Kontaktnummern. <br>
         <br>
-        Es gilt sowohl für Anrufe als auch für SMS-Nachrichten.
+        Gilt für Anrufe und SMS-Nachrichten. <br>
+        <br>
+        <font color="#ea86ff"><b>Standardpriorität</b></font>: <br>
+        &ensp; Erlauben: <font color="#ea86ff"><b>10</b></font> <br>
+        &ensp; Blockieren: <font color="#ea86ff"><b>0</b></font>
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
@@ -17,25 +19,29 @@
     <string name="spoof">Spoof-Anruf</string>
     <string name="help_stir">
         <![CDATA[
-        Es blockiert Anrufe, die die STIR/SHAKEN-Bescheinigung nicht bestehen, was darauf hindeutet, dass sie sehr wahrscheinlich gefälscht sind. <br>
+        Blockieren Sie Anrufe, die die STIR/SHAKEN-Attestierung nicht bestehen, da sie sehr wahrscheinlich gefälscht sind. <br>
         <br>
-        Die STIR/SHAKEN-Bescheinigung erfordert <b>Android 11+</b> und <b>Carrier-Unterstützung</b>. <br>
+        Erfordert <b>Android 11+</b> und <b>Carrier-Unterstützung</b>. <br>
         <br>
         <b>Optionen:</b> <br>
         <br>
-        <font color="#00BFFF"><b>Unverifizierte einschließen</b></font> <br>
-        Wenn aktiviert, werden auch unverifizierte Anrufe blockiert. Das bedeutet, dass der Anruf nicht validiert werden kann oder dass der Netzbetreiber oder Ihr Gerät die STIR-Bescheinigung nicht unterstützt. <br>
+        <font color="#00BFFF"><b>Unverifizierte einbeziehen</b></font> <br>
+        Blockiert außerdem unverifizierte Anrufe, was bedeutet, dass der Anruf nicht validiert werden kann oder dass der Carrier bzw. Ihr Gerät die STIR-Attestierung nicht unterstützt. <br>
+        <br>
         <b>Anwendungsfall</b>: <br>
-        &ensp; Für einen Ort, der die STIR-Bescheinigung erzwingt, ist eine unverifizierte Nummer wahrscheinlich Spam. <br>
+        <font color="#888888">
+          &ensp; In Ländern, die die STIR-Attestierung durchsetzen, sind unverifizierte Nummern wahrscheinlich Spam. <br>
+        </font>
         <br>
         <font color="#ea86ff"><b>Standardpriorität: 0</b></font> <br>
-        Ein <b>Anwendungsfall</b> zum Anpassen der Prioritäten:<br>
+        <br>
+        Ein <b>Anwendungsfall</b> zur Anpassung der Priorität:<br>
         <br>
         1. Kontakte immer zulassen. <br>
-          &emsp; - Kontakte (Nachsichtig), Priorität <font color="#ea86ff">12</font> <br>
-        2. STIR fehlgeschlagene Anrufe blockieren, auch wenn sie sich wiederholen. <br>
+          &emsp; - Kontakte, Priorität <font color="#ea86ff">12</font> <br>
+        2. Anrufe blockieren, die STIR nicht bestehen, selbst wenn sie wiederholt werden. <br>
           &emsp; - STIR, Priorität <font color="#ea86ff">11</font> <br>
-        3. Sich wiederholende Anrufe zulassen. <br>
+        3. Wiederholte Anrufe zulassen. <br>
           &emsp; - Wiederholter Anruf, Priorität <font color="#ea86ff">10</font> <br>
         ]]>
     </string>

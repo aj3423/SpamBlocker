@@ -4,7 +4,7 @@
     <![CDATA[
     如果号码因以下原因被阻止，则自动举报该号码： <br>
     <br>
-    &ensp; - <font color="#fa7f71">非联系人</font> (联系人严格模式) <br>
+    &ensp; - <font color="#fa7f71">非联系人</font>  <br>
     &ensp; - <font color="#fa7f71">STIR/SHAKEN</font> 认证 <br>
     &ensp; - <font color="#fa7f71">号码正则表达式</font> <br>
     <br>

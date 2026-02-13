@@ -38,7 +38,7 @@
         <br>
 		2. <font color="#03DAC5"><b>Si</b></font> informará de números de teléfono bloqueados por:<br>
         <br>
-        - <font color="#03DAC5">Non-Contacto</font>(Estrito)<br>
+        - <font color="#03DAC5">Non-Contacto</font><br>
         - <font color="#03DAC5">Atestación STIR</font><br>
         - <font color="#03DAC5">Regex de número de teléfono</font><br>
         <br>

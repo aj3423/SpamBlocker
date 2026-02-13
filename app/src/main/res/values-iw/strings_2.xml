@@ -1,13 +1,15 @@
 <resources>
     <string name="contact">איש קשר</string>
     <string name="non_contact">שאינו איש קשר</string>
-    <string name="lenient">מתירני</string>
-    <string name="strict">קפדני</string>
     <string name="help_contacts">
         <![CDATA[
         אפשר מספרי אנשי קשר. <br>
         <br>
-        זה חל על שיחות והודעות SMS.
+        זה חל על שיחות והודעות SMS. <br>
+        <br>
+        <font color="#ea86ff"><b>עדיפות ברירת מחדל</b></font>: <br>
+        &ensp; אפשר: <font color="#ea86ff"><b>10</b></font> <br>
+        &ensp; חסום: <font color="#ea86ff"><b>0</b></font>
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
@@ -17,26 +19,29 @@
     <string name="spoof">שיחת התחזות</string>
     <string name="help_stir">
         <![CDATA[
-        חוסם שיחות שנכשלות באימות STIR/SHAKEN, מה שמעיד שהן ככל הנראה מזויפות. <br>
+        חסום שיחות שנכשלות באימות STIR/SHAKEN מכיוון שהן סביר מאוד מזוייפות. <br>
         <br>
-        אימות STIR/SHAKEN דורש <b>אנדרואיד 11+</b> ו<b>תמיכת ספקית</b>. <br>
+        דורש <b>Android 11+</b> ו<b>תמיכת ספק</b>. <br>
         <br>
         <b>אפשרויות:</b> <br>
         <br>
-        <font color="#00BFFF"><b>כלול לא מאומת</b></font> <br>
-        כאשר מופעל, שיחות לא מאומתות גם ייחסמו. המשמעות היא שהשיחה לא ניתנת לאימות,
-          או שהספקית או המכשיר שלך אינם תומכים באימות STIR. <br>
+        <font color="#00BFFF"><b>כלול לא מאומתים</b></font> <br>
+        חסום גם שיחות לא מאומתות, משמעותן שהשיחה לא ניתנת לאימות, או שהספק או המכשיר שלך אינם תומכים באימות STIR. <br>
+        <br>
         <b>מקרה שימוש</b>: <br>
-        &ensp; במקום שאוכף אימות STIR, מספר לא מאומת עשוי להיות ספאם. <br>
+        <font color="#888888">
+          &ensp; במדינות שמחייבות אימות STIR, מספרים לא מאומתים סביר שהם ספאם. <br>
+        </font>
         <br>
         <font color="#ea86ff"><b>עדיפות ברירת מחדל: 0</b></font> <br>
-        <b>מקרה שימוש</b> להתאמה אישית של העדיפויות:<br>
         <br>
-        1. אפשר תמיד אנשי קשר. <br>
-          &emsp; - אנשי קשר (מתירני), עדיפות <font color="#ea86ff">12</font> <br>
-        2. חסום שיחות שנכשלות ב-STIR, גם אם הן חוזרות על עצמן. <br>
+        <b>מקרה שימוש</b> להתאמת העדיפות:<br>
+        <br>
+        1. תמיד אפשר אנשי קשר. <br>
+          &emsp; - אנשי קשר, עדיפות <font color="#ea86ff">12</font> <br>
+        2. חסום שיחות שנכשלות ב‑STIR, גם אם הן חוזרות. <br>
           &emsp; - STIR, עדיפות <font color="#ea86ff">11</font> <br>
-        3. אפשר שיחות שחוזרות על עצמן. <br>
+        3. אפשר שיחות שחוזרות. <br>
           &emsp; - שיחה חוזרת, עדיפות <font color="#ea86ff">10</font> <br>
         ]]>
     </string>

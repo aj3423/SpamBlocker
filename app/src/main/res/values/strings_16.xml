@@ -38,7 +38,7 @@
         <br>
 		2. It <font color="#03DAC5"><b>will</b></font> report numbers blocked by:<br>
         <br>
-        - <font color="#03DAC5">Non-Contact</font>(Strict)<br>
+        - <font color="#03DAC5">Non-Contact</font><br>
         - <font color="#03DAC5">STIR Attestation</font><br>
         - <font color="#03DAC5">Number Regex</font><br>
         <br>

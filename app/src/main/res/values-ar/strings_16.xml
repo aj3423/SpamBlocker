@@ -38,7 +38,7 @@
         <br>
 		2. <font color="#03DAC5"><b>سيتم</b></font> الإبلاغ عن الأرقام المحظورة بواسطة:<br>
         <br>
-        - <font color="#03DAC5">غير جهة اتصال</font>(صارم)<br>
+        - <font color="#03DAC5">غير جهة اتصال</font><br>
         - <font color="#03DAC5">مصادقة STIR</font><br>
         - <font color="#03DAC5">تعبير عادي (Regex) للرقم</font><br>
         <br>

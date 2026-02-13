@@ -1,13 +1,15 @@
 <resources>
     <string name="contact">Contatos</string>
     <string name="non_contact">Não Contatos</string>
-    <string name="lenient">Flexível</string>
-    <string name="strict">Rigoroso</string>
     <string name="help_contacts">
         <![CDATA[
         Permitir números de contato. <br>
         <br>
-        Aplica-se tanto a chamadas quanto a mensagens SMS.
+        Aplica-se tanto a chamadas quanto a mensagens SMS. <br>
+        <br>
+        <font color="#ea86ff"><b>Prioridade padrão</b></font>: <br>
+        &ensp; Permitir: <font color="#ea86ff"><b>10</b></font> <br>
+        &ensp; Bloquear: <font color="#ea86ff"><b>0</b></font>
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
@@ -17,27 +19,30 @@
     <string name="spoof">Chamada Falsa</string>
     <string name="help_stir">
         <![CDATA[
-        Ele bloqueia chamadas que falham na atestação STIR/SHAKEN, indicando que são muito provavelmente fraudulentas. <br>
+        Bloqueie chamadas que falham na atestação STIR/SHAKEN, pois são muito provavelmente falsificadas. <br>
         <br>
-        A atestação STIR/SHAKEN requer <b>Android 11+</b> e <b>suporte da operadora</b>. <br>
+        Requer <b>Android 11+</b> e <b>suporte da operadora</b>. <br>
         <br>
         <b>Opções:</b> <br>
         <br>
         <font color="#00BFFF"><b>Incluir Não Verificados</b></font> <br>
-        Quando ativado, chamadas não verificadas também serão bloqueadas. Isso significa que a chamada não pode ser validada,
-          ou que a operadora ou seu dispositivo não suportam a atestação STIR. <br>
-        <b>Caso de uso</b>: <br>
-        &ensp; Para um local que exige atestação STIR, um número não verificado provavelmente é spam. <br>
+        Também bloqueie chamadas não verificadas, o que significa que a chamada não pode ser validada, ou que a operadora ou seu dispositivo não suportam a atestação STIR. <br>
         <br>
-        <font color="#ea86ff"><b>Prioridade Padrão: 0</b></font> <br>
-        Um <b>caso de uso</b> para personalizar as prioridades:<br>
+        <b>Caso de uso</b>: <br>
+        <font color="#888888">
+          &ensp; Para países que exigem atestação STIR, números não verificados são provavelmente spam. <br>
+        </font>
+        <br>
+        <font color="#ea86ff"><b>Prioridade padrão: 0</b></font> <br>
+        <br>
+        Um <b>caso de uso</b> para personalizar a prioridade:<br>
         <br>
         1. Sempre permitir contatos. <br>
-          &emsp; - Contatos(Permissivo), prioridade <font color="#ea86ff">12</font> <br>
+          &emsp; - Contatos, prioridade <font color="#ea86ff">12</font> <br>
         2. Bloquear chamadas que falham STIR, mesmo que se repitam. <br>
           &emsp; - STIR, prioridade <font color="#ea86ff">11</font> <br>
         3. Permitir chamadas que se repetem. <br>
-          &emsp; - Chamada Repetida, prioridade <font color="#ea86ff">10</font> <br>
+          &emsp; - Chamada repetida, prioridade <font color="#ea86ff">10</font> <br>
         ]]>
     </string>
     <string name="failed_to_import_from_csv">

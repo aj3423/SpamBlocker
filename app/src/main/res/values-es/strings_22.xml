@@ -4,7 +4,7 @@
     <![CDATA[
     Informar automáticamente el número si es bloqueado por las siguientes razones: <br>
     <br>
-    &ensp; - <font color="#fa7f71">No Contactos</font> (modo estricto de Contactos) <br>
+    &ensp; - <font color="#fa7f71">No Contactos</font>  <br>
     &ensp; - <font color="#fa7f71">STIR/SHAKEN</font> certificación <br>
     &ensp; - <font color="#fa7f71">Regex del Número</font> <br>
     <br>

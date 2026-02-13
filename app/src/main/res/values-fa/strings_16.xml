@@ -38,7 +38,7 @@
         <br>
 		2. شماره‌های مسدود شده توسط موارد زیر را <font color="#03DAC5"><b>گزارش خواهد کرد</b></font>:<br>
         <br>
-        - <font color="#03DAC5">غیر مخاطب</font>(سختگیرانه)<br>
+        - <font color="#03DAC5">غیر مخاطب</font><br>
         - <font color="#03DAC5">تایید STIR</font><br>
         - <font color="#03DAC5">Regex شماره</font><br>
         <br>

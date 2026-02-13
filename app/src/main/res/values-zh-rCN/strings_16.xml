@@ -38,7 +38,7 @@
         <br>
 		2. 它<font color="#03DAC5"><b>将</b></font>举报被以下方式阻止的电话号码：<br>
         <br>
-        - <font color="#03DAC5">非联系人</font>（严格）<br>
+        - <font color="#03DAC5">非联系人</font><br>
         - <font color="#03DAC5">STIR认证</font><br>
         - <font color="#03DAC5">电话号码正则表达式</font><br>
         <br>
