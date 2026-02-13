@@ -339,53 +339,30 @@ object Util {
 
         return result.toString()
     }
+    fun makeAllGroupsNonCapturing(pattern: String): String {
+        // Step 1: Replace already non-capturing groups with a placeholder
+        //         so we don't touch them later
+        val placeholder = "___NONCAP___"
+        var result = pattern.replace(Regex("""\(\?:"""), placeholder)
 
-    /*
-        Highlight keywords in SMS that was matched by the regex
-     */
-    fun highlightMatchedText(
-        text: String,
-        regexStr: String,
-        regexFlags: Int,
-        highlightColor: Color,
-        textColor: Color
-    ): AnnotatedString {
-        val opts = flagsToRegexOptions(regexFlags)
-        val result = regexStr.toRegex(opts).matchEntire(text)
-
-        if (result == null) {
-            return buildAnnotatedString {
-                append(text)
-            }
+        // Step 2: Replace normal capturing groups ( that are not preceded by ? )
+        // We match balanced parentheses to avoid breaking nested groups
+        result = result.replace(Regex("""\((?!\?)""")) { match ->
+            // We found '(' that does NOT start a special group (?...
+            "(?:"
         }
 
-        if (result.groups.size > 1) {
-            return buildAnnotatedString {
-                append(text)   // ← put full text first
+        // Step 3: Put back the original non-capturing groups
+        result = result.replace(placeholder, "(?:")
 
-                result.groups.forEachIndexed { index, group ->
-                    // Skip group 0 (whole match), highlight all real capturing groups
-                    if (index == 0 || group == null) return@forEachIndexed
-
-                    addStyle(
-                        style = SpanStyle(
-                            color = highlightColor,
-//                    fontWeight = FontWeight.Bold
-                        ),
-                        start = group.range.first,
-                        end = group.range.last + 1
-                    )
-                }
-            }
-
-        } else {
-            return highlightMatchedText_inversed(
-                text = text, regexStr = regexStr, regexFlags = regexFlags,
-                highlightColor = highlightColor, textColor = textColor)
-        }
+        return result
     }
+
+
     /*
-      Instead of highlighting concrete text, this function highlights the wildcards.
+      Highlight keywords in the SMS content that caused the block.
+
+      Instead of highlighting any concrete text, this function highlights the wildcards.
       For example:
         SMS content: `your verification code is: 12345, ...`
         RegEx: `.*verif.*?\d+.*`
@@ -400,18 +377,29 @@ object Util {
         3. highlight all matched groups in Grey
         4. highlight the rest in Red ("verif" and "12345")
      */
-    private fun highlightMatchedText_inversed(
+    fun highlightMatchedText(
         text: String,
         regexStr: String,
         regexFlags: Int,
-        highlightColor: Color,
+        wildcardColor: Color,
         textColor: Color,
     ): AnnotatedString = buildAnnotatedString {
         // use `highlightColor` for the full text
-        withStyle(style = SpanStyle(color = highlightColor)) {
+        withStyle(style = SpanStyle(color = wildcardColor)) {
             append(text) // ← put full text first
         }
-        val qRegexStr = wrapDotQuantifiers(regexStr)
+
+        val qRegexStr = regexStr
+            // Remove all existing capturing group, e.g.
+            //   `.*(verif|valid).*code.*?\d+.*`
+            // ->
+            //   `.*(?:verif|valid).*code.*?\d+.*`
+            .run(::makeAllGroupsNonCapturing)
+
+            // wrap dot quantifiers with brackets
+            // ->
+            //   `(.*)(?:verif|valid)(.*)code(.*?)\d+(.*`)
+            .run(::wrapDotQuantifiers)
 
         val opts = flagsToRegexOptions(regexFlags)
         val result = qRegexStr.toRegex(opts).matchEntire(text)

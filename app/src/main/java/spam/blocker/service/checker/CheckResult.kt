@@ -482,7 +482,7 @@ class ByRegexRule(
                             text = smsContent,
                             regexStr = rule.pattern,
                             regexFlags = rule.patternFlags,
-                            highlightColor = if(rule.isBlacklist) C.block else C.pass,
+                            wildcardColor = if(rule.isBlacklist) C.block else C.pass,
                             textColor = C.textGrey
                         ),
                         maxLines = if (record.expanded) Int.MAX_VALUE else spf.HistoryOptions(ctx).initialSmsRowCount,
