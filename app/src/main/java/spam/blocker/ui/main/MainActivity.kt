@@ -86,8 +86,8 @@ class MainActivity : ComponentActivity() {
             },
             onTabLeave = {
                 when (it) {
-                    Def.CALL_TAB_ROUTE -> G.callVM.markAllAsRead()
-                    Def.SMS_TAB_ROUTE -> G.smsVM.markAllAsRead()
+                    Def.CALL_TAB_ROUTE -> G.callVM.markAllAsRead(this)
+                    Def.SMS_TAB_ROUTE -> G.smsVM.markAllAsRead(this)
                 }
             },
             tabItems = listOf(

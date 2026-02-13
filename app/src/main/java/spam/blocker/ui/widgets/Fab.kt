@@ -34,7 +34,7 @@ fun Fab(
     bgColor: Color,
     iconColor: Color = Color.White,
     fabSize: Int = 40,
-    iconSize: Int = 30,
+    iconSize: Int = 36,
     onClick: Lambda,
 ) {
     // Animate show/hide

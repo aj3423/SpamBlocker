@@ -51,12 +51,13 @@ open class HistoryViewModel(
             show && filtered
         })
     }
-    fun markAllAsRead() {
+    fun markAllAsRead(ctx: Context) {
         val read = records.map { it.copy(read = true) }
         records.apply {
             clear()
             addAll(read)
         }
+        table.markAllAsRead(ctx)
     }
 }
 

@@ -108,7 +108,6 @@ fun SettingScreen() {
                     text = if (alsoShowText) ctx.getString(R.string.title_rule_testing) else null,
                     iconId = R.drawable.ic_tube,
                     iconColor = White,
-                    iconSize = 36,
                     bgColor = Teal200,
                     modifier = positionModifier
                 ) {
