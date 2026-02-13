@@ -1,25 +1,13 @@
 <resources>
-    <string name="contacts">Contact</string>
-    <string name="non_contacts">Non Contact</string>
+    <string name="contact">Contact</string>
+    <string name="non_contact">Non Contact</string>
     <string name="lenient">Souple</string>
     <string name="strict">Strict</string>
     <string name="help_contacts">
         <![CDATA[
         Autoriser les numéros de contact. <br>
         <br>
-        Cela s\'applique aux appels et aux messages. <br>
-        <br>
-        <b>Options :</b><br>
-        <br>
-        - <b>Souple</b> : <br>
-            &emsp; - Les numéros de contact seront autorisés. <br>
-            &emsp; - Les numéros non-contacts seront vérifiés par d\'autres règles. <br>
-            &emsp; <font color="#ea86ff"><b>Priorité par défaut : 10</b></font> <br>
-        <br>
-        - <font color="#fa7f71"><b>Strict</b></font> : <br>
-            &emsp; - Les numéros de contact seront autorisés. <br>
-            &emsp; - Les numéros non-contacts seront <font color="#fa7f71"><b>bloqués</b></font>. <br>
-            &emsp; <font color="#ea86ff"><b>Priorité par défaut : 0</b></font> <br>
+        Cela s\'applique aux appels et aux messages SMS.
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>

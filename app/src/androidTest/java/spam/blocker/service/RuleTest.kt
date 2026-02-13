@@ -19,6 +19,7 @@ import spam.blocker.util.Contacts
 import spam.blocker.util.Now
 import spam.blocker.util.Permission
 import spam.blocker.util.PhoneNumber
+import spam.blocker.util.TimeUtils
 import spam.blocker.util.Util
 import spam.blocker.util.Util.CallInfo
 import spam.blocker.util.spf
@@ -165,8 +166,8 @@ class RuleTest {
     @Test
     fun contact_lenient() {
         val spf = spf.Contact(ctx)
-        spf.setEnabled(true)
-        spf.setStrict(false)
+        spf.isEnabled = true
+        spf.isStrict = false
         mock_contact(Alice)
         add_number_rule(build_rule(".*", "", 1, true, Def.FLAG_FOR_CALL))
 
@@ -181,8 +182,8 @@ class RuleTest {
     @Test
     fun contact_strict() {
         val spf = spf.Contact(ctx)
-        spf.setEnabled(true)
-        spf.setStrict(true)
+        spf.isEnabled = true
+        spf.isStrict = true
         mock_contact(Alice)
 
         // contact: pass
@@ -199,9 +200,9 @@ class RuleTest {
     @Test
     fun repeated_call() {
         spf.RepeatedCall(ctx).apply {
-            setEnabled(true)
-            setTimes(4)
-            setInXMin(5)
+            isEnabled = true
+            times = 4
+            inXMin = 5
         }
 
         mockkObject(Permission)
@@ -248,8 +249,8 @@ class RuleTest {
     fun dialed() {
         val spf = spf.Dialed(ctx)
         val inXdays = 5
-        spf.setEnabled(true)
-        spf.setDays(inXdays)
+        spf.isEnabled = true
+        spf.days = inXdays
 
         mockkObject(Permission)
         mockkObject(Util)
@@ -307,7 +308,7 @@ class RuleTest {
     fun recent_app() {
         val spf = spf.RecentApps(ctx)
         val pkgs = listOf("my.pkg")
-        spf.setInXMin(5)
+        spf.inXMin = 5
         spf.setList(pkgs.map { RecentAppInfo(it) })
 
         // block all number
@@ -330,9 +331,9 @@ class RuleTest {
     }
 
     fun mock_current_hour_min(hour: Int, min: Int) {
-        mockkObject(Util)
+        mockkObject(TimeUtils)
 
-        every { Util.currentHourMin() } returns Pair(hour, min)
+        every { TimeUtils.currentHourMin() } returns Pair(hour, min)
     }
 
     @Test
@@ -346,12 +347,12 @@ class RuleTest {
 
         // set off-time to (1:00, 2:00)
         val spf = spf.OffTime(ctx).apply {
-            setEnabled(true)
+            isEnabled = true
 
-            setStartHour(1)
-            setStartMin(0)
-            setEndHour(2)
-            setEndMin(0)
+            startHour = 1
+            startMin = 0
+            endHour = 2
+            endMin = 0
         }
 
         // mock current time to 1:15
@@ -370,10 +371,10 @@ class RuleTest {
 
 
         // ---- test start > end (over night) ----
-        spf.setStartHour(21)
-        spf.setStartMin(0) // 21 PM -> 02 AM
-        spf.setEndHour(2)
-        spf.setEndMin(0)
+        spf.startHour = 21
+        spf.startMin = 0 // 21 PM -> 02 AM
+        spf.endHour = 2
+        spf.endMin = 0
         // mock current time to 22:00
         mock_current_hour_min(22, 0)
         // should pass

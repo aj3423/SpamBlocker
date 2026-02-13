@@ -1,25 +1,13 @@
 <resources>
-    <string name="contacts">مخاطبین</string>
-    <string name="non_contacts">ناشناس ها</string>
+    <string name="contact">مخاطبین</string>
+    <string name="non_contact">ناشناس ها</string>
     <string name="lenient">آسان‌گیر</string>
     <string name="strict">سخت‌گیر</string>
     <string name="help_contacts">
         <![CDATA[
-        اجازه دادن به شماره‌های مخاطبین. <br>
+        اجازه دادن به شماره‌های مخاطب. <br>
         <br>
-        این هم برای تماس‌ها و هم برای پیام‌ها اعمال می‌شود. <br>
-        <br>
-        <b>گزینه‌ها:</b><br>
-        <br>
-        - <b>آسان‌گیر</b>: <br>
-            &emsp; - شماره‌های مخاطبین مجاز خواهند بود. <br>
-            &emsp; - شماره‌های غیرمخاطب توسط قوانین دیگر بررسی می‌شوند. <br>
-            &emsp; <font color="#ea86ff"><b>اولویت پیش‌فرض: 10</b></font> <br>
-        <br>
-        - <font color="#fa7f71"><b>سخت‌گیر</b></font>: <br>
-            &emsp; - شماره‌های مخاطبین مجاز خواهند بود. <br>
-            &emsp; - شماره‌های غیرمخاطب <font color="#fa7f71"><b>مسدود</b></font> خواهند شد. <br>
-            &emsp; <font color="#ea86ff"><b>اولویت پیش‌فرض: 0</b></font> <br>
+        این برای هر دو تماس و پیامک اعمال می‌شود.
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>

@@ -1,25 +1,13 @@
 <resources>
-    <string name="contacts">Contactos</string>
-    <string name="non_contacts">Non contactos</string>
+    <string name="contact">Contactos</string>
+    <string name="non_contact">Non contactos</string>
     <string name="lenient">Permisivo</string>
     <string name="strict">Estrito</string>
     <string name="help_contacts">
         <![CDATA[
         Permitir números de contacto. <br>
         <br>
-        Aplícase tanto a chamadas como a mensaxes. <br>
-        <br>
-        <b>Opcións:</b><br>
-        <br>
-        - <b>Permisivo</b>: <br>
-            &emsp; - Os números de contacto serán permitidos. <br>
-            &emsp; - Os números que non son de contacto serán verificados por outras regras. <br>
-            &emsp; <font color="#ea86ff"><b>Prioridade predeterminada: 10</b></font> <br>
-        <br>
-        - <font color="#fa7f71"><b>Estrito</b></font>: <br>
-            &emsp; - Os números de contacto serán permitidos. <br>
-            &emsp; - Os números que non son de contacto serán <font color="#fa7f71"><b>bloqueados</b></font>. <br>
-            &emsp; <font color="#ea86ff"><b>Prioridade predeterminada: 0</b></font> <br>
+        Aplica tanto a chamadas como a mensaxes SMS.
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>

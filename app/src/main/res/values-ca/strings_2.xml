@@ -1,25 +1,13 @@
 <resources>
-    <string name="contacts">Contacte</string>
-    <string name="non_contacts">No contacte</string>
+    <string name="contact">Contacte</string>
+    <string name="non_contact">No contacte</string>
     <string name="lenient">Tolerant</string>
     <string name="strict">Estricte</string>
     <string name="help_contacts">
         <![CDATA[
-        Permetre números de contacte. <br>
+        Permet números de contacte. <br>
         <br>
-        S\'aplica tant a les trucades com als missatges. <br>
-        <br>
-        <b>Opcions:</b><br>
-        <br>
-        - <b>Tolerant</b>: <br>
-            &emsp; - Els números de contacte seran permesos. <br>
-            &emsp; - Els números que no són contactes seran comprovats per altres regles. <br>
-            &emsp; <font color="#ea86ff"><b>Prioritat per defecte: 10</b></font> <br>
-        <br>
-        - <font color="#fa7f71"><b>Estricte</b></font>: <br>
-            &emsp; - Els números de contacte seran permesos. <br>
-            &emsp; - Els números que no són contactes seran <font color="#fa7f71"><b>bloquejats</b></font>. <br>
-            &emsp; <font color="#ea86ff"><b>Prioritat per defecte: 0</b></font> <br>
+        S\'aplica tant a trucades com a missatges SMS.
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>

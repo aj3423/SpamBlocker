@@ -55,5 +55,6 @@
     <string name="label_content_rules">Peraturan Pesan</string>
     <string name="content_rule">Aturan Pesan</string>
     <string name="recent_apps"><short>Aplikasi Terbaru</short></string>
-    <string name="allow_contact">Kontak</string>
+    <string name="contacts">Kontak</string>
+    <string name="non_contacts">Bukan Kontak</string>
 </resources>

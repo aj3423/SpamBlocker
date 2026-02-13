@@ -53,8 +53,9 @@
     <string name="label_number_rules">Telefonnummern-Regeln</string>
     <string name="label_content_rules">Nachrichten-Regeln</string>
     <string name="recent_apps"><short>Letzte Apps</short></string>
-    <string name="allow_contact">Kontakte</string>
+    <string name="contacts">Kontakte</string>
 
     <string name="number_rule">Rufnummernregel</string>
     <string name="content_rule">Nachrichtenregel</string>
+    <string name="non_contacts">Nichtkontakte</string>
 </resources>

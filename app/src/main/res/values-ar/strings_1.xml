@@ -55,5 +55,6 @@
     <string name="label_content_rules">قواعد الرسائل</string>
     <string name="content_rule">قاعدة رسالة</string>
     <string name="recent_apps"><short>الأخيرة</short></string>
-    <string name="allow_contact">جهات الاتصال</string>
+    <string name="contacts">جهات الاتصال</string>
+    <string name="non_contacts">غير جهات الاتصال</string>
 </resources>

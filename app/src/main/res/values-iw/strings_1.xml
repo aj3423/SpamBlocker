@@ -55,5 +55,6 @@
     <string name="label_content_rules">כללי הודעות</string>
     <string name="content_rule">כלל הודעה</string>
     <string name="recent_apps">אחרונות</string>
-    <string name="allow_contact">אנשי קשר</string>
+    <string name="contacts">אנשי קשר</string>
+    <string name="non_contacts">לא-אנשי קשר</string>
 </resources>

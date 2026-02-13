@@ -53,8 +53,9 @@
     <string name="label_number_rules">番号ルール</string>
     <string name="label_content_rules">メッセージルール</string>
     <string name="recent_apps"><short>最近のアプリ</short></string>
-    <string name="allow_contact">連絡先</string>
+    <string name="contacts">連絡先</string>
 
     <string name="number_rule">電話番号ルール</string>
     <string name="content_rule">メッセージルール</string>
+    <string name="non_contacts">非連絡先</string>
 </resources>

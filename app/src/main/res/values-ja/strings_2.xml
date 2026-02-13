@@ -1,25 +1,13 @@
 <resources>
-    <string name="contacts">連絡先</string>
-    <string name="non_contacts">非連絡先</string>
+    <string name="contact">連絡先</string>
+    <string name="non_contact">非連絡先</string>
     <string name="lenient">寛容</string>
     <string name="strict">厳格</string>
     <string name="help_contacts">
         <![CDATA[
-        連絡先の電話番号を許可します。 <br>
+        連絡先の番号を許可します。 <br>
         <br>
-        通話とメッセージの両方に適用されます。 <br>
-        <br>
-        <b>オプション：</b><br>
-        <br>
-        - <b>寛容</b>： <br>
-            &emsp; - 連絡先の電話番号は許可されます。 <br>
-            &emsp; - 連絡先以外の電話番号は、他のルールによってチェックされます。 <br>
-            &emsp; <font color="#ea86ff"><b>デフォルトの優先度：10</b></font> <br>
-        <br>
-        - <font color="#fa7f71"><b>厳格</b></font>： <br>
-            &emsp; - 連絡先の電話番号は許可されます。 <br>
-            &emsp; - 連絡先以外の電話番号は<font color="#fa7f71"><b>ブロックされます</b></font>。 <br>
-            &emsp; <font color="#ea86ff"><b>デフォルトの優先度：0</b></font> <br>
+        電話とSMSメッセージの両方に適用されます。
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>

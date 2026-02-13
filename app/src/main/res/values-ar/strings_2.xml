@@ -1,25 +1,13 @@
 <resources>
-    <string name="contacts">جهات الاتصال</string>
-    <string name="non_contacts">جهات غير مسجلة</string>
+    <string name="contact">جهات الاتصال</string>
+    <string name="non_contact">جهات غير مسجلة</string>
     <string name="lenient">متساهل</string>
     <string name="strict">صارم</string>
     <string name="help_contacts">
         <![CDATA[
         السماح بأرقام جهات الاتصال. <br>
-        <br>
-        ينطبق ذلك على كل من المكالمات والرسائل. <br>
-        <br>
-        <b>الخيارات:</b><br>
-        <br>
-        - <b>متساهل</b>: <br>
-            &emsp; - سيتم السماح بأرقام جهات الاتصال. <br>
-            &emsp; - سيتم التحقق من الأرقام غير الموجودة في جهات الاتصال بواسطة قواعد أخرى. <br>
-            &emsp; <font color="#ea86ff"><b>الأولوية الافتراضية: 10</b></font> <br>
-        <br>
-        - <font color="#fa7f71"><b>صارم</b></font>: <br>
-            &emsp; - سيتم السماح بأرقام جهات الاتصال. <br>
-            &emsp; - سيتم <font color="#fa7f71"><b>حظر</b></font> الأرقام غير الموجودة في جهات الاتصال. <br>
-            &emsp; <font color="#ea86ff"><b>الأولوية الافتراضية: 0</b></font> <br>
+        
+        ينطبق على كل من المكالمات ورسائل SMS.
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>

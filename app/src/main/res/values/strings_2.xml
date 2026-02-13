@@ -1,25 +1,13 @@
 <resources>
-    <string name="contacts">Contact</string>
-    <string name="non_contacts">Non Contact</string>
+    <string name="contact">Contact</string>
+    <string name="non_contact">Non Contact</string>
     <string name="lenient">Lenient</string>
     <string name="strict">Strict</string>
     <string name="help_contacts">
         <![CDATA[
         Allow contact numbers. <br>
         <br>
-        It applies to both calls and messages. <br>
-        <br>
-        <b>Options:</b><br>
-        <br>
-        - <b>Lenient</b>: <br>
-            &emsp; - Contact numbers will be allowed. <br>
-            &emsp; - Non-contact numbers will be checked by other rules. <br>
-            &emsp; <font color="#ea86ff"><b>Default Priority: 10</b></font> <br>
-        <br>
-        - <font color="#fa7f71"><b>Strict</b></font>: <br>
-            &emsp; - Contact numbers will be allowed. <br>
-            &emsp; - Non-contact numbers will be <font color="#fa7f71"><b>blocked</b></font>. <br>
-            &emsp; <font color="#ea86ff"><b>Default Priority: 0</b></font> <br>
+        It applies to both calls and SMS messages.
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>

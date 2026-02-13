@@ -1,25 +1,13 @@
 <resources>
-    <string name="contacts">Kontak</string>
-    <string name="non_contacts">Non Kontak</string>
+    <string name="contact">Kontak</string>
+    <string name="non_contact">Non Kontak</string>
     <string name="lenient">Lunak</string>
     <string name="strict">Ketat</string>
     <string name="help_contacts">
         <![CDATA[
         Izinkan nomor kontak. <br>
         <br>
-        Ini berlaku untuk panggilan dan pesan. <br>
-        <br>
-        <b>Pilihan:</b><br>
-        <br>
-        - <b>Lunak</b>: <br>
-            &emsp; - Nomor kontak akan diizinkan. <br>
-            &emsp; - Nomor bukan kontak akan diperiksa oleh aturan lain. <br>
-            &emsp; <font color="#ea86ff"><b>Prioritas Baku: 10</b></font> <br>
-        <br>
-        - <font color="#fa7f71"><b>Ketat</b></font>: <br>
-            &emsp; - Nomor kontak akan diizinkan. <br>
-            &emsp; - Nomor bukan kontak akan <font color="#fa7f71"><b>diblokir</b></font>. <br>
-            &emsp; <font color="#ea86ff"><b>Prioritas Baku: 0</b></font> <br>
+        Ini berlaku untuk panggilan dan pesan SMS.
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>

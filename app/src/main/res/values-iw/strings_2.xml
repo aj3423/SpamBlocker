@@ -1,25 +1,13 @@
 <resources>
-    <string name="contacts">איש קשר</string>
-    <string name="non_contacts">שאינו איש קשר</string>
+    <string name="contact">איש קשר</string>
+    <string name="non_contact">שאינו איש קשר</string>
     <string name="lenient">מתירני</string>
     <string name="strict">קפדני</string>
     <string name="help_contacts">
         <![CDATA[
         אפשר מספרי אנשי קשר. <br>
         <br>
-        זה חל גם על שיחות וגם על הודעות. <br>
-        <br>
-        <b>אפשרויות:</b><br>
-        <br>
-        - <b>מתירני</b>: <br>
-            &emsp; - מספרי אנשי קשר יאושרו. <br>
-            &emsp; - מספרים שאינם אנשי קשר ייבדקו על ידי כללים אחרים. <br>
-            &emsp; <font color="#ea86ff"><b>קדימות ברירת מחדל: 10</b></font> <br>
-        <br>
-        - <font color="#fa7f71"><b>קפדני</b></font>: <br>
-            &emsp; - מספרי אנשי קשר יאושרו. <br>
-            &emsp; - מספרים שאינם אנשי קשר <font color="#fa7f71"><b>ייחסמו</b></font>. <br>
-            &emsp; <font color="#ea86ff"><b>קדימות ברירת מחדל: 0</b></font> <br>
+        זה חל על שיחות והודעות SMS.
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>

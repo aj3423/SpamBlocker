@@ -55,5 +55,6 @@
     <string name="label_content_rules">Правила для сообщений</string>
     <string name="content_rule">Правило сообщения</string>
     <string name="recent_apps"><short>Недавние приложения</short></string>
-    <string name="allow_contact">Контакты</string>
+    <string name="contacts">Контакты</string>
+    <string name="non_contacts">Не из контактов</string>
 </resources>

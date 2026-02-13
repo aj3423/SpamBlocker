@@ -55,5 +55,6 @@
     <string name="label_content_rules">Regles del missatge</string>
     <string name="content_rule">Regla de missatge</string>
     <string name="recent_apps"><short>Recents</short></string>
-    <string name="allow_contact">Contactes</string>
+    <string name="contacts">Contactes</string>
+    <string name="non_contacts">No contactes</string>
 </resources>

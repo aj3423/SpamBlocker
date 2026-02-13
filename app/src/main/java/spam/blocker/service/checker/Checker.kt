@@ -384,12 +384,7 @@ class Checker { // for namespace only
         private val ctx: Context,
     ) : IChecker {
         override fun priority(): Int {
-            val spf = spf.Contact(ctx)
-            val isStrict = spf.isStrict
-            return if (isStrict)
-                spf.strictPriority
-            else
-                spf.lenientPriority
+            return spf.Contact(ctx).lenientPriority
         }
 
         override fun check(cCtx: CheckContext): ICheckResult? {
@@ -404,7 +399,7 @@ class Checker { // for namespace only
             logger?.debug(
                 ctx.getString(R.string.checking_template)
                     .formatAnnotated(
-                        ctx.getString(R.string.contacts).A(SkyBlue),
+                        ctx.getString(R.string.contact).A(SkyBlue),
                         priority().toString().A(LightMagenta)
                     )
             )
@@ -413,24 +408,55 @@ class Checker { // for namespace only
             if (contact != null) { // is contact
                 logger?.success(
                     ctx.getString(R.string.allowed_by)
-                        .format(ctx.getString(R.string.contacts)) + ": ${contact.name}"
+                        .format(ctx.getString(R.string.contact)) + ": ${contact.name}"
                 )
                 return ByContact(Def.RESULT_ALLOWED_BY_CONTACT, contact.name)
-            } else { // not contact
-                if (spf.isStrict) {
-                    val ret = ByContact(RESULT_BLOCKED_BY_NON_CONTACT)
-                    logger?.error(
-                        ctx.getString(R.string.blocked_by).format(
-                            ret.resultReasonStr(ctx)
-                        )
-                    )
-                    return ret
-                }
             }
             return null
         }
     }
+    // The "Contacts" in quick settings.
+    // It checks whether the phone number is unknown(not from a contact).
+    private class NonContact(
+        private val ctx: Context,
+    ) : IChecker {
+        override fun priority(): Int {
+            return spf.Contact(ctx).strictPriority
+        }
 
+        override fun check(cCtx: CheckContext): ICheckResult? {
+            val rawNumber = cCtx.rawNumber
+            val logger = cCtx.logger
+
+            val spf = spf.Contact(ctx)
+
+            if (!spf.isEnabled or !Permission.contacts.isGranted) {
+                return null
+            }
+            if (!spf.isStrict) {
+                return null
+            }
+            logger?.debug(
+                ctx.getString(R.string.checking_template)
+                    .formatAnnotated(
+                        ctx.getString(R.string.non_contact).A(SkyBlue),
+                        priority().toString().A(LightMagenta)
+                    )
+            )
+
+            val contact = Contacts.findContactByRawNumber(ctx, rawNumber)
+            if (contact == null) { // not from contacts
+                val ret = ByContact(RESULT_BLOCKED_BY_NON_CONTACT)
+                logger?.error(
+                    ctx.getString(R.string.blocked_by).format(
+                        ret.resultReasonStr(ctx)
+                    )
+                )
+                return ret
+            }
+            return null
+        }
+    }
     private class RepeatedCall(
         private val ctx: Context,
     ) : IChecker {
@@ -1432,6 +1458,7 @@ class Checker { // for namespace only
                 STIR(ctx),
                 SpamDB(ctx),
                 Contact(ctx),
+                NonContact(ctx),
                 RepeatedCall(ctx),
                 Dialed(ctx),
                 Answered(ctx),
@@ -1498,6 +1525,7 @@ class Checker { // for namespace only
         ): List<IChecker> {
             val checkers = arrayListOf<IChecker>(
                 Contact(ctx),
+                NonContact(ctx),
                 SpamDB(ctx),
                 MeetingMode(ctx),
                 OffTime(ctx),

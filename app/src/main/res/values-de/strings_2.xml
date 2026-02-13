@@ -1,25 +1,13 @@
 <resources>
-    <string name="contacts">Kontakt</string>
-    <string name="non_contacts">Nicht Kontakt</string>
+    <string name="contact">Kontakt</string>
+    <string name="non_contact">Nicht Kontakt</string>
     <string name="lenient">Nachsichtig</string>
     <string name="strict">Streng</string>
     <string name="help_contacts">
         <![CDATA[
-        Kontaktnummern zulassen. <br>
+        Erlaube Kontaktnummern. <br>
         <br>
-        Dies gilt sowohl für Anrufe als auch für Nachrichten. <br>
-        <br>
-        <b>Optionen:</b><br>
-        <br>
-        - <b>Nachsichtig</b>: <br>
-            &emsp; - Kontaktnummern werden zugelassen. <br>
-            &emsp; - Nicht-Kontakt-Nummern werden von anderen Regeln überprüft. <br>
-            &emsp; <font color="#ea86ff"><b>Standardpriorität: 10</b></font> <br>
-        <br>
-        - <font color="#fa7f71"><b>Streng</b></font>: <br>
-            &emsp; - Kontaktnummern werden zugelassen. <br>
-            &emsp; - Nicht-Kontakt-Nummern werden <font color="#fa7f71"><b>blockiert</b></font>. <br>
-            &emsp; <font color="#ea86ff"><b>Standardpriorität: 0</b></font> <br>
+        Es gilt sowohl für Anrufe als auch für SMS-Nachrichten.
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>

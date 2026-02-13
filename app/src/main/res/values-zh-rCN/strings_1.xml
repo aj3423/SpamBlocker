@@ -53,8 +53,9 @@
     <string name="label_number_rules">号码规则</string>
     <string name="label_content_rules">短信规则</string>
     <string name="recent_apps"><short>最近应用</short></string>
-    <string name="allow_contact">联系人</string>
+    <string name="contacts">联系人</string>
 
     <string name="number_rule">号码规则</string>
     <string name="content_rule">短信规则</string>
+    <string name="non_contacts">非联系人</string>
 </resources>

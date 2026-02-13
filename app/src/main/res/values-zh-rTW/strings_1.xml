@@ -55,5 +55,6 @@
     <string name="label_content_rules">簡訊規則</string>
     <string name="content_rule">簡訊規則</string>
     <string name="recent_apps"><short>最近使用的應用程式</short></string>
-    <string name="allow_contact">聯絡人</string>
+    <string name="contacts">聯絡人</string>
+    <string name="non_contacts">非聯絡人</string>
 </resources>

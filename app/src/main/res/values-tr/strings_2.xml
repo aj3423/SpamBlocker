@@ -1,25 +1,13 @@
 <resources>
-    <string name="contacts">Kişiler</string>
-    <string name="non_contacts">Rehberde Olmayan</string>
+    <string name="contact">Kişiler</string>
+    <string name="non_contact">Rehberde Olmayan</string>
     <string name="lenient">Esnek</string>
     <string name="strict">Katı</string>
     <string name="help_contacts">
         <![CDATA[
         Kişi numaralarına izin ver. <br>
         <br>
-        Hem aramalara hem de mesajlara uygulanır. <br>
-        <br>
-        <b>Seçenekler:</b><br>
-        <br>
-        - <b>Esnek</b>: <br>
-            &emsp; - Kişi numaralarına izin verilir. <br>
-            &emsp; - Kişi olmayan numaralar diğer kurallar tarafından kontrol edilir. <br>
-            &emsp; <font color="#ea86ff"><b>Varsayılan Öncelik: 10</b></font> <br>
-        <br>
-        - <font color="#fa7f71"><b>Katı</b></font>: <br>
-            &emsp; - Kişi numaralarına izin verilir. <br>
-            &emsp; - Kişi olmayan numaralar <font color="#fa7f71"><b>engellenir</b></font>. <br>
-            &emsp; <font color="#ea86ff"><b>Varsayılan Öncelik: 0</b></font> <br>
+        Hem aramalara hem de SMS mesajlarına uygulanır.
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>

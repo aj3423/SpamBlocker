@@ -55,6 +55,7 @@
     <string name="label_content_rules">قوانین پیام</string>
     <string name="content_rule">قانون پیام</string>
     <string name="recent_apps"><short>برنامه‌های اخیر</short></string>
-    <string name="allow_contact">مخاطبین</string>
+    <string name="contacts">مخاطبین</string>
 
+    <string name="non_contacts">غیر مخاطبین</string>
 </resources>

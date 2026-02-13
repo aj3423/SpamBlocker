@@ -137,7 +137,7 @@ fun RegexLeadingDropdownIcon(
         )
         val labelIds = mutableListOf(
             R.string.phone_number,
-            R.string.contacts,
+            R.string.contact,
             R.string.contact_group,
             R.string.geo_location,
         )
@@ -253,7 +253,7 @@ fun RegexFieldLabel(
                     if (flags.hasFlag(FLAG_REGEX_FOR_CONTACT_GROUP))
                         R.string.contact_group
                     else if (flags.hasFlag(FLAG_REGEX_FOR_CONTACT))
-                        R.string.contacts
+                        R.string.contact
                     else if (flags.hasFlag(FLAG_REGEX_FOR_CNAP))
                         R.string.caller_name
                     else if (flags.hasFlag(FLAG_REGEX_FOR_GEO_LOCATION))

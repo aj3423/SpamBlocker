@@ -235,9 +235,9 @@ class ByContact(
 
     override fun resultReasonStr(ctx: Context): String {
         return if (type == RESULT_ALLOWED_BY_CONTACT)
-            ctx.getString(R.string.contacts)
+            ctx.getString(R.string.contact)
         else
-            ctx.getString(R.string.non_contacts)
+            ctx.getString(R.string.non_contact)
     }
 }
 

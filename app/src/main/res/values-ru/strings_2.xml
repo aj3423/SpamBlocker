@@ -1,25 +1,13 @@
 <resources>
-    <string name="contacts">Контакт</string>
-    <string name="non_contacts">Не контакт</string>
+    <string name="contact">Контакт</string>
+    <string name="non_contact">Не контакт</string>
     <string name="lenient">Мягкий</string>
     <string name="strict">Строгий</string>
     <string name="help_contacts">
         <![CDATA[
         Разрешить номера контактов. <br>
         <br>
-        Применяется как к звонкам, так и к сообщениям. <br>
-        <br>
-        <b>Опции:</b><br>
-        <br>
-        - <b>Мягкий</b>: <br>
-            &emsp; - Номера контактов будут разрешены. <br>
-            &emsp; - Номера не из контактов будут проверяться другими правилами. <br>
-            &emsp; <font color="#ea86ff"><b>Приоритет по умолчанию: 10</b></font> <br>
-        <br>
-        - <font color="#fa7f71"><b>Строгий</b></font>: <br>
-            &emsp; - Номера контактов будут разрешены. <br>
-            &emsp; - Номера не из контактов будут <font color="#fa7f71"><b>заблокированы</b></font>. <br>
-            &emsp; <font color="#ea86ff"><b>Приоритет по умолчанию: 0</b></font> <br>
+        Это относится как к звонкам, так и к SMS‑сообщениям.
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>

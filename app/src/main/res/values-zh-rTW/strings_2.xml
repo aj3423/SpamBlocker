@@ -1,25 +1,13 @@
 <resources>
-    <string name="contacts">聯絡人</string>
-    <string name="non_contacts">非聯絡人</string>
+    <string name="contact">聯絡人</string>
+    <string name="non_contact">非聯絡人</string>
     <string name="lenient">寬鬆</string>
     <string name="strict">嚴格</string>
     <string name="help_contacts">
         <![CDATA[
-        允許聯絡人的號碼。<br>
+        允許聯絡電話號碼。 <br>
         <br>
-        同時適用於通話與簡訊。<br>
-        <br>
-        <b>選項：</b><br>
-        <br>
-        - <b>寬鬆</b>：<br>
-            &emsp; 聯絡人的號碼會直接放行。<br>
-            &emsp; 非聯絡人的號碼會交由其他規則檢查。<br>
-            &emsp; <font color="#ea86ff"><b>預設優先順序：10</b></font><br>
-        <br>
-        - <font color="#fa7f71"><b>嚴格</b></font>：<br>
-            &emsp; 聯絡人的號碼會直接放行。<br>
-            &emsp; 非聯絡人的號碼會被<font color="#fa7f71"><b>封鎖</b></font>。<br>
-            &emsp; <font color="#ea86ff"><b>預設優先順序：0</b></font><br>
+        適用於通話與簡訊。
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>

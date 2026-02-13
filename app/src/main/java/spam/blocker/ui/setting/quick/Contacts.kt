@@ -1,7 +1,9 @@
 package spam.blocker.ui.setting.quick
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
+import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -9,20 +11,28 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 import spam.blocker.G
 import spam.blocker.R
+import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
+import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.Button
+import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.PriorityBox
 import spam.blocker.ui.widgets.PriorityLabel
 import spam.blocker.ui.widgets.RadioGroup
 import spam.blocker.ui.widgets.RadioItem
+import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowVCenterSpaced
+import spam.blocker.ui.widgets.Section
 import spam.blocker.ui.widgets.Str
+import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionWrapper
@@ -46,31 +56,49 @@ fun Contacts() {
         trigger = popupTrigger,
         content = {
             Column {
-                LabeledRow(labelId = R.string.type) {
-                    val items = listOf(
-                        RadioItem(Str(R.string.lenient), color = C.textGrey),
-                        RadioItem(Str(R.string.strict), color = Salmon),
-                    )
+                Section(
+                    title = Str(R.string.contacts),
+                    bgColor = C.dialogBg
+                ) {
+                    Column {
+                        LabeledRow(R.string.allow) {
+                            SwitchBox(isEnabled) { isTurningOn ->
+                                spf.isEnabled = isTurningOn
+                                isEnabled = isTurningOn
+                            }
+                        }
 
-                    RadioGroup(items = items, selectedIndex = if (isStrict) 1 else 0) { clickedIdx ->
-                        isStrict = clickedIdx == 1
-                        spf.isStrict = isStrict
-                    }
-                }
-
-                if (isStrict) {
-                    PriorityBox(priStrict) { newValue, hasError ->
-                        if (!hasError) {
-                            priStrict = newValue!!
-                            spf.strictPriority = newValue
+                        AnimatedVisibleV(isEnabled) {
+                            PriorityBox(priLenient) { newValue, hasError ->
+                                if (!hasError) {
+                                    priLenient = newValue!!
+                                    spf.lenientPriority = newValue
+                                }
+                            }
                         }
                     }
+                }
+                AnimatedVisibleV(isEnabled) {
+                    Section(
+                        title = Str(R.string.non_contacts),
+                        bgColor = C.dialogBg
+                    ) {
+                        Column {
+                            LabeledRow(R.string.block) {
+                                SwitchBox(isStrict) { isTurningOn ->
+                                    spf.isStrict = isTurningOn
+                                    isStrict = isTurningOn
+                                }
+                            }
 
-                } else {
-                    PriorityBox(priLenient)  { newValue, hasError ->
-                        if (!hasError) {
-                            priLenient = newValue!!
-                            spf.lenientPriority = newValue
+                            AnimatedVisibleV(isStrict) {
+                                PriorityBox(priStrict) { newValue, hasError ->
+                                    if (!hasError) {
+                                        priStrict = newValue!!
+                                        spf.strictPriority = newValue
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -79,32 +107,45 @@ fun Contacts() {
     )
 
     LabeledRow(
-        R.string.allow_contact,
+        R.string.contacts,
         helpTooltip = ctx.getString(R.string.help_contacts),
         content = {
             if (isEnabled) {
-                Button(
-                    content = {
+                StrokeButton(
+                    color = C.textGrey,
+                    icon = {
                         RowVCenterSpaced(6) {
-                            Text(
-                                text = Str(
-                                    strId = if (isStrict) R.string.strict else R.string.lenient
-                                ),
-                                color = if (isStrict) Salmon else C.textGrey,
-                            )
-                            if (isStrict && priStrict != 0) {
-                                PriorityLabel(priStrict)
+                            // Contacts
+                            RowVCenterSpaced(2) {
+                                GreyIcon16(R.drawable.ic_contact_square)
+                                if (priLenient != 10) {
+                                    PriorityLabel(priLenient)
+                                }
                             }
-                            if (!isStrict && priLenient != 10) {
-                                PriorityLabel(priLenient)
+
+                            // Non Contacts
+                            if (isStrict) {
+                                // Vertical Divider
+                                VerticalDivider(thickness = 1.dp, color = C.disabled)
+
+                                RowVCenterSpaced(2) {
+                                    ResIcon(
+                                        R.drawable.ic_unknown_call,
+                                        modifier = M.size(16.dp),
+                                        color = Salmon
+                                    )
+                                    if (priStrict != 0) {
+                                        PriorityLabel(priStrict)
+                                    }
+                                }
                             }
                         }
-                    },
-//                    borderColor = if (isStrict) Salmon else C.textGrey
+                    }
                 ) {
                     popupTrigger.value = true
                 }
             }
+
             SwitchBox(isEnabled) { isTurningOn ->
                 if (isTurningOn) {
                     G.permissionChain.ask(

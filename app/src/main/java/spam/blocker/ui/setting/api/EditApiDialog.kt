@@ -58,7 +58,7 @@ private val autoReportIcons = listOf(
     R.drawable.ic_regex
 )
 private val autoReportLabelIds = listOf(
-    R.string.non_contacts,
+    R.string.non_contact,
     R.string.stir_attestation,
     R.string.regex_pattern
 )

@@ -53,8 +53,9 @@
     <string name="label_number_rules">Numara Kuralları</string>
     <string name="label_content_rules">Mesaj Kuralları</string>
     <string name="recent_apps">Son Uygulama</string>
-    <string name="allow_contact">Kişiler</string>
+    <string name="contacts">Kişiler</string>
 
     <string name="number_rule">Numara Kuralı</string>
     <string name="content_rule">Mesaj Kuralı</string>
+    <string name="non_contacts">Kişi Dışı</string>
 </resources>

@@ -53,8 +53,9 @@
     <string name="label_number_rules">Правила номерів</string>
     <string name="label_content_rules">Правила повідомлень</string>
     <string name="recent_apps"><short>Останні програми</short></string>
-    <string name="allow_contact">Контакти</string>
+    <string name="contacts">Контакти</string>
 
     <string name="number_rule">Правило для номера</string>
     <string name="content_rule">Правило для повідомлення</string>
+    <string name="non_contacts">Не в контактах</string>
 </resources>

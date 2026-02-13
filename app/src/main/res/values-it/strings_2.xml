@@ -1,25 +1,13 @@
 <resources>
-    <string name="contacts">Contatti</string>
-    <string name="non_contacts">Non Contatti</string>
+    <string name="contact">Contatti</string>
+    <string name="non_contact">Non Contatti</string>
     <string name="lenient">Tollerante</string>
     <string name="strict">Rigoroso</string>
     <string name="help_contacts">
         <![CDATA[
         Consenti i numeri dei contatti. <br>
         <br>
-        Si applica sia alle chiamate che ai messaggi. <br>
-        <br>
-        <b>Opzioni:</b><br>
-        <br>
-        - <b>Tollerante</b>: <br>
-            &emsp; - I numeri dei contatti saranno consentiti. <br>
-            &emsp; - I numeri non dei contatti saranno controllati da altre regole. <br>
-            &emsp; <font color="#ea86ff"><b>Priorità Predefinita: 10</b></font> <br>
-        <br>
-        - <font color="#fa7f71"><b>Rigoroso</b></font>: <br>
-            &emsp; - I numeri dei contatti saranno consentiti. <br>
-            &emsp; - I numeri non dei contatti saranno <font color="#fa7f71"><b>bloccati</b></font>. <br>
-            &emsp; <font color="#ea86ff"><b>Priorità Predefinita: 0</b></font> <br>
+        Si applica sia alle chiamate che ai messaggi SMS.
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
