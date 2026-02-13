@@ -63,7 +63,10 @@
     <string name="time_color">Colore del tempo</string>
     <string name="help_time_color">
     <![CDATA[
-        Evidenzia il timestamp in base a quanto è recente il record, facilitando la revisione dei record recenti.
+        Evidenzia il timestamp in colori diversi in base a quanto è recente il record. <br>
+        <br>
+        <b>Caso d\'uso</b>: <br>
+        &ensp; <font color="#888888">Rivedi le chiamate di oggi di notte controllando tutti i record con un timestamp blu. </font>
     ]]>
     </string>
     <string name="help_time_color_values">

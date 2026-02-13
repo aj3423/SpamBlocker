@@ -45,6 +45,7 @@ import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.GreyText
 import spam.blocker.ui.widgets.LabelItem
+import spam.blocker.ui.widgets.MultiColorButton
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.PopupSize
@@ -426,8 +427,9 @@ fun HistoryFabs(
                             helpTooltip = Str(R.string.help_time_color)
                         ) {
                             if (showHistoryTimeColor.value) {
-                                ColorButton(
-                                    color = historyTimeColors.lastOrNull()?.argb ?: C.textGrey.toArgb()
+                                MultiColorButton(
+                                    colors = historyTimeColors.map { it.argb },
+                                    emptyColor = C.textGrey
                                 ) {
                                     timeColorTrigger.value = true
                                 }

@@ -62,7 +62,10 @@
     <string name="time_color">时间颜色</string>
     <string name="help_time_color">
     <![CDATA[
-        根据记录的最近程度突出显示时间戳，使审阅最近记录更容易。
+        突出显示时间戳的颜色，以反映记录的最近程度。 <br>
+        <br>
+        <b>使用场景</b>: <br>
+        &ensp; <font color="#888888">在夜间查看今天的来电，通过检查所有带蓝色时间戳的记录。</font>
     ]]>
     </string>
     <string name="help_time_color_values">

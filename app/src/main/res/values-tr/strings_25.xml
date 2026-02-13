@@ -63,7 +63,10 @@
     <string name="time_color">Zaman Rengi</string>
     <string name="help_time_color">
     <![CDATA[
-        Kayıt ne kadar yeni ise zaman damgasını vurgulayın, böylece son kayıtları incelemek daha kolay olur.
+        Kaydın ne kadar yeni olduğuna göre zaman damgasını farklı renklerde vurgulayın. <br>
+        <br>
+        <b>Kullanım durumu</b>: <br>
+        &ensp; <font color="#888888">Tüm kayıtları mavi zaman damgası ile kontrol ederek gece bugün yapılan aramaları gözden geçirin. </font>
     ]]>
     </string>
     <string name="help_time_color_values">

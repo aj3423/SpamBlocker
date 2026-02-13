@@ -63,7 +63,10 @@
     <string name="time_color">Cor do Tempo</string>
     <string name="help_time_color">
     <![CDATA[
-        Realce o carimbo de horário com base na recência do registro, facilitando a revisão de registros recentes.
+        Destaque o carimbo de horário em cores diferentes com base em quão recente o registro está. <br>
+        <br>
+        <b>Caso de uso</b>: <br>
+        &ensp; <font color="#888888">Revise as chamadas de hoje à noite verificando todos os registros com um carimbo de horário azul. </font>
     ]]>
     </string>
     <string name="help_time_color_values">

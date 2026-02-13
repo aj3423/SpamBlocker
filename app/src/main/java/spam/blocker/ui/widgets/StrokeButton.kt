@@ -34,6 +34,7 @@ import spam.blocker.util.Util.inRange
 
 const val BUTTON_CORNER_RADIUS = 4
 const val BUTTON_H_PADDING = 12
+const val BUTTON_H = 26
 
 // The built-in Button is based on Surface, which has a minimal width as 48dp,
 //  as: minimumInteractiveComponentSize
@@ -42,7 +43,7 @@ const val BUTTON_H_PADDING = 12
 @Composable
 fun Button(
     content: @Composable RowScope.() -> Unit,
-    modifier: Modifier = M.height(26.dp),
+    modifier: Modifier = M.height(BUTTON_H.dp),
     onLongClick: Lambda? = null,
     enabled: Boolean = true,
     borderColor: Color = LocalPalette.current.textGrey,
@@ -88,7 +89,7 @@ fun StrokeButton(
     onClick: Lambda,
 ) {
     Button(
-        modifier = modifier.height(26.dp),
+        modifier = modifier.height(BUTTON_H.dp),
         enabled = enabled,
         onLongClick = onLongClick,
         contentPadding = contentPadding,

@@ -63,7 +63,10 @@
     <string name="time_color">Cor do tempo</string>
     <string name="help_time_color">
     <![CDATA[
-        Resalta a marca de tempo segundo o recente do rexistro, facilitando a revisión dos rexistros recentes.
+        Resalta a marca de tempo en diferentes cores segundo o quão recente é o rexistro. <br>
+        <br>
+        <b>Caso de uso</b>: <br>
+        &ensp; <font color="#888888">Revisa as chamadas de hoxe pola noite comprobando todos os rexistros cunha marca de tempo azul. </font>
     ]]>
     </string>
     <string name="help_time_color_values">

@@ -63,7 +63,10 @@
     <string name="time_color">時間の色</string>
     <string name="help_time_color">
     <![CDATA[
-        レコードの新しさに基づいてタイムスタンプをハイライトし、最近のレコードの確認を容易にします。
+        記録がどれだけ新しいかに応じて、タイムスタンプを異なる色でハイライトします。 <br>
+        <br>
+        <b>使用例</b>: <br>
+        &ensp; <font color="#888888">青いタイムスタンプが付いたすべてのレコードを確認して、夜に本日の着信をレビューします。 </font>
     ]]>
     </string>
     <string name="help_time_color_values">

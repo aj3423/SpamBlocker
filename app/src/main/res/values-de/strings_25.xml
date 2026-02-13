@@ -63,7 +63,10 @@
     <string name="time_color">Zeitfarbe</string>
     <string name="help_time_color">
     <![CDATA[
-        Markiere den Zeitstempel basierend darauf, wie aktuell der Eintrag ist, um die Überprüfung neuer Einträge zu erleichtern.
+        Markieren Sie den Zeitstempel in verschiedenen Farben, basierend darauf, wie aktuell der Eintrag ist. <br>
+        <br>
+        <b>Anwendungsfall</b>: <br>
+        &ensp; <font color="#888888">Überprüfen Sie die heutigen Anrufe nachts, indem Sie alle Einträge mit einem blauen Zeitstempel prüfen. </font>
     ]]>
     </string>
     <string name="help_time_color_values">

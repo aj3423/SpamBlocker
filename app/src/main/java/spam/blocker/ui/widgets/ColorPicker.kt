@@ -1,4 +1,5 @@
 package spam.blocker.ui.widgets
+
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.ComposeShader
@@ -19,6 +20,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
@@ -93,6 +95,51 @@ fun ColorButton(
         },
         onClick = onClick
     )
+}
+
+// Show up to 6 colors in a button
+@Composable
+fun MultiColorButton(
+    colors: List<Int>,
+    emptyColor: Color,
+    onClick: Lambda
+) {
+    val W = 60
+    val H = BUTTON_H
+
+    val first6 = colors.take(6)
+    val (w, h) = when (first6.size) {
+        2 -> (W / 2 to H)
+        3 -> (W / 3 to H)
+        4 -> (W / 2 to H / 2)
+        5,6 -> (W / 3 to H / 2)
+        else -> (W to H)
+    }
+
+    StrokeButton(
+        color = Color.Unspecified,
+        icon = {
+            Box(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .width(W.dp)
+                    .clip(RoundedCornerShape(BUTTON_CORNER_RADIUS.dp))
+                    .background(emptyColor)
+            ) {
+                FlowRowSpaced(0, vSpace = 0) {
+                    first6.forEach {
+                        Box(
+                            modifier = M.background(Color(it))
+                                .width((w).dp)
+                                .height((h).dp)
+                        )
+                    }
+                }
+            }
+        },
+        onClick = onClick
+    )
+
 }
 
 @Composable
@@ -233,7 +280,7 @@ fun ColorPickerPopup(
 }
 
 fun String.parseColorString(): Pair<Int, Int>? {
-    if(this.length != 8) {
+    if (this.length != 8) {
         return null
     }
 
@@ -247,6 +294,7 @@ fun String.parseColorString(): Pair<Int, Int>? {
 
     return Pair(alpha, rgb)
 }
+
 fun Color.contrastColor(): Color {
     // Calculate the perceptive luminance (aka luma) - human eye favors green color...
     val luma = (0.299 * red) + (0.587 * green) + (0.114 * blue)

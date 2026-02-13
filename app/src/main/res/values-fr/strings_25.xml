@@ -63,7 +63,10 @@
     <string name="time_color">Couleur du temps</string>
     <string name="help_time_color">
     <![CDATA[
-        Mettez en surbrillance l\'horodatage en fonction de la récence de l\'enregistrement, ce qui facilite la révision des enregistrements récents.
+        Mettre en surbrillance l\'horodatage avec différentes couleurs en fonction de la récence de l\'enregistrement. <br>
+        <br>
+        <b>Cas d\'utilisation</b> : <br>
+        &ensp; <font color="#888888">Revoir les appels d\'aujourd\'hui la nuit en vérifiant tous les enregistrements avec un horodatage bleu. </font>
     ]]>
     </string>
     <string name="help_time_color_values">

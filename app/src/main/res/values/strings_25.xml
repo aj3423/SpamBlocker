@@ -63,7 +63,10 @@
     <string name="time_color">Time Color</string>
     <string name="help_time_color">
     <![CDATA[
-        Highlight the timestamp based on how recent the record is, making it easier to review recent records.
+        Highlight the timestamp in different colors based on how recent the record is. <br>
+        <br>
+        <b>Use case</b>: <br>
+        &ensp; <font color="#888888">Review today\'s calls at night by checking all records with a blue timestamp. </font>
     ]]>
     </string>
     <string name="help_time_color_values">

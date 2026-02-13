@@ -63,7 +63,10 @@
     <string name="time_color">Color del temps</string>
     <string name="help_time_color">
     <![CDATA[
-        Ressalteu la marca de temps segons la recència del registre, facilitant la revisió dels registres recents.
+        Ressalteu la marca de temps amb colors diferents segons com de recent és el registre. <br>
+        <br>
+        <b>Cas d\'ús</b>: <br>
+        &ensp; <font color="#888888">Reviseu les trucades d\'avui a la nit comprovant tots els registres amb una marca de temps blava. </font>
     ]]>
     </string>
     <string name="help_time_color_values">

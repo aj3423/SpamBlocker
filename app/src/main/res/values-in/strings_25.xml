@@ -63,7 +63,10 @@
     <string name="time_color">Warna Waktu</string>
     <string name="help_time_color">
     <![CDATA[
-        Sorot stempel waktu berdasarkan seberapa baru catatan tersebut, memudahkan peninjauan catatan terbaru.
+        Sorot stempel waktu dengan warna berbeda berdasarkan seberapa baru catatan tersebut. <br>
+        <br>
+        <b>Kasus penggunaan</b>: <br>
+        &ensp; <font color="#888888">Tinjau panggilan hari ini pada malam hari dengan memeriksa semua catatan yang memiliki stempel waktu biru. </font>
     ]]>
     </string>
     <string name="help_time_color_values">

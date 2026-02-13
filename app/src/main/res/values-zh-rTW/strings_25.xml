@@ -63,7 +63,10 @@
     <string name="time_color">時間顏色</string>
     <string name="help_time_color">
     <![CDATA[
-        根據記錄的最近程度突出顯示時間戳記，讓檢視最近的記錄更容易。
+        根據記錄的新舊程度，以不同顏色突顯時間戳記。 <br>
+        <br>
+        <b>使用情境</b>: <br>
+        &ensp; <font color="#888888">在夜間檢視今天的通話，透過檢查所有藍色時間戳記的記錄。 </font>
     ]]>
     </string>
     <string name="help_time_color_values">
