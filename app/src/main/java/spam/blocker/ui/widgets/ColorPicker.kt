@@ -130,8 +130,10 @@ fun MultiColorButton(
                     first6.forEach {
                         Box(
                             modifier = M.background(Color(it))
-                                .width((w).dp)
-                                .height((h).dp)
+                                // It doesn't appear on some devices without the -0.01,
+                                //  seems it just has to be smaller than ... whatever.
+                                .width((w-0.01).dp)
+                                .height((h-0.01).dp)
                         )
                     }
                 }
@@ -139,7 +141,6 @@ fun MultiColorButton(
         },
         onClick = onClick
     )
-
 }
 
 @Composable
