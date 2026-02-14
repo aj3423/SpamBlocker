@@ -20,7 +20,6 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
@@ -124,7 +123,8 @@ fun MultiColorButton(
                     .fillMaxHeight()
                     .width(W.dp)
                     .clip(RoundedCornerShape(BUTTON_CORNER_RADIUS.dp))
-                    .background(emptyColor)
+                    .background(emptyColor),
+                contentAlignment = Alignment.Center
             ) {
                 FlowRowSpaced(0, vSpace = 0) {
                     first6.forEach {
@@ -132,8 +132,8 @@ fun MultiColorButton(
                             modifier = M.background(Color(it))
                                 // It doesn't appear on some devices without the -0.01,
                                 //  seems it just has to be smaller than ... whatever.
-                                .width((w-0.01).dp)
-                                .height((h-0.01).dp)
+                                .width((w-0.001).dp)
+                                .height((h-0.001).dp)
                         )
                     }
                 }

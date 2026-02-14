@@ -13,7 +13,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import spam.blocker.G
 import spam.blocker.R
@@ -35,7 +34,6 @@ import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.AnimatedVisibleV
-import spam.blocker.ui.widgets.ColorButton
 import spam.blocker.ui.widgets.ColorPickerButton
 import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.ui.widgets.DimGreyText
@@ -256,7 +254,7 @@ fun HistoryFabs(
                         }
 
                         // Log SMS Content
-                        AnimatedVisibleV(loggingEnabled && vm.forType == Def.ForSms) {
+                        AnimatedVisibleV(loggingEnabled) {
                             LabeledRow(
                                 labelId = R.string.sms_content,
                                 helpTooltip = Str(R.string.help_log_sms_content)
@@ -429,7 +427,7 @@ fun HistoryFabs(
                             if (showHistoryTimeColor.value) {
                                 MultiColorButton(
                                     colors = historyTimeColors.map { it.argb },
-                                    emptyColor = C.textGrey
+                                    emptyColor = if (historyTimeColors.isNotEmpty()) Color.Unspecified else C.textGrey
                                 ) {
                                     timeColorTrigger.value = true
                                 }
