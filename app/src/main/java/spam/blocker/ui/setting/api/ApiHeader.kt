@@ -103,7 +103,7 @@ fun ApiHeader(
             },
             LabelItem(
                 label = ctx.getString(R.string.import_),
-                leadingIcon = { GreyIcon(R.drawable.ic_backup_import) }
+                leadingIcon = { GreyIcon(R.drawable.ic_import) }
             ) {
                 importTrigger.value = true
             },

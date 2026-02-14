@@ -84,29 +84,30 @@
         默认情况下， <br>
         <br>
         - <font color="#03DAC5">白名单规则</font> 的优先级为 <font color="#ea86ff">10</font> <br>
-        &ensp; <font color="#888888">例如：联系人（宽松）、重复来电、最近使用的应用等 </font><br>
+        &ensp; <font color="#888888">例如：联系人、重复来电、最近使用的应用等 </font><br>
         <br>
         - <font color="#fa7f71">黑名单规则</font> 的优先级为 <font color="#ea86ff">0</font> <br>
         &ensp; <font color="#888888">例如：STIR、数据库等 </font> <br>
         <br>
         当两者同时启用时，白名单规则会覆盖黑名单规则，因为 10 > 0。 <br>
         <br>
-        对于正则规则，优先级可以设置为 <font color="#ea86ff">-2147483648</font> 到 <font color="#ea86ff">2147483647</font> 之间的任意数字。 <br>
-        不同规则可以拥有相同的优先级，只要它们属于同一类型，但 <font color="#ffa500"><b>绝不要为白名单和黑名单规则分配相同的优先级</b></font>，否则可能导致随机行为。 <br>
+        对于正则规则，优先级可以设置为介于 <font color="#ea86ff">-2147483648</font>
+          和 <font color="#ea86ff">2147483647</font> 之间的任意数字。 <br>
+        不同的规则可以拥有相同的优先级，只要它们属于同一类型；然而，<font color="#ffa500"><b>绝不要为白名单和黑名单规则分配相同的优先级</b></font>，否则可能导致随机行为。 <br>
         <br>
         功能 <font color="#00BFFF">会议模式</font> 默认优先级为 <font color="#ea86ff">20</font>，因为它应在会议期间阻止所有来电。 <br>
-        对于 <font color="#00BFFF">即时查询</font>，优先级为 <font color="#ea86ff">-1</font>，因此只有在来电通过所有本地过滤器后才会检查。 <br>
+        对于 <font color="#00BFFF">即时查询</font>，优先级为 <font color="#ea86ff">-1</font>，因此只有在来电通过所有本地过滤器后才会进行检查。 <br>
         <br>
         <b>自定义优先级的使用场景</b>： <br>
         <br>
         - <font color="#888888">始终拦截特定号码，无论是否重复</font> <br>
-         &ensp; 设置优先级 > 10 的规则以覆盖 <font color="#00BFFF">重复来电</font>。 <br>
+         &ensp; 设置优先级大于 10 的规则以覆盖 <font color="#00BFFF">重复来电</font>。 <br>
         <br>
         - <font color="#888888">始终允许某个号码</font> <br>
-         &ensp; 将其设置为 > 20 以覆盖 <font color="#00BFFF">会议模式</font>。 <br>
+         &ensp; 将其优先级设为大于 20，以覆盖 <font color="#00BFFF">会议模式</font>。 <br>
         <br>
         - <font color="#888888">测试正则规则</font> <br>
-         &ensp; 将其设置为 999，以覆盖所有其他过滤器，这样就无需逐个临时禁用它们。
+         &ensp; 将其设为 999，以覆盖所有其他过滤器，免去逐个临时禁用的麻烦。
     ]]>
     </string>
 </resources>

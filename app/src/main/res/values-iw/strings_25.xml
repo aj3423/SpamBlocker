@@ -80,38 +80,37 @@
     <string name="faq"><short>שאלות</short></string>
     <string name="faq_priority">
     <![CDATA[
-        לכל מסנן יש ערך עדיפות, כפי שהמונח מרמז, הוא קובע את הסדר שבו השיחה נבדקת. <br>
+        לכל מסנן יש ערך עדיפות, כפי שהמונח מרמז, הוא קובע את סדר הבדיקה של השיחה. <br>
         <br>
         בברירת מחדל, <br>
         <br>
-        - <font color="#03DAC5">חוקי רשימת לבן</font> בעלי עדיפות <font color="#ea86ff">10</font> <br>
-        &ensp; <font color="#888888">לדוגמה. Contacts(Lenient), RepeatedCall, RecentApps, וכו\' </font><br>
+        - <font color="#03DAC5">Whitelist rules</font> have priority <font color="#ea86ff">10</font> <br>
+        &ensp; <font color="#888888">לדוגמה: אנשי קשר, RepeatedCall, RecentApps, וכו\' </font><br>
         <br>
-        - <font color="#fa7f71">חוקי רשימת שחורה</font> בעלי עדיפות <font color="#ea86ff">0</font> <br>
-        &ensp; <font color="#888888">לדוגמה. STIR, Database, וכו\' </font> <br>
+        - <font color="#fa7f71">Blacklist rules</font> have priority <font color="#ea86ff">0</font> <br>
+        &ensp; <font color="#888888">לדוגמה: STIR, Database, וכו\' </font> <br>
         <br>
-        כאשר שניהם מופעלים, חוקי רשימת לבן יעקפו חוקי רשימת שחורה מכיוון ש-10 > 0. <br>
+        כאשר שניהם מופעלים, כללי רשימת ההיתרים יעלו על כללי רשימת החסימות מכיוון ש-10 > 0. <br>
         <br>
-        עבור חוקים רגולריים (regex), ניתן להגדיר את העדיפות לכל מספר בין <font color="#ea86ff">-2147483648</font>
+        לכללי regex, ניתן להגדיר את העדיפות לכל מספר בין <font color="#ea86ff">-2147483648</font>
           ו-<font color="#ea86ff">2147483647</font>. <br>
-        חוקים שונים יכולים לחלוק את אותה עדיפות כל עוד הם מאותו סוג, עם זאת,
-          <font color="#ffa500"><b>לעולם אל תקצה את אותה עדיפות גם לחוקי רשימת לבן וגם לחוקי רשימת שחורה</b></font>, זה עלול לגרום להתנהגות אקראית. <br>
+        כללים שונים יכולים לחלוק את אותה עדיפות כל עוד הם מאותו סוג, אך לעולם אל תקצה את אותה עדיפות גם לכללי רשימת ההיתרים וגם לכללי רשימת החסימות, זה עלול לגרום להתנהגות אקראית. <br>
         <br>
-        לתכונה <font color="#00BFFF">Meeting Mode</font> יש עדיפות <font color="#ea86ff">20</font> כברירת מחדל,
+        התכונה <font color="#00BFFF">Meeting Mode</font> בעלת עדיפות <font color="#ea86ff">20</font> בברירת מחדל,
           מכיוון שהיא אמורה לחסום כל שיחה במהלך פגישה. <br>
         ו-<font color="#ea86ff">-1</font> עבור <font color="#00BFFF">Instant Query</font>,
           כך שהיא נבדקת רק לאחר שהשיחה עברה את כל המסננים המקומיים. <br>
         <br>
-        <b>מקרים של שימוש בהתאמת העדיפות</b>: <br>
+        <b>Use cases</b> of customizing the priority: <br>
         <br>
         - <font color="#888888">תמיד לחסום מספר מסוים, ללא קשר אם הוא חוזר</font> <br>
-         &ensp; הגדר חוק עם עדיפות > 10 כדי לעקוף <font color="#00BFFF">Repeated Call</font>. <br>
+         &ensp; הגדר כלל עם עדיפות > 10 כדי לדרוס <font color="#00BFFF">Repeated Call</font>. <br>
         <br>
         - <font color="#888888">תמיד לאפשר מספר</font> <br>
-         &ensp; הגדר אותו ל- > 20 כדי לעקוף <font color="#00BFFF">Meeting Mode</font>. <br>
+         &ensp; הגדר אותו ל- > 20 כדי לדרוס <font color="#00BFFF">Meeting Mode</font>. <br>
         <br>
-        - <font color="#888888">בדוק חוק regex</font> <br>
-         &ensp; הגדר אותו ל-999 כדי לעקוף את כל המסננים האחרים כך שלא תצטרך להשבית אותם זמנית אחד אחרי השני.
+        - <font color="#888888">בדוק כלל regex</font> <br>
+         &ensp; הגדר אותו ל-999 כדי לדרוס את כל המסננים האחרים כך שלא תצטרך להשבית אותם זמנית אחד אחרי השני.
     ]]>
     </string>
 </resources>

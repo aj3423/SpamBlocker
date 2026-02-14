@@ -7,4 +7,79 @@
          <a href=\"%s\">%s</a>
     ]]>
     </string>
+    <string name="import_numbers">导入号码</string>
+    <string name="faq_import_numbers">
+    <![CDATA[
+        使用工作流从任何本地或远程文件导入号码。 <br>
+        <br>
+        <br>
+        <b>典型设置</b>: <br>
+        <br>
+        1. <font color="#6ed0ff"><b>读取文件</b></font> / <font color="#6ed0ff"><b>HTTP 请求</b></font> <br>
+          &ensp; 获取文件内容。 <br>
+          <br>
+        2. <font color="#6ed0ff"><b>解析 CSV</b></font> / <font color="#6ed0ff"><b>解析 XML</b></font> / <font color="#6ed0ff"><b>正则精确</b></font> <br>
+          &ensp; 解析并获取号码列表。 <br>
+          <br>
+        3. (Optional) <font color="#6ed0ff"><b>替换号码</b></font> <br>
+          &ensp; 修改号码格式 <br>
+          &ensp; 使用场景: <br>
+          <font color="#888888">
+            &emsp; 在从其他应用迁移时，将类似 <b>123#####</b> 的格式转换为正则 <b>123.....</b> 或 <b>123.*</b> <br>
+          </font>
+          <br>
+        4. <font color="#6ed0ff"><b>导入到骚扰电话数据库</b></font> / <font color="#6ed0ff"><b>导入到正则规则</b></font> <br>
+        <br>
+        <br>
+        <b>预设示例</b>: <br>
+          &ensp; 查看预设 <no_translate><b>FTC-DNC</b></no_translate>. <br>
+        <br>
+        <b>更多在线示例</b>: <br>
+          &ensp; <a href=\"%s\">纯文本</a> <br>
+          &ensp; <a href=\"%s\">CSV</a> <br>
+          &ensp; <a href=\"%s\">XML</a> <br>
+          &ensp; <a href=\"%s\">JSON</a> - 暂不支持 JsonPath，请改用 <font color="#6ed0ff"><b>正则精确</b></font>。 
+    ]]>
+    </string>
+    <string name="faq_regex">
+    <![CDATA[
+        简要的正则教程。 <br>
+        <br>
+        <font color="#00BFFF"><b>第 1 级 - 通配符</b></font> <br>
+        &ensp; 当需要使用通配符 <font color="#888888"><b>*</b></font> 时，只需在其前面加上点 <font color="#888888"><b>.</b></font>，例如 <font color="#888888">.*<b></b></font>，如此简单，基本能覆盖大多数使用场景。 <br>
+        <br>
+        <font color="#00BFFF"><b>第 2 级 - 使用 AI</b></font> <br>
+        &ensp; 例如，获取以下用于短信验证码的正则： <br>
+        &ensp; <font color="#888888">.*(verification|validation).*code.*\\d{5,6}.*</font> <br>
+        <br>
+        向 AI 提问: <br>
+        <font color="#888888">
+        %s
+        </font>
+        <br>
+        <br>
+        <b>在线尝试</b> <br>
+        - <a href=\"copy\"><big>点击此处</big></a> 复制上面的提示 <br>
+        - <a href=\"try_it\"><big>点击此处</big></a> 启动在线 AI <br>
+    ]]>
+    </string>
+    <string name="ai_regex_prompt">
+    <![CDATA[
+        请给出一个匹配短信内容的 Kotlin 正则，要求 <br>
+        - 包含 “verification” 或 “validation” <br>
+        - 接着是单词 “code” <br>
+        - 接着是 5 位或 6 位数字 <br>
+        - 其他词可变，使用 .* 匹配全部 <br>
+        - 必须完整匹配（非部分/搜索） <br>
+        - 不需要添加开头的 ^ 和结尾的 $ <br>
+        - 尽可能保持简洁，避免使用高级正则特性 <br>
+        <br>
+        它应匹配以下所有消息： <br>
+        - 您的 verification code 为 123456，5 分钟后过期。 <br>
+        - 您的 validation code: [12345] … <br>
+        <br>
+        请仅使用单个反斜杠给出正则，以便我可以直接复制粘贴到其他应用中。请勿使用双反斜杠。 
+    ]]>
+    </string>
+    <string name="copied_to_clipboard">已复制到剪贴板</string>
 </resources>

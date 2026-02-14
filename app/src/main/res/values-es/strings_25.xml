@@ -86,30 +86,31 @@
         Por defecto, <br>
         <br>
         - <font color="#03DAC5">Reglas de lista blanca</font> tienen prioridad <font color="#ea86ff">10</font> <br>
-        &ensp; <font color="#888888">Ej. Contactos (laxo), Llamada Repetida, Aplicaciones Recientes, etc </font><br>
+        &ensp; <font color="#888888">Ej.: Contactos, LlamadaRepetida, AplicacionesRecientes, etc </font><br>
         <br>
         - <font color="#fa7f71">Reglas de lista negra</font> tienen prioridad <font color="#ea86ff">0</font> <br>
-        &ensp; <font color="#888888">Ej. STIR, Base de datos, etc </font> <br>
+        &ensp; <font color="#888888">Ej.: STIR, Base de datos, etc </font> <br>
         <br>
-        Cuando ambos están habilitados, las reglas de lista blanca sobrescribirán a las de lista negra ya que 10 > 0. <br>
+        Cuando ambas están habilitadas, las reglas de lista blanca sobrescribirán a las de lista negra ya que 10 > 0. <br>
         <br>
         Para reglas regex, la prioridad puede establecerse en cualquier número entre <font color="#ea86ff">-2147483648</font>
           y <font color="#ea86ff">2147483647</font>. <br>
-        Diferentes reglas pueden tener la misma prioridad siempre que sean del mismo tipo, sin embargo,
-          <font color="#ffa500"><b>nunca asignes la misma prioridad a reglas de lista blanca y lista negra</b></font>, puede causar un comportamiento aleatorio. <br>
+        Reglas diferentes pueden tener la misma prioridad siempre que sean del mismo tipo, sin embargo,
+          <font color="#ffa500"><b>nunca asignes la misma prioridad a ambas
+          reglas de lista blanca y lista negra</b></font>, puede causar un comportamiento aleatorio. <br>
         <br>
-        La función <font color="#00BFFF">Modo Reunión</font> tiene prioridad <font color="#ea86ff">20</font> por defecto,
+        La función <font color="#00BFFF">Modo de Reunión</font> tiene prioridad <font color="#ea86ff">20</font> por defecto,
           porque debe bloquear cualquier llamada durante una reunión. <br>
         Y <font color="#ea86ff">-1</font> para <font color="#00BFFF">Consulta Instantánea</font>,
-          de modo que solo se verifica después de que la llamada haya pasado todos los filtros locales. <br>
+          por lo que solo se verifica después de que la llamada haya pasado todos los filtros locales. <br>
         <br>
-        <b>Casos de uso</b> para personalizar la prioridad: <br>
+        <b>Casos de uso</b> de personalizar la prioridad: <br>
         <br>
-        - <font color="#888888">Siempre bloquear un number en particular, sin importar si se repite</font> <br>
+        - <font color="#888888">Bloquear siempre un número concreto, sin importar si se repite</font> <br>
          &ensp; Establece una regla con prioridad > 10 para sobrescribir <font color="#00BFFF">Llamada Repetida</font>. <br>
         <br>
-        - <font color="#888888">Siempre permitir un number</font> <br>
-         &ensp; Establécelo en > 20 para sobrescribir <font color="#00BFFF">Modo Reunión</font>. <br>
+        - <font color="#888888">Permitir siempre un número</font> <br>
+         &ensp; Establécelo en > 20 para sobrescribir <font color="#00BFFF">Modo de Reunión</font>. <br>
         <br>
         - <font color="#888888">Probar una regla regex</font> <br>
          &ensp; Establécelo en 999 para sobrescribir todos los demás filtros y no tener que desactivarlos temporalmente uno por uno.

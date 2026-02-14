@@ -7,4 +7,79 @@
          <a href=\"%s\">%s</a>
     ]]>
     </string>
+    <string name="import_numbers">Nummern importieren</string>
+    <string name="faq_import_numbers">
+    <![CDATA[
+        Importiere Nummern aus beliebigen lokalen oder entfernten Dateien mithilfe von Workflows. <br>
+        <br>
+        <br>
+        <b>Ein typisches Setup</b>: <br>
+        <br>
+        1. <font color="#6ed0ff"><b>Datei lesen</b></font> / <font color="#6ed0ff"><b>HTTP-Anfrage</b></font> <br>
+          &ensp; Hole den Dateiinhalt. <br>
+          <br>
+        2. <font color="#6ed0ff"><b>CSV parsen</b></font> / <font color="#6ed0ff"><b>XML parsen</b></font> / <font color="#6ed0ff"><b>Exakte Regex</b></font> <br>
+          &ensp; Parse sie und erhalte eine Liste von Nummern. <br>
+          <br>
+        3. (Optional) <font color="#6ed0ff"><b>Nummer ersetzen</b></font> <br>
+          &ensp; Ändere das Nummernformat <br>
+          &ensp; Anwendungsfall: <br>
+          <font color="#888888">
+            &emsp; Beim Migrieren von anderen Apps konvertiere Formate wie <b>123#####</b> zu Regex <b>123.....</b> oder <b>123.*</b> <br>
+          </font>
+          <br>
+        4. <font color="#6ed0ff"><b>In Spam-Datenbank importieren</b></font> / <font color="#6ed0ff"><b>In Regex-Regel importieren</b></font> <br>
+        <br>
+        <br>
+        <b>Beispiel für Voreinstellung</b>: <br>
+          &ensp; Siehe die Voreinstellung <no_translate><b>FTC-DNC</b></no_translate>. <br>
+        <br>
+        <b>Weitere Online-Beispiele</b>: <br>
+          &ensp; <a href=\"%s\">Klartext</a> <br>
+          &ensp; <a href=\"%s\">CSV</a> <br>
+          &ensp; <a href=\"%s\">XML</a> <br>
+          &ensp; <a href=\"%s\">JSON</a> - JsonPath wird noch nicht unterstützt, verwende stattdessen <font color="#6ed0ff"><b>Regex Exact</b></font> instead.
+    ]]>
+    </string>
+    <string name="faq_regex">
+    <![CDATA[
+        Ein kurzer Regex‑Leitfaden. <br>
+        <br>
+        <font color="#00BFFF"><b>Stufe 1 – Platzhalter</b></font> <br>
+        &ensp; Wenn du einen Platzhalter <font color="#888888"><b>*</b></font> verwenden möchtest, setze einfach einen Punkt <font color="#888888"><b>.</b></font> davor, also <font color="#888888">.*<b></b></font>, so einfach, das sollte die meisten Anwendungsfälle abdecken. <br>
+        <br>
+        <font color="#00BFFF"><b>Stufe 2 – KI verwenden</b></font> <br>
+        &ensp; Zum Beispiel, um das folgende Regex für SMS‑Verifizierungen zu erhalten: <br>
+        &ensp; <font color="#888888">.*(verification|validation).*code.*\\d{5,6}.*</font> <br>
+        <br>
+        KI fragen: <br>
+        <font color="#888888">
+        %s
+        </font>
+        <br>
+        <br>
+        <b>Online ausprobieren</b> <br>
+        - <a href=\"copy\"><big>Hier tippen, um die obige Eingabe zu kopieren</big></a> <br>
+        - <a href=\"try_it\"><big>Hier tippen, um die Online‑KI zu starten</big></a> <br>
+    ]]>
+    </string>
+    <string name="ai_regex_prompt">
+    <![CDATA[
+        Zeige mir ein Kotlin‑Regex, das SMS‑Inhalte findet, die <br>
+        - den Text \"verification\" oder \"validation\" enthalten <br>
+        - gefolgt vom Wort \"code\" <br>
+        - gefolgt von einer 5‑ oder 6‑stelligen Zahl <br>
+        - andere Wörter können variieren, verwende .* um sie alle zu erfassen <br>
+        - es sollte ein Volltreffer sein (nicht Teil‑/Suchtreffer) <br>
+        - kein führendes ^ und abschließendes $ nötig <br>
+        - halte es so einfach wie möglich, vermeide fortgeschrittene Regex‑Funktionen <br>
+        <br>
+        Es sollte all diese Nachrichten erfassen: <br>
+        - Dein Verifizierungscode ist 123456, läuft nach 5 Minuten ab. <br>
+        - Dein Validierungscode: [12345] … <br>
+        <br>
+        Zeige mir das Regex nur mit einzelnen Backslashes, die Version, die ich direkt in andere Apps kopieren‑einfügen kann. Verwende KEINE doppelten Backslashes.
+    ]]>
+    </string>
+    <string name="copied_to_clipboard">In die Zwischenablage kopiert</string>
 </resources>

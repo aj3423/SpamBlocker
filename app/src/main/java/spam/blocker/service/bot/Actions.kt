@@ -549,7 +549,7 @@ class BackupExport(
 
     @Composable
     override fun Icon() {
-        GreyIcon(R.drawable.ic_backup_export)
+        GreyIcon(R.drawable.ic_export)
     }
 
     @Composable
@@ -616,7 +616,7 @@ class BackupImport(
 
     @Composable
     override fun Icon() {
-        GreyIcon(R.drawable.ic_backup_import)
+        GreyIcon(R.drawable.ic_import)
     }
 
     @Composable

@@ -85,34 +85,33 @@
         <br>
         Par défaut, <br>
         <br>
-        - <font color="#03DAC5">Whitelist rules</font> ont une priorité <font color="#ea86ff">10</font> <br>
-        &ensp; <font color="#888888">Par ex. Contacts (Lenient), RepeatedCall, RecentApps, etc </font><br>
+        - <font color="#03DAC5">règles de liste blanche</font> ont une priorité <font color="#ea86ff">10</font> <br>
+        &ensp; <font color="#888888">Par ex. Contacts, RepeatedCall, RecentApps, etc </font><br>
         <br>
-        - <font color="#fa7f71">Blacklist rules</font> ont une priorité <font color="#ea86ff">0</font> <br>
+        - <font color="#fa7f71">règles de liste noire</font> ont une priorité <font color="#ea86ff">0</font> <br>
         &ensp; <font color="#888888">Par ex. STIR, Database, etc </font> <br>
         <br>
-        Lorsqu\'elles sont toutes les deux activées, les règles de whitelist prévalent sur les règles de blacklist car 10 > 0. <br>
+        Lorsqu\'elles sont toutes les deux activées, les règles de liste blanche prévalent sur les règles de liste noire car 10 > 0. <br>
         <br>
         Pour les règles regex, la priorité peut être définie à n\'importe quel nombre entre <font color="#ea86ff">-2147483648</font>
           et <font color="#ea86ff">2147483647</font>. <br>
         Des règles différentes peuvent avoir la même priorité tant qu\'elles sont du même type, cependant,
-          <font color="#ffa500"><b>never assign the same priority to both
-          whitelist and blacklist rules</b></font>, cela peut entraîner un comportement aléatoire. <br>
+          <font color="#ffa500"><b>n\'attribuez jamais la même priorité aux règles de liste blanche et de liste noire</b></font>, cela peut entraîner un comportement aléatoire. <br>
         <br>
-        La fonction <font color="#00BFFF">Meeting Mode</font> a une priorité <font color="#ea86ff">20</font> par défaut,
+        La fonctionnalité <font color="#00BFFF">Mode Réunion</font> a une priorité <font color="#ea86ff">20</font> par défaut,
           car elle doit bloquer tous les appels pendant une réunion. <br>
-        Et <font color="#ea86ff">-1</font> pour <font color="#00BFFF">Instant Query</font>,
-          ainsi elle n\'est vérifiée qu\'après que l\'appel a traversé tous les filtres locaux. <br>
+        Et <font color="#ea86ff">-1</font> pour <font color="#00BFFF">Recherche Instantanée</font>,
+          de sorte qu\'elle ne soit vérifiée qu\'après que l\'appel a traversé tous les filtres locaux. <br>
         <br>
-        <b>Use cases</b> de la personnalisation de la priorité : <br>
+        <b>Cas d\'utilisation</b> de la personnalisation de la priorité : <br>
         <br>
-        - <font color="#888888">Always block a particular number, no matter if it repeats</font> <br>
-         &ensp; Définissez une règle avec une priorité > 10 pour remplacer <font color="#00BFFF">Repeated Call</font>. <br>
+        - <font color="#888888">Bloquer toujours un number particulier, quel que soit le nombre de répétitions</font> <br>
+         &ensp; Définissez une règle avec une priorité > 10 pour remplacer <font color="#00BFFF">Appel Répété</font>. <br>
         <br>
-        - <font color="#888888">Always allow a number</font> <br>
-         &ensp; Définissez-la à > 20 pour remplacer <font color="#00BFFF">Meeting Mode</font>. <br>
+        - <font color="#888888">Autoriser toujours un number</font> <br>
+         &ensp; Définissez-la à > 20 pour remplacer <font color="#00BFFF">Mode Réunion</font>. <br>
         <br>
-        - <font color="#888888">Test a regex rule</font> <br>
+        - <font color="#888888">Tester une règle regex</font> <br>
          &ensp; Définissez-la à 999 pour remplacer tous les autres filtres afin de ne pas devoir les désactiver temporairement un par un.
     ]]>
     </string>

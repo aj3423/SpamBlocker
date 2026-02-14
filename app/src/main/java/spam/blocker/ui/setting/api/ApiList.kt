@@ -88,7 +88,7 @@ fun ApiList(vm: ApiViewModel) {
         // Export
         LabelItem(
             label = ctx.getString(R.string.export),
-            leadingIcon = { GreyIcon20(R.drawable.ic_backup_export) }
+            leadingIcon = { GreyIcon20(R.drawable.ic_export) }
         ) {
             exportTrigger.value = true
         },

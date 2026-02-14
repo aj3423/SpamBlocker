@@ -7,4 +7,79 @@
          <a href=\"%s\">%s</a>
     ]]>
     </string>
+    <string name="import_numbers">Numaraları İçe Aktar</string>
+    <string name="faq_import_numbers">
+    <![CDATA[
+        İş akışlarını kullanarak yerel veya uzaktan dosyalardan numaraları içe aktar. <br>
+        <br>
+        <br>
+        <b>Tipik bir kurulum</b>: <br>
+        <br>
+        1. <font color="#6ed0ff"><b>Dosyayı Oku</b></font> / <font color="#6ed0ff"><b>HTTP İsteği</b></font> <br>
+          &ensp; Dosya içeriğini al. <br>
+          <br>
+        2. <font color="#6ed0ff"><b>CSV\'yi Ayrıştır</b></font> / <font color="#6ed0ff"><b>XML\'i Ayrıştır</b></font> / <font color="#6ed0ff"><b>Regex Exact</b></font> <br>
+          &ensp; Ayrıştır ve numaraların bir listesini al. <br>
+          <br>
+        3. (Optional) <font color="#6ed0ff"><b>Numarayı Değiştir</b></font> <br>
+          &ensp; Numara formatını değiştir <br>
+          &ensp; Kullanım durumu: <br>
+          <font color="#888888">
+            &emsp; Diğer uygulamalardan geçiş yaparken, <b>123#####</b> gibi formatları regex <b>123.....</b> veya <b>123.*</b> olarak dönüştür. <br>
+          </font>
+          <br>
+        4. <font color="#6ed0ff"><b>Spam Veritabanına İçe Aktar</b></font> / <font color="#6ed0ff"><b>Regex Kuralına İçe Aktar</b></font> <br>
+        <br>
+        <br>
+        <b>Ön Ayar Örneği</b>: <br>
+          &ensp; Öni ayarı <no_translate><b>FTC-DNC</b></no_translate> inceleyin. <br>
+        <br>
+        <b>Daha Fazla Çevrimiçi Örnek</b>: <br>
+          &ensp; <a href=\"%s\">Düz metin</a> <br>
+          &ensp; <a href=\"%s\">CSV</a> <br>
+          &ensp; <a href=\"%s\">XML</a> <br>
+          &ensp; <a href=\"%s\">Json</a> - JsonPath henüz desteklenmiyor, bunun yerine <font color=\"#6ed0ff\"><b>Regex Exact</b></font> kullanın.
+    ]]>
+    </string>
+    <string name="faq_regex">
+    <![CDATA[
+        Kısa bir regex öğreticisi. <br>
+        <br>
+        <font color="#00BFFF"><b>Seviye 1 - Joker Karakter</b></font> <br>
+        &ensp; Joker karakter <font color="#888888"><b>*</b></font> kullanmak istediğinizde, önüne bir nokta <font color="#888888"><b>.</b></font> koyun, örneğin <font color="#888888">.*<b></b></font>, bu kadar basit, çoğu kullanım durumunu kapsamalıdır. <br>
+        <br>
+        <font color="#00BFFF"><b>Seviye 2 - AI Kullanımı</b></font> <br>
+        &ensp; Örneğin, SMS doğrulamaları için aşağıdaki regex\'i elde etmek için: <br>
+        &ensp; <font color="#888888">.*(verification|validation).*code.*\\d{5,6}.*</font> <br>
+        <br>
+        AI\'ye Sor: <br>
+        <font color="#888888">
+        %s
+        </font>
+        <br>
+        <br>
+        <b>Çevrimiçi deneyin</b> <br>
+        - <a href=\"copy\"><big>Buraya dokunun</big></a> to copy the prompt above <br>
+        - <a href=\"try_it\"><big>Buraya dokunun</big></a> to launch the online AI <br>
+    ]]>
+    </string>
+    <string name="ai_regex_prompt">
+    <![CDATA[
+        Bana SMS içeriğini eşleyecek bir Kotlin regex\'i göster <br>
+        - \"verification\" veya \"validation\" içerir <br>
+        - ardından \"code\" kelimesi gelir <br>
+        - ardından 5 veya 6 haneli bir sayı gelir <br>
+        - diğer kelimeler değişebilir, hepsini eşlemek için .* kullanın <br>
+        - tam eşleşme olmalı (kısmi/arama değil) <br>
+        - baştaki ^ ve sondaki $ eklemeye gerek yok <br>
+        - mümkün olduğunca basit tutun, gelişmiş regex özelliklerini kullanmaktan kaçının <br>
+        <br>
+        Şu mesajların tümünü eşleştirmelidir: <br>
+        - Doğrulama kodunuz 123456, 5 dakika sonra sona erer. <br>
+        - Doğrulama kodunuz: [12345] … <br>
+        <br>
+        Sadece tek ters eğik çizgi kullanarak regex\'i göster, diğer uygulamalara doğrudan kopyalayıp yapıştırabileceğim sürüm. Çift ters eğik çizgi kullanmayın.
+    ]]>
+    </string>
+    <string name="copied_to_clipboard">Panoya kopyalandı</string>
 </resources>

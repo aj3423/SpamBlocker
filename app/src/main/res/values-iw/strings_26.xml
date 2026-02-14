@@ -7,4 +7,79 @@
          <a href=\"%s\">%s</a>
     ]]>
     </string>
+    <string name="import_numbers">ייבא מספרים</string>
+    <string name="faq_import_numbers">
+    <![CDATA[
+        ייבא מספרים מכל קובץ מקומי או מרוחק באמצעות זרימות עבודה. <br>
+        <br>
+        <br>
+        <b>הגדרה טיפוסית</b>: <br>
+        <br>
+        1. <font color="#6ed0ff"><b>קרא קובץ</b></font> / <font color="#6ed0ff"><b>בקשת HTTP</b></font> <br>
+          &ensp; קבל את תוכן הקובץ. <br>
+          <br>
+        2. <font color="#6ed0ff"><b>פענח CSV</b></font> / <font color="#6ed0ff"><b>פענח XML</b></font> / <font color="#6ed0ff"><b>Regex Exact</b></font> <br>
+          &ensp; פענח זאת וקבל רשימת מספרים. <br>
+          <br>
+        3. (אופציונלי) <font color="#6ed0ff"><b>החלף מספר</b></font> <br>
+          &ensp; שנה את פורמט המספר <br>
+          &ensp; מקרה שימוש: <br>
+          <font color="#888888">
+            &emsp; כאשר מעבירים אפליקציות אחרות, המר פורמטים כמו <b>123#####</b> ל-regex <b>123.....</b> או <b>123.*</b> <br>
+          </font>
+          <br>
+        4. <font color="#6ed0ff"><b>ייבא למסד נתוני ספאם</b></font> / <font color="#6ed0ff"><b>ייבא לכלל Regex</b></font> <br>
+        <br>
+        <br>
+        <b>דוגמת קבוע</b>: <br>
+          &ensp; ראה את הקבוע <no_translate><b>FTC-DNC</b></no_translate>. <br>
+        <br>
+        <b>דוגמאות מקוונות נוספות</b>: <br>
+          &ensp; <a href=\"%s\">טקסט רגיל</a> <br>
+          &ensp; <a href=\"%s\">CSV</a> <br>
+          &ensp; <a href=\"%s\">XML</a> <br>
+          &ensp; <a href=\"%s\">JSON</a> - JsonPath עדיין אינו נתמך, השתמש ב-Regex Exact במקום. 
+    ]]>
+    </string>
+    <string name="faq_regex">
+    <![CDATA[
+        מדריך קצר ל-regex. <br>
+        <br>
+        <font color="#00BFFF"><b>רמה 1 - תו כללי</b></font> <br>
+        &ensp; כאשר אתה רוצה להשתמש בתו כללי <font color="#888888"><b>*</b></font>, פשוט שים נקודה <font color="#888888"><b>.</b></font> לפניו, כמו <font color="#888888">.*</font>, פשוט כך, זה צריך לכסות את רוב המקרים. <br>
+        <br>
+        <font color="#00BFFF"><b>רמה 2 - שימוש ב-AI</b></font> <br>
+        &ensp; לדוגמה, לקבל את ה-regex הבא לאימותי SMS: <br>
+        &ensp; <font color="#888888">.*(verification|validation).*code.*\\d{5,6}.*</font> <br>
+        <br>
+        שאל את ה-AI: <br>
+        <font color="#888888">
+        %s
+        </font>
+        <br>
+        <br>
+        <b>נסה זאת אונליין</b> <br>
+        - <a href=\"copy\"><big>הקש כאן</big></a> כדי להעתיק את הפקודה למעלה <br>
+        - <a href=\"try_it\"><big>הקש כאן</big></a> כדי להפעיל את ה-AI המקוון <br>
+    ]]>
+    </string>
+    <string name="ai_regex_prompt">
+    <![CDATA[
+        הצג לי regex ב-Kotlin שמתאים לתוכן SMS ש <br>
+        - מכיל \"verification\" או \"validation\" <br>
+        - ולאחר מכן בא אחרי המילה \"code\" <br>
+        - ולאחר מכן מספר של 5 או 6 ספרות <br>
+        - מילים אחרות יכולות להשתנות, השתמש ב-.* כדי להתאים לכולן <br>
+        - זה צריך להיות התאמה מלאה (לא חלקית/חיפוש) <br>
+        - אין צורך להוסיף ^ בתחילת ו-$ בסוף <br>
+        - שמור על הפשטות ככל האפשר, הימנע משימוש בתכונות regex מתקדמות <br>
+        <br>
+        זה צריך להתאים לכל ההודעות הבאות: <br>
+        - קוד האימות שלך הוא 123456, פג תוקף אחרי 5 דקות. <br>
+        - קוד האימות שלך: [12345] … <br>
+        <br>
+        הצג לי את ה-regex תוך שימוש רק בקו נטוי אחיד, גרסה שאני יכול להעתיק ולהדביק ישירות לאפליקציות אחרות. אל תשתמש בקו נטוי כפול. 
+    ]]>
+    </string>
+    <string name="copied_to_clipboard">הועתק ללוח</string>
 </resources>

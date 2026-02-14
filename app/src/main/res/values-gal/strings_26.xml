@@ -7,4 +7,79 @@
          <a href=\"%s\">%s</a>
     ]]>
     </string>
+    <string name="import_numbers">Importar Numbers</string>
+    <string name="faq_import_numbers">
+    <![CDATA[
+        Importa numbers desde calquera ficheiro local ou remoto usando fluxos de traballo. <br>
+        <br>
+        <br>
+        <b>Unha configuración típica</b>: <br>
+        <br>
+        1. <font color="#6ed0ff"><b>Ler Ficheiro</b></font> / <font color="#6ed0ff"><b>Solicitude HTTP</b></font> <br>
+          &ensp; Obtén o contido do ficheiro. <br>
+          <br>
+        2. <font color="#6ed0ff"><b>Analizar CSV</b></font> / <font color="#6ed0ff"><b>Analizar XML</b></font> / <font color="#6ed0ff"><b>Regex Exacto</b></font> <br>
+          &ensp; Analízao e obtén unha lista de numbers. <br>
+          <br>
+        3. (Optional) <font color="#6ed0ff"><b>Substituír Number</b></font> <br>
+          &ensp; Modificar o formato number <br>
+          &ensp; Caso de uso: <br>
+          <font color="#888888">
+            &emsp; Ao migrar dende outras aplicacións, converte formatos como <b>123#####</b> a regex <b>123.....</b> ou <b>123.*</b> <br>
+          </font>
+          <br>
+        4. <font color="#6ed0ff"><b>Importar ao Spam Database</b></font> / <font color="#6ed0ff"><b>Importar á Regra Regex</b></font> <br>
+        <br>
+        <br>
+        <b>Exemplo de predefinición</b>: <br>
+          &ensp; See the preset <no_translate><b>FTC-DNC</b></no_translate>. <br>
+        <br>
+        <b>Máis exemplos en liña</b>: <br>
+          &ensp; <a href=\"%s\">Texto plano</a> <br>
+          &ensp; <a href=\"%s\">CSV</a> <br>
+          &ensp; <a href=\"%s\">XML</a> <br>
+          &ensp; <a href=\"%s\">Json</a> - JsonPath aínda non está soportado, usa <font color="#6ed0ff"><b>Regex Exacto</b></font> en vez diso.
+    ]]>
+    </string>
+    <string name="faq_regex">
+    <![CDATA[
+        Un breve tutorial de regex. <br>
+        <br>
+        <font color="#00BFFF"><b>Nivel 1 - Comodín</b></font> <br>
+        &ensp; Cando queiras usar un comodín <font color="#888888"><b>*</b></font>, simplemente pon un punto <font color="#888888"><b>.</b></font> antes, como <font color="#888888">.*</font>, tan sinxelo, isto debería cubrir a maioría dos casos de uso. <br>
+        <br>
+        <font color="#00BFFF"><b>Nivel 2 - Usando IA</b></font> <br>
+        &ensp; Por exemplo, para obter o seguinte regex para verificacións de SMS: <br>
+        &ensp; <font color="#888888">.*(verification|validation).*code.*\\d{5,6}.*</font> <br>
+        <br>
+        Pregúntalle á IA: <br>
+        <font color="#888888">
+        %s
+        </font>
+        <br>
+        <br>
+        <b>Probao en liña</b> <br>
+        - <a href=\"copy\"><big>Toca aquí</big></a> para copiar o prompt anterior <br>
+        - <a href=\"try_it\"><big>Toca aquí</big></a> para lanzar a IA en liña <br>
+    ]]>
+    </string>
+    <string name="ai_regex_prompt">
+    <![CDATA[
+        Mostra-me un regex en Kotlin que coincida co contido de SMS que <br>
+        - contén \"verification\" ou \"validation\" <br>
+        - seguido da palabra \"code\" <br>
+        - seguido dun number de 5 ou 6 díxitos <br>
+        - outras palabras poden variar, usa .* para coincidir con todas <br>
+        - debe ser unha coincidencia completa (non parcial/busca) <br>
+        - non é necesario engadir o ^ inicial nin o $ final <br>
+        - manténeo o máis sinxelo posible, evita usar características avanzadas de regex <br>
+        <br>
+        Debe coincidir con todas estas mensaxes: <br>
+        - O teu verification code é 123456, expira despois de 5 minutos. <br>
+        - O teu validation code: [12345] … <br>
+        <br>
+        Mostra-me o regex usando só barras invertidas simples, a versión que poida copiar e pegar directamente noutros aplicativos. NON uses barras invertidas dobles.
+    ]]>
+    </string>
+    <string name="copied_to_clipboard">Copiado ao portapapeis</string>
 </resources>

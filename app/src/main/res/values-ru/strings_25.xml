@@ -85,35 +85,35 @@
         <br>
         По умолчанию, <br>
         <br>
-        - <font color="#03DAC5">Whitelist rules</font> have priority <font color="#ea86ff">10</font> <br>
-        &ensp; <font color="#888888">E.g. Contacts(Lenient), RepeatedCall, RecentApps, etc </font><br>
+        - <font color="#03DAC5">правила белого списка</font> имеют приоритет <font color="#ea86ff">10</font> <br>
+        &ensp; <font color="#888888">Напр. Contacts, RepeatedCall, RecentApps, etc </font><br>
         <br>
-        - <font color="#fa7f71">Blacklist rules</font> have priority <font color="#ea86ff">0</font> <br>
-        &ensp; <font color="#888888">E.g. STIR, Database, etc </font> <br>
+        - <font color="#fa7f71">правила черного списка</font> имеют приоритет <font color="#ea86ff">0</font> <br>
+        &ensp; <font color="#888888">Напр. STIR, Database, etc </font> <br>
         <br>
-        When they are both enabled, whitelist rules will override blacklist rules as 10 > 0. <br>
+        Когда оба включены, правила белого списка переопределяют правила черного списка, так как 10 > 0. <br>
         <br>
-        For regex rules, the priority can be set to any number between <font color="#ea86ff">-2147483648</font>
-          and <font color="#ea86ff">2147483647</font>. <br>
-        Different rules can have the same priority as long as they are the same type, however,
-          <font color="#ffa500"><b>never assign the same priority to both
-          whitelist and blacklist rules</b></font>, it can cause random behavior. <br>
+        Для правил regex приоритет можно задать любым числом от <font color="#ea86ff">-2147483648</font>
+          до <font color="#ea86ff">2147483647</font>. <br>
+        Разные правила могут иметь одинаковый приоритет, если они одного типа, однако
+          <font color="#ffa500"><b>никогда не назначайте одинаковый приоритет одновременно
+          правилам белого и черного списка</b></font>, это может вызвать непредсказуемое поведение. <br>
         <br>
-        The feature <font color="#00BFFF">Meeting Mode</font> has priority <font color="#ea86ff">20</font> by default,
-          because it\'s supposed to block any calls during a meeting. <br>
-        And <font color="#ea86ff">-1</font> for <font color="#00BFFF">Instant Query</font>,
-          so it only gets checked after the call has passed all local filters. <br>
+        Функция <font color="#00BFFF">Режим встречи</font> имеет приоритет <font color="#ea86ff">20</font> по умолчанию,
+          так как должна блокировать любые вызовы во время встречи. <br>
+        И <font color="#ea86ff">-1</font> для <font color="#00BFFF">Мгновенный запрос</font>,
+          поэтому проверяется только после того, как вызов прошёл все локальные фильтры. <br>
         <br>
-        <b>Use cases</b> of customizing the priority: <br>
+        <b>Сценарии использования</b> настройки приоритета: <br>
         <br>
-        - <font color="#888888">Always block a particular number, no matter if it repeats</font> <br>
-         &ensp; Set a rule with priority > 10 to override <font color="#00BFFF">Repeated Call</font>. <br>
+        - <font color="#888888">Всегда блокировать определённый номер, независимо от повторов</font> <br>
+         &ensp; Установите правило с приоритетом > 10, чтобы переопределить <font color="#00BFFF">Повторный вызов</font>. <br>
         <br>
-        - <font color="#888888">Always allow a number</font> <br>
-         &ensp; Set it to > 20 to override <font color="#00BFFF">Meeting Mode</font>. <br>
+        - <font color="#888888">Всегда разрешать номер</font> <br>
+         &ensp; Установите приоритет > 20, чтобы переопределить <font color="#00BFFF">Режим встречи</font>. <br>
         <br>
-        - <font color="#888888">Test a regex rule</font> <br>
-         &ensp; Set it to 999 to override all other filters so you don\'t have to temporarily disable them one by one.
+        - <font color="#888888">Протестировать правило regex</font> <br>
+         &ensp; Установите приоритет 999, чтобы переопределить все остальные фильтры, чтобы не отключать их временно по одному.
     ]]>
     </string>
 </resources>

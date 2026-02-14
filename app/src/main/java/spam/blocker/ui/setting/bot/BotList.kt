@@ -240,7 +240,7 @@ fun BotList() {
     )
     val icons = listOf(
         R.drawable.ic_log,
-        R.drawable.ic_backup_export,
+        R.drawable.ic_export,
     )
     labels.forEachIndexed { menuIndex, label ->
         contextMenuItems += LabelItem(

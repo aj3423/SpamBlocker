@@ -7,4 +7,79 @@
          <a href="%s">%s</a>
     ]]>
     </string>
+    <string name="import_numbers">وارد کردن Numbers</string>
+    <string name="faq_import_numbers">
+    <![CDATA[
+        Numbers را از هر فایل محلی یا راه دور با استفاده از گردش کار وارد کنید. <br>
+        <br>
+        <br>
+        <b>یک تنظیمات معمولی</b>: <br>
+        <br>
+        1. <font color="#6ed0ff"><b>خواندن فایل</b></font> / <font color="#6ed0ff"><b>درخواست HTTP</b></font> <br>
+          &ensp; محتویات فایل را دریافت کنید. <br>
+          <br>
+        2. <font color="#6ed0ff"><b>تجزیه CSV</b></font> / <font color="#6ed0ff"><b>تجزیه XML</b></font> / <font color="#6ed0ff"><b>Regex Exact</b></font> <br>
+          &ensp; آن را تجزیه کنید و فهرستی از numbers دریافت کنید. <br>
+          <br>
+        3. (Optional) <font color="#6ed0ff"><b>جایگزینی Number</b></font> <br>
+          &ensp; قالب number را تغییر دهید <br>
+          &ensp; مورد استفاده: <br>
+          <font color="#888888">
+            &emsp; هنگام مهاجرت از برنامه‌های دیگر، فرمت‌ها را مانند <b>123#####</b> به regex <b>123.....</b> یا <b>123.*</b> تبدیل کنید. <br>
+          </font>
+          <br>
+        4. <font color="#6ed0ff"><b>وارد کردن به Spam Database</b></font> / <font color="#6ed0ff"><b>وارد کردن به قانون Regex</b></font> <br>
+        <br>
+        <br>
+        <b>مثال پیش‌تنظیم</b>: <br>
+          &ensp; See the preset <no_translate><b>FTC-DNC</b></no_translate>. <br>
+        <br>
+        <b>مثال‌های آنلاین بیشتر</b>: <br>
+          &ensp; <a href=\"%s\">متن ساده</a> <br>
+          &ensp; <a href=\"%s\">CSV</a> <br>
+          &ensp; <a href=\"%s\">XML</a> <br>
+          &ensp; <a href=\"%s\">Json</a> - JsonPath هنوز پشتیبانی نمی‌شود، از <font color="#6ed0ff"><b>Regex Exact</b></font> به جای آن استفاده کنید.
+    ]]>
+    </string>
+    <string name="faq_regex">
+    <![CDATA[
+        یک آموزش کوتاه regex. <br>
+        <br>
+        <font color="#00BFFF"><b>سطح 1 - Wildcard</b></font> <br>
+        &ensp; هر زمان که می‌خواهید از wildcard <font color="#888888"><b>*</b></font> استفاده کنید، فقط یک نقطه <font color="#888888"><b>.</b></font> قبل آن بگذارید، مانند <font color="#888888">.*<b></b></font>، به همین سادگی، این باید اکثر موارد استفاده را پوشش دهد. <br>
+        <br>
+        <font color="#00BFFF"><b>سطح 2 - استفاده از AI</b></font> <br>
+        &ensp; به عنوان مثال، برای دریافت regex زیر برای تأییدهای SMS: <br>
+        &ensp; <font color="#888888">.*(verification|validation).*code.*\\d{5,6}.*</font> <br>
+        <br>
+        از AI بپرسید: <br>
+        <font color="#888888">
+        %s
+        </font>
+        <br>
+        <br>
+        <b>آن را آنلاین امتحان کنید</b> <br>
+        - <a href=\"copy\"><big>اینجا ضربه بزنید</big></a> برای کپی کردن درخواست بالا <br>
+        - <a href=\"try_it\"><big>اینجا ضربه بزنید</big></a> برای راه‌اندازی AI آنلاین <br>
+    ]]>
+    </string>
+    <string name="ai_regex_prompt">
+    <![CDATA[
+        یک regex Kotlin نشان بده که محتوای SMS را که <br>
+        - شامل \"verification\" یا \"validation\" باشد <br>
+        - سپس با کلمه \"code\" دنبال شود <br>
+        - سپس با یک عدد 5 یا 6 رقمی (number) دنبال شود <br>
+        - کلمات دیگر می‌توانند متفاوت باشند، از .* برای مطابقت همه استفاده کنید <br>
+        - باید یک تطبیق کامل باشد (نه جزئی/جستجو) <br>
+        - نیازی به افزودن ^ در ابتدا و $ در انتها نیست <br>
+        - تا حد امکان ساده نگه دارید، از ویژگی‌های پیشرفته regex خودداری کنید <br>
+        <br>
+        باید تمام این پیام‌ها را مطابقت دهد: <br>
+        - Your verification code is 123456, expires after 5 minutes. <br>
+        - Your validation code: [12345] … <br>
+        <br>
+        regex را فقط با بک‌اسلش‌های تک نشان بده، نسخه‌ای که بتوانم مستقیماً در برنامه‌های دیگر کپی‑پیست کنم. از بک‌اسلش‌های دوگانه استفاده نکنید.
+    ]]>
+    </string>
+    <string name="copied_to_clipboard">در کلیپ‌بورد کپی شد</string>
 </resources>

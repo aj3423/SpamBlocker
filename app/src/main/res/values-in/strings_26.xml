@@ -7,4 +7,79 @@
          <a href=\"%s\">%s</a>
     ]]>
     </string>
+    <string name="import_numbers">Impor Nomor</string>
+    <string name="faq_import_numbers">
+    <![CDATA[
+        Impor nomor dari file lokal atau remote apa pun menggunakan alur kerja. <br>
+        <br>
+        <br>
+        <b>Pengaturan umum</b>: <br>
+        <br>
+        1. <font color="#6ed0ff"><b>Baca File</b></font> / <font color="#6ed0ff"><b>Permintaan Http</b></font> <br>
+          &ensp; Dapatkan konten file. <br>
+          <br>
+        2. <font color="#6ed0ff"><b>Parse CSV</b></font> / <font color="#6ed0ff"><b>Parse XML</b></font> / <font color="#6ed0ff"><b>Regex Exact</b></font> <br>
+          &ensp; Parse dan dapatkan daftar nomor. <br>
+          <br>
+        3. (Opsional) <font color="#6ed0ff"><b>Ganti Nomor</b></font> <br>
+          &ensp; Ubah format nomor <br>
+          &ensp; Contoh penggunaan: <br>
+          <font color="#888888">
+            &emsp; Saat memigrasi dari aplikasi lain, ubah format seperti <b>123#####</b> menjadi regex <b>123.....</b> atau <b>123.*</b> <br>
+          </font>
+          <br>
+        4. <font color="#6ed0ff"><b>Impor ke Database Spam</b></font> / <font color="#6ed0ff"><b>Impor ke Aturan Regex</b></font> <br>
+        <br>
+        <br>
+        <b>Contoh Preset</b>: <br>
+          &ensp; See the preset <no_translate><b>FTC-DNC</b></no_translate>. <br>
+        <br>
+        <b>Contoh Online Lainnya</b>: <br>
+          &ensp; <a href=\"%s\">Teks biasa</a> <br>
+          &ensp; <a href=\"%s\">CSV</a> <br>
+          &ensp; <a href=\"%s\">XML</a> <br>
+          &ensp; <a href=\"%s\">Json</a> - JsonPath belum didukung, gunakan <font color="#6ed0ff"><b>Regex Exact</b></font> sebagai gantinya.
+    ]]>
+    </string>
+    <string name="faq_regex">
+    <![CDATA[
+        Tutorial regex singkat. <br>
+        <br>
+        <font color="#00BFFF"><b>Level 1 - Wildcard</b></font> <br>
+        &ensp; Setiap kali Anda ingin menggunakan wildcard <font color="#888888"><b>*</b></font>, cukup letakkan titik <font color="#888888"><b>.</b></font> di depannya, seperti <font color="#888888">.*<b></b></font>, sesederhana itu, ini seharusnya mencakup kebanyakan kasus penggunaan. <br>
+        <br>
+        <font color="#00BFFF"><b>Level 2 - Menggunakan AI</b></font> <br>
+        &ensp; Sebagai contoh, untuk mendapatkan regex berikut untuk verifikasi SMS: <br>
+        &ensp; <font color="#888888">.*(verification|validation).*code.*\\d{5,6}.*</font> <br>
+        <br>
+        Tanya AI: <br>
+        <font color="#888888">
+        %s
+        </font>
+        <br>
+        <br>
+        <b>Coba secara online</b> <br>
+        - <a href=\"copy\"><big>Tap here</big></a> untuk menyalin prompt di atas <br>
+        - <a href=\"try_it\"><big>Tap here</big></a> untuk meluncurkan AI online <br>
+    ]]>
+    </string>
+    <string name="ai_regex_prompt">
+    <![CDATA[
+        Tunjukkan regex Kotlin yang cocok dengan konten SMS yang <br>
+        - berisi \"verification\" atau \"validation\" <br>
+        - kemudian diikuti kata \"code\" <br>
+        - kemudian diikuti oleh angka 5 atau 6 digit <br>
+        - kata lain dapat bervariasi, gunakan .* untuk mencocokkannya semua <br>
+        - harus merupakan pencocokan penuh (bukan parsial/pencarian) <br>
+        - tidak perlu menambahkan ^ di awal dan $ di akhir <br>
+        - buat sesederhana mungkin, hindari fitur regex lanjutan <br>
+        <br>
+        Harus cocok dengan semua pesan berikut: <br>
+        - Kode verifikasi Anda adalah 123456, kedaluwarsa setelah 5 menit. <br>
+        - Kode validasi Anda: [12345] … <br>
+        <br>
+        Tunjukkan regex menggunakan satu backslash saja, versi yang dapat saya salin-tempel langsung ke aplikasi lain. JANGAN gunakan double backslash.
+    ]]>
+    </string>
+    <string name="copied_to_clipboard">Disalin ke papan klip</string>
 </resources>

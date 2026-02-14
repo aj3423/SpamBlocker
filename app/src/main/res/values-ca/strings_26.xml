@@ -7,4 +7,80 @@
          <a href=\"%s\">%s</a>
     ]]>
     </string>
+    <string name="import_numbers">Importar números</string>
+    <string name="faq_import_numbers">
+    <![CDATA[
+        Importa números des de qualsevol fitxer local o remot utilitzant fluxos de treball. <br>
+        <br>
+        <br>
+        <b>Una configuració típica</b>: <br>
+        <br>
+        1. <font color="#6ed0ff"><b>Llegir fitxer</b></font> / <font color="#6ed0ff"><b>Sol·licitud HTTP</b></font> <br>
+          &ensp; Obté el contingut del fitxer. <br>
+          <br>
+        2. <font color="#6ed0ff"><b>Analitzar CSV</b></font> / <font color="#6ed0ff"><b>Analitzar XML</b></font> / <font color="#6ed0ff"><b>Expressió regular exacta</b></font> <br>
+          &ensp; Analitza\'l i obtén una llista de números. <br>
+          <br>
+        3. (Opcional) <font color="#6ed0ff"><b>Substituir número</b></font> <br>
+          &ensp; Modifica el format del número <br>
+          &ensp; Cas d\'ús: <br>
+          <font color="#888888">
+            &emsp; Quan migres des d\'altres aplicacions, converteix formats com <b>123#####</b> a expressió regular <b>123.....</b> o <b>123.*</b> <br>
+          </font>
+          <br>
+        4. <font color="#6ed0ff"><b>Importar a la base de dades de spam</b></font> / <font color="#6ed0ff"><b>Importar a regla d\'expressió regular</b></font> <br>
+        <br>
+        <br>
+        <b>Exemple de predefinició</b>: <br>
+          &ensp; Mira la predefinició <no_translate><b>FTC-DNC</b></no_translate>. <br>
+        <br>
+        <b>Més exemples en línia</b>: <br>
+          &ensp; <a href=\"%s\">Text pla</a> <br>
+          &ensp; <a href=\"%s\">CSV</a> <br>
+          &ensp; <a href=\"%s\">XML</a> <br>
+          &ensp; <a href=\"%s\">Json</a> - JsonPath encara no és compatible, utilitza <font color="#6ed0ff"><b>Expressió regular exacta</b></font> en el seu lloc.
+    ]]>
+    </string>
+    <string name="faq_regex">
+    <![CDATA[
+        Un breu tutorial d\'expressions regulars. <br>
+        <br>
+        <font color="#00BFFF"><b>Nivell 1 - Comodí</b></font> <br>
+        &ensp; Quan vulguis utilitzar un comodí <font color="#888888"><b>*</b></font>, simplement posa un punt <font color="#888888"><b>.</b></font>
+          abans, com <font color="#888888">.*<b></b></font>, senzillament, això hauria de cobrir la majoria dels casos d\'ús. <br>
+        <br>
+        <font color="#00BFFF"><b>Nivell 2 - Ús de IA</b></font> <br>
+        &ensp; Per exemple, per obtenir la següent expressió regular per a verificacions de SMS: <br>
+        &ensp; <font color="#888888">.*(verification|validation).*code.*\\d{5,6}.*</font> <br>
+        <br>
+        Demana a la IA: <br>
+        <font color="#888888">
+        %s
+        </font>
+        <br>
+        <br>
+        <b>Prova-ho en línia</b> <br>
+        - <a href=\"copy\"><big>Toca aquí</big></a> per copiar el missatge anterior <br>
+        - <a href=\"try_it\"><big>Toca aquí</big></a> per llançar la IA en línia <br>
+    ]]>
+    </string>
+    <string name="ai_regex_prompt">
+    <![CDATA[
+        Mostra\'m una expressió regular Kotlin que coincideixi amb el contingut d\'SMS que <br>
+        - conté \"verification\" o \"validation\" <br>
+        - seguida de la paraula \"code\" <br>
+        - seguida d\'un número de 5 o 6 dígits <br>
+        - altres paraules poden variar, usa .* per coincidir-les totes <br>
+        - ha de ser una coincidència completa (no parcial/cerca) <br>
+        - no cal afegir el ^ inicial ni el $ final <br>
+        - mantén-la tan simple com sigui possible, evita usar funcions avançades d\'expressions regulars <br>
+        <br>
+        Ha de coincidir amb tots aquests missatges: <br>
+        - Your verification code is 123456, expires after 5 minutes. <br>
+        - Your validation code: [12345] … <br>
+        <br>
+        Mostra\'m l\'expressió regular usant només barres invertides simples, la versió que pugui copiar i enganxar directament a altres aplicacions. NO utilitzis barres invertides dobles.
+    ]]>
+    </string>
+    <string name="copied_to_clipboard">Copiat al porta-retalls</string>
 </resources>

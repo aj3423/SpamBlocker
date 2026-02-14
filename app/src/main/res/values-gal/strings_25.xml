@@ -84,17 +84,17 @@
         <br>
         Por defecto, <br>
         <br>
-        - <font color="#03DAC5">Regras de lista branca</font> teñen prioridade <font color="#ea86ff">10</font> <br>
-        &ensp; <font color="#888888">Por exemplo, Contactos (Tolerante), Chamada Repetida, Aplicacións Recentes, etc </font><br>
+        - <font color="#03DAC5">Reglas da lista branca</font> teñen prioridade <font color="#ea86ff">10</font> <br>
+        &ensp; <font color="#888888">Por exemplo. Contactos, Chamada Repetida, Aplicacións Recentes, etc </font><br>
         <br>
-        - <font color="#fa7f71">Regras de lista negra</font> teñen prioridade <font color="#ea86ff">0</font> <br>
-        &ensp; <font color="#888888">Por exemplo, STIR, Base de datos, etc </font> <br>
+        - <font color="#fa7f71">Reglas da lista negra</font> teñen prioridade <font color="#ea86ff">0</font> <br>
+        &ensp; <font color="#888888">Por exemplo. STIR, Base de datos, etc </font> <br>
         <br>
-        Cando ambas están activas, as regras de lista branca sobrescribirán as de lista negra xa que 10 > 0. <br>
+        Cando están ambas activas, as regras da lista branca sobrescribirán as regras da lista negra xa que 10 > 0. <br>
         <br>
         Para as regras regex, a prioridade pode establecerse a calquera número entre <font color="#ea86ff">-2147483648</font>
           e <font color="#ea86ff">2147483647</font>. <br>
-        Distintas regras poden ter a mesma prioridade sempre que sexan do mesmo tipo, pero nunca asigna a mesma prioridade tanto ás regras de lista branca como ás de lista negra, pois pode provocar un comportamento aleatorio. <font color="#ffa500"><b>nunca asigne a mesma prioridade a ambas as regras de lista branca e lista negra</b></font>, pode causar comportamento aleatorio. <br>
+        As diferentes regras poden ter a mesma prioridade sempre que sexan do mesmo tipo, pero <font color="#ffa500"><b>nunca asignes a mesma prioridade tanto ás regras da lista branca como ás da lista negra</b></font>, pois pode causar un comportamento aleatorio. <br>
         <br>
         A funcionalidade <font color="#00BFFF">Modo Reunión</font> ten prioridade <font color="#ea86ff">20</font> por defecto,
           porque supón bloquear calquera chamada durante unha reunión. <br>
@@ -107,10 +107,10 @@
          &ensp; Establece unha regra con prioridade > 10 para sobrescribir <font color="#00BFFF">Chamada Repetida</font>. <br>
         <br>
         - <font color="#888888">Permitir sempre un número</font> <br>
-         &ensp; Estabeléceo en > 20 para sobrescribir <font color="#00BFFF">Modo Reunión</font>. <br>
+         &ensp; Estabeléceo en > 20 para sobrescribir o <font color="#00BFFF">Modo Reunión</font>. <br>
         <br>
         - <font color="#888888">Probar unha regra regex</font> <br>
-         &ensp; Estabeléceo en 999 para sobrescribir todos os demais filtros de modo que non teñas que desactivalos temporalmente un a un.
+         &ensp; Estabeléceo en 999 para sobrescribir todos os outros filtros de modo que non teñas que desactivalos temporalmente un a un.
     ]]>
     </string>
 </resources>

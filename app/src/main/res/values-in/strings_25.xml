@@ -81,39 +81,39 @@
     <string name="faq"><short>Tanya</short></string>
     <string name="faq_priority">
     <![CDATA[
-        Setiap filter memiliki nilai prioritas, sebagaimana istilahnya, menentukan urutan pemeriksaan panggilan. <br>
+        Setiap filter memiliki nilai prioritasnya, sebagaimana istilahnya, menentukan urutan pemeriksaan panggilan. <br>
         <br>
         Secara Default, <br>
         <br>
-        - <font color="#03DAC5">Aturan Daftar Putih</font> memiliki prioritas <font color="#ea86ff">10</font> <br>
-        &ensp; <font color="#888888">Contoh: Kontak (Lembut), PanggilanBerulang, AplikasiTerbaru, dll </font><br>
+        - <font color="#03DAC5">Whitelist rules</font> memiliki prioritas <font color="#ea86ff">10</font> <br>
+        &ensp; <font color="#888888">Contoh: Kontak, RepeatedCall, RecentApps, dll </font><br>
         <br>
-        - <font color="#fa7f71">Aturan Daftar Hitam</font> memiliki prioritas <font color="#ea86ff">0</font> <br>
-        &ensp; <font color="#888888">Contoh: STIR, BasisData, dll </font> <br>
+        - <font color="#fa7f71">Blacklist rules</font> memiliki prioritas <font color="#ea86ff">0</font> <br>
+        &ensp; <font color="#888888">Contoh: STIR, Database, dll </font> <br>
         <br>
-        Ketika keduanya diaktifkan, aturan daftar putih akan mengesampingkan aturan daftar hitam karena 10 > 0. <br>
+        Ketika keduanya diaktifkan, aturan whitelist akan menggantikan aturan blacklist karena 10 > 0. <br>
         <br>
         Untuk aturan regex, prioritas dapat diatur ke angka berapa pun antara <font color="#ea86ff">-2147483648</font>
           dan <font color="#ea86ff">2147483647</font>. <br>
-        Aturan yang berbeda dapat memiliki prioritas yang sama selama tipe mereka sama, namun,
-          <font color="#ffa500"><b>jangan pernah memberi prioritas yang sama pada aturan
-          daftar putih dan daftar hitam</b></font>, hal ini dapat menyebabkan perilaku acak. <br>
+        Berbagai aturan dapat memiliki prioritas yang sama selama mereka bertipe sama, namun,
+          <font color="#ffa500"><b>jangan pernah memberikan prioritas yang sama kepada
+          whitelist dan blacklist rules</b></font>, karena dapat menyebabkan perilaku acak. <br>
         <br>
-        Fitur <font color="#00BFFF">Mode Rapat</font> memiliki prioritas <font color="#ea86ff">20</font> secara default,
+        Fitur <font color="#00BFFF">Meeting Mode</font> memiliki prioritas <font color="#ea86ff">20</font> secara default,
           karena seharusnya memblokir semua panggilan selama rapat. <br>
-        Dan <font color="#ea86ff">-1</font> untuk <font color="#00BFFF">Kueri Instan</font>,
+        Dan <font color="#ea86ff">-1</font> untuk <font color="#00BFFF">Instant Query</font>,
           sehingga hanya diperiksa setelah panggilan melewati semua filter lokal. <br>
         <br>
-        <b>Kasus penggunaan</b> penyesuaian prioritas: <br>
+        <b>Contoh penggunaan</b> penyesuaian prioritas: <br>
         <br>
-        - <font color="#888888">Selalu blok number tertentu, tidak peduli apakah berulang</font> <br>
-         &ensp; Atur aturan dengan prioritas > 10 untuk mengesampingkan <font color="#00BFFF">Panggilan Berulang</font>. <br>
+        - <font color="#888888">Selalu blokir nomor tertentu, tidak peduli apakah berulang</font> <br>
+         &ensp; Atur aturan dengan prioritas > 10 untuk menggantikan <font color="#00BFFF">Repeated Call</font>. <br>
         <br>
-        - <font color="#888888">Selalu izinkan number</font> <br>
-         &ensp; Atur menjadi > 20 untuk mengesampingkan <font color="#00BFFF">Mode Rapat</font>. <br>
+        - <font color="#888888">Selalu izinkan nomor</font> <br>
+         &ensp; Atur menjadi > 20 untuk menggantikan <font color="#00BFFF">Meeting Mode</font>. <br>
         <br>
         - <font color="#888888">Uji aturan regex</font> <br>
-         &ensp; Atur menjadi 999 untuk mengesampingkan semua filter lain sehingga Anda tidak perlu menonaktifkannya satu per satu.
+         &ensp; Atur menjadi 999 untuk menggantikan semua filter lain sehingga Anda tidak perlu menonaktifkannya satu per satu secara sementara.
     ]]>
     </string>
 </resources>

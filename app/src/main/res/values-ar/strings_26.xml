@@ -7,4 +7,79 @@
          <a href=\"%s\">%s</a>
     ]]>
     </string>
+    <string name="import_numbers">استيراد الأرقام</string>
+    <string name="faq_import_numbers">
+    <![CDATA[
+        استيراد الأرقام من أي ملفات محلية أو عن بُعد باستخدام سير العمل. <br>
+        <br>
+        <br>
+        <b>إعداد نموذجي</b>: <br>
+        <br>
+        1. <font color="#6ed0ff"><b>قراءة الملف</b></font> / <font color="#6ed0ff"><b>طلب HTTP</b></font> <br>
+          &ensp; احصل على محتوى الملف. <br>
+          <br>
+        2. <font color="#6ed0ff"><b>تحليل CSV</b></font> / <font color="#6ed0ff"><b>تحليل XML</b></font> / <font color="#6ed0ff"><b>Regex Exact</b></font> <br>
+          &ensp; قم بتحليله واحصل على قائمة بالأرقام. <br>
+          <br>
+        3. (اختياري) <font color="#6ed0ff"><b>استبدال الرقم</b></font> <br>
+          &ensp; تعديل تنسيق الرقم <br>
+          &ensp; حالة الاستخدام: <br>
+          <font color="#888888">
+            &emsp; عند الانتقال من تطبيقات أخرى، قم بتحويل الصيغ مثل <b>123#####</b> إلى regex <b>123.....</b> أو <b>123.*</b> <br>
+          </font>
+          <br>
+        4. <font color="#6ed0ff"><b>استيراد إلى قاعدة بيانات Spam</b></font> / <font color="#6ed0ff"><b>استيراد إلى قاعدة Regex</b></font> <br>
+        <br>
+        <br>
+        <b>مثال مسبق</b>: <br>
+          &ensp; انظر الإعداد المسبق <no_translate><b>FTC-DNC</b></no_translate>. <br>
+        <br>
+        <b>المزيد من الأمثلة على الإنترنت</b>: <br>
+          &ensp; <a href=\"%s\">نص عادي</a> <br>
+          &ensp; <a href=\"%s\">CSV</a> <br>
+          &ensp; <a href=\"%s\">XML</a> <br>
+          &ensp; <a href=\"%s\">JSON</a> - JsonPath غير مدعوم بعد، استخدم <font color=\"#6ed0ff\"><b>Regex Exact</b></font> بدلاً من ذلك.
+    ]]>
+    </string>
+    <string name="faq_regex">
+    <![CDATA[
+        دروس مختصرة عن التعبيرات النمطية. <br>
+        <br>
+        <font color="#00BFFF"><b>المستوى 1 - البدل</b></font> <br>
+        &ensp; كلما أردت استخدام البدل <font color="#888888"><b>*</b></font>، ضع نقطة <font color="#888888"><b>.</b></font> قبله، مثل <font color="#888888">.*</font>، الأمر بسيط، وهذا يغطي معظم الحالات. <br>
+        <br>
+        <font color="#00BFFF"><b>المستوى 2 - استخدام الذكاء الاصطناعي</b></font> <br>
+        &ensp; على سبيل المثال، للحصول على التعبير النمطي التالي للتحقق من رسائل SMS: <br>
+        &ensp; <font color="#888888">.*(verification|validation).*code.*\\d{5,6}.*</font> <br>
+        <br>
+        اسأل الذكاء الاصطناعي: <br>
+        <font color="#888888">
+        %s
+        </font>
+        <br>
+        <br>
+        <b>جربه على الإنترنت</b> <br>
+        - <a href=\"copy\"><big>اضغط هنا</big></a> لنسخ النص أعلاه <br>
+        - <a href=\"try_it\"><big>اضغط هنا</big></a> لتشغيل الذكاء الاصطناعي على الإنترنت <br>
+    ]]>
+    </string>
+    <string name="ai_regex_prompt">
+    <![CDATA[
+        أظهر لي تعبيرًا نمطيًا (regex) بلغة Kotlin يطابق محتوى رسائل SMS التي <br>
+        - تحتوي على \"verification\" أو \"validation\" <br>
+        - ثم تتبعها كلمة \"code\" <br>
+        - ثم يتبعها رقم مكوّن من 5 أو 6 أرقام <br>
+        - يمكن أن تتغير الكلمات الأخرى، استخدم .* لمطابقتها جميعًا <br>
+        - يجب أن يكون تطابقًا كاملاً (ليس جزئيًا/بحثيًا) <br>
+        - لا حاجة لإضافة ^ في البداية ولا $ في النهاية <br>
+        - اجعلها بسيطة قدر الإمكان، وتجنب استخدام ميزات regex المتقدمة <br>
+        <br>
+        يجب أن يطابق جميع هذه الرسائل: <br>
+        - Your verification code is 123456, expires after 5 minutes. <br>
+        - Your validation code: [12345] … <br>
+        <br>
+        أعرض لي التعبير النمطي باستخدام شرطات مائلة واحدة فقط، النسخة التي يمكنني نسخها ولصقها مباشرة في تطبيقات أخرى. لا تستخدم شرطات مائلة مزدوجة.
+    ]]>
+    </string>
+    <string name="copied_to_clipboard">تم النسخ إلى الحافظة</string>
 </resources>

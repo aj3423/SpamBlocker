@@ -81,36 +81,35 @@
     <string name="faq"><short>よくある質問</short></string>
     <string name="faq_priority">
     <![CDATA[
-        各フィルターには優先度の値があり、文字通り、通話がチェックされる順序を決定します。 <br>
+        各フィルターには優先度の値があり、その名前が示す通り、電話がチェックされる順序を決定します。 <br>
         <br>
         デフォルトでは、 <br>
         <br>
-        - <font color="#03DAC5">Whitelist rules</font>の優先度は <font color="#ea86ff">10</font>です <br>
-        &ensp; <font color="#888888">例: Contacts(Lenient), RepeatedCall, RecentApps, etc </font><br>
+        - <font color="#03DAC5">Whitelist rules</font>の優先度は <font color="#ea86ff">10</font> <br>
+        &ensp; <font color="#888888">例: Contacts, RepeatedCall, RecentApps, etc </font><br>
         <br>
-        - <font color="#fa7f71">Blacklist rules</font>の優先度は <font color="#ea86ff">0</font>です <br>
+        - <font color="#fa7f71">Blacklist rules</font>の優先度は <font color="#ea86ff">0</font> <br>
         &ensp; <font color="#888888">例: STIR, Database, etc </font> <br>
         <br>
-        両方が有効な場合、Whitelist rulesはBlacklist rulesを上書きします（10 > 0）。 <br>
+        両方が有効な場合、ホワイトリストルールはブラックリストルールを上書きします（10 > 0）。 <br>
         <br>
         正規表現ルールの場合、優先度は <font color="#ea86ff">-2147483648</font>
-          と <font color="#ea86ff">2147483647</font> の任意の数値に設定できます。 <br>
-        異なるルールでも同じタイプであれば同じ優先度を設定できますが、<font color="#ffa500"><b>WhitelistとBlacklistの両方に同じ優先度を割り当ててはいけません</b></font>。ランダムな動作を引き起こす可能性があります。 <br>
+          と <font color="#ea86ff">2147483647</font> の間の任意の数に設定できます。 <br>
+        同じタイプのルールであれば、異なるルールでも同じ優先度を設定できますが、<font color="#ffa500"><b>ホワイトリストとブラックリストのルールに同じ優先度を付けてはいけません</b></font>。ランダムな動作を引き起こす可能性があります。 <br>
         <br>
-        機能 <font color="#00BFFF">Meeting Mode</font> の優先度はデフォルトで <font color="#ea86ff">20</font> です。会議中のすべての通話をブロックすることを想定しています。 <br>
-        And <font color="#ea86ff">-1</font> for <font color="#00BFFF">Instant Query</font>,
-          so it only gets checked after the call has passed all local filters. <br>
+        機能 <font color="#00BFFF">Meeting Mode</font> のデフォルト優先度は <font color="#ea86ff">20</font> です。会議中のすべての電話をブロックすることを想定しています。 <br>
+        そして <font color="#ea86ff">-1</font> は <font color="#00BFFF">Instant Query</font> 用で、すべてのローカルフィルターを通過した後にのみチェックされます。 <br>
         <br>
-        <b>Use cases</b> of customizing the priority: <br>
+        <b>優先度カスタマイズの使用例</b>： <br>
         <br>
-        - <font color="#888888">Always block a particular number, no matter if it repeats</font> <br>
-         &ensp; Set a rule with priority > 10 to override <font color="#00BFFF">Repeated Call</font>. <br>
+        - <font color="#888888">特定の電話番号を常にブロックする（繰り返しでも）</font> <br>
+         &ensp; 優先度 > 10 のルールを設定して <font color="#00BFFF">Repeated Call</font> を上書きします。 <br>
         <br>
-        - <font color="#888888">Always allow a number</font> <br>
-         &ensp; Set it to > 20 to override <font color="#00BFFF">Meeting Mode</font>. <br>
+        - <font color="#888888">電話番号を常に許可する</font> <br>
+         &ensp; 優先度を > 20 に設定して <font color="#00BFFF">Meeting Mode</font> を上書きします。 <br>
         <br>
-        - <font color="#888888">Test a regex rule</font> <br>
-         &ensp; Set it to 999 to override all other filters so you don\'t have to temporarily disable them one by one.
+        - <font color="#888888">正規表現ルールをテストする</font> <br>
+         &ensp; 優先度を 999 に設定すれば、他のすべてのフィルターを上書きでき、個別に一時的に無効化する必要がなくなります。
     ]]>
     </string>
 </resources>

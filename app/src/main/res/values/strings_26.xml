@@ -7,4 +7,80 @@
          <a href=\"%s\">%s</a>
     ]]>
     </string>
+    <string name="import_numbers">Import Numbers</string>
+    <string name="faq_import_numbers">
+    <![CDATA[
+        Import numbers from any local or remote files using workflows. <br>
+        <br>
+        <br>
+        <b>A typical setup</b>: <br>
+        <br>
+        1. <font color="#6ed0ff"><b>Read File</b></font> / <font color="#6ed0ff"><b>Http Request</b></font> <br>
+          &ensp; Get the file content. <br>
+          <br>
+        2. <font color="#6ed0ff"><b>Parse CSV</b></font> / <font color="#6ed0ff"><b>Parse XML</b></font> / <font color="#6ed0ff"><b>Regex Exact</b></font> <br>
+          &ensp; Parse it and get a list of numbers. <br>
+          <br>
+        3. (Optional) <font color="#6ed0ff"><b>Replace Number</b></font> <br>
+          &ensp; Modify the number format <br>
+          &ensp; Use case: <br>
+          <font color="#888888">
+            &emsp; When migrating from other apps, convert formats like <b>123#####</b> to regex <b>123.....</b> or <b>123.*</b> <br>
+          </font>
+          <br>
+        4. <font color="#6ed0ff"><b>Import to Spam Database</b></font> / <font color="#6ed0ff"><b>Import to Regex Rule</b></font> <br>
+        <br>
+        <br>
+        <b>Preset Example</b>: <br>
+          &ensp; See the preset <no_translate><b>FTC-DNC</b></no_translate>. <br>
+        <br>
+        <b>More Online Examples</b>: <br>
+          &ensp; <a href=\"%s\">Plain text</a> <br>
+          &ensp; <a href=\"%s\">CSV</a> <br>
+          &ensp; <a href=\"%s\">XML</a> <br>
+          &ensp; <a href=\"%s\">Json</a> - JsonPath isn\'t supported yet, use <font color="#6ed0ff"><b>Regex Exact</b></font> instead.
+    ]]>
+    </string>
+    <string name="faq_regex">
+    <![CDATA[
+        A brief regex tutorial. <br>
+        <br>
+        <font color="#00BFFF"><b>Level 1 - Wildcard</b></font> <br>
+        &ensp; Whenever you want to use a wildcard <font color="#888888"><b>*</b></font>, just put a dot <font color="#888888"><b>.</b></font>
+          before it, like <font color="#888888">.*<b></b></font>, simple as that, this should cover most use cases. <br>
+        <br>
+        <font color="#00BFFF"><b>Level 2 - Using AI</b></font> <br>
+        &ensp; For example, to get the following regex for SMS verifications: <br>
+        &ensp; <font color="#888888">.*(verification|validation).*code.*\\d{5,6}.*</font> <br>
+        <br>
+        Ask AI: <br>
+        <font color="#888888">
+        %s
+        </font>
+        <br>
+        <br>
+        <b>Try it online</b> <br>
+        - <a href=\"copy\"><big>Tap here</big></a> to copy the prompt above <br>
+        - <a href=\"try_it\"><big>Tap here</big></a> to launch the online AI <br>
+    ]]>
+    </string>
+    <string name="ai_regex_prompt">
+    <![CDATA[
+        Show me a Kotlin regex that matches SMS content that <br>
+        - contains \"verification\" or \"validation\" <br>
+        - then followed by the word \"code\" <br>
+        - then followed by a 5 or 6-digit number <br>
+        - other words can vary, use .* to match them all <br>
+        - it should be a full-match (not partial/search) <br>
+        - no need to add the leading ^ and the trailing $ <br>
+        - keep it as simple as possible, avoid using advanced regex features <br>
+        <br>
+        It should match all these messages: <br>
+        - Your verification code is 123456, expires after 5 minutes. <br>
+        - Your validation code: [12345] … <br>
+        <br>
+        Show me the regex using single backslashes only, the version I can directly copy-paste into other apps. Do NOT use double backslashes.
+    ]]>
+    </string>
+    <string name="copied_to_clipboard">Copied to clipboard</string>
 </resources>
