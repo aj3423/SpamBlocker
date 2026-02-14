@@ -1,8 +1,11 @@
 <resources>
     <string name="crash_title">
-        Es tut uns leid, die App ist abgestürzt.\n\n
-        Bitte kopieren Sie den Inhalt unten und melden Sie dieses Problem auf Github,
-        entfernen Sie alle sensiblen Informationen, bevor Sie sie melden.
+    <![CDATA[
+        Entschuldigung, die App ist abgestürzt. <br>
+        <br>
+        Bitte kopieren Sie den untenstehenden Inhalt und melden Sie dieses Problem auf GitHub,
+        entfernen Sie vorher alle sensiblen Informationen.
+    ]]>
     </string>
     <string-array name="weekdays_abbrev">
         <item>So</item>

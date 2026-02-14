@@ -1,8 +1,11 @@
 <resources>
     <string name="crash_title">
-        申し訳ありませんが、アプリがクラッシュしました。\n\n
-        以下の内容をコピーしてgithubでこの問題を報告してください。\n
-        報告する前に、機密情報を取り除いてください。
+    <![CDATA[
+        申し訳ありませんが、アプリがクラッシュしました。 <br>
+        <br>
+        以下の内容をコピーして、GitHubでこの問題を報告してください。
+        報告する前に機密情報を削除してください。
+    ]]>
     </string>
     <string-array name="weekdays_abbrev">
         <item><short>日</short></item>

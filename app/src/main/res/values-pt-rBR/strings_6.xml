@@ -1,8 +1,11 @@
 <resources>
     <string name="crash_title">
-        Desculpe, o aplicativo travou.\n\n
-        Por favor, copie o conteúdo abaixo e reporte este problema no github,
-        remova quaisquer informações confidenciais antes de relatar.
+    <![CDATA[
+        Desculpe, o aplicativo travou. <br>
+        <br>
+        Por favor, copie o conteúdo abaixo e reporte este problema no GitHub,
+        remova qualquer informação sensível antes de relatar.
+    ]]>
     </string>
     <string-array name="weekdays_abbrev">
         <item>Dom</item>

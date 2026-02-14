@@ -1,8 +1,11 @@
 <resources>
     <string name="crash_title">
-        Désolé, l\'application a planté.\n\n
-        Veuillez copier le contenu ci-dessous et signaler ce problème sur github,
-        supprimez toute information sensible avant de signaler.
+    <![CDATA[
+        Désolé, l\'application a planté. <br>
+        <br>
+        Veuillez copier le contenu ci-dessous et signaler ce problème sur GitHub,
+        supprimez toute information sensible avant de le signaler.
+    ]]>
     </string>
     <string-array name="weekdays_abbrev">
         <item>Dim</item>

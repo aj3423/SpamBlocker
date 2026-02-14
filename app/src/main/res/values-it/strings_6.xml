@@ -1,8 +1,11 @@
 <resources>
     <string name="crash_title">
-        Spiacente, l\'app si è chiusa in modo anomalo.\n\n
-        Si prega di copiare il contenuto qui sotto e segnalare questo problema su github,
-        rimuovendo eventuali informazioni sensibili prima di inviare la segnalazione.
+    <![CDATA[
+        Ci dispiace, l\'app è andata in crash. <br>
+        <br>
+        Per favore copia il contenuto qui sotto e segnala questo problema su GitHub,
+        rimuovi qualsiasi informazione sensibile prima di segnalare.
+    ]]>
     </string>
     <string-array name="weekdays_abbrev">
         <item>Dom</item>

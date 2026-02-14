@@ -1,8 +1,10 @@
 <resources>
     <string name="crash_title">
-        抱歉，应用程序崩溃了。\n\n
-        请复制以下内容并将其提交到github上，
-        在报告之前请删除任何敏感信息。
+    <![CDATA[
+        抱歉，应用已崩溃。 <br>
+        <br>
+        请复制以下内容并在 github 上报告此问题，报告前请删除任何敏感信息。
+    ]]>
     </string>
     <string-array name="weekdays_abbrev">
         <item>周日</item>

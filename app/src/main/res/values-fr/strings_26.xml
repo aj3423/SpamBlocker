@@ -1,0 +1,10 @@
+<resources>
+    <string name="known_android_issue">
+    <![CDATA[
+        Il s\'agit d\'un problème Android connu, déjà signalé à l\'équipe Android, une correction est toujours attendue. <br>
+        <br>
+        Voir la cause et la solution ici : <br>
+         <a href=\"%s\">%s</a>
+    ]]>
+    </string>
+</resources>

@@ -1,0 +1,10 @@
+<resources>
+    <string name="known_android_issue">
+    <![CDATA[
+        这是一个已知的 Android 问题，已向 Android 团队报告，仍在等待修复。 <br>
+        <br>
+        请在此查看原因和解决方法： <br>
+         <a href=\"%s\">%s</a>
+    ]]>
+    </string>
+</resources>

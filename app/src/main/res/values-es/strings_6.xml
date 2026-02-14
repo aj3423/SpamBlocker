@@ -1,8 +1,11 @@
 <resources>
     <string name="crash_title">
-        Lo siento, la aplicación se ha bloqueado.\n\n
-        Por favor, copia el contenido de abajo e informa de este problema en github,
-        elimina cualquier información sensible antes de reportarlo.
+    <![CDATA[
+        Lo sentimos, la aplicación se ha bloqueado. <br>
+        <br>
+        Por favor, copie el contenido a continuación y reporte este problema en GitHub,
+        elimine cualquier información sensible antes de reportar.
+    ]]>
     </string>
     <string-array name="weekdays_abbrev">
         <item>Dom</item>

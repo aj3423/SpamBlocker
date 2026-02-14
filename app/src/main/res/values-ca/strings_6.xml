@@ -1,8 +1,11 @@
 <resources>
     <string name="crash_title">
-        <translate>Ho sentim, l\'aplicació s\'ha tancat inesperadament.\n\n
-        Si us plau, copia el contingut següent i informa d\'aquest problema a github,
-        elimina qualsevol informació sensible abans d\'informar.</translate>
+    <![CDATA[
+        Ho sentim, l\'aplicació s\'ha bloquejat. <br>
+        <br>
+        Si us plau, copia el contingut següent i informa d\'aquest problema a GitHub,
+        elimina qualsevol informació sensible abans d\'informar.
+    ]]>
     </string>
     <string-array name="weekdays_abbrev">
         <item>Dg</item>

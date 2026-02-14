@@ -1,8 +1,11 @@
 <resources>
     <string name="crash_title">
-        很抱歉，應用程式發生錯誤。\n\n
-        請複製以下內容並在 GitHub 上回報此問題，
+    <![CDATA[
+        抱歉，應用程式已崩潰。 <br>
+        <br>
+        請複製以下內容並在 github 上回報此問題，
         回報前請移除任何敏感資訊。
+    ]]>
     </string>
     <string-array name="weekdays_abbrev">
         <item>週日</item>

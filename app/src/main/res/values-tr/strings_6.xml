@@ -1,8 +1,11 @@
 <resources>
     <string name="crash_title">
-        Üzgünüm, uygulama çöktü.\n\n
-        Lütfen aşağıdaki içeriği kopyalayın ve bu sorunu GitHub\'da bildirin,
-        raporlamadan önce hassas bilgileri kaldırın.
+    <![CDATA[
+        Üzgünüz, uygulama çöktü. <br>
+        <br>
+        Lütfen aşağıdaki içeriği kopyalayın ve bu sorunu GitHub\'ta bildirin,
+        raporlamadan önce herhangi bir hassas bilgiyi kaldırın.
+    ]]>
     </string>
     <string-array name="weekdays_abbrev">
         <item>Paz</item>
