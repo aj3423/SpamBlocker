@@ -10,75 +10,77 @@
     <string name="import_numbers">Importar números</string>
     <string name="faq_import_numbers">
     <![CDATA[
-        Importa números desde cualquier archivo local o remoto usando flujos de trabajo. <br>
+        Importa números de archivos locales o remotos usando flujos de trabajo. <br>
         <br>
+        <font color="#00BFFF"><b>Una configuración típica</b></font>: <br>
         <br>
-        <b>Una configuración típica</b>: <br>
-        <br>
-        1. <font color="#6ed0ff"><b>Leer archivo</b></font> / <font color="#6ed0ff"><b>Solicitud HTTP</b></font> <br>
+        1. <font color="#6ed0ff"><b>Leer Archivo</b></font> / <font color="#6ed0ff"><b>Solicitud Http</b></font> <br>
           &ensp; Obtén el contenido del archivo. <br>
           <br>
-        2. <font color="#6ed0ff"><b>Analizar CSV</b></font> / <font color="#6ed0ff"><b>Analizar XML</b></font> / <font color="#6ed0ff"><b>Expresión regular exacta</b></font> <br>
+        2. <font color="#6ed0ff"><b>Analizar CSV</b></font> / <font color="#6ed0ff"><b>Analizar XML</b></font> / <font color="#6ed0ff"><b>Extraer Regex</b></font> <br>
           &ensp; Analízalo y obtén una lista de números. <br>
           <br>
-        3. (Opcional) <font color="#6ed0ff"><b>Reemplazar número</b></font> <br>
-          &ensp; Modificar el formato del número <br>
+        3. <font color="#6ed0ff"><b>Reemplazar Número</b></font> (opcional) <br>
+          &ensp; Modifica el formato del número <br>
           &ensp; Caso de uso: <br>
-          <font color="#888888">
-            &emsp; Al migrar desde otras aplicaciones, convierte formatos como <b>123#####</b> a la expresión regular <b>123.....</b> o <b>123.*</b> <br>
-          </font>
+        <font color="#888888">
+            &emsp; Al migrar números de otras apps, convierte formatos como <b>123#####</b> a regex <b>123.....</b> o <b>123.*</b> <br>
+        </font>
           <br>
-        4. <font color="#6ed0ff"><b>Importar a la base de datos de spam</b></font> / <font color="#6ed0ff"><b>Importar a regla de expresión regular</b></font> <br>
+        4. <font color="#6ed0ff"><b>Importar a Base de Datos Spam</b></font> / <font color="#6ed0ff"><b>Importar a Regla Regex</b></font> <br>
         <br>
         <br>
-        <b>Ejemplo predefinido</b>: <br>
-          &ensp; Ver el preset <no_translate><b>FTC-DNC</b></no_translate>. <br>
+        <font color="#00BFFF"><b>Ejemplos</b></font>: <br>
+          - El preajuste <no_translate><b>FTC-DNC</b></no_translate> <br>
         <br>
-        <b>Más ejemplos en línea</b>: <br>
-          &ensp; <a href=\"%s\">Texto plano</a> <br>
-          &ensp; <a href=\"%s\">CSV</a> <br>
-          &ensp; <a href=\"%s\">XML</a> <br>
-          &ensp; <a href=\"%s\">JSON</a> - JsonPath aún no es compatible, usa Expresión regular exacta en su lugar.
+        Más ejemplos en línea: <br>
+          - <a href=\"%s\">Texto plano</a> <br>
+          - <a href=\"%s\">CSV</a> <br>
+          - <a href=\"%s\">XML</a> <br>
+          - <a href=\"%s\">Json</a> - JsonPath aún no es compatible, usa <font color="#6ed0ff"><b>Extraer Regex</b></font> en su lugar.
     ]]>
     </string>
     <string name="faq_regex">
     <![CDATA[
-        Breve tutorial de expresiones regulares. <br>
+        Un tutorial de regex para no programadores. <br>
         <br>
-        <font color="#00BFFF"><b>Nivel 1 - Comodín</b></font> <br>
-        &ensp; Cada vez que quieras usar un comodín <font color="#888888"><b>*</b></font>, simplemente coloca un punto <font color="#888888"><b>.</b></font> antes, como <font color="#888888">.*</font>, así de simple, debería cubrir la mayoría de los casos. <br>
+        <font color="#00BFFF"><b>Nivel Básico - Comodín</b></font> <br>
+        &ensp; Siempre que quieras usar un comodín <font color="#888888"><b>*</b></font>, pon un punto <font color="#888888"><b>.</b></font>
+          antes, como <font color="#888888">.*<b></b></font>, esto debería cubrir la mayoría de casos de uso. <br>
         <br>
-        <font color="#00BFFF"><b>Nivel 2 - Usando IA</b></font> <br>
-        &ensp; Por ejemplo, para obtener la siguiente expresión regular para verificaciones SMS: <br>
+        <font color="#00BFFF"><b>Avanzado - Usando IA</b></font> <br>
+        &ensp; Por ejemplo, para obtener la siguiente regex para verificaciones SMS: <br>
         &ensp; <font color="#888888">.*(verification|validation).*code.*\\d{5,6}.*</font> <br>
         <br>
-        Preguntar a la IA: <br>
+        Pregunta a la IA: <br>
         <font color="#888888">
         %s
         </font>
         <br>
         <br>
-        <b>Pruébalo en línea</b> <br>
-        - <a href=\"copy\"><big>Toca aquí</big></a> para copiar el mensaje anterior <br>
-        - <a href=\"try_it\"><big>Toca aquí</big></a> para lanzar la IA en línea <br>
+        <br>
+        <font color="#03DAC5"><b>Probar en línea</b></font> <br>
+          &ensp; 1. <a href=\"copy\"><big>Toca aquí</big></a> para copiar el prompt de arriba <br>
+          &ensp; 2. <a href=\"try_it\"><big>Toca aquí</big></a> para lanzar la IA en línea <br>
     ]]>
     </string>
     <string name="ai_regex_prompt">
     <![CDATA[
-        Muéstrame una expresión regular Kotlin que coincida con contenido SMS que <br>
-        - contenga \"verification\" o \"validation\" <br>
-        - seguida de la palabra \"code\" <br>
-        - seguida de un número de 5 o 6 dígitos <br>
+        Muéstrame una regex de Kotlin que coincida con el contenido de SMS que <br>
+        - contenga \"verificación\" o \"validación\" <br>
+        - seguido de la palabra \"código\" <br>
+        - seguido de un número de 5 o 6 dígitos <br>
         - otras palabras pueden variar, usa .* para coincidir con todas <br>
         - debe ser una coincidencia completa (no parcial/búsqueda) <br>
-        - no es necesario añadir ^ al inicio ni $ al final <br>
-        - mantenla lo más simple posible, evita usar características avanzadas de expresiones regulares <br>
+        - no es necesario agregar el ^ inicial y el $ final <br>
+        - mantenla lo más simple posible, evita usar funciones avanzadas de regex <br>
+        - usa solo barras invertidas simples, la versión que pueda copiar y pegar directamente en otras apps. NO uses barras invertidas dobles. <br>
         <br>
         Debe coincidir con todos estos mensajes: <br>
-        - Your verification code is 123456, expires after 5 minutes. <br>
-        - Your validation code: [12345] … <br>
+        - Tu código de verificación es 123456, expira en 5 minutos. <br>
+        - Tu código de validación: [12345] … <br>
         <br>
-        Muéstrame la expresión regular usando solo barras invertidas simples, la versión que pueda copiar‑pegar directamente en otras apps. NO uses barras invertidas dobles.
+        Muéstrame la regex y explícala.
     ]]>
     </string>
     <string name="copied_to_clipboard">Copiado al portapapeles</string>

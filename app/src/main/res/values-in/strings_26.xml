@@ -10,46 +10,45 @@
     <string name="import_numbers">Impor Nomor</string>
     <string name="faq_import_numbers">
     <![CDATA[
-        Impor nomor dari file lokal atau remote apa pun menggunakan alur kerja. <br>
+        Impor nomor dari file lokal atau jarak jauh menggunakan alur kerja. <br>
         <br>
-        <br>
-        <b>Pengaturan umum</b>: <br>
+        <font color="#00BFFF"><b>Pengaturan umum</b></font>: <br>
         <br>
         1. <font color="#6ed0ff"><b>Baca File</b></font> / <font color="#6ed0ff"><b>Permintaan Http</b></font> <br>
           &ensp; Dapatkan konten file. <br>
           <br>
-        2. <font color="#6ed0ff"><b>Parse CSV</b></font> / <font color="#6ed0ff"><b>Parse XML</b></font> / <font color="#6ed0ff"><b>Regex Exact</b></font> <br>
-          &ensp; Parse dan dapatkan daftar nomor. <br>
+        2. <font color="#6ed0ff"><b>Uraikan CSV</b></font> / <font color="#6ed0ff"><b>Uraikan XML</b></font> / <font color="#6ed0ff"><b>Ekstrak Regex</b></font> <br>
+          &ensp; Uraikan dan dapatkan daftar nomor. <br>
           <br>
-        3. (Opsional) <font color="#6ed0ff"><b>Ganti Nomor</b></font> <br>
+        3. <font color="#6ed0ff"><b>Ganti Nomor</b></font> (opsional) <br>
           &ensp; Ubah format nomor <br>
-          &ensp; Contoh penggunaan: <br>
-          <font color="#888888">
-            &emsp; Saat memigrasi dari aplikasi lain, ubah format seperti <b>123#####</b> menjadi regex <b>123.....</b> atau <b>123.*</b> <br>
-          </font>
+          &ensp; Kasus penggunaan: <br>
+        <font color="#888888">
+            &emsp; Saat memigrasi nomor dari aplikasi lain, konversi format seperti <b>123#####</b> ke regex <b>123.....</b> atau <b>123.*</b> <br>
+        </font>
           <br>
         4. <font color="#6ed0ff"><b>Impor ke Database Spam</b></font> / <font color="#6ed0ff"><b>Impor ke Aturan Regex</b></font> <br>
         <br>
         <br>
-        <b>Contoh Preset</b>: <br>
-          &ensp; See the preset <no_translate><b>FTC-DNC</b></no_translate>. <br>
+        <font color="#00BFFF"><b>Contoh</b></font>: <br>
+          - Preset <no_translate><b>FTC-DNC</b></no_translate> <br>
         <br>
-        <b>Contoh Online Lainnya</b>: <br>
-          &ensp; <a href=\"%s\">Teks biasa</a> <br>
-          &ensp; <a href=\"%s\">CSV</a> <br>
-          &ensp; <a href=\"%s\">XML</a> <br>
-          &ensp; <a href=\"%s\">Json</a> - JsonPath belum didukung, gunakan <font color="#6ed0ff"><b>Regex Exact</b></font> sebagai gantinya.
+        Contoh online lainnya: <br>
+          - <a href=\"%s\">Teks biasa</a> <br>
+          - <a href=\"%s\">CSV</a> <br>
+          - <a href=\"%s\">XML</a> <br>
+          - <a href=\"%s\">Json</a> - JsonPath belum didukung, gunakan <font color="#6ed0ff"><b>Ekstrak Regex</b></font> sebagai gantinya.
     ]]>
     </string>
     <string name="faq_regex">
     <![CDATA[
-        Tutorial regex singkat. <br>
+        Tutorial regex untuk non-programmer. <br>
         <br>
-        <font color="#00BFFF"><b>Level 1 - Wildcard</b></font> <br>
-        &ensp; Setiap kali Anda ingin menggunakan wildcard <font color="#888888"><b>*</b></font>, cukup letakkan titik <font color="#888888"><b>.</b></font> di depannya, seperti <font color="#888888">.*<b></b></font>, sesederhana itu, ini seharusnya mencakup kebanyakan kasus penggunaan. <br>
+        <font color="#00BFFF"><b>Tingkat Dasar - Wildcard</b></font> <br>
+        &ensp; Setiap kali Anda ingin menggunakan wildcard <font color="#888888"><b>*</b></font>, letakkan titik <font color="#888888"><b>.</b></font> sebelumnya, seperti <font color="#888888">.*<b></b></font>, ini seharusnya mencakup sebagian besar kasus penggunaan. <br>
         <br>
-        <font color="#00BFFF"><b>Level 2 - Menggunakan AI</b></font> <br>
-        &ensp; Sebagai contoh, untuk mendapatkan regex berikut untuk verifikasi SMS: <br>
+        <font color="#00BFFF"><b>Lanjutan - Menggunakan AI</b></font> <br>
+        &ensp; Misalnya, untuk mendapatkan regex berikut untuk verifikasi SMS: <br>
         &ensp; <font color="#888888">.*(verification|validation).*code.*\\d{5,6}.*</font> <br>
         <br>
         Tanya AI: <br>
@@ -58,27 +57,29 @@
         </font>
         <br>
         <br>
-        <b>Coba secara online</b> <br>
-        - <a href=\"copy\"><big>Tap here</big></a> untuk menyalin prompt di atas <br>
-        - <a href=\"try_it\"><big>Tap here</big></a> untuk meluncurkan AI online <br>
+        <br>
+        <font color="#03DAC5"><b>Coba online</b></font> <br>
+          &ensp; 1. <a href=\"copy\"><big>Ketuk di sini</big></a> untuk menyalin prompt di atas <br>
+          &ensp; 2. <a href=\"try_it\"><big>Ketuk di sini</big></a> untuk membuka AI online <br>
     ]]>
     </string>
     <string name="ai_regex_prompt">
     <![CDATA[
         Tunjukkan regex Kotlin yang cocok dengan konten SMS yang <br>
-        - berisi \"verification\" atau \"validation\" <br>
-        - kemudian diikuti kata \"code\" <br>
+        - mengandung \"verification\" atau \"validation\" <br>
+        - kemudian diikuti oleh kata \"code\" <br>
         - kemudian diikuti oleh angka 5 atau 6 digit <br>
-        - kata lain dapat bervariasi, gunakan .* untuk mencocokkannya semua <br>
-        - harus merupakan pencocokan penuh (bukan parsial/pencarian) <br>
+        - kata lain bisa bervariasi, gunakan .* untuk mencocokkan semuanya <br>
+        - harus cocok penuh (bukan parsial/pencarian) <br>
         - tidak perlu menambahkan ^ di awal dan $ di akhir <br>
         - buat sesederhana mungkin, hindari fitur regex lanjutan <br>
+        - gunakan hanya backslash tunggal, versi yang bisa langsung saya copy-paste ke aplikasi lain. JANGAN gunakan backslash ganda. <br>
         <br>
-        Harus cocok dengan semua pesan berikut: <br>
-        - Kode verifikasi Anda adalah 123456, kedaluwarsa setelah 5 menit. <br>
-        - Kode validasi Anda: [12345] … <br>
+        Harus cocok dengan semua pesan ini: <br>
+        - Your verification code is 123456, expires after 5 minutes. <br>
+        - Your validation code: [12345] … <br>
         <br>
-        Tunjukkan regex menggunakan satu backslash saja, versi yang dapat saya salin-tempel langsung ke aplikasi lain. JANGAN gunakan double backslash.
+        Tunjukkan regexnya dan jelaskan.
     ]]>
     </string>
     <string name="copied_to_clipboard">Disalin ke papan klip</string>

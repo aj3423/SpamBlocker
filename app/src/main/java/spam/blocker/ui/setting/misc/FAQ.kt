@@ -5,29 +5,24 @@ package spam.blocker.ui.setting.misc
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.widget.Toast
-import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import androidx.core.text.HtmlCompat
 import kotlinx.coroutines.launch
 import spam.blocker.R
-import spam.blocker.ui.M
 import spam.blocker.ui.theme.Priority
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.BalloonWrapper
 import spam.blocker.ui.widgets.FlowRowSpaced
 import spam.blocker.ui.widgets.PopupDialog
-import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.rememberFileWriteChooser
@@ -40,7 +35,6 @@ data class FaqBox(
     val label: String,
     val color: Color,
     val helpTooltip: String,
-    val icon: Int,
     val onCustomLinkClick: Lambda1<String>? = null
 )
 
@@ -60,13 +54,11 @@ fun FAQ() {
                         FaqBox(
                             label = ctx.getString(R.string.priority),
                             color = Priority,
-                            icon = R.drawable.ic_priority,
                             helpTooltip = ctx.getString(R.string.faq_priority)
                         ),
                         FaqBox(
                             label = ctx.getString(R.string.regex_pattern),
                             color = Teal200,
-                            icon = R.drawable.ic_regex,
                             helpTooltip = ctx.getString(R.string.faq_regex).format(
                                 ctx.getString(R.string.ai_regex_prompt)
                             ),
@@ -93,7 +85,6 @@ fun FAQ() {
                         FaqBox(
                             label = ctx.getString(R.string.import_numbers),
                             color = SkyBlue,
-                            icon = R.drawable.ic_import,
                             helpTooltip = ctx.getString(R.string.faq_import_numbers).format(
                                 "$REPO/issues?q=label:import_plain_text",
                                 "$REPO/issues?q=label:import_csv",
@@ -119,7 +110,6 @@ fun FAQ() {
                             StrokeButton(
                                 label = faqBox.label,
                                 color = faqBox.color,
-                                icon = { ResIcon(faqBox.icon, color = faqBox.color, modifier = M.size(16.dp)) }
                             ) {
                                 scope.launch {
                                     tooltipState.show()

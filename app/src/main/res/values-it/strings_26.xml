@@ -10,46 +10,45 @@
     <string name="import_numbers">Importa numeri</string>
     <string name="faq_import_numbers">
     <![CDATA[
-        Importa numeri da qualsiasi file locale o remoto usando i flussi di lavoro. <br>
+        Importa numeri da file locali o remoti utilizzando i flussi di lavoro. <br>
         <br>
+        <font color="#00BFFF"><b>Una configurazione tipica</b></font>: <br>
         <br>
-        <b>Una configurazione tipica</b>: <br>
-        <br>
-        1. <font color="#6ed0ff"><b>Leggi file</b></font> / <font color="#6ed0ff"><b>Richiesta HTTP</b></font> <br>
+        1. <font color="#6ed0ff"><b>Leggi File</b></font> / <font color="#6ed0ff"><b>Richiesta Http</b></font> <br>
           &ensp; Ottieni il contenuto del file. <br>
           <br>
-        2. <font color="#6ed0ff"><b>Analizza CSV</b></font> / <font color="#6ed0ff"><b>Analizza XML</b></font> / <font color="#6ed0ff"><b>Regex Esatto</b></font> <br>
+        2. <font color="#6ed0ff"><b>Analizza CSV</b></font> / <font color="#6ed0ff"><b>Analizza XML</b></font> / <font color="#6ed0ff"><b>Estrai Regex</b></font> <br>
           &ensp; Analizzalo e ottieni un elenco di numeri. <br>
           <br>
-        3. (Opzionale) <font color="#6ed0ff"><b>Sostituisci numero</b></font> <br>
+        3. <font color="#6ed0ff"><b>Sostituisci Numero</b></font> (opzionale) <br>
           &ensp; Modifica il formato del numero <br>
           &ensp; Caso d\'uso: <br>
           <font color="#888888">
-            &emsp; Quando si migra da altre app, converti i formati come <b>123#####</b> in regex <b>123.....</b> o <b>123.*</b> <br>
+            &emsp; Quando si migrano i numeri da altre app, converti formati come <b>123#####</b> in regex <b>123.....</b> o <b>123.*</b> <br>
           </font>
           <br>
         4. <font color="#6ed0ff"><b>Importa nel Database Spam</b></font> / <font color="#6ed0ff"><b>Importa nella Regola Regex</b></font> <br>
         <br>
         <br>
-        <b>Esempio di preset</b>: <br>
-          &ensp; Vedi il preset <no_translate><b>FTC-DNC</b></no_translate>. <br>
+        <font color="#00BFFF"><b>Esempi</b></font>: <br>
+          - Il preset <no_translate><b>FTC-DNC</b></no_translate> <br>
         <br>
-        <b>Altri esempi online</b>: <br>
-          &ensp; <a href=\"%s\">Testo semplice</a> <br>
-          &ensp; <a href=\"%s\">CSV</a> <br>
-          &ensp; <a href=\"%s\">XML</a> <br>
-          &ensp; <a href=\"%s\">Json</a> - JsonPath non è ancora supportato, usa <font color="#6ed0ff"><b>Regex Esatto</b></font> invece.
+        Altri esempi online: <br>
+          - <a href=\"%s\">Testo normale</a> <br>
+          - <a href=\"%s\">CSV</a> <br>
+          - <a href=\"%s\">XML</a> <br>
+          - <a href=\"%s\">Json</a> - JsonPath non è ancora supportato, usa invece <font color="#6ed0ff"><b>Estrai Regex</b></font>.
     ]]>
     </string>
     <string name="faq_regex">
     <![CDATA[
-        Una breve guida al regex. <br>
+        Un tutorial sulle regex per non programmatori. <br>
         <br>
-        <font color="#00BFFF"><b>Livello 1 - Carattere jolly</b></font> <br>
-        &ensp; Ogni volta che vuoi usare un carattere jolly <font color="#888888"><b>*</b></font>, basta mettere un punto <font color="#888888"><b>.</b></font> prima, come <font color="#888888">.*<b></b></font>, semplice così, dovrebbe coprire la maggior parte dei casi d\'uso. <br>
+        <font color="#00BFFF"><b>Livello base - Jolly</b></font> <br>
+        &ensp; Ogni volta che vuoi usare un carattere jolly <font color="#888888"><b>*</b></font>, metti un punto <font color="#888888"><b>.</b></font> prima di esso, come <font color="#888888">.*<b></b></font>; questo dovrebbe coprire la maggior parte dei casi d\'uso. <br>
         <br>
-        <font color="#00BFFF"><b>Livello 2 - Uso dell\'IA</b></font> <br>
-        &ensp; Ad esempio, per ottenere il seguente regex per le verifiche SMS: <br>
+        <font color="#00BFFF"><b>Avanzato - Uso dell\'IA</b></font> <br>
+        &ensp; Ad esempio, per ottenere la seguente regex per le verifiche SMS: <br>
         &ensp; <font color="#888888">.*(verification|validation).*code.*\\d{5,6}.*</font> <br>
         <br>
         Chiedi all\'IA: <br>
@@ -58,27 +57,29 @@
         </font>
         <br>
         <br>
-        <b>Provalo online</b> <br>
-        - <a href=\"copy\"><big>Tocca qui</big></a> per copiare il prompt sopra <br>
-        - <a href=\"try_it\"><big>Tocca qui</big></a> per avviare l\'IA online <br>
+        <br>
+        <font color="#03DAC5"><b>Provalo online</b></font> <br>
+          &ensp; 1. <a href=\"copy\"><big>Tocca qui</big></a> per copiare il prompt sopra <br>
+          &ensp; 2. <a href=\"try_it\"><big>Tocca qui</big></a> per avviare l\'IA online <br>
     ]]>
     </string>
     <string name="ai_regex_prompt">
     <![CDATA[
-        Mostrami un regex Kotlin che corrisponda al contenuto SMS che <br>
+        Mostrami una regex Kotlin che corrisponda al contenuto SMS che <br>
         - contiene \"verification\" o \"validation\" <br>
         - seguito dalla parola \"code\" <br>
         - seguito da un numero di 5 o 6 cifre <br>
-        - le altre parole possono variare, usa .* per corrispondere a tutte <br>
-        - deve essere una corrispondenza completa (non parziale/ricerca) <br>
-        - non è necessario aggiungere ^ all\'inizio né $ alla fine <br>
-        - mantienilo il più semplice possibile, evita di usare funzionalità regex avanzate <br>
+        - altre parole possono variare, usa .* per corrisponderle tutte <br>
+        - deve essere una corrispondenza completa (non parziale/cerca) <br>
+        - non c\'è bisogno di aggiungere ^ iniziale e $ finale <br>
+        - mantienilo il più semplice possibile, evita funzionalità regex avanzate <br>
+        - usa solo backslash singoli, la versione che posso copiare e incollare direttamente in altre app. NON usare backslash doppi. <br>
         <br>
         Dovrebbe corrispondere a tutti questi messaggi: <br>
         - Your verification code is 123456, expires after 5 minutes. <br>
         - Your validation code: [12345] … <br>
         <br>
-        Mostrami il regex usando solo backslash singoli, la versione che posso copiare-incollare direttamente in altre app. NON usare backslash doppi.
+        Mostrami la regex e spiegala.
     ]]>
     </string>
     <string name="copied_to_clipboard">Copiato negli appunti</string>

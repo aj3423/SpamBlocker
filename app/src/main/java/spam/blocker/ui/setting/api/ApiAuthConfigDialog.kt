@@ -1,5 +1,6 @@
 package spam.blocker.ui.setting.api
 
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -15,6 +16,7 @@ import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.IApi
 import spam.blocker.service.bot.IAction
+import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
@@ -107,7 +109,7 @@ fun ApiAuthConfigDialog(
         }
     ) {
         // A guide for how to obtain the api key
-        HtmlText(Str(authConfig.tooltipId))
+        HtmlText(Str(authConfig.tooltipId), modifier = M.fillMaxWidth())
 
         // Show all required fields as a form
         formFields.forEach {

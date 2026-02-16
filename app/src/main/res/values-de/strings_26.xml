@@ -10,75 +10,76 @@
     <string name="import_numbers">Nummern importieren</string>
     <string name="faq_import_numbers">
     <![CDATA[
-        Importiere Nummern aus beliebigen lokalen oder entfernten Dateien mithilfe von Workflows. <br>
+        Importieren Sie Nummern aus lokalen oder Remote-Dateien mithilfe von Workflows. <br>
         <br>
+        <font color="#00BFFF"><b>Ein typisches Setup</b></font>: <br>
         <br>
-        <b>Ein typisches Setup</b>: <br>
-        <br>
-        1. <font color="#6ed0ff"><b>Datei lesen</b></font> / <font color="#6ed0ff"><b>HTTP-Anfrage</b></font> <br>
-          &ensp; Hole den Dateiinhalt. <br>
+        1. <font color="#6ed0ff"><b>Datei lesen</b></font> / <font color="#6ed0ff"><b>Http-Anfrage</b></font> <br>
+          &ensp; Den Dateiinhalt abrufen. <br>
           <br>
-        2. <font color="#6ed0ff"><b>CSV parsen</b></font> / <font color="#6ed0ff"><b>XML parsen</b></font> / <font color="#6ed0ff"><b>Exakte Regex</b></font> <br>
-          &ensp; Parse sie und erhalte eine Liste von Nummern. <br>
+        2. <font color="#6ed0ff"><b>CSV parsen</b></font> / <font color="#6ed0ff"><b>XML parsen</b></font> / <font color="#6ed0ff"><b>Regex extrahieren</b></font> <br>
+          &ensp; Analysieren Sie es und erhalten Sie eine Liste von Nummern. <br>
           <br>
-        3. (Optional) <font color="#6ed0ff"><b>Nummer ersetzen</b></font> <br>
-          &ensp; Ändere das Nummernformat <br>
+        3. <font color="#6ed0ff"><b>Nummer ersetzen</b></font> (optional) <br>
+          &ensp; Das Nummernformat ändern <br>
           &ensp; Anwendungsfall: <br>
           <font color="#888888">
-            &emsp; Beim Migrieren von anderen Apps konvertiere Formate wie <b>123#####</b> zu Regex <b>123.....</b> oder <b>123.*</b> <br>
+            &emsp; Beim Migrieren von Nummern aus anderen Apps, Formate wie <b>123#####</b> in Regex <b>123.....</b> oder <b>123.*</b> konvertieren <br>
           </font>
           <br>
         4. <font color="#6ed0ff"><b>In Spam-Datenbank importieren</b></font> / <font color="#6ed0ff"><b>In Regex-Regel importieren</b></font> <br>
         <br>
         <br>
-        <b>Beispiel für Voreinstellung</b>: <br>
-          &ensp; Siehe die Voreinstellung <no_translate><b>FTC-DNC</b></no_translate>. <br>
+        <font color="#00BFFF"><b>Beispiele</b></font>: <br>
+          - Die Voreinstellung <no_translate><b>FTC-DNC</b></no_translate> <br>
         <br>
-        <b>Weitere Online-Beispiele</b>: <br>
-          &ensp; <a href=\"%s\">Klartext</a> <br>
-          &ensp; <a href=\"%s\">CSV</a> <br>
-          &ensp; <a href=\"%s\">XML</a> <br>
-          &ensp; <a href=\"%s\">JSON</a> - JsonPath wird noch nicht unterstützt, verwende stattdessen <font color="#6ed0ff"><b>Regex Exact</b></font> instead.
+        Weitere Online-Beispiele: <br>
+          - <a href=\"%s\">Klartext</a> <br>
+          - <a href=\"%s\">CSV</a> <br>
+          - <a href=\"%s\">XML</a> <br>
+          - <a href=\"%s\">Json</a> - JsonPath wird noch nicht unterstützt, verwenden Sie stattdessen <font color="#6ed0ff"><b>Regex extrahieren</b></font>.
     ]]>
     </string>
     <string name="faq_regex">
     <![CDATA[
-        Ein kurzer Regex‑Leitfaden. <br>
+        Ein Regex-Tutorial für Nicht-Programmierer. <br>
         <br>
-        <font color="#00BFFF"><b>Stufe 1 – Platzhalter</b></font> <br>
-        &ensp; Wenn du einen Platzhalter <font color="#888888"><b>*</b></font> verwenden möchtest, setze einfach einen Punkt <font color="#888888"><b>.</b></font> davor, also <font color="#888888">.*<b></b></font>, so einfach, das sollte die meisten Anwendungsfälle abdecken. <br>
+        <font color="#00BFFF"><b>Einsteigerlevel - Platzhalter</b></font> <br>
+        &ensp; Wann immer Sie einen Platzhalter <font color="#888888"><b>*</b></font> verwenden möchten, setzen Sie einen Punkt <font color="#888888"><b>.</b></font> davor, wie <font color="#888888">.*<b></b></font>, dies sollte die meisten Anwendungsfälle abdecken. <br>
         <br>
-        <font color="#00BFFF"><b>Stufe 2 – KI verwenden</b></font> <br>
-        &ensp; Zum Beispiel, um das folgende Regex für SMS‑Verifizierungen zu erhalten: <br>
+        <font color="#00BFFF"><b>Fortgeschritten - KI nutzen</b></font> <br>
+        &ensp; Um beispielsweise den folgenden Regex für SMS-Bestätigungen zu erhalten: <br>
         &ensp; <font color="#888888">.*(verification|validation).*code.*\\d{5,6}.*</font> <br>
         <br>
-        KI fragen: <br>
+        Fragen Sie die KI: <br>
         <font color="#888888">
         %s
         </font>
         <br>
         <br>
-        <b>Online ausprobieren</b> <br>
-        - <a href=\"copy\"><big>Hier tippen, um die obige Eingabe zu kopieren</big></a> <br>
-        - <a href=\"try_it\"><big>Hier tippen, um die Online‑KI zu starten</big></a> <br>
+        <br>
+        <font color="#03DAC5"><b>Online testen</b></font> <br>
+          &ensp; 1. <a href=\"copy\"><big>Hier tippen</big></a>, um die obige Eingabe zu kopieren <br>
+          &ensp; 2. <a href=\"try_it\"><big>Hier tippen</big></a>, um die Online-KI zu starten <br>
     ]]>
     </string>
     <string name="ai_regex_prompt">
     <![CDATA[
-        Zeige mir ein Kotlin‑Regex, das SMS‑Inhalte findet, die <br>
-        - den Text \"verification\" oder \"validation\" enthalten <br>
+        Zeigen Sie mir einen Kotlin-Regex, der auf SMS-Inhalte passt, die <br>
+        - \"verification\" oder \"validation\" enthalten <br>
         - gefolgt vom Wort \"code\" <br>
-        - gefolgt von einer 5‑ oder 6‑stelligen Zahl <br>
-        - andere Wörter können variieren, verwende .* um sie alle zu erfassen <br>
-        - es sollte ein Volltreffer sein (nicht Teil‑/Suchtreffer) <br>
-        - kein führendes ^ und abschließendes $ nötig <br>
-        - halte es so einfach wie möglich, vermeide fortgeschrittene Regex‑Funktionen <br>
+        - gefolgt von einer 5- oder 6-stelligen Nummer <br>
+        - andere Wörter können variieren, verwenden Sie .* um sie alle abzugleichen <br>
+        - es sollte ein vollständiger Abgleich sein (kein Teil-/Suchabgleich) <br>
+        - kein Bedarf, das führende ^ und das abschließende $ hinzuzufügen <br>
+        - halten Sie es so einfach wie möglich, vermeiden Sie fortgeschrittene Regex-Features <br>
+        - verwenden Sie nur einfache Backslashes, die Version, die ich direkt in andere Apps kopieren und einfügen kann. Verwenden Sie KEINE doppelten Backslashes. <br>
         <br>
-        Es sollte all diese Nachrichten erfassen: <br>
-        - Dein Verifizierungscode ist 123456, läuft nach 5 Minuten ab. <br>
-        - Dein Validierungscode: [12345] … <br>
+        Es sollte alle diese Nachrichten abgleichen: <br>
+        - Your verification code is 123456, expires after 5 minutes. <br>
+        - Your validation code: [12345] … <br>
         <br>
-        Zeige mir das Regex nur mit einzelnen Backslashes, die Version, die ich direkt in andere Apps kopieren‑einfügen kann. Verwende KEINE doppelten Backslashes.
+        Zeigen Sie mir den Regex und erklären Sie ihn.
     ]]>
     </string>
     <string name="copied_to_clipboard">In die Zwischenablage kopiert</string>
