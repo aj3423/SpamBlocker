@@ -1,0 +1,13 @@
+Fix:
+- "Contacts(Strict)" allows contact numbers at priority 0, should be 10.
+   UI and logic simplified
+- Crash when creating huge backups (500k+ db numbers)
+
+Enhancements:
+- History records 
+    - Time Color
+      Show times in different colors, making it easier to review recent records.
+        e.g. red for <5min, blue for today's number
+    - Highlight keywords in the SMS content that caused the block
+    - Auto mark-all-as-read on tab leave
+- Added "FAQ" (next to "About")
