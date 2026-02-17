@@ -219,8 +219,12 @@ val ApiQueryPresets = listOf<ApiPreset>(
                             .format(ctx.getString(R.string.spam_sms_prompt_template).escape())
                     ),
                     ParseQueryResult(
-                        negativeSig = ctx.getString(R.string.spam_sms_negative_category),
-                        positiveSig = ctx.getString(R.string.spam_sms_positive_category),
+                        negativeSig = """
+                            "content":"${ctx.getString(R.string.spam_sms_negative_category)}"
+                            """.trimIndent(),
+                        positiveSig = """
+                            "content":"${ctx.getString(R.string.spam_sms_positive_category)}"
+                            """.trimIndent(),
                         categorySig = "\"content\":\"(.*?)\"",
                     ),
                 )
