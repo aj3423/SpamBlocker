@@ -32,6 +32,7 @@ import spam.blocker.service.checker.ByRegexRule
 import spam.blocker.service.checker.Checker
 import spam.blocker.service.checker.IChecker
 import spam.blocker.service.checker.toChecker
+import spam.blocker.service.checker.Checker.PassedByDefault
 import spam.blocker.ui.M
 import spam.blocker.ui.history.HistoryOptions.showHistoryIndicator
 import spam.blocker.ui.theme.LocalPalette
@@ -106,22 +107,23 @@ fun IndicatorsWrapper(
     }
 
     var onRefresh by remember { mutableStateOf(false) }
+    val DEF = PassedByDefault(ctx)
 
     // load from tables and generate ICheckers
     fun loadNumberCheckers(): List<IChecker> {
         return if (showIndicator) {
             NumberRegexTable().listAll(ctx).map {
                 it.toChecker(ctx)
-            }
-        } else listOf()
+            } + DEF
+        } else listOf(DEF)
     }
 
     fun loadContentCheckers(): List<IChecker> {
         return if (showIndicator && vm.forType == Def.ForSms) {
             ContentRegexTable().listAll(ctx).map {
                 Checker.Content(ctx, it)
-            }
-        } else listOf()
+            } + DEF
+        } else listOf(DEF)
     }
 
     var numberCheckers = remember(showIndicator) { loadNumberCheckers() }

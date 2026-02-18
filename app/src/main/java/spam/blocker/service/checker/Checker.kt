@@ -169,7 +169,7 @@ object Preprocessors { // for namespace only
 }
 class Checker { // for namespace only
 
-    private class PassedByDefault(
+    class PassedByDefault(
         private val ctx: Context,
     ) : IChecker {
         override fun priority(): Int {
@@ -1518,7 +1518,7 @@ class Checker { // for namespace only
 
             // Try all checkers in order, until a match is found
             // There will definitely be a match, as the last checker is PassedByDefault and it always allows.
-            val result =  sortedCheckers.firstNotNullOf {
+            val result = sortedCheckers.firstNotNullOf {
                 it.check(cCtx)
             }
             val fullScreeningLog = getSaveableLogger(logger)?.serialize() ?: ""
@@ -1583,7 +1583,7 @@ class Checker { // for namespace only
 
             // Try all checkers in order, until a match is found
             // There will definitely be a match, as the last checker is PassedByDefault and it always allows.
-            val result =  sortedCheckers.firstNotNullOf {
+            val result = sortedCheckers.firstNotNullOf {
                 it.check(cCtx)
             }
             val fullScreeningLog = getSaveableLogger(logger)?.serialize() ?: ""
