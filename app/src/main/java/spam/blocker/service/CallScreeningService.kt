@@ -27,6 +27,7 @@ import spam.blocker.util.ILogger
 import spam.blocker.util.Notification
 import spam.blocker.util.Notification.ShowType
 import spam.blocker.util.RingtoneUtil
+import spam.blocker.util.SaveableLogger
 import spam.blocker.util.SimUtils
 import spam.blocker.util.Util
 import spam.blocker.util.logi
@@ -162,7 +163,7 @@ class CallScreeningService : CallScreeningService() {
         val cnap = details.callerDisplayName
 
         val r = processCall(
-            ctx = this, logger = null, rawNumber = rawNumber, cnap = cnap, callDetails = details, simSlot = ringingSimSlot, isTest = false
+            ctx = this, logger = SaveableLogger(), rawNumber = rawNumber, cnap = cnap, callDetails = details, simSlot = ringingSimSlot, isTest = false
         )
         logi("processCall() result: $r")
 
@@ -210,7 +211,10 @@ class CallScreeningService : CallScreeningService() {
         return shouldMute
     }
 
-    private fun logToHistoryDb(ctx: Context, r: ICheckResult, rawNumber: String, cnap: String?, simSlot: Int?, isTest: Boolean) {
+    private fun logToHistoryDb(
+        ctx: Context, r: ICheckResult, rawNumber: String, cnap: String?, simSlot: Int?, isTest: Boolean,
+        fullScreeningLog: String?, anythingWrong: Boolean
+    ) {
         val isDbLogEnabled = spf.HistoryOptions(ctx).isLoggingEnabled
         if (!isDbLogEnabled)
             return
@@ -223,7 +227,9 @@ class CallScreeningService : CallScreeningService() {
                 result = r.type,
                 reason = r.reasonToDb(),
                 simSlot = simSlot,
-                isTest = isTest
+                isTest = isTest,
+                fullScreeningLog = fullScreeningLog,
+                anythingWrong = anythingWrong
             )
         )
         // broadcast the call to add a new item in history page
@@ -265,11 +271,11 @@ class CallScreeningService : CallScreeningService() {
         logi("processCall()")
 
         // 0. check the number with all rules, get the result
-        val r = Checker.checkCall(
+        val (r, fullScreeningLog, anythingWrong) = Checker.checkCall(
             ctx, rawNumber = rawNumber, cnap = cnap, callDetails = callDetails, simSlot = simSlot, logger = logger)
 
         // 1. log result to history db
-        logToHistoryDb(ctx, r, rawNumber, cnap, simSlot, isTest)
+        logToHistoryDb(ctx, r, rawNumber, cnap, simSlot, isTest, fullScreeningLog, anythingWrong)
 
         if (r.shouldBlock()) {
             CoroutineScope(IO).launch {

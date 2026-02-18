@@ -151,7 +151,8 @@ fun IndicatorsWrapper(
             if (vm.forType == Def.ForNumber) { // in Call Tab
                 // 2. Check if the call number matches any Number Rule?
                 run {
-                    val checkResult = Checker.checkCall(
+
+                    val (checkResult, _, _) = Checker.checkCall(
                         ctx = ctx,
                         logger = null,
                         rawNumber = number,
@@ -182,7 +183,7 @@ fun IndicatorsWrapper(
 
                 // 2. Check if the sms number matches any Number Rule?
                 run {
-                    val checkResult = Checker.checkSms(
+                    val (checkResult, _, _) = Checker.checkSms(
                         ctx = ctx,
                         logger = null,
                         rawNumber = number,
@@ -211,7 +212,7 @@ fun IndicatorsWrapper(
                 }
                 // 3. Check if the SMS matches any Content Rule?
                 run {
-                    val checkResult = Checker.checkSms(
+                    val (checkResult, _, _) = Checker.checkSms(
                         ctx = ctx,
                         logger = null,
                         rawNumber = number,

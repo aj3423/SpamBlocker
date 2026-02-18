@@ -292,6 +292,7 @@ open class HttpRequest(
                     return true
                 } else {
                     aCtx.logger?.error("HTTP <${result?.statusCode}>: $echo")
+                    aCtx.cCtx?.anythingWrong = true
                     return false
                 }
             } catch (_: CancellationException) {

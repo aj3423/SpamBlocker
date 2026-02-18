@@ -83,4 +83,5 @@
     ]]>
     </string>
     <string name="copied_to_clipboard">已複製到剪貼簿</string>
+    <string name="api_query_timeout">API 查詢逾時</string>
 </resources>

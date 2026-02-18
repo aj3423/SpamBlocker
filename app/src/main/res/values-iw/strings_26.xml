@@ -83,4 +83,5 @@
     ]]>
     </string>
     <string name="copied_to_clipboard">הועתק ללוח</string>
+    <string name="api_query_timeout">פסק זמן של שאילתת API</string>
 </resources>

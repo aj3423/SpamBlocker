@@ -84,4 +84,5 @@
     ]]>
     </string>
     <string name="copied_to_clipboard">Copié dans le presse‑papier</string>
+    <string name="api_query_timeout">Délai d\'attente de la requête API</string>
 </resources>

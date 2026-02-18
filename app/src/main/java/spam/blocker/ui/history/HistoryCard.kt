@@ -24,6 +24,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -45,6 +46,7 @@ import spam.blocker.ui.history.HistoryOptions.forceShowSIM
 import spam.blocker.ui.history.HistoryOptions.showHistoryGeoLocation
 import spam.blocker.ui.setting.api.spamCategoryNamesMap
 import spam.blocker.ui.setting.api.tagValid
+import spam.blocker.ui.theme.DarkOrange
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.Teal200
@@ -58,10 +60,13 @@ import spam.blocker.ui.widgets.SimCardIcon
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.Contacts
 import spam.blocker.util.JetpackTextLogger
+import spam.blocker.util.PermissiveJson
+import spam.blocker.util.SaveableLogger
 import spam.blocker.util.TimeUtils.FreshnessColor
 import spam.blocker.util.TimeUtils.formatTime
 import spam.blocker.util.TimeUtils.timeColor
 import spam.blocker.util.Util
+import spam.blocker.util.applyAnnotatedMarkups
 import spam.blocker.util.logi
 import androidx.compose.foundation.Image as ComposeImage
 
@@ -213,9 +218,49 @@ fun HistoryCard(
                         }
                     }
 
-                    // Row 3: Reason Summary
                     val r = parseCheckResultFromDb(ctx, record.result, record.reason)
-                    r.ResultReason(record.expanded)
+
+                    // Row 3: Reason Summary
+                    RowVCenterSpaced(2) {
+                        // Show a yellow "!" if anything went wrong, e.g. ApiQuery timed out
+                        if (record.anythingWrong) {
+                            ResIcon(
+                                R.drawable.ic_exclamation,
+                                color = DarkOrange,
+                                modifier = M.size(18.dp)
+                            )
+                        }
+
+                        // Show a label when not expanded, and a clickable button when expanded
+                        if (record.expanded) {
+                            val trigger = remember { mutableStateOf(false) }
+
+                            PopupDialog(trigger) {
+                                val annotatedLog = remember {
+                                    try {
+                                        val logger = PermissiveJson.decodeFromString<SaveableLogger>(record.fullScreeningLog?: "")
+                                        logger.text.applyAnnotatedMarkups(logger.markups)
+                                    } catch (_: Exception) {
+                                        AnnotatedString("")
+                                    }
+                                }
+                                Text(annotatedLog)
+                            }
+
+                            StrokeButton(
+                                color = C.textGrey,
+                                icon = {
+                                    r.ResultReason(true)
+                                },
+                                modifier = M.padding(top = 4.dp)
+                            ) {
+                                trigger.value = true
+                            }
+                        } else {
+                            r.ResultReason(false)
+                        }
+                    }
+
 
                     // Report Number / SMS Content
                     r.ExpandedContent(forType, record)

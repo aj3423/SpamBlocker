@@ -47,7 +47,6 @@ import spam.blocker.util.ILogger
 import spam.blocker.util.Now
 import spam.blocker.util.Permission
 import spam.blocker.util.PhoneNumber
-import spam.blocker.util.SaveableLogger
 import spam.blocker.util.TimeSchedule
 import spam.blocker.util.TimeUtils.isCurrentTimeWithinRange
 import spam.blocker.util.Util
@@ -57,6 +56,7 @@ import spam.blocker.util.Util.getHistoryCallsByNumber
 import spam.blocker.util.Util.listRunningForegroundServiceNames
 import spam.blocker.util.Util.listUsedAppWithinXSecond
 import spam.blocker.util.formatAnnotated
+import spam.blocker.util.getSaveableLogger
 import spam.blocker.util.hasFlag
 import spam.blocker.util.race
 import spam.blocker.util.regexMatches
@@ -72,6 +72,7 @@ class CheckContext(
     val logger: ILogger? = null,
     val startTimeMillis: Long = System.currentTimeMillis(),
     val checkers: List<IChecker>,
+    var anythingWrong: Boolean = false,
 )
 
 
@@ -114,14 +115,8 @@ object Preprocessors { // for namespace only
         val bot: Bot,
     ) : IPreProcessor {
         override fun preprocess(cCtx: CheckContext) {
-            // cCtx.logger can be either:
-            //  - TextLogger: when testing, which prints logs on the dialog
-            //  - null: on real call/sms
-            // When it's null, use a SaveableLogger to log the execution to database, for feature "Last Log"
-            val logger = cCtx.logger ?: SaveableLogger()
-
             val aCtx = ActionContext(
-                logger = logger,
+                logger = cCtx.logger,
                 rawNumber = cCtx.rawNumber,
                 smsContent = cCtx.smsContent,
                 cCtx = cCtx,
@@ -129,11 +124,6 @@ object Preprocessors { // for namespace only
             )
             // Run Trigger + Actions
             bot.triggerAndActions().executeAll(ctx, aCtx)
-
-            // Save for "Last Log"
-            if (logger is SaveableLogger) {
-                BotTable.setLastLog(ctx, bot.id, logger.serialize())
-            }
         }
     }
     // Collect all call-related workflows.
@@ -178,6 +168,19 @@ object Preprocessors { // for namespace only
     }
 }
 class Checker { // for namespace only
+
+    private class PassedByDefault(
+        private val ctx: Context,
+    ) : IChecker {
+        override fun priority(): Int {
+            return Int.MIN_VALUE
+        }
+
+        override fun check(cCtx: CheckContext): ICheckResult? {
+            cCtx.logger?.success(ctx.getString(R.string.passed_by_default))
+            return ByDefault()
+        }
+    }
 
     // This checks if the incoming call is from an emergency number.
     // It's always enabled, there is no setting entry for this.
@@ -859,15 +862,17 @@ class Checker { // for namespace only
                 return null
             }
 
+
             // Run all apis simultaneously, get the first non-null result, which means "determined",
             //  return that result immediately and kill other threads.
-            var (winnerApi, result) = race(
+            val (winnerApi, result, timedOut) = race(
                 competitors = apis,
                 timeoutMillis = timeLeft,
                 runner = { api ->
                     { scope ->
                         try {
                             val aCtx = ActionContext(
+                                cCtx = cCtx,
                                 scope = scope,
                                 logger = logger,
                                 rawNumber = rawNumber,
@@ -910,6 +915,11 @@ class Checker { // for namespace only
                         queryResult = result,
                     )
                 )
+            }
+
+            if (timedOut) {
+                logger?.warn(ctx.getString(R.string.api_query_timeout))
+                cCtx.anythingWrong = true
             }
 
             return null
@@ -1453,6 +1463,7 @@ class Checker { // for namespace only
     companion object {
         private fun defaultCallCheckers(ctx: Context): List<IChecker> {
             val checkers = arrayListOf(
+                PassedByDefault(ctx),
                 EmergencyCall(ctx),
                 EmergencySituation(ctx),
                 STIR(ctx),
@@ -1477,6 +1488,8 @@ class Checker { // for namespace only
             }
             return checkers
         }
+
+        // Return value: Triple< check_result, full_log, anything_went_wrong >
         fun checkCall(
             ctx: Context,
             rawNumber: String,
@@ -1485,7 +1498,7 @@ class Checker { // for namespace only
             simSlot: Int? = null,
             logger: ILogger? = null,
             checkers: List<IChecker> = defaultCallCheckers(ctx),
-        ): ICheckResult {
+        ): Triple<ICheckResult, String?, Boolean> {
             val cCtx = CheckContext(
                 rawNumber = rawNumber,
                 cnap = cnap,
@@ -1503,27 +1516,23 @@ class Checker { // for namespace only
                 it.priority()
             }
 
-            // try all checkers in order, until a match is found
-            var result: ICheckResult? = null
-            sortedCheckers.firstOrNull {
-                result = it.check(cCtx)
-                result != null
+            // Try all checkers in order, until a match is found
+            // There will definitely be a match, as the last checker is PassedByDefault and it always allows.
+            val result =  sortedCheckers.firstNotNullOf {
+                it.check(cCtx)
             }
-            // match found
-            if (result != null) {
-                return result
-            }
+            val fullScreeningLog = getSaveableLogger(logger)?.serialize() ?: ""
 
-            // The call passed all rules.
-            logger?.success(ctx.getString(R.string.passed_by_default))
-            // pass by default
-            return ByDefault()
+            return Triple(
+                result, fullScreeningLog, cCtx.anythingWrong
+            )
         }
 
         private fun defaultSmsCheckers(
             ctx: Context,
         ): List<IChecker> {
             val checkers = arrayListOf<IChecker>(
+                PassedByDefault(ctx),
                 Contact(ctx),
                 NonContact(ctx),
                 SpamDB(ctx),
@@ -1554,7 +1563,7 @@ class Checker { // for namespace only
             simSlot: Int? = null,
             logger: ILogger? = null,
             checkers: List<IChecker> = defaultSmsCheckers(ctx),
-        ): ICheckResult {
+        ): Triple<ICheckResult, String?, Boolean> {
             val cCtx = CheckContext(
                 rawNumber = rawNumber,
                 smsContent = messageBody,
@@ -1572,22 +1581,16 @@ class Checker { // for namespace only
                 it.priority()
             }
 
-            // try all checkers in order, until a match is found
-            var result: ICheckResult? = null
-            sortedCheckers.firstOrNull {
-                result = it.check(cCtx)
-                result != null
+            // Try all checkers in order, until a match is found
+            // There will definitely be a match, as the last checker is PassedByDefault and it always allows.
+            val result =  sortedCheckers.firstNotNullOf {
+                it.check(cCtx)
             }
-            // match found
-            if (result != null) {
-                return result
-            }
+            val fullScreeningLog = getSaveableLogger(logger)?.serialize() ?: ""
 
-            // The SMS message passed all rules.
-            logger?.success(ctx.getString(R.string.passed_by_default))
-
-            // pass by default
-            return ByDefault()
+            return Triple(
+                result, fullScreeningLog, cCtx.anythingWrong
+            )
         }
 
         // It returns a list<String>, all the Strings will be shown as Buttons in the notification.

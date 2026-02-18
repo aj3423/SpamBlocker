@@ -83,4 +83,5 @@
     ]]>
     </string>
     <string name="copied_to_clipboard">クリップボードにコピーしました</string>
+    <string name="api_query_timeout">API クエリのタイムアウト</string>
 </resources>

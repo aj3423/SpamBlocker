@@ -76,7 +76,7 @@ open class SmsReceiver : BroadcastReceiver() {
     ): ICheckResult {
         logi("process Sms")
 
-        val r = Checker.checkSms(
+        val (r, fullScreeningLog, anythingWrong) = Checker.checkSms(
             ctx, rawNumber = rawNumber, messageBody = messageBody, simSlot = simSlot, logger = logger)
 
         run {
@@ -93,6 +93,8 @@ open class SmsReceiver : BroadcastReceiver() {
                         simSlot = simSlot,
                         extraInfo = if (spf.isLogSmsContentEnabled) messageBody else null,
                         isTest = isTest,
+                        fullScreeningLog = fullScreeningLog,
+                        anythingWrong = anythingWrong
                     )
                 )
 

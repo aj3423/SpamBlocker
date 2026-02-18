@@ -83,4 +83,5 @@
     ]]>
     </string>
     <string name="copied_to_clipboard">Disalin ke papan klip</string>
+    <string name="api_query_timeout">Batas waktu kueri API</string>
 </resources>

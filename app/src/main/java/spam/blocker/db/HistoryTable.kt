@@ -30,6 +30,11 @@ data class HistoryRecord(
     val isTest: Boolean = false, // is it test number or real call
     val read: Boolean = false,
     val expanded: Boolean = false,
+
+    val fullScreeningLog: String? = null,
+
+    // if anything went wrong during the screening, e.g. api query timed out
+    val anythingWrong: Boolean = false,
 ) {
     fun isBlocked(): Boolean {
         return Def.isBlocked(result)
@@ -43,7 +48,7 @@ abstract class HistoryTable {
     abstract fun tableName(): String
 
     @SuppressLint("Range")
-    fun _listRecordsByFilter(
+    private fun _listRecordsByFilter(
         ctx: Context,
         whereClause: String? = null,
         whereParams: Array<String>? = null,
@@ -72,6 +77,8 @@ abstract class HistoryTable {
                         isTest = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_IS_TEST)) == 1,
                         extraInfo = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_EXTRA_INFO)),
                         expanded = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_EXPANDED)) == 1,
+                        fullScreeningLog = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_FULL_SCREENING_LOG)),
+                        anythingWrong = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_ANYTHING_WRONG)) == 1
                     )
 
                     ret += rec
@@ -100,6 +107,9 @@ abstract class HistoryTable {
         cv.put(Db.COLUMN_IS_TEST, if (r.isTest) 1 else 0)
         cv.put(Db.COLUMN_EXTRA_INFO, r.extraInfo)
         cv.put(Db.COLUMN_EXPANDED, if(r.expanded) 1 else 0)
+        cv.put(Db.COLUMN_FULL_SCREENING_LOG, r.fullScreeningLog)
+        cv.put(Db.COLUMN_ANYTHING_WRONG, if(r.anythingWrong) 1 else 0)
+
         return db.insert(tableName(), null, cv)
     }
 
@@ -117,6 +127,9 @@ abstract class HistoryTable {
         cv.put(Db.COLUMN_IS_TEST, if (r.isTest) 1 else 0)
         cv.put(Db.COLUMN_EXTRA_INFO, r.extraInfo)
         cv.put(Db.COLUMN_EXPANDED, if(r.expanded) 1 else 0)
+        cv.put(Db.COLUMN_FULL_SCREENING_LOG, r.fullScreeningLog)
+        cv.put(Db.COLUMN_ANYTHING_WRONG, if(r.anythingWrong) 1 else 0)
+
         db.insert(tableName(), null, cv)
     }
 

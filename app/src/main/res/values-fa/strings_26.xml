@@ -84,4 +84,5 @@
     ]]>
     </string>
     <string name="copied_to_clipboard">در کلیپ‌بورد کپی شد</string>
+    <string name="api_query_timeout">پایان زمان پرس‌وجو API</string>
 </resources>

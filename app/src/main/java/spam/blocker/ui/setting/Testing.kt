@@ -46,6 +46,8 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.JetpackTextLogger
+import spam.blocker.util.MultiLogger
+import spam.blocker.util.SaveableLogger
 import spam.blocker.util.Util
 
 
@@ -140,18 +142,21 @@ fun PopupTesting(
                 clearPreviousResult()
                 logTrigger.value = true
 
-                val textLogger = JetpackTextLogger(logStr, C)
+                val multiLogger = MultiLogger(listOf(
+                    JetpackTextLogger(logStr, C),
+                    SaveableLogger()
+                ))
 
                 coroutine.launch(IO) {
                     if (isForCall)
                         CallScreeningService().processCall(
                             ctx, rawNumber = vm.phone.value, simSlot = vm.simSlot.value,
                             callDetails = null, cnap = vm.callerName.value.ifEmpty { null },
-                            isTest = true, logger = textLogger,
+                            isTest = true, logger = multiLogger,
                         )
                     else
                         SmsReceiver().processSms(
-                            ctx, vm.phone.value, vm.sms.value, simSlot = vm.simSlot.value, isTest = true, logger = textLogger)
+                            ctx, vm.phone.value, vm.sms.value, simSlot = vm.simSlot.value, isTest = true, logger = multiLogger)
                 }
             }
         },

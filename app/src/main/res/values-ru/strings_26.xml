@@ -83,4 +83,5 @@
     ]]>
     </string>
     <string name="copied_to_clipboard">Скопировано в буфер обмена</string>
+    <string name="api_query_timeout">Тайм-аут запроса API</string>
 </resources>

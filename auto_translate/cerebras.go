@@ -19,7 +19,7 @@ func parseCerebrasResponse(body []byte) (string, error) {
 	}
 
 	if len(resp.Choices) == 0 {
-		return "", fmt.Errorf("no choices returned")
+		return "", fmt.Errorf("no choices returned: %s", string(body))
 	}
 
 	content := resp.Choices[0].Message.Content

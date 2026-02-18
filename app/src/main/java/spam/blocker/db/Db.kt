@@ -31,7 +31,7 @@ class Db private constructor(
 ) : SQLiteOpenHelper(ctx, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 47
+        const val DB_VERSION = 48
         const val DB_NAME = "spam_blocker.db"
 
         // ---- regex rule table ----
@@ -107,6 +107,8 @@ class Db private constructor(
         const val COLUMN_IS_TEST = "is_test" // Boolean
         const val COLUMN_EXTRA_INFO = "extra_info" // text
         const val COLUMN_EXPANDED = "expanded" // Boolean
+        const val COLUMN_FULL_SCREENING_LOG = "full_screening_log" // text
+        const val COLUMN_ANYTHING_WRONG = "anything_wrong" // Boolean
 
         @Volatile
         private var instance: Db? = null
@@ -237,7 +239,9 @@ class Db private constructor(
                         "$COLUMN_READ INTEGER, " +
                         "$COLUMN_IS_TEST INTEGER, " +
                         "$COLUMN_EXTRA_INFO TEXT, " +
-                        "$COLUMN_EXPANDED INTEGER " +
+                        "$COLUMN_EXPANDED INTEGER, " +
+                        "$COLUMN_FULL_SCREENING_LOG TEXT, " +
+                        "$COLUMN_ANYTHING_WRONG INTEGER " +
                         ")"
             )
         }
@@ -505,6 +509,13 @@ class Db private constructor(
         // v5.3 added Bot.customTags
         if ((newVersion >= 47) && (oldVersion < 47)) {
             addColumnIfNotExist(db, TABLE_BOT, COLUMN_CUSTOM_TAGS, "TEXT")
+        }
+        // v5.5 added History.fullScreeningLog and anythingWrong
+        if ((newVersion >= 48) && (oldVersion < 48)) {
+            addColumnIfNotExist(db, TABLE_CALL, COLUMN_FULL_SCREENING_LOG, "TEXT")
+            addColumnIfNotExist(db, TABLE_CALL, COLUMN_ANYTHING_WRONG, "INTEGER")
+            addColumnIfNotExist(db, TABLE_SMS, COLUMN_FULL_SCREENING_LOG, "TEXT")
+            addColumnIfNotExist(db, TABLE_SMS, COLUMN_ANYTHING_WRONG, "INTEGER")
         }
     }
 }

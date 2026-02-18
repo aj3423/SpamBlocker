@@ -83,4 +83,5 @@
     ]]>
     </string>
     <string name="copied_to_clipboard">Panoya kopyalandı</string>
+    <string name="api_query_timeout">API sorgu zaman aşımı</string>
 </resources>

@@ -83,4 +83,5 @@
     ]]>
     </string>
     <string name="copied_to_clipboard">تم النسخ إلى الحافظة</string>
+    <string name="api_query_timeout">انتهاء مهلة استعلام API</string>
 </resources>

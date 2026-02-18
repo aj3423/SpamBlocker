@@ -26,14 +26,14 @@ private suspend fun <C, R> racing(
     // runner takes a competitor as param and generate a executable function to run
     runner: (C) -> ((CoroutineScope)->R?),
     timeoutMillis: Long,
-): Pair<C?, R?> = coroutineScope {
+): Triple<C?, R?, Boolean> = coroutineScope {
     if (competitors.isEmpty()) {
-        return@coroutineScope Pair(null, null)
+        return@coroutineScope Triple(null, null, false)
     }
 
     val scope = CoroutineScope(IO)
 
-    val resultChannel = Channel<Pair<C?,R?>>()
+    val resultChannel = Channel<Triple<C?,R?, Boolean>>()
 
     val finishedCount = AtomicInteger(0)
 
@@ -44,7 +44,7 @@ private suspend fun <C, R> racing(
             // set the channel if it's not null
             if (result != null) {
                 resultChannel.send(
-                    Pair(competitor, result as R?)
+                    Triple(competitor, result as R?, false)
                 )
             }
 
@@ -53,13 +53,14 @@ private suspend fun <C, R> racing(
             // All threads are done, but no one has crossed the finish line, return anyway.
             if(finishedCount.addAndGet(1) >= competitors.size) {
                 resultChannel.send(
-                    Pair(null, null)
+                    Triple(null, null, false)
                 )
             }
         }
     }
 
     val firstNonNullResult = scope.async {
+        // `withTimeoutOrNull` returns null on timeout
         withTimeoutOrNull(timeoutMillis) {
             resultChannel.receiveCatching()
         }
@@ -71,9 +72,11 @@ private suspend fun <C, R> racing(
         job.cancel()
     }
 
-    return@coroutineScope Pair(
+    return@coroutineScope Triple(
         firstNonNullResult?.getOrNull()?.first, // the competitor
         firstNonNullResult?.getOrNull()?.second, // the result
+        firstNonNullResult == null && // either "all finished but no result" or "timed out"
+                finishedCount.get() < competitors.size // someone hasn't finished yet, which means timeout
     )
 }
 
@@ -82,7 +85,7 @@ fun <C, R> race(
     // runner takes a competitor as param and generate a executable function to run
     runner: (C) -> ((CoroutineScope)->R),
     timeoutMillis: Long,
-):  Pair<C?, R?>  {
+):  Triple<C?, R?, Boolean>  {
     return runBlocking {
         racing(competitors, runner, timeoutMillis)
     }

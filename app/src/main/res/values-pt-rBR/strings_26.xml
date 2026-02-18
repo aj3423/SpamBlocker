@@ -84,4 +84,5 @@
     ]]>
     </string>
     <string name="copied_to_clipboard">Copiado para a área de transferência</string>
+    <string name="api_query_timeout">Tempo limite da consulta API</string>
 </resources>

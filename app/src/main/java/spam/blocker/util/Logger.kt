@@ -199,7 +199,11 @@ data class SaveableLogger(
     override fun error(message: AnnotatedString) = addAnnotated(message)
 
     fun serialize(): String {
-        return Json.encodeToString(this)
+        return try {
+            Json.encodeToString(this)
+        } catch (_: Exception) {
+            ""
+        }
     }
 
     companion object {
@@ -209,3 +213,56 @@ data class SaveableLogger(
         }
     }
 }
+
+
+// It outputs to the `adb logcat`, for debugging and troubleshooting
+class MultiLogger(
+    val loggers: List<ILogger>
+) : ILogger {
+    override fun debug(message: String) {
+        loggers.forEach { it.debug(message) }
+    }
+
+    override fun info(message: String) {
+        loggers.forEach { it.info(message) }
+    }
+
+    override fun warn(message: String) {
+        loggers.forEach { it.warn(message) }
+    }
+
+    override fun success(message: String) {
+        loggers.forEach { it.success(message) }
+    }
+
+    override fun error(message: String) {
+        loggers.forEach { it.error(message) }
+    }
+
+    override fun debug(message: AnnotatedString) {
+        loggers.forEach { it.debug(message) }
+    }
+
+    override fun info(message: AnnotatedString) {
+        loggers.forEach { it.info(message) }
+    }
+
+    override fun warn(message: AnnotatedString) {
+        loggers.forEach { it.warn(message) }
+    }
+
+    override fun success(message: AnnotatedString) {
+        loggers.forEach { it.success(message) }
+    }
+
+    override fun error(message: AnnotatedString) {
+        loggers.forEach { it.error(message) }
+    }
+}
+
+fun getSaveableLogger(logger: ILogger?): SaveableLogger? =
+    when (logger) {
+        is SaveableLogger -> logger
+        is MultiLogger     -> logger.loggers.firstOrNull { it is SaveableLogger } as? SaveableLogger
+        else               -> null
+    }

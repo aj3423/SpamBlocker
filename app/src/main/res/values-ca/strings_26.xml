@@ -83,4 +83,5 @@
     ]]>
     </string>
     <string name="copied_to_clipboard">Copiat al porta-retalls</string>
+    <string name="api_query_timeout">Temps d\'espera de la consulta API</string>
 </resources>

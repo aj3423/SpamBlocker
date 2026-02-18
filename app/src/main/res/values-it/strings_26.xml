@@ -83,4 +83,5 @@
     ]]>
     </string>
     <string name="copied_to_clipboard">Copiato negli appunti</string>
+    <string name="api_query_timeout">Timeout della query API</string>
 </resources>
