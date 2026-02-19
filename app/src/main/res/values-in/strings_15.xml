@@ -22,7 +22,7 @@
         Kategorikan pesan SMS ini sebagai Politik, Penipuan, Survei, atau Pemasaran.
         Jika tidak ada, jawablah \"Sah\", jika tidak, jawablah kategorinya saja, jangan menjawab apa pun.
         Pesan SMS-nya adalah:
-        {sms}
+        {escape({sms})}
     </string>
     <string name="spam_sms_negative_category"><translate>(Politik|Penipuan|Survei|Pemasaran)</translate></string>
     <string name="spam_sms_positive_category">Sah</string>

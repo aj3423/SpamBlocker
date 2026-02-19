@@ -137,4 +137,10 @@
     </string>>
     <string name="bug_number">Si aquest és un número vàlid, informa\'l a github.</string>>
     <string name="skip_alpha_empty_number">Omet el número alfanumèric o buit.</string>>
+    <string name="escape_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b><no_translate>{escape(…)}</no_translate></b></font><br>
+        &ensp; Escapa el contingut entre els claudàtors, utilitzat per al contingut dins de les cometes. <br>
+        ]]>
+    </string>
 </resources>

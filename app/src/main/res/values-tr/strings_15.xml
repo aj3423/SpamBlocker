@@ -22,7 +22,7 @@
         Bu SMS mesajını Siyasi, Sahtekarlık, Anket veya Pazarlama olarak kategorize edin.
         Hiçbiri uygulanmazsa \"Geçerli\" yanıtını verin, aksi takdirde yalnızca kategoriyi yanıtlayın, başka bir şey yanıtlamayın.
         SMS mesajı:
-        {sms}
+        {escape({sms})}
     </string>
     <string name="spam_sms_negative_category"><translate>(Siyasi|Sahtekarlık|Anket|Pazarlama)</translate></string>
     <string name="spam_sms_positive_category">Geçerli</string>

@@ -22,7 +22,7 @@
         קטלג הודעת SMS זו כפוליטית, הונאה, סקר, או שיווק.
         אם אף אחד לא מתאים, ענה \"תקין\", אחרת, ענה על הקטגוריה בלבד, אל תענה על שום דבר אחר.
         הודעת ה-SMS היא:
-        {sms}
+        {escape({sms})}
     </string>
     <string name="spam_sms_negative_category">(פוליטי|הונאה|סקר|שיווק)</string>
     <string name="spam_sms_positive_category">תקין</string>

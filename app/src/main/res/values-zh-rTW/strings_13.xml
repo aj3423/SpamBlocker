@@ -137,4 +137,10 @@
     </string>
     <string name="bug_number">如果這是有效號碼，請在 GitHub 上回報。</string>
     <string name="skip_alpha_empty_number">略過含字母或空的號碼。</string>
+    <string name="escape_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b><no_translate>{escape(…)}</no_translate></b></font><br>
+        &ensp; 轉義方括號內的內容，用於引號內的文字。 <br>
+        ]]>
+    </string>
 </resources>

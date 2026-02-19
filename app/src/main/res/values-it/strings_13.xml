@@ -137,4 +137,10 @@
         &ensp; Il contenuto dell\'SMS.<br>
         ]]>
     </string>
+    <string name="escape_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b><no_translate>{escape(…)}</no_translate></b></font><br>
+        &ensp; Escapa il contenuto tra parentesi, usato per il contenuto all\'interno delle virgolette. <br>
+        ]]>
+    </string>
 </resources>

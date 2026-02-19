@@ -131,4 +131,10 @@
         &ensp; 短信内容。<br>
         ]]>
     </string>
+    <string name="escape_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b><no_translate>{escape(…)}</no_translate></b></font><br>
+        &ensp; 转义括号中的内容，用于引号内的内容。 <br>
+        ]]>
+    </string>
 </resources>

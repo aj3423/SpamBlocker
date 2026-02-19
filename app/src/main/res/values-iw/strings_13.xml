@@ -135,4 +135,10 @@
     </string>
     <string name="bug_number">אם זהו מספר תקין, אנא דווחו על כך ב-GitHub.</string>
     <string name="skip_alpha_empty_number">דלג על מספר אלפביתי או ריק.</string>
+    <string name="escape_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b><no_translate>{escape(…)}</no_translate></b></font><br>
+        &ensp; הימנע מהתוכן בסוגריים, משמש לתוכן בתוך מרכאות. <br>
+        ]]>
+    </string>
 </resources>

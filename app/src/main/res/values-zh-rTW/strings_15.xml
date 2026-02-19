@@ -22,7 +22,7 @@
         將此簡訊分類為「政治」、「詐騙」、「問卷調查」或「行銷」。
         如果都不符合，請回答「有效」，否則僅回答類別，不要回答其他內容。
         簡訊內容為：
-        {sms}
+        {escape({sms})}
     </string>
     <string name="spam_sms_negative_category"><translate>(政治|詐騙|問卷調查|行銷)</translate></string>
     <string name="spam_sms_positive_category">有效</string>

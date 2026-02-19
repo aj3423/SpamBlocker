@@ -22,7 +22,7 @@
         Classifica aquest missatge SMS com a Polític, Frau, Enquesta o Màrqueting.
         Si no s\'aplica cap, respon \"Vàlid\", en cas contrari, respon només la categoria, no responguis res més.
         El missatge SMS és:
-        {sms}
+        {escape({sms})}
     </string>
     <string name="spam_sms_negative_category">(Political|Fraud|Survey|Marketing)</string>
     <string name="spam_sms_positive_category">Vàlid</string>

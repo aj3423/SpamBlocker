@@ -137,4 +137,10 @@
     </string>
     <string name="bug_number">Если это надёжный номер, пожалуйста, сообщите об этом на github.</string>
     <string name="skip_alpha_empty_number">Пропуск буквенных или пустых номеров.</string>
+    <string name="escape_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b><no_translate>{escape(…)}</no_translate></b></font><br>
+        &ensp; Экранировать содержимое в скобках, используемое для контента внутри кавычек. <br>
+        ]]>
+    </string>
 </resources>

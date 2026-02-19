@@ -132,4 +132,10 @@
         &ensp; SMS içeriği.<br>
         ]]>
     </string>
+    <string name="escape_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b><no_translate>{escape(…)}</no_translate></b></font><br>
+        &ensp; Parantez içindeki içeriği kaçırın, alıntı işaretleri içindeki içerik için kullanılır. <br>
+        ]]>
+    </string>
 </resources>

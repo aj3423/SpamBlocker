@@ -133,4 +133,10 @@
         &ensp; O contido do SMS.<br>
         ]]>
     </string>
+    <string name="escape_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b><no_translate>{escape(…)}</no_translate></b></font><br>
+        &ensp; Escape o contido nos corchetes, usado para contido dentro de comiñas. <br>
+        ]]>
+    </string>
 </resources>

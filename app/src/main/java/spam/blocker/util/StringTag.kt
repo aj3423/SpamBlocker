@@ -1,6 +1,7 @@
 package spam.blocker.util
 
 import android.os.Environment
+import spam.blocker.def.Def
 import spam.blocker.util.Algorithm.b64Encode
 import spam.blocker.util.Algorithm.sha1
 import java.time.LocalDateTime
@@ -129,6 +130,26 @@ fun String.resolveSmsTag(
 ): String {
     return this
         .replace("{sms}", smsContent ?: "")
+}
+
+
+// A tag should be escaped if it's used inside a json
+fun String.resolveEscapeTag(): String {
+    var ret = this
+
+    val tpl ="\\{escape\\((.*?)\\)\\}"
+    val opts = Util.flagsToRegexOptions(Def.DefaultRegexFlags)
+    val result = tpl.toRegex(opts).find(ret)
+
+    result?.groups?.size?.let {
+        if (it > 1) {
+            val g0 = result.groups[0]!!.value // the tpl
+            val g1 = result.groups[1]!!.value
+
+            ret = ret.replace(g0, g1.escape())
+        }
+    }
+    return ret
 }
 
 // Deprecated by `resolveBasicAuthTag`, for history compatibility only.

@@ -22,7 +22,7 @@
         Classez ce SMS comme Politique, Fraude, Sondage ou Marketing.
         Si aucune catégorie ne s\'applique, répondez « Valide », sinon, répondez uniquement par la catégorie, ne répondez à rien d\'autre.
         Le SMS est :
-        {sms}
+        {escape({sms})}
     </string>
     <string name="spam_sms_negative_category"><translate>(Politique|Fraude|Sondage|Marketing)</translate></string>
     <string name="spam_sms_positive_category">Valide</string>

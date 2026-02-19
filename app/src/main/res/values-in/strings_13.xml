@@ -137,4 +137,10 @@
     </string>>
     <string name="bug_number">Jika ini adalah nomor yang sah, silakan laporkan di github.</string>>
     <string name="skip_alpha_empty_number">Lewati alfa atau nomor kosong.</string>>
+    <string name="escape_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b><no_translate>{escape(…)}</no_translate></b></font><br>
+        &ensp; Escape konten dalam tanda kurung, digunakan untuk konten di dalam tanda kutip. <br>
+        ]]>
+    </string>
 </resources>

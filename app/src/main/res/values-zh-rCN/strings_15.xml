@@ -22,7 +22,7 @@
         将此短信归类为政治、欺诈、调查或营销。
         如果都不适用，则回答“有效”，否则只回答类别，不要回答其他任何内容。
         短信内容是：
-        {sms}
+        {escape({sms})}
     </string>
     <string name="spam_sms_negative_category"><translate>(政治|欺诈|调查|营销)</translate></string>
     <string name="spam_sms_positive_category">有效</string>

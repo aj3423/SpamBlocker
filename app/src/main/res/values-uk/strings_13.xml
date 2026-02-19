@@ -133,4 +133,10 @@
         &ensp; Текст SMS.<br>
         ]]>
     </string>
+    <string name="escape_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b><no_translate>{escape(…)}</no_translate></b></font><br>
+        &ensp; Екранувати вміст у дужках, використовується для вмісту в лапках. <br>
+        ]]>
+    </string>
 </resources>

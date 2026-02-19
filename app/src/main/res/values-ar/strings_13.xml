@@ -137,4 +137,10 @@
     </string>>
     <string name="bug_number">إذا كان هذا رقمًا صالحًا، فيرجى الإبلاغ عنه على github.</string>>
     <string name="skip_alpha_empty_number">تخطي الرقم الأبجدي أو الفارغ.</string>>
+    <string name="escape_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b><no_translate>{escape(…)}</no_translate></b></font><br>
+        &ensp; هروب المحتوى داخل الأقواس، يُستخدم للمحتوى داخل علامات الاقتباس. <br>
+        ]]>
+    </string>
 </resources>

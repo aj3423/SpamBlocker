@@ -89,6 +89,7 @@ import spam.blocker.util.regexMatches
 import spam.blocker.util.regexReplace
 import spam.blocker.util.resolveBase64Tag
 import spam.blocker.util.resolveCustomTag
+import spam.blocker.util.resolveEscapeTag
 import spam.blocker.util.resolveHttpAuthTag
 import spam.blocker.util.resolveNumberTag
 import spam.blocker.util.resolvePathTags
@@ -260,6 +261,7 @@ open class HttpRequest(
                         rawNumber = aCtx.rawNumber,
                     )
                     .resolveSmsTag(aCtx.smsContent)
+                    .resolveEscapeTag()
                     .replace(tagCategory, aCtx.realCategory ?: "")
                     .resolveCustomTag(aCtx.customTags)
                 if (method == HTTP_POST) {
@@ -401,7 +403,9 @@ open class HttpRequest(
                     leadingIconId = R.drawable.ic_post,
                     onValueChange = { body = it },
                     helpTooltip = Str(R.string.help_http_post_body).format(
-                        Str(R.string.number_tags) + "<br>" + Str(R.string.sms_tags)
+                        Str(R.string.number_tags) + "<br>"
+                                + Str(R.string.sms_tags) + "<br>"
+                        + Str(R.string.escape_tags)
                     ),
                 )
             }

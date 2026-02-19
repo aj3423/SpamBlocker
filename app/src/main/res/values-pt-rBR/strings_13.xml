@@ -133,4 +133,10 @@
         &ensp; O conteúdo do SMS.<br>
         ]]>
     </string>
+    <string name="escape_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b><no_translate>{escape(…)}</no_translate></b></font><br>
+        &ensp; Escape o conteúdo entre colchetes, usado para conteúdo dentro de aspas. <br>
+        ]]>
+    </string>
 </resources>

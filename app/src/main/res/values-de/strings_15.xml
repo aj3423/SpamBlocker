@@ -22,7 +22,7 @@
         Kategorisieren Sie diese SMS-Nachricht als Politisch, Betrug, Umfrage oder Marketing.
         Wenn nichts zutrifft, antworten Sie mit \"Gültig\", andernfalls antworten Sie nur mit der Kategorie, antworten Sie sonst nichts.
         Die SMS-Nachricht lautet:
-        {sms}
+        {escape({sms})}
     </string>
     <string name="spam_sms_negative_category"><translate>(Politisch|Betrug|Umfrage|Marketing)</translate></string>
     <string name="spam_sms_positive_category">Gültig</string>

@@ -131,4 +131,10 @@
         &ensp; SMS本文。<br>
         ]]>
     </string>
+    <string name="escape_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b><no_translate>{escape(…)}</no_translate></b></font><br>
+        &ensp; 角括弧内の内容をエスケープし、引用符内のコンテンツに使用します。 <br>
+        ]]>
+    </string>
 </resources>

@@ -133,4 +133,10 @@
         &ensp; Der SMS-Inhalt.<br>
         ]]>
     </string>
+    <string name="escape_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b><no_translate>{escape(…)}</no_translate></b></font><br>
+        &ensp; Den Inhalt in den Klammern escapen, verwendet für Inhalt innerhalb von Anführungszeichen. <br>
+        ]]>
+    </string>
 </resources>

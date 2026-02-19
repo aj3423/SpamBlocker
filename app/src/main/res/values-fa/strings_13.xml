@@ -133,4 +133,10 @@
         &ensp; محتوای پیام کوتاه.<br>
         ]]>
     </string>
+    <string name="escape_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b><no_translate>{escape(…)}</no_translate></b></font><br>
+        &ensp; محتوای داخل پرانتزها را فرار کنید، برای محتوای داخل علامت‌های نقل قول استفاده می‌شود. <br>
+        ]]>
+    </string>
 </resources>

@@ -22,7 +22,7 @@
         این پیامک را به عنوان سیاسی، کلاهبرداری، نظرسنجی یا بازاریابی طبقه بندی کنید.
         اگر هیچکدام صدق نمی کند، پاسخ دهید \"معتبر\"، در غیر این صورت فقط دسته را پاسخ دهید، چیز دیگری پاسخ ندهید.
         پیامک:
-        {sms}
+        {escape({sms})}
     </string>
     <string name="spam_sms_negative_category"><translate>(سیاسی|کلاهبرداری|نظرسنجی|بازاریابی)</translate></string>
     <string name="spam_sms_positive_category">معتبر</string>

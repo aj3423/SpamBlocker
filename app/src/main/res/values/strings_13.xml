@@ -43,6 +43,12 @@
         &ensp; The SMS content.<br>
         ]]>
     </string>
+    <string name="escape_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b><no_translate>{escape(…)}</no_translate></b></font><br>
+        &ensp; Escape the content in the brackets, used for content inside quotation marks. <br>
+        ]]>
+    </string>
     <string name="time_tags">
         <![CDATA[
         <font color="#00BFFF"><b><no_translate>
