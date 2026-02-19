@@ -296,11 +296,12 @@ open class HttpRequest(
                     return false
                 }
             } catch (_: CancellationException) {
-                // For API query, when a winner is found, others will be cancelled
+                // For API query, when a winner is found, others will be canceled
                 aCtx.logger?.debug(ctx.getString(R.string.canceling_thread))
                 return false // no need to retry when canceled
             } catch (e: Exception) {
                 aCtx.logger?.error("$e")
+                aCtx.cCtx?.anythingWrong = true
 
                 // Don't return here for it to retry
             } finally {

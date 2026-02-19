@@ -107,23 +107,25 @@ fun IndicatorsWrapper(
     }
 
     var onRefresh by remember { mutableStateOf(false) }
-    val DEF = PassedByDefault(ctx)
 
     // load from tables and generate ICheckers
     fun loadNumberCheckers(): List<IChecker> {
-        return if (showIndicator) {
+        val ret = if (showIndicator) {
             NumberRegexTable().listAll(ctx).map {
                 it.toChecker(ctx)
-            } + DEF
-        } else listOf(DEF)
+            }
+        } else listOf()
+
+        return ret + PassedByDefault(ctx)
     }
 
     fun loadContentCheckers(): List<IChecker> {
-        return if (showIndicator && vm.forType == Def.ForSms) {
+        val ret = if (showIndicator && vm.forType == Def.ForSms) {
             ContentRegexTable().listAll(ctx).map {
                 Checker.Content(ctx, it)
-            } + DEF
-        } else listOf(DEF)
+            }
+        } else listOf()
+        return ret + PassedByDefault(ctx)
     }
 
     var numberCheckers = remember(showIndicator) { loadNumberCheckers() }

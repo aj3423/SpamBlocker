@@ -61,7 +61,7 @@ class TestingViewModel {
 
 
 @Composable
-fun PopupTesting(
+fun TestDialog(
     trigger: MutableState<Boolean>,
 ) {
     val ctx = LocalContext.current

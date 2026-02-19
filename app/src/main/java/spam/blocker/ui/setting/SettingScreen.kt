@@ -84,7 +84,7 @@ fun SettingScreen() {
     val ctx = LocalContext.current
 
     val testingTrigger = rememberSaveable { mutableStateOf(false) }
-    PopupTesting(testingTrigger)
+    TestDialog(testingTrigger)
 
     // Hide FAB when scrolled to the bottom
     val scrollState = rememberScrollState()

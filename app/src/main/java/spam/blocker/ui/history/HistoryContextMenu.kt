@@ -9,11 +9,13 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import spam.blocker.Events
+import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.NumberRegexTable
 import spam.blocker.db.SpamTable
 import spam.blocker.db.defaultRegexRuleByType
 import spam.blocker.def.Def
+import spam.blocker.ui.setting.TestDialog
 import spam.blocker.ui.setting.regex.EditRegexDialog
 import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.GreyIcon20
@@ -46,11 +48,16 @@ fun HistoryContextMenuWrapper(
         )
     }
 
+    // Test
+    val testTrigger = rememberSaveable { mutableStateOf(false) }
+    TestDialog(testTrigger)
+
     var numberInDb by remember { mutableStateOf(SpamTable.findByNumber(ctx, record.peer) != null) }
 
     // Menu items
     val icons = remember(numberInDb) {
         listOf(
+            R.drawable.ic_tube,
             R.drawable.ic_copy,
             R.drawable.ic_regex,
             if (numberInDb) R.drawable.ic_db_delete else R.drawable.ic_db_add,
@@ -59,6 +66,7 @@ fun HistoryContextMenuWrapper(
     }
     val labelIds = remember(numberInDb) {
         listOf(
+            R.string.test,
             R.string.copy_number,
             R.string.add_num_to_regex_rule,
             if (numberInDb) R.string.remove_db_number else R.string.add_num_to_db,
@@ -78,15 +86,23 @@ fun HistoryContextMenuWrapper(
                 },
             ) {
                 when (menuIndex) {
-                    0 -> { // copy as raw number
+                    0 -> { // Test
+                        G.testingVM.apply {
+                            selectedType.intValue = if(vm.forType == Def.ForNumber) 0 else 1
+                            phone.value = record.peer
+                            sms.value = record.extraInfo ?: ""
+                        }
+                        testTrigger.value = true
+                    }
+                    1 -> { // copy as raw number
                         Clipboard.copy(ctx, record.peer)
                     }
 
-                    1 -> { // add number to new rule
+                    2 -> { // add number to new rule
                         addToNumberRuleTrigger.value = true
                     }
 
-                    2 -> { // add/delete number to spam database
+                    3 -> { // add/delete number to spam database
                         if (numberInDb) {
                             val spamRecord = SpamTable.findByNumber(ctx, record.peer)
                             if (spamRecord != null)
@@ -101,7 +117,7 @@ fun HistoryContextMenuWrapper(
                         numberInDb = !numberInDb
                     }
 
-                    3 -> { // filter records
+                    4 -> { // filter records
                         vm.searchEnabled.value = true
                     }
                 }
