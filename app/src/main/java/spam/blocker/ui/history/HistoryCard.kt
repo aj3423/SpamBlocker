@@ -5,6 +5,7 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
@@ -29,6 +30,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.CoroutineScope
@@ -50,6 +52,10 @@ import spam.blocker.ui.theme.DarkOrange
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.Teal200
+import spam.blocker.ui.widgets.BUTTON_CORNER_RADIUS
+import spam.blocker.ui.widgets.BUTTON_H
+import spam.blocker.ui.widgets.BUTTON_H_PADDING
+import spam.blocker.ui.widgets.Button
 import spam.blocker.ui.widgets.FlowRowSpaced
 import spam.blocker.ui.widgets.OutlineCard
 import spam.blocker.ui.widgets.PopupDialog
@@ -181,7 +187,9 @@ fun HistoryCard(
 
                 // 2. Rule indicator / Number / BlockReason / SMS Content
                 Column(
-                    modifier = M.padding(start = 4.dp).weight(1f)
+                    modifier = M
+                        .padding(start = 4.dp)
+                        .weight(1f)
                 ) {
                     // Row 1: Rule indicator / Number
                     RowVCenterSpaced(2) {
@@ -227,7 +235,7 @@ fun HistoryCard(
                             ResIcon(
                                 R.drawable.ic_exclamation,
                                 color = DarkOrange,
-                                modifier = M.size(18.dp)
+                                modifier = M.size(16.dp)
                             )
                         }
 
@@ -247,15 +255,19 @@ fun HistoryCard(
                                 Text(annotatedLog)
                             }
 
-                            StrokeButton(
-                                color = C.textGrey,
-                                icon = {
-                                    r.ResultReason(true)
+                            Button(
+                                modifier = M.padding(top = 4.dp),
+                                contentPadding = PaddingValues(BUTTON_H_PADDING.dp, 2.dp),
+                                borderWidth = 0.5.dp,
+                                borderColor = C.textGrey,
+                                shape = RoundedCornerShape(BUTTON_CORNER_RADIUS.dp),
+                                onClick = {
+                                    trigger.value = true
                                 },
-                                modifier = M.padding(top = 4.dp)
-                            ) {
-                                trigger.value = true
-                            }
+                                content = {
+                                    r.ResultReason(true)
+                                }
+                            )
                         } else {
                             r.ResultReason(false)
                         }
@@ -269,7 +281,8 @@ fun HistoryCard(
                 // 3. SIM / Time
                 RowVCenterSpaced(
                     space = 2,
-                    modifier = M.padding(end = 8.dp)
+                    modifier = M
+                        .padding(end = 8.dp)
                         .align(Alignment.Top)
                         .heightIn(ItemHeight.dp)
                 ) {
@@ -312,7 +325,10 @@ fun HistoryCard(
                 ResIcon(
                     R.drawable.ic_tube,
                     color = Teal200,
-                    modifier = M.size(16.dp).align(Alignment.BottomEnd).offset(x = (-4).dp, y = (-4).dp)
+                    modifier = M
+                        .size(16.dp)
+                        .align(Alignment.BottomEnd)
+                        .offset(x = (-4).dp, y = (-4).dp)
                 )
             }
         }

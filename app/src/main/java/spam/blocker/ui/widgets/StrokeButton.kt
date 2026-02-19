@@ -23,6 +23,7 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import spam.blocker.R
 import spam.blocker.ui.M
@@ -46,6 +47,7 @@ fun Button(
     modifier: Modifier = M.height(BUTTON_H.dp),
     onLongClick: Lambda? = null,
     enabled: Boolean = true,
+    borderWidth: Dp = 2.dp,
     borderColor: Color = LocalPalette.current.textGrey,
     shape: Shape = RoundedCornerShape(BUTTON_CORNER_RADIUS.dp),
     contentPadding: PaddingValues = PaddingValues(BUTTON_H_PADDING.dp, 0.dp),
@@ -56,7 +58,7 @@ fun Button(
     Box(
         modifier = modifier
             .border(
-                width = 2.dp,
+                width = borderWidth,
                 color = if (enabled) borderColor else C.disabled,
                 shape = shape
             )
