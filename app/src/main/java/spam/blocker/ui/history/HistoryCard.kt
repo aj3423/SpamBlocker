@@ -243,6 +243,7 @@ fun HistoryCard(
                         if (record.expanded) {
                             val trigger = remember { mutableStateOf(false) }
 
+                            // Show full screening log
                             PopupDialog(trigger) {
                                 val annotatedLog = remember {
                                     try {

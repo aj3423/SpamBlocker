@@ -70,7 +70,6 @@ import spam.blocker.util.regexMatchesNumber
 import spam.blocker.util.spf
 import java.util.UUID
 
-// Continue or terminate the workflow according to ongoing calendar event.
 @Serializable
 @SerialName("Manual")
 class Manual() : ITriggerAction {
@@ -126,7 +125,6 @@ class Manual() : ITriggerAction {
 }
 
 
-// Continue or terminate the workflow according to ongoing calendar event.
 @Serializable
 @SerialName("Schedule")
 data class Schedule(

@@ -47,7 +47,7 @@ fun Button(
     modifier: Modifier = M.height(BUTTON_H.dp),
     onLongClick: Lambda? = null,
     enabled: Boolean = true,
-    borderWidth: Dp = 2.dp,
+    borderWidth: Dp = 1.dp,
     borderColor: Color = LocalPalette.current.textGrey,
     shape: Shape = RoundedCornerShape(BUTTON_CORNER_RADIUS.dp),
     contentPadding: PaddingValues = PaddingValues(BUTTON_H_PADDING.dp, 0.dp),

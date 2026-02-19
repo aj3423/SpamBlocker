@@ -1130,10 +1130,11 @@ class Checker { // for namespace only
             }
 
             logger?.debug(
-                (ctx.getString(R.string.checking_template) + ": ${rule.summary()}")
+                (ctx.getString(R.string.checking_template) + ": %s")
                     .formatAnnotated(
                         ctx.getString(R.string.contact_rule).A(SkyBlue),
-                        priority().toString().A(LightMagenta)
+                        priority().toString().A(LightMagenta),
+                        rule.summary().A(if (rule.isBlacklist) Salmon else Emerald)
                     )
             )
 
@@ -1183,10 +1184,11 @@ class Checker { // for namespace only
             }
 
             logger?.debug(
-                (ctx.getString(R.string.checking_template)+ ": ${rule.summary()}")
+                (ctx.getString(R.string.checking_template)+ ": %s")
                     .formatAnnotated(
                         ctx.getString(R.string.contact_group).A(SkyBlue),
-                        priority().toString().A(LightMagenta)
+                        priority().toString().A(LightMagenta),
+                        rule.summary().A(if (rule.isBlacklist) Salmon else Emerald)
                     )
             )
 
@@ -1241,10 +1243,11 @@ class Checker { // for namespace only
             }
 
             logger?.debug(
-                (ctx.getString(R.string.checking_template)+ ": ${rule.summary()}")
+                (ctx.getString(R.string.checking_template)+ ": %s")
                     .formatAnnotated(
                         ctx.getString(R.string.content_rule).A(SkyBlue),
-                        priority().toString().A(LightMagenta)
+                        priority().toString().A(LightMagenta),
+                        rule.summary().A(if (rule.isBlacklist) Salmon else Emerald)
                     )
             )
 
