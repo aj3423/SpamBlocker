@@ -293,7 +293,7 @@ fun SettingLabel(
         modifier = modifier,
         maxLines = 1,
         fontSize = 16.sp,
-        fontWeight = FontWeight.SemiBold,
+        fontWeight = FontWeight.Medium,
         color = color ?: SkyBlue,
     )
 }

@@ -11,6 +11,7 @@ import androidx.work.Worker
 import androidx.work.WorkerParameters
 import spam.blocker.db.BotTable
 import spam.blocker.def.Def
+import spam.blocker.ui.theme.currentPalette
 import spam.blocker.util.SaveableLogger
 import spam.blocker.util.Util
 import spam.blocker.util.logi
@@ -53,7 +54,7 @@ class MyWorker(
 
         logi("execute actions: ${actions.map { it.label(ctx) }}")
 
-        val logger = SaveableLogger()
+        val logger = SaveableLogger(currentPalette(ctx))
         val workTag = getWorkTag()
 
         // The logger is now full filled with annotated string chunk, save it to db.
@@ -67,7 +68,7 @@ class MyWorker(
         actions.executeAll(ctx, aCtx)
 
         if (bot != null) {
-            BotTable.setLastLog(ctx, bot.id, logger.serialize())
+            BotTable.setLastLog(ctx, bot.id, logger.output.serialize())
         }
     }
 

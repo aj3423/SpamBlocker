@@ -56,7 +56,7 @@ import spam.blocker.util.Util.getHistoryCallsByNumber
 import spam.blocker.util.Util.listRunningForegroundServiceNames
 import spam.blocker.util.Util.listUsedAppWithinXSecond
 import spam.blocker.util.formatAnnotated
-import spam.blocker.util.getSaveableLogger
+import spam.blocker.util.getSaveableOutput
 import spam.blocker.util.hasFlag
 import spam.blocker.util.race
 import spam.blocker.util.regexMatches
@@ -1524,7 +1524,7 @@ class Checker { // for namespace only
             val result = sortedCheckers.firstNotNullOf {
                 it.check(cCtx)
             }
-            val fullScreeningLog = getSaveableLogger(logger)?.serialize() ?: ""
+            val fullScreeningLog = logger?.getSaveableOutput()?.serialize() ?: ""
 
             return Triple(
                 result, fullScreeningLog, cCtx.anythingWrong
@@ -1589,7 +1589,7 @@ class Checker { // for namespace only
             val result = sortedCheckers.firstNotNullOf {
                 it.check(cCtx)
             }
-            val fullScreeningLog = getSaveableLogger(logger)?.serialize() ?: ""
+            val fullScreeningLog = logger?.getSaveableOutput()?.serialize() ?: ""
 
             return Triple(
                 result, fullScreeningLog, cCtx.anythingWrong

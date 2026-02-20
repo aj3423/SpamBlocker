@@ -377,7 +377,7 @@ class BySTIR(
 @Serializable
 @SerialName("ApiQueryResultDetail")
 data class ApiQueryResultDetail(
-    val apiSummary: String, // apiSummary and category will be displayed on history card(2st row)
+    val apiSummary: String, // apiSummary and category will be displayed on history card(2nd row)
     val apiDomain: String, // for later reporting
 
     val queryResult: ApiQueryResult, // the result of Action ApiQuery

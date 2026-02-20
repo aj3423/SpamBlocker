@@ -2,6 +2,7 @@ package spam.blocker.util
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.core.content.edit
 import kotlinx.serialization.Serializable
@@ -11,7 +12,6 @@ import spam.blocker.db.Notification.CHANNEL_HIGH_MUTED
 import spam.blocker.db.Notification.CHANNEL_LOW
 import spam.blocker.def.Def
 import spam.blocker.def.Def.DEFAULT_HANG_UP_DELAY
-import spam.blocker.ui.theme.Emerald
 import spam.blocker.ui.theme.MayaBlue
 import spam.blocker.util.TimeUtils.FreshnessColor
 import kotlin.properties.ReadWriteProperty
@@ -182,7 +182,7 @@ class spf { // for namespace only
         var timeColors by str(
             "time_colors",
             Json.encodeToString(listOf(
-                FreshnessColor("10min", Emerald.toArgb()),
+                FreshnessColor("10min", Color.Green.toArgb()),
                 FreshnessColor("today", MayaBlue.toArgb()),
             ))
         )

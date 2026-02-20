@@ -57,11 +57,10 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.SwipeInfo
 import spam.blocker.util.A
 import spam.blocker.util.BotPrettyJson
+import spam.blocker.util.MarkupText
 import spam.blocker.util.PermissiveJson
-import spam.blocker.util.SaveableLogger
 import spam.blocker.util.TimeUtils.durationString
 import spam.blocker.util.TimeUtils.formatTime
-import spam.blocker.util.applyAnnotatedMarkups
 import spam.blocker.util.formatAnnotated
 import java.time.Duration
 import java.time.Instant
@@ -143,8 +142,8 @@ fun BotLog(
 
     val annotatedLog = remember {
         try {
-            val logger = PermissiveJson.decodeFromString<SaveableLogger>(logJson)
-            logger.text.applyAnnotatedMarkups(logger.markups)
+            val t = PermissiveJson.decodeFromString<MarkupText>(logJson)
+            t.toAnnotatedString()
         } catch (_: Exception) {
             AnnotatedString("")
         }

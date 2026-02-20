@@ -36,7 +36,6 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.Clipboard
-import spam.blocker.util.spf
 
 class CrashReportActivity : ComponentActivity() {
 
@@ -45,8 +44,6 @@ class CrashReportActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
-
-        G.themeType.intValue = spf.Global(this).themeType
 
         val ctx = this
 

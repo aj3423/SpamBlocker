@@ -144,7 +144,7 @@ fun TestDialog(
 
                 val multiLogger = MultiLogger(listOf(
                     JetpackTextLogger(logStr, C),
-                    SaveableLogger()
+                    SaveableLogger(C)
                 ))
 
                 coroutine.launch(IO) {

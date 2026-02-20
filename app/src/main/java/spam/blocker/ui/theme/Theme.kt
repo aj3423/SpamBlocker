@@ -1,5 +1,6 @@
 package spam.blocker.ui.theme
 
+import android.content.Context
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
@@ -8,6 +9,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
+import spam.blocker.util.Util
 
 
 @Immutable
@@ -152,6 +154,14 @@ private val DarkColorScheme = darkColorScheme(
 //    surfaceContainerLowest  = Color.Green,
 //    surfaceDim              = Color.Green,
 )
+
+// Used in non-Composable functions
+fun currentPalette(ctx: Context) : CustomColorsPalette {
+    return if (Util.isSystemInDarkTheme(ctx))
+        DarkCustomColorsPalette
+    else
+        LightCustomColorsPalette
+}
 
 @Composable
 fun AppTheme(

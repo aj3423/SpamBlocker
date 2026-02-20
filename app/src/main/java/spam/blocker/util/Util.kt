@@ -12,6 +12,7 @@ import android.content.pm.ApplicationInfo
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PERMISSION_GRANTED
+import android.content.res.Configuration
 import android.database.Cursor
 import android.net.Uri
 import android.os.Build
@@ -1005,5 +1006,10 @@ object Util {
         val manager = ctx.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
 
         return manager.callState == TelephonyManager.CALL_STATE_OFFHOOK
+    }
+
+    fun isSystemInDarkTheme(ctx: Context): Boolean {
+        val nightModeFlags = ctx.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        return nightModeFlags == Configuration.UI_MODE_NIGHT_YES
     }
 }

@@ -30,9 +30,9 @@ import spam.blocker.def.Def.RESULT_BLOCKED_BY_SPAM_DB
 import spam.blocker.def.Def.isBlocked
 import spam.blocker.service.checker.ByRegexRule
 import spam.blocker.service.checker.Checker
+import spam.blocker.service.checker.Checker.PassedByDefault
 import spam.blocker.service.checker.IChecker
 import spam.blocker.service.checker.toChecker
-import spam.blocker.service.checker.Checker.PassedByDefault
 import spam.blocker.ui.M
 import spam.blocker.ui.history.HistoryOptions.showHistoryIndicator
 import spam.blocker.ui.theme.LocalPalette

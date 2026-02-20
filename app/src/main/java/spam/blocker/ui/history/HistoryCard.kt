@@ -30,7 +30,6 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.CoroutineScope
@@ -53,7 +52,6 @@ import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.BUTTON_CORNER_RADIUS
-import spam.blocker.ui.widgets.BUTTON_H
 import spam.blocker.ui.widgets.BUTTON_H_PADDING
 import spam.blocker.ui.widgets.Button
 import spam.blocker.ui.widgets.FlowRowSpaced
@@ -66,13 +64,12 @@ import spam.blocker.ui.widgets.SimCardIcon
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.Contacts
 import spam.blocker.util.JetpackTextLogger
+import spam.blocker.util.MarkupText
 import spam.blocker.util.PermissiveJson
-import spam.blocker.util.SaveableLogger
 import spam.blocker.util.TimeUtils.FreshnessColor
 import spam.blocker.util.TimeUtils.formatTime
 import spam.blocker.util.TimeUtils.timeColor
 import spam.blocker.util.Util
-import spam.blocker.util.applyAnnotatedMarkups
 import spam.blocker.util.logi
 import androidx.compose.foundation.Image as ComposeImage
 
@@ -247,8 +244,10 @@ fun HistoryCard(
                             PopupDialog(trigger) {
                                 val annotatedLog = remember {
                                     try {
-                                        val logger = PermissiveJson.decodeFromString<SaveableLogger>(record.fullScreeningLog?: "")
-                                        logger.text.applyAnnotatedMarkups(logger.markups)
+                                        val t = PermissiveJson.decodeFromString<MarkupText>(
+                                            record.fullScreeningLog?: ""
+                                        )
+                                        t.toAnnotatedString()
                                     } catch (_: Exception) {
                                         AnnotatedString("")
                                     }

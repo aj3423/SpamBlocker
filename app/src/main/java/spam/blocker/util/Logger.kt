@@ -132,31 +132,51 @@ data class Markup(
     val color : Int,
 )
 
-// Create an AnnotatedString from text and markups
-fun String.applyAnnotatedMarkups(markups: List<Markup>): AnnotatedString {
-    return buildAnnotatedString {
-        append(this@applyAnnotatedMarkups)
-        markups.forEach { markup ->
-            addStyle(
-                style = SpanStyle(color = Color(markup.color)),
-                start = markup.start,
-                end = markup.end
-            )
+@Serializable
+data class MarkupText(
+    var text: String = "",
+    val markups: MutableList<Markup> = mutableListOf(),
+) {
+    fun serialize(): String {
+        return try {
+            Json.encodeToString(this)
+        } catch (_: Exception) {
+            ""
+        }
+    }
+
+    // Create an AnnotatedString from the text and markups
+    fun toAnnotatedString(): AnnotatedString {
+        return buildAnnotatedString {
+            append(text)
+            markups.forEach { markup ->
+                addStyle(
+                    style = SpanStyle(color = Color(markup.color)),
+                    start = markup.start,
+                    end = markup.end
+                )
+            }
+        }
+    }
+
+    companion object {
+        private val PermissiveJson = Json { ignoreUnknownKeys = true }
+        fun parse(jsonStr: String): MarkupText {
+            return PermissiveJson.decodeFromString(jsonStr)
         }
     }
 }
 
 // Serializable logger class
-@Serializable
-data class SaveableLogger(
-    var text: String = "",
-    val markups: MutableList<Markup> = mutableListOf()
+class SaveableLogger(
+    private val palette: CustomColorsPalette,
+    val output : MarkupText = MarkupText()
 ) : ILogger {
     private fun add(message: String, color: Color) {
-        val start = text.length
-        text += message + "\n"
-        val end = text.length
-        markups += Markup(start, end, color.toArgb())
+        val start = output.text.length
+        output.text += message + "\n"
+        val end = output.text.length
+        output.markups += Markup(start, end, color.toArgb())
     }
 
     override fun debug(message: String) {
@@ -179,39 +199,35 @@ data class SaveableLogger(
         add(message, Salmon)
     }
 
-    private fun addAnnotated(message: AnnotatedString) {
-        val startOffset = text.length
-        text += message.text + "\n"
+    private fun addAnnotated(message: AnnotatedString, defaultColor: Color) {
+        val startOffset = output.text.length
+
+        // 1. Append plain text
+        output.text += message.text + "\n"
+
+        // 2. Apply default color to the whole new line first
+        output.markups += Markup(
+            start = startOffset,
+            end = startOffset + message.text.length,
+            color = defaultColor.toArgb()
+        )
+
+        // 3. Apply block colors that override the defaultColor
         message.spanStyles.forEach { span ->
             val start = startOffset + span.start
             val end = startOffset + span.end
             val color = span.item.color
             if (color != Color.Unspecified) {
-                markups += Markup(start, end, color.toArgb())
+                output.markups += Markup(start, end, color.toArgb())
             }
         }
     }
 
-    override fun debug(message: AnnotatedString) = addAnnotated(message)
-    override fun info(message: AnnotatedString) = addAnnotated(message)
-    override fun warn(message: AnnotatedString) = addAnnotated(message)
-    override fun success(message: AnnotatedString) = addAnnotated(message)
-    override fun error(message: AnnotatedString) = addAnnotated(message)
-
-    fun serialize(): String {
-        return try {
-            Json.encodeToString(this)
-        } catch (_: Exception) {
-            ""
-        }
-    }
-
-    companion object {
-        private val PermissiveJson = Json { ignoreUnknownKeys = true }
-        fun parse(jsonStr: String): SaveableLogger {
-            return PermissiveJson.decodeFromString(jsonStr)
-        }
-    }
+    override fun debug(message: AnnotatedString) = addAnnotated(message, palette.textGrey)
+    override fun info(message: AnnotatedString) = addAnnotated(message, SkyBlue)
+    override fun warn(message: AnnotatedString) = addAnnotated(message, DarkOrange)
+    override fun success(message: AnnotatedString) = addAnnotated(message, palette.pass)
+    override fun error(message: AnnotatedString) = addAnnotated(message, palette.block)
 }
 
 
@@ -260,9 +276,12 @@ class MultiLogger(
     }
 }
 
-fun getSaveableLogger(logger: ILogger?): SaveableLogger? =
-    when (logger) {
-        is SaveableLogger -> logger
-        is MultiLogger     -> logger.loggers.firstOrNull { it is SaveableLogger } as? SaveableLogger
-        else               -> null
+fun ILogger.getSaveableOutput(): MarkupText? =
+    when (this) {
+        is SaveableLogger -> this.output
+        is MultiLogger -> {
+            val log = this.loggers.firstOrNull { it is SaveableLogger } as? SaveableLogger
+            log?.output
+        }
+        else -> null
     }
