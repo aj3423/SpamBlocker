@@ -156,7 +156,9 @@ fun TestDialog(
                         )
                     else
                         SmsReceiver().processSms(
-                            ctx, vm.phone.value, vm.sms.value, simSlot = vm.simSlot.value, isTest = true, logger = multiLogger)
+                            ctx, rawNumber = vm.phone.value, messageBody = vm.sms.value,
+                            simSlot = vm.simSlot.value, isTest = true, logger = multiLogger
+                        )
                 }
             }
         },

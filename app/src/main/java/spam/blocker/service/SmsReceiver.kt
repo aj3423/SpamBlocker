@@ -17,6 +17,7 @@ import spam.blocker.util.Notification
 import spam.blocker.util.Notification.ShowType
 import spam.blocker.util.Notification.missingChannel
 import spam.blocker.util.Now
+import spam.blocker.util.SaveableLogger
 import spam.blocker.util.Util.isDeviceLocked
 import spam.blocker.util.Util.isSmsAppInForeground
 import spam.blocker.util.logi
@@ -63,7 +64,8 @@ open class SmsReceiver : BroadcastReceiver() {
 
         val simSlot = getSimSlotFromSmsIntent(ctx, intent)
 
-        processSms(ctx, rawNumber, messageBody, simSlot, isTest = false)
+        processSms(ctx, rawNumber = rawNumber, messageBody = messageBody, simSlot = simSlot,
+            isTest = false, logger = SaveableLogger())
     }
 
     fun processSms(
