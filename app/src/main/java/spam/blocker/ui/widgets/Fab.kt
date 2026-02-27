@@ -33,8 +33,7 @@ fun Fab(
     iconId: Int,
     bgColor: Color,
     iconColor: Color = Color.White,
-    fabSize: Int = 40,
-    iconSize: Int = 36,
+    iconSize: Int = 40,
     onClick: Lambda,
 ) {
     // Animate show/hide
@@ -51,7 +50,6 @@ fun Fab(
             ),
             modifier = Modifier
                 .wrapContentSize()
-//                .size(fabSize.dp)
                 .clickable {
                     onClick()
                 }

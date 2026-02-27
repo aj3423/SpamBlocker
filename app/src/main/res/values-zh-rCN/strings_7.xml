@@ -4,7 +4,7 @@
     <string name="switch_mode">切换模式</string>
     <string name="contact_group">联系人组</string>
     <string name="text_too_long">文本过长，编辑功能已禁用</string>
-    <string name="follow_system">跟随系统</string>
+    <string name="system"><short>系统</short></string>
     <string name="theme">主题</string>
     <string-array name="rule_dropdown_menu">
         <item>搜索规则</item>

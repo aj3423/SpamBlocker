@@ -4,7 +4,7 @@
     <string name="switch_mode">Mode Peralihan</string>
     <string name="contact_group">Grup Kontak</string>
     <string name="text_too_long">Teks terlalu panjang, pengubahan dinonaktifkan</string>
-    <string name="follow_system"><short>Ikuti Sistem</short></string>
+    <string name="system"><short>Sistem</short></string>
     <string name="theme">Tema</string>
     <string-array name="rule_dropdown_menu">
         <item>Aturan Pencarian</item>

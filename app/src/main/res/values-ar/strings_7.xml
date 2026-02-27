@@ -4,7 +4,7 @@
     <string name="switch_mode">تبديل الوضع</string>
     <string name="contact_group">مجموعة جهات الاتصال</string>
     <string name="text_too_long">النص طويل جدًا، التحرير معطل</string>
-    <string name="follow_system"><short>متابعة النظام</short></string>
+    <string name="system"><short>نظام</short></string>
     <string name="theme">المظهر</string>
     <string-array name="rule_dropdown_menu">
         <item>بحث عن قاعدة</item>

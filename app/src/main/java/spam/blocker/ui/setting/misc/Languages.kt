@@ -66,7 +66,7 @@ fun Language() {
     val items = remember {
         // concat "Follow System" and all languages
         val all = listOf<Lang>(
-            Lang("", ctx.getString(R.string.follow_system))
+            Lang("", ctx.getString(R.string.system))
         ) + languages
 
         all.map { lang ->

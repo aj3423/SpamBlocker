@@ -101,7 +101,7 @@ fun EditSingleTimeColorsDialog(
                     onResult(null, true)
                 }
                 StrokeButton(
-                    label = Str(R.string.ok),
+                    label = Str(R.string.save),
                     color = C.teal200,
                 ) {
                     trigger.value = false
@@ -129,6 +129,7 @@ fun EditSingleTimeColorsDialog(
         ) {
             ColorPickerButton(
                 color = color,
+                okLabel = Str(R.string.ok)
             ) {
                 it?.let { color = it }
             }

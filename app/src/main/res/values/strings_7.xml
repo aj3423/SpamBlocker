@@ -28,7 +28,7 @@
         ]]>
     </string>
     <string name="text_too_long">Text too long, editing is disabled</string>
-    <string name="follow_system"><short>Follow System</short></string>
+    <string name="system"><short>System</short></string>
     <string name="theme">Theme</string>
     <string-array name="rule_dropdown_menu">
         <item>Search Rule</item>

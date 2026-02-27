@@ -214,7 +214,7 @@ fun HistoryCard(
                                 text = loc,
                                 style = TextStyle(
                                     fontSize = 12.sp,
-                                    color = C.textGrey.darken(),
+                                    color = C.textGrey.slightDiff(),
                                     fontWeight = FontWeight.W500,
                                 ),
                                 modifier = M.padding(start = 4.dp),

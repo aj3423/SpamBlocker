@@ -4,7 +4,7 @@
     <string name="switch_mode">Переключить режим</string>
     <string name="contact_group">Группа контактов</string>
     <string name="text_too_long">Текст слишком длинный, редактирование отключено</string>
-    <string name="follow_system"><short>Следовать системе</short></string>
+    <string name="system"><short>Система</short></string>
     <string name="theme">Тема</string>
     <string-array name="rule_dropdown_menu">
         <item>Найти правило</item>

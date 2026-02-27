@@ -251,8 +251,8 @@ fun SettingScreen() {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(0.dp),
                     ) {
-                        Theme()
                         Language()
+                        Theme()
                         BackupRestore()
                         SettingRow {
                             RowVCenterSpaced(8) {

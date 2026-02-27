@@ -4,7 +4,7 @@
     <string name="switch_mode">モード切り替え</string>
     <string name="contact_group">連絡先グループ</string>
     <string name="text_too_long">テキストが長すぎるため、編集は無効になっています</string>
-    <string name="follow_system"><short>システムに従う</short></string>
+    <string name="system"><short>システム</short></string>
     <string name="theme">テーマ</string>
     <string-array name="rule_dropdown_menu">
         <item>ルール検索</item>

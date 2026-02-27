@@ -196,6 +196,7 @@ fun ColorPickerButton(
     text: String? = null,
     enabled: Boolean = true,
     clearLabel: String? = null,
+    clearColor: Color = G.palette.error,
     okLabel: String = Str(R.string.save),
     onSelect: Lambda1<Color?>
 ) {
@@ -206,6 +207,7 @@ fun ColorPickerButton(
         // don't use Color.Unspecified here, bc White has alpha value
         initColor = color ?: Color.White,
         clearLabel = clearLabel,
+        clearColor = clearColor,
         okLabel = okLabel,
         onSelect = onSelect,
     )
@@ -225,6 +227,7 @@ fun ColorPickerPopup(
     trigger: MutableState<Boolean>,
     initColor: Color,
     clearLabel: String?,
+    clearColor: Color,
     okLabel: String,
     onSelect: Lambda1<Color?>,
 ) {
@@ -247,7 +250,7 @@ fun ColorPickerPopup(
                 if (clearLabel != null) {
                     StrokeButton(
                         label = clearLabel,
-                        color = C.error
+                        color = clearColor
                     ) {
                         onSelect(null)
                         trigger.value = false

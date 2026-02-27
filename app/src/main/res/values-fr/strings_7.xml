@@ -4,7 +4,7 @@
     <string name="switch_mode">Changer de mode</string>
     <string name="contact_group">Groupe de contact</string>
     <string name="text_too_long">Texte trop long, l\'édition est désactivée</string>
-    <string name="follow_system"><short>Suivre le système</short></string>
+    <string name="system"><short>Système</short></string>
     <string name="theme">Thème</string>
     <string-array name="rule_dropdown_menu">
         <item>Rechercher une règle</item>

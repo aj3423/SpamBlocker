@@ -4,7 +4,7 @@
     <string name="switch_mode">Modu Değiştir</string>
     <string name="contact_group">İletişim Grubu</string>
     <string name="text_too_long">Metin çok uzun, düzenleme devre dışı</string>
-    <string name="follow_system">Sistemi Takip Et</string>
+    <string name="system"><short>Sist</short></string>
     <string name="theme">Tema</string>
     <string-array name="rule_dropdown_menu">
         <item>Kural Ara</item>

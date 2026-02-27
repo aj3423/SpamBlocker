@@ -106,10 +106,6 @@ class spf { // for namespace only
     class Palette(ctx: Context) : SharedPref(ctx) {
         var allColors = listOf<Delegate>()
 
-        // Delegate attributes,
-        //  - `initialized` from shared pref
-        //  - `read` from the state variable
-        //  - `write` to both the state variable and shared pref
         inner class Delegate(
             val key: String,
             val default: Color,
@@ -126,7 +122,7 @@ class spf { // for namespace only
             operator fun setValue(thisRef: Any?, property: KProperty<*>, value: Color) {
                 update(value)
             }
-            // This function for manually updating the instance
+
             fun update(newColor: Color) {
                 state.value = newColor
                 prefs.edit { putInt("color_$key", newColor.toArgb()) }
@@ -141,7 +137,7 @@ class spf { // for namespace only
             labelId: Int
         ) : Delegate {
             val d = Delegate(key, default, labelId)
-            allColors += d // add each Delegate to the `list`
+            allColors += d // add each Delegate to the list 
             return d
         }
 
@@ -155,7 +151,7 @@ class spf { // for namespace only
         var regexFlags by color("regexFlags", Color.Magenta, R.string.regex_flags)
 
         // widgets
-        var teal200 by color("highlighted", Teal200, R.string.highlight)
+        var teal200 by color("enabled", Teal200, R.string.enable)
         var disabled by color("disabled", ColdGrey, R.string.disable)
 
         // popup

@@ -12,6 +12,7 @@ import spam.blocker.ui.widgets.FlowRowSpaced
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.Str
+import spam.blocker.ui.widgets.StrokeButton
 
 
 @Composable
@@ -23,8 +24,8 @@ fun EditThemeDialog(trigger: MutableState<Boolean>) {
                 ColorPickerButton(
                     color = color.state.value,
                     text = Str(color.labelId),
-                    okLabel = Str(R.string.ok),
                     clearLabel = Str(R.string.reset),
+                    clearColor = color.default
                 ) { newColor ->
                     if (newColor == null)
                         color.reset()
@@ -42,7 +43,10 @@ fun Theme() {
         val trigger = remember { mutableStateOf(false) }
         EditThemeDialog(trigger)
 
-        GreyButton(Str(R.string.customize)) {
+        StrokeButton(
+            Str(R.string.customize),
+            color = G.palette.infoBlue
+        ) {
             trigger.value = true
         }
     }

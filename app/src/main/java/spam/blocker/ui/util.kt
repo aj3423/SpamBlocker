@@ -16,6 +16,7 @@ import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
@@ -55,28 +56,25 @@ fun Color.contrastColor(): Color {
 }
 
 // light_blue.darken() -> dark_blue
-fun Color.darken(factor: Float = 0.7f): Color {
+fun Color.darken(percent: Float = 0.3f): Color {   // 0.0 = original, 1.0 = black
+    val f = 1f - percent.coerceIn(0f, 1f)
     return copy(
-        red   = red   * factor.coerceIn(0f, 1f),
-        green = green * factor.coerceIn(0f, 1f),
-        blue  = blue  * factor.coerceIn(0f, 1f),
-        alpha = alpha  // usually keep original alpha
+        red   = red   * f,
+        green = green * f,
+        blue  = blue  * f,
+        alpha = alpha
     )
 }
+
 // dark_blue.lighten() -> light_blue
-fun Color.lighten(factor: Float = 0.6f): Color {
-    return copy(
-        red   = red   + (1f - red)   * factor.coerceIn(0f, 1f),
-        green = green + (1f - green) * factor.coerceIn(0f, 1f),
-        blue  = blue  + (1f - blue)  * factor.coerceIn(0f, 1f),
-        alpha = alpha  // usually keep original alpha
-    )
-}
-fun Color.slightDiff(factor: Float = 0.2f): Color {
+fun Color.lighten(percent: Float = 0.6f): Color =
+    lerp(this, Color.White, percent.coerceIn(0f, 1f))
+
+fun Color.slightDiff(percent: Float = 0.2f): Color {
     return if (luminance() > 0.55f)
-        darken(factor)
+        darken(percent)
     else
-        lighten(factor)
+        lighten(percent)
 }
 
 @Composable
