@@ -1,0 +1,11 @@
+Fix:
+- Groq API preset blocks all texts
+
+Changes:
+- Light theme removed, all colors tunable (for color blindness)
+
+Enhancements:
+- History records
+  - Full screening log 
+  - Show a yellow "!" if anything went wrong, e.g. Api query timed out
+  - A "Test" button in context menu
