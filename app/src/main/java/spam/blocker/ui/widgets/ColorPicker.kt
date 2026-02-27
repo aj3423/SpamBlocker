@@ -29,7 +29,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -220,8 +222,6 @@ fun ColorPickerButton(
         trigger.value = true
     }
 }
-
-
 @Composable
 fun ColorPickerPopup(
     trigger: MutableState<Boolean>,
@@ -233,14 +233,49 @@ fun ColorPickerPopup(
 ) {
     val C = G.palette
 
-    if (!trigger.value)
-        return
+    if (!trigger.value) return
 
-    var rgb by remember {
-        mutableIntStateOf((initColor.toArgb() and 0xffffff))
+    val initialArgb = initColor.toArgb()
+    val initialHsv = FloatArray(3).apply {
+        AndroidColor.colorToHSV(initialArgb, this)
     }
-    var a by remember {
-        mutableIntStateOf((initColor.toArgb() shr 24).toInt())
+
+    var hue by remember { mutableFloatStateOf(initialHsv[0].coerceIn(0f, 360f)) }
+    var sat by remember { mutableFloatStateOf(initialHsv[1].coerceIn(0f, 1f)) }
+    var value by remember { mutableFloatStateOf(initialHsv[2].coerceIn(0f, 1f)) }
+    var alpha by remember { mutableIntStateOf(initialArgb ushr 24) }
+
+    // We keep last meaningful hue to prevent snapping to 0 when sat → 0
+    var lastHue by remember { mutableFloatStateOf(hue) }
+
+    // Update lastHue only when saturation is high enough that hue is meaningful
+    LaunchedEffect(sat, hue) {
+        if (sat > 0.02f) {           // small threshold — tune if needed
+            lastHue = hue
+        }
+    }
+
+    val currentColor by remember(alpha, hue, sat, value) {
+        derivedStateOf {
+            val effectiveHue = if (sat > 0.02f) hue else lastHue
+            Color(AndroidColor.HSVToColor(alpha, floatArrayOf(effectiveHue, sat, value)))
+        }
+    }
+
+    var hex by remember(currentColor) {
+        mutableStateOf(String.format("%08X", currentColor.toArgb()))
+    }
+
+    LaunchedEffect(hex) {
+        val parsed = hex.parseColorString() ?: return@LaunchedEffect
+        val (newAlpha, newRgb) = parsed
+        alpha = newAlpha
+        val hsv = FloatArray(3)
+        AndroidColor.colorToHSV(newRgb, hsv)
+        hue = hsv[0]
+        sat = hsv[1]
+        value = hsv[2]
+        // lastHue will be updated via the other LaunchedEffect
     }
 
     PopupDialog(
@@ -260,78 +295,49 @@ fun ColorPickerPopup(
                     label = okLabel,
                     color = C.teal200
                 ) {
-                    onSelect(Color((a shl 24) + rgb))
+                    onSelect(currentColor)
                     trigger.value = false
                 }
             }
         }
     ) {
-        var argbColor by remember(rgb, a) {
-            mutableStateOf(Color(rgb.toLong() + (a.toLong() shl 24)))
-        }
-
-        var colorString by remember(argbColor) {
-            mutableStateOf(String.format("%08X", argbColor.toArgb()))
-        }
-        LaunchedEffect(colorString) {
-            val parsed = colorString.parseColorString()
-            if (parsed != null) {
-                a = parsed.first
-                rgb = parsed.second
-            }
-        }
-
-        val hsv by remember(rgb) {
-            val hsvArray = floatArrayOf(0f, 0f, 0f)
-            AndroidColor.colorToHSV(rgb, hsvArray)
-            mutableStateOf(
-                Triple(hsvArray[0], hsvArray[1], hsvArray[2])
-            )
-        }
-
-        // Top panel
         SatValPanel(
-            hue = hsv.first,
-            currentSat = hsv.second,
-            currentVal = hsv.third,
-        ) { sat, value ->
-            val newRgb = AndroidColor.HSVToColor(floatArrayOf(hsv.first, sat, value))
-            rgb = newRgb and 0xffffff
+            hue = hue,
+            currentSat = sat,
+            currentVal = value,
+        ) { newSat, newVal ->
+            sat = newSat.coerceIn(0f, 1f)
+            value = newVal.coerceIn(0f, 1f)
         }
 
-        // Middle bar
         HueBar(
-            currentHue = hsv.first
-        ) { hue ->
-            val newRgb = AndroidColor.HSVToColor(floatArrayOf(hue, hsv.second, hsv.third))
-            rgb = newRgb and 0xffffff
+            currentHue = hue
+        ) { newHue ->
+            hue = newHue.coerceIn(0f, 360f)
         }
 
         // Bottom preview area
         RowVCenterSpaced(2) {
-            Spacer(modifier = M.width(32.dp)) // make the Box below horizontally centered...
+            Spacer(modifier = Modifier.width(32.dp))
 
             Box(
                 modifier = Modifier
                     .size(100.dp)
-                    .background(argbColor),
+                    .background(currentColor),
                 contentAlignment = Alignment.Center
             ) {
                 BasicTextField(
-                    value = colorString,
-                    onValueChange = {
-                        colorString = it
-                    },
+                    value = hex,
+                    onValueChange = { hex = it },
                     textStyle = TextStyle(
                         textAlign = TextAlign.Center,
                         fontSize = 18.sp,
-                        color = argbColor.contrastColor()
+                        color = currentColor.contrastColor()
                     ),
-
                     modifier = Modifier
                         .height(200.dp)
-                        .background(argbColor)
-                        .wrapContentHeight(align = Alignment.CenterVertically)
+                        .background(currentColor)
+                        .wrapContentHeight(Alignment.CenterVertically)
                 )
             }
 
@@ -339,8 +345,6 @@ fun ColorPickerPopup(
         }
     }
 }
-
-
 @Composable
 fun HueBar(
     currentHue: Float,
