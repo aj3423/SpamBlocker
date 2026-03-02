@@ -56,6 +56,7 @@ import spam.blocker.ui.widgets.Button
 import spam.blocker.ui.widgets.FlowRowSpaced
 import spam.blocker.ui.widgets.OutlineCard
 import spam.blocker.ui.widgets.PopupDialog
+import spam.blocker.ui.widgets.PopupSize
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.ResImage
 import spam.blocker.ui.widgets.RowVCenterSpaced
@@ -240,7 +241,10 @@ fun HistoryCard(
                             val trigger = remember { mutableStateOf(false) }
 
                             // Show full screening log
-                            PopupDialog(trigger) {
+                            PopupDialog(
+                                trigger = trigger,
+                                popupSize = PopupSize(maxWidthPercentage = 0.9f, minWidthDp = 320, maxWidthDp = 1200),
+                            ) {
                                 val annotatedLog = remember {
                                     try {
                                         val t = PermissiveJson.decodeFromString<MarkupText>(

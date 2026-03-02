@@ -231,7 +231,7 @@ fun HistoryFabs(
 
     PopupDialog(
         trigger = settingPopupTrigger,
-        popupSize = PopupSize(percentage = 0.8f, minWidth = 340, maxWidth = 500),
+        popupSize = PopupSize(maxWidthPercentage = 0.9f, minWidthDp = 340, maxWidthDp = 500),
         content = {
             Column {
                 // Logging enabled / TTL

@@ -79,7 +79,7 @@ fun TestDialog(
     val logTrigger = rememberSaveable { mutableStateOf(false) }
     PopupDialog(
         trigger = logTrigger,
-        popupSize = PopupSize(percentage = 0.7f, minWidth = 320, maxWidth = 600),
+        popupSize = PopupSize(maxWidthPercentage = 0.9f, minWidthDp = 320, maxWidthDp = 1200),
     ) {
         Text(
             text = logStr.value,
@@ -96,7 +96,7 @@ fun TestDialog(
 
     PopupDialog(
         trigger = trigger,
-        popupSize = PopupSize(percentage = 0.8f, minWidth = 340, maxWidth = 600),
+        popupSize = PopupSize(maxWidthPercentage = 0.8f, minWidthDp = 340, maxWidthDp = 500),
         title = {
             RowVCenter {
                 GreyLabel(Str(R.string.title_rule_testing))

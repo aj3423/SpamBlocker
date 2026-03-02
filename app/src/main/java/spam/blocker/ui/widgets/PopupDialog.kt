@@ -6,7 +6,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -27,30 +28,25 @@ import spam.blocker.ui.lighten
 import spam.blocker.ui.maxScreenHeight
 import spam.blocker.ui.screenWidthDp
 import spam.blocker.util.Lambda
+import kotlin.math.min
 
 const val PopupPaddingHorizontal = 16
 const val PopupPaddingVertical = 16
 const val PopupScrollVPadding = 4
 
 data class PopupSize(
-    val percentage: Float = 0.9f,
-    val minWidth: Int = 300,
-    val maxWidth: Int = 600
+    val minWidthDp: Int = 300,
+    val maxWidthDp: Int = 600,
+    val maxWidthPercentage: Float = 0.9f,
 ) {
-    @Composable
-    fun calculate(): Int {
-        var width = (screenWidthDp() * percentage).toInt()
-
-        // must >= minWidth
-        if (width < minWidth) {
-            width = minWidth
-        }
-        // must <= maxWidth
-        if (width > maxWidth) {
-            width = maxWidth
-        }
-
-        return width
+    fun minWidth(): Float {
+        return minWidthDp.toFloat()
+    }
+    fun maxWidth(screenWidthDp: Float): Float {
+        return min(
+            maxWidthDp.toFloat(),
+            (screenWidthDp * maxWidthPercentage)
+        )
     }
 }
 
@@ -95,8 +91,10 @@ fun PopupDialog(
             Card(
                 modifier = M
                     .maxScreenHeight(0.9f)
-                    .width(
-                        popupSize?.calculate()?.dp ?: Dp.Unspecified
+                    .wrapContentWidth()
+                    .widthIn(
+                        min = popupSize?.minWidth()?.dp ?: Dp.Unspecified,
+                        max = popupSize?.maxWidth(screenWidthDp())?.dp ?: Dp.Unspecified,
                     ),
 
                 border = BorderStroke(1.dp, color= C.dialogBg.lighten(0.1f)),

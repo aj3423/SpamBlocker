@@ -133,7 +133,7 @@ fun PushAlertEditDialog(
     // Config Dialog
     PopupDialog(
         trigger = trigger,
-        popupSize = PopupSize(percentage = 0.9f, minWidth = 340, maxWidth = 600),
+        popupSize = PopupSize(maxWidthPercentage = 0.9f, minWidthDp = 340, maxWidthDp = 600),
         buttons = {
             StrokeButton(
                 label = Str(R.string.save),

@@ -16,6 +16,7 @@ import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.widgets.GreyButton
+import spam.blocker.ui.widgets.GreyText
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.PluralStr
 import spam.blocker.ui.widgets.PopupDialog
@@ -108,7 +109,7 @@ fun Answered() {
             )
         },
         content = {
-            Text(Str(R.string.answered_warning))
+            GreyText(Str(R.string.answered_warning))
         }
     )
 

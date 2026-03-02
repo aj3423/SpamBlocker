@@ -40,6 +40,7 @@ import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.PopupDialog
+import spam.blocker.ui.widgets.PopupSize
 import spam.blocker.ui.widgets.ResImage
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
@@ -110,6 +111,7 @@ fun <T> PopupChooseApps(
     PopupDialog(
         trigger = popupTrigger,
         scrollEnabled = false,
+        popupSize = PopupSize(maxWidthPercentage = 0.9f, minWidthDp = 320, maxWidthDp = 600),
         content = {
             var searchFilter by remember { mutableStateOf("") }
 
