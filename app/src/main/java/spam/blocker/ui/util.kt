@@ -45,11 +45,12 @@ fun Color.luminance(): Double {
     // Calculate the perceptive luminance (aka luma) - human eye favors green color...
     return (0.299 * red) + (0.587 * green) + (0.114 * blue)
 }
+fun Color.isLight(): Boolean {
+    return luminance() > 0.55f
+}
 
 fun Color.contrastColor(): Color {
-    val luma = luminance()
-
-    return if (luma > 0.55f)
+    return if (isLight())
         Color.Black
     else
         Color.White

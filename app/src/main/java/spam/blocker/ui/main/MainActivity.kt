@@ -31,6 +31,8 @@ import spam.blocker.ui.M
 import spam.blocker.ui.history.HistoryOptions.showHistoryBlocked
 import spam.blocker.ui.history.HistoryOptions.showHistoryPassed
 import spam.blocker.ui.history.HistoryScreen
+import spam.blocker.ui.isLight
+import spam.blocker.ui.luminance
 import spam.blocker.ui.setting.SettingScreen
 import spam.blocker.ui.theme.AppTheme
 import spam.blocker.ui.widgets.BottomBar
@@ -128,7 +130,7 @@ class MainActivity : ComponentActivity() {
             AppTheme {
                 // fix white statusbar text when forced to white theme
                 WindowCompat.getInsetsController(window, LocalView.current)
-                    .isAppearanceLightStatusBars = false
+                    .isAppearanceLightStatusBars = G.palette.background.isLight()
 
                 // Prepare for the permission launcher
                 G.permissionChain.Compose()

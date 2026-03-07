@@ -308,7 +308,7 @@ class spf { // for namespace only
         var isEnabled by bool("permit_answered")
         var isWarningAcknowledged by bool("answered_warning_acknowledged")
         var minDuration by int("answered_min_duration", 15)
-        var days by int("answered_in_x_day", 3)
+        var days by int("answered_in_x_day", 7)
     }
 
     class OffTime(ctx: Context) : SharedPref(ctx) {
