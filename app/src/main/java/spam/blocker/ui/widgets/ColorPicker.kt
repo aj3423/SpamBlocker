@@ -57,7 +57,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.graphics.createBitmap
 import androidx.core.graphics.toRect
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import spam.blocker.G
 import spam.blocker.R
@@ -73,17 +72,15 @@ import android.graphics.Color as AndroidColor
 // AI
 
 private const val AREA_WIDTH = 260 // .dp
+private const val MIN_SAT_WITH_MEANINGFUL_HUE = 0.02f
 
-private fun CoroutineScope.collectForPress(
-    interactionSource: InteractionSource,
+private suspend fun InteractionSource.collectForPress(
     setOffset: (Offset) -> Unit
 ) {
-    launch {
-        interactionSource.interactions.collect { interaction ->
-            (interaction as? PressInteraction.Press)
-                ?.pressPosition
-                ?.let(setOffset)
-        }
+    interactions.collect { interaction ->
+        (interaction as? PressInteraction.Press)
+            ?.pressPosition
+            ?.let(setOffset)
     }
 }
 
@@ -250,14 +247,14 @@ fun ColorPickerPopup(
 
     // Update lastHue only when saturation is high enough that hue is meaningful
     LaunchedEffect(sat, hue) {
-        if (sat > 0.02f) {           // small threshold — tune if needed
+        if (sat > MIN_SAT_WITH_MEANINGFUL_HUE) {
             lastHue = hue
         }
     }
 
     val currentColor by remember(alpha, hue, sat, value) {
         derivedStateOf {
-            val effectiveHue = if (sat > 0.02f) hue else lastHue
+            val effectiveHue = if (sat > MIN_SAT_WITH_MEANINGFUL_HUE) hue else lastHue
             Color(AndroidColor.HSVToColor(alpha, floatArrayOf(effectiveHue, sat, value)))
         }
     }
@@ -272,10 +269,12 @@ fun ColorPickerPopup(
         alpha = newAlpha
         val hsv = FloatArray(3)
         AndroidColor.colorToHSV(newRgb, hsv)
-        hue = hsv[0]
         sat = hsv[1]
         value = hsv[2]
-        // lastHue will be updated via the other LaunchedEffect
+        // Android reports hue = 0 for grayscale colors; keep the existing hue in that case.
+        if (hsv[1] > MIN_SAT_WITH_MEANINGFUL_HUE) {
+            hue = hsv[0].coerceIn(0f, 360f)
+        }
     }
 
     PopupDialog(
@@ -350,7 +349,6 @@ fun HueBar(
     currentHue: Float,
     setHue: (Float) -> Unit
 ) {
-    val scope = rememberCoroutineScope()
     val interactionSource = remember {
         MutableInteractionSource()
     }
@@ -369,7 +367,6 @@ fun HueBar(
                 barSize.value = Size(it.width.toFloat(), it.height.toFloat())
             }
     ) {
-        val drawScopeSize = size
         val bitmap = createBitmap(size.width.toInt(), size.height.toInt())
         val hueCanvas = Canvas(bitmap)
 
@@ -394,23 +391,6 @@ fun HueBar(
             panel = huePanel
         )
 
-        fun pointToHue(pointX: Float): Float {
-            val width = huePanel.width()
-            val x = when {
-                pointX < huePanel.left -> 0f
-                pointX > huePanel.right -> width
-                else -> pointX - huePanel.left
-            }
-            return x * 360f / width
-        }
-
-        scope.collectForPress(interactionSource) { pressPosition ->
-            val pressPos = pressPosition.x.coerceIn(0f..drawScopeSize.width)
-            pressOffset.value = Offset(pressPos, size.height / 2)
-            val selectedHue = pointToHue(pressPos)
-            setHue(selectedHue)
-        }
-
         drawCircle(
             Color.White,
             radius = size.height / 2,
@@ -419,6 +399,17 @@ fun HueBar(
                 width = 2.dp.toPx()
             )
         )
+    }
+
+    LaunchedEffect(interactionSource, barSize.value) {
+        val size = barSize.value
+        if (size == Size.Zero) return@LaunchedEffect
+
+        interactionSource.collectForPress { pressPosition ->
+            val pressPos = pressPosition.x.coerceIn(0f, size.width)
+            pressOffset.value = Offset(pressPos, size.height / 2)
+            setHue((pressPos / size.width) * 360f)
+        }
     }
 
     LaunchedEffect(currentHue, barSize.value) {
@@ -439,7 +430,6 @@ fun SatValPanel(
     val interactionSource = remember {
         MutableInteractionSource()
     }
-    val scope = rememberCoroutineScope()
     val pressOffset = remember {
         mutableStateOf(Offset.Zero)
     }
@@ -455,7 +445,6 @@ fun SatValPanel(
             }
     ) {
         val cornerRadius = 12.dp.toPx()
-        val satValSize = size
 
         val bitmap = createBitmap(size.width.toInt(), size.height.toInt())
         val canvas = Canvas(bitmap)
@@ -490,39 +479,6 @@ fun SatValPanel(
             panel = satValPanel
         )
 
-        fun pointToSatVal(pointX: Float, pointY: Float): Pair<Float, Float> {
-            val width = satValPanel.width()
-            val height = satValPanel.height()
-
-            val x = when {
-                pointX < satValPanel.left -> 0f
-                pointX > satValPanel.right -> width
-                else -> pointX - satValPanel.left
-            }
-
-            val y = when {
-                pointY < satValPanel.top -> 0f
-                pointY > satValPanel.bottom -> height
-                else -> pointY - satValPanel.top
-            }
-
-            val satPoint = 1f / width * x
-            val valuePoint = 1f - 1f / height * y
-
-            return satPoint to valuePoint
-        }
-
-        scope.collectForPress(interactionSource) { pressPosition ->
-            val pressPositionOffset = Offset(
-                pressPosition.x.coerceIn(0f..satValSize.width),
-                pressPosition.y.coerceIn(0f..satValSize.height)
-            )
-
-            pressOffset.value = pressPositionOffset
-            val (satPoint, valuePoint) = pointToSatVal(pressPositionOffset.x, pressPositionOffset.y)
-            setSatVal(satPoint, valuePoint)
-        }
-
         drawCircle(
             color = Color.White,
             radius = 8.dp.toPx(),
@@ -537,6 +493,23 @@ fun SatValPanel(
             radius = 2.dp.toPx(),
             center = pressOffset.value,
         )
+    }
+
+    LaunchedEffect(interactionSource, panelSize.value) {
+        val size = panelSize.value
+        if (size == Size.Zero) return@LaunchedEffect
+
+        interactionSource.collectForPress { pressPosition ->
+            val point = Offset(
+                pressPosition.x.coerceIn(0f, size.width),
+                pressPosition.y.coerceIn(0f, size.height)
+            )
+
+            pressOffset.value = point
+            val satPoint = point.x / size.width
+            val valuePoint = 1f - (point.y / size.height)
+            setSatVal(satPoint, valuePoint)
+        }
     }
 
     LaunchedEffect(currentSat, currentVal, panelSize.value) {
