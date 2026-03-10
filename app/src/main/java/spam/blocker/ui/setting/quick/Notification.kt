@@ -491,8 +491,10 @@ fun ChannelPicker(
         selected = selectedIndex.value,
 
         onLongClick = {
-            editingChannel = G.notificationChannels[selectedIndex.value]
-            editTrigger.value = true
+            if (selectedIndex.value in G.notificationChannels.indices) {
+                editingChannel = G.notificationChannels[selectedIndex.value]
+                editTrigger.value = true
+            }
         }
     )
 }
