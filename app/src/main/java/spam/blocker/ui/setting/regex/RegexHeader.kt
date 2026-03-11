@@ -24,7 +24,6 @@ import spam.blocker.ui.widgets.MenuButton
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.Str
-import spam.blocker.ui.widgets.rememberFileReadChooser
 import spam.blocker.util.Lambda
 import spam.blocker.util.Lambda1
 
@@ -107,8 +106,6 @@ fun RegexHeader(
         ret
     }
 
-    val fileReader = rememberFileReadChooser()
-    fileReader.Compose()
     val warningTrigger = rememberSaveable { mutableStateOf(false) }
     if (warningTrigger.value) {
         PopupDialog(
@@ -120,7 +117,7 @@ fun RegexHeader(
         )
     }
     val longClickItems = remember {
-        importCsvItems(ctx, vm, fileReader, warningTrigger)
+        importCsvItems(ctx, vm, warningTrigger)
     }
 
     val helpTooltip = remember {

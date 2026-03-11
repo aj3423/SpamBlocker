@@ -20,23 +20,28 @@ import spam.blocker.config.Configs
 import spam.blocker.db.SpamTable
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.widgets.DropdownWrapper
+import spam.blocker.ui.widgets.FileChooser
 import spam.blocker.ui.widgets.FlowRowSpaced
 import spam.blocker.ui.widgets.GreyLabel
+import spam.blocker.ui.widgets.InitFile
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.LongPressButton
+import spam.blocker.ui.widgets.MIME_GZ
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
-import spam.blocker.ui.widgets.rememberFileReadChooser
-import spam.blocker.ui.widgets.rememberFileWriteChooser
 import spam.blocker.util.A
 import spam.blocker.util.Launcher
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionWrapper
+import spam.blocker.util.Util.readDataFromUri
+import spam.blocker.util.Util.writeDataToUri
 import spam.blocker.util.formatAnnotated
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+
+const val Backup_Last_Dir_Tag = "backup_last_dir_tag"
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -61,8 +66,6 @@ fun ExportButton() {
     }
 
     // Show a system file chooser
-    val fileWriter = rememberFileWriteChooser()
-    fileWriter.Compose()
 
     fun chooseExportFile(includeSpamDB: Boolean) {
         // prepare file name
@@ -77,21 +80,27 @@ fun ExportButton() {
         curr.load(ctx, includeSpamDB)
         val compressed = curr.toByteArray()
 
-        if (includeSpamDB) progressTrigger.value = false
+        FileChooser.popupWrite(
+            init = InitFile(
+                filename = fn,
+                mimeType = MIME_GZ,
+                rememberDirTag = Backup_Last_Dir_Tag,
+            ),
+            onResult = { uri ->
+                uri?.let {
+                    if (includeSpamDB) progressTrigger.value = false
 
-        fileWriter.popup(
-            filename = fn,
-            content = compressed,
+                    writeDataToUri(ctx, uri, compressed)
+                }
+            }
         )
     }
-
 
     DropdownWrapper(
         items = listOf(
             LabelItem(
                 label = Str(R.string.include_spam_db)
             ) {
-                progressTrigger.value = true
                 coroutine.launch(IO) {
                     chooseExportFile(includeSpamDB = true)
                 }
@@ -117,9 +126,6 @@ fun ExportButton() {
 fun ImportButton() {
     val ctx = LocalContext.current
     val C = G.palette
-
-    val fileReader = rememberFileReadChooser()
-    fileReader.Compose()
 
     var succeeded by remember { mutableStateOf(false) }
     var errorStr by remember { mutableStateOf("") }
@@ -198,29 +204,37 @@ fun ImportButton() {
     }
 
     fun chooseImportFile(includeSpamDB: Boolean) {
-        fileReader.popup(
-            mimeTypes = arrayOf("application/octet-stream", "application/gzip")
-        ) { _, bytes ->
-            if (bytes == null)
-                return@popup
+        FileChooser.popupRead(
+            init = InitFile(
+                filename = "",
+                mimeType = MIME_GZ,
+                rememberDirTag = Backup_Last_Dir_Tag,
+            ),
+            onResult = { uri ->
+                if (uri != null) {
+                    val bytes = readDataFromUri(ctx, uri)
+                        ?: return@popupRead
 
-            try {
-                val newCfg = Configs.fromByteArray(bytes)
-                newCfg.apply(ctx, includeSpamDB)
+                    try {
+                        val newCfg = Configs.fromByteArray(bytes)
+                        newCfg.apply(ctx, includeSpamDB)
 
-                prevPermissions = newCfg.permissions.allEnabledNames
-                succeeded = true
-                resultTrigger.value = true
+                        prevPermissions = newCfg.permissions.allEnabledNames
+                        succeeded = true
+                        resultTrigger.value = true
 
-                // Fire an event to notify the configuration has changed,
-                // for example, the history cleanup schedule should restart
-                Events.configImported.fire()
-            } catch (e: Exception) {
-                succeeded = false
-                errorStr = e.message ?: ""
-                resultTrigger.value = true
-            }
-        }
+                        // Fire an event to notify the configuration has changed,
+                        // for example, the history cleanup schedule should restart
+                        Events.configImported.fire()
+                    } catch (e: Exception) {
+                        succeeded = false
+                        errorStr = e.message ?: ""
+                        resultTrigger.value = true
+                    }
+                }
+            },
+
+        )
     }
 
     DropdownWrapper(

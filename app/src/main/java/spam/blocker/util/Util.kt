@@ -579,7 +579,7 @@ object Util {
 
     fun writeDataToUri(ctx: Context, uri: Uri, dataToWrite: ByteArray): Boolean {
         return try {
-            ctx.contentResolver.openOutputStream(uri)?.use { outputStream ->
+            ctx.contentResolver.openOutputStream(uri, "wt")?.use { outputStream ->
                 outputStream.write(dataToWrite)
                 outputStream.flush()
             }

@@ -23,7 +23,6 @@ import spam.blocker.ui.widgets.FlowRowSpaced
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
-import spam.blocker.ui.widgets.rememberFileWriteChooser
 import spam.blocker.util.Clipboard
 import spam.blocker.util.Lambda1
 import spam.blocker.util.logi
@@ -121,20 +120,12 @@ fun FAQ() {
         )
     }
 
-    val fileWriter = rememberFileWriteChooser()
-    fileWriter.Compose()
 
     StrokeButton(
         label = Str(R.string.faq),
         color = C.infoBlue,
         onClick = {
             popupTrigger.value = true
-        },
-        onLongClick = {
-            fileWriter.popup(
-                filename = "SpamBlocker.log",
-                content = Logcat.collect().toByteArray(),
-            )
         }
     )
 }

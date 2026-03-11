@@ -44,7 +44,6 @@ import spam.blocker.service.bot.ActionContext
 import spam.blocker.service.bot.executeAll
 import spam.blocker.service.checker.parseCheckResultFromDb
 import spam.blocker.ui.M
-import spam.blocker.ui.darken
 import spam.blocker.ui.history.HistoryOptions.forceShowSIM
 import spam.blocker.ui.history.HistoryOptions.showHistoryGeoLocation
 import spam.blocker.ui.setting.api.spamCategoryNamesMap

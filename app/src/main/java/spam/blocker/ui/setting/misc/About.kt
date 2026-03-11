@@ -10,11 +10,14 @@ import androidx.compose.ui.platform.LocalContext
 import spam.blocker.BuildConfig
 import spam.blocker.G
 import spam.blocker.R
+import spam.blocker.ui.widgets.FileChooser
 import spam.blocker.ui.widgets.HtmlText
+import spam.blocker.ui.widgets.InitFile
+import spam.blocker.ui.widgets.MIME_TEXT
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
-import spam.blocker.ui.widgets.rememberFileWriteChooser
+import spam.blocker.util.Util.writeDataToUri
 
 const val REPO = "https://github.com/aj3423/SpamBlocker"
 
@@ -40,9 +43,6 @@ fun About() {
         )
     }
 
-    val fileWriter = rememberFileWriteChooser()
-    fileWriter.Compose()
-
     StrokeButton(
         label = Str(R.string.about),
         color = C.infoBlue,
@@ -50,9 +50,16 @@ fun About() {
             popupTrigger.value = true
         },
         onLongClick = {
-            fileWriter.popup(
-                filename = "SpamBlocker.log",
-                content = Logcat.collect().toByteArray(),
+            FileChooser.popupWrite(
+                init = InitFile(
+                    filename = "SpamBlocker.log",
+                    mimeType = MIME_TEXT,
+                ),
+                onResult = { uri ->
+                    uri?.let{
+                        writeDataToUri(ctx, uri, Logcat.collect().toByteArray())
+                    }
+                }
             )
         }
     )

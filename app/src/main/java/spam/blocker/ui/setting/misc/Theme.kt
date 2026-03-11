@@ -9,7 +9,6 @@ import spam.blocker.R
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.widgets.ColorPickerButton
 import spam.blocker.ui.widgets.FlowRowSpaced
-import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton

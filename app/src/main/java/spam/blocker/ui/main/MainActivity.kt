@@ -32,11 +32,11 @@ import spam.blocker.ui.history.HistoryOptions.showHistoryBlocked
 import spam.blocker.ui.history.HistoryOptions.showHistoryPassed
 import spam.blocker.ui.history.HistoryScreen
 import spam.blocker.ui.isLight
-import spam.blocker.ui.luminance
 import spam.blocker.ui.setting.SettingScreen
 import spam.blocker.ui.theme.AppTheme
 import spam.blocker.ui.widgets.BottomBar
 import spam.blocker.ui.widgets.BottomBarViewModel
+import spam.blocker.ui.widgets.FileChooser
 import spam.blocker.ui.widgets.GreyText
 import spam.blocker.ui.widgets.LeftDeleteSwipeWrapper
 import spam.blocker.ui.widgets.PopupDialog
@@ -134,6 +134,9 @@ class MainActivity : ComponentActivity() {
 
                 // Prepare for the permission launcher
                 G.permissionChain.Compose()
+
+                // Prepare for the FileChooser
+                FileChooser.Compose()
 
                 Main()
 

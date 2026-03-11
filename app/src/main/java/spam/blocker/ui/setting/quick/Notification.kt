@@ -36,13 +36,16 @@ import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.ColorPickerButton
 import spam.blocker.ui.widgets.ComboBox
+import spam.blocker.ui.widgets.FileChooser
 import spam.blocker.ui.widgets.FooterButton
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyIcon18
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.GreyText
 import spam.blocker.ui.widgets.HtmlText
+import spam.blocker.ui.widgets.InitFile
 import spam.blocker.ui.widgets.LabelItem
+import spam.blocker.ui.widgets.MIME_ICON
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RingtonePicker
@@ -52,7 +55,6 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
-import spam.blocker.ui.widgets.rememberFileReadChooser
 import spam.blocker.util.Lambda2
 import spam.blocker.util.Notification
 import spam.blocker.util.Notification.createChannel
@@ -61,9 +63,12 @@ import spam.blocker.util.Notification.manager
 import spam.blocker.util.Notification.openChannelSettings
 import spam.blocker.util.Notification.reloadChannels
 import spam.blocker.util.RingtoneUtil
+import spam.blocker.util.Util.readDataFromUri
 import spam.blocker.util.spf
 import androidx.compose.foundation.Image as ComposeImage
 
+
+const val Notification_Icon_Last_Dir_Tag = "notification_icon_last_dir_tag"
 
 @Composable
 fun ChannelIcons(
@@ -342,20 +347,22 @@ fun EditChannelDialog(
 
             // Icon
             LabeledRow(R.string.icon) {
-                val fileReader = rememberFileReadChooser()
-                fileReader.Compose()
                 fun choose() {
-                    fileReader.popup(
-                        mimeTypes = arrayOf(
-                            "image/png", "image/jpeg", "image/x-icon", "image/vnd.microsoft.icon",
-                            "image/bmp", "mage/x-bmp"
-                        )
-                    ) { _, raw ->
-                        if (raw == null)
-                            return@popup
+                    FileChooser.popupRead(
+                        init = InitFile(
+                            filename = "",
+                            mimeType = MIME_ICON,
+                            rememberDirTag = Notification_Icon_Last_Dir_Tag,
+                        ),
+                        onResult = { uri ->
+                            if (uri != null) {
+                                val raw = readDataFromUri(ctx, uri)
+                                    ?: return@popupRead
 
-                        icon = raw
-                    }
+                                icon = raw
+                            }
+                        }
+                    )
                 }
 
                 if (icon == null) {
