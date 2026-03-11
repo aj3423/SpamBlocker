@@ -86,11 +86,11 @@ async function run() {
 			state: 'all', // 'all' includes open and closed issues
 			per_page: 500, // Adjust as needed for the number of issues
 		});
-		const contributers = issues.map(issue => {
+		const contributers = all_share_issues.map(issue => {
 			return issue.user.login;
 		});
 
-		// remove "deprecated" ones
+		// remove those haev "alternative available"
 		const issues = all_share_issues.filter(issue => {
 			return !issue.labels.some(label => {
 				return label === 'alternative available';
