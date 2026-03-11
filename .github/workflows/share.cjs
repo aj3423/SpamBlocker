@@ -94,7 +94,7 @@ async function run() {
 		const issues = all_share_issues.data.filter(issue => {
 			return !issue.labels.some(label => {
 				const name = typeof label === 'string' ? label : label.name;
-				return name === 'deprecated';
+				return name === 'alternative available';
 			});
 		});
 
