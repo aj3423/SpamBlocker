@@ -7,4 +7,9 @@
     <string name="disable">Отключить</string>
     <string name="dialog_bg">Фон диалога</string>
     <string name="app_bg">Фон приложения</string>
+    <string name="should_import_as_instant_query">
+        <![CDATA[
+        Это, кажется, рабочий процесс \"API query\", его следует импортировать в вышеуказанный раздел \"Instant Query\".
+        ]]>
+    </string>
 </resources>

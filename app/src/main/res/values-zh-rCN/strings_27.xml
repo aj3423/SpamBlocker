@@ -7,4 +7,9 @@
     <string name="disable">禁用</string>
     <string name="dialog_bg">对话框背景</string>
     <string name="app_bg">应用背景</string>
+    <string name="should_import_as_instant_query">
+        <![CDATA[
+        这似乎是一个“API 查询”工作流，应该导入到上面的“即时查询”部分。
+        ]]>
+    </string>
 </resources>

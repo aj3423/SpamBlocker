@@ -7,4 +7,9 @@
     <string name="disable">Deaktivieren</string>
     <string name="dialog_bg">Dialoghintergrund</string>
     <string name="app_bg">App-Hintergrund</string>
+    <string name="should_import_as_instant_query">
+        <![CDATA[
+        Dies scheint ein \"API‑Abfrage\"-Workflow zu sein, er sollte in den oben genannten Abschnitt \"Sofortabfrage\" importiert werden.
+        ]]>
+    </string>
 </resources>

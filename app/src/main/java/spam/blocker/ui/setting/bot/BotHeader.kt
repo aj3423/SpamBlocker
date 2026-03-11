@@ -12,6 +12,8 @@ import spam.blocker.R
 import spam.blocker.db.Bot
 import spam.blocker.db.BotTable
 import spam.blocker.db.reScheduleBot
+import spam.blocker.service.bot.InterceptCall
+import spam.blocker.service.bot.InterceptSms
 import spam.blocker.service.bot.Schedule
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
@@ -69,6 +71,14 @@ fun BotHeader(
             trigger = importTrigger,
         ) { configJson ->
             val bot = BotJson.decodeFromString<Bot>(configJson)
+
+            // Show error prompt if user try to import API json (copied from wiki)
+            when (bot.actions.firstOrNull()) {
+                is InterceptCall, is InterceptSms -> {
+                    throw Exception(ctx.getString(R.string.should_import_as_instant_query))
+                }
+            }
+
             // clear `workUUID` from imported bot
             val newBot = bot.copy(
                 trigger = if(bot.trigger is Schedule)

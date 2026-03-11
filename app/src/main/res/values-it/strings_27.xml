@@ -7,4 +7,9 @@
     <string name="disable">Disabilita</string>
     <string name="dialog_bg">Sfondo dialogo</string>
     <string name="app_bg">Sfondo app</string>
+    <string name="should_import_as_instant_query">
+        <![CDATA[
+        Sembra che questo sia un flusso di lavoro \"API query\", dovrebbe essere importato nella sezione sopra \"Instant Query\".
+        ]]>
+    </string>
 </resources>

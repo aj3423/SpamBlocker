@@ -7,4 +7,9 @@
     <string name="disable">غیرفعال</string>
     <string name="dialog_bg">پس‌زمینه دیالوگ</string>
     <string name="app_bg">پس‌زمینه برنامه</string>
+    <string name="should_import_as_instant_query">
+        <![CDATA[
+        به نظر می‌رسد این یک جریان کاری \"پرس‌وجوی API\" باشد، باید به بخش \"پرس‌وجوی فوری\" بالا وارد شود.
+        ]]>
+    </string>
 </resources>

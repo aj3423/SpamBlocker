@@ -7,4 +7,9 @@
     <string name="disable">تعطيل</string>
     <string name="dialog_bg">خلفية الحوار</string>
     <string name="app_bg">خلفية التطبيق</string>
+    <string name="should_import_as_instant_query">
+        <![CDATA[
+        يبدو أن هذا تدفق عمل \"API query\"، يجب استيراده إلى القسم أعلاه \"Instant Query\".
+        ]]>
+    </string>
 </resources>

@@ -7,4 +7,9 @@
     <string name="disable">Desactivar</string>
     <string name="dialog_bg">Fondo do diálogo</string>
     <string name="app_bg">Fondo da aplicación</string>
+    <string name="should_import_as_instant_query">
+        <![CDATA[
+        Semella ser un fluxo de traballo de \"consulta API\", debería importarse á sección anterior \"Consulta Instantánea\".
+        ]]>
+    </string>
 </resources>

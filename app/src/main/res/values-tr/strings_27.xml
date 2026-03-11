@@ -7,4 +7,9 @@
     <string name="disable">Devre Dışı Bırak</string>
     <string name="dialog_bg">Diyalog Arka Planı</string>
     <string name="app_bg">Uygulama Arka Planı</string>
+    <string name="should_import_as_instant_query">
+        <![CDATA[
+        Bu, bir \"API sorgusu\" iş akışı gibi görünüyor, yukarıdaki \"Anlık Sorgu\" bölümüne aktarılmalıdır.
+        ]]>
+    </string>
 </resources>

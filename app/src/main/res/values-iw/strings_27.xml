@@ -7,4 +7,9 @@
     <string name="disable">השבת</string>
     <string name="dialog_bg">רקע תיבת דו-שיח</string>
     <string name="app_bg">רקע האפליקציה</string>
+    <string name="should_import_as_instant_query">
+        <![CDATA[
+        נראה שזהו זרימת עבודה של \"שאילתת API\", יש לייבא אותה אל הסעיף למעלה \"שאילתת מיידית\".
+        ]]>
+    </string>
 </resources>

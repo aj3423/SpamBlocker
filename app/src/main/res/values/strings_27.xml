@@ -7,4 +7,9 @@
     <string name="disable">Disable</string>
     <string name="dialog_bg">Dialog Background</string>
     <string name="app_bg">App Background</string>
+    <string name="should_import_as_instant_query">
+        <![CDATA[
+        This seems to be an \"API query\" workflow, it should be imported to the above section \"Instant Query\".
+        ]]>
+    </string>
 </resources>
