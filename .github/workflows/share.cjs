@@ -28,18 +28,16 @@ If you'd like to share your regex/workflow here, please check [this guide](https
 function content_contains_table(content) {
 	return content.split('\n').some(line => line.trim().startsWith('|'));
 }
-function generateWiki(results) {
+function generateWiki(contributers, results) {
 	var wiki = {}
 
-	let contributers = []
 	for (const r of results) {
-		// r: country description content link author
+		// r: country description content link 
 
 		if (!(r.country in wiki)) {
 			wiki[r.country] = []
 		}
 		wiki[r.country].push(r);
-		contributers.push(r.author)
 	}
 
 	let sortedCountries = Object.keys(wiki).sort();
@@ -80,31 +78,40 @@ async function run() {
 		const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
 		const { owner, repo } = github.context.repo;
 
-		// Fetch issues with the label "new_feature"
-		const issues = await octokit.rest.issues.listForRepo({
+		// Fetch all issues with the label "share regex/workflow"
+		const all_share_issues = await octokit.rest.issues.listForRepo({
 			owner,
 			repo,
 			labels: 'share regex/workflow',
 			state: 'all', // 'all' includes open and closed issues
 			per_page: 500, // Adjust as needed for the number of issues
 		});
+		const contributers = issues.map(issue => {
+			return issue.user.login;
+		});
+
+		// remove "deprecated" ones
+		const issues = all_share_issues.filter(issue => {
+			return !issue.labels.some(label => {
+				return label === 'alternative available';
+			});
+		});
 
 		let results = [];
 
-		for (const issue of issues.data) {
-			// Collect title, content, link, and author
+		for (const issue of issues) {
+			// Collect title, content, and link
 			const p = parseTitle(issue.title)
 			const result = {
 				country: p.country,
 				description: p.description,
 				content: issue.body,
 				link: issue.html_url,
-				author: issue.user.login
 			};
 			results.push(result);
 		}
 
-		generateWiki(results)
+		generateWiki(contributers, results)
 
 	} catch (error) {
 		core.setFailed(error.message);
@@ -114,4 +121,3 @@ async function run() {
 (async () => {
 	await run();
 })();
-
