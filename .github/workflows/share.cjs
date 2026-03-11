@@ -93,7 +93,8 @@ async function run() {
 		// remove those haev "alternative available"
 		const issues = all_share_issues.data.filter(issue => {
 			return !issue.labels.some(label => {
-				return label === 'alternative available';
+				const name = typeof label === 'string' ? label : label.name;
+				return name === 'deprecated';
 			});
 		});
 
