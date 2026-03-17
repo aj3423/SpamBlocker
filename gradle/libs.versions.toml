@@ -3,9 +3,9 @@ agp = "9.1.0"
 espressoCore = "3.7.0"
 junitVersion = "1.3.0"
 kotlin = "2.3.10"
-activityCompose = "1.12.4"
+activityCompose = "1.13.0"
 
-composeBom = "2026.02.01" # dangerous, breaks things all the time
+composeBom = "2026.03.00" # dangerous, breaks things all the time
 
 # Do NOT upgrade to 3.0.0 until this is fixed: https://github.com/Calvin-LL/Reorderable/issues/111
 reorderable = "2.3.3"

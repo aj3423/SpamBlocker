@@ -73,7 +73,7 @@ fun GloballyEnabled() {
             icon = { ResIcon(R.drawable.ic_warning, color = Color.Unspecified) },
             buttons = {
                 StrokeButton(label = Str(R.string.dismiss), color = C.warning) {
-                    spf.isDoubleSMSWarningDismissed
+                    spf.isDoubleSMSWarningDismissed = true
                     doubleSmsWarningTrigger.value = false
                 }
                 Spacer(modifier = M.width(10.dp))
