@@ -262,7 +262,7 @@ object Notification {
             .setChannelId(chId)
             .setContentTitle(title)
             .setContentText(body)
-            .setStyle(NotificationCompat.BigTextStyle().bigText(body))
+            .setStyle(NotificationCompat.BigTextStyle().bigText(body)) // show more than 2 lines
             .setSilent(shouldSilent)
             .setContentIntent(pendingIntent)
             .setGroup(group)
@@ -306,7 +306,7 @@ object Notification {
                 .setChannelId(chId)
                 .setContentTitle(title)
                 .setContentText(body)
-                .setStyle(NotificationCompat.BigTextStyle().bigText(body))
+                .setStyle(NotificationCompat.BigTextStyle().bigText(body)) // show more than 2 lines
                 .setSilent(shouldSilent)
                 .setGroup(group)
                 .setGroupSummary(true)

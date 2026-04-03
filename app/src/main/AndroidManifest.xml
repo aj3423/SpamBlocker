@@ -71,7 +71,13 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <!-- long tap the quick tile to launch this app instead of opening app info page -->
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
+            </intent-filter>
         </activity>
+        
         <activity android:name=".ui.NotificationTrampolineActivity"
             android:excludeFromRecents="true"/>
         <activity android:name=".ui.crash.CrashReportActivity" />
