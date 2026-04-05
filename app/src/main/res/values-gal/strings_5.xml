@@ -35,11 +35,14 @@
         <br>
         <b>Opcións:</b><br>
         <br>
-        <h6><title>- Dentro de días</title></h6>
-        As chamadas que ocorreron antes de <highlight>%s días</highlight> ignóranse.<br>
+        <h6><title>- Intervalo de tempo</title></h6>
+        &ensp; - <minor>Todo o tempo</minor> <br>
+        &emsp; Sempre permitir números marcados.<br>
+        &ensp; - <minor>Dentro de días</minor> <br>
+        &emsp; Ignoranse as chamadas ocorridas antes de X días.<br>
         <br>
         <h6><title>- Incluír SMS</title></h6>
-        Cando está activada, enviar mensaxes de texto a ese número tamén conta.<br>
+        Cando está activado, enviar un SMS a ese número tamén conta.<br>
         <br>
         <priority><b>Prioridade: 10</b></priority>
         ]]>
@@ -92,4 +95,6 @@
         &emsp; Se queres gravar chamadas, instala unha aplicación de gravación de chamadas e aumenta o atraso en consecuencia.
         ]]>
     </string>
+    <string name="time_range">Intervalo de tempo</string>
+    <string name="all_time">Todo o tempo</string>
 </resources>

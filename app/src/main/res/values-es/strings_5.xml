@@ -31,15 +31,18 @@
     <string name="help_for_particular_number">Cuando está habilitado, la regla solo se aplica cuando coinciden tanto el número como el contenido.</string>
     <string name="help_dialed">
         <![CDATA[
-        Permitir llamadas de números previamente marcados.<br>
+        Permitir llamadas de números marcados anteriormente.<br>
         <br>
         <b>Opciones:</b><br>
         <br>
-        <h6><title>- En Días</title></h6>
-        Se ignoran las llamadas que ocurrieron antes de <highlight>%s días</highlight>.<br>
+        <h6><title>- Rango de tiempo</title></h6>
+        &ensp; - <minor>Todo el tiempo</minor> <br>
+        &emsp; Siempre permitir números marcados.<br>
+        &ensp; - <minor>Dentro de días</minor> <br>
+        &emsp; Las llamadas anteriores a X días se ignoran.<br>
         <br>
         <h6><title>- Incluir SMS</title></h6>
-        Cuando está activada, enviar mensajes de texto a ese número también cuenta.<br>
+        Cuando está activado, enviar un mensaje a ese número también cuenta.<br>
         <br>
         <priority><b>Prioridad: 10</b></priority>
         ]]>
@@ -92,4 +95,6 @@
         &emsp; Si desea grabar llamadas, instale una aplicación de grabación de llamadas y aumente el retraso en consecuencia.
         ]]>
     </string>
+    <string name="time_range">Rango de tiempo</string>
+    <string name="all_time">Todo el tiempo</string>
 </resources>

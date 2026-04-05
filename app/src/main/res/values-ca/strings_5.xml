@@ -32,15 +32,18 @@
     <string name="help_hang_up_delay">El retard abans que es pengi la trucada (en segons).</string>
     <string name="help_dialed">
         <![CDATA[
-        Permet trucades de números marcats prèviament.<br>
+        Permet trucades dels números marcats anteriorment.<br>
         <br>
         <b>Opcions:</b><br>
         <br>
-        <h6><title>- En Dies</title></h6>
-        Les trucades que van ocórrer abans de <highlight>%s dies</highlight> són ignorades.<br>
+        <h6><title>- Rang de temps</title></h6>
+        &ensp; - <minor>Tot el temps</minor> <br>
+        &emsp; Sempre permet els números marcats.<br>
+        &ensp; - <minor>Dins de X dies</minor> <br>
+        &emsp; Les trucades anteriors a X dies s\'ignoraran.<br>
         <br>
-        <h6><title>- Incloure SMS</title></h6>
-        Quan està activat, enviar missatges a aquest número també compta.<br>
+        <h6><title>- Inclou SMS</title></h6>
+        Quan està activat, enviar un missatge a aquest número també compta.<br>
         <br>
         <priority><b>Prioritat: 10</b></priority>
         ]]>
@@ -92,4 +95,6 @@
         &emsp; Si vols gravar trucades, instal·la una aplicació de gravació de trucades i augmenta el retard en conseqüència.
         ]]>
     </string>
+    <string name="time_range">Rang de temps</string>
+    <string name="all_time">Tot el temps</string>
 </resources>

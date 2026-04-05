@@ -28,14 +28,19 @@
     <string name="for_particular_number">For number</string>
     <string name="help_for_particular_number">When enabled, the rule only applies when both number and content match.</string>
     <string name="help_hang_up_delay">The delay before the call is hung up(in seconds).</string>
+    <string name="time_range">Time Range</string>
+    <string name="all_time">All Time</string>
     <string name="help_dialed">
         <![CDATA[
         Allow calls from previously dialed numbers.<br>
         <br>
         <b>Options:</b><br>
         <br>
-        <h6><title>- Within Days</title></h6>
-        Calls that occurred before <highlight>%s days</highlight> are ignored.<br>
+        <h6><title>- Time Range</title></h6>
+        &ensp; - <minor>All Time</minor> <br>
+        &emsp; Always allow dialed numbers.<br>
+        &ensp; - <minor>Within Days</minor> <br>
+        &emsp; Calls that occurred before X days are ignored.<br>
         <br>
         <h6><title>- Include SMS</title></h6>
         When enabled, texting that number also counts.<br>

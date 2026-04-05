@@ -17,6 +17,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -30,8 +32,10 @@ import androidx.compose.ui.unit.dp
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.ui.M
+import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.util.Lambda
 import spam.blocker.util.Lambda1
+import spam.blocker.util.Lambda2
 import spam.blocker.util.Util.inRange
 
 const val BUTTON_CORNER_RADIUS = 4
@@ -306,5 +310,53 @@ fun MenuButton(
                 }
             )
         }
+    }
+}
+
+
+/*
+  A setting button that typically contains two options:
+   - a switchbox, e.g. "Never Expire"
+   - a number inputbox for duration, hidden when the switch is on
+ */
+@Composable
+fun DurationButton(
+    alwaysEnabled: Boolean,
+    alwaysLabelId: Int,
+    onEnableChange: Lambda1<Boolean>,
+
+    duration: Int?,
+    onDurationChange: Lambda2<Int?, Boolean>,
+    durationLabelId: Int,
+    unitLabelId: Int = R.plurals.days
+) {
+    val trigger = remember { mutableStateOf(false) }
+    PopupDialog(
+        trigger = trigger,
+    ) {
+        // switchbox enabled
+        LabeledRow(alwaysLabelId) {
+            SwitchBox(checked = alwaysEnabled, onCheckedChange = onEnableChange)
+        }
+
+        // duration days
+        if (!alwaysEnabled) {
+            NumberInputBox(
+                intValue = duration,
+                onValueChange = onDurationChange,
+                labelId = durationLabelId,
+                leadingIconId = R.drawable.ic_duration,
+            )
+        }
+    }
+
+    GreyButton(
+        label = if (!alwaysEnabled) {
+            PluralStr(duration!!, unitLabelId)
+        } else {
+            Str(alwaysLabelId)
+        }
+    ) {
+        trigger.value = true
     }
 }

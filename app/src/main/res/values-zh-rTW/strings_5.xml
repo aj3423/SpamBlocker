@@ -26,17 +26,20 @@
     <string name="help_hang_up_delay">掛斷來電前的延遲時間（秒）。</string>
     <string name="help_dialed">
         <![CDATA[
-        允許已撥號碼的來電。<br>
+        允許來自先前撥出號碼的來電。<br>
         <br>
         <b>選項：</b><br>
         <br>
-        <h6><title>- 指定天數內</title></h6>
-        會忽略 <highlight>%s 天</highlight> 之前的通話紀錄。<br>
+        <h6><title>- 時間範圍</title></h6>
+        &ensp; - <minor>所有時間</minor> <br>
+        &emsp; 始終允許已撥號碼。<br>
+        &ensp; - <minor>指定天數內</minor> <br>
+        &emsp; X 天前的來電將被忽略。<br>
         <br>
         <h6><title>- 包含簡訊</title></h6>
-        啟用後，傳送給該號碼的簡訊也會列入判斷。<br>
+        啟用後，傳送簡訊至該號碼也視為已聯絡。<br>
         <br>
-        <priority><b>優先順序：10</b></priority>
+        <priority><b>優先級：10</b></priority>
         ]]>
     </string>
     <string name="help_recent_apps">
@@ -86,4 +89,6 @@
         &emsp; 如果您想錄製通話，請安裝通話錄音應用程式並相應地增加延遲時間。
         ]]>
     </string>
+    <string name="time_range">時間範圍</string>
+    <string name="all_time">所有時間</string>
 </resources>

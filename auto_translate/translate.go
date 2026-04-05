@@ -213,7 +213,8 @@ func translate_text(lang string, content_to_translate string) (string, error) {
 		color.HiMagenta(prompt)
 	}
 	// ret, e := groq("openai/gpt-oss-120b", prompt)
-	ret, e := cerebras("gpt-oss-120b", prompt)
+	// ret, e := cerebras("gpt-oss-120b", prompt)
+	ret, e := cerebras("qwen-3-235b-a22b-instruct-2507", prompt)
 	// ret, e := cerebras("zai-glm-4.7", prompt)
 	if e != nil {
 		return "", e

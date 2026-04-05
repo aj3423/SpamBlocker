@@ -447,11 +447,13 @@ class RepeatedCall : IConfig {
 class Dialed : IConfig {
     var enabled = false
     var smsEnabled = false
+    var always = false
     var inXDay = 0
     override fun load(ctx: Context) {
         val spf = spf.Dialed(ctx)
         enabled = spf.isEnabled
         smsEnabled = spf.isSmsEnabled
+        always = spf.always
         inXDay = spf.days
     }
 
@@ -459,6 +461,7 @@ class Dialed : IConfig {
         val spf = spf.Dialed(ctx)
         spf.isEnabled = enabled
         spf.isSmsEnabled = smsEnabled
+        spf.always = always
         spf.days = inXDay
     }
 }

@@ -31,15 +31,18 @@
     <string name="help_for_particular_number">Se abilitato, la regola si applica solo quando corrispondono sia il numero che il contenuto.</string>
     <string name="help_dialed">
         <![CDATA[
-        Consenti chiamate da numeri precedentemente composti.<br>
+        Consente le chiamate dai numeri precedentemente chiamati.<br>
         <br>
         <b>Opzioni:</b><br>
         <br>
-        <h6><title>- Entro Giorni</title></h6>
-        Le chiamate avvenute prima di <highlight>%s giorni</highlight> vengono ignorate.<br>
+        <h6><title>- Intervallo di tempo</title></h6>
+        &ensp; - <minor>Tutto il tempo</minor> <br>
+        &emsp; Consente sempre i numeri chiamati.<br>
+        &ensp; - <minor>Entro X giorni</minor> <br>
+        &emsp; Le chiamate effettuate prima di X giorni vengono ignorate.<br>
         <br>
         <h6><title>- Includi SMS</title></h6>
-        Se abilitato, anche l\'invio di SMS a quel numero conta.<br>
+        Se abilitato, inviare un SMS a quel numero viene considerato valido.<br>
         <br>
         <priority><b>Priorità: 10</b></priority>
         ]]>
@@ -92,4 +95,6 @@
         &emsp; Se desideri registrare le chiamate, installa un\'app di registrazione chiamate e aumenta il ritardo di conseguenza.
         ]]>
     </string>
+    <string name="time_range">Intervallo di tempo</string>
+    <string name="all_time">Tutto il tempo</string>
 </resources>

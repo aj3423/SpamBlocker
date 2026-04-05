@@ -31,15 +31,18 @@
     <string name="help_for_particular_number">有効にすると、ルールは番号とコンテンツの両方が一致した場合にのみ適用されます。</string>
     <string name="help_dialed">
         <![CDATA[
-        以前に発信したことのある番号からの通話を許可します。<br>
+        以前に発信した電話番号からの着信を許可します。<br>
         <br>
-        <b>オプション:</b><br>
+        <b>オプション：</b><br>
         <br>
-        <h6><title>- 日以内</title></h6>
-        <highlight>%s日</highlight>より前に発生した通話は無視されます。<br>
+        <h6><title>- 時間範囲</title></h6>
+        &ensp; - <minor>すべての期間</minor> <br>
+        &emsp; 常に発信した番号を許可します。<br>
+        &ensp; - <minor>○日以内</minor> <br>
+        &emsp; X日前より前の通話は無視されます。<br>
         <br>
         <h6><title>- SMSを含める</title></h6>
-        有効にすると、その番号へのテキストメッセージ送信も含まれます。<br>
+        有効にすると、その番号への短信も対象になります。<br>
         <br>
         <priority><b>優先度: 10</b></priority>
         ]]>
@@ -88,4 +91,6 @@
         &emsp; 通話を録音したい場合は、通話録音アプリをインストールし、それに応じて遅延を増やしてください。
         ]]>
     </string>
+    <string name="time_range">時間範囲</string>
+    <string name="all_time">すべての期間</string>
 </resources>

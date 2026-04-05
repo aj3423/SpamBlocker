@@ -31,15 +31,18 @@
     <string name="help_for_particular_number">Açık olduğunda, kural yalnızca hem numara hem de içerik eşleştiğinde uygulanır.</string>
     <string name="help_dialed">
         <![CDATA[
-        Daha önce aranan numaralardan gelen çağrılara izin ver.<br>
+        Daha önce aranan numaralardan gelen aramalara izin ver.<br>
         <br>
         <b>Seçenekler:</b><br>
         <br>
-        <h6><title>- Günler İçinde</title></h6>
-        <highlight>%s günden</highlight> önce gerçekleşen çağrılar yok sayılır.<br>
+        <h6><title>- Zaman Aralığı</title></h6>
+        &ensp; - <minor>Tüm Zaman</minor> <br>
+        &emsp; Daima aranan numaralara izin ver.<br>
+        &ensp; - <minor>X Gün İçinde</minor> <br>
+        &emsp; X günden önce gerçekleşen aramalar dikkate alınmaz.<br>
         <br>
-        <h6><title>- SMS Dahil Et</title></h6>
-        Etkinleştirildiğinde, o numaraya SMS göndermek de sayılır.<br>
+        <h6><title>- SMS Dahil</title></h6>
+        Etkinleştirildiğinde, o numaraya yapılan mesajlaşmalar da sayılır.<br>
         <br>
         <priority><b>Öncelik: 10</b></priority>
         ]]>
@@ -89,4 +92,6 @@
         &emsp; Aramaları kaydetmek isterseniz, bir arama kayıt uygulaması yükleyin ve gecikmeyi buna göre artırın.
         ]]>
     </string>
+    <string name="time_range">Zaman Aralığı</string>
+    <string name="all_time">Tüm Zaman</string>
 </resources>

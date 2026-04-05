@@ -32,15 +32,18 @@
     <string name="help_hang_up_delay">Penundaan sebelum panggilan ditutup (dalam detik).</string>
     <string name="help_dialed">
         <![CDATA[
-        Izinkan panggilan dari nomor yang sebelumnya pernah dihubungi.<br>
+        Izinkan panggilan dari nomor yang sebelumnya pernah dipanggil.<br>
         <br>
-        <b>Opsi:</b><br>
+        <b>Pilihan:</b><br>
         <br>
-        <h6><title>- Dalam Hari</title></h6>
-        Panggilan yang terjadi sebelum <highlight>%s hari</highlight> akan diabaikan.<br>
+        <h6><title>- Rentang Waktu</title></h6>
+        &ensp; - <minor>Sepanjang Waktu</minor> <br>
+        &emsp; Selalu mengizinkan nomor yang dipanggil.<br>
+        &ensp; - <minor>Dalam Hari</minor> <br>
+        &emsp; Panggilan yang terjadi sebelum X hari akan diabaikan.<br>
         <br>
         <h6><title>- Sertakan SMS</title></h6>
-        Saat diaktifkan, SMS ke nomor tersebut juga dihitung.<br>
+        Bila diaktifkan, mengirim pesan ke nomor tersebut juga dihitung.<br>
         <br>
         <priority><b>Prioritas: 10</b></priority>
         ]]>
@@ -92,4 +95,6 @@
         &emsp; Jika Anda ingin merekam panggilan, instal aplikasi perekam panggilan dan tingkatkan penundaan sesuai kebutuhan.
         ]]>
     </string>
+    <string name="time_range">Rentang Waktu</string>
+    <string name="all_time">Sepanjang Waktu</string>
 </resources>

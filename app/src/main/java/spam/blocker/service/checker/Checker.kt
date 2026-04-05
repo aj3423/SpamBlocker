@@ -583,6 +583,7 @@ class Checker { // for namespace only
             )
 
             val smsEnabled = spf.isSmsEnabled
+            val always = spf.always
             val durationDays = spf.days
 
             val durationMillis = durationDays.toLong() * 24 * 3600 * 1000
@@ -593,9 +594,12 @@ class Checker { // for namespace only
                 ctx,
                 phoneNumber,
                 Def.DIRECTION_OUTGOING,
-                durationMillis
+                withinMillis = if(always)
+                    null
+                else
+                    durationMillis
             ).size
-            val nSMSs = if (smsEnabled)
+           val nSMSs = if (smsEnabled)
                 countHistorySMSByNumber(
                     ctx,
                     phoneNumber,

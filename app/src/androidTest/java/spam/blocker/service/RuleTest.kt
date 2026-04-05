@@ -122,9 +122,9 @@ class RuleTest {
     ) {
         val number = PhoneNumber(ctx, rawNumber)
         every { Util.getHistoryCallsByNumber(any(), number, direction, any()) } answers {
-            val withinMillis = lastArg<Long>()
+            val withinMillis = lastArg<Long?>()
             val mockNow = Now.currentMillis()
-            if (atTimeMillis in mockNow - withinMillis..mockNow) {
+            if (withinMillis == null || (atTimeMillis in mockNow - withinMillis..mockNow)) {
                 List<CallInfo>(repeatedTimes) { CallInfo(rawNumber = rawNumber, type = 0, duration = 20)}
             } else {
                 listOf()
@@ -250,6 +250,7 @@ class RuleTest {
         val spf = spf.Dialed(ctx)
         val inXdays = 5
         spf.isEnabled = true
+        spf.always = false
         spf.days = inXdays
 
         mockkObject(Permission)
@@ -292,6 +293,12 @@ class RuleTest {
         mock_advance_time_by_minutes(10 * 24 * 60)
         val r4 = Checker.checkCall(ctx, Bob).first
         assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER_REGEX, r4.type)
+
+        // should allow again when set to "Always"
+        spf.always = true
+        mock_calls(Bob, Def.DIRECTION_OUTGOING, 1, twoDaysAgo)
+        val r5 = Checker.checkCall(ctx, Bob).first
+        assertEquals("should pass", Def.RESULT_ALLOWED_BY_DIALED, r5.type)
     }
 
     private fun mock_recent_app(pkgs: List<String>, expire: Long) {

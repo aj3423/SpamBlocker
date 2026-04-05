@@ -301,6 +301,7 @@ class spf { // for namespace only
     class Dialed(ctx: Context) : SharedPref(ctx) {
         var isEnabled by bool("permit_dialed")
         var isSmsEnabled by bool("permit_dialed_by_sms", true)
+        var always by bool("permit_dialed_always", false)
         var days by int("dialed_in_x_day", 7)
     }
 

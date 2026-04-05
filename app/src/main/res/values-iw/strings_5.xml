@@ -32,15 +32,18 @@
     <string name="help_hang_up_delay">ההשהיה לפני ניתוק השיחה (בשניות).</string>
     <string name="help_dialed">
         <![CDATA[
-        אפשר שיחות ממספרים שחויגו בעבר.<br>
+        אפשר שיחות ממספרי טלפון שצויינו בעבר.<br>
         <br>
         <b>אפשרויות:</b><br>
         <br>
-        <h6><title>- בתוך ימים</title></h6>
-        שיחות שהתרחשו לפני <highlight>%s ימים</highlight> מתעלמות.<br>
+        <h6><title>- טווח זמן</title></h6>
+        &ensp; - <minor>כל הזמן</minor> <br>
+        &emsp; אפשר תמיד מספרים שנצטטפו.<br>
+        &ensp; - <minor>בתוך ימים</minor> <br>
+        &emsp; שיחות שקרו לפני X ימים מתעלמים מהן.<br>
         <br>
-        <h6><title>- כלול הודעות SMS</title></h6>
-        כאשר מופעל, שליחת הודעה למספר זה גם נחשבת.<br>
+        <h6><title>- כולל SMS</title></h6>
+        כשמופעל, שליחת הודעה למספר זה גם נחשבת.<br>
         <br>
         <priority><b>עדיפות: 10</b></priority>
         ]]>
@@ -92,4 +95,6 @@
         &emsp; אם ברצונך להקליט שיחות, התקן אפליקציית הקלטת שיחות והגדל את ההשהיה בהתאם.
         ]]>
     </string>
+    <string name="time_range">טווח זמן</string>
+    <string name="all_time">כל הזמן</string>
 </resources>

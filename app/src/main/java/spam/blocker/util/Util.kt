@@ -814,15 +814,19 @@ object Util {
     fun getHistoryCalls(
         ctx: Context,
         direction: Int, // Def.DIRECTION_INCOMING, Def.DIRECTION_OUTGOING
-        withinMillis: Long
+        withinMillis: Long?
     ): List<CallInfo> {
         if (!Permission.callLog.isGranted) { // required for querying content resolver Calls.CONTENT_URI
             return listOf()
         }
 
-        val selection = mutableListOf(
-            "${Calls.DATE} >= ${System.currentTimeMillis() - withinMillis}"
-        )
+        val selection = mutableListOf<String>()
+
+        withinMillis?.let {
+            selection.add(
+                "${Calls.DATE} >= ${System.currentTimeMillis() - withinMillis}"
+            )
+        }
 
         if (direction == Def.DIRECTION_INCOMING) {
             selection.add(
@@ -862,7 +866,7 @@ object Util {
         ctx: Context,
         phoneNumber: PhoneNumber,
         direction: Int, // Def.DIRECTION_INCOMING, Def.DIRECTION_OUTGOING
-        withinMillis: Long
+        withinMillis: Long?
     ): List<CallInfo> {
         return getHistoryCalls(ctx, direction, withinMillis)
             .filter {

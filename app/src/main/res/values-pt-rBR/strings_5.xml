@@ -31,15 +31,18 @@
     <string name="help_for_particular_number">Quando habilitado, a regra só se aplica quando o número e o conteúdo correspondem.</string>
     <string name="help_dialed">
         <![CDATA[
-        Permitir chamadas de números discados anteriormente.<br>
+        Permitir chamadas de números anteriormente discados.<br>
         <br>
         <b>Opções:</b><br>
         <br>
-        <h6><title>- Em Dias</title></h6>
-        Chamadas que ocorreram antes de <highlight>%s dias</highlight> são ignoradas.<br>
+        <h6><title>- Intervalo de Tempo</title></h6>
+        &ensp; - <minor>Toda a Hora</minor> <br>
+        &emsp; Sempre permitir números discados.<br>
+        &ensp; - <minor>Dentro de Dias</minor> <br>
+        &emsp; Chamadas ocorridas antes de X dias são ignoradas.<br>
         <br>
         <h6><title>- Incluir SMS</title></h6>
-        Quando ativado, enviar SMS para esse número também conta.<br>
+        Quando ativado, enviar mensagem para esse número também conta.<br>
         <br>
         <priority><b>Prioridade: 10</b></priority>
         ]]>
@@ -92,4 +95,6 @@
         &emsp; Se você deseja gravar chamadas, instale um aplicativo de gravação de chamadas e aumente o atraso de acordo.
         ]]>
     </string>
+    <string name="time_range">Intervalo de Tempo</string>
+    <string name="all_time">Toda a Hora</string>
 </resources>

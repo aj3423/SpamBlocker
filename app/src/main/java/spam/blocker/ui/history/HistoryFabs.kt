@@ -33,6 +33,7 @@ import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.ColorPickerButton
 import spam.blocker.ui.widgets.ComboBox
+import spam.blocker.ui.widgets.DurationButton
 import spam.blocker.ui.widgets.Fab
 import spam.blocker.ui.widgets.FlowRowSpaced
 import spam.blocker.ui.widgets.GreyButton
@@ -288,49 +289,28 @@ fun HistoryFabs(
 
                         // Expiry
                         AnimatedVisibleV(loggingEnabled) {
-                            val trigger = remember { mutableStateOf(false) }
-                            PopupDialog(
-                                trigger = trigger,
-                            ) {
-                                // Expiry Enabled
-                                LabeledRow(R.string.expiry) {
-                                    SwitchBox(checked = expiryEnabled, onCheckedChange = { isOn ->
-                                        spf.isExpiryEnabled = isOn
-                                        expiryEnabled = isOn
-                                        reScheduleHistoryCleanup(ctx)
-                                    })
-                                }
-
-                                // Expiry days
-                                if (expiryEnabled) {
-                                    NumberInputBox(
-                                        intValue = ttl,
-                                        onValueChange = { newValue, hasError ->
-                                            if (!hasError) {
-                                                ttl = newValue!!
-                                                spf.ttl = newValue
-                                                reScheduleHistoryCleanup(ctx)
-                                            }
-                                        },
-                                        labelId = R.string.days,
-                                        leadingIconId = R.drawable.ic_recycle_bin,
-                                    )
-                                }
-                            }
-
                             LabeledRow(
                                 labelId = R.string.expiry,
                                 helpTooltip = Str(R.string.help_history_expiry)
                             ) {
-                                GreyButton(
-                                    label = if (expiryEnabled) {
-                                        ctx.resources.getQuantityString(R.plurals.days, ttl, ttl)
-                                    } else {
-                                        Str(R.string.never_expire)
-                                    }
-                                ) {
-                                    trigger.value = true
-                                }
+                                DurationButton(
+                                    alwaysEnabled = !expiryEnabled,
+                                    alwaysLabelId = R.string.never_expire,
+                                    onEnableChange = { isOn ->
+                                        spf.isExpiryEnabled = !isOn
+                                        expiryEnabled = !isOn
+                                        reScheduleHistoryCleanup(ctx)
+                                    },
+                                    duration = ttl,
+                                    onDurationChange = { newValue, hasError ->
+                                        if (!hasError) {
+                                            ttl = newValue!!
+                                            spf.ttl = newValue
+                                            reScheduleHistoryCleanup(ctx)
+                                        }
+                                    },
+                                    durationLabelId = R.string.days,
+                                )
                             }
                         }
                     }

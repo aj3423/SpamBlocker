@@ -31,15 +31,18 @@
     <string name="help_for_particular_number">Wenn aktiviert, gilt die Regel nur, wenn sowohl Nummer als auch Inhalt übereinstimmen.</string>
     <string name="help_dialed">
         <![CDATA[
-        Anrufe von zuvor gewählten Nummern zulassen.<br>
+        Anrufe von zuvor gewählten Nummern erlauben.<br>
         <br>
         <b>Optionen:</b><br>
         <br>
-        <h6><title>- Innerhalb von Tagen</title></h6>
-        Anrufe, die vor <highlight>%s Tagen</highlight> getätigt wurden, werden ignoriert.<br>
+        <h6><title>- Zeitraum</title></h6>
+        &ensp; - <minor>Alle Zeiten</minor> <br>
+        &emsp; Gewählte Nummern immer erlauben.<br>
+        &ensp; - <minor>Innerhalb von Tagen</minor> <br>
+        &emsp; Anrufe, die vor X Tagen erfolgten, werden ignoriert.<br>
         <br>
-        <h6><title>- SMS einschließen</title></h6>
-        Wenn aktiviert, zählt auch das Senden einer SMS an diese Nummer.<br>
+        <h6><title>- SMS einbeziehen</title></h6>
+        Wenn aktiviert, zählt auch das Versenden einer SMS an diese Nummer.<br>
         <br>
         <priority><b>Priorität: 10</b></priority>
         ]]>
@@ -91,4 +94,6 @@
         &emsp; Wenn Sie Anrufe aufzeichnen möchten, installieren Sie eine Anrufaufzeichnungs-App und erhöhen Sie die Verzögerung entsprechend.
         ]]>
     </string>
+    <string name="time_range">Zeitraum</string>
+    <string name="all_time">Alle Zeiten</string>
 </resources>

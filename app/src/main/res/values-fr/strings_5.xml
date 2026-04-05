@@ -31,15 +31,18 @@
     <string name="help_for_particular_number">Lorsque cette option est activée, la règle s’applique uniquement lorsque le numéro et le contenu correspondent.</string>
     <string name="help_dialed">
         <![CDATA[
-        Autoriser les appels provenant de numéros précédemment composés.<br>
+        Autoriser les appels provenant des numéros précédemment composés.<br>
         <br>
         <b>Options :</b><br>
         <br>
-        <h6><title>- Dans les jours</title></h6>
-        Les appels qui ont eu lieu avant <highlight>%s jours</highlight> sont ignorés.<br>
+        <h6><title>- Plage de temps</title></h6>
+        &ensp; - <minor>Tout le temps</minor> <br>
+        &emsp; Autoriser toujours les numéros composés.<br>
+        &ensp; - <minor>Dans les jours</minor> <br>
+        &emsp; Les appels antérieurs à X jours sont ignorés.<br>
         <br>
-        <h6><title>- Inclure les SMS</title></h6>
-        Lorsque cette option est activée, l\'envoi de SMS à ce numéro compte également.<br>
+        <h6><title>- Inclure SMS</title></h6>
+        Lorsqu\'activé, l\'envoi de SMS à ce numéro est également pris en compte.<br>
         <br>
         <priority><b>Priorité : 10</b></priority>
         ]]>
@@ -91,4 +94,6 @@
         &emsp; Si vous souhaitez enregistrer des appels, installez une application d\'enregistrement d\'appels et augmentez le délai en conséquence.
         ]]>
     </string>
+    <string name="time_range">Plage de temps</string>
+    <string name="all_time">Tout le temps</string>
 </resources>
