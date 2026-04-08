@@ -1,0 +1,7 @@
+Improvements
+- "Dialed Number" now supports "Forever", more intuitive than 999999999 days
+- SMS notifications now show all lines, previously truncated to 2 lines
+- reverse top bar text color according to the current theme to prevent "white text on white bg"
+- Long tap the tile icon to launch this app instead of opening the app info page
+- show error prompt when an "API Query" json is mis-imported to the section "Workflows"
+- backup file chooser remembers last dir 
