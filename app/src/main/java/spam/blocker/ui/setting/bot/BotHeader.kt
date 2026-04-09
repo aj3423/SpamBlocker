@@ -18,6 +18,7 @@ import spam.blocker.service.bot.Schedule
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.api.ApiAuthConfigDialog
+import spam.blocker.ui.setting.api.addApiToDB
 import spam.blocker.ui.widgets.ConfigImportDialog
 import spam.blocker.ui.widgets.DividerItem
 import spam.blocker.ui.widgets.GreyIcon
@@ -102,14 +103,23 @@ fun BotHeader(
 
     val authFormTrigger = remember { mutableStateOf(false) }
     if (authFormTrigger.value) {
+        val authConfig = remember(tappedPreset.value) { tappedPreset.value!!.newAuthConfig?.let { it() } }
+        val reportApi = remember(tappedPreset.value) { tappedPreset.value!!.newReportApi?.let { it(ctx) } }
+
         ApiAuthConfigDialog(
             trigger = authFormTrigger,
-            authConfig = tappedPreset.value!!.newAuthConfig!!(),
-            actions = initialBotToEdit.value.actions,
-            reportApi = tappedPreset.value!!.newReportApi?.let { it(ctx) },
-        ) {
+            authConfig = authConfig!!,
+            hasReportApi = reportApi != null,
+        ) { alsoReport, formFields ->
+            // 1. add the bot
             addBotToDB(ctx, initialBotToEdit.value)
             afterCreated.value?.let { it(ctx) }
+
+            // 2. if "Enable Reporting" is turned on (for the PhoneBlock workflow preset), also add its report API
+            if (alsoReport) {
+                authConfig.preProcessor(reportApi!!.actions, formFields.map { it.value })
+                addApiToDB(ctx, G.apiReportVM, reportApi)
+            }
         }
     }
 
@@ -143,9 +153,9 @@ fun BotHeader(
                 initialBotToEdit.value = bot
                 afterCreated.value = preset.afterCreated
 
-                val requiredPermissions = bot.triggerAndActions().map {
+                val requiredPermissions = bot.triggerAndActions().flatMap {
                     it.requiredPermissions(ctx)
-                }.flatten() + preset.requiredPermissions
+                } + preset.requiredPermissions
 
                 G.permissionChain.ask(ctx, requiredPermissions) { isGranted ->
                     if (isGranted) {

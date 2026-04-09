@@ -61,7 +61,9 @@ fun ApiCard(
 
                 // Auto report types icons
                 if (api is ReportApi) {
-                    AutoReportIcons(api.autoReportTypes)
+                    Column(modifier = Modifier.padding(start = 12.dp)) {
+                        AutoReportIcons(api.autoReportTypes)
+                    }
                 }
             }
 

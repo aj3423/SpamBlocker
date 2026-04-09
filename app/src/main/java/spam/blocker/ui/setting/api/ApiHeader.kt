@@ -23,7 +23,32 @@ import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.MenuButton
 import spam.blocker.ui.widgets.Str
 import spam.blocker.util.BotJson
+import spam.blocker.util.Lambda
 
+fun addApiToDB(
+    ctx: Context,
+    vm: ApiViewModel,
+    newApi: IApi,
+    callback: Lambda? = null, // This function is asynchronous because it asks for permission
+) {
+    val requiredPermissions = newApi.actions.flatMap { it.requiredPermissions(ctx) }
+
+    G.permissionChain.ask(ctx, requiredPermissions) { isGranted ->
+        if (isGranted) {
+            // 1. add to db
+            vm.table.addNewRecord(ctx, newApi)
+
+            // 2. reload UI
+            vm.reloadDb(ctx)
+
+            // 3. expand the list
+            vm.listCollapsed.value = false
+
+            // 4. trigger the callback
+            callback?.let { it() }
+        }
+    }
+}
 
 @Composable
 fun ApiHeader(
@@ -36,24 +61,13 @@ fun ApiHeader(
     val tappedPreset = remember { mutableStateOf<ApiPreset?>(null) }
     val initialApi = remember { mutableStateOf<IApi?>(null) }
 
-    fun addApiToDB(ctx: Context, newApi: IApi) {
-        // 1. add to db
-        vm.table.addNewRecord(ctx, newApi)
-
-        // 2. reload UI
-        vm.reloadDb(ctx)
-
-        // 3. expand the list
-        vm.listCollapsed.value = false
-    }
-
     val addTrigger = rememberSaveable { mutableStateOf(false) }
     if (addTrigger.value) {
         EditApiDialog(
             trigger = addTrigger,
             initial = initialApi.value!!,
             onSave = { newApi ->
-                addApiToDB(ctx, newApi)
+                addApiToDB(ctx, vm, newApi)
             }
         )
     }
@@ -76,15 +90,27 @@ fun ApiHeader(
         }
     }
 
+
+
     val authFormTrigger = remember { mutableStateOf(false) }
     if (authFormTrigger.value) {
+        val authConfig = remember(tappedPreset.value) { tappedPreset.value!!.newAuthConfig()!! }
+        val reportApi = remember(tappedPreset.value) { tappedPreset.value!!.newReportApi?.let { it(ctx) } }
+
         ApiAuthConfigDialog(
             trigger = authFormTrigger,
-            authConfig = tappedPreset.value!!.newAuthConfig()!!,
-            actions = initialApi.value!!.actions,
-            reportApi = tappedPreset.value!!.newReportApi?.let { it(ctx) },
-        ) {
-            addApiToDB(ctx, initialApi.value!!)
+            authConfig = authConfig,
+            hasReportApi = reportApi != null,
+        ) { alsoReport, formFields ->
+            // Replace the api_key in the http request.
+            authConfig.preProcessor(initialApi.value!!.actions, formFields.map { it.value })
+            addApiToDB(ctx, vm, initialApi.value!!) {
+                // Also add the "report API" after the "query API" is added
+                if (alsoReport) {
+                    authConfig.preProcessor(reportApi!!.actions, formFields.map { it.value })
+                    addApiToDB(ctx, G.apiReportVM, reportApi)
+                }
+            }
         }
     }
 
@@ -127,7 +153,7 @@ fun ApiHeader(
                 // Otherwise, create the actions directly.
                 val authConfig = preset.newAuthConfig()
                 if (authConfig == null) {
-                    addApiToDB(ctx, preset.newInstance(ctx))
+                    addApiToDB(ctx, vm, preset.newInstance(ctx))
                 } else {
                     // If it requires authorization, show a config dialog
                     authFormTrigger.value = true
