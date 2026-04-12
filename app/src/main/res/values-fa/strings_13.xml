@@ -125,7 +125,7 @@
         بیشتر عناصر رابط کاربری مانند کارت در این برنامه با حرکات کشیدن مرتبط هستند، برخی از آن‌ها نیز از <highlight><b>کشیدن به سمت راست</b></highlight> پشتیبانی می‌کنند، به عنوان مثال، سوابق تاریخچه.
         ]]>
     </string>
-    <string name="bug_number">اگر این یک شماره معتبر است، لطفا آن را در github گزارش دهید.</string>
+    <string name="bug_number">اگر این یک شماره معتبر است، لطفا آن را در GitHub گزارش دهید.</string>
     <string name="skip_alpha_empty_number">رد کردن شماره‌های الفبایی یا خالی.</string>
     <string name="sms_tags">
         <![CDATA[

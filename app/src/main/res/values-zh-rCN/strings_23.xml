@@ -89,7 +89,7 @@
     <string name="rcs">RCS</string>
     <string name="screening">筛选</string>
     <string name="toggled_by_tile">通过快捷开关切换</string>
-    <string name="custom_tile">自定义快捷开关</string>>
+    <string name="custom_tile">自定义快捷开关</string>
     <string name="help_custom_tile">
         <![CDATA[
         使用快速设置快捷开关快速切换规则。全局快捷开关切换整个应用程序，而此自定义快捷开关仅影响特定规则。<br>

@@ -37,7 +37,7 @@
           - <a href=\"%s\">纯文本</a> <br>
           - <a href=\"%s\">CSV</a> <br>
           - <a href=\"%s\">XML</a> <br>
-          - <a href=\"%s\">Json</a> - 暂不支持 JsonPath，请改用 <minor><b>正则提取</b></minor>。
+          - <a href=\"%s\">JSON</a> - 暂不支持 JsonPath，请改用 <minor><b>正则提取</b></minor>。
     ]]>
     </string>
     <string name="faq_regex">

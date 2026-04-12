@@ -4,7 +4,7 @@
         <translate>号码规则同时适用于来电号码和短信号码。</translate><br>
         <br>
         <h5><title> - <translate>示例</translate></title></h5>
-        <translate>在</translate> <a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">Wiki page</a> <translate>页面上有一些示例</translate>。<br>
+        <translate>在</translate> <a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">Wiki 页面</a> <translate>上有一些示例</translate>。<br>
         <br>
         <h5><title> - <translate>正则表达式优化</translate></title></h5>
         <translate>为了简化正则表达式，</translate>
@@ -16,7 +16,7 @@
         &emsp;&emsp; <error><b>0</b></error>123456789 &emsp;<translate>(带有国内长途区号前缀</translate> <error><b>0</b></error><translate>)</translate><br>
         &emsp;&emsp; <error><b>00</b></error>123456789 &emsp;<translate>(两个</translate> <error><b>0</b></error><translate>)</translate><br>
         &emsp; <translate>它们</translate><b><translate>都</translate></b><translate>被检查为</translate> 123456789 <translate>，并且可以通过</translate> <highlight><b>123.*</b></highlight> <translate>进行匹配</translate><br>
-        <translate>可以使用正则表达式标志</translate> `Raw Number` <b><translate>禁用</translate></b><translate>此号码优化</translate>。<br>
+        <translate>可以使用正则表达式标志</translate>“原始号码”<b><translate>禁用</translate></b><translate>此号码优化</translate>。<br>
         <br>
         <h5><title> - <translate>一些典型的模式</translate></title></h5>
         &ensp; - <translate>任何号码：</translate> <highlight><b>.*</b></highlight> (<translate>正则表达式</translate> .* <translate>相当于其他应用中的通配符</translate> *) <br>
@@ -30,14 +30,14 @@
         &ensp; - <translate>匹配任何模式：</translate> <highlight><b>(12.*|.*89)</b></highlight> <br>
         &ensp; - <translate>以</translate> 400 <translate>开头，带有前导国家代码</translate> 11 <translate>或不带：</translate> <highlight><b>(?:11)?400.*</b></highlight> <br>
         <br>
-        <h5><title> - UI <translate>相关</translate></title></h5>
+        <h5><title> - <translate>界面相关</translate></title></h5>
         <translate>取消选中复选框以禁用该规则，</translate> <error><b><translate>向左滑动以删除</translate></b></error> <translate>它</translate>。<br>
         <br>
         <translate>该列表按优先级降序、描述升序和模式升序</translate><b><translate>显示</translate></b>。<br>
         <br>
         <h5><title> - <translate>从</translate> .csv <translate>导入规则</translate></title></h5>
-        <translate>长按“添加”按钮从</translate> .csv <translate>文件导入号码</translate>。<br>
-        <brg>
+        <translate>长按“添加”按钮可从</translate> .csv <translate>文件导入规则</translate>。<br>
+        <br>
         ]]>
     </string>
     <string name="import_csv_columns">
@@ -46,7 +46,7 @@
          - <no_translate><b>pattern</b></no_translate>: 正则表达式(<b>必填</b>)<br>
          - <no_translate><b>description</b></no_translate>: 描述<br>
          - <no_translate><b>priority</b></no_translate>: 优先级，默认为1<br>
-         - <no_translate><b>flags</b></no_translate>: 1(应用于呼叫)，2(应用于短信)，3(两者)，默认为3<br>
+         - <no_translate><b>flags</b></no_translate>: 1(应用于来电)，2(应用于短信)，3(两者)，默认为3<br>
          - <no_translate><b>isBlacklist</b></no_translate>: 黑名单或白名单。 <no_translate>true</no_translate> 或 <no_translate>false</no_translate>，默认为 <no_translate>true</no_translate><br>
          - <no_translate><b>blockType</b></no_translate>:  阻止类型。0~2对应3种阻止类型，默认为0<br>
          - <no_translate><b>importance</b></no_translate>: 通知类型。0~4对应5种通知类型，默认为2<br>

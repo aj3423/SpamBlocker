@@ -27,8 +27,8 @@
     <string name="weekend">周末</string>
     <string name="entire_day">整天</string>
     <string name="block_type">阻止类型</string>
-    <string name="for_particular_number">针对号码</string>
-    <string name="help_for_particular_number">启用后，规则仅在号码和内容匹配时才适用。</string>
+    <string name="for_particular_number">指定号码</string>
+    <string name="help_for_particular_number">启用后，只有号码和内容都匹配时才会应用该规则。</string>
     <string name="help_dialed">
         <![CDATA[
         允许来自已拨号码的来电。<br>
@@ -38,8 +38,8 @@
         <h6><title>- 时间范围</title></h6>
         &ensp; - <minor>所有时间</minor> <br>
         &emsp; 始终允许已拨号码。<br>
-        &ensp; - <minor>在X天内</minor> <br>
-        &emsp; X天之前的通话将被忽略。<br>
+        &ensp; - <minor>X 天内</minor> <br>
+        &emsp; 早于 X 天前的通话将被忽略。<br>
         <br>
         <h6><title>- 包含短信</title></h6>
         启用后，向该号码发送短信也会被计入。<br>
@@ -77,12 +77,12 @@
         - <title><b>静音</b></title>: <br>
          它会在后台静默响铃，给来电者一种您不在或错过了电话的印象。<br>
         <br>
-         如果您正在遭受重复的垃圾电话（spam calls），它可能也会有所帮助，它会延长通话时长，降低垃圾电话（spammers）的效率，从而可能阻止他们再次呼叫您。<br>
+         如果您正遭遇反复骚扰来电，此模式也可能有帮助：它会拉长通话时长，降低骚扰方效率，从而减少继续拨打的可能性。<br>
         <br>
         - <title><b>挂断</b></title>: <br>
         接听并挂断电话，以防止其转到语音信箱。<br>
         <br>
-        当正在进行通话时收到垃圾电话（spam call）时，它将切换到“拒接”
+        当您正在通话时收到骚扰来电，它会自动切换为“拒接”
          以避免挂断正在进行的通话。<br>
         <br>
         <warn>注意</warn> 锁屏可能会短暂点亮，

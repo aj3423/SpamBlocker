@@ -70,7 +70,7 @@
         このアプリのほとんどのカードのようなUI要素はスワイプジェスチャに関連付けられており、履歴レコードなど、<highlight><b>右にスワイプ</b></highlight>もサポートしているものもあります。
         ]]>
     </string>
-    <string name="bug_number">有効な番号の場合は、githubで報告してください。</string>
+    <string name="bug_number">有効な番号の場合は、GitHubで報告してください。</string>
     <string name="number_tags">
         <![CDATA[
         - <title><b><no_translate>{cc}</no_translate></b></title><br>

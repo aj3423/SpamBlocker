@@ -2,7 +2,7 @@
     <string name="api_preset_groq">Groq</string>
     <string name="help_api_preset_groq">
         <![CDATA[
-        使用 <b>Groq AI</b> 检查短信内容，仅需一个邮箱账户。<no_translate> </no_translate>
+        使用 <b>Groq AI</b> 检查短信内容，仅需一个邮箱。
         ]]>
     </string>
     <string name="help_api_preset_groq_authorization">

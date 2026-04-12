@@ -11,13 +11,13 @@
         <br>
         <h5><title>- Check STIR</title></h5>
          - When disabled, all calls will be allowed.<br>
-         - When enabled, calls fail STIR attestation will not be allowed, only "Valid" and "Unverified" calls will be allowed.<br>
+         - When enabled, calls that fail STIR attestation will not be allowed, only "Valid" and "Unverified" calls will be allowed.<br>
         <br>
         <h5><title>- Additional Numbers</title></h5>
         Dialing any number in this list will also trigger this feature.<br>
         <br>
         No need to explicitly add numbers like 911 here, because Android includes a built-in
-        emergency number list for each country(e.g.: police, fire, ambulance).<br>
+        emergency number list for each country (e.g., police, fire, ambulance).<br>
         <br>
         Separate numbers with commas, such as:<br>
         &ensp; <sample>111, 222, 3333</sample><br>

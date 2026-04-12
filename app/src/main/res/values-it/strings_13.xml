@@ -120,7 +120,7 @@
         Genera un <u>elenco di numeri</u> contenente il numero spam identificato dal passaggio precedente, pronto per essere importato nel database.
         ]]>
     </string>
-    <string name="canceling_thread">Annullamento del thread.</string>>
+    <string name="canceling_thread">Annullamento del thread.</string>
     <string name="suggest_to_swipe">
         <![CDATA[
         <highlight><b>Scorri a sinistra</b></highlight> per eliminarlo.<br>
@@ -129,7 +129,7 @@
         alcuni dei quali supportano anche <highlight><b>scorrimento a destra</b></highlight>, ad esempio, le registrazioni della cronologia.
         ]]>
     </string>
-    <string name="bug_number">Se questo è un numero valido, segnalalo su github.</string>
+    <string name="bug_number">Se questo è un numero valido, segnalalo su GitHub.</string>
     <string name="skip_alpha_empty_number">Salta numero alfa o vuoto.</string>
     <string name="sms_tags">
         <![CDATA[

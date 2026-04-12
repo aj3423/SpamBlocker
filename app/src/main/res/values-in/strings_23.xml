@@ -92,7 +92,7 @@
     <string name="rcs">RCS</string>
     <string name="screening">Penyaringan</string>
     <string name="toggled_by_tile">Diaktifkan oleh Tile</string>
-    <string name="custom_tile">Tile Kustom</string>>
+    <string name="custom_tile">Tile Kustom</string>
     <string name="help_custom_tile">
         <![CDATA[
         Mengaktifkan/menonaktifkan aturan dengan cepat menggunakan Tile Pengaturan Cepat. Sementara tile global mengaktifkan/menonaktifkan seluruh aplikasi,

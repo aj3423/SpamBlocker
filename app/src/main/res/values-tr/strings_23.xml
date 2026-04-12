@@ -89,7 +89,7 @@
     <string name="rcs">RCS</string>
     <string name="screening">Tarama</string>
     <string name="toggled_by_tile">Kutucukla Değiştirildi</string>
-    <string name="custom_tile">Özel Kutucuk</string>>
+    <string name="custom_tile">Özel Kutucuk</string>
     <string name="help_custom_tile">
         <![CDATA[
         Hızlı Ayarlar Kutucuğu\'nu kullanarak kuralları hızla değiştirin. Genel kutucuk tüm uygulamayı değiştirirken, bu özel kutucuk yalnızca belirli kuralları etkiler. <br>

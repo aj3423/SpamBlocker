@@ -2,7 +2,7 @@
     <string name="api_preset_groq">Groq</string>
     <string name="help_api_preset_groq">
         <![CDATA[
-        محتوای پیامک را با استفاده از <b">هوش مصنوعی Groq</b></b، بررسی کنید، فقط به یک حساب ایمیل نیاز دارد.
+        محتوای پیامک را با استفاده از <b>هوش مصنوعی Groq</b> بررسی کنید، فقط به یک ایمیل نیاز دارد.
         ]]>
     </string>
     <string name="help_api_preset_groq_authorization">

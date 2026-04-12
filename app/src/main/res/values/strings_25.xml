@@ -3,7 +3,7 @@
     <string name="bot_preset_phoneblock"><no_translate>🇩🇪 🌐 PhoneBlock</no_translate></string>
     <string name="help_bot_preset_phoneblock">
     <![CDATA[
-        Download spam numbers from %s and import them into local database. <br>
+        Download spam numbers from %s and import them into the local spam database. <br>
         <br>
         The workflow runs daily, it downloads the entire list on the first run, then performs only incremental updates on all subsequent runs.
     ]]>
@@ -81,9 +81,9 @@
     <string name="faq"><short>FAQ</short></string>
     <string name="faq_priority">
     <![CDATA[
-        Each filter has its priority value, as the term implies, it dictates the order in which the call is checked. <br>
+        Each filter has a priority value, which determines the order in which calls are checked. <br>
         <br>
-        By Default, <br>
+        By default, <br>
         <br>
         - <highlight>Whitelist rules</highlight> have priority <priority>10</priority> <br>
         &ensp; <sample>E.g. Contacts, RepeatedCall, RecentApps, etc </sample><br>

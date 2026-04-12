@@ -126,7 +126,7 @@
         Создать <u>список номеров</u>, содержащий спам-номера, определенные на предыдущем шаге, и готовые к импорту в базу данных.
         ]]>
     </string>
-    <string name="canceling_thread">Отмена потока.</string>>
+    <string name="canceling_thread">Отмена потока.</string>
     <string name="suggest_to_swipe">
         <![CDATA[
         <highlight><b>Смахните влево</b></highlight> для удаления.<br>
@@ -135,7 +135,7 @@
         некоторые из которых также поддерживают <highlight><b>смахивание вправо</b></highlight>, например, записи истории.
         ]]>
     </string>
-    <string name="bug_number">Если это надёжный номер, пожалуйста, сообщите об этом на github.</string>
+    <string name="bug_number">Если это надёжный номер, пожалуйста, сообщите об этом на GitHub.</string>
     <string name="skip_alpha_empty_number">Пропуск буквенных или пустых номеров.</string>
     <string name="escape_tags">
         <![CDATA[

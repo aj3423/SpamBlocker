@@ -2,7 +2,7 @@
     <string name="api_preset_groq">Groq</string>
     <string name="help_api_preset_groq">
         <![CDATA[
-        <b>Groq AI</b>を使ってSMSの内容を確認します。メールアドレスのアカウントのみが必要です。
+        <b>Groq AI</b>を使ってSMSの内容を確認します。メールアドレスがあれば利用できます。
         ]]>
     </string>
     <string name="help_api_preset_groq_authorization">

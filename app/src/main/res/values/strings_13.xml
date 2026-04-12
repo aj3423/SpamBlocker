@@ -3,7 +3,7 @@
         Cleaning up history db, deleting records before timestamp: %s.
     </string>
     <string name="cleaning_up_spam_db">
-        Cleaning up spam db, deleting %s records before timestamp: %s\".
+        Cleaning up spam db, deleting %s records before timestamp: %s.
     </string>
     <string name="resolved_url">Resolved url: %s</string>
     <string name="time_cost">Time cost: %s milliseconds.</string>
@@ -123,8 +123,8 @@
     </string>
     <string name="not_enough_time_left">
         The call screening time limit is 5 seconds, with a %s ms buffer
-        for the inaccuracy of time functions, the total time limit is actually %s ms.
-        The previous steps cost %s ms, not enough time left, skip.
+        for time function inaccuracy. The total time limit is actually %s ms.
+        Previous steps cost %s ms, not enough time left, skip.
     </string>
     <string name="action_filter_query_result">Filter Spam</string>
     <string name="help_action_filter_query_result">
@@ -132,7 +132,7 @@
         Generate a <u>list of numbers</u> containing the spam number identified from the previous step, and ready to be imported to the database.
         ]]>
     </string>
-    <string name="canceling_thread">Canceling thread.</string>>
+    <string name="canceling_thread">Canceling thread.</string>
     <string name="suggest_to_swipe">
         <![CDATA[
         <highlight><b>Swipe left</b></highlight> to delete it.<br>
@@ -140,7 +140,7 @@
         Most card-like UI elements in this app are associated with swiping gestures,
         some of which also support <highlight><b>swiping right</b></highlight>, for example, the history records.
         ]]>
-    </string>>
-    <string name="bug_number">If this is a valid number, please report it on github.</string>>
-    <string name="skip_alpha_empty_number">Skip alpha or empty number.</string>>
+    </string>
+    <string name="bug_number">If this is a valid number, please report it on GitHub.</string>
+    <string name="skip_alpha_empty_number">Skipping alphanumeric or empty number.</string>
 </resources>

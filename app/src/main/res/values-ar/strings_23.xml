@@ -89,7 +89,7 @@
     <string name="rcs">RCS</string>
     <string name="screening">الفحص</string>
     <string name="toggled_by_tile">تم التبديل بواسطة المربع</string>
-    <string name="custom_tile">مربع مخصص</string>>
+    <string name="custom_tile">مربع مخصص</string>
     <string name="help_custom_tile">
         <![CDATA[
         تبديل القواعد بسرعة باستخدام مربع الإعدادات السريعة. بينما يقوم المربع العام بتبديل التطبيق بأكمله، يؤثر هذا المربع المخصص على قواعد محددة فقط. <br>

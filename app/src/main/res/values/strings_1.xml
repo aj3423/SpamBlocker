@@ -9,7 +9,7 @@
     <string name="pattern_contain_invisible_characters">Invisible characters found</string>
     <string name="pattern_contain_leading_zeroes">No need to add the leading 0, they will be removed before checking.</string>
     <string name="pattern_contain_leading_plus">No need to add the leading +, they will be removed before checking.</string>
-    <string name="check_balloon_for_explanation">Check the help of the `Number Rules` for a detailed explanation.</string>
+    <string name="check_balloon_for_explanation">See the help under Number Rules for a detailed explanation.</string>
     <string name="invalid_number">Invalid number</string>
     <string name="description">Description</string>
     <string name="new_">New</string>

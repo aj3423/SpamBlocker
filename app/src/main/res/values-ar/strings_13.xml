@@ -134,9 +134,9 @@
         ترتبط معظم عناصر واجهة المستخدم الشبيهة بالبطاقات في هذا التطبيق بإيماءات التمرير،
         يدعم بعضها أيضًا <highlight><b>السحب لليمين</b></highlight>، على سبيل المثال، سجلات المحفوظات.
         ]]>
-    </string>>
-    <string name="bug_number">إذا كان هذا رقمًا صالحًا، فيرجى الإبلاغ عنه على github.</string>>
-    <string name="skip_alpha_empty_number">تخطي الرقم الأبجدي أو الفارغ.</string>>
+    </string>
+    <string name="bug_number">إذا كان هذا رقمًا صالحًا، فيرجى الإبلاغ عنه على GitHub.</string>
+    <string name="skip_alpha_empty_number">تخطي الرقم الأبجدي أو الفارغ.</string>
     <string name="escape_tags">
         <![CDATA[
         - <title><b><no_translate>{escape(…)}</no_translate></b></title><br>

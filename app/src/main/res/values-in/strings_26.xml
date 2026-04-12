@@ -37,7 +37,7 @@
           - <a href=\"%s\">Teks biasa</a> <br>
           - <a href=\"%s\">CSV</a> <br>
           - <a href=\"%s\">XML</a> <br>
-          - <a href=\"%s\">Json</a> - JsonPath belum didukung, gunakan <minor><b>Ekstrak Regex</b></minor> sebagai gantinya.
+          - <a href=\"%s\">JSON</a> - JsonPath belum didukung, gunakan <minor><b>Ekstrak Regex</b></minor> sebagai gantinya.
     ]]>
     </string>
     <string name="faq_regex">

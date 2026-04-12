@@ -48,9 +48,9 @@
         <![CDATA[
         This helps to check if the rules are set as expected.<br>
         <br>
-        It is just a simulation and will not actually popup an incoming call(or text message).<br>
+        It is just a simulation and will not actually pop up an incoming call (or text message).<br>
         <br>
-        The result is shown here, and in history log, with notification.
+        The result is shown here, in the history log, and in notifications.
         ]]>
     </string>
 

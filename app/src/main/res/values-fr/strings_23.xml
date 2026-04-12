@@ -92,7 +92,7 @@
     <string name="rcs">RCS</string>
     <string name="screening">Filtrage</string>
     <string name="toggled_by_tile">Activé/désactivé par la tuile</string>
-    <string name="custom_tile">Tuile personnalisée</string>>
+    <string name="custom_tile">Tuile personnalisée</string>
     <string name="help_custom_tile">
         <![CDATA[
         Activez/désactivez rapidement les règles à l\'aide de la tuile de paramètres rapides. Alors que la tuile globale active/désactive toute l\'application, cette tuile personnalisée n\'affecte que des règles spécifiques. <br>

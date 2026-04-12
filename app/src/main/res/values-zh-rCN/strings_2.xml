@@ -3,9 +3,9 @@
     <string name="non_contact">非联系人</string>
     <string name="help_contacts">
         <![CDATA[
-        允许联系人号码。 <br>
+      放行联系人号码。 <br>
         <br>
-        它适用于来电和短信。 <br>
+      同时适用于来电和短信。 <br>
         <br>
         <priority><b>默认优先级</b></priority>: <br>
         &ensp; 允许: <priority><b>10</b></priority> <br>
@@ -13,10 +13,10 @@
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
-    <string name="stir_include_unverified">包含未验证的</string>
+    <string name="stir_include_unverified">包含未验证来电</string>
     <string name="unverified">未验证</string>
-    <string name="valid">有效呼叫</string>
-    <string name="spoof">伪造呼叫</string>
+    <string name="valid">可信来电</string>
+    <string name="spoof">伪造来电</string>
     <string name="help_stir">
         <![CDATA[
         阻止未通过 STIR/SHAKEN 验证的来电，因为它们很可能是伪造的。 <br>
@@ -26,7 +26,7 @@
         <b>选项：</b> <br>
         <br>
         <title><b>包括未验证的来电</b></title> <br>
-        同时阻止未验证的来电，这意味着来电无法被验证，或者运营商或您的设备不支持 STIR 验证。 <br>
+        同时拦截未验证来电，即该来电无法被验证，或运营商/设备不支持 STIR 验证。 <br>
         <br>
         <b>使用场景</b>： <br>
         <sample>
@@ -35,7 +35,7 @@
         <br>
         <priority><b>默认优先级：0</b></priority> <br>
         <br>
-        自定义优先级的<b>使用场景</b>：<br>
+        自定义优先级的<b>示例场景</b>：<br>
         <br>
         1. 始终允许联系人。 <br>
           &emsp; - 联系人，优先级 <priority>12</priority> <br>
@@ -47,7 +47,7 @@
     </string>
     <string name="failed_to_import_from_csv">
         <![CDATA[
-        .csv 文件中缺少必需的字段 <b>pattern</b>，请查看气球工具提示以获取详细说明。
+        .csv 文件缺少必填字段 <b>pattern</b>，请查看气泡提示获取详细说明。
         ]]>
     </string>
 </resources>

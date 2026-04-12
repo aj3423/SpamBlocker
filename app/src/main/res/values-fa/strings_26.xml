@@ -37,7 +37,7 @@
           - <a href=\"%s\">متن ساده</a> <br>
           - <a href=\"%s\">CSV</a> <br>
           - <a href=\"%s\">XML</a> <br>
-          - <a href=\"%s\">Json</a> - JsonPath هنوز پشتیبانی نمی‌شود، به جای آن از <minor><b>استخراج Regex</b></minor> استفاده کنید.
+          - <a href=\"%s\">JSON</a> - JsonPath هنوز پشتیبانی نمی‌شود، به جای آن از <minor><b>استخراج Regex</b></minor> استفاده کنید.
     ]]>
     </string>
     <string name="faq_regex">

@@ -1,7 +1,7 @@
 <resources>
     <string name="help_report_number">
         <![CDATA[
-        APIs configured here will be used for both auto-reporting and manual-reporting.<br>
+        APIs configured here are used for both auto-reporting and manual reporting.<br>
         <br>
         <h6><title>- Privacy</title></h6>
         The API endpoints will see your:<br>
@@ -13,7 +13,7 @@
         Nothing else will be reported.<br>
         <br>
         <h6><title>- Manual reporting</title></h6>
-		If any API is enabled here, tap a number in the call history, there will be a report button.<br>
+        If any API is enabled here, tap a number in the call history to show a report button.<br>
 		<br>
 		The number will be reported to <b>all</b> APIs.<br>
 		<br>
@@ -29,7 +29,7 @@
         - <error>SMS numbers or content</error><br>
         - <error>Allowed numbers</error><br>
         - <error>Testing</error><br>
-        And following blocked types:<br>
+        And the following blocked types:<br>
         - <error>Contact Regex</error><br>
         - <error>Contact Group Regex</error><br>
         - <error>Database</error><br>

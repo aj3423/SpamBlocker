@@ -126,7 +126,7 @@
         Hasilkan <u>daftar nomor</u> berisi nomor spam yang diidentifikasi dari langkah sebelumnya, dan siap untuk diimpor ke basis data.
         ]]>
     </string>
-    <string name="canceling_thread">Membatalkan thread.</string>>
+    <string name="canceling_thread">Membatalkan thread.</string>
     <string name="suggest_to_swipe">
         <![CDATA[
         <highlight><b>Geser ke kiri</b></highlight> untuk menghapusnya.<br>
@@ -134,9 +134,9 @@
         Sebagian besar elemen UI seperti kartu dalam aplikasi ini dikaitkan dengan gerakan mengusap,
         beberapa di antaranya juga mendukung <highlight><b>menggesek ke kanan</b></highlight>, sebagai contoh catatan riwayat.
         ]]>
-    </string>>
-    <string name="bug_number">Jika ini adalah nomor yang sah, silakan laporkan di github.</string>>
-    <string name="skip_alpha_empty_number">Lewati alfa atau nomor kosong.</string>>
+    </string>
+    <string name="bug_number">Jika ini adalah nomor yang sah, silakan laporkan di GitHub.</string>
+    <string name="skip_alpha_empty_number">Lewati alfa atau nomor kosong.</string>
     <string name="escape_tags">
         <![CDATA[
         - <title><b><no_translate>{escape(…)}</no_translate></b></title><br>

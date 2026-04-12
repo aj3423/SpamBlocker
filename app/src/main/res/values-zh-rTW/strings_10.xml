@@ -36,7 +36,7 @@
         <br>
         <h5><title> - 從 .csv 匯入規則</title></h5>
         長按「新增」按鈕可從 .csv 檔案匯入號碼。<br>
-        <brg>
+        <br>
         ]]>
     </string>
     <string name="import_csv_columns">

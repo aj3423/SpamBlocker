@@ -37,7 +37,7 @@
         <br>
         <h5><title> - وارد کردن قوانین از .csv</title></h5>
         دکمه `Add` را طولانی فشار دهید تا شماره ها از فایل .csv وارد شوند.<br>
-        <brg>
+        <br>
         ]]>
     </string>
     <string name="import_csv_columns">

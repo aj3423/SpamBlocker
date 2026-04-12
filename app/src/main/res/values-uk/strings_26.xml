@@ -37,7 +37,7 @@
           - <a href=\"%s\">Простий текст</a> <br>
           - <a href=\"%s\">CSV</a> <br>
           - <a href=\"%s\">XML</a> <br>
-          - <a href=\"%s\">Json</a> - JsonPath ще не підтримується, натомість використовуйте <minor><b>Витягнення Regex</b></minor>.
+          - <a href=\"%s\">JSON</a> - JsonPath ще не підтримується, натомість використовуйте <minor><b>Витягнення Regex</b></minor>.
     ]]>
     </string>
     <string name="faq_regex">

@@ -37,7 +37,7 @@
           - <a href=\"%s\">プレーンテキスト</a> <br>
           - <a href=\"%s\">CSV</a> <br>
           - <a href=\"%s\">XML</a> <br>
-          - <a href=\"%s\">Json</a> - JsonPathはまだサポートされていません。代わりに <minor><b>正規表現抽出</b></minor> を使用してください。
+          - <a href=\"%s\">JSON</a> - JsonPathはまだサポートされていません。代わりに <minor><b>正規表現抽出</b></minor> を使用してください。
     ]]>
     </string>
     <string name="faq_regex">

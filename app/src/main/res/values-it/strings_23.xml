@@ -92,7 +92,7 @@
     <string name="rcs">RCS</string>
     <string name="screening">Filtro</string>
     <string name="toggled_by_tile">Attivato/Disattivato dal riquadro</string>
-    <string name="custom_tile">Riquadro personalizzato</string>>
+    <string name="custom_tile">Riquadro personalizzato</string>
     <string name="help_custom_tile">
         <![CDATA[
         Attiva/disattiva rapidamente le regole usando il Riquadro delle Impostazioni rapide. Mentre il riquadro globale attiva/disattiva l\'intera app,

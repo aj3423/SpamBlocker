@@ -92,7 +92,7 @@
     <string name="rcs">RCS</string>
     <string name="screening">Triagem</string>
     <string name="toggled_by_tile">Alternado pelo Bloco</string>
-    <string name="custom_tile">Bloco Personalizado</string>>
+    <string name="custom_tile">Bloco Personalizado</string>
     <string name="help_custom_tile">
         <![CDATA[
         Alterne rapidamente as regras usando o Bloco de Configurações Rápidas. Enquanto o bloco global alterna todo o aplicativo,

@@ -1,6 +1,6 @@
 <resources>
     <string name="contact">Contact</string>
-    <string name="non_contact">Non Contact</string>
+    <string name="non_contact">Non-Contact</string>
     <string name="help_contacts">
         <![CDATA[
         Allow contact numbers. <br>
@@ -40,7 +40,7 @@
         <br>
         1. Always allow contacts. <br>
           &emsp; - Contacts, priority <priority>12</priority> <br>
-        2. Block calls fail STIR, even if they repeat. <br>
+        2. Block calls that fail STIR, even if they repeat. <br>
           &emsp; - STIR, priority <priority>11</priority> <br>
         3. Allow calls that repeat. <br>
           &emsp; - Repeated Call, priority <priority>10</priority> <br>

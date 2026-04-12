@@ -1,7 +1,7 @@
 <resources>
     <string name="dialed_number"><short>Dialed Number</short></string>
     <string name="find_apps">Find Apps</string>
-    <string name="confirm_delete_all_rule">Confirm to delete All Rules?</string>
+    <string name="confirm_delete_all_rule">Delete all rules?</string>
     <string name="notification">Notification</string>
     <string name="type">Type</string>
     <string name="times">Times</string>
@@ -27,7 +27,7 @@
     <string name="block_type">Block Type</string>
     <string name="for_particular_number">For number</string>
     <string name="help_for_particular_number">When enabled, the rule only applies when both number and content match.</string>
-    <string name="help_hang_up_delay">The delay before the call is hung up(in seconds).</string>
+    <string name="help_hang_up_delay">The delay before the call is hung up (in seconds).</string>
     <string name="time_range">Time Range</string>
     <string name="all_time">All Time</string>
     <string name="help_dialed">

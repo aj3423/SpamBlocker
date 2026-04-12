@@ -89,7 +89,7 @@
     <string name="rcs">RCS</string>
     <string name="screening">篩選</string>
     <string name="toggled_by_tile">透過快捷磚切換</string>
-    <string name="custom_tile">自訂快捷磚</string>>
+    <string name="custom_tile">自訂快捷磚</string>
     <string name="help_custom_tile">
         <![CDATA[
         使用快速設定快捷磚快速切換規則。全域快捷磚切換整個應用程式，而此自訂快捷磚僅影響特定規則。<br>

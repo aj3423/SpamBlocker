@@ -92,7 +92,7 @@
     <string name="rcs">RCS</string>
     <string name="screening">Filtrado</string>
     <string name="toggled_by_tile">Activado por el mosaico</string>
-    <string name="custom_tile">Mosaico Personalizado</string>>
+    <string name="custom_tile">Mosaico Personalizado</string>
     <string name="help_custom_tile">
         <![CDATA[
         Activa/desactiva rápidamente las reglas usando el Mosaico de Ajustes Rápidos. Mientras que el mosaico global activa/desactiva toda la aplicación,

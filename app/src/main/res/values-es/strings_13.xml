@@ -52,7 +52,7 @@
         Genera una <u>lista de números</u> que contiene el número de spam identificado en el paso anterior, y listo para ser importado a la base de datos.
         ]]>
     </string>
-    <string name="canceling_thread">Cancelando hilo.</string>>
+    <string name="canceling_thread">Cancelando hilo.</string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
         1. Registra una cuenta en <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>
@@ -72,7 +72,7 @@
         algunos de los cuales también admiten <highlight><b>deslizar hacia la derecha</b></highlight>, por ejemplo, los registros del historial.
         ]]>
     </string>
-    <string name="bug_number">Si este es un número válido, por favor repórtalo en github.</string>
+    <string name="bug_number">Si este es un número válido, por favor repórtalo en GitHub.</string>
     <string name="number_tags">
         <![CDATA[
         - <title><b><no_translate>{cc}</no_translate></b></title><br>

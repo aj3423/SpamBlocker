@@ -37,7 +37,7 @@
           - <a href=\"%s\">Düz metin</a> <br>
           - <a href=\"%s\">CSV</a> <br>
           - <a href=\"%s\">XML</a> <br>
-          - <a href=\"%s\">Json</a> - JsonPath henüz desteklenmiyor, bunun yerine <minor><b>Regex Çıkar</b></minor> kullanın.
+          - <a href=\"%s\">JSON</a> - JsonPath henüz desteklenmiyor, bunun yerine <minor><b>Regex Çıkar</b></minor> kullanın.
     ]]>
     </string>
     <string name="faq_regex">

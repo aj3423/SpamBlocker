@@ -2,7 +2,7 @@
     <string name="api_preset_groq">Groq</string>
     <string name="help_api_preset_groq">
         <![CDATA[
-        SMS içeriğini <b>Groq AI</b> ile kontrol edin, yalnızca bir e-posta hesabına ihtiyaç duyar.
+        SMS içeriğini <b>Groq AI</b> ile kontrol edin, yalnızca bir e-posta gerekir.
         ]]>
     </string>
     <string name="help_api_preset_groq_authorization">

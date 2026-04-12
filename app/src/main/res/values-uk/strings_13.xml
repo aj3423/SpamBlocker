@@ -52,7 +52,7 @@
         Сгенерувати <u>список номерів</u>, що містять спам-номери, ідентифіковані на попередньому кроці, та готові до імпорту до бази даних.
         ]]>
     </string>
-    <string name="canceling_thread">Скасування потоку.</string>>
+    <string name="canceling_thread">Скасування потоку.</string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
         1. Зареєструйте обліковий запис на <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>
@@ -72,7 +72,7 @@
         деякі з яких також підтримують <highlight><b>проведення пальцем праворуч</b></highlight>, наприклад, записи історії.
         ]]>
     </string>
-    <string name="bug_number">Якщо це дійсний номер, будь ласка, повідомте про це на github.</string>
+    <string name="bug_number">Якщо це дійсний номер, будь ласка, повідомте про це на GitHub.</string>
     <string name="number_tags">
         <![CDATA[
         - <title><b><no_translate>{cc}</no_translate></b></title><br>

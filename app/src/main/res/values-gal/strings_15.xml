@@ -2,7 +2,7 @@
     <string name="api_preset_groq">Groq</string>
     <string name="help_api_preset_groq">
         <![CDATA[
-        <b>Comproba o contido das mensaxes SMS con Groq AI</b>, só require unha conta de correo electrónico.
+        <b>Comproba o contido das mensaxes SMS con Groq AI</b>, só require un correo electrónico.
         ]]>
     </string>
     <string name="help_api_preset_groq_authorization">

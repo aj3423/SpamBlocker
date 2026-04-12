@@ -89,7 +89,7 @@
     <string name="rcs">RCS</string>
     <string name="screening">スクリーニング</string>
     <string name="toggled_by_tile">タイルによって切り替えられました</string>
-    <string name="custom_tile">カスタムタイル</string>>
+    <string name="custom_tile">カスタムタイル</string>
     <string name="help_custom_tile">
         <![CDATA[
         クイック設定タイルを使用してルールをすばやく切り替えます。グローバルタイルがアプリ全体を切り替えるのに対し、このカスタムタイルは特定のルールのみに影響します。<br>

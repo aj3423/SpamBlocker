@@ -71,7 +71,7 @@
         bazıları da <highlight><b>sağa kaydırmayı</b></highlight> destekler, örneğin geçmiş kayıtları.
         ]]>
     </string>
-    <string name="bug_number">Bu geçerli bir numara ise lütfen github\'da bildirin.</string>
+    <string name="bug_number">Bu geçerli bir numara ise lütfen GitHub\'da bildirin.</string>
     <string name="number_tags">
         <![CDATA[
         - <title><b><no_translate>{cc}</no_translate></b></title><br>

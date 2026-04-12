@@ -2,7 +2,7 @@
     <string name="api_preset_groq">Groq</string>
     <string name="help_api_preset_groq">
         <![CDATA[
-        בדוק את תוכן ה-SMS באמצעות <b>Groq AI</b>, זה דורש רק חשבון דוא\"ל.
+        בדוק את תוכן ה-SMS באמצעות <b>Groq AI</b>, זה דורש רק דוא\"ל.
         ]]>
     </string>
     <string name="help_api_preset_groq_authorization">

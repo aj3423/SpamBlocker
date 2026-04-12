@@ -5,8 +5,8 @@
     <string name="category_mapping">Category Mapping</string>
     <string name="help_category_mapping">
     <![CDATA[
-        Some APIs return number as the result, such as <b>1</b> for <b>Advertising</b> and <b>2</b> for <b>Scam</b>.
-        They can be mapped to human readable texts.
+        Some APIs return numbers as results, such as <b>1</b> for <b>Advertising</b> and <b>2</b> for <b>Scam</b>.
+        They can be mapped to human-readable labels.
     ]]>
     </string>
     <string name="category_mapping_placeholder">
@@ -34,12 +34,12 @@
     </string>
     <string name="help_call_throttling">
     <![CDATA[
-    What it does is switching the default behavior from <b>allow by default</b> to <b>block by default</b>
+    This switches the default behavior from <b>allow by default</b> to <b>block by default</b>
       for a period, using a temporarily activated regex rule that blocks all calls. <br>
     <br>
     A typical setup includes: <br>
-    &ensp; - A number regex rule that blocks SMS for a particular number or contact group, it\'s disabled and will be activated on the fly.<br>
-    &ensp; - An <b>Call Throttling</b> workflow. <br>
+    &ensp; - A number regex rule that blocks calls for a particular number or contact group, it\'s disabled and will be activated on the fly.<br>
+    &ensp; - A <b>Call Throttling</b> workflow. <br>
     <br>
     <b>Options:</b> <br>
     <br>
@@ -91,7 +91,7 @@
     SMS messages will be blocked during this period (in seconds). <br>
     <br>
     - <title><b>Count Limit</b></title> <br>
-    Allow first N notifications. <br>
+    Allow the first N notifications. <br>
     <br>
     - <title><b>Including Answered</b></title> <br>
     - <title><b>Minimal Call Duration</b></title> <br>

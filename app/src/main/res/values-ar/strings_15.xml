@@ -2,7 +2,7 @@
     <string name="api_preset_groq">Groq</string>
     <string name="help_api_preset_groq">
         <![CDATA[
-        تحقق من محتوى الرسائل النصية باستخدام <b >Groq AI</b>، يتطلب فقط حساب بريد إلكتروني.
+        تحقق من محتوى الرسائل النصية باستخدام <b>Groq AI</b>، يتطلب فقط بريدًا إلكترونيًا.
         ]]>
     </string>
     <string name="help_api_preset_groq_authorization">

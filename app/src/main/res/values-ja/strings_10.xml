@@ -14,7 +14,7 @@
         &emsp;&emsp; 123456789 &emsp;(通常の番号)<br>
         &emsp;&emsp; <error><b>+</b></error>123456789 &emsp;(先頭に<error><b>+</b></error>付き)<br>
         &emsp;&emsp; <error><b>0</b></error>123456789 &emsp;(国内の市外局番のプレフィックス<error><b>0</b></error>付き)<br>
-        &emsp;&emsp; <error><b>00</b></error>123456789 &emsp;(2つの<error><b>0</b></error>s)<br>
+        &emsp;&emsp; <error><b>00</b></error>123456789 &emsp;(<error><b>0</b></error>が2つ)<br>
         &emsp; これらは<b>すべて</b>123456789としてチェックされ、<highlight><b>123.*</b></highlight> で一致させることができます<br>
         この番号の最適化は、正規表現フラグ `Raw Number` で<b>無効</b>にできます。<br>
         <br>
@@ -37,7 +37,7 @@
         <br>
         <h5><title> - .csvからルールをインポート</title></h5>
         `追加` ボタンを長押しして、.csvファイルから番号をインポートします。<br>
-        <brg>
+        <br>
         ]]>
     </string>
     <string name="import_csv_columns">

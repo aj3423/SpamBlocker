@@ -92,7 +92,7 @@
     <string name="rcs">RCS</string>
     <string name="screening">Filterung</string>
     <string name="toggled_by_tile">Umschaltbar per Kachel</string>
-    <string name="custom_tile">Benutzerdefinierte Kachel</string>>
+    <string name="custom_tile">Benutzerdefinierte Kachel</string>
     <string name="help_custom_tile">
         <![CDATA[
         Regeln schnell über die Schnelleinstellungs-Kachel umschalten. Während die globale Kachel die gesamte App umschaltet,<br>

@@ -116,12 +116,12 @@
         <![CDATA[
         Create a new notification channel. <br>
         <br>
-        <highlight><b>Long tap</b></highlight> a notification channel in this dropdown list to edit it.
+        <highlight><b>Long press</b></highlight> a notification channel in this dropdown list to edit it.
         ]]>
     </string>
     <string name="warning_delete_channel">
         <![CDATA[
-        This channel is currently used by following rules. <br>
+        This channel is currently used by the following rules. <br>
         <br>
         %s<br>
         <br>

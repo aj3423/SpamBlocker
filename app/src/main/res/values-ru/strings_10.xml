@@ -14,7 +14,7 @@
         &emsp;&emsp; 123456789 &emsp;(обычный номер)<br>
         &emsp;&emsp; <error><b>+</b></error>123456789 &emsp;(с ведущим <error><b>+</b></error>)<br>
         &emsp;&emsp; <error><b>0</b></error>123456789 &emsp;(с префиксом междугородней связи <error><b>0</b></error>)<br>
-        &emsp;&emsp; <error><b>00</b></error>123456789 &emsp;(два <error><b>0</b></error>s)<br>
+        &emsp;&emsp; <error><b>00</b></error>123456789 &emsp;(два <error><b>0</b></error>)<br>
         &emsp; <b>Все</b> они проверяются как 123456789 и могут быть сопоставлены с помощью <highlight><b>123.*</b></highlight><br>
         Эта оптимизация номера может быть <b>отключена</b> с помощью флага регулярного выражения `Исходный номер`.<br>
         <br>
@@ -37,7 +37,7 @@
         <br>
         <h5><title> - Импорт правил из .csv</title></h5>
         Нажмите и удерживайте кнопку «Добавить», чтобы импортировать номера из файла .csv.<br>
-        <brg>
+        <br>
         ]]>
     </string>
     <string name="import_csv_columns">

@@ -134,9 +134,9 @@
         La majoria d\'elements de la interfície d\'usuari semblants a targetes d\'aquesta aplicació estan associats a gestos de lliscament,
         alguns dels quals també admeten <highlight><b>lliscament cap a la dreta</b></highlight>, per exemple, els registres de l\'historial.
         ]]>
-    </string>>
-    <string name="bug_number">Si aquest és un número vàlid, informa\'l a github.</string>>
-    <string name="skip_alpha_empty_number">Omet el número alfanumèric o buit.</string>>
+    </string>
+    <string name="bug_number">Si aquest és un número vàlid, informa\'l a GitHub.</string>
+    <string name="skip_alpha_empty_number">Omet el número alfanumèric o buit.</string>
     <string name="escape_tags">
         <![CDATA[
         - <title><b><no_translate>{escape(…)}</no_translate></b></title><br>

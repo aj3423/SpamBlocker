@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">垃圾电话拦截</string>
+    <string name="app_name">骚扰拦截</string>
     <string name="setting">设置</string>
     <string name="call">通话</string>
     <string name="sms">短信</string>
@@ -9,7 +9,7 @@
     <string name="pattern_contain_invisible_characters">检测到不可见字符</string>
     <string name="pattern_contain_leading_zeroes">无需添加前导0，系统会自动移除。</string>
     <string name="pattern_contain_leading_plus">无需添加前导+，系统会自动移除。</string>
-    <string name="check_balloon_for_explanation">查看 `号码规则` 帮助了解更多信息。</string>
+    <string name="check_balloon_for_explanation">查看“号码规则”帮助获取详细说明。</string>
     <string name="invalid_number">无效号码</string>
     <string name="description">描述</string>
     <string name="new_">新建</string>
@@ -41,12 +41,12 @@
     <string name="import_fail">导入失败</string>
     <string name="prompt_go_to_permission_setting">
         <![CDATA[
-        <translate>此功能需要权限:<br>
+        <translate>此功能需要以下权限：<br>
         <br>
         <title>%s</title><br>
         <br>
         必须在系统设置中手动启用。<br>
-        打开该设置页面?</translate>
+        打开该设置页面？</translate>
         ]]>
     </string>
     <string name="emergency_call">紧急呼叫</string>

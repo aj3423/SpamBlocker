@@ -92,7 +92,7 @@
     <string name="rcs">RCS</string>
     <string name="screening">Фільтрація</string>
     <string name="toggled_by_tile">Переключено плиткою</string>
-    <string name="custom_tile">Користувацька плитка</string>>
+    <string name="custom_tile">Користувацька плитка</string>
     <string name="help_custom_tile">
         <![CDATA[
         Швидко перемикайте правила за допомогою плитки швидких налаштувань. У той час як глобальна плитка перемикає всю програму, ця користувацька плитка впливає лише на певні правила. <br>

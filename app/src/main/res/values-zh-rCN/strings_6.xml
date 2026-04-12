@@ -3,7 +3,7 @@
     <![CDATA[
         抱歉，应用已崩溃。 <br>
         <br>
-        请复制以下内容并在 github 上报告此问题，报告前请删除任何敏感信息。
+        请复制以下内容并在 GitHub 上提交问题，提交前请先删除任何敏感信息。
     ]]>
     </string>
     <string-array name="weekdays_abbrev">
@@ -23,7 +23,7 @@
     <string name="days">天</string>
     <string name="help_log_sms_content">
         <![CDATA[
-        启用后，短信内容也将记录在数据库中并显示在此列表中，禁用后将不会记录在数据库中。
+        启用后，短信内容会记录到数据库并显示在此列表中；禁用后将不再记录。
         ]]>
     </string>
 
@@ -58,7 +58,7 @@
     <string name="source_code">源代码</string>
     <string name="dismiss">关闭</string>
     <string name="warning_running_in_work_profile">
-        此应用程序可能无法在工作配置文件中正常工作，请将其安装在主配置文件中。
+        本应用在工作配置文件中可能无法正常运行，请改为安装到主配置文件。
     </string>
     <string-array name="import_csv_type">
         <item>将 .csv 导入为单个规则</item>

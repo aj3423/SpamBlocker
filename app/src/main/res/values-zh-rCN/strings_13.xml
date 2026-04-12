@@ -52,7 +52,7 @@
         生成一个包含从上一步识别的垃圾电话号码的<u>号码列表</u>，并准备导入数据库。
         ]]>
     </string>
-    <string name="canceling_thread">正在取消线程。</string>>
+    <string name="canceling_thread">正在取消线程。</string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
         1. 在<a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a>注册账户<br>
@@ -70,7 +70,7 @@
         此应用中的大多数卡片式 UI 元素都与滑动手势相关联，其中一些也支持<highlight><b>向右滑动</b></highlight>，例如，历史记录。
         ]]>
     </string>
-    <string name="bug_number">如果这是一个有效号码，请在github上报告。</string>
+    <string name="bug_number">如果这是一个有效号码，请在GitHub上报告。</string>
     <string name="number_tags">
         <![CDATA[
         - <title><b><no_translate>{cc}</no_translate></b></title><br>

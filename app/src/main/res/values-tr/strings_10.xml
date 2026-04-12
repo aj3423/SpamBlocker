@@ -37,7 +37,7 @@
         <br>
         <h5><title> - .csv\'den kuralları içe aktar</title></h5>
         .csv dosyasından numaraları içe aktarmak için `Ekle` düğmesine uzun basın.<br>
-        <brg>
+        <br>
         ]]>
     </string>
     <string name="import_csv_columns">

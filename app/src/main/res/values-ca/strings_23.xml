@@ -92,7 +92,7 @@
     <string name="rcs">RCS</string>
     <string name="screening">Filtratge</string>
     <string name="toggled_by_tile">Activat/desactivat per la rajola</string>
-    <string name="custom_tile">Rajola personalitzada</string>>
+    <string name="custom_tile">Rajola personalitzada</string>
     <string name="help_custom_tile">
         <![CDATA[
         Activa o desactiva ràpidament les regles utilitzant la rajola de Configuració Ràpida. Mentre la rajola global activa/desactiva tota l\'aplicació,

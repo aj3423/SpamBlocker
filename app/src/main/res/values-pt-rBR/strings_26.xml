@@ -37,7 +37,7 @@
           - <a href=\"%s\">Texto simples</a> <br>
           - <a href=\"%s\">CSV</a> <br>
           - <a href=\"%s\">XML</a> <br>
-          - <a href=\"%s\">Json</a> - JsonPath ainda não é suportado, use <minor><b>Extrair Regex</b></minor> em vez disso.
+          - <a href=\"%s\">JSON</a> - JsonPath ainda não é suportado, use <minor><b>Extrair Regex</b></minor> em vez disso.
     ]]>
     </string>
     <string name="faq_regex">

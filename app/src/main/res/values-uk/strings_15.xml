@@ -2,7 +2,7 @@
     <string name="api_preset_groq">Groq</string>
     <string name="help_api_preset_groq">
         <![CDATA[
-        Перевірте вміст SMS за допомогою <b >Groq AI</b>, для цього потрібен лише обліковий запис електронної пошти.
+        Перевірте вміст SMS за допомогою <b>Groq AI</b>, для цього потрібна лише електронна пошта.
         ]]>
     </string>
     <string name="help_api_preset_groq_authorization">

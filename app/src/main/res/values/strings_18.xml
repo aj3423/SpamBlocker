@@ -43,8 +43,8 @@
         ]]>
     </string>
     <string name="sms_event_triggered">SMS event %s is triggered.</string>
-    <string name="use_global_testing_instead">Use the global testing instead.</string>
-    <string name="missing_permissions">Following permissions were previously granted but are currently missing:</string>
+    <string name="use_global_testing_instead">Use global testing instead.</string>
+    <string name="missing_permissions">The following permissions were previously granted but are currently missing:</string>
     <string name="grant_permissions">Grant Permissions</string>
     <string name="perm_call_screening">Call Screening</string>
     <string name="perm_file_read">File Read</string>
@@ -61,7 +61,7 @@
     <string name="perm_usage_stats">Usage Stats</string>
     <string name="perm_battery_unrestricted">Battery Unrestricted</string>
     <string name="include_sms">Include SMS</string>
-    <string name="minimal_duration">Minimal Duration</string>
+    <string name="minimal_duration">Minimum Duration</string>
     <string name="answered_number"><short>Answered Number</short></string>
     <string name="help_answered">
         <![CDATA[

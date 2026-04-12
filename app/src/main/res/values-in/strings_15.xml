@@ -2,7 +2,7 @@
     <string name="api_preset_groq">Groq</string>
     <string name="help_api_preset_groq">
         <![CDATA[
-        Periksa isi SMS menggunakan <b>Groq AI</b>, hanya memerlukan akun email.
+        Periksa isi SMS menggunakan <b>Groq AI</b>, hanya memerlukan email.
         ]]>
     </string>
     <string name="help_api_preset_groq_authorization">

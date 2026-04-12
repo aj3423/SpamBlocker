@@ -34,8 +34,8 @@
     <string name="quick_settings">クイック設定</string>
     <string name="regex_settings">正規表現設定</string>
     <string name="backup">バックアップ</string>
-    <string name="import_">インポート</string>
-    <string name="export">エクスポート</string>
+    <string name="import_">取込</string>
+    <string name="export">書出</string>
     <string name="config_text">設定テキスト</string>
     <string name="imported_successfully">インポートが正常に完了しました。</string>
     <string name="import_fail">インポートに失敗しました。</string>

@@ -37,7 +37,7 @@
         <br>
         <h5><title> - Importer des règles à partir de .csv</title></h5>
         Appuyez longuement sur le bouton `Add` pour importer des numéros à partir d\'un fichier .csv.<br>
-        <brg>
+        <br>
         ]]>
     </string>
     <string name="import_csv_columns">

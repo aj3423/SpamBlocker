@@ -92,7 +92,7 @@
     <string name="rcs">RCS</string>
     <string name="screening">Фильтрация</string>
     <string name="toggled_by_tile">Переключено плиткой</string>
-    <string name="custom_tile">Пользовательская плитка</string>>
+    <string name="custom_tile">Пользовательская плитка</string>
     <string name="help_custom_tile">
         <![CDATA[
         Быстро переключайте правила с помощью плитки быстрых настроек. В то время как глобальная плитка переключает все приложение,
