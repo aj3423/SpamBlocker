@@ -31,14 +31,16 @@ object CountryCode {
         return try {
             val telephonyManager = ctx.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
             telephonyManager.networkCountryIso.uppercase()
-        } catch (_: Exception) {
+        } catch (e: Exception) {
+            logi("networkAlpha2 error: $e")
             null
         }
     }
     fun localeAlpha2(context: Context): String? {
         return try {
             context.resources.configuration.locales[0].country.uppercase()
-        } catch (_: Exception) {
+        } catch (e: Exception) {
+            logi("localeAlpha2 error: $e")
             null
         }
     }
@@ -50,6 +52,7 @@ object CountryCode {
     fun current(ctx: Context): Int? {
 
         val XX = alpha2(ctx) // "US"
+        logi("alpha2: $XX")
 
         // https://countrycode.org/
         return when (XX) {
