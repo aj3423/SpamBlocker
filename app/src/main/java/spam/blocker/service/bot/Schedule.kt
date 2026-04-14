@@ -10,14 +10,19 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import kotlinx.serialization.PolymorphicSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import spam.blocker.R
 import spam.blocker.ui.M
+import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.HourMinInput
+import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowCenter
+import spam.blocker.ui.widgets.RowVCenterSpaced
+import spam.blocker.ui.widgets.SummaryLabel
 import spam.blocker.ui.widgets.WeekdayPicker2
 import spam.blocker.util.BotJson
 import spam.blocker.util.LocalDateTimeMockk
@@ -53,11 +58,16 @@ interface ISchedule {
     fun isValid(): Boolean
     fun nextOccurrence(): Duration?
 
-    // A displaying label
+    // "Daily" / "Weekly" / "Periodically"
     fun label(ctx: Context): String
+    // "Interval" for Periodically, "Time" for Daily and Weekly
+    fun optionLabelId() : Int
 
     // A brief summary for all the current configurations, like: "Everyday 12:00"
-    fun summary(ctx: Context): String
+    fun summaryLabel(ctx: Context): String
+
+    @Composable
+    fun Summary()
 
     // Use a function to avoid being serialized to json
     // And to avoid using variable with @Transient, it doesn't support fields in interface.
@@ -113,6 +123,7 @@ class Time(
     fun summary() : String { return "%02d:%02d".format(hour, min) }
 }
 
+// This is used internally for reporting numbers after 1 hour.
 @Serializable
 @SerialName("Delay")
 class Delay(
@@ -137,8 +148,16 @@ class Delay(
         return ctx.getString(R.string.delay)
     }
 
-    override fun summary(ctx: Context): String {
+    override fun optionLabelId(): Int {
+        return R.string.delay
+    }
+
+    override fun summaryLabel(ctx: Context): String {
         return time.summary()
+    }
+    @Composable
+    override fun Summary() {
+        SummaryLabel(summaryLabel(LocalContext.current))
     }
 
     @Composable
@@ -177,9 +196,19 @@ class Daily(
     override fun label(ctx: Context): String {
         return ctx.getString(R.string.daily)
     }
+    override fun optionLabelId(): Int {
+        return R.string.at_time
+    }
 
-    override fun summary(ctx: Context): String {
+    override fun summaryLabel(ctx: Context): String {
         return time.summary()
+    }
+    @Composable
+    override fun Summary() {
+        RowVCenterSpaced(6) {
+            GreyIcon16(R.drawable.ic_daily)
+            SummaryLabel(summaryLabel(LocalContext.current))
+        }
     }
 
     @Composable
@@ -242,7 +271,11 @@ class Weekly(
         return ctx.getString(R.string.weekly)
     }
 
-    override fun summary(ctx: Context): String {
+    override fun optionLabelId(): Int {
+        return R.string.at_time
+    }
+
+    override fun summaryLabel(ctx: Context): String {
         val days = weekdays.sorted()
         if (days.size == 7) {
             return ctx.getString(R.string.everyday) + " " + time.summary()
@@ -257,6 +290,16 @@ class Weekly(
             if (it.value == 7) labels[0] else labels[it.value]
         }
         return daySummary + " " + time.summary()
+    }
+
+    @Composable
+    override fun Summary() {
+        val ctx = LocalContext.current
+
+        RowVCenterSpaced(6) {
+            GreyIcon16(R.drawable.ic_weekly)
+            SummaryLabel(summaryLabel(ctx))
+        }
     }
 
     @Composable
@@ -298,8 +341,20 @@ class Periodically(
         return ctx.getString(R.string.periodically)
     }
 
-    override fun summary(ctx: Context): String {
+    override fun optionLabelId(): Int {
+        return R.string.interval
+    }
+
+    override fun summaryLabel(ctx: Context): String {
         return time.summary()
+    }
+
+    @Composable
+    override fun Summary() {
+        RowVCenterSpaced(6) {
+            GreyIcon16(R.drawable.ic_repeat)
+            SummaryLabel(summaryLabel(LocalContext.current))
+        }
     }
 
     @Composable

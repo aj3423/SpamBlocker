@@ -151,7 +151,6 @@ data class Schedule(
 
     @Composable
     override fun Summary(showIcon: Boolean) {
-        val ctx = LocalContext.current
         RowVCenterSpaced(6) {
             // Green dot
             if (enabled) {
@@ -163,7 +162,7 @@ data class Schedule(
                         Icon()
                     }
                 }
-                SummaryLabel(schedule.summary(ctx))
+                schedule.Summary()
             }
         }
     }
@@ -242,8 +241,10 @@ data class Schedule(
 
                 val triggerConfigSchedule = rememberSaveable { mutableStateOf(false) }
                 EditScheduleDialog(trigger = triggerConfigSchedule, scheduleState)
-                LabeledRow(R.string.time) {
-                    GreyButton(label = scheduleState.value!!.summary(ctx)) {
+                LabeledRow(
+                    labelId = scheduleState.value!!.optionLabelId()
+                ) {
+                    GreyButton(label = scheduleState.value!!.summaryLabel(ctx)) {
                         triggerConfigSchedule.value = true
                     }
                 }

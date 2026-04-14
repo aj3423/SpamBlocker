@@ -12,4 +12,6 @@
         Il semble s\'agir d\'un flux de travail « requête API », il devrait être importé dans la section ci‑dessus « Requête instantanée ».
         ]]>
     </string>
+    <string name="at_time">À l\'heure</string>
+    <string name="interval">Intervalle</string>
 </resources>

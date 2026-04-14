@@ -12,4 +12,6 @@
         به نظر می‌رسد این یک جریان کاری \"پرس‌وجوی API\" باشد، باید به بخش \"پرس‌وجوی فوری\" بالا وارد شود.
         ]]>
     </string>
+    <string name="at_time">در زمان</string>
+    <string name="interval">فاصله</string>
 </resources>

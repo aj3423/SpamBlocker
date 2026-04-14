@@ -12,4 +12,6 @@
         يبدو أن هذا تدفق عمل \"API query\"، يجب استيراده إلى القسم أعلاه \"Instant Query\".
         ]]>
     </string>
+    <string name="at_time">في الوقت</string>
+    <string name="interval">الفاصل</string>
 </resources>

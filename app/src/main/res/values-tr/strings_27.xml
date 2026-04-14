@@ -12,4 +12,6 @@
         Bu, bir \"API sorgusu\" iş akışı gibi görünüyor, yukarıdaki \"Anlık Sorgu\" bölümüne aktarılmalıdır.
         ]]>
     </string>
+    <string name="at_time">Saat</string>
+    <string name="interval">Aralık</string>
 </resources>

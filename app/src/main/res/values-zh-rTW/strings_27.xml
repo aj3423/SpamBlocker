@@ -12,4 +12,6 @@
         這似乎是一個「API 查詢」工作流程，應該匯入到上方的「即時查詢」區段。
         ]]>
     </string>
+    <string name="at_time">指定時間</string>
+    <string name="interval">間隔</string>
 </resources>

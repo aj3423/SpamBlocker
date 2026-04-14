@@ -12,4 +12,6 @@
         Dies scheint ein \"API‑Abfrage\"-Workflow zu sein, er sollte in den oben genannten Abschnitt \"Sofortabfrage\" importiert werden.
         ]]>
     </string>
+    <string name="at_time">Zur Zeit</string>
+    <string name="interval">Intervall</string>
 </resources>

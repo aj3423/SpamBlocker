@@ -12,4 +12,6 @@
         Sembra che questo sia un flusso di lavoro \"API query\", dovrebbe essere importato nella sezione sopra \"Instant Query\".
         ]]>
     </string>
+    <string name="at_time">All\'ora</string>
+    <string name="interval">Intervallo</string>
 </resources>

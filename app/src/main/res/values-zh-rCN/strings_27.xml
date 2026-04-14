@@ -12,4 +12,6 @@
         这似乎是一个“API 查询”工作流，应该导入到上面的“即时查询”部分。
         ]]>
     </string>
+    <string name="at_time">定时</string>
+    <string name="interval">间隔</string>
 </resources>

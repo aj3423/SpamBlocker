@@ -12,4 +12,6 @@
         נראה שזהו זרימת עבודה של \"שאילתת API\", יש לייבא אותה אל הסעיף למעלה \"שאילתת מיידית\".
         ]]>
     </string>
+    <string name="at_time">בשעה</string>
+    <string name="interval">מרווח</string>
 </resources>

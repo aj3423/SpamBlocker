@@ -12,4 +12,6 @@
         これは「APIクエリ」ワークフローのようです。上記の「Instant Query」セクションにインポートする必要があります。
         ]]>
     </string>
+    <string name="at_time">時刻</string>
+    <string name="interval">間隔</string>
 </resources>

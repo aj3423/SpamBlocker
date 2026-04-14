@@ -12,4 +12,6 @@
         Это, кажется, рабочий процесс \"API query\", его следует импортировать в вышеуказанный раздел \"Instant Query\".
         ]]>
     </string>
+    <string name="at_time">Время</string>
+    <string name="interval">Интервал</string>
 </resources>

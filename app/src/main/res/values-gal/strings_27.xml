@@ -12,4 +12,6 @@
         Semella ser un fluxo de traballo de \"consulta API\", debería importarse á sección anterior \"Consulta Instantánea\".
         ]]>
     </string>
+    <string name="at_time">Á hora</string>
+    <string name="interval">Intervalo</string>
 </resources>
