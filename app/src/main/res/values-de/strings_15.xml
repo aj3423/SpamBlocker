@@ -128,7 +128,8 @@
     </string>
     <string name="help_history_expiry">
         <![CDATA[
-            Wenn aktiviert, verfallen Verlaufseinträge nach N Tagen, abgelaufene Einträge werden automatisch gelöscht.
+                Wenn aktiviert, werden Verlaufseinträge nach N Tagen automatisch gelöscht. <br>
+                Die Bereinigungsaufgabe läuft täglich um 00:00 Uhr.
         ]]>
     </string>
 </resources>

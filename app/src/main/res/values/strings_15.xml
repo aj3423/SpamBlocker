@@ -116,7 +116,8 @@
     </string>
     <string name="help_history_expiry">
         <![CDATA[
-            When enabled, history records will expire after N days, expired records will be deleted automatically.
+            When enabled, history records will be automatically deleted after N days. <br>
+            The cleanup task runs daily at 00:00.
         ]]>
     </string>
     <string name="never_expire"><short>Never Expire</short></string>

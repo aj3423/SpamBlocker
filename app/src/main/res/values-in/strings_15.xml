@@ -128,7 +128,8 @@
     </string>
     <string name="help_history_expiry">
         <![CDATA[
-            Saat diaktifkan, catatan riwayat akan kedaluwarsa setelah N hari, catatan yang kedaluwarsa akan dihapus secara otomatis.
+                Saat diaktifkan, catatan riwayat akan dihapus secara otomatis setelah N hari. <br>
+                Tugas pembersihan berjalan setiap hari pada pukul 00:00.
         ]]>
     </string>
 </resources>

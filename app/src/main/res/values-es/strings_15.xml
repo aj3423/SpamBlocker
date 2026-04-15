@@ -127,7 +127,8 @@
     </string>
     <string name="help_history_expiry">
         <![CDATA[
-            Cuando está activado, los registros del historial expirarán después de N días, los registros expirados se eliminarán automáticamente.
+                Cuando está activado, los registros del historial se eliminarán automáticamente después de N días. <br>
+                La tarea de limpieza se ejecuta todos los días a las 00:00.
         ]]>
     </string>
 </resources>

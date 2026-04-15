@@ -127,7 +127,8 @@
     </string>
     <string name="help_history_expiry">
         <![CDATA[
-            Quando abilitato, i record della cronologia scadranno dopo N giorni, i record scaduti verranno eliminati automaticamente.
+                Quando abilitato, i record della cronologia verranno eliminati automaticamente dopo N giorni. <br>
+                L\'attività di pulizia viene eseguita ogni giorno alle 00:00.
         ]]>
     </string>
 </resources>

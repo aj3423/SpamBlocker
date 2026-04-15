@@ -127,7 +127,8 @@
     </string>
     <string name="help_history_expiry">
         <![CDATA[
-            Quan està activat, els registres d\'historial caducaran després de N dies, els registres caducats s\'eliminaran automàticament.
+                Quan està activat, els registres de l\'historial s\'eliminaran automàticament després de N dies. <br>
+                La tasca de neteja s\'executa cada dia a les 00:00.
         ]]>
     </string>
 </resources>

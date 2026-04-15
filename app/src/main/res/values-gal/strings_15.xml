@@ -128,7 +128,8 @@
     </string>
     <string name="help_history_expiry">
         <![CDATA[
-            Cando está activado, os rexistros do historial caducarán despois de N días, os rexistros caducados eliminaranse automaticamente.
+                Cando está activado, os rexistros do historial eliminaranse automaticamente despois de N días. <br>
+                A tarefa de limpeza execútase cada día ás 00:00.
         ]]>
     </string>
 </resources>

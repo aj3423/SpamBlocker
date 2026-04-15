@@ -126,7 +126,8 @@
     </string>
     <string name="help_history_expiry">
         <![CDATA[
-            當啟用時，歷史記錄將在 N 天後過期，過期的記錄會自動刪除。
+                當啟用時，歷史記錄會在 N 天後自動刪除。 <br>
+                清理工作會在每天 00:00 執行。
         ]]>
     </string>
 </resources>
