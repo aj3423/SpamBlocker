@@ -40,18 +40,27 @@
     <string name="action_category_config">תצורת קטגוריה</string>
     <string name="help_action_category_config">
         <![CDATA[
-        רק קטגוריות הספאם הבאות נתמכות, כל קטגוריה אחרת מה-API צריכה להיות ממופה לאחת מהן.<br>
-        <br>
-         - <highlight><b>{valid}</b></highlight><br>
-        &ensp; דווח כמספר תקין, לא כספאם.<br>
-        <br>
-         - <error><b>{fraud}</b></error><br>
-         - <error><b>{marketing}</b></error><br>
-         - <error><b>{survey}</b></error><br>
-         - <error><b>{political}</b></error><br>
-        <br>
-         - <error><b>{other}</b></error><br>
-        &ensp; סוג הספאם החלופי, המשמש כאשר אף אחת מהקטגוריות הנ\"ל אינה חלה.<br>
+                רק הקטגוריות הבאות נתמכות:<br>
+                <br>
+                 - <highlight><b>{valid}</b></highlight><br>
+                &ensp; דווח כמספר טלפון תקין, לא כשיחת ספאם.<br>
+                <br>
+                 - <error><b>{fraud}</b></error><br>
+                 - <error><b>{marketing}</b></error><br>
+                 - <error><b>{survey}</b></error><br>
+                 - <error><b>{political}</b></error><br>
+                 - <error><b>{other}</b></error><br>
+                &ensp; סוג ברירת המחדל של שיחת ספאם, המשמש כאשר אף אחת מהקטגוריות שלעיל אינה חלה.<br>
+                <br>
+                הדבר יוצר את התגית <title>{category}</title>, שבה ניתן להשתמש בבקשות HTTP הבאות. <br>
+                <br>
+                לדוגמה, גוף בקשת POST: <br>
+                <sample>
+                { <br>
+                    &ensp; \"phone\": \"{number}\", <br>
+                    &ensp; \"rating\": \"{category}\" <br>
+                }
+                </sample>
         ]]>
     </string>
     <string name="missing_category">

@@ -40,18 +40,27 @@
     <string name="action_category_config">Настройка категории</string>
     <string name="help_action_category_config">
         <![CDATA[
-        Поддерживаются только следующие категории спама, любые другие категории из API должны быть сопоставлены с одной из них.<br>
-        <br>
-         - <highlight><b>{valid}</b></highlight><br>
-        &ensp; Сообщить, что номер надёжный, не спам.<br>
-        <br>
-         - <error><b>{fraud}</b></error><br>
-         - <error><b>{marketing}</b></error><br>
-         - <error><b>{survey}</b></error><br>
-         - <error><b>{political}</b></error><br>
-        <br>
-         - <error><b>{other}</b></error><br>
-        &ensp; Резервный тип спама, используемый, если ни одна из вышеперечисленных категорий не подходит.<br>
+                Поддерживаются только следующие категории:<br>
+                <br>
+                 - <highlight><b>{valid}</b></highlight><br>
+                &ensp; Сообщить как о действительном номере телефона, а не как о спам-звонке.<br>
+                <br>
+                 - <error><b>{fraud}</b></error><br>
+                 - <error><b>{marketing}</b></error><br>
+                 - <error><b>{survey}</b></error><br>
+                 - <error><b>{political}</b></error><br>
+                 - <error><b>{other}</b></error><br>
+                &ensp; Резервный тип спам-звонка, используемый, если ни одна из вышеперечисленных категорий не подходит.<br>
+                <br>
+                Это создаёт тег <title>{category}</title>, который можно использовать в последующих HTTP-запросах. <br>
+                <br>
+                Например, тело POST-запроса: <br>
+                <sample>
+                { <br>
+                    &ensp; \"phone\": \"{number}\", <br>
+                    &ensp; \"rating\": \"{category}\" <br>
+                }
+                </sample>
         ]]>
     </string>
     <string name="missing_category">

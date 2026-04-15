@@ -40,18 +40,27 @@
     <string name="action_category_config">تكوين الفئة</string>
     <string name="help_action_category_config">
         <![CDATA[
-        يتم دعم فئات الرسائل غير المرغوب فيها التالية فقط، يجب تعيين أي فئة أخرى من واجهة برمجة التطبيقات (API) إلى إحدى هذه الفئات.<br>
-        <br>
-         - <highlight><b>{valid}</b></highlight><br>
-        &ensp; الإبلاغ كرقم صالح، وليس رسائل غير مرغوب فيها.<br>
-        <br>
-         - <error><b>{fraud}</b></error><br>
-         - <error><b>{marketing}</b></error><br>
-         - <error><b>{survey}</b></error><br>
-         - <error><b>{political}</b></error><br>
-        <br>
-         - <error><b>{other}</b></error><br>
-        &ensp; النوع الاحتياطي للرسائل غير المرغوب فيها، يستخدم عندما لا تنطبق أي من الفئات المذكورة أعلاه.<br>
+                يتم دعم الفئات التالية فقط:<br>
+                <br>
+                 - <highlight><b>{valid}</b></highlight><br>
+                &ensp; الإبلاغ عنه كرقم هاتف صالح، وليس مكالمة مزعجة.<br>
+                <br>
+                 - <error><b>{fraud}</b></error><br>
+                 - <error><b>{marketing}</b></error><br>
+                 - <error><b>{survey}</b></error><br>
+                 - <error><b>{political}</b></error><br>
+                 - <error><b>{other}</b></error><br>
+                &ensp; النوع الاحتياطي للمكالمات المزعجة، ويُستخدم عندما لا تنطبق أي من الفئات المذكورة أعلاه.<br>
+                <br>
+                يؤدي ذلك إلى إنشاء الوسم <title>{category}</title>، والذي يمكن استخدامه في طلبات HTTP اللاحقة. <br>
+                <br>
+                على سبيل المثال، نص طلب POST: <br>
+                <sample>
+                { <br>
+                    &ensp; \"phone\": \"{number}\", <br>
+                    &ensp; \"rating\": \"{category}\" <br>
+                }
+                </sample>
         ]]>
     </string>
     <string name="missing_category">

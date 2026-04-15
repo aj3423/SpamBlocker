@@ -40,7 +40,7 @@
     <string name="action_category_config">Category Config</string>
     <string name="help_action_category_config">
         <![CDATA[
-        Only the following spam categories are supported, any other category from the API should be mapped to one of them.<br>
+        Only the following categories are supported:<br>
         <br>
          - <highlight><b>{valid}</b></highlight><br>
         &ensp; Report as a valid number, not spam.<br>
@@ -49,9 +49,18 @@
          - <error><b>{marketing}</b></error><br>
          - <error><b>{survey}</b></error><br>
          - <error><b>{political}</b></error><br>
-        <br>
          - <error><b>{other}</b></error><br>
         &ensp; The fallback spam type, used when none of the above categories apply.<br>
+        <br>
+        It generates the tag <title>{category}</title> which can be used in subsequent HTTP requests. <br>
+        <br>
+        For example, post body: <br>
+        <sample>
+        { <br>
+          &ensp; \"phone\": \"{number}\", <br>
+          &ensp; \"rating\": \"{category}\" <br>
+        }
+        </sample>
         ]]>
     </string>
     <string name="missing_category">

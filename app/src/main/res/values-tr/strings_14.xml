@@ -40,18 +40,27 @@
     <string name="action_category_config">Kategori Yapılandırması</string>
     <string name="help_action_category_config">
         <![CDATA[
-        Yalnızca aşağıdaki spam kategorileri desteklenir, API\'den gelen diğer tüm kategoriler bunlardan birine eşleştirilmelidir.<br>
-        <br>
-         - <highlight><b>{geçerli}</b></highlight><br>
-        &ensp; Geçerli numara olarak bildirin, spam değil.<br>
-        <br>
-         - <error><b>{sahtekarlık}</b></error><br>
-         - <error><b>{pazarlama}</b></error><br>
-         - <error><b>{anket}</b></error><br>
-         - <error><b>{siyasi}</b></error><br>
-        <br>
-         - <error><b>{diğer}</b></error><br>
-        &ensp; Yukarıdaki kategorilerden hiçbiri uygulanmadığında kullanılan yedek spam türü.<br>
+                Yalnızca aşağıdaki kategoriler desteklenir:<br>
+                <br>
+                 - <highlight><b>{geçerli}</b></highlight><br>
+                &ensp; Geçerli bir telefon numarası olarak bildirin, spam araması olarak değil.<br>
+                <br>
+                 - <error><b>{sahtekarlık}</b></error><br>
+                 - <error><b>{pazarlama}</b></error><br>
+                 - <error><b>{anket}</b></error><br>
+                 - <error><b>{siyasi}</b></error><br>
+                 - <error><b>{diğer}</b></error><br>
+                &ensp; Yukarıdaki kategorilerden hiçbiri uymadığında kullanılan yedek spam araması türü.<br>
+                <br>
+                Bu, sonraki HTTP isteklerinde kullanılabilecek <title>{category}</title> etiketini oluşturur. <br>
+                <br>
+                Örneğin, POST gövdesi: <br>
+                <sample>
+                { <br>
+                    &ensp; \"phone\": \"{number}\", <br>
+                    &ensp; \"rating\": \"{category}\" <br>
+                }
+                </sample>
         ]]>
     </string>
     <string name="missing_category">

@@ -40,18 +40,27 @@
     <string name="action_category_config">Config. de Categoria</string>
     <string name="help_action_category_config">
         <![CDATA[
-        Apenas as seguintes categorias de spam são suportadas, qualquer outra categoria da API deve ser mapeada para uma delas.<br>
-        <br>
-         - <highlight><b>{válido}</b></highlight><br>
-        &ensp; Reportar como número válido, não spam.<br>
-        <br>
-         - <error><b>{fraude}</b></error><br>
-         - <error><b>{marketing}</b></error><br>
-         - <error><b>{pesquisa}</b></error><br>
-         - <error><b>{político}</b></error><br>
-        <br>
-         - <error><b>{outro}</b></error><br>
-        &ensp; O tipo de spam padrão, usado quando nenhuma das categorias acima se aplica.<br>
+                Apenas as seguintes categorias são compatíveis:<br>
+                <br>
+                 - <highlight><b>{válido}</b></highlight><br>
+                &ensp; Reportar como número de telefone válido, não como chamada de spam.<br>
+                <br>
+                 - <error><b>{fraude}</b></error><br>
+                 - <error><b>{marketing}</b></error><br>
+                 - <error><b>{pesquisa}</b></error><br>
+                 - <error><b>{político}</b></error><br>
+                 - <error><b>{outro}</b></error><br>
+                &ensp; O tipo de chamada de spam de fallback, usado quando nenhuma das categorias acima se aplica.<br>
+                <br>
+                Isso gera a tag <title>{category}</title>, que pode ser usada em requisições HTTP posteriores. <br>
+                <br>
+                Por exemplo, corpo POST: <br>
+                <sample>
+                { <br>
+                    &ensp; \"phone\": \"{number}\", <br>
+                    &ensp; \"rating\": \"{category}\" <br>
+                }
+                </sample>
         ]]>
     </string>
     <string name="missing_category">

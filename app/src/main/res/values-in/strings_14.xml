@@ -40,18 +40,27 @@
     <string name="action_category_config">Konfigurasi Kategori</string>
     <string name="help_action_category_config">
         <![CDATA[
-        Hanya kategori spam berikut ini yang didukung, kategori lain dari API harus dipetakan ke salah satunya.<br>
-        <br>
-         - <highlight><b>{sah}</b></highlight><br>
-        &ensp; Laporkan sebagai nomor yang sah, bukan spam.<br>
-        <br>
-         - <error><b>{penipuan}</b></error><br>
-         - <error><b>{pemasaran}</b></error><br>
-         - <error><b>{survei}</b></error><br>
-         - <error><b>{politik}</b></error><br>
-        <br>
-         - <error><b>{lainnya}</b></error><br>
-        &ensp; Jenis spam cadangan, digunakan ketika tidak ada kategori di atas yang berlaku.<br>
+                Hanya kategori berikut yang didukung:<br>
+                <br>
+                 - <highlight><b>{sah}</b></highlight><br>
+                &ensp; Laporkan sebagai nomor telepon yang valid, bukan panggilan spam.<br>
+                <br>
+                 - <error><b>{penipuan}</b></error><br>
+                 - <error><b>{pemasaran}</b></error><br>
+                 - <error><b>{survei}</b></error><br>
+                 - <error><b>{politik}</b></error><br>
+                 - <error><b>{lainnya}</b></error><br>
+                &ensp; Jenis panggilan spam cadangan, digunakan ketika tidak ada kategori di atas yang berlaku.<br>
+                <br>
+                Ini menghasilkan tag <title>{category}</title> yang dapat digunakan dalam permintaan HTTP berikutnya. <br>
+                <br>
+                Misalnya, isi permintaan POST: <br>
+                <sample>
+                { <br>
+                    &ensp; \"phone\": \"{number}\", <br>
+                    &ensp; \"rating\": \"{category}\" <br>
+                }
+                </sample>
         ]]>
     </string>
     <string name="missing_category">

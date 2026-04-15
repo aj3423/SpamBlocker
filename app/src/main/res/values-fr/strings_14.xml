@@ -40,18 +40,27 @@
     <string name="action_category_config">Config. Catégorie</string>
     <string name="help_action_category_config">
         <![CDATA[
-        Seules les catégories de spams suivantes sont prises en charge ; toute autre catégorie de l\'API doit être mappée à l\'une d\'elles.<br>
-        <br>
-         - <highlight><b>{valid}</b></highlight><br>
-        &ensp; Signaler comme numéro valide, pas un spam.<br>
-        <br>
-         - <error><b>{fraud}</b></error><br>
-         - <error><b>{marketing}</b></error><br>
-         - <error><b>{survey}</b></error><br>
-         - <error><b>{political}</b></error><br>
-        <br>
-         - <error><b>{other}</b></error><br>
-        &ensp; Type de spam par défaut, utilisé lorsqu\'aucune des catégories ci-dessus ne s\'applique.<br>
+                Seules les catégories suivantes sont prises en charge :<br>
+                <br>
+                 - <highlight><b>{valid}</b></highlight><br>
+                &ensp; Signaler comme numéro de téléphone valide, pas comme appel indésirable.<br>
+                <br>
+                 - <error><b>{fraud}</b></error><br>
+                 - <error><b>{marketing}</b></error><br>
+                 - <error><b>{survey}</b></error><br>
+                 - <error><b>{political}</b></error><br>
+                 - <error><b>{other}</b></error><br>
+                &ensp; Le type d\'appel indésirable de secours, utilisé lorsqu\'aucune des catégories ci-dessus ne s\'applique.<br>
+                <br>
+                Cela génère la balise <title>{category}</title>, qui peut être utilisée dans les requêtes HTTP suivantes. <br>
+                <br>
+                Par exemple, corps POST : <br>
+                <sample>
+                { <br>
+                    &ensp; \"phone\": \"{number}\", <br>
+                    &ensp; \"rating\": \"{category}\" <br>
+                }
+                </sample>
         ]]>
     </string>
     <string name="missing_category">

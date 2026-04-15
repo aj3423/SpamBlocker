@@ -40,18 +40,27 @@
     <string name="action_category_config">類別設定</string>
     <string name="help_action_category_config">
         <![CDATA[
-        僅支援以下騷擾電話類別，API 回傳的任何其他類別都應對應到其中之一。<br>
-        <br>
-         - <highlight><b>{valid}</b></highlight><br>
-        &ensp; 回報為有效號碼，非騷擾電話。<br>
-        <br>
-         - <error><b>{fraud}</b></error><br>
-         - <error><b>{marketing}</b></error><br>
-         - <error><b>{survey}</b></error><br>
-         - <error><b>{political}</b></error><br>
-        <br>
-         - <error><b>{other}</b></error><br>
-        &ensp; 後備騷擾電話類型，當無法歸類於上述類別時使用。<br>
+                僅支援以下類別：<br>
+                <br>
+                 - <highlight><b>{valid}</b></highlight><br>
+                &ensp; 回報為有效電話號碼，而非騷擾來電。<br>
+                <br>
+                 - <error><b>{fraud}</b></error><br>
+                 - <error><b>{marketing}</b></error><br>
+                 - <error><b>{survey}</b></error><br>
+                 - <error><b>{political}</b></error><br>
+                 - <error><b>{other}</b></error><br>
+                &ensp; 後備騷擾來電類型，當上述類別皆不適用時使用。<br>
+                <br>
+                它會產生標籤 <title>{category}</title>，可在後續 HTTP 請求中使用。 <br>
+                <br>
+                例如，POST 請求本文： <br>
+                <sample>
+                { <br>
+                    &ensp; \"phone\": \"{number}\", <br>
+                    &ensp; \"rating\": \"{category}\" <br>
+                }
+                </sample>
         ]]>
     </string>
     <string name="missing_category">

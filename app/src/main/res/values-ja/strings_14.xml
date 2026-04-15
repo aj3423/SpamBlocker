@@ -39,18 +39,27 @@
     <string name="action_category_config">カテゴリ設定</string>
     <string name="help_action_category_config">
         <![CDATA[
-        サポートされている迷惑電話カテゴリは次のとおりです。APIからのその他のカテゴリは、これらのいずれかにマッピングする必要があります。<br>
-        <br>
-         - <highlight><b>{valid}</b></highlight><br>
-        &ensp; 有効な番号として報告し、迷惑電話ではありません。<br>
-        <br>
-         - <error><b>{fraud}</b></error><br>
-         - <error><b>{marketing}</b></error><br>
-         - <error><b>{survey}</b></error><br>
-         - <error><b>{political}</b></error><br>
-        <br>
-         - <error><b>{other}</b></error><br>
-        &ensp; 上記のいずれのカテゴリにも該当しない場合に使用される、フォールバック迷惑電話の種類です。<br>
+                サポートされているカテゴリは次のとおりです。<br>
+                <br>
+                 - <highlight><b>{valid}</b></highlight><br>
+                &ensp; 有効な電話番号として報告し、迷惑電話としては報告しません。<br>
+                <br>
+                 - <error><b>{fraud}</b></error><br>
+                 - <error><b>{marketing}</b></error><br>
+                 - <error><b>{survey}</b></error><br>
+                 - <error><b>{political}</b></error><br>
+                 - <error><b>{other}</b></error><br>
+                &ensp; 上記のどのカテゴリにも当てはまらない場合に使用される、フォールバックの迷惑電話種別です。<br>
+                <br>
+                これによりタグ <title>{category}</title> が生成され、後続の HTTP リクエストで使用できます。 <br>
+                <br>
+                例えば、POST 本文: <br>
+                <sample>
+                { <br>
+                    &ensp; \"phone\": \"{number}\", <br>
+                    &ensp; \"rating\": \"{category}\" <br>
+                }
+                </sample>
         ]]>
     </string>
     <string name="missing_category">

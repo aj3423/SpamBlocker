@@ -67,7 +67,7 @@
     <string name="action_parse_incoming_number"><translate>Analitzar número entrant</translate></string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
-        El número de la trucada entrant s'analitzarà en diferents etiquetes:<br>
+        El número de la trucada entrant s\'analitzarà en diferents etiquetes:<br>
         <br>
         %s
         <br>
@@ -77,7 +77,7 @@
     <string name="action_parse_incoming_sms"><translate>Analitzar SMS entrant</translate></string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
-        El contingut de l'SMS entrant s'analitzarà a l'etiqueta <b>{sms}</b>,
+        El contingut de l\'SMS entrant s\'analitzarà a l\'etiqueta <b>{sms}</b>,
         que es pot utilitzar en les sol·licituds HTTP posteriors.
         ]]>
     </string>

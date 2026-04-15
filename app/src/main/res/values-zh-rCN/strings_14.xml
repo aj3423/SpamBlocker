@@ -39,18 +39,27 @@
     <string name="action_category_config">类别配置</string>
     <string name="help_action_category_config">
         <![CDATA[
-        仅支持以下垃圾电话类别，API 中的任何其他类别都应映射到其中一个。<br>
-        <br>
-         - <highlight><b>{valid}</b></highlight><br>
-        &ensp; 标记为有效号码，而非垃圾电话。<br>
-        <br>
-         - <error><b>{fraud}</b></error><br>
-         - <error><b>{marketing}</b></error><br>
-         - <error><b>{survey}</b></error><br>
-         - <error><b>{political}</b></error><br>
-        <br>
-         - <error><b>{other}</b></error><br>
-        &ensp; 备用垃圾电话类型，在以上类别均不适用时使用。<br>
+                仅支持以下类别：<br>
+                <br>
+                 - <highlight><b>{valid}</b></highlight><br>
+                &ensp; 标记为有效电话号码，而不是骚扰来电。<br>
+                <br>
+                 - <error><b>{fraud}</b></error><br>
+                 - <error><b>{marketing}</b></error><br>
+                 - <error><b>{survey}</b></error><br>
+                 - <error><b>{political}</b></error><br>
+                 - <error><b>{other}</b></error><br>
+                &ensp; 后备骚扰来电类型，在以上类别均不适用时使用。<br>
+                <br>
+                它会生成标签 <title>{category}</title>，可在后续 HTTP 请求中使用。 <br>
+                <br>
+                例如，POST 请求体： <br>
+                <sample>
+                { <br>
+                    &ensp; \"phone\": \"{number}\", <br>
+                    &ensp; \"rating\": \"{category}\" <br>
+                }
+                </sample>
         ]]>
     </string>
     <string name="missing_category">

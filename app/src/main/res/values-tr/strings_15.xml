@@ -125,7 +125,7 @@
     <string name="help_history_expiry">
         <![CDATA[
                 Etkinleştirildiğinde, geçmiş kayıtları N gün sonra otomatik olarak silinir. <br>
-                Temizleme görevi her gün 00:00'da çalışır.
+                Temizleme görevi her gün 00:00\'da çalışır.
         ]]>
     </string>
 </resources>

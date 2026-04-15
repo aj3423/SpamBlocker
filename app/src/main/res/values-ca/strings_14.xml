@@ -40,18 +40,27 @@
     <string name="action_category_config">Configuració de la categoria</string>
     <string name="help_action_category_config">
         <![CDATA[
-        Només s\'admeten les següents categories de spam, qualsevol altra categoria de l\'API s\'ha de assignar a una d\'elles.<br>
-        <br>
-         - <highlight><b>{valid}</b></highlight><br>
-        &ensp; Informar com a número vàlid, no com a spam.<br>
-        <br>
-         - <error><b>{fraud}</b></error><br>
-         - <error><b>{marketing}</b></error><br>
-         - <error><b>{survey}</b></error><br>
-         - <error><b>{political}</b></error><br>
-        <br>
-         - <error><b>{other}</b></error><br>
-        &ensp; El tipus de spam de reserva, que s\'utilitza quan no s\'aplica cap de les categories anteriors.<br>
+                Només s\'admeten les categories següents:<br>
+                <br>
+                 - <highlight><b>{valid}</b></highlight><br>
+                &ensp; Informeu-lo com a número de telèfon vàlid, no com a trucada brossa.<br>
+                <br>
+                 - <error><b>{fraud}</b></error><br>
+                 - <error><b>{marketing}</b></error><br>
+                 - <error><b>{survey}</b></error><br>
+                 - <error><b>{political}</b></error><br>
+                 - <error><b>{other}</b></error><br>
+                &ensp; El tipus de trucada brossa de reserva, utilitzat quan no s\'aplica cap de les categories anteriors.<br>
+                <br>
+                Genera l\'etiqueta <title>{category}</title>, que es pot utilitzar en les sol·licituds HTTP posteriors. <br>
+                <br>
+                Per exemple, cos de la sol·licitud POST: <br>
+                <sample>
+                { <br>
+                    &ensp; \"phone\": \"{number}\", <br>
+                    &ensp; \"rating\": \"{category}\" <br>
+                }
+                </sample>
         ]]>
     </string>
     <string name="missing_category">

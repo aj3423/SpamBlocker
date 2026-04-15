@@ -40,18 +40,27 @@
     <string name="action_category_config">تنظیمات دسته</string>
     <string name="help_action_category_config">
         <![CDATA[
-        فقط دسته‌های تماس‌های مزاحم زیر پشتیبانی می‌شوند، هر دسته دیگری از API باید به یکی از آن‌ها نگاشت شود.<br>
-        <br>
-         - <highlight><b>{valid}</b></highlight><br>
-        &ensp; به عنوان شماره معتبر گزارش دهید، نه یک تماس مزاحم.<br>
-        <br>
-         - <error><b>{fraud}</b></error><br>
-         - <error><b>{marketing}</b></error><br>
-         - <error><b>{survey}</b></error><br>
-         - <error><b>{political}</b></error><br>
-        <br>
-         - <error><b>{other}</b></error><br>
-        &ensp; نوع تماس مزاحم پیش‌فرض، زمانی که هیچ یک از دسته‌های بالا اعمال نمی‌شوند.<br>
+                فقط دسته‌های زیر پشتیبانی می‌شوند:<br>
+                <br>
+                 - <highlight><b>{valid}</b></highlight><br>
+                &ensp; به عنوان یک شماره تلفن معتبر گزارش کنید، نه تماس مزاحم.<br>
+                <br>
+                 - <error><b>{fraud}</b></error><br>
+                 - <error><b>{marketing}</b></error><br>
+                 - <error><b>{survey}</b></error><br>
+                 - <error><b>{political}</b></error><br>
+                 - <error><b>{other}</b></error><br>
+                &ensp; نوع جایگزین تماس مزاحم که وقتی هیچ‌یک از دسته‌های بالا اعمال نمی‌شوند استفاده می‌شود.<br>
+                <br>
+                برچسب <title>{category}</title> را ایجاد می‌کند که می‌توان از آن در درخواست‌های HTTP بعدی استفاده کرد. <br>
+                <br>
+                برای مثال، بدنه درخواست POST: <br>
+                <sample>
+                { <br>
+                    &ensp; \"phone\": \"{number}\", <br>
+                    &ensp; \"rating\": \"{category}\" <br>
+                }
+                </sample>
         ]]>
     </string>
     <string name="missing_category">
