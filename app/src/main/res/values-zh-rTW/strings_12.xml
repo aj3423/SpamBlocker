@@ -63,30 +63,21 @@
         可以使用額外的正規表示式來擷取騷擾電話類別（選用）。
         ]]>
     </string>
-    <string name="action_intercept_call">攔截來電</string>
-    <string name="help_action_intercept_call">
+    <string name="action_parse_incoming_number">解析來電號碼</string>
+    <string name="help_action_parse_incoming_number">
         <![CDATA[
-        來電號碼將被攔截並解析為不同的標籤：<br>
+        將把來電號碼解析成不同的標籤：<br>
         <br>
         %s
         <br>
-        這些標籤將用於建立 HTTP 網址，例如：<br>
-        <br>
-        1. 對於國際號碼如 <b>+122222</b>，這兩種寫法是相同的：<br>
-        - https://test.com/number=<b>{number}</b><br>
-        - https://test.com/number=<b>{cc}{domestic}</b><br>
-        將被解析為：<br>
-        https://test.com/number=<b>122222</b><br>
-        <br>
-        2. 對於本地號碼如 <b>12345</b>，您需要在設定中提供國碼，
-        或讓應用程式自動偵測。<br>
+        這些標籤可用於後續的 HTTP 請求。<br>
         ]]>
     </string>
-    <string name="action_intercept_sms">攔截簡訊</string>
-    <string name="help_action_intercept_sms">
+    <string name="action_parse_incoming_sms">解析收到的簡訊</string>
+    <string name="help_action_parse_incoming_sms">
         <![CDATA[
-        收到的簡訊將被攔截，內容將被解析為標籤 <b>{sms}</b>，
-        可以在 HTTP 請求中使用。
+        收到的簡訊內容將被解析為標籤 <b>{sms}</b>，
+        可用於後續的 HTTP 請求。
         ]]>
     </string>
     <string name="query_api">查詢 API</string>

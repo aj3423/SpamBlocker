@@ -64,30 +64,21 @@
         Дополнительное регулярное выражение может использоваться для извлечения категории спама. (необязательно)
         ]]>
     </string>
-    <string name="action_intercept_call">Перехватить звонок</string>
-    <string name="help_action_intercept_call">
+    <string name="action_parse_incoming_number">Разобрать входящий номер</string>
+    <string name="help_action_parse_incoming_number">
         <![CDATA[
-        Входящий номер будет перехвачен и разобран на разные теги:<br>
+        Номер входящего звонка будет разобран на разные теги:<br>
         <br>
         %s
         <br>
-        Эти теги будут использоваться для построения HTTP-адреса ресурса, например:<br>
-        <br>
-        1. Для международного номера, например <b>+122222</b>, эти два варианта эквивалентны:<br>
-        - https://test.com/number=<b>{number}</b><br>
-        - https://test.com/number=<b>{cc}{domestic}</b><br>
-        Он будет преобразован в: <br>
-        https://test.com/number=<b>122222</b><br>
-        <br>
-        2. Для внутреннего номера, например <b>12345</b>, необходимо указать код страны в настройках 
-        или позволить приложению определить его автоматически.<br>
+        Эти теги можно использовать в последующих HTTP-запросах.<br>
         ]]>
     </string>
-    <string name="action_intercept_sms">Перехватить SMS</string>
-    <string name="help_action_intercept_sms">
+    <string name="action_parse_incoming_sms">Разобрать входящее SMS</string>
+    <string name="help_action_parse_incoming_sms">
         <![CDATA[
-        Входящее SMS будет перехвачено, и содержание будет разобрано в тег <b>{sms}</b>,
-        который может быть использован в запросах HTTP.
+        Содержимое входящего SMS будет разобрано в тег <b>{sms}</b>,
+        который можно использовать в последующих HTTP-запросах.
         ]]>
     </string>
     <string name="query_api">API запроса</string>

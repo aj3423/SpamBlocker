@@ -63,22 +63,14 @@
         Для вилучення категорії спаму можна використовувати додатковий регулярний вираз (необов\'язково).
         ]]>
     </string>
-    <string name="action_intercept_call">Перехоплення дзвінка</string>
-    <string name="help_action_intercept_call">
+    <string name="action_parse_incoming_number">Розібрати вхідний номер</string>
+    <string name="help_action_parse_incoming_number">
         <![CDATA[
-        Вхідний номер буде перехоплено та розпарсено на різні теги:<br>
+        Номер вхідного дзвінка буде розібрано на різні теги:<br>
         <br>
         %s
         <br>
-        Ці теги будуть використані для побудови HTTP-адреси, наприклад:<br>
-        <br>
-        1. Для міжнародного номера, наприклад <b>+122222</b>, ці два варіанти еквівалентні:<br>
-        - https://test.com/number=<b>{number}</b><br>
-        - https://test.com/number=<b>{cc}{domestic}</b><br>
-        Буде розпарсено як:<br>
-        https://test.com/number=<b>122222</b><br>
-        <br>
-        2. Для внутрішнього номера, наприклад <b>12345</b>, потрібно вказати код країни в налаштуваннях або дозволити програмі автоматично його визначити.<br>
+        Ці теги можна використовувати в наступних HTTP-запитах.<br>
         ]]>
     </string>
     <string name="query_api">API запиту</string>
@@ -107,11 +99,11 @@
     <string name="android_ver_lower_than_11">Версія Android нижче 11, пропущено.</string>
     <string name="query">Запит</string>
     <string name="report_api">API звітування</string>
-    <string name="action_intercept_sms">Перехоплення SMS</string>
-    <string name="help_action_intercept_sms">
+    <string name="action_parse_incoming_sms">Розібрати вхідне SMS</string>
+    <string name="help_action_parse_incoming_sms">
         <![CDATA[
-        Вхідне SMS буде перехоплено, а вміст розібрано в тег <b>{sms}</b>,<br>
-        який може бути використаний наступними діями.
+        Вміст вхідного SMS буде розібрано в тег <b>{sms}</b>,<br>
+        який можна використовувати в наступних HTTP-запитах.
         ]]>
     </string>
 </resources>

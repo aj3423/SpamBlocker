@@ -64,30 +64,21 @@
         Es pot utilitzar una expressió regular addicional per extreure la categoria de correu brossa (opcional).
         ]]>
     </string>
-    <string name="action_intercept_call"><translate>Interceptar trucada</translate></string>
-    <string name="help_action_intercept_call">
+    <string name="action_parse_incoming_number"><translate>Analitzar número entrant</translate></string>
+    <string name="help_action_parse_incoming_number">
         <![CDATA[
-        El número de trucada entrant serà interceptat i analitzat en diferents etiquetes:<br>
+        El número de la trucada entrant s'analitzarà en diferents etiquetes:<br>
         <br>
         %s
         <br>
-        Aquestes etiquetes s\'utilitzaran per construir l\'URL HTTP, per exemple:<br>
-        <br>
-        1. Per a un número internacional com <b>+122222</b>, aquests dos són equivalents:<br>
-        - https://test.com/number=<b>{number}</b><br>
-        - https://test.com/number=<b>{cc}{domestic}</b><br>
-        S\'analitzarà a: <br>
-        https://test.com/number=<b>122222</b><br>
-        <br>
-        2. Per a un número nacional com <b>12345</b>, heu de proporcionar el codi de país a la configuració,
-        o deixar que l\'aplicació el detecti automàticament.<br>
+        Aquestes etiquetes es poden utilitzar en les sol·licituds HTTP posteriors.<br>
         ]]>
     </string>
-    <string name="action_intercept_sms"><translate>Interceptar SMS</translate></string>
-    <string name="help_action_intercept_sms">
+    <string name="action_parse_incoming_sms"><translate>Analitzar SMS entrant</translate></string>
+    <string name="help_action_parse_incoming_sms">
         <![CDATA[
-        L\'SMS entrant serà interceptat i el contingut s\'analitzarà a l\'etiqueta <b>{sms}</b>,
-        que es pot utilitzar a les sol·licituds HTTP.
+        El contingut de l'SMS entrant s'analitzarà a l'etiqueta <b>{sms}</b>,
+        que es pot utilitzar en les sol·licituds HTTP posteriors.
         ]]>
     </string>
     <string name="query_api"><translate>API de consulta</translate></string>

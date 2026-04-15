@@ -64,30 +64,21 @@
         <translate>يمكن استخدام regex إضافي لاستخراج فئة الرسائل المزعجة. (اختياري)</translate>
         ]]>
     </string>
-    <string name="action_intercept_call"><translate>حظر المكالمة</translate></string>
-    <string name="help_action_intercept_call">
+    <string name="action_parse_incoming_number"><translate>تحليل الرقم الوارد</translate></string>
+    <string name="help_action_parse_incoming_number">
         <![CDATA[
-        <translate>سيتم اعتراض رقم المكالمة الواردة وتحليله إلى علامات مختلفة:</translate><br>
+        <translate>سيتم تحليل رقم المكالمة الواردة إلى علامات مختلفة:</translate><br>
         <br>
         %s
         <br>
-        <translate>سيتم استخدام هذه العلامات لإنشاء عنوان URL لـ HTTP، على سبيل المثال:</translate><br>
-        <br>
-        <translate>1. بالنسبة للرقم الدولي مثل <b>+122222</b>، هذان متكافئان:</translate><br>
-        - https://test.com/number=<b>{number}</b><br>
-        - https://test.com/number=<b>{cc}{domestic}</b><br>
-        <translate>سيتم تحليله إلى:</translate> <br>
-        https://test.com/number=<b>122222</b><br>
-        <br>
-        <translate>2. بالنسبة للرقم المحلي مثل <b>12345</b>، تحتاج إلى توفير رمز البلد في الإعدادات،</translate>
-        <translate>أو السماح للتطبيق باكتشافه تلقائيًا.</translate><br>
+        <translate>يمكن استخدام هذه العلامات في طلبات HTTP اللاحقة.</translate><br>
         ]]>
     </string>
-    <string name="action_intercept_sms"><translate>حظر الرسائل القصيرة</translate></string>
-    <string name="help_action_intercept_sms">
+    <string name="action_parse_incoming_sms"><translate>تحليل الرسائل القصيرة الواردة</translate></string>
+    <string name="help_action_parse_incoming_sms">
         <![CDATA[
-        <translate>سيتم اعتراض الرسائل القصيرة الواردة وسيتم تحليل المحتوى إلى علامة <b>{sms}</b>،</translate>
-        <translate>والتي يمكن استخدامها في طلبات HTTP.</translate>
+        <translate>سيتم تحليل محتوى الرسائل القصيرة الواردة إلى العلامة <b>{sms}</b>،</translate>
+        <translate>والتي يمكن استخدامها في طلبات HTTP اللاحقة.</translate>
         ]]>
     </string>
     <string name="query_api"><translate>واجهة برمجة تطبيقات الاستعلام</translate></string>

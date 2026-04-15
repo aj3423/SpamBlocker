@@ -101,7 +101,6 @@ import java.io.BufferedReader
 import java.io.ByteArrayInputStream
 import java.io.InputStreamReader
 import java.io.PushbackReader
-import java.net.HttpURLConnection
 
 @Composable
 fun NoOptionNeeded() {
@@ -1946,7 +1945,7 @@ class InterceptCall(
     }
 
     override fun label(ctx: Context): String {
-        return ctx.getString(R.string.action_intercept_call)
+        return ctx.getString(R.string.action_parse_incoming_number)
     }
 
     @Composable
@@ -1958,7 +1957,7 @@ class InterceptCall(
     }
 
     override fun tooltip(ctx: Context): String {
-        return ctx.getString(R.string.help_action_intercept_call).format(
+        return ctx.getString(R.string.help_action_parse_incoming_number).format(
             ctx.getString(R.string.number_tags)
         )
     }
@@ -2035,7 +2034,7 @@ class InterceptSms(
     }
 
     override fun label(ctx: Context): String {
-        return ctx.getString(R.string.action_intercept_sms)
+        return ctx.getString(R.string.action_parse_incoming_sms)
     }
 
     @Composable
@@ -2043,7 +2042,7 @@ class InterceptSms(
     }
 
     override fun tooltip(ctx: Context): String {
-        return ctx.getString(R.string.help_action_intercept_sms)
+        return ctx.getString(R.string.help_action_parse_incoming_sms)
     }
 
     override fun inputParamType(): List<ParamType> {

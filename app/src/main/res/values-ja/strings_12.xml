@@ -61,22 +61,14 @@
         迷惑電話のカテゴリを抽出するために、追加の正規表現を使用できます。（オプション）
         ]]>
     </string>
-    <string name="action_intercept_call">通話を傍受</string>
-    <string name="help_action_intercept_call">
+    <string name="action_parse_incoming_number">着信番号を解析</string>
+    <string name="help_action_parse_incoming_number">
         <![CDATA[
-        着信番号が傍受され、さまざまなタグに解析されます。<br>
+        着信番号はさまざまなタグに解析されます。<br>
         <br>
         %s
         <br>
-        これらのタグを使用してHTTP URLが作成されます。例：<br>
-        <br>
-        1. <b>+122222</b>のような国際番号の場合、これら2つは同等です。<br>
-        - https://test.com/number=<b>{number}</b><br>
-        - https://test.com/number=<b>{cc}{domestic}</b><br>
-        これは次のように解析されます。<br>
-        https://test.com/number=<b>122222</b><br>
-        <br>
-        2. <b>12345</b>のような国内番号の場合、設定で国コードを指定するか、アプリで自動的に検出させる必要があります。<br>
+        これらのタグは後続のHTTPリクエストで使用できます。<br>
         ]]>
     </string>
     <string name="query_api">照会API</string>
@@ -105,10 +97,11 @@
     <string name="android_ver_lower_than_11">Androidバージョンが11より低いため、スキップ。</string>
     <string name="query">照会</string>
     <string name="report_api">報告API</string>
-    <string name="action_intercept_sms">SMS遮断</string>
-    <string name="help_action_intercept_sms">
+    <string name="action_parse_incoming_sms">受信SMSを解析</string>
+    <string name="help_action_parse_incoming_sms">
         <![CDATA[
-        受信したSMSが遮断され、その内容は<b>{sms}</b>タグに解析されます。これは、後続のアクションで使用できます。
+        受信したSMSの内容はタグ <b>{sms}</b> に解析され、
+        後続のHTTPリクエストで使用できます。
         ]]>
     </string>
 </resources>

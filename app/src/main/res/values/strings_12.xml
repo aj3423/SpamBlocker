@@ -59,35 +59,26 @@
     <string name="action_parse_query_result">Parse Result</string>
     <string name="help_action_parse_query_result">
         <![CDATA[
-        Parse the query result, the number will be identified as a spam if the result contains a particular regex pattern.<br>
+        Parse the query result, the number will be identified as spam if the result contains a particular regex pattern.<br>
         <br>
         An extra regex can be used to extract the spam category. (optional)
         ]]>
     </string>
-    <string name="action_intercept_call">Intercept Call</string>
-    <string name="help_action_intercept_call">
+    <string name="action_parse_incoming_number">Parse Incoming Number</string>
+    <string name="help_action_parse_incoming_number">
         <![CDATA[
-        The incoming call number will be intercepted and parsed into different tags:<br>
+        The incoming call number will be parsed into different tags:<br>
         <br>
         %s
         <br>
-        These tags will be used to build the HTTP URL, for example:<br>
-        <br>
-        1. For international number like <b>+122222</b>, these two are equivalent:<br>
-        - https://test.com/number=<b>{number}</b><br>
-        - https://test.com/number=<b>{cc}{domestic}</b><br>
-        It will be parsed to: <br>
-        https://test.com/number=<b>122222</b><br>
-        <br>
-        2. For domestic number like <b>12345</b>, you need to provide the country code in the settings,
-        or let the app detect it automatically.<br>
+        These tags can be used in subsequent HTTP requests.<br>
         ]]>
     </string>
-    <string name="action_intercept_sms">Intercept SMS</string>
-    <string name="help_action_intercept_sms">
+    <string name="action_parse_incoming_sms">Parse Incoming SMS</string>
+    <string name="help_action_parse_incoming_sms">
         <![CDATA[
-        The incoming SMS will be intercepted and the content will parsed into tag <b>{sms}</b>,
-        which can be used in HTTP requests.
+        The incoming SMS content will be parsed into tag <b>{sms}</b>,
+        which can be used in subsequent HTTP requests.
         ]]>
     </string>
     <string name="query_api">Query API</string>

@@ -1,0 +1,12 @@
+This is an android spam call blocker app.
+The word 'number' means phone number, 'spam' means spam calls, don't translate it to spam email.
+
+Translate the following contents in strings_12.xml to all other languages.
+- `action_____`
+- `help______`
+
+Note:
+- If the content contains tags <translate> and </translate>, always translate the text in between. 
+- If the content contains tags <no_translate> and </no_translate>, keep it as it is. 
+- Don't remove the \n.
+- If the content contains tags <short> and </short>, always translate the text in between with extreme short translations.

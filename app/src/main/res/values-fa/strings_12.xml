@@ -63,22 +63,14 @@
         یک عبارت باقاعده اضافی می‌تواند برای استخراج دسته‌بندی مزاحمت استفاده شود. (اختیاری)
         ]]>
     </string>
-    <string name="action_intercept_call">قطع تماس</string>
-    <string name="help_action_intercept_call">
+    <string name="action_parse_incoming_number">تجزیه شماره ورودی</string>
+    <string name="help_action_parse_incoming_number">
         <![CDATA[
-        شماره تماس ورودی قطع و به برچسب‌های مختلف تجزیه می‌شود:<br>
+        شماره تماس ورودی به برچسب‌های مختلف تجزیه می‌شود:<br>
         <br>
         %s
         <br>
-        از این برچسب‌ها برای ساخت URL HTTP استفاده می‌شود، برای مثال:<br>
-        <br>
-        1. برای شماره‌های بین‌المللی مانند <b>+122222</b>، این دو معادل هستند:<br>
-        - https://test.com/number=<b>{number}</b><br>
-        - https://test.com/number=<b>{cc}{domestic}</b><br>
-        به این صورت تجزیه می‌شود:<br>
-        https://test.com/number=<b>122222</b><br>
-        <br>
-        2. برای شماره‌های داخلی مانند <b>12345</b>، باید کد کشور را در تنظیمات وارد کنید، یا اجازه دهید برنامه آن را به طور خودکار تشخیص دهد.<br>
+        از این برچسب‌ها می‌توان در درخواست‌های HTTP بعدی استفاده کرد.<br>
         ]]>
     </string>
     <string name="query_api">پرس و جوی API</string>
@@ -106,10 +98,11 @@
     <string name="blocked_by">مسدود شده توسط: %s</string>
     <string name="outside_time_schedule">خارج از برنامه زمانی، رد می‌شود.</string>
     <string name="android_ver_lower_than_11">نسخه اندروید کمتر از 11 است، رد می‌شود.</string>
-    <string name="action_intercept_sms">قطع پیامک</string>
-    <string name="help_action_intercept_sms">
+    <string name="action_parse_incoming_sms">تجزیه پیامک ورودی</string>
+    <string name="help_action_parse_incoming_sms">
         <![CDATA[
-        پیامک ورودی قطع می‌شود و محتوا به برچسب <b>{sms}</b> تجزیه می‌شود، که می‌تواند توسط اقدامات بعدی استفاده شود.
+        محتوای پیامک ورودی به برچسب <b>{sms}</b> تجزیه می‌شود
+        که می‌توان از آن در درخواست‌های HTTP بعدی استفاده کرد.
         ]]>
     </string>
 </resources>

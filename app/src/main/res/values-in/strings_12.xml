@@ -64,30 +64,21 @@
         Regex tambahan dapat digunakan untuk mengekstrak kategori spam. (opsional)
         ]]>
     </string>
-    <string name="action_intercept_call">Mencegat Panggilan</string>
-    <string name="help_action_intercept_call">
+    <string name="action_parse_incoming_number">Uraikan Nomor Masuk</string>
+    <string name="help_action_parse_incoming_number">
         <![CDATA[
-        Nomor panggilan masuk akan dicegat dan diuraikan menjadi beberapa tag yang berbeda:<br>
+        Nomor panggilan masuk akan diuraikan menjadi beberapa tag yang berbeda:<br>
         <br>
         %s
         <br>
-        Tag-tag ini akan digunakan untuk membangun URL HTTP, misalnya:<br>
-        <br>
-        1. Untuk nomor internasional seperti <b>+122222</b>, keduanya sama:<br>
-        - https://test.com/number=<b>{nomor}</b><br>
-        - https://test.com/number=<b>{kode negara}{domestik}</b><br>
-        Ini akan diuraikan menjadi: <br>
-        https://test.com/number=<b>122222</b><br>
-        <br>
-        2. Untuk nomor domestik seperti <b>12345</b>, Anda perlu memberikan kode negara dalam pengaturan,
-        atau biarkan aplikasi mendeteksinya secara otomatis.<br>
+        Tag-tag ini dapat digunakan dalam permintaan HTTP berikutnya.<br>
         ]]>
     </string>
-    <string name="action_intercept_sms">Mencegat SMS</string>
-    <string name="help_action_intercept_sms">
+    <string name="action_parse_incoming_sms">Uraikan SMS Masuk</string>
+    <string name="help_action_parse_incoming_sms">
         <![CDATA[
-        SMS yang masuk akan dicegat dan isinya akan diuraikan menjadi tag <b>{sms}</b>,
-        yang dapat digunakan dalam permintaan HTTP.
+        Isi SMS masuk akan diuraikan menjadi tag <b>{sms}</b>,
+        yang dapat digunakan dalam permintaan HTTP berikutnya.
         ]]>
     </string>
     <string name="query_api">Permintaan API</string>
