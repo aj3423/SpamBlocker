@@ -409,7 +409,6 @@ object Util {
             return@buildAnnotatedString
         } else {
             result.groups.forEachIndexed { index, group ->
-                logi("index: $index, group: $group")
                 // Skip group 0 (whole match), highlight all real capturing groups
                 if (index == 0 || group == null) return@forEachIndexed
 
