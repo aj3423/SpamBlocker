@@ -46,6 +46,7 @@ import spam.blocker.service.checker.Checker.RegexRuleChecker
 import spam.blocker.ui.darken
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.api.tagCategory
+import spam.blocker.ui.setting.api.tagValid
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.ui.widgets.GreyIcon
@@ -2296,22 +2297,35 @@ class ParseQueryResult(
     }
 }
 
-// Generate a List<RegexRule> for next step ImportToSpamDB
+// Generate a List<RegexRule> for the next ImportToSpamDB
 @Serializable
 @SerialName("FilterSpamResult")
 class FilterSpamResult() : IPermissiveAction {
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-        val input = aCtx.lastOutput as ApiQueryResult
+        if (aCtx.lastOutput is ApiQueryResult) { // In an api query workflow
+            val input = aCtx.lastOutput as ApiQueryResult
 
-        aCtx.lastOutput = if (input.determined && input.isSpam) {
-            listOf(
-                RegexRule(
-                    pattern = aCtx.rawNumber!!,
-                    isBlacklist = true,
+            aCtx.lastOutput = if (input.determined && input.isSpam) {
+                listOf(
+                    RegexRule(
+                        pattern = aCtx.rawNumber!!,
+                        isBlacklist = true,
+                    )
                 )
-            )
-        } else
-            listOf()
+            } else
+                listOf()
+        } else { // This is an api report workflow
+            aCtx.lastOutput = if (aCtx.tagCategory == tagValid) {
+                listOf()
+            } else {
+                listOf(
+                    RegexRule(
+                        pattern = aCtx.rawNumber!!,
+                        isBlacklist = true,
+                    )
+                )
+            }
+        }
 
         return true
     }
@@ -2329,7 +2343,11 @@ class FilterSpamResult() : IPermissiveAction {
     }
 
     override fun inputParamType(): List<ParamType> {
-        return listOf(ParamType.InstantQueryResult)
+        return listOf(
+            ParamType.None,
+//            ParamType.InstantQueryResult, // for api query
+//            ParamType.ByteArray, // for reporting, making it chainable after an HttpRequest
+        )
     }
 
     override fun outputParamType(): List<ParamType> {
