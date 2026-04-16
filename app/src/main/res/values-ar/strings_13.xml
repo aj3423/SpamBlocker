@@ -33,7 +33,7 @@
         &ensp; الجزء المحلي.<br>
         - <title><b><no_translate>{number}</no_translate></b></title><br>
         &ensp; الرقم الكامل، بما في ذلك رمز البلد والجزء المحلي، بدون علامة + أو أصفار بادئة.<br>
-        - <title><b><no_translate>{origin_number}</no_translate></b></title><br>
+        - <title><b><no_translate>{raw_number}</no_translate></b></title><br>
         &ensp; الرقم الأصلي الذي يمكن أن يحتوي على علامة + أو أصفار بادئة.<br>
         ]]>
     </string>

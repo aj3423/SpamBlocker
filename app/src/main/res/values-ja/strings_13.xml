@@ -79,7 +79,7 @@
         &ensp; 国内部分。<br>
         - <title><b><no_translate>{number}</no_translate></b></title><br>
         &ensp; 国コードと国内部分を含む、先頭の + や 0 を含まない完全な電話番号。<br>
-        - <title><b><no_translate>{origin_number}</no_translate></b></title><br>
+        - <title><b><no_translate>{raw_number}</no_translate></b></title><br>
         &ensp; 先頭に + や 0 を含むことができる元の電話番号。<br>
         ]]>
     </string>

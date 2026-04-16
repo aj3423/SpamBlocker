@@ -79,7 +79,7 @@
         &ensp; 国内部分。<br>
         - <title><b><no_translate>{number}</no_translate></b></title><br>
         &ensp; 完整号码，包括国家/地区代码和国内部分，不带前导 + 或 0。<br>
-        - <title><b><no_translate>{origin_number}</no_translate></b></title><br>
+        - <title><b><no_translate>{raw_number}</no_translate></b></title><br>
         &ensp; 原始号码，可以包含前导 + 或 0。<br>
         ]]>
     </string>

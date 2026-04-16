@@ -81,7 +81,7 @@
         &ensp; A parte doméstica.<br>
         - <title><b><no_translate>{number}</no_translate></b></title><br>
         &ensp; O número completo, incluindo código do país e parte doméstica, sem + ou 0s à frente.<br>
-        - <title><b><no_translate>{origin_number}</no_translate></b></title><br>
+        - <title><b><no_translate>{raw_number}</no_translate></b></title><br>
         &ensp; O número de origem que pode conter + ou 0s à frente.<br>
         ]]>
     </string>

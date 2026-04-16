@@ -81,7 +81,7 @@
         &ensp; Der Inlandsanteil.<br>
         - <title><b><no_translate>{number}</no_translate></b></title><br>
         &ensp; Die vollständige Telefonnummer, einschließlich Ländervorwahl und Inlandsanteil, ohne führende + oder Nullen.<br>
-        - <title><b><no_translate>{origin_number}</no_translate></b></title><br>
+        - <title><b><no_translate>{raw_number}</no_translate></b></title><br>
         &ensp; Die ursprüngliche Telefonnummer, die führende + oder Nullen enthalten kann.<br>
         ]]>
     </string>

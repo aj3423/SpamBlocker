@@ -33,7 +33,7 @@
         &ensp; Bagian domestik.<br>
         - <title><b><no_translate>{number}</no_translate></b></title><br>
         &ensp; Nomor telepon lengkap, termasuk kode negara dan bagian domestik, tanpa awalan + atau 0.<br>
-        - <title><b><no_translate>{origin_number}</no_translate></b></title><br>
+        - <title><b><no_translate>{raw_number}</no_translate></b></title><br>
         &ensp; Nomor telepon asli yang dapat berisi awalan + atau 0.<br>
         ]]>
     </string>

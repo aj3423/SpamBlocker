@@ -33,7 +33,7 @@
         &ensp; 國內部分。<br>
         - <title><b><no_translate>{number}</no_translate></b></title><br>
         &ensp; 完整的電話號碼，包括國家/地區代碼和國內部分，不帶前導 + 或 0。<br>
-        - <title><b><no_translate>{origin_number}</no_translate></b></title><br>
+        - <title><b><no_translate>{raw_number}</no_translate></b></title><br>
         &ensp; 原始電話號碼，可包含前導 + 或 0。<br>
         ]]>
     </string>

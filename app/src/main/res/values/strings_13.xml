@@ -33,8 +33,8 @@
         &ensp; The domestic part.<br>
         - <title><b><no_translate>{number}</no_translate></b></title><br>
         &ensp; The full number, including both country code and domestic part, without leading + or 0s.<br>
-        - <title><b><no_translate>{origin_number}</no_translate></b></title><br>
-        &ensp; The origin number that can contain leading + or 0s.<br>
+        - <title><b><no_translate>{raw_number}</no_translate></b></title><br>
+        &ensp; The raw number that may contain leading + or 0s.<br>
         ]]>
     </string>
     <string name="sms_tags">

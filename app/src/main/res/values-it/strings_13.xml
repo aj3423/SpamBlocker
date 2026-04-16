@@ -33,7 +33,7 @@
         &ensp; La parte nazionale.<br>
         - <title><b><no_translate>{number}</no_translate></b></title><br>
         &ensp; Il numero completo, inclusi prefisso internazionale e parte nazionale, senza + o 0 iniziali.<br>
-        - <title><b><no_translate>{origin_number}</no_translate></b></title><br>
+        - <title><b><no_translate>{raw_number}</no_translate></b></title><br>
         &ensp; Il numero originale che può contenere + o 0 iniziali.<br>
         ]]>
     </string>

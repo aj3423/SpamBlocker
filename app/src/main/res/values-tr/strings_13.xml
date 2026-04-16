@@ -80,7 +80,7 @@
         &ensp; Yurtiçi kısım.<br>
         - <title><b><no_translate>{number}</no_translate></b></title><br>
         &ensp; Başındaki + veya 0\'lar olmadan, ülke kodu ve yurtiçi kısmı dahil olmak üzere tam numara.<br>
-        - <title><b><no_translate>{origin_number}</no_translate></b></title><br>
+        - <title><b><no_translate>{raw_number}</no_translate></b></title><br>
         &ensp; Başında + veya 0\'lar içerebilen orijinal numara.<br>
         ]]>
     </string>

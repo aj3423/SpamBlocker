@@ -123,7 +123,9 @@ fun String.resolveNumberTag(
         .replace("{cc}", cc ?: "")
         .replace("{domestic}", domestic ?: "")
         .replace("{number}", fullNumber ?: ((cc?:"") + (domestic?:"")))
-        .replace("{origin_number}", rawNumber?.replace(" ", "") ?: "")
+
+        .replace("{raw_number}", rawNumber?.replace(" ", "") ?: "")
+        .replace("{origin_number}", rawNumber?.replace(" ", "") ?: "") // for history compatibility, previously it was {origin_number}
 }
 fun String.resolveSmsTag(
     smsContent: String? = null,
