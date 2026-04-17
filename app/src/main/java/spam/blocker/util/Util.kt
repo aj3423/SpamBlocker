@@ -504,9 +504,6 @@ object Util {
 
     // Get the geo-location from the number, using libphonenumber's geo database
     fun numberGeoLocation(ctx: Context, rawNumber: String) : String? {
-        if (!Permission.phoneState.isGranted) {
-            return null
-        }
         return try {
             val phoneUtil = PhoneNumberUtil.getInstance()
             val geocoder = PhoneNumberOfflineGeocoder.getInstance()
