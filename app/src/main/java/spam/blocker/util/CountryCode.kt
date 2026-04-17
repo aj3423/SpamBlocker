@@ -29,22 +29,35 @@ object CountryCode {
 
     private fun networkAlpha2(ctx: Context): String? {
         return try {
-            val telephonyManager = ctx.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-            telephonyManager.networkCountryIso.uppercase()
+            val tm = ctx.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+            val iso = tm.networkCountryIso
+
+            if (iso.isNullOrBlank()) null else iso.uppercase()
         } catch (_: Exception) {
             null
         }
     }
-    fun localeAlpha2(context: Context): String? {
+    private fun simAlpha2(ctx: Context): String? {
         return try {
-            context.resources.configuration.locales[0].country.uppercase()
+            val tm = ctx.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+            val iso = tm.simCountryIso
+            if (iso.isNullOrBlank()) null else iso.uppercase()
+        } catch (_: Exception) {
+            null
+        }
+    }
+    private fun localeAlpha2(context: Context): String? {
+        return try {
+            val locale = context.resources.configuration.locales[0]
+            val country = locale.country
+            if (country.isNullOrBlank()) null else country.uppercase()
         } catch (_: Exception) {
             null
         }
     }
 
     fun alpha2(ctx: Context) : String {
-        return networkAlpha2(ctx) ?: localeAlpha2(ctx) ?: "ZZ"
+        return networkAlpha2(ctx) ?: simAlpha2(ctx) ?: localeAlpha2(ctx) ?: "ZZ"
     }
 
     fun current(ctx: Context): Int? {

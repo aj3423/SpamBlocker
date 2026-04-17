@@ -511,7 +511,7 @@ object Util {
             val phoneUtil = PhoneNumberUtil.getInstance()
             val geocoder = PhoneNumberOfflineGeocoder.getInstance()
 
-            val ccAlpha2 = CountryCode.localeAlpha2(ctx) // "US"
+            val ccAlpha2 = CountryCode.alpha2(ctx) // "US"
             val phoneNumber = phoneUtil.parse(rawNumber, ccAlpha2)
 
             if (!phoneUtil.isValidNumber(phoneNumber)) {
