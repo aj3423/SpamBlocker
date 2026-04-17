@@ -29,37 +29,75 @@ object CountryCode {
 
     private fun networkAlpha2(ctx: Context): String? {
         return try {
-            val telephonyManager = ctx.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+            val tm = ctx.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+            val iso = tm.networkCountryIso
 
-            val iso = telephonyManager.networkCountryIso
-            logi("networkCountryIso raw: '$iso' (length=${iso.length}), phoneType=${telephonyManager.phoneType}, simState=${telephonyManager.simState}")
+            logi("networkAlpha2 → raw: '$iso' (length=${iso?.length ?: -1})")
 
-            if (iso.isNullOrBlank())
+            if (iso.isNullOrBlank()) {
+                logi("networkAlpha2 → returning null (blank or null)")
                 null
-            else
-                iso.uppercase()
+            } else {
+                val result = iso.uppercase()
+                logi("networkAlpha2 → returning '$result'")
+                result
+            }
+        } catch (e: SecurityException) {
+            logi("networkAlpha2 → SecurityException (likely missing READ_PHONE_STATE permission): ${e.message}")
+            null
         } catch (e: Exception) {
-            logi("networkAlpha2 error: $e")
+            logi("networkAlpha2 → Unexpected exception: $e")
             null
         }
     }
-    fun localeAlpha2(context: Context): String? {
+
+    private fun simAlpha2(ctx: Context): String? {
+        return try {
+            val tm = ctx.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+            val iso = tm.simCountryIso
+
+            logi("simAlpha2 → raw: '$iso' (length=${iso?.length ?: -1})")
+
+            if (iso.isNullOrBlank()) {
+                logi("simAlpha2 → returning null (blank or null)")
+                null
+            } else {
+                val result = iso.uppercase()
+                logi("simAlpha2 → returning '$result'")
+                result
+            }
+        } catch (e: SecurityException) {
+            logi("simAlpha2 → SecurityException (likely missing READ_PHONE_STATE permission): ${e.message}")
+            null
+        } catch (e: Exception) {
+            logi("simAlpha2 → Unexpected exception: $e")
+            null
+        }
+    }
+
+    private fun localeAlpha2(context: Context): String? {
         return try {
             val locale = context.resources.configuration.locales[0]
             val country = locale.country
-            logi("locale country raw: '$country' (full locale: ${locale})")
-            if (country.isNullOrBlank())
+
+            logi("localeAlpha2 → raw country: '$country' | full locale: $locale")
+
+            if (country.isNullOrBlank()) {
+                logi("localeAlpha2 → returning null (blank or null)")
                 null
-            else
-                country.uppercase()
+            } else {
+                val result = country.uppercase()
+                logi("localeAlpha2 → returning '$result'")
+                result
+            }
         } catch (e: Exception) {
-            logi("localeAlpha2 error: $e")
+            logi("localeAlpha2 → Unexpected exception: $e")
             null
         }
     }
 
     fun alpha2(ctx: Context) : String {
-        return networkAlpha2(ctx) ?: localeAlpha2(ctx) ?: "ZZ"
+        return networkAlpha2(ctx) ?: simAlpha2(ctx) ?: localeAlpha2(ctx) ?: "ZZ"
     }
 
     fun current(ctx: Context): Int? {
