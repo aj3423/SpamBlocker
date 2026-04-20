@@ -92,13 +92,16 @@ class App : Application() {
     }
 
     private fun listenToNewCallSMS() {
+        val ctx = this
         Events.onNewCall.listen { recordId ->
             val record = G.callVM.table.findRecordById(this, recordId as Long)
-            G.callVM.records.add(0, record!!)
+            if (G.callVM.isVisible(ctx, record!!))
+                G.callVM.records.add(0, record)
         }
         Events.onNewSMS.listen { recordId ->
             val record = SmsTable().findRecordById(this, recordId as Long)
-            G.smsVM.records.add(0, record!!)
+            if (G.smsVM.isVisible(ctx, record!!))
+                G.smsVM.records.add(0, record)
         }
     }
 

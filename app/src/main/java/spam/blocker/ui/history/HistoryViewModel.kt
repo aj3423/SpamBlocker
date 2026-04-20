@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import spam.blocker.G
 import spam.blocker.db.CallTable
 import spam.blocker.db.HistoryRecord
 import spam.blocker.db.HistoryTable
@@ -28,29 +29,40 @@ open class HistoryViewModel(
     fun reload(ctx: Context) {
         records.clear()
 
-        val showPassed = showHistoryPassed.value
-        val showBlocked = showHistoryBlocked.value
-
         // Fuzzy search
-        // `aaa bbb` -> `.*aaa.*bbb.*`
-        val filterRegex = filter.value.replace(" ", ".*").let { ".*$it.*" }
+        val filterRegex = fuzzifyFilter()
 
         records.addAll(table.listRecords(ctx).filter {
-            // 1. show or not
-            val show = (showPassed && it.isNotBlocked()) || (showBlocked && it.isBlocked())
-
-            // 2. fuzzy filter by keywords
-            val filtered = if(!searchEnabled.value) {
-                true
-            } else {
-                val contactName = Contacts.cache.findContactByRawNumber(ctx, it.peer)?.name ?: ""
-                val allText = it.peer + contactName + (it.extraInfo ?: "") + it.reason
-                filterRegex.regexMatches(allText, Def.DefaultRegexFlags)
-            }
-
-            show && filtered
+            isVisible(ctx, it, filterRegex)
         })
     }
+
+    // `aaa bbb` -> `.*aaa.*bbb.*`
+    fun fuzzifyFilter() : String {
+        return filter.value.replace(" ", ".*").let { ".*$it.*" }
+    }
+    fun isVisible(
+        ctx: Context,
+        record: HistoryRecord,
+
+        // provide this param when calling this function repetitively (for better performance)
+        filterRegex: String = fuzzifyFilter()
+    ) : Boolean {
+        // 1. show or not
+        val show = (showHistoryPassed.value && record.isNotBlocked()) || (showHistoryBlocked.value && record.isBlocked())
+        if (!show)
+            return false
+
+        // 2. fuzzy filter by keywords
+        return if(!searchEnabled.value) { // not filtering
+            true
+        } else {
+            val contactName = Contacts.cache.findContactByRawNumber(ctx, record.peer)?.name ?: ""
+            val allText = record.peer + contactName + (record.extraInfo ?: "") + record.reason
+            filterRegex.regexMatches(allText, Def.DefaultRegexFlags)
+        }
+    }
+
     fun markAllAsRead(ctx: Context) {
         val read = records.map { it.copy(read = true) }
         records.apply {
