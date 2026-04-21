@@ -14,4 +14,22 @@
     </string>
     <string name="at_time">О котрій годині</string>
     <string name="interval">Інтервал</string>
+    <string name="contact_prefix">Префікс контакту</string>
+    <string name="prefix_matching">Збіг за префіксом</string>
+    <string name="help_prefix_matching">
+        <![CDATA[
+        Дозволяти дзвінки з номерів, які мають спільний префікс з вашими наявними контактами,
+        ідеально для організацій з послідовними телефонними лініями, наприклад клінік або офісів. <br>
+        <br>
+        <b>Параметри</b>: <br>
+        <minor>Довжина варіації суфікса</minor><br>
+        &ensp; Ігнорувати останні N цифр. <br>
+        <br>
+        <b>Наприклад:</b> <br>
+        <sample>
+        &ensp; Якщо у ваших контактах є xxxx02 і допуск суфікса дорівнює 2, буде дозволено будь-який номер від xxxx00 до xxxx99.
+        </sample>
+        ]]>
+    </string>
+    <string name="suffix_variation_length">Довжина варіації суфікса</string>
 </resources>

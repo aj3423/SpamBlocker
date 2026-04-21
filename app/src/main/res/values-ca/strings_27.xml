@@ -14,4 +14,22 @@
     </string>
     <string name="at_time">A l\'hora</string>
     <string name="interval">Interval</string>
+    <string name="contact_prefix">Prefix de contacte</string>
+    <string name="prefix_matching">Coincidència de prefix</string>
+    <string name="help_prefix_matching">
+        <![CDATA[
+        Permet trucades de números que comparteixen prefix amb els contactes existents,
+        ideal per a organitzacions que utilitzen línies telefòniques seqüencials (per exemple, clíniques o oficines). <br>
+        <br>
+        <b>Opcions</b>: <br>
+        <minor>Longitud de variació del sufix</minor><br>
+        &ensp; Ignora els últims N dígits. <br>
+        <br>
+        <b>Per exemple:</b> <br>
+        <sample>
+        &ensp; Amb xxxx02 als contactes i una tolerància de sufix de 2, es permetrà qualsevol número de xxxx00 a xxxx99.
+        </sample>
+        ]]>
+    </string>
+    <string name="suffix_variation_length">Longitud de variació del sufix</string>
 </resources>

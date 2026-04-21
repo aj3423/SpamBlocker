@@ -14,4 +14,22 @@
     </string>
     <string name="at_time">À l\'heure</string>
     <string name="interval">Intervalle</string>
+    <string name="contact_prefix">Préfixe de contact</string>
+    <string name="prefix_matching">Correspondance de préfixe</string>
+    <string name="help_prefix_matching">
+        <![CDATA[
+        Autoriser les appels des numéros qui partagent un préfixe avec vos contacts existants,
+        idéal pour les organisations utilisant des lignes téléphoniques séquentielles (p. ex., cliniques ou bureaux). <br>
+        <br>
+        <b>Options</b>: <br>
+        <minor>Longueur de variation du suffixe</minor><br>
+        &ensp; Ignorer les N derniers chiffres. <br>
+        <br>
+        <b>Par exemple :</b> <br>
+        <sample>
+        &ensp; Avec xxxx02 dans vos contacts et une tolérance de suffixe de 2, tout numéro de xxxx00 à xxxx99 sera autorisé.
+        </sample>
+        ]]>
+    </string>
+    <string name="suffix_variation_length">Longueur de variation du suffixe</string>
 </resources>

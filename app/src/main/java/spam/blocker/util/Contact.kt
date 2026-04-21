@@ -9,6 +9,7 @@ import android.net.Uri
 import android.provider.ContactsContract
 import android.provider.ContactsContract.CommonDataKinds.GroupMembership
 import android.provider.ContactsContract.PhoneLookup
+import spam.blocker.util.Util.clearNumber
 
 data class ContactInfo(
     val id: String,
@@ -95,6 +96,68 @@ object Contacts {
         return null
     }
 
+    fun findContactByNumberPrefix(
+        ctx: Context,
+        cleanInput: String,
+        tolerance: Int = 3
+    ): ContactInfo? {
+        if (!Permission.contacts.isGranted) {
+            return null
+        }
+
+        if (cleanInput.length <= tolerance) {
+            return null
+        }
+
+        val prefixLength = cleanInput.length - tolerance
+        val prefix = cleanInput.substring(0, prefixLength)
+
+        // We will query all phone numbers and do client-side matching for reliability
+        val projection = arrayOf(
+            ContactsContract.CommonDataKinds.Phone.CONTACT_ID,
+            ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
+            ContactsContract.CommonDataKinds.Phone.PHOTO_URI,
+            ContactsContract.CommonDataKinds.Phone.NUMBER
+        )
+
+        val cursor = try {
+            ctx.contentResolver.query(
+                ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                projection,
+                null,   // No selection → fetch all (usually fast enough)
+                null,
+                null
+            )
+        } catch (e: Exception) {
+            null
+        }
+
+        cursor?.use {
+            val idIndex = it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.CONTACT_ID)
+            val nameIndex = it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
+            val photoIndex = it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.PHOTO_URI)
+            val numberIndex = it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
+
+            while (it.moveToNext()) {
+                val storedNumber = it.getString(numberIndex) ?: continue
+                // "+1 (555) 999-0000" -> "15559990000"
+                val cleanStored = clearNumber(storedNumber.replace(Regex("[^0-9]"), ""))
+
+                // Check if stored number starts with the prefix AND has 'tolerance' more digits
+                if (cleanStored.startsWith(prefix) &&
+                    cleanStored.length == prefix.length + tolerance) {
+
+                    return ContactInfo(
+                        id = it.getString(idIndex) ?: "",
+                        name = it.getString(nameIndex) ?: "",
+                        iconUri = it.getString(photoIndex)
+                    )
+                }
+            }
+        }
+
+        return null
+    }
     // Find a list of groups that contain this number,
     // returns the group names
     @SuppressLint("Range")

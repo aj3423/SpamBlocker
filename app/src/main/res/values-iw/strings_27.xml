@@ -14,4 +14,22 @@
     </string>
     <string name="at_time">בשעה</string>
     <string name="interval">מרווח</string>
+    <string name="contact_prefix">קידומת איש קשר</string>
+    <string name="prefix_matching">התאמת קידומת</string>
+    <string name="help_prefix_matching">
+        <![CDATA[
+        אפשר שיחות ממספרים שחולקים קידומת עם אנשי הקשר הקיימים שלך,
+        מתאים לארגונים שמשתמשים בקווי טלפון עוקבים (למשל מרפאות או משרדים). <br>
+        <br>
+        <b>אפשרויות</b>: <br>
+        <minor>אורך שינוי הסיומת</minor><br>
+        &ensp; התעלם מ־N הספרות האחרונות. <br>
+        <br>
+        <b>לדוגמה:</b> <br>
+        <sample>
+        &ensp; אם xxxx02 נמצא באנשי הקשר שלך וסבילות הסיומת היא 2, כל מספר מ־xxxx00 עד xxxx99 יורשה.
+        </sample>
+        ]]>
+    </string>
+    <string name="suffix_variation_length">אורך שינוי הסיומת</string>
 </resources>

@@ -14,4 +14,22 @@
     </string>
     <string name="at_time">در زمان</string>
     <string name="interval">فاصله</string>
+    <string name="contact_prefix">پیشوند مخاطب</string>
+    <string name="prefix_matching">تطبیق پیشوند</string>
+    <string name="help_prefix_matching">
+        <![CDATA[
+        تماس از شماره‌هایی را مجاز کن که با مخاطبان فعلی شما پیشوند مشترک دارند،
+        مناسب برای سازمان‌هایی که از خطوط تلفن متوالی استفاده می‌کنند (برای مثال، درمانگاه‌ها یا دفترها). <br>
+        <br>
+        <b>گزینه‌ها</b>: <br>
+        <minor>طول تغییر پسوند</minor><br>
+        &ensp; N رقم آخر را نادیده بگیر. <br>
+        <br>
+        <b>برای مثال:</b> <br>
+        <sample>
+        &ensp; اگر xxxx02 در مخاطبان شما باشد و مقدار تغییر پسوند 2 باشد، هر شماره از xxxx00 تا xxxx99 مجاز خواهد بود.
+        </sample>
+        ]]>
+    </string>
+    <string name="suffix_variation_length">طول تغییر پسوند</string>
 </resources>

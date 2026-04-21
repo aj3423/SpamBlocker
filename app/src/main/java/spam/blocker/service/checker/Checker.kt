@@ -421,7 +421,49 @@ class Checker { // for namespace only
             return null
         }
     }
-    // The "Contacts" in quick settings.
+    // The "Likely Contact" in quick settings.
+    // It checks whether the phone number has the same prefix as a contact.
+    private class ContactPrefix(
+        private val ctx: Context,
+    ) : IChecker {
+        override fun priority(): Int {
+            return spf.Contact(ctx).lenientPriority
+        }
+
+        override fun check(cCtx: CheckContext): ICheckResult? {
+            val C = G.palette
+
+            val rawNumber = cCtx.rawNumber
+            val logger = cCtx.logger
+
+            val spf = spf.Contact(ctx)
+
+            if (!spf.isEnabled or !spf.prefixMatching or !Permission.contacts.isGranted) {
+                return null
+            }
+            logger?.debug(
+                ctx.getString(R.string.checking_template)
+                    .formatAnnotated(
+                        ctx.getString(R.string.contact_prefix).A(C.infoBlue),
+                        priority().toString().A(C.priority)
+                    )
+            )
+
+            val tolerance = spf.suffixVariationLength
+            val clearedNumber = Util.clearNumber(rawNumber)
+
+            val contact = Contacts.findContactByNumberPrefix(ctx, clearedNumber, tolerance)
+            if (contact != null) { // is contact
+                logger?.success(
+                    ctx.getString(R.string.allowed_by)
+                        .format(ctx.getString(R.string.contact_prefix)) + ": ${contact.name}"
+                )
+                return ByContact(Def.RESULT_ALLOWED_BY_CONTACT_PREFIX, contact.name)
+            }
+            return null
+        }
+    }
+    // The "Non-Contact" in quick settings.
     // It checks whether the phone number is unknown(not from a contact).
     private class NonContact(
         private val ctx: Context,
@@ -1513,6 +1555,7 @@ class Checker { // for namespace only
                 STIR(ctx),
                 SpamDB(ctx),
                 Contact(ctx),
+                ContactPrefix(ctx),
                 NonContact(ctx),
                 RepeatedCall(ctx),
                 Dialed(ctx),
@@ -1578,6 +1621,7 @@ class Checker { // for namespace only
             val checkers = arrayListOf<IChecker>(
                 PassedByDefault(ctx),
                 Contact(ctx),
+                ContactPrefix(ctx),
                 NonContact(ctx),
                 SpamDB(ctx),
                 MeetingMode(ctx),

@@ -14,4 +14,22 @@
     </string>
     <string name="at_time">في الوقت</string>
     <string name="interval">الفاصل</string>
+    <string name="contact_prefix">بادئة جهة الاتصال</string>
+    <string name="prefix_matching">مطابقة البادئة</string>
+    <string name="help_prefix_matching">
+        <![CDATA[
+        اسمح بالمكالمات من الأرقام التي تشترك في بادئة مع جهات الاتصال الحالية لديك،
+        وهو مثالي للمؤسسات التي تستخدم خطوط هاتف متسلسلة (مثل العيادات أو المكاتب). <br>
+        <br>
+        <b>الخيارات</b>: <br>
+        <minor>طول تغير اللاحقة</minor><br>
+        &ensp; تجاهل آخر N أرقام. <br>
+        <br>
+        <b>على سبيل المثال:</b> <br>
+        <sample>
+        &ensp; إذا كان xxxx02 موجودًا في جهات الاتصال لديك وكان طول تغير اللاحقة 2، فسيتم السماح بأي رقم من xxxx00 إلى xxxx99.
+        </sample>
+        ]]>
+    </string>
+    <string name="suffix_variation_length">طول تغير اللاحقة</string>
 </resources>

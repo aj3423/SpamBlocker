@@ -14,4 +14,22 @@
     </string>
     <string name="at_time">定时</string>
     <string name="interval">间隔</string>
+    <string name="contact_prefix">联系人前缀</string>
+    <string name="prefix_matching">前缀匹配</string>
+    <string name="help_prefix_matching">
+        <![CDATA[
+        允许与现有联系人共享前缀的号码来电，
+        适合使用连续电话号码的机构，例如诊所或办公室。 <br>
+        <br>
+        <b>选项</b>: <br>
+        <minor>后缀变化长度</minor><br>
+        &ensp; 忽略最后 N 位数字。 <br>
+        <br>
+        <b>例如：</b> <br>
+        <sample>
+        &ensp; 如果联系人中有 xxxx02，且后缀容差为 2，则 xxxx00 到 xxxx99 之间的任何号码都会被允许。
+        </sample>
+        ]]>
+    </string>
+    <string name="suffix_variation_length">后缀变化长度</string>
 </resources>
