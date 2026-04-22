@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject
 import spam.blocker.G
 import spam.blocker.R
@@ -33,6 +34,7 @@ import spam.blocker.def.Def.RESULT_ALLOWED_BY_API_QUERY
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CNAP_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_GROUP_REGEX
+import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_PREFIX_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTENT_RULE
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_DEFAULT
@@ -50,6 +52,7 @@ import spam.blocker.def.Def.RESULT_ALLOWED_BY_STIR
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_API_QUERY
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CNAP_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTACT_GROUP_REGEX
+import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTACT_PREFIX_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTACT_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTENT_RULE
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_GEO_LOCATION_REGEX
@@ -427,9 +430,21 @@ class ByApiQuery(
 class ByRegexRule(
     override val type: Int,
     val rule: RegexRule?, // null: the rule is deleted
+    val details: String? = null,
 ) : ICheckResult {
+
+    // This is saved in history log db
+    @Serializable
+    data class DbData(
+        val ruleId: Long,
+        val details: String?
+    )
+
     override fun reasonToDb(): String {
-        return (rule?.id ?: 0).toString()
+        val ruleId = rule?.id ?: 0
+        return Json.encodeToString(
+            DbData(ruleId, details)
+        )
     }
 
     private fun ruleSummary(ctx: Context): String {
@@ -515,6 +530,10 @@ class ByRegexRule(
 
             RESULT_ALLOWED_BY_GEO_LOCATION_REGEX, RESULT_BLOCKED_BY_GEO_LOCATION_REGEX -> {
                 ctx.getString(R.string.geo_location) + ": $summary"
+            }
+
+            RESULT_ALLOWED_BY_CONTACT_PREFIX_REGEX, RESULT_BLOCKED_BY_CONTACT_PREFIX_REGEX -> {
+                ctx.getString(R.string.contact_prefix) + ": $summary - $details" // details == contact name
             }
 
             else -> "bug, please report"
@@ -604,14 +623,36 @@ fun parseCheckResultFromDb(ctx: Context, result: Int, reason: String): ICheckRes
         RESULT_ALLOWED_BY_CONTACT_GROUP_REGEX, RESULT_BLOCKED_BY_CONTACT_GROUP_REGEX,
         RESULT_ALLOWED_BY_CONTACT_REGEX, RESULT_BLOCKED_BY_CONTACT_REGEX,
         RESULT_ALLOWED_BY_CNAP_REGEX, RESULT_BLOCKED_BY_CNAP_REGEX,
-        RESULT_ALLOWED_BY_GEO_LOCATION_REGEX, RESULT_BLOCKED_BY_GEO_LOCATION_REGEX -> {
-            val rule = NumberRegexTable().findRuleById(ctx, reason.toLong())
-            ByRegexRule(result, rule)
+        RESULT_ALLOWED_BY_GEO_LOCATION_REGEX, RESULT_BLOCKED_BY_GEO_LOCATION_REGEX,
+        RESULT_ALLOWED_BY_CONTACT_PREFIX_REGEX, RESULT_BLOCKED_BY_CONTACT_PREFIX_REGEX -> {
+            try {
+                // try new format, `reason` is a json string like: {"ruleId": 123, "details": "..."}
+                val data = Json.decodeFromString<ByRegexRule.DbData>(reason)
+                val rule = NumberRegexTable().findRuleById(ctx, data.ruleId)
+
+                ByRegexRule(result, rule, data.details)
+            } catch (_: Exception) {
+                // old format, `reason` is the ruleId
+                //  TODO: Remove this compatibility check after 2028-06-01
+                val ruleId = reason.toLong()
+                val rule = NumberRegexTable().findRuleById(ctx, ruleId)
+                ByRegexRule(result, rule)
+            }
         }
 
         RESULT_ALLOWED_BY_CONTENT_RULE, RESULT_BLOCKED_BY_CONTENT_RULE -> {
-            val rule = ContentRegexTable().findRuleById(ctx, reason.toLong())
-            ByRegexRule(result, rule)
+            try {
+                // try new format, `reason` is a json string like: {"ruleId": 123, "details": "..."}
+                val data = Json.decodeFromString<ByRegexRule.DbData>(reason)
+                val rule = NumberRegexTable().findRuleById(ctx, data.ruleId)
+
+                ByRegexRule(result, rule, data.details)
+            } catch (_: Exception) {
+                // old format, `reason` is the ruleId
+                //  TODO: Remove this compatibility check after 2028-06-01
+                val rule = ContentRegexTable().findRuleById(ctx, reason.toLong())
+                ByRegexRule(result, rule)
+            }
         }
         RESULT_ALLOWED_BY_PUSH_ALERT -> {
             val detail = PermissiveJson.decodeFromString<PushAlertDetail>(reason)

@@ -79,22 +79,25 @@ object CompatibleChannelSerializer : KSerializer<String> {
 @Serializable
 data class RegexRule(
     var id: Long = 0,
+
     var pattern: String = "",
+    /*
+      This patternFlags contains both:
+        - Regex Flags, e.g. Case Sensitive
+        - Regex Modes, e.g. Contact Group mode
+      Separate it into two attributes when necessary.
+     */
+    var patternFlags: Int = Def.DefaultRegexFlags,
 
     // for now, this is only used for ParticularNumber
     var patternExtra: String = "",
-
-//    @Serializable(with = CompatibleFlagSerializer::class)
-    var patternFlags: Int = Def.DefaultRegexFlags,
-//    @Serializable(with = CompatibleFlagSerializer::class)
     var patternExtraFlags: Int = Def.DefaultRegexFlags,
 
     var description: String = "",
     var priority: Int = 0,
     var isBlacklist: Boolean = true,
 
-//    @Serializable(with = CompatibleFlagSerializer::class)
-    var flags: Int = Def.FLAG_FOR_SMS or Def.FLAG_FOR_CALL, // it applies to SMS or Call or both
+    var flags: Int = Def.FLAG_FOR_SMS or Def.FLAG_FOR_CALL, // applies to SMS or Call or both
 
     @Serializable(with = CompatibleChannelSerializer::class)
     var channel: String = if(isBlacklist) Def.DEF_SPAM_CHANNEL else CHANNEL_HIGH, // notification channel
@@ -106,7 +109,7 @@ data class RegexRule(
     var simSlot: Int? = null,
 ) {
 
-    fun summary(): String {
+    fun desc(): String {
         return if (description.isNotEmpty())
             description
         else

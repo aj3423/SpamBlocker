@@ -14,4 +14,37 @@
     </string>
     <string name="at_time">定时</string>
     <string name="interval">间隔</string>
+    <string name="contact_prefix">联系人前缀</string>
+    <string name="help_regex_mode_contact_prefix">
+        <![CDATA[
+        <title><b>联系人前缀</b></title>:<br>
+        &ensp; 根据联系人前缀匹配来允许来电，适合使用
+          连续号码的机构，例如诊所或律师事务所。 <br>
+        <br>
+        <warn>此正则表达式必须以点结尾</warn>，在此正则模式下，这些结尾的点表示可变数字。 <br>
+        <br>
+        <b>例如：</b> <br>
+        &ensp; <sample><b>.*..</b></sample> <br>
+        &ensp; 它会匹配任何具有相同前缀的联系人，并允许末尾有 2 位数字的变化。<br>
+        &ensp; 如果你将 <sample>1111<b>22</b></sample> 保存为联系人，则来自 <sample>1111<b>33</b></sample> 的来电也会被允许。<br>
+        <br>
+        <b>另一个示例：</b> <br>
+        &ensp; <sample><b>(?!(04|03))\d{5}..</b></sample> <br>
+        拆解说明： <br>
+        &ensp; - <b><sample>(?!(03|04))</sample></b> <br>
+        &emsp;   排除以 03 或 04 开头的号码 <br>
+        &ensp; - <b><sample>\d{5}</sample></b> <br>
+        &emsp;   号码总长度应为 7 位，包括末尾 2 位可变后缀 <br>
+        &ensp; - <b><sample>..</sample></b> <br>
+        &emsp;   2 位可变后缀 <br>
+        ]]>
+    </string>
+    <string name="help_regex_preset_contact_prefix">
+        <![CDATA[
+        按前缀匹配联系人，并允许最后 2 位数字不同。 <br>
+        <br>
+        <b>例如</b>: <br>
+        &ensp; 如果你将 <sample>1111<b>22</b></sample> 保存为联系人，则来自 <sample>1111<b>33</b></sample> 的来电也会被允许。<br>
+        ]]>
+    </string>
 </resources>

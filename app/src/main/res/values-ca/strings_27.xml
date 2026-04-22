@@ -14,4 +14,37 @@
     </string>
     <string name="at_time">A l\'hora</string>
     <string name="interval">Interval</string>
+    <string name="contact_prefix">Prefix del contacte</string>
+    <string name="help_regex_mode_contact_prefix">
+        <![CDATA[
+        <title><b>Prefix del contacte</b></title>:<br>
+        &ensp; Permet les trucades segons la coincidència del prefix del contacte, ideal per a organitzacions que utilitzen
+          números seqüencials, com ara clíniques o despatxos d\'advocats. <br>
+        <br>
+        <warn>Aquesta expressió regular ha d\'acabar amb punts</warn>, en aquest mode d\'expressió regular, aquests punts finals representen els dígits variables. <br>
+        <br>
+        <b>Per exemple:</b> <br>
+        &ensp; <sample><b>.*..</b></sample> <br>
+        &ensp; Coincideix amb qualsevol contacte amb el mateix prefix, permetent una variació de 2 dígits al final.<br>
+        &ensp; Si tens <sample>1111<b>22</b></sample> desat com a contacte, també es permetrà una trucada entrant de <sample>1111<b>33</b></sample>.<br>
+        <br>
+        <b>Un altre exemple:</b> <br>
+        &ensp; <sample><b>(?!(04|03))\d{5}..</b></sample> <br>
+        Desglossament: <br>
+        &ensp; - <b><sample>(?!(03|04))</sample></b> <br>
+        &emsp;   Exclou els números que comencen per 03 o 04 <br>
+        &ensp; - <b><sample>\d{5}</sample></b> <br>
+        &emsp;   El número ha de tenir 7 dígits en total, inclòs el sufix variable de 2 dígits <br>
+        &ensp; - <b><sample>..</sample></b> <br>
+        &emsp;   Sufix variable de 2 dígits <br>
+        ]]>
+    </string>
+    <string name="help_regex_preset_contact_prefix">
+        <![CDATA[
+        Fa coincidir els contactes pel prefix, permetent variació en els 2 últims dígits. <br>
+        <br>
+        <b>Per exemple</b>: <br>
+        &ensp; Si tens <sample>1111<b>22</b></sample> desat com a contacte, també es permetrà una trucada de <sample>1111<b>33</b></sample>.<br>
+        ]]>
+    </string>
 </resources>

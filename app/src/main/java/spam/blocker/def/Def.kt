@@ -43,7 +43,7 @@ object Def {
     const val RESULT_ALLOWED_BY_ANSWERED = 107
     const val RESULT_ALLOWED_BY_CNAP_REGEX = 108
     const val RESULT_ALLOWED_BY_GEO_LOCATION_REGEX = 109
-
+    const val RESULT_ALLOWED_BY_CONTACT_PREFIX_REGEX = 110
 
 
     // blocked (10~99)
@@ -59,6 +59,7 @@ object Def {
     const val RESULT_BLOCKED_BY_SMS_BOMB = 19
     const val RESULT_BLOCKED_BY_CNAP_REGEX = 20
     const val RESULT_BLOCKED_BY_GEO_LOCATION_REGEX = 21
+    const val RESULT_BLOCKED_BY_CONTACT_PREFIX_REGEX = 22
 
 
     fun isBlocked(result: Int): Boolean {
@@ -80,8 +81,8 @@ object Def {
 
 
     // regexFlags, max: 1 shl 30
-    const val FLAG_REGEX_IGNORE_CASE = 1 shl 0 // remove this after 2027-01-01, replaced by FLAG_REGEX_CASE_SENSITIVE
-    const val FLAG_REGEX_MULTILINE = 1 shl 1
+//    const val FLAG_REGEX_IGNORE_CASE = 1 shl 0
+//    const val FLAG_REGEX_MULTILINE = 1 shl 1
 //    const val FLAG_REGEX_DOT_MATCH_ALL = 1 shl 2
 //    const val FLAG_REGEX_LITERAL = 1 shl 3
     const val FLAG_REGEX_CASE_SENSITIVE = 1 shl 4
@@ -92,6 +93,7 @@ object Def {
     const val FLAG_REGEX_IGNORE_CC = 1 shl 13
     const val FLAG_REGEX_FOR_CNAP = 1 shl 14
     const val FLAG_REGEX_FOR_GEO_LOCATION = 1 shl 15
+    const val FLAG_REGEX_FOR_CONTACT_PREFIX = 1 shl 16
 
 
 
@@ -107,7 +109,8 @@ object Def {
         FLAG_REGEX_FOR_CONTACT to "c",
         FLAG_REGEX_IGNORE_CC to "🌐",
         FLAG_REGEX_FOR_CNAP to "☑",
-        FLAG_REGEX_FOR_GEO_LOCATION to "⚲"
+        FLAG_REGEX_FOR_GEO_LOCATION to "⚲",
+        FLAG_REGEX_FOR_CONTACT_PREFIX to "≈c"
     )
     const val REGEX_FLAGS_RIC = FLAG_REGEX_RAW_NUMBER or FLAG_REGEX_IGNORE_CC or FLAG_REGEX_CASE_SENSITIVE
 

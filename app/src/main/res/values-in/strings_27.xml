@@ -14,4 +14,37 @@
     </string>
     <string name="at_time">Pada Waktu</string>
     <string name="interval">Interval</string>
+    <string name="contact_prefix">Prefiks Kontak</string>
+    <string name="help_regex_mode_contact_prefix">
+        <![CDATA[
+        <title><b>Prefiks Kontak</b></title>:<br>
+        &ensp; Izinkan panggilan berdasarkan kecocokan prefiks kontak, ideal untuk organisasi yang menggunakan
+          nomor berurutan, misalnya klinik atau firma hukum. <br>
+        <br>
+        <warn>Regex ini harus diakhiri dengan titik</warn>, dalam mode regex ini, titik-titik di akhir tersebut mewakili digit yang bervariasi. <br>
+        <br>
+        <b>Contoh:</b> <br>
+        &ensp; <sample><b>.*..</b></sample> <br>
+        &ensp; Ini cocok dengan kontak mana pun yang memiliki prefiks sama, sehingga perbedaan 2 digit di akhir tetap diizinkan.<br>
+        &ensp; Jika Anda menyimpan <sample>1111<b>22</b></sample> sebagai kontak, panggilan masuk dari <sample>1111<b>33</b></sample> juga akan diizinkan.<br>
+        <br>
+        <b>Contoh lain:</b> <br>
+        &ensp; <sample><b>(?!(04|03))\d{5}..</b></sample> <br>
+        Rincian: <br>
+        &ensp; - <b><sample>(?!(03|04))</sample></b> <br>
+        &emsp;   Kecualikan nomor yang diawali 03 atau 04 <br>
+        &ensp; - <b><sample>\d{5}</sample></b> <br>
+        &emsp;   Nomor harus terdiri dari total 7 digit, termasuk sufiks variabel 2 digit <br>
+        &ensp; - <b><sample>..</sample></b> <br>
+        &emsp;   Sufiks variabel 2 digit <br>
+        ]]>
+    </string>
+    <string name="help_regex_preset_contact_prefix">
+        <![CDATA[
+        Cocokkan kontak berdasarkan prefiks, dengan mengizinkan variasi pada 2 digit terakhir. <br>
+        <br>
+        <b>Contoh</b>: <br>
+        &ensp; Jika Anda menyimpan <sample>1111<b>22</b></sample> sebagai kontak, panggilan dari <sample>1111<b>33</b></sample> juga akan diizinkan.<br>
+        ]]>
+    </string>
 </resources>

@@ -14,4 +14,37 @@
     </string>
     <string name="at_time">À l\'heure</string>
     <string name="interval">Intervalle</string>
+    <string name="contact_prefix">Préfixe de contact</string>
+    <string name="help_regex_mode_contact_prefix">
+        <![CDATA[
+        <title><b>Préfixe de contact</b></title>:<br>
+        &ensp; Autoriser les appels selon la correspondance du préfixe du contact, idéal pour les organisations qui utilisent
+          des numéros séquentiels, comme les cliniques ou les cabinets juridiques. <br>
+        <br>
+        <warn>Cette expression régulière doit se terminer par des points</warn>, dans ce mode, ces points finaux représentent les chiffres variables. <br>
+        <br>
+        <b>Par exemple :</b> <br>
+        &ensp; <sample><b>.*..</b></sample> <br>
+        &ensp; Elle correspond à tout contact ayant le même préfixe, en autorisant une variation de 2 chiffres à la fin.<br>
+        &ensp; Si le numéro <sample>1111<b>22</b></sample> est enregistré comme contact, un appel entrant depuis <sample>1111<b>33</b></sample> sera aussi autorisé.<br>
+        <br>
+        <b>Un autre exemple :</b> <br>
+        &ensp; <sample><b>(?!(04|03))\d{5}..</b></sample> <br>
+        Décomposition : <br>
+        &ensp; - <b><sample>(?!(03|04))</sample></b> <br>
+        &emsp;   Exclure les numéros commençant par 03 ou 04 <br>
+        &ensp; - <b><sample>\d{5}</sample></b> <br>
+        &emsp;   Le numéro doit comporter 7 chiffres au total, y compris le suffixe variable à 2 chiffres <br>
+        &ensp; - <b><sample>..</sample></b> <br>
+        &emsp;   Suffixe variable à 2 chiffres <br>
+        ]]>
+    </string>
+    <string name="help_regex_preset_contact_prefix">
+        <![CDATA[
+        Correspond aux contacts par préfixe, en autorisant une variation sur les 2 derniers chiffres. <br>
+        <br>
+        <b>Par exemple</b>: <br>
+        &ensp; Si le numéro <sample>1111<b>22</b></sample> est enregistré comme contact, un appel depuis <sample>1111<b>33</b></sample> sera aussi autorisé.<br>
+        ]]>
+    </string>
 </resources>

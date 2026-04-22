@@ -14,4 +14,37 @@
     </string>
     <string name="at_time">در زمان</string>
     <string name="interval">فاصله</string>
+    <string name="contact_prefix">پیش‌شماره مخاطب</string>
+    <string name="help_regex_mode_contact_prefix">
+        <![CDATA[
+        <title><b>پیش‌شماره مخاطب</b></title>:<br>
+        &ensp; اجازه دادن به تماس‌ها بر اساس تطبیق پیش‌شماره مخاطب، مناسب برای سازمان‌هایی که از
+          شماره‌های ترتیبی استفاده می‌کنند، مانند درمانگاه‌ها یا دفاتر حقوقی. <br>
+        <br>
+        <warn>این regex باید با نقطه‌ها تمام شود</warn>، در این حالت regex این نقطه‌های پایانی نشان‌دهنده رقم‌های متغیر هستند. <br>
+        <br>
+        <b>برای مثال:</b> <br>
+        &ensp; <sample><b>.*..</b></sample> <br>
+        &ensp; با هر مخاطبی که پیش‌شماره یکسانی داشته باشد مطابقت می‌دهد و اختلاف ۲ رقمی در انتها را مجاز می‌کند.<br>
+        &ensp; اگر <sample>1111<b>22</b></sample> را به‌عنوان مخاطب ذخیره کرده باشید، تماس ورودی از <sample>1111<b>33</b></sample> هم مجاز خواهد بود.<br>
+        <br>
+        <b>مثال دیگر:</b> <br>
+        &ensp; <sample><b>(?!(04|03))\d{5}..</b></sample> <br>
+        توضیح بخش‌ها: <br>
+        &ensp; - <b><sample>(?!(03|04))</sample></b> <br>
+        &emsp;   شماره‌هایی را که با 03 یا 04 شروع می‌شوند حذف می‌کند <br>
+        &ensp; - <b><sample>\d{5}</sample></b> <br>
+        &emsp;   شماره باید در مجموع ۷ رقم باشد، شامل پسوند متغیر ۲ رقمی <br>
+        &ensp; - <b><sample>..</sample></b> <br>
+        &emsp;   پسوند متغیر ۲ رقمی <br>
+        ]]>
+    </string>
+    <string name="help_regex_preset_contact_prefix">
+        <![CDATA[
+        مخاطبان را بر اساس پیش‌شماره تطبیق می‌دهد و تغییر در ۲ رقم پایانی را مجاز می‌کند. <br>
+        <br>
+        <b>برای مثال</b>: <br>
+        &ensp; اگر <sample>1111<b>22</b></sample> را به‌عنوان مخاطب ذخیره کرده باشید، تماس از <sample>1111<b>33</b></sample> هم مجاز خواهد بود.<br>
+        ]]>
+    </string>
 </resources>

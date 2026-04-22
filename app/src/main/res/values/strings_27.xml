@@ -14,4 +14,37 @@
     </string>
     <string name="at_time">At Time</string>
     <string name="interval">Interval</string>
+    <string name="contact_prefix">Contact Prefix</string>
+    <string name="help_regex_mode_contact_prefix">
+        <![CDATA[
+        <title><b>Contact Prefix</b></title>:<br>
+        &ensp; Allow calls based on contact prefix matching, ideal for organizations using
+          sequential numbers, e.g., clinics or law firms. <br>
+        <br>
+        <warn>This regex must end with dots</warn>, in this regex mode, these trailing dots represent the variable digits. <br>
+        <br>
+        <b>For example:</b> <br>
+        &ensp; <sample><b>.*..</b></sample> <br>
+        &ensp; It matches any contact with the same prefix, allowing for a 2-digit variation at the end.<br>
+        &ensp; If you have <sample>1111<b>22</b></sample> saved as a contact, a call from <sample>1111<b>33</b></sample> will also be allowed.<br>
+        <br>
+        <b>Another example:</b> <br>
+        &ensp; <sample><b>(?!(04|03))\d{5}..</b></sample> <br>
+        Breakdown: <br>
+        &ensp; - <b><sample>(?!(03|04))</sample></b> <br>
+        &emsp;   Exclude numbers starting with 03 or 04 <br>
+        &ensp; - <b><sample>\d{5}</sample></b> <br>
+        &emsp;   The number should be 7 digits in total, including the 2-digit variable suffix <br>
+        &ensp; - <b><sample>..</sample></b> <br>
+        &emsp;   2-digit variable suffix <br>
+        ]]>
+    </string>
+    <string name="help_regex_preset_contact_prefix">
+        <![CDATA[
+        Match contacts by prefix, allowing for variation in the last 2 digits. <br>
+        <br>
+        <b>For example</b>: <br>
+        &ensp; If you have <sample>1111<b>22</b></sample> saved as a contact, a call from <sample>1111<b>33</b></sample> will also be allowed.<br>
+        ]]>
+    </string>
 </resources>

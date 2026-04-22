@@ -81,12 +81,15 @@ fun RegexRule.toChecker(
 ): IChecker {
     val forContact = this.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT)
     val forContactGroup = this.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
+    val forContactPrefix = this.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_PREFIX)
     val forCNAP = this.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CNAP)
     val forGeo = this.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_GEO_LOCATION)
     return if (forContact)
         Checker.RegexContact(ctx, this)
     else if (forContactGroup)
         Checker.ContactGroup(ctx, this)
+    else if (forContactPrefix)
+        Checker.ContactPrefix(ctx, this)
     else if (forCNAP)
         Checker.CNAP(ctx, this)
     else if (forGeo)
@@ -1007,7 +1010,7 @@ class Checker { // for namespace only
                     .formatAnnotated(
                         ctx.getString(R.string.number_rule).A(C.infoBlue),
                         priority().toString().A(C.priority),
-                        rule.summary().A(if (rule.isBlacklist) C.error else C.success),
+                        rule.desc().A(if (rule.isBlacklist) C.error else C.success),
                     )
             )
 
@@ -1018,12 +1021,12 @@ class Checker { // for namespace only
                 if (block)
                     logger?.error(
                         ctx.getString(R.string.blocked_by)
-                            .format(ctx.getString(R.string.number_rule)) + ": ${rule.summary()}"
+                            .format(ctx.getString(R.string.number_rule)) + ": ${rule.desc()}"
                     )
                 else
                     logger?.success(
                         ctx.getString(R.string.allowed_by)
-                            .format(ctx.getString(R.string.number_rule)) + ": ${rule.summary()}"
+                            .format(ctx.getString(R.string.number_rule)) + ": ${rule.desc()}"
                     )
 
                 return ByRegexRule(
@@ -1056,7 +1059,7 @@ class Checker { // for namespace only
                     .formatAnnotated(
                         ctx.getString(R.string.caller_name_rule).A(C.infoBlue),
                         priority().toString().A(C.priority),
-                        rule.summary().A(if (rule.isBlacklist) C.error else C.success),
+                        rule.desc().A(if (rule.isBlacklist) C.error else C.success),
                     )
             )
             if (cnap == null) {
@@ -1070,12 +1073,12 @@ class Checker { // for namespace only
                 if (block)
                     logger?.error(
                         ctx.getString(R.string.blocked_by)
-                            .format(ctx.getString(R.string.caller_name_rule)) + ": ${rule.summary()}"
+                            .format(ctx.getString(R.string.caller_name_rule)) + ": ${rule.desc()}"
                     )
                 else
                     logger?.success(
                         ctx.getString(R.string.allowed_by)
-                            .format(ctx.getString(R.string.caller_name_rule)) + ": ${rule.summary()}"
+                            .format(ctx.getString(R.string.caller_name_rule)) + ": ${rule.desc()}"
                     )
 
                 return ByRegexRule(
@@ -1110,7 +1113,7 @@ class Checker { // for namespace only
                     .formatAnnotated(
                         ctx.getString(R.string.geo_location_rule).A(C.infoBlue),
                         priority().toString().A(C.priority),
-                        rule.summary().A(if (rule.isBlacklist) C.error else C.success),
+                        rule.desc().A(if (rule.isBlacklist) C.error else C.success),
                     )
             )
 
@@ -1123,12 +1126,12 @@ class Checker { // for namespace only
                 if (block)
                     logger?.error(
                         ctx.getString(R.string.blocked_by)
-                            .format(ctx.getString(R.string.geo_location_rule)) + ": ${rule.summary()}"
+                            .format(ctx.getString(R.string.geo_location_rule)) + ": ${rule.desc()}"
                     )
                 else
                     logger?.success(
                         ctx.getString(R.string.allowed_by)
-                            .format(ctx.getString(R.string.geo_location_rule)) + ": ${rule.summary()}"
+                            .format(ctx.getString(R.string.geo_location_rule)) + ": ${rule.desc()}"
                     )
 
                 return ByRegexRule(
@@ -1165,7 +1168,7 @@ class Checker { // for namespace only
                     .formatAnnotated(
                         ctx.getString(R.string.contact_rule).A(C.infoBlue),
                         priority().toString().A(C.priority),
-                        rule.summary().A(if (rule.isBlacklist) C.error else C.success)
+                        rule.desc().A(if (rule.isBlacklist) C.error else C.success)
                     )
             )
 
@@ -1179,12 +1182,12 @@ class Checker { // for namespace only
                     if (block)
                         logger?.error(
                             ctx.getString(R.string.blocked_by)
-                                .format(ctx.getString(R.string.contact_rule)) + ": ${rule.summary()}"
+                                .format(ctx.getString(R.string.contact_rule)) + ": ${rule.desc()}"
                         )
                     else
                         logger?.success(
                             ctx.getString(R.string.allowed_by)
-                                .format(ctx.getString(R.string.contact_rule)) + ": ${rule.summary()}"
+                                .format(ctx.getString(R.string.contact_rule)) + ": ${rule.desc()}"
                         )
 
                     return ByRegexRule(
@@ -1221,7 +1224,7 @@ class Checker { // for namespace only
                     .formatAnnotated(
                         ctx.getString(R.string.contact_group).A(C.infoBlue),
                         priority().toString().A(C.priority),
-                        rule.summary().A(if (rule.isBlacklist) C.error else C.success)
+                        rule.desc().A(if (rule.isBlacklist) C.error else C.success)
                     )
             )
 
@@ -1237,17 +1240,77 @@ class Checker { // for namespace only
                 if (block)
                     logger?.error(
                         ctx.getString(R.string.blocked_by)
-                            .format(ctx.getString(R.string.contact_group)) + ": ${rule.summary()}"
+                            .format(ctx.getString(R.string.contact_group)) + ": ${rule.desc()}"
                     )
                 else
                     logger?.success(
                         ctx.getString(R.string.allowed_by)
-                            .format(ctx.getString(R.string.contact_group)) + ": ${rule.summary()}"
+                            .format(ctx.getString(R.string.contact_group)) + ": ${rule.desc()}"
                     )
 
                 return ByRegexRule(
                     type = if (block) Def.RESULT_BLOCKED_BY_CONTACT_GROUP_REGEX else Def.RESULT_ALLOWED_BY_CONTACT_GROUP_REGEX,
                     rule = rule,
+                )
+            }
+            return null
+        }
+    }
+
+    // The regex flag `Contact Prefix`, fuzzy prefix match.
+    class ContactPrefix(
+        ctx: Context,
+        rule: RegexRule
+    ) : RegexRuleChecker(ctx, rule) {
+        override fun check(cCtx: CheckContext): ICheckResult? {
+            val C = G.palette
+
+            val rawNumber = cCtx.rawNumber
+            val logger = cCtx.logger
+
+            if (!Permission.contacts.isGranted) {
+                return null
+            }
+
+            if (!isEnabled(cCtx)) {
+                return null
+            }
+
+            logger?.debug(
+                (ctx.getString(R.string.checking_template) + ": %s")
+                    .formatAnnotated(
+                        ctx.getString(R.string.contact_prefix).A(C.infoBlue),
+                        priority().toString().A(C.priority),
+                        rule.desc().A(if (rule.isBlacklist) C.error else C.success)
+                    )
+            )
+
+            // Both the incoming number and the contact number should match this regex,
+            //   here, check the incoming number first.
+            if (!rule.pattern.regexMatchesNumber(rawNumber, rule.patternFlags)) {
+                return null
+            }
+
+            // 2. check regex
+            val contactInfo = Contacts.findContactByNumberPrefix(ctx, rawNumber, rule.pattern, rule.patternFlags)
+            if (contactInfo != null) {
+                val block = rule.isBlacklist
+
+                if (block)
+                    logger?.error(
+                        ctx.getString(R.string.blocked_by)
+                            .format(ctx.getString(R.string.contact_prefix)) + ": ${rule.desc()} - ${contactInfo.name}"
+                    )
+                else
+                    logger?.success(
+                        ctx.getString(R.string.allowed_by)
+                            .format(ctx.getString(R.string.contact_prefix)) + ": ${rule.desc()} - ${contactInfo.name}"
+                    )
+
+                return ByRegexRule(
+                    type = if (block) Def.RESULT_BLOCKED_BY_CONTACT_PREFIX_REGEX else Def.RESULT_ALLOWED_BY_CONTACT_PREFIX_REGEX,
+                    rule = rule,
+                    details = contactInfo.name
                 )
             }
             return null
@@ -1282,7 +1345,7 @@ class Checker { // for namespace only
                     .formatAnnotated(
                         ctx.getString(R.string.content_rule).A(C.infoBlue),
                         priority().toString().A(C.priority),
-                        rule.summary().A(if (rule.isBlacklist) C.error else C.success)
+                        rule.desc().A(if (rule.isBlacklist) C.error else C.success)
                     )
             )
 
@@ -1324,12 +1387,12 @@ class Checker { // for namespace only
                 if (block)
                     logger?.error(
                         ctx.getString(R.string.blocked_by)
-                            .format(ctx.getString(R.string.content_rule)) + ": ${rule.summary()}"
+                            .format(ctx.getString(R.string.content_rule)) + ": ${rule.desc()}"
                     )
                 else
                     logger?.success(
                         ctx.getString(R.string.allowed_by)
-                            .format(ctx.getString(R.string.content_rule)) + ": ${rule.summary()}"
+                            .format(ctx.getString(R.string.content_rule)) + ": ${rule.desc()}"
                     )
 
                 return ByRegexRule(

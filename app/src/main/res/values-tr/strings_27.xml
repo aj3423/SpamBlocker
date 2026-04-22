@@ -14,4 +14,37 @@
     </string>
     <string name="at_time">Saat</string>
     <string name="interval">Aralık</string>
+    <string name="contact_prefix">Kişi Öneki</string>
+    <string name="help_regex_mode_contact_prefix">
+        <![CDATA[
+        <title><b>Kişi Öneki</b></title>:<br>
+        &ensp; Kişi öneki eşleşmesine göre aramalara izin verir, sıralı numaralar kullanan
+          kuruluşlar için idealdir; örneğin klinikler veya hukuk büroları. <br>
+        <br>
+        <warn>Bu regex nokta ile bitmelidir</warn>, bu regex modunda sondaki noktalar değişken rakamları temsil eder. <br>
+        <br>
+        <b>Örneğin:</b> <br>
+        &ensp; <sample><b>.*..</b></sample> <br>
+        &ensp; Aynı öneke sahip herhangi bir kişiyle eşleşir ve sondaki 2 rakamın değişmesine izin verir.<br>
+        &ensp; <sample>1111<b>22</b></sample> numarasını kişi olarak kaydettiyseniz, <sample>1111<b>33</b></sample> numarasından gelen aramaya da izin verilir.<br>
+        <br>
+        <b>Başka bir örnek:</b> <br>
+        &ensp; <sample><b>(?!(04|03))\d{5}..</b></sample> <br>
+        Açıklama: <br>
+        &ensp; - <b><sample>(?!(03|04))</sample></b> <br>
+        &emsp;   03 veya 04 ile başlayan numaraları hariç tut <br>
+        &ensp; - <b><sample>\d{5}</sample></b> <br>
+        &emsp;   Numara, değişken 2 rakamlı son ek dahil toplam 7 rakam olmalıdır <br>
+        &ensp; - <b><sample>..</sample></b> <br>
+        &emsp;   Değişken 2 rakamlı son ek <br>
+        ]]>
+    </string>
+    <string name="help_regex_preset_contact_prefix">
+        <![CDATA[
+        Kişileri öneke göre eşleştirir ve son 2 rakamda farklılığa izin verir. <br>
+        <br>
+        <b>Örneğin</b>: <br>
+        &ensp; <sample>1111<b>22</b></sample> numarasını kişi olarak kaydettiyseniz, <sample>1111<b>33</b></sample> numarasından gelen aramaya da izin verilir.<br>
+        ]]>
+    </string>
 </resources>

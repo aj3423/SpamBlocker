@@ -95,6 +95,76 @@ object Contacts {
         return null
     }
 
+    fun findContactByNumberPrefix(
+        ctx: Context,
+        incomingNumber: String, // This function assumes the `incomingNumber` matches the `pattern`
+        pattern: String,
+        patternFlags: Int,
+    ): ContactInfo? {
+        if (!Permission.contacts.isGranted) {
+            return null
+        }
+        val tolerance = pattern.takeLastWhile { it == '.' }.length
+
+        if (incomingNumber.length <= tolerance) {
+            return null
+        }
+
+        val prefixLength = incomingNumber.length - tolerance
+        val prefix = incomingNumber.substring(0, prefixLength)
+
+        val projection = arrayOf(
+            ContactsContract.CommonDataKinds.Phone.CONTACT_ID,
+            ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
+            ContactsContract.CommonDataKinds.Phone.PHOTO_URI,
+            ContactsContract.CommonDataKinds.Phone.NUMBER
+        )
+
+        val cursor = try {
+            ctx.contentResolver.query(
+                ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                projection,
+                null,   // No selection → fetch all (usually fast enough)
+                null,
+                null
+            )
+        } catch (e: Exception) {
+            null
+        }
+
+        cursor?.use {
+            val idIndex = it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.CONTACT_ID)
+            val nameIndex = it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
+            val photoIndex = it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.PHOTO_URI)
+            val numberIndex = it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
+
+            while (it.moveToNext()) {
+                val contactNumber = it.getString(numberIndex) ?: continue
+                // Remove these characters: ( ) -
+                //   "+1 (555) 999-0000" -> "+15559990000"
+                val cleanContactNumber = contactNumber.replace(Regex("[^0-9]+"), "")
+
+                // The number must match the regex
+                if (!pattern.regexMatchesNumber(cleanContactNumber, patternFlags)) {
+                    continue
+                }
+
+                // Check if the contact number starts with the prefix AND has 'tolerance' more digits
+                if (cleanContactNumber.startsWith(prefix) &&
+                    cleanContactNumber.length == prefix.length + tolerance) {
+
+                    return ContactInfo(
+                        id = it.getString(idIndex) ?: "",
+                        name = it.getString(nameIndex) ?: "",
+                        iconUri = it.getString(photoIndex)
+                    )
+                }
+            }
+        }
+
+        return null
+    }
+
     // Find a list of groups that contain this number,
     // returns the group names
     @SuppressLint("Range")

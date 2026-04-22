@@ -14,4 +14,37 @@
     </string>
     <string name="at_time">A la hora</string>
     <string name="interval">Intervalo</string>
+    <string name="contact_prefix">Prefijo de Contacto</string>
+    <string name="help_regex_mode_contact_prefix">
+        <![CDATA[
+        <title><b>Prefijo de Contacto</b></title>:<br>
+        &ensp; Permite llamadas según la coincidencia del prefijo del contacto, ideal para organizaciones que usan
+          números secuenciales, como clínicas o bufetes de abogados. <br>
+        <br>
+        <warn>Esta expresión regular debe terminar con puntos</warn>, en este modo de expresión regular, esos puntos finales representan los dígitos variables. <br>
+        <br>
+        <b>Por ejemplo:</b> <br>
+        &ensp; <sample><b>.*..</b></sample> <br>
+        &ensp; Coincide con cualquier contacto que tenga el mismo prefijo y permite una variación de 2 dígitos al final.<br>
+        &ensp; Si tienes <sample>1111<b>22</b></sample> guardado como contacto, también se permitirá una llamada entrante desde <sample>1111<b>33</b></sample>.<br>
+        <br>
+        <b>Otro ejemplo:</b> <br>
+        &ensp; <sample><b>(?!(04|03))\d{5}..</b></sample> <br>
+        Desglose: <br>
+        &ensp; - <b><sample>(?!(03|04))</sample></b> <br>
+        &emsp;   Excluir los números que empiezan por 03 o 04 <br>
+        &ensp; - <b><sample>\d{5}</sample></b> <br>
+        &emsp;   El número debe tener 7 dígitos en total, incluido el sufijo variable de 2 dígitos <br>
+        &ensp; - <b><sample>..</sample></b> <br>
+        &emsp;   Sufijo variable de 2 dígitos <br>
+        ]]>
+    </string>
+    <string name="help_regex_preset_contact_prefix">
+        <![CDATA[
+        Coincide con contactos por prefijo, permitiendo variación en los 2 últimos dígitos. <br>
+        <br>
+        <b>Por ejemplo</b>: <br>
+        &ensp; Si tienes <sample>1111<b>22</b></sample> guardado como contacto, también se permitirá una llamada desde <sample>1111<b>33</b></sample>.<br>
+        ]]>
+    </string>
 </resources>

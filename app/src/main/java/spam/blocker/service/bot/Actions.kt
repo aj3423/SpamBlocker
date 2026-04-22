@@ -1586,7 +1586,7 @@ class ModifyRules(
                 aCtx.logger?.debug(
                     ctx.getString(R.string.rule_updated_temporarily)
                         .formatAnnotated(
-                            rule.summary().A(C.teal200),
+                            rule.desc().A(C.teal200),
                             config.A(C.textGrey.darken())
                         )
                 )
@@ -1630,7 +1630,7 @@ class ModifyRules(
                     aCtx.logger?.debug(
                         ctx.getString(R.string.rule_updated)
                             .formatAnnotated(
-                                rule.summary().A(C.teal200),
+                                rule.desc().A(C.teal200),
                                 config.A(C.textGrey.darken())
                             )
                     )

@@ -14,4 +14,37 @@
     </string>
     <string name="at_time">Às</string>
     <string name="interval">Intervalo</string>
+    <string name="contact_prefix">Prefixo do Contato</string>
+    <string name="help_regex_mode_contact_prefix">
+        <![CDATA[
+        <title><b>Prefixo do Contato</b></title>:<br>
+        &ensp; Permite chamadas com base na correspondência do prefixo do contato, ideal para organizações que usam
+          números sequenciais, como clínicas ou escritórios de advocacia. <br>
+        <br>
+        <warn>Esta expressão regular deve terminar com pontos</warn>; neste modo, esses pontos finais representam os dígitos variáveis. <br>
+        <br>
+        <b>Por exemplo:</b> <br>
+        &ensp; <sample><b>.*..</b></sample> <br>
+        &ensp; Ela corresponde a qualquer contato com o mesmo prefixo, permitindo uma variação de 2 dígitos no final.<br>
+        &ensp; Se você tiver <sample>1111<b>22</b></sample> salvo como contato, uma chamada recebida de <sample>1111<b>33</b></sample> também será permitida.<br>
+        <br>
+        <b>Outro exemplo:</b> <br>
+        &ensp; <sample><b>(?!(04|03))\d{5}..</b></sample> <br>
+        Detalhamento: <br>
+        &ensp; - <b><sample>(?!(03|04))</sample></b> <br>
+        &emsp;   Excluir números que começam com 03 ou 04 <br>
+        &ensp; - <b><sample>\d{5}</sample></b> <br>
+        &emsp;   O número deve ter 7 dígitos no total, incluindo o sufixo variável de 2 dígitos <br>
+        &ensp; - <b><sample>..</sample></b> <br>
+        &emsp;   Sufixo variável de 2 dígitos <br>
+        ]]>
+    </string>
+    <string name="help_regex_preset_contact_prefix">
+        <![CDATA[
+        Faz a correspondência de contatos por prefixo, permitindo variação nos 2 dígitos finais. <br>
+        <br>
+        <b>Por exemplo</b>: <br>
+        &ensp; Se você tiver <sample>1111<b>22</b></sample> salvo como contato, uma chamada de <sample>1111<b>33</b></sample> também será permitida.<br>
+        ]]>
+    </string>
 </resources>

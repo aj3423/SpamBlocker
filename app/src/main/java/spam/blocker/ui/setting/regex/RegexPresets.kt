@@ -107,6 +107,35 @@ val RegexPresets = mapOf(
             )
         },
         RegexPreset(
+            label = { it.getString(R.string.contact_prefix) },
+            tooltip = {
+                it.getString(R.string.help_regex_preset_contact_prefix)
+            },
+            preCheck = { ctx, onSuccess, onFail ->
+                G.permissionChain.ask(
+                    ctx,
+                    listOf(
+                        PermissionWrapper(Permission.contacts),
+                    )
+                ) { granted ->
+                    if (granted) {
+                        onSuccess()
+                    }
+                }
+            }
+        ) { ctx ->
+            listOf(
+                RegexRule(
+                    pattern = ".*..",
+                    description = "",
+                    priority = 1,
+                    isBlacklist = false,
+                    flags = Def.FLAG_FOR_CALL or Def.FLAG_FOR_SMS,
+                    patternFlags = Def.FLAG_REGEX_FOR_CONTACT_PREFIX,
+                )
+            )
+        },
+        RegexPreset(
             label = { it.getString(R.string.forwarded_call) },
             tooltip = {
                 it.getString(R.string.help_regex_preset_forwarded_call).format(

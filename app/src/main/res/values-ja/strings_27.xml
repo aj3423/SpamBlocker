@@ -14,4 +14,37 @@
     </string>
     <string name="at_time">時刻</string>
     <string name="interval">間隔</string>
+    <string name="contact_prefix">連絡先プレフィックス</string>
+    <string name="help_regex_mode_contact_prefix">
+        <![CDATA[
+        <title><b>連絡先プレフィックス</b></title>:<br>
+        &ensp; 連絡先プレフィックスの一致に基づいて着信を許可します。連番を使う
+          組織、たとえばクリニックや法律事務所に適しています。 <br>
+        <br>
+        <warn>この正規表現はドットで終わる必要があります</warn>。このモードでは、末尾のドットが可変の数字を表します。 <br>
+        <br>
+        <b>例えば:</b> <br>
+        &ensp; <sample><b>.*..</b></sample> <br>
+        &ensp; 同じプレフィックスを持つ連絡先に一致し、末尾2桁の違いを許可します。<br>
+        &ensp; 連絡先として <sample>1111<b>22</b></sample> を保存している場合、<sample>1111<b>33</b></sample> からの着信も許可されます。<br>
+        <br>
+        <b>別の例:</b> <br>
+        &ensp; <sample><b>(?!(04|03))\d{5}..</b></sample> <br>
+        内訳: <br>
+        &ensp; - <b><sample>(?!(03|04))</sample></b> <br>
+        &emsp;   03 または 04 で始まる番号を除外します <br>
+        &ensp; - <b><sample>\d{5}</sample></b> <br>
+        &emsp;   番号全体は 7 桁で、末尾の可変 2 桁を含みます <br>
+        &ensp; - <b><sample>..</sample></b> <br>
+        &emsp;   可変 2 桁の接尾部 <br>
+        ]]>
+    </string>
+    <string name="help_regex_preset_contact_prefix">
+        <![CDATA[
+        連絡先をプレフィックスで照合し、末尾2桁の違いを許可します。 <br>
+        <br>
+        <b>例えば</b>: <br>
+        &ensp; 連絡先として <sample>1111<b>22</b></sample> を保存している場合、<sample>1111<b>33</b></sample> からの着信も許可されます。<br>
+        ]]>
+    </string>
 </resources>

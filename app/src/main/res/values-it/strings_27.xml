@@ -14,4 +14,37 @@
     </string>
     <string name="at_time">All\'ora</string>
     <string name="interval">Intervallo</string>
+    <string name="contact_prefix">Prefisso del contatto</string>
+    <string name="help_regex_mode_contact_prefix">
+        <![CDATA[
+        <title><b>Prefisso del contatto</b></title>:<br>
+        &ensp; Consente le chiamate in base alla corrispondenza del prefisso del contatto, ideale per organizzazioni che usano
+          numeri sequenziali, come cliniche o studi legali. <br>
+        <br>
+        <warn>Questa espressione regolare deve terminare con punti</warn>, in questa modalità tali punti finali rappresentano le cifre variabili. <br>
+        <br>
+        <b>Per esempio:</b> <br>
+        &ensp; <sample><b>.*..</b></sample> <br>
+        &ensp; Corrisponde a qualsiasi contatto con lo stesso prefisso, consentendo una variazione di 2 cifre alla fine.<br>
+        &ensp; Se hai salvato <sample>1111<b>22</b></sample> come contatto, sarà consentita anche una chiamata in arrivo da <sample>1111<b>33</b></sample>.<br>
+        <br>
+        <b>Un altro esempio:</b> <br>
+        &ensp; <sample><b>(?!(04|03))\d{5}..</b></sample> <br>
+        Scomposizione: <br>
+        &ensp; - <b><sample>(?!(03|04))</sample></b> <br>
+        &emsp;   Esclude i numeri che iniziano con 03 o 04 <br>
+        &ensp; - <b><sample>\d{5}</sample></b> <br>
+        &emsp;   Il numero deve avere 7 cifre in totale, incluso il suffisso variabile di 2 cifre <br>
+        &ensp; - <b><sample>..</sample></b> <br>
+        &emsp;   Suffisso variabile di 2 cifre <br>
+        ]]>
+    </string>
+    <string name="help_regex_preset_contact_prefix">
+        <![CDATA[
+        Abbina i contatti per prefisso, consentendo una variazione nelle ultime 2 cifre. <br>
+        <br>
+        <b>Per esempio</b>: <br>
+        &ensp; Se hai salvato <sample>1111<b>22</b></sample> come contatto, sarà consentita anche una chiamata da <sample>1111<b>33</b></sample>.<br>
+        ]]>
+    </string>
 </resources>

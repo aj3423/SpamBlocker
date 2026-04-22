@@ -43,6 +43,7 @@ import spam.blocker.def.Def.DEFAULT_HANG_UP_DELAY
 import spam.blocker.def.Def.FLAG_REGEX_FOR_CNAP
 import spam.blocker.def.Def.FLAG_REGEX_FOR_CONTACT
 import spam.blocker.def.Def.FLAG_REGEX_FOR_CONTACT_GROUP
+import spam.blocker.def.Def.FLAG_REGEX_FOR_CONTACT_PREFIX
 import spam.blocker.def.Def.FLAG_REGEX_FOR_GEO_LOCATION
 import spam.blocker.def.Def.ForNumber
 import spam.blocker.def.Def.ForSms
@@ -91,11 +92,12 @@ import spam.blocker.util.hasFlag
 import spam.blocker.util.removeFlag
 import spam.blocker.util.setFlag
 
-fun Int.clearAllRegexFlags(): Int {
+fun Int.clearRegexMode(): Int {
     return this.removeFlag(FLAG_REGEX_FOR_CONTACT_GROUP)
         .removeFlag(FLAG_REGEX_FOR_CONTACT)
         .removeFlag(FLAG_REGEX_FOR_CNAP)
         .removeFlag(FLAG_REGEX_FOR_GEO_LOCATION)
+        .removeFlag(FLAG_REGEX_FOR_CONTACT_PREFIX)
 }
 
 @Composable
@@ -121,6 +123,7 @@ fun RegexLeadingDropdownIcon(
             R.string.help_regex_mode_phone_number,
             R.string.help_regex_mode_contact,
             R.string.help_regex_mode_contact_group,
+            R.string.help_regex_mode_contact_prefix,
             R.string.help_regex_mode_geo_location,
         )
         if (forType == Def.ForNumber) {
@@ -137,6 +140,7 @@ fun RegexLeadingDropdownIcon(
             R.string.phone_number,
             R.string.contact,
             R.string.contact_group,
+            R.string.contact_prefix,
             R.string.geo_location,
         )
         if (forType == Def.ForNumber) {
@@ -146,6 +150,7 @@ fun RegexLeadingDropdownIcon(
             { GreyIcon16(R.drawable.ic_number_sign) },
             { RegexModeIcon(FLAG_REGEX_FOR_CONTACT) },
             { RegexModeIcon(FLAG_REGEX_FOR_CONTACT_GROUP) },
+            { RegexModeIcon(FLAG_REGEX_FOR_CONTACT_PREFIX) },
             { RegexModeIcon(FLAG_REGEX_FOR_GEO_LOCATION) },
         )
         if (forType == Def.ForNumber) {
@@ -159,40 +164,34 @@ fun RegexLeadingDropdownIcon(
             ) { menuExpanded ->
                 when (index) {
                     0 -> { // Number Mode
-                        regexFlags.intValue = regexFlags.intValue.clearAllRegexFlags()
+                        regexFlags.intValue = regexFlags.intValue.clearRegexMode()
                     }
 
-                    1, 2 -> { // Contact Mode, Contact Group Mode
+                    1, 2, 3 -> { // Contact Mode, Contact Group Mode
                         G.permissionChain.ask(
                             ctx,
                             listOf(PermissionWrapper(Permission.contacts))
                         ) { granted ->
                             if (granted) {
-                                when (index) {
-                                    1 -> { // Contact Mode
-                                        regexFlags.intValue = regexFlags.intValue
-                                            .clearAllRegexFlags()
-                                            .addFlag(FLAG_REGEX_FOR_CONTACT)
-                                    }
-
-                                    2 -> { // Contact Group Mode
-                                        regexFlags.intValue = regexFlags.intValue
-                                            .clearAllRegexFlags()
-                                            .addFlag(FLAG_REGEX_FOR_CONTACT_GROUP)
-                                    }
-                                }
+                                regexFlags.intValue = regexFlags.intValue
+                                    .clearRegexMode()
+                                    .addFlag(when (index) {
+                                        1 -> FLAG_REGEX_FOR_CONTACT // 1. Contact Mode
+                                        2 -> FLAG_REGEX_FOR_CONTACT_GROUP // 2. Contact Group Mode
+                                        else ->  FLAG_REGEX_FOR_CONTACT_PREFIX // 3. Contact Prefix Mode
+                                    })
                                 menuExpanded.value = false
                             }
                         }
                     }
-                    3 -> { // Geo Location
+                    4 -> { // Geo Location
                         regexFlags.intValue = regexFlags.intValue
-                            .clearAllRegexFlags()
+                            .clearRegexMode()
                             .addFlag(FLAG_REGEX_FOR_GEO_LOCATION)
                     }
-                    4 -> { // CNAP
+                    5 -> { // CNAP
                         regexFlags.intValue = regexFlags.intValue
-                            .clearAllRegexFlags()
+                            .clearRegexMode()
                             .addFlag(FLAG_REGEX_FOR_CNAP)
                     }
                 }
@@ -206,6 +205,7 @@ fun RegexLeadingDropdownIcon(
     ) { expanded ->
         val forContactGroup = regexFlags.intValue.hasFlag(FLAG_REGEX_FOR_CONTACT_GROUP)
         val forContact = regexFlags.intValue.hasFlag(FLAG_REGEX_FOR_CONTACT)
+        val forContactPrefix = regexFlags.intValue.hasFlag(FLAG_REGEX_FOR_CONTACT_PREFIX)
         val forCNAP = regexFlags.intValue.hasFlag(FLAG_REGEX_FOR_CNAP)
         val forGeoLocation= regexFlags.intValue.hasFlag(FLAG_REGEX_FOR_GEO_LOCATION)
 
@@ -214,6 +214,8 @@ fun RegexLeadingDropdownIcon(
                 RegexModeIcon(FLAG_REGEX_FOR_CONTACT)
             } else if (forContactGroup) {
                 RegexModeIcon(FLAG_REGEX_FOR_CONTACT_GROUP)
+            } else if (forContactPrefix) {
+                RegexModeIcon(FLAG_REGEX_FOR_CONTACT_PREFIX)
             } else if (forCNAP) {
                 RegexModeIcon(FLAG_REGEX_FOR_CNAP)
             } else if (forGeoLocation) {
@@ -252,6 +254,8 @@ fun RegexFieldLabel(
                         R.string.contact_group
                     else if (flags.hasFlag(FLAG_REGEX_FOR_CONTACT))
                         R.string.contact
+                    else if (flags.hasFlag(FLAG_REGEX_FOR_CONTACT_PREFIX))
+                        R.string.contact_prefix
                     else if (flags.hasFlag(FLAG_REGEX_FOR_CNAP))
                         R.string.caller_name
                     else if (flags.hasFlag(FLAG_REGEX_FOR_GEO_LOCATION))

@@ -14,4 +14,37 @@
     </string>
     <string name="at_time">בשעה</string>
     <string name="interval">מרווח</string>
+    <string name="contact_prefix">קידומת איש קשר</string>
+    <string name="help_regex_mode_contact_prefix">
+        <![CDATA[
+        <title><b>קידומת איש קשר</b></title>:<br>
+        &ensp; אפשר שיחות לפי התאמת קידומת איש הקשר, אידיאלי לארגונים שמשתמשים
+          במספרים עוקבים, כמו מרפאות או משרדי עורכי דין. <br>
+        <br>
+        <warn>הביטוי הרגולרי הזה חייב להסתיים בנקודות</warn>, במצב זה הנקודות שבסוף מייצגות את הספרות המשתנות. <br>
+        <br>
+        <b>לדוגמה:</b> <br>
+        &ensp; <sample><b>.*..</b></sample> <br>
+        &ensp; הוא יתאים לכל איש קשר עם אותה קידומת, ויאפשר הבדל של 2 ספרות בסוף.<br>
+        &ensp; אם שמרת את <sample>1111<b>22</b></sample> כאיש קשר, גם שיחה נכנסת מ-<sample>1111<b>33</b></sample> תאושר.<br>
+        <br>
+        <b>דוגמה נוספת:</b> <br>
+        &ensp; <sample><b>(?!(04|03))\d{5}..</b></sample> <br>
+        פירוט: <br>
+        &ensp; - <b><sample>(?!(03|04))</sample></b> <br>
+        &emsp;   החרג מספרים שמתחילים ב-03 או ב-04 <br>
+        &ensp; - <b><sample>\d{5}</sample></b> <br>
+        &emsp;   המספר צריך להיות באורך כולל של 7 ספרות, כולל הסיומת המשתנה בת 2 הספרות <br>
+        &ensp; - <b><sample>..</sample></b> <br>
+        &emsp;   סיומת משתנה בת 2 ספרות <br>
+        ]]>
+    </string>
+    <string name="help_regex_preset_contact_prefix">
+        <![CDATA[
+        התאם אנשי קשר לפי קידומת, עם אפשרות לשינוי ב-2 הספרות האחרונות. <br>
+        <br>
+        <b>לדוגמה</b>: <br>
+        &ensp; אם שמרת את <sample>1111<b>22</b></sample> כאיש קשר, גם שיחה מ-<sample>1111<b>33</b></sample> תאושר.<br>
+        ]]>
+    </string>
 </resources>

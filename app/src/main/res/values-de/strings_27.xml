@@ -14,4 +14,37 @@
     </string>
     <string name="at_time">Zur Zeit</string>
     <string name="interval">Intervall</string>
+    <string name="contact_prefix">Kontaktpräfix</string>
+    <string name="help_regex_mode_contact_prefix">
+        <![CDATA[
+        <title><b>Kontaktpräfix</b></title>:<br>
+        &ensp; Anrufe anhand passender Kontaktpräfixe zulassen, ideal für Organisationen mit
+          fortlaufenden Nummern, z. B. Kliniken oder Kanzleien. <br>
+        <br>
+        <warn>Dieser Regex muss mit Punkten enden</warn>, in diesem Regex-Modus stehen diese abschließenden Punkte für die variablen Ziffern. <br>
+        <br>
+        <b>Zum Beispiel:</b> <br>
+        &ensp; <sample><b>.*..</b></sample> <br>
+        &ensp; Er passt auf jeden Kontakt mit demselben Präfix und erlaubt am Ende eine 2-stellige Abweichung.<br>
+        &ensp; Wenn Sie <sample>1111<b>22</b></sample> als Kontakt gespeichert haben, wird auch ein eingehender Anruf von <sample>1111<b>33</b></sample> zugelassen.<br>
+        <br>
+        <b>Ein weiteres Beispiel:</b> <br>
+        &ensp; <sample><b>(?!(04|03))\d{5}..</b></sample> <br>
+        Aufschlüsselung: <br>
+        &ensp; - <b><sample>(?!(03|04))</sample></b> <br>
+        &emsp;   Nummern ausschließen, die mit 03 oder 04 beginnen <br>
+        &ensp; - <b><sample>\d{5}</sample></b> <br>
+        &emsp;   Die Nummer sollte insgesamt 7 Ziffern haben, einschließlich des variablen 2-stelligen Suffixes <br>
+        &ensp; - <b><sample>..</sample></b> <br>
+        &emsp;   Variables 2-stelliges Suffix <br>
+        ]]>
+    </string>
+    <string name="help_regex_preset_contact_prefix">
+        <![CDATA[
+        Kontakte nach Präfix abgleichen, wobei die letzten 2 Ziffern variieren dürfen. <br>
+        <br>
+        <b>Zum Beispiel</b>: <br>
+        &ensp; Wenn Sie <sample>1111<b>22</b></sample> als Kontakt gespeichert haben, wird auch ein Anruf von <sample>1111<b>33</b></sample> zugelassen.<br>
+        ]]>
+    </string>
 </resources>
