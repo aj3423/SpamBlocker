@@ -340,16 +340,12 @@ class Language : IConfig {
 class Contact : IConfig {
     var enabled = false
     var isExcusive = false
-    var prefixMatching = false
-    var suffixVariationLength = 3
     var permissivePriority = 0
     var strictPriority = 0
     override fun load(ctx: Context) {
         val spf = spf.Contact(ctx)
         enabled = spf.isEnabled
         isExcusive = spf.isStrict
-        prefixMatching = spf.prefixMatching
-        suffixVariationLength = spf.suffixVariationLength
         permissivePriority = spf.lenientPriority
         strictPriority = spf.strictPriority
     }

@@ -14,22 +14,4 @@
     </string>
     <string name="at_time">Pada Waktu</string>
     <string name="interval">Interval</string>
-    <string name="contact_prefix">Awalan Kontak</string>
-    <string name="prefix_matching">Pencocokan Awalan</string>
-    <string name="help_prefix_matching">
-        <![CDATA[
-        Izinkan panggilan dari nomor yang memiliki awalan sama dengan kontak yang sudah ada,
-        cocok untuk organisasi yang menggunakan jalur telepon berurutan (misalnya klinik atau kantor). <br>
-        <br>
-        <b>Opsi</b>: <br>
-        <minor>Panjang Variasi Akhiran</minor><br>
-        &ensp; Abaikan N digit terakhir. <br>
-        <br>
-        <b>Contoh:</b> <br>
-        <sample>
-        &ensp; Jika xxxx02 ada di kontak Anda dan toleransi akhiran adalah 2, nomor apa pun dari xxxx00 hingga xxxx99 akan diizinkan.
-        </sample>
-        ]]>
-    </string>
-    <string name="suffix_variation_length">Panjang Variasi Akhiran</string>
 </resources>

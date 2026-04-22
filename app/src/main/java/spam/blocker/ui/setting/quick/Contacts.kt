@@ -17,9 +17,7 @@ import spam.blocker.R
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.widgets.AnimatedVisibleV
-import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyIcon16
-import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.PriorityBox
 import spam.blocker.ui.widgets.PriorityLabel
@@ -42,8 +40,6 @@ fun Contacts() {
 
     var isEnabled by remember { mutableStateOf(spf.isEnabled && Permission.contacts.isGranted) }
     var isStrict by remember { mutableStateOf(spf.isStrict) }
-    var prefixMatching by remember { mutableStateOf(spf.prefixMatching) }
-    var suffixTolerance by remember { mutableIntStateOf(spf.suffixVariationLength) }
     var priLenient by remember { mutableIntStateOf(spf.lenientPriority) }
     var priStrict by remember { mutableIntStateOf(spf.strictPriority) }
 
@@ -66,47 +62,15 @@ fun Contacts() {
                         }
 
                         AnimatedVisibleV(isEnabled) {
-                            Column {
-                                LabeledRow(
-                                    R.string.prefix_matching,
-                                    helpTooltip = Str(R.string.help_prefix_matching)
-                                ) {
-                                    val trigger = remember { mutableStateOf(false) }
-                                    PopupDialog(trigger) {
-                                        NumberInputBox(
-                                            intValue = suffixTolerance,
-                                            onValueChange = { newValue, hasError ->
-                                                if (!hasError && newValue != null) {
-                                                    suffixTolerance = newValue
-                                                    spf.suffixVariationLength = newValue
-                                                }
-                                            },
-                                            labelId = R.string.suffix_variation_length,
-                                            leadingIconId = R.drawable.ic_approx_equal,
-                                        )
-                                    }
-                                    if(prefixMatching) {
-                                        GreyButton("$suffixTolerance") {
-                                            trigger.value = true
-                                        }
-                                    }
-                                    SwitchBox(prefixMatching) { isTurningOn ->
-                                        spf.prefixMatching = isTurningOn
-                                        prefixMatching = isTurningOn
-                                    }
-                                }
-
-                                PriorityBox(priLenient) { newValue, hasError ->
-                                    if (!hasError) {
-                                        priLenient = newValue!!
-                                        spf.lenientPriority = newValue
-                                    }
+                            PriorityBox(priLenient) { newValue, hasError ->
+                                if (!hasError) {
+                                    priLenient = newValue!!
+                                    spf.lenientPriority = newValue
                                 }
                             }
                         }
                     }
                 }
-
                 AnimatedVisibleV(isEnabled) {
                     Section(
                         title = Str(R.string.non_contacts),
@@ -147,9 +111,6 @@ fun Contacts() {
                             // Contacts
                             RowVCenterSpaced(2) {
                                 GreyIcon16(R.drawable.ic_contact_square)
-                                if (prefixMatching) {
-                                    GreyIcon16(R.drawable.ic_approx_equal)
-                                }
                                 if (priLenient != 10) {
                                     PriorityLabel(priLenient)
                                 }

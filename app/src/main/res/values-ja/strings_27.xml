@@ -14,22 +14,4 @@
     </string>
     <string name="at_time">時刻</string>
     <string name="interval">間隔</string>
-    <string name="contact_prefix">連絡先プレフィックス</string>
-    <string name="prefix_matching">プレフィックス一致</string>
-    <string name="help_prefix_matching">
-        <![CDATA[
-        既存の連絡先とプレフィックスを共有する番号からの着信を許可します。
-        連番の電話回線を使う組織に適しています。例えば、クリニックやオフィスです。 <br>
-        <br>
-        <b>オプション</b>: <br>
-        <minor>サフィックス変化の長さ</minor><br>
-        &ensp; 末尾のN桁を無視します。 <br>
-        <br>
-        <b>例:</b> <br>
-        <sample>
-        &ensp; 連絡先にxxxx02があり、サフィックス許容値が2の場合、xxxx00からxxxx99までの任意の番号が許可されます。
-        </sample>
-        ]]>
-    </string>
-    <string name="suffix_variation_length">サフィックス変化の長さ</string>
 </resources>

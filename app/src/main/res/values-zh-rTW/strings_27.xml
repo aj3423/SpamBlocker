@@ -14,22 +14,4 @@
     </string>
     <string name="at_time">指定時間</string>
     <string name="interval">間隔</string>
-    <string name="contact_prefix">聯絡人前綴</string>
-    <string name="prefix_matching">前綴比對</string>
-    <string name="help_prefix_matching">
-        <![CDATA[
-        允許與現有聯絡人共享前綴的號碼來電，
-        適合使用連續電話號碼的機構，例如診所或辦公室。 <br>
-        <br>
-        <b>選項</b>: <br>
-        <minor>後綴變化長度</minor><br>
-        &ensp; 忽略最後 N 位數字。 <br>
-        <br>
-        <b>例如：</b> <br>
-        <sample>
-        &ensp; 如果聯絡人中有 xxxx02，且後綴容差為 2，則 xxxx00 到 xxxx99 之間的任何號碼都會被允許。
-        </sample>
-        ]]>
-    </string>
-    <string name="suffix_variation_length">後綴變化長度</string>
 </resources>

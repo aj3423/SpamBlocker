@@ -1,11 +1,8 @@
 This is an android spam call blocker app.
 The word 'number' means phone number, 'spam' means spam calls, don't translate it to spam email.
 
-Translate the following contents in strings_27.xml to all other languages.
-- `contact_prefix`
-- `prefix_matching`
-- `help_prefix_matching`
-- `suffix_variation_length`
+Translate the following contents in strings_14.xml to all other languages.
+- `help_action_category_config`
 
 Note:
 - If the content contains tags <translate> and </translate>, always translate the text in between. 

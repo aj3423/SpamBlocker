@@ -14,22 +14,4 @@
     </string>
     <string name="at_time">Às</string>
     <string name="interval">Intervalo</string>
-    <string name="contact_prefix">Prefixo do contato</string>
-    <string name="prefix_matching">Correspondência de prefixo</string>
-    <string name="help_prefix_matching">
-        <![CDATA[
-        Permitir chamadas de números que compartilham prefixo com seus contatos existentes,
-        ideal para organizações que usam linhas telefônicas sequenciais (por exemplo, clínicas ou escritórios). <br>
-        <br>
-        <b>Opções</b>: <br>
-        <minor>Comprimento da variação do sufixo</minor><br>
-        &ensp; Ignorar os últimos N dígitos. <br>
-        <br>
-        <b>Por exemplo:</b> <br>
-        <sample>
-        &ensp; Com xxxx02 em seus contatos e uma tolerância de sufixo de 2, qualquer número de xxxx00 a xxxx99 será permitido.
-        </sample>
-        ]]>
-    </string>
-    <string name="suffix_variation_length">Comprimento da variação do sufixo</string>
 </resources>

@@ -14,22 +14,4 @@
     </string>
     <string name="at_time">Saat</string>
     <string name="interval">Aralık</string>
-    <string name="contact_prefix">Kişi öneki</string>
-    <string name="prefix_matching">Önek eşleştirme</string>
-    <string name="help_prefix_matching">
-        <![CDATA[
-        Mevcut kişilerinizle aynı öneki paylaşan numaralardan gelen çağrılara izin verin,
-        ardışık telefon hatları kullanan kurumlar için idealdir (örneğin klinikler veya ofisler). <br>
-        <br>
-        <b>Seçenekler</b>: <br>
-        <minor>Sonek değişim uzunluğu</minor><br>
-        &ensp; Son N rakamı yok sayın. <br>
-        <br>
-        <b>Örneğin:</b> <br>
-        <sample>
-        &ensp; Kişilerinizde xxxx02 varsa ve sonek toleransı 2 ise, xxxx00 ile xxxx99 arasındaki herhangi bir numaraya izin verilir.
-        </sample>
-        ]]>
-    </string>
-    <string name="suffix_variation_length">Sonek değişim uzunluğu</string>
 </resources>

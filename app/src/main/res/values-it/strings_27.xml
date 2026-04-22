@@ -14,22 +14,4 @@
     </string>
     <string name="at_time">All\'ora</string>
     <string name="interval">Intervallo</string>
-    <string name="contact_prefix">Prefisso del contatto</string>
-    <string name="prefix_matching">Corrispondenza del prefisso</string>
-    <string name="help_prefix_matching">
-        <![CDATA[
-        Consenti chiamate da numeri che condividono il prefisso con i contatti esistenti,
-        ideale per organizzazioni che usano linee telefoniche sequenziali (ad esempio, cliniche o uffici). <br>
-        <br>
-        <b>Opzioni</b>: <br>
-        <minor>Lunghezza della variazione del suffisso</minor><br>
-        &ensp; Ignora le ultime N cifre. <br>
-        <br>
-        <b>Per esempio:</b> <br>
-        <sample>
-        &ensp; Con xxxx02 nei contatti e una tolleranza del suffisso di 2, sarà consentito qualsiasi numero da xxxx00 a xxxx99.
-        </sample>
-        ]]>
-    </string>
-    <string name="suffix_variation_length">Lunghezza della variazione del suffisso</string>
 </resources>

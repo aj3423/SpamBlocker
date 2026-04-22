@@ -33,7 +33,6 @@ import spam.blocker.def.Def.RESULT_ALLOWED_BY_API_QUERY
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CNAP_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_GROUP_REGEX
-import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_PREFIX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTENT_RULE
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_DEFAULT
@@ -236,20 +235,6 @@ class ByContact(
             ctx.getString(R.string.contact)
         else
             ctx.getString(R.string.non_contact)
-    }
-}
-
-// allowed by likely-contact
-class ByContactPrefix(
-    override val type: Int,
-    private val contactName: String? = null,
-) : ICheckResult {
-    override fun reasonToDb(): String {
-        return contactName ?: ""
-    }
-
-    override fun resultReasonStr(ctx: Context): String {
-        return ctx.getString(R.string.contact_prefix) + " - " + contactName
     }
 }
 
@@ -599,9 +584,6 @@ fun parseCheckResultFromDb(ctx: Context, result: Int, reason: String): ICheckRes
         RESULT_ALLOWED_BY_EMERGENCY_SITUATION -> ByEmergencySituation()
 
         RESULT_ALLOWED_BY_CONTACT, RESULT_BLOCKED_BY_NON_CONTACT -> ByContact(
-            result, reason
-        )
-        RESULT_ALLOWED_BY_CONTACT_PREFIX -> ByContactPrefix(
             result, reason
         )
 

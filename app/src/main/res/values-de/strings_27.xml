@@ -14,22 +14,4 @@
     </string>
     <string name="at_time">Zur Zeit</string>
     <string name="interval">Intervall</string>
-    <string name="contact_prefix">Kontaktpräfix</string>
-    <string name="prefix_matching">Präfixabgleich</string>
-    <string name="help_prefix_matching">
-        <![CDATA[
-        Anrufe von Nummern erlauben, deren Präfix mit Ihren vorhandenen Kontakten übereinstimmt,
-        ideal für Organisationen mit fortlaufenden Telefonleitungen (z. B. Kliniken oder Büros). <br>
-        <br>
-        <b>Optionen</b>: <br>
-        <minor>Länge der Suffixvariation</minor><br>
-        &ensp; Letzte N Ziffern ignorieren. <br>
-        <br>
-        <b>Zum Beispiel:</b> <br>
-        <sample>
-        &ensp; Wenn sich xxxx02 in Ihren Kontakten befindet und die Suffixtoleranz 2 beträgt, wird jede Nummer von xxxx00 bis xxxx99 erlaubt.
-        </sample>
-        ]]>
-    </string>
-    <string name="suffix_variation_length">Länge der Suffixvariation</string>
 </resources>

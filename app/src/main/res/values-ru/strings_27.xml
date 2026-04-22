@@ -14,22 +14,4 @@
     </string>
     <string name="at_time">Время</string>
     <string name="interval">Интервал</string>
-    <string name="contact_prefix">Префикс контакта</string>
-    <string name="prefix_matching">Сопоставление по префиксу</string>
-    <string name="help_prefix_matching">
-        <![CDATA[
-        Разрешать звонки с номеров, которые имеют общий префикс с вашими существующими контактами,
-        идеально для организаций с последовательными телефонными линиями, например клиник или офисов. <br>
-        <br>
-        <b>Параметры</b>: <br>
-        <minor>Длина вариации суффикса</minor><br>
-        &ensp; Игнорировать последние N цифр. <br>
-        <br>
-        <b>Например:</b> <br>
-        <sample>
-        &ensp; Если в ваших контактах есть xxxx02 и допуск по суффиксу равен 2, будет разрешен любой номер от xxxx00 до xxxx99.
-        </sample>
-        ]]>
-    </string>
-    <string name="suffix_variation_length">Длина вариации суффикса</string>
 </resources>

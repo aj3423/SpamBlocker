@@ -287,8 +287,6 @@ class spf { // for namespace only
     class Contact(ctx: Context) : SharedPref(ctx) {
         var isEnabled by bool("contacts_permitted")
         var isStrict by bool("contacts_exclusive")
-        var prefixMatching by bool("contacts_prefix_matching")
-        var suffixVariationLength by int("contacts_suffix_variation_length", 3)
         var lenientPriority by int("contacts_lenient_priority", 10)
         var strictPriority by int("contacts_strict_priority")
     }

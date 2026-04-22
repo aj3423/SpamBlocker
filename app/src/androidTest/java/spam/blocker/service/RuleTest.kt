@@ -102,26 +102,6 @@ class RuleTest {
         }
     }
 
-    private fun mock_contact_prefix(clearedNumber: String) {
-        val ci = ContactInfo(
-            id = "",
-            name = "Mock_contact_prefix_$clearedNumber"
-        )
-
-        mockkObject(Permission)
-        every { Permission.contacts.isGranted } returns true
-
-        mockkObject(Contacts)
-        every { Contacts.findContactByNumberPrefix(ctx, any(), any()) } answers {
-            val num = secondArg<String>()
-            val tolerance = thirdArg<Int>()
-            if (clearedNumber.dropLast(tolerance) == num.dropLast(tolerance))
-                ci
-            else
-                null
-        }
-    }
-
     private fun mock_call_permission_granted() {
         every { Permission.callLog.isGranted } returns true
     }
@@ -182,7 +162,7 @@ class RuleTest {
 
     // -------- tests begin --------
 
-    // Contact -> allow
+    // Contact > blacklist
     @Test
     fun contact_lenient() {
         val spf = spf.Contact(ctx)
@@ -196,23 +176,6 @@ class RuleTest {
 
         // non-contact: block
         assertEquals(Def.RESULT_BLOCKED_BY_NUMBER_REGEX, Checker.checkCall(ctx, Bob).first.type)
-    }
-
-    // Contact Prefix
-    @Test
-    fun contact_prefix() {
-        val spf = spf.Contact(ctx)
-        spf.isEnabled = true
-        spf.prefixMatching = true
-        spf.suffixVariationLength = 2
-        spf.isStrict = true
-        mock_contact_prefix("number1234")
-
-        // same prefix: pass
-        assertEquals(Def.RESULT_ALLOWED_BY_CONTACT_PREFIX, Checker.checkCall(ctx, "number1299").first.type)
-
-        // same prefix, but 3 digits diff(> tolerance 2): block
-        assertEquals(Def.RESULT_BLOCKED_BY_NON_CONTACT, Checker.checkCall(ctx, "number1999").first.type)
     }
 
     // Non Contact -> block

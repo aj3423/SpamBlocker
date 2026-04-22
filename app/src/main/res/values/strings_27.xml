@@ -14,22 +14,4 @@
     </string>
     <string name="at_time">At Time</string>
     <string name="interval">Interval</string>
-    <string name="contact_prefix">Contact Prefix</string>
-    <string name="prefix_matching">Prefix Matching</string>
-    <string name="help_prefix_matching">
-        <![CDATA[
-        Allow calls from numbers that share a prefix with your existing contacts,
-        ideal for organizations using sequential phone lines (e.g., clinics or offices). <br>
-        <br>
-        <b>Options</b>: <br>
-        <minor>Suffix Variation Length</minor><br>
-        &ensp; Ignore last N digits. <br>
-        <br>
-        <b>For example:</b> <br>
-        <sample>
-        &ensp; With xxxx02 in your contacts and a suffix tolerance of 2, any number from xxxx00 to xxxx99 will be allowed.
-        </sample>
-        ]]>
-    </string>
-    <string name="suffix_variation_length">Suffix Variation Length</string>
 </resources>
