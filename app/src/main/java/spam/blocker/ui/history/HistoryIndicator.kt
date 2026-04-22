@@ -70,7 +70,7 @@ fun IndicatorIcons(indicators: Indicators) {
                     ResIcon(R.drawable.ic_contact_group, modifier = M.size(16.dp), color = if(isBlocked(it.type)) C.error else C.success)
                 }
                 RESULT_ALLOWED_BY_CONTACT_PREFIX_REGEX, RESULT_BLOCKED_BY_CONTACT_PREFIX_REGEX -> {
-                    ResIcon(R.drawable.ic_contact_question, modifier = M.size(16.dp), color = if(isBlocked(it.type)) C.error else C.success)
+                    ResIcon(R.drawable.ic_contact_eq, modifier = M.size(16.dp), color = if(isBlocked(it.type)) C.error else C.success)
                 }
                 RESULT_ALLOWED_BY_CNAP_REGEX, RESULT_BLOCKED_BY_CNAP_REGEX -> {
                     ResIcon(R.drawable.ic_id_card, modifier = M.size(16.dp), color = if(isBlocked(it.type)) C.error else C.success)
