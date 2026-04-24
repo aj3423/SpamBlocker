@@ -47,4 +47,38 @@
         &ensp; If you have <sample>1111<b>22</b></sample> saved as a contact, a call from <sample>1111<b>33</b></sample> will also be allowed.<br>
         ]]>
     </string>
+    <string name="caller_id">Caller ID</string>
+    <string name="help_caller_id">
+        <![CDATA[
+        Show caller ID in a floating window. <br>
+        <br>
+        <b>Drag to move it.</b> <br>
+        <br>
+        <b>Note</b> <br>
+        You might notice a system alert appears in your notification shade while the floating window is active,
+          indicating this app is displaying window over other apps.
+        That\'s because the floating window has been historically abused by malware to draw fake login screens. <br>
+        Just ignore this alert, it will vanish along with the floating window.
+        ]]>
+    </string>
+    <string name="perm_show_overlay">Show Overlay</string>
+    <string name="preview">Preview</string>
+    <string name="hide">Hide</string>
+    <string name="content_template">Content Template</string>
+    <string name="help_caller_id_template">
+        <![CDATA[
+        The content displayed in the caller ID window, in HTML format. <br>
+        <br>
+        <title>Supported tags</title>: <br>
+        - <sub>{reason}</sub> <br>
+        &emsp; Why the call was allowed, the same reason displayed in the call history. <br>
+        - <sub>{geolocation}</sub> <br>
+        &emsp; The number\'s geolocation. <br>
+        <br>
+        <title>Supported HTML tags</title>: <br>
+        See: [link](%s)
+        ]]>
+    </string>
+    <string name="background_color">Background Color</string>
+    <string name="text_color">Text Color</string>
 </resources>

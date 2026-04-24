@@ -49,6 +49,8 @@ import spam.blocker.util.PermissionType.ReceiveMMS
 import spam.blocker.util.PermissionType.ReceiveSMS
 import spam.blocker.util.PermissionType.UsageStats
 import spam.blocker.util.PermissionType.WriteSettings
+import spam.blocker.util.PermissionType.ShowOverlay
+
 
 object PermissionType {
     abstract class Basic {
@@ -188,6 +190,22 @@ object PermissionType {
             )
         }
     }
+
+    class ShowOverlay(
+        override var descId: Int = R.string.perm_show_overlay
+    ): LaunchByIntent() {
+        override fun launcherIntent(ctx: Context): Intent {
+            return Intent(
+                Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                "package:${ctx.packageName}".toUri()
+            )
+        }
+
+        override fun check(ctx: Context): Boolean {
+            return Settings.canDrawOverlays(ctx)
+        }
+    }
+
     class WriteSettings(
         override var descId: Int = R.string.perm_write_settings
     ): LaunchByIntent() {
@@ -319,6 +337,7 @@ object Permission {
     val calendar = Calendar()
     val writeSettings = WriteSettings()
     val notificationAccess = NotificationAccess()
+    val showOverlay = ShowOverlay()
     val usageStats = UsageStats()
     val batteryUnRestricted = BatteryUnRestricted()
 
@@ -337,6 +356,7 @@ object Permission {
             calendar,
             writeSettings,
             notificationAccess,
+            showOverlay,
             usageStats,
             batteryUnRestricted,
         )

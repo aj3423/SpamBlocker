@@ -9,6 +9,7 @@ import android.os.Handler
 import android.os.Looper
 import android.telecom.TelecomManager
 import android.telephony.TelephonyManager
+import spam.blocker.ui.widgets.FloatingWindow
 import spam.blocker.util.Util
 import spam.blocker.util.logi
 import spam.blocker.util.spf
@@ -41,7 +42,6 @@ class CallStateReceiver : BroadcastReceiver() {
     }
 
     override fun onReceive(ctx: Context, intent: Intent) {
-        val spf = spf.Temporary(ctx)
 
         if (intent.action == "android.intent.action.PHONE_STATE") {
 
@@ -64,13 +64,17 @@ class CallStateReceiver : BroadcastReceiver() {
                 TelephonyManager.EXTRA_STATE_OFFHOOK -> {
                     logi("IN CALL")
 
+                    // 1. Dismiss the Caller ID window
+                    if (spf.CallerID(ctx).isEnabled) {
+                        FloatingWindow.hide(ctx)
+                    }
+
+                    // 2. Hang-up the call after "hang-up-delay" seconds
                     val currNumber = extractNumber(intent)
-
                     val block = shouldBlock(ctx, currNumber)
-
                     if (block) {
                         // Schedule a delayed hang-up task.
-                        val delay = spf.hangUpDelay.toLong() * 1000
+                        val delay = spf.Temporary(ctx).hangUpDelay.toLong() * 1000
 
                         handler.postDelayed({
                             endCall(ctx)
@@ -83,7 +87,12 @@ class CallStateReceiver : BroadcastReceiver() {
 //                    val currNumber = extractNumber(intent)
                     logi("IDLE")
 
-                    // When the call ends before the hang-up delay, kill the hang-up task,
+                    // 1. Dismiss the Caller ID window
+                    if (spf.CallerID(ctx).isEnabled) {
+                        FloatingWindow.hide(ctx)
+                    }
+
+                    // 2. When the call ends before the hang-up delay, kill the hang-up task,
                     //  to prevent killing any following calls by mistake.
                     handler.removeCallbacksAndMessages(null)
                 }

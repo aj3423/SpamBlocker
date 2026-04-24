@@ -2,6 +2,7 @@ package spam.blocker.util
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.Color
@@ -9,12 +10,14 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.core.content.edit
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
+import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.Notification.CHANNEL_HIGH
 import spam.blocker.db.Notification.CHANNEL_HIGH_MUTED
 import spam.blocker.db.Notification.CHANNEL_LOW
 import spam.blocker.def.Def
 import spam.blocker.def.Def.DEFAULT_HANG_UP_DELAY
+import spam.blocker.ui.setting.quick.DefaultCallerIdTemplate
 import spam.blocker.ui.theme.Black111111
 import spam.blocker.ui.theme.ColdGrey
 import spam.blocker.ui.theme.DarkOrange
@@ -332,6 +335,14 @@ class spf { // for namespace only
         var spamSmsChannelId by str("channel_spam_sms", CHANNEL_LOW)
         var validSmsChannelId by str("channel_valid_sms", CHANNEL_HIGH)
         var smsChatChannelId by str("channel_active_sms_chat", CHANNEL_HIGH_MUTED)
+    }
+
+    class CallerID(ctx: Context) : SharedPref(ctx) {
+        var isEnabled by bool("caller_id")
+        var x by int("caller_id_window_x")
+        var y by int("caller_id_window_y")
+        var bgColor by int("caller_id_bg_color", 0x10808080)
+        var template by str("caller_id_template", DefaultCallerIdTemplate)
     }
 
     @Serializable

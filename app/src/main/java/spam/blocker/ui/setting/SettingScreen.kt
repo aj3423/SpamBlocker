@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -41,6 +42,7 @@ import spam.blocker.ui.setting.misc.Language
 import spam.blocker.ui.setting.misc.Theme
 import spam.blocker.ui.setting.quick.Answered
 import spam.blocker.ui.setting.quick.BlockType
+import spam.blocker.ui.setting.quick.CallerID
 import spam.blocker.ui.setting.quick.Contacts
 import spam.blocker.ui.setting.quick.Dialed
 import spam.blocker.ui.setting.quick.EmergencySituation
@@ -59,6 +61,7 @@ import spam.blocker.ui.setting.regex.RegexList
 import spam.blocker.ui.setting.regex.RegexViewModel
 import spam.blocker.ui.setting.regex.SmsAlert
 import spam.blocker.ui.setting.regex.SmsBomb
+import spam.blocker.ui.slightDiff
 import spam.blocker.ui.theme.White
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.BalloonQuestionMark
@@ -146,8 +149,12 @@ fun SettingScreen() {
                             EmergencySituation()
                             RecentApps()
                             MeetingMode()
+
+                            HorizontalDivider(thickness = 1.dp, color = G.palette.background.slightDiff())
+
                             BlockType()
                             Notification()
+                            CallerID()
                         }
                     }
 

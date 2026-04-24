@@ -9,7 +9,9 @@ import android.telecom.TelecomManager
 import android.telephony.TelephonyManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import spam.blocker.Events
 import spam.blocker.db.BotTable
 import spam.blocker.db.CallTable
@@ -22,6 +24,7 @@ import spam.blocker.service.checker.Checker
 import spam.blocker.service.checker.ICheckResult
 import spam.blocker.service.reporting.autoReportSpam
 import spam.blocker.ui.NotificationTrampolineActivity
+import spam.blocker.ui.setting.quick.showCallerIdWindow
 import spam.blocker.util.Contacts
 import spam.blocker.util.ILogger
 import spam.blocker.util.Notification
@@ -30,6 +33,7 @@ import spam.blocker.util.RingtoneUtil
 import spam.blocker.util.SaveableLogger
 import spam.blocker.util.SimUtils
 import spam.blocker.util.Util
+import spam.blocker.util.Util.numberGeoLocation
 import spam.blocker.util.logi
 import spam.blocker.util.spf
 
@@ -141,7 +145,7 @@ class CallScreeningService : CallScreeningService() {
         }
     }
 
-    private fun doScreenCall(details: Details) {
+    private suspend fun doScreenCall(details: Details) {
         logi("doScreenCall()")
 
         // Outgoing
@@ -158,18 +162,19 @@ class CallScreeningService : CallScreeningService() {
             return
         }
 
+        val ctx = this
         val rawNumber = details.getRawNumber()
-        val ringingSimSlot = SimUtils.getRingingSimSlot(this)
+        val ringingSimSlot = SimUtils.getRingingSimSlot(ctx)
         val cnap = details.callerDisplayName
 
         val r = processCall(
-            ctx = this, logger = SaveableLogger(), rawNumber = rawNumber,
+            ctx = ctx, logger = SaveableLogger(), rawNumber = rawNumber,
             cnap = cnap, callDetails = details, simSlot = ringingSimSlot, isTest = false
         )
         logi("processCall() result: $r")
 
         if (r.shouldBlock()) {
-            val blockType = r.getBlockType(this) // reject / silence / answer+hangup
+            val blockType = r.getBlockType(ctx) // reject / silence / answer+hangup
 
             when (blockType) {
                 Def.BLOCK_TYPE_SILENCE -> silence(details)
@@ -177,8 +182,20 @@ class CallScreeningService : CallScreeningService() {
                 else -> reject(details)
             }
         } else {
-            val shouldMute = setRingtone(this, r)
+            // 1. Set ringtone + pass()
+            val shouldMute = setRingtone(ctx, r)
             pass(details, shouldMute)
+
+            // 2. Show Caller ID window if enabled
+            if (spf.CallerID(ctx).isEnabled) {
+                withContext(Main) {
+                    showCallerIdWindow(
+                        ctx = ctx,
+                        r = r,
+                        geoLocation = numberGeoLocation(ctx, rawNumber)
+                    )
+                }
+            }
         }
         logi("doScreenCall() finished")
     }
@@ -187,9 +204,6 @@ class CallScreeningService : CallScreeningService() {
     //  true -> mute the ringtone
     //  false -> play the ringtone
     private fun setRingtone(ctx: Context, r: ICheckResult) : Boolean {
-        if (r.shouldBlock()) // not allowed call, no ringtone, no need to check
-            return false
-
         // 1. Get all workflows that are linked to this regex rule
         val bots = BotTable.listAll(ctx).filter {
             it.trigger is Ringtone

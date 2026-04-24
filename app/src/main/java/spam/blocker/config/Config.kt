@@ -506,7 +506,31 @@ class BlockType : IConfig {
     }
 }
 
+@Serializable
+class CallerID : IConfig {
+    var enabled = false
+    var x = 0
+    var y = 0
+    var bgColor: Int = 0
+    var template = ""
+    override fun load(ctx: Context) {
+        val spf = spf.CallerID(ctx)
+        enabled = spf.isEnabled
+        x = spf.x
+        y = spf.y
+        bgColor = spf.bgColor
+        template = spf.template
+    }
 
+    override fun apply(ctx: Context) {
+        val spf = spf.CallerID(ctx)
+        spf.isEnabled = enabled
+        spf.x = x
+        spf.y = y
+        spf.bgColor = bgColor
+        spf.template = template
+    }
+}
 
 @Serializable
 class Notification : IConfig {
@@ -758,6 +782,7 @@ class Configs {
     val recentApps = RecentApps()
     val meetingMode = MeetingMode()
     val blockType = BlockType()
+    val callerID = CallerID()
     val notification = Notification()
     val offTime = OffTime()
 
@@ -792,11 +817,12 @@ class Configs {
             repeatedCall,
             dialed,
             answered,
+            offTime,
             recentApps,
             meetingMode,
             blockType,
             notification,
-            offTime,
+            callerID,
 
             numberRules,
             contentRules,
