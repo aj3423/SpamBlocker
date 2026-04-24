@@ -97,7 +97,7 @@ object Contacts {
 
     fun findContactByNumberPrefix(
         ctx: Context,
-        incomingNumber: String, // This function assumes the `incomingNumber` matches the `pattern`
+        rawNumber: String, // This function assumes the `incomingNumber` matches the `pattern`
         pattern: String,
         patternFlags: Int,
     ): ContactInfo? {
@@ -106,12 +106,15 @@ object Contacts {
         }
         val tolerance = pattern.takeLastWhile { it == '.' }.length
 
-        if (incomingNumber.length <= tolerance) {
+        // 1. Process `Ignore Country Code` and `Raw Number` first
+        val number = rawNumber.applyRegexFlags(patternFlags)
+
+        if (number.length <= tolerance) {
             return null
         }
 
-        val prefixLength = incomingNumber.length - tolerance
-        val prefix = incomingNumber.substring(0, prefixLength)
+        val prefixLength = number.length - tolerance
+        val prefix = number.substring(0, prefixLength)
 
         val projection = arrayOf(
             ContactsContract.CommonDataKinds.Phone.CONTACT_ID,
