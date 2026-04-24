@@ -109,22 +109,22 @@ val PermissivePrettyJson =  Json {
 
 // For matching phone number only, it handles all regex flags like: RawMode/IgnoreCC
 fun String.regexMatchesNumber(rawNumber: String, regexFlags: Int): Boolean {
-    val toMatch = if(regexFlags.hasFlag(Def.FLAG_REGEX_RAW_NUMBER)) {
-        rawNumber
-    } else if (regexFlags.hasFlag(Def.FLAG_REGEX_IGNORE_CC)) {
+    // 1. Strip leading +CC if "Ignore Country Code" is enabled
+    var num = if (regexFlags.hasFlag(Def.FLAG_REGEX_IGNORE_CC)) {
         val intn = Util.parseInternationalNumber(rawNumber) // it returns Pair<CC, Phone>?
-        if (intn != null) {
-            intn.second
-        } else {
-            Util.clearNumber(rawNumber)
-        }
+        intn?.second ?: rawNumber
     } else {
-        Util.clearNumber(rawNumber)
+        rawNumber
+    }
+
+    // 2. Clear + and leading 0s if "Raw Number" is not enabled
+    if(!regexFlags.hasFlag(Def.FLAG_REGEX_RAW_NUMBER)) {
+        num = Util.clearNumber(num)
     }
 
     val opts = Util.flagsToRegexOptions(regexFlags)
     return try {
-        this.toRegex(opts).matches(toMatch)
+        this.toRegex(opts).matches(num)
     } catch (_: Exception) {
         false
     }
