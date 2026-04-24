@@ -143,9 +143,9 @@ object Contacts {
 
             while (it.moveToNext()) {
                 val contactNumber = it.getString(numberIndex) ?: continue
-                // Remove these characters: ( ) -
+                // Remove these characters: ( ) - space
                 //   "+1 (555) 999-0000" -> "+15559990000"
-                val cleanContactNumber = contactNumber.replace(Regex("[^0-9]+"), "")
+                val cleanContactNumber = contactNumber.replace(Regex("[^+0-9]+"), "")
 
                 // The number must match the regex
                 if (!pattern.regexMatchesNumber(cleanContactNumber, patternFlags)) {
