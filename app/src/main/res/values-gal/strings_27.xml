@@ -47,4 +47,49 @@
         &ensp; Se tes <sample>1111<b>22</b></sample> gardado como contacto, tamén se permitirá unha chamada desde <sample>1111<b>33</b></sample>.<br>
         ]]>
     </string>
+    <string name="caller_id">Identificador de chamadas</string>
+    <string name="help_caller_id">
+        <![CDATA[
+        Mostra o identificador de chamadas nunha xanela flotante. <br>
+        <br>
+        <b>Arrástrao para movelo.</b> <br>
+        <br>
+        <b>Nota</b> <br>
+        É posible que vexas un aviso do sistema na área de notificacións mentres a xanela flotante estea activa,
+          indicando que esta aplicación está a mostrar unha xanela sobre outras aplicacións.
+        Isto débese a que a xanela flotante foi empregada historicamente por software malicioso para mostrar pantallas de inicio de sesión falsas. <br>
+        Simplemente ignora este aviso; desaparecerá xunto coa xanela flotante.
+        ]]>
+    </string>
+    <string name="perm_show_overlay">Mostrar superposición</string>
+    <string name="preview">Vista previa</string>
+    <string name="hide">Ocultar</string>
+    <string name="content_template">Modelo de contido</string>
+    <string name="help_caller_id_template">
+        <![CDATA[
+        O contido mostrado na xanela do identificador de chamadas, en formato HTML. <br>
+        <br>
+        <title>Etiquetas compatibles</title>: <br>
+        - <sub>{reason}</sub> <br>
+        &emsp; Por que se permitiu a chamada, a mesma razón mostrada no historial de chamadas. <br>
+        - <sub>{geolocation}</sub> <br>
+        &emsp; A xeolocalización do número de teléfono. <br>
+        <br>
+        <title>Etiquetas HTML compatibles</title>: <br>
+        Vexa: [link](%s)
+        ]]>
+    </string>
+    <string name="background_color">Cor de fondo</string>
+    <string name="wait">Esperar</string>
+    <string name="help_action_wait">
+        <![CDATA[
+        Agarda N segundos. <br>
+        <br>
+        <b>Caso de uso</b>: <br>
+        <sample>
+        Para a función <b>Alerta SMS</b>, as mensaxes ás veces chegan ao mesmo tempo ca chamada
+         ou uns segundos despois, e engadir un atraso de 2~3 segundos á filtraxe de chamadas pode evitar estes problemas.
+        </sample>
+        ]]>
+    </string>
 </resources>

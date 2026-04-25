@@ -47,4 +47,49 @@
         &ensp; Jika Anda menyimpan <sample>1111<b>22</b></sample> sebagai kontak, panggilan dari <sample>1111<b>33</b></sample> juga akan diizinkan.<br>
         ]]>
     </string>
+    <string name="caller_id">ID Penelepon</string>
+    <string name="help_caller_id">
+        <![CDATA[
+        Tampilkan ID penelepon dalam jendela mengambang. <br>
+        <br>
+        <b>Seret untuk memindahkannya.</b> <br>
+        <br>
+        <b>Catatan</b> <br>
+        Anda mungkin melihat peringatan sistem di panel notifikasi saat jendela mengambang aktif,
+          yang menunjukkan bahwa aplikasi ini menampilkan jendela di atas aplikasi lain.
+        Hal itu terjadi karena jendela mengambang secara historis pernah disalahgunakan oleh malware untuk menampilkan layar masuk palsu. <br>
+        Abaikan saja peringatan ini, karena akan hilang bersama jendela mengambang.
+        ]]>
+    </string>
+    <string name="perm_show_overlay">Tampilkan Overlay</string>
+    <string name="preview">Pratinjau</string>
+    <string name="hide">Sembunyikan</string>
+    <string name="content_template">Templat Konten</string>
+    <string name="help_caller_id_template">
+        <![CDATA[
+        Konten yang ditampilkan di jendela ID penelepon, dalam format HTML. <br>
+        <br>
+        <title>Tag yang didukung</title>: <br>
+        - <sub>{reason}</sub> <br>
+        &emsp; Mengapa panggilan diizinkan, alasan yang sama seperti yang ditampilkan di riwayat panggilan. <br>
+        - <sub>{geolocation}</sub> <br>
+        &emsp; Lokasi geografis nomor telepon. <br>
+        <br>
+        <title>Tag HTML yang didukung</title>: <br>
+        Lihat: [link](%s)
+        ]]>
+    </string>
+    <string name="background_color">Warna Latar Belakang</string>
+    <string name="wait">Tunggu</string>
+    <string name="help_action_wait">
+        <![CDATA[
+        Tunda selama N detik. <br>
+        <br>
+        <b>Kasus penggunaan</b>: <br>
+        <sample>
+        Untuk fitur <b>Prt. SMS</b>, pesan kadang tiba bersamaan dengan panggilan
+         atau beberapa detik setelah panggilan; menambahkan jeda penyaringan panggilan 2~3 detik dapat mencegah masalah seperti ini.
+        </sample>
+        ]]>
+    </string>
 </resources>

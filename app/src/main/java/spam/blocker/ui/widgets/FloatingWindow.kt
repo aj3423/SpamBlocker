@@ -94,7 +94,7 @@ object FloatingWindow {
             WindowManager.LayoutParams.WRAP_CONTENT,
             WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
             WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or
-                    WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED or
+                    WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED or // important
                     WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
             ,
             PixelFormat.TRANSLUCENT,

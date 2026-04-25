@@ -47,4 +47,49 @@
         &ensp; אם שמרת את <sample>1111<b>22</b></sample> כאיש קשר, גם שיחה מ-<sample>1111<b>33</b></sample> תאושר.<br>
         ]]>
     </string>
+    <string name="caller_id">זיהוי מתקשר</string>
+    <string name="help_caller_id">
+        <![CDATA[
+        הצג זיהוי מתקשר בחלון צף. <br>
+        <br>
+        <b>גרור כדי להזיז אותו.</b> <br>
+        <br>
+        <b>הערה</b> <br>
+        ייתכן שתופיע התראת מערכת בלוח ההתראות בזמן שהחלון הצף פעיל,
+          שמציינת שהאפליקציה מציגה חלון מעל אפליקציות אחרות.
+        הסיבה לכך היא שחלונות צפים נוצלו בעבר על ידי נוזקות כדי להציג מסכי התחברות מזויפים. <br>
+        פשוט התעלם מההתראה הזו, והיא תיעלם יחד עם החלון הצף.
+        ]]>
+    </string>
+    <string name="perm_show_overlay">הצג שכבת-על</string>
+    <string name="preview">תצוגה מקדימה</string>
+    <string name="hide">הסתר</string>
+    <string name="content_template">תבנית תוכן</string>
+    <string name="help_caller_id_template">
+        <![CDATA[
+        התוכן שמוצג בחלון זיהוי המתקשר, בפורמט HTML. <br>
+        <br>
+        <title>תגיות נתמכות</title>: <br>
+        - <sub>{reason}</sub> <br>
+        &emsp; למה השיחה הותרה, אותה סיבה שמוצגת בהיסטוריית השיחות. <br>
+        - <sub>{geolocation}</sub> <br>
+        &emsp; המיקום הגיאוגרפי של מספר הטלפון. <br>
+        <br>
+        <title>תגיות HTML נתמכות</title>: <br>
+        ראו: [link](%s)
+        ]]>
+    </string>
+    <string name="background_color">צבע רקע</string>
+    <string name="wait">המתן</string>
+    <string name="help_action_wait">
+        <![CDATA[
+        ממתין N שניות. <br>
+        <br>
+        <b>מקרה שימוש</b>: <br>
+        <sample>
+        עבור התכונה <b>התראת סמס</b>, הודעות לפעמים מגיעות בו-זמנית עם השיחה
+         או כמה שניות אחריה, והוספת עיכוב של 2~3 שניות לסינון שיחות יכולה למנוע בעיות כאלה.
+        </sample>
+        ]]>
+    </string>
 </resources>

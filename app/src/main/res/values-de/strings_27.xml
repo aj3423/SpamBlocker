@@ -47,4 +47,49 @@
         &ensp; Wenn Sie <sample>1111<b>22</b></sample> als Kontakt gespeichert haben, wird auch ein Anruf von <sample>1111<b>33</b></sample> zugelassen.<br>
         ]]>
     </string>
+    <string name="caller_id">Anruferkennung</string>
+    <string name="help_caller_id">
+        <![CDATA[
+        Zeigt die Anruferkennung in einem schwebenden Fenster an. <br>
+        <br>
+        <b>Zum Verschieben ziehen.</b> <br>
+        <br>
+        <b>Hinweis</b> <br>
+        Möglicherweise erscheint im Benachrichtigungsbereich ein Systemhinweis, während das schwebende Fenster aktiv ist.
+          Dieser weist darauf hin, dass diese App ein Fenster über anderen Apps anzeigt.
+        Das liegt daran, dass schwebende Fenster in der Vergangenheit von Schadsoftware missbraucht wurden, um gefälschte Anmeldebildschirme anzuzeigen. <br>
+        Ignorieren Sie diesen Hinweis einfach, er verschwindet zusammen mit dem schwebenden Fenster.
+        ]]>
+    </string>
+    <string name="perm_show_overlay">Overlay anzeigen</string>
+    <string name="preview">Vorschau</string>
+    <string name="hide">Ausblenden</string>
+    <string name="content_template">Inhaltsvorlage</string>
+    <string name="help_caller_id_template">
+        <![CDATA[
+        Der im Fenster der Anruferkennung angezeigte Inhalt im HTML-Format. <br>
+        <br>
+        <title>Unterstützte Tags</title>: <br>
+        - <sub>{reason}</sub> <br>
+        &emsp; Warum der Anruf zugelassen wurde, derselbe Grund wie im Anrufverlauf. <br>
+        - <sub>{geolocation}</sub> <br>
+        &emsp; Der geografische Standort der Telefonnummer. <br>
+        <br>
+        <title>Unterstützte HTML-Tags</title>: <br>
+        Siehe: [link](%s)
+        ]]>
+    </string>
+    <string name="background_color">Hintergrundfarbe</string>
+    <string name="wait">Warten</string>
+    <string name="help_action_wait">
+        <![CDATA[
+        Verzögert um N Sekunden. <br>
+        <br>
+        <b>Anwendungsfall</b>: <br>
+        <sample>
+        Bei der Funktion <b>SMS Alarm</b> treffen Nachrichten manchmal gleichzeitig mit einem Anruf
+         oder wenige Sekunden danach ein. Eine Verzögerung der Anrufprüfung um 2~3 Sekunden kann solche Probleme vermeiden.
+        </sample>
+        ]]>
+    </string>
 </resources>

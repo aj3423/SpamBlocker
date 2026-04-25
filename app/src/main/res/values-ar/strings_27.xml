@@ -47,4 +47,49 @@
         &ensp; إذا كان لديك <sample>1111<b>22</b></sample> محفوظًا كجهة اتصال، فسيُسمح أيضًا بمكالمة من <sample>1111<b>33</b></sample>.<br>
         ]]>
     </string>
+    <string name="caller_id">معرّف المتصل</string>
+    <string name="help_caller_id">
+        <![CDATA[
+        اعرض معرّف المتصل في نافذة عائمة. <br>
+        <br>
+        <b>اسحبها لتحريكها.</b> <br>
+        <br>
+        <b>ملاحظة</b> <br>
+        قد تلاحظ ظهور تنبيه من النظام في لوحة الإشعارات أثناء نشاط النافذة العائمة،
+          يفيد بأن هذا التطبيق يعرض نافذة فوق التطبيقات الأخرى.
+        يحدث هذا لأن النوافذ العائمة استُخدمت تاريخيًا من قبل البرمجيات الخبيثة لعرض شاشات تسجيل دخول مزيفة. <br>
+        تجاهل هذا التنبيه فقط، وسيختفي مع اختفاء النافذة العائمة.
+        ]]>
+    </string>
+    <string name="perm_show_overlay">إظهار النافذة العائمة</string>
+    <string name="preview">معاينة</string>
+    <string name="hide">إخفاء</string>
+    <string name="content_template">قالب المحتوى</string>
+    <string name="help_caller_id_template">
+        <![CDATA[
+        المحتوى المعروض في نافذة معرّف المتصل، بتنسيق HTML. <br>
+        <br>
+        <title>الوسوم المدعومة</title>: <br>
+        - <sub>{reason}</sub> <br>
+        &emsp; سبب السماح بالمكالمة، وهو نفس السبب المعروض في سجل المكالمات. <br>
+        - <sub>{geolocation}</sub> <br>
+        &emsp; الموقع الجغرافي لرقم الهاتف. <br>
+        <br>
+        <title>وسوم HTML المدعومة</title>: <br>
+        راجع: [link](%s)
+        ]]>
+    </string>
+    <string name="background_color">لون الخلفية</string>
+    <string name="wait">انتظار</string>
+    <string name="help_action_wait">
+        <![CDATA[
+        تأخير لمدة N ثانية. <br>
+        <br>
+        <b>حالة استخدام</b>: <br>
+        <sample>
+        بالنسبة إلى ميزة <b>تنبيه SMS</b>، تصل الرسائل أحيانًا في الوقت نفسه
+         أو بعد المكالمة ببضع ثوانٍ، وإضافة تأخير قدره 2~3 ثوانٍ إلى فحص المكالمات يمكن أن يمنع هذه المشكلات.
+        </sample>
+        ]]>
+    </string>
 </resources>

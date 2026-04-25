@@ -47,4 +47,49 @@
         &ensp; 連絡先として <sample>1111<b>22</b></sample> を保存している場合、<sample>1111<b>33</b></sample> からの着信も許可されます。<br>
         ]]>
     </string>
+    <string name="caller_id">発信者ID</string>
+    <string name="help_caller_id">
+        <![CDATA[
+        発信者IDをフローティングウィンドウに表示します。 <br>
+        <br>
+        <b>ドラッグして移動できます。</b> <br>
+        <br>
+        <b>注意</b> <br>
+        フローティングウィンドウが有効な間、通知欄にシステム警告が表示されることがあります。
+          これは、このアプリが他のアプリの上にウィンドウを表示していることを示しています。
+        これは、フローティングウィンドウが過去にマルウェアによって偽のログイン画面の表示に悪用されてきたためです。 <br>
+        この警告は無視してください。フローティングウィンドウが消えると一緒に消えます。
+        ]]>
+    </string>
+    <string name="perm_show_overlay">オーバーレイを表示</string>
+    <string name="preview">プレビュー</string>
+    <string name="hide">非表示</string>
+    <string name="content_template">コンテンツテンプレート</string>
+    <string name="help_caller_id_template">
+        <![CDATA[
+        発信者IDウィンドウに表示される内容です。HTML形式です。 <br>
+        <br>
+        <title>対応タグ</title>: <br>
+        - <sub>{reason}</sub> <br>
+        &emsp; 通話が許可された理由です。通話履歴に表示される理由と同じです。 <br>
+        - <sub>{geolocation}</sub> <br>
+        &emsp; 電話番号の地理情報です。 <br>
+        <br>
+        <title>対応HTMLタグ</title>: <br>
+        参照: [link](%s)
+        ]]>
+    </string>
+    <string name="background_color">背景色</string>
+    <string name="wait">待機</string>
+    <string name="help_action_wait">
+        <![CDATA[
+        N秒待機します。 <br>
+        <br>
+        <b>使用例</b>: <br>
+        <sample>
+        <b>SMS警告</b> 機能では、メッセージが通話と同時に届いたり
+         通話の数秒後に届いたりすることがあります。通話スクリーニングに 2~3 秒の遅延を追加すると、このような問題を防げます。
+        </sample>
+        ]]>
+    </string>
 </resources>

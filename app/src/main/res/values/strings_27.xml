@@ -80,4 +80,16 @@
         ]]>
     </string>
     <string name="background_color">Background Color</string>
+    <string name="wait">Wait</string>
+    <string name="help_action_wait">
+        <![CDATA[
+        Delay N seconds. <br>
+        <br>
+        <b>Use case</b>: <br>
+        <sample>
+        For the feature <b>SMS Alert</b>, messages sometimes arrive simultaneously with
+         or a few seconds after a call, adding a 2~3 second call screening delay can prevent such issues.
+        </sample>
+        ]]>
+    </string>
 </resources>

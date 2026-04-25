@@ -47,4 +47,49 @@
         &ensp; Si tens <sample>1111<b>22</b></sample> desat com a contacte, també es permetrà una trucada de <sample>1111<b>33</b></sample>.<br>
         ]]>
     </string>
+    <string name="caller_id">Identificador del trucador</string>
+    <string name="help_caller_id">
+        <![CDATA[
+        Mostra l\'identificador del trucador en una finestra flotant. <br>
+        <br>
+        <b>Arrossegueu-la per moure-la.</b> <br>
+        <br>
+        <b>Nota</b> <br>
+        És possible que aparegui un avís del sistema a la safata de notificacions mentre la finestra flotant estigui activa,
+          indicant que aquesta aplicació mostra una finestra sobre altres aplicacions.
+        Això és perquè la finestra flotant ha estat utilitzada històricament per programari maliciós per mostrar pantalles d\'inici de sessió falses. <br>
+        Simplement ignoreu aquest avís; desapareixerà juntament amb la finestra flotant.
+        ]]>
+    </string>
+    <string name="perm_show_overlay">Mostrar superposició</string>
+    <string name="preview">Vista prèvia</string>
+    <string name="hide">Amaga</string>
+    <string name="content_template">Plantilla del contingut</string>
+    <string name="help_caller_id_template">
+        <![CDATA[
+        El contingut que es mostra a la finestra de l\'identificador del trucador, en format HTML. <br>
+        <br>
+        <title>Etiquetes compatibles</title>: <br>
+        - <sub>{reason}</sub> <br>
+        &emsp; Per què es va permetre la trucada, el mateix motiu que es mostra a l\'historial de trucades. <br>
+        - <sub>{geolocation}</sub> <br>
+        &emsp; La geolocalització del número de telèfon. <br>
+        <br>
+        <title>Etiquetes HTML compatibles</title>: <br>
+        Vegeu: [link](%s)
+        ]]>
+    </string>
+    <string name="background_color">Color de fons</string>
+    <string name="wait">Esperar</string>
+    <string name="help_action_wait">
+        <![CDATA[
+        Retarda N segons. <br>
+        <br>
+        <b>Cas d\'ús</b>: <br>
+        <sample>
+        Per a la funció <b>Alerta SMS</b>, els missatges de vegades arriben alhora que la trucada
+         o uns segons després, i afegir un retard de 2~3 segons al filtratge de trucades pot evitar aquests problemes.
+        </sample>
+        ]]>
+    </string>
 </resources>

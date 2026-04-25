@@ -47,4 +47,49 @@
         &ensp; 如果你將 <sample>1111<b>22</b></sample> 儲存為聯絡人，則來自 <sample>1111<b>33</b></sample> 的來電也會被允許。<br>
         ]]>
     </string>
+    <string name="caller_id">來電顯示</string>
+    <string name="help_caller_id">
+        <![CDATA[
+        在浮動視窗中顯示來電資訊。 <br>
+        <br>
+        <b>拖曳即可移動。</b> <br>
+        <br>
+        <b>注意</b> <br>
+        當浮動視窗啟用時，你可能會在通知欄看到系統提醒，
+          表示此應用程式正在其他應用程式上方顯示視窗。
+        這是因為浮動視窗過去曾被惡意程式濫用來顯示假的登入畫面。 <br>
+        直接忽略這個提醒即可，它會隨著浮動視窗一起消失。
+        ]]>
+    </string>
+    <string name="perm_show_overlay">顯示浮動視窗</string>
+    <string name="preview">預覽</string>
+    <string name="hide">隱藏</string>
+    <string name="content_template">內容範本</string>
+    <string name="help_caller_id_template">
+        <![CDATA[
+        來電顯示視窗中顯示的內容，採用 HTML 格式。 <br>
+        <br>
+        <title>支援的標籤</title>: <br>
+        - <sub>{reason}</sub> <br>
+        &emsp; 通話被允許的原因，與通話記錄中顯示的原因相同。 <br>
+        - <sub>{geolocation}</sub> <br>
+        &emsp; 電話號碼的地理位置。 <br>
+        <br>
+        <title>支援的 HTML 標籤</title>: <br>
+        參見：[link](%s)
+        ]]>
+    </string>
+    <string name="background_color">背景顏色</string>
+    <string name="wait">等待</string>
+    <string name="help_action_wait">
+        <![CDATA[
+        延遲 N 秒。 <br>
+        <br>
+        <b>使用情境</b>: <br>
+        <sample>
+        對於 <b>簡訊提醒</b> 功能，訊息有時會與來電同時到達，
+         或是在來電後幾秒內到達，增加 2~3 秒的通話篩查延遲可以避免這類問題。
+        </sample>
+        ]]>
+    </string>
 </resources>

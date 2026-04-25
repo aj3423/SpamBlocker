@@ -47,4 +47,49 @@
         &ensp; 如果你将 <sample>1111<b>22</b></sample> 保存为联系人，则来自 <sample>1111<b>33</b></sample> 的来电也会被允许。<br>
         ]]>
     </string>
+    <string name="caller_id">来电显示</string>
+    <string name="help_caller_id">
+        <![CDATA[
+        在悬浮窗中显示来电信息。 <br>
+        <br>
+        <b>拖动即可移动。</b> <br>
+        <br>
+        <b>注意</b> <br>
+        当悬浮窗处于活动状态时，你可能会在通知栏看到一条系统提醒，
+          表示此应用正在其他应用上方显示窗口。
+        这是因为悬浮窗历史上曾被恶意软件滥用来绘制虚假的登录界面。 <br>
+        忽略这条提醒即可，它会随着悬浮窗一起消失。
+        ]]>
+    </string>
+    <string name="perm_show_overlay">显示悬浮窗</string>
+    <string name="preview">预览</string>
+    <string name="hide">隐藏</string>
+    <string name="content_template">内容模板</string>
+    <string name="help_caller_id_template">
+        <![CDATA[
+        来电显示窗口中显示的内容，采用 HTML 格式。 <br>
+        <br>
+        <title>支持的标签</title>: <br>
+        - <sub>{reason}</sub> <br>
+        &emsp; 通话被允许的原因，与通话记录中显示的原因相同。 <br>
+        - <sub>{geolocation}</sub> <br>
+        &emsp; 电话号码的地理位置。 <br>
+        <br>
+        <title>支持的 HTML 标签</title>: <br>
+        参见：[link](%s)
+        ]]>
+    </string>
+    <string name="background_color">背景颜色</string>
+    <string name="wait">等待</string>
+    <string name="help_action_wait">
+        <![CDATA[
+        延迟 N 秒。 <br>
+        <br>
+        <b>使用场景</b>: <br>
+        <sample>
+        对于 <b>短信提醒</b> 功能，消息有时会与来电同时到达，
+         或者在来电后的几秒内到达，增加 2~3 秒的通话筛查延迟可以避免这类问题。
+        </sample>
+        ]]>
+    </string>
 </resources>

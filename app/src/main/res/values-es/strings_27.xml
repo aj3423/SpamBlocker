@@ -47,4 +47,49 @@
         &ensp; Si tienes <sample>1111<b>22</b></sample> guardado como contacto, también se permitirá una llamada desde <sample>1111<b>33</b></sample>.<br>
         ]]>
     </string>
+    <string name="caller_id">Identificador de llamadas</string>
+    <string name="help_caller_id">
+        <![CDATA[
+        Muestra el identificador de llamadas en una ventana flotante. <br>
+        <br>
+        <b>Arrástrelo para moverlo.</b> <br>
+        <br>
+        <b>Nota</b> <br>
+        Puede que vea una alerta del sistema en el panel de notificaciones mientras la ventana flotante esté activa,
+          indicando que esta aplicación está mostrando una ventana sobre otras aplicaciones.
+        Esto se debe a que las ventanas flotantes han sido usadas históricamente por programas maliciosos para mostrar pantallas de inicio de sesión falsas. <br>
+        Simplemente ignore esta alerta; desaparecerá junto con la ventana flotante.
+        ]]>
+    </string>
+    <string name="perm_show_overlay">Mostrar superposición</string>
+    <string name="preview">Vista previa</string>
+    <string name="hide">Ocultar</string>
+    <string name="content_template">Plantilla de contenido</string>
+    <string name="help_caller_id_template">
+        <![CDATA[
+        El contenido mostrado en la ventana del identificador de llamadas, en formato HTML. <br>
+        <br>
+        <title>Etiquetas compatibles</title>: <br>
+        - <sub>{reason}</sub> <br>
+        &emsp; Por qué se permitió la llamada, la misma razón mostrada en el historial de llamadas. <br>
+        - <sub>{geolocation}</sub> <br>
+        &emsp; La ubicación geográfica del número de teléfono. <br>
+        <br>
+        <title>Etiquetas HTML compatibles</title>: <br>
+        Consulte: [link](%s)
+        ]]>
+    </string>
+    <string name="background_color">Color de fondo</string>
+    <string name="wait">Esperar</string>
+    <string name="help_action_wait">
+        <![CDATA[
+        Retrasa N segundos. <br>
+        <br>
+        <b>Caso de uso</b>: <br>
+        <sample>
+        Para la función <b>Alerta SMS</b>, los mensajes a veces llegan al mismo tiempo que la llamada
+         o unos segundos después, y añadir un retraso de 2~3 segundos al filtrado de llamadas puede evitar estos problemas.
+        </sample>
+        ]]>
+    </string>
 </resources>

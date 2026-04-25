@@ -47,4 +47,49 @@
         &ensp; Se hai salvato <sample>1111<b>22</b></sample> come contatto, sarà consentita anche una chiamata da <sample>1111<b>33</b></sample>.<br>
         ]]>
     </string>
+    <string name="caller_id">ID chiamante</string>
+    <string name="help_caller_id">
+        <![CDATA[
+        Mostra l\'ID chiamante in una finestra flottante. <br>
+        <br>
+        <b>Trascinala per spostarla.</b> <br>
+        <br>
+        <b>Nota</b> <br>
+        Potresti notare un avviso di sistema nell\'area notifiche mentre la finestra flottante è attiva,
+          che indica che questa app sta mostrando una finestra sopra altre app.
+        Questo accade perché la finestra flottante è stata storicamente abusata da malware per mostrare false schermate di accesso. <br>
+        Ignora semplicemente questo avviso, sparirà insieme alla finestra flottante.
+        ]]>
+    </string>
+    <string name="perm_show_overlay">Mostra sovrapposizione</string>
+    <string name="preview">Anteprima</string>
+    <string name="hide">Nascondi</string>
+    <string name="content_template">Modello di contenuto</string>
+    <string name="help_caller_id_template">
+        <![CDATA[
+        Il contenuto visualizzato nella finestra dell\'ID chiamante, in formato HTML. <br>
+        <br>
+        <title>Tag supportati</title>: <br>
+        - <sub>{reason}</sub> <br>
+        &emsp; Perché la chiamata è stata consentita, lo stesso motivo mostrato nella cronologia chiamate. <br>
+        - <sub>{geolocation}</sub> <br>
+        &emsp; La geolocalizzazione del numero di telefono. <br>
+        <br>
+        <title>Tag HTML supportati</title>: <br>
+        Vedi: [link](%s)
+        ]]>
+    </string>
+    <string name="background_color">Colore di sfondo</string>
+    <string name="wait">Attendi</string>
+    <string name="help_action_wait">
+        <![CDATA[
+        Ritarda di N secondi. <br>
+        <br>
+        <b>Caso d\'uso</b>: <br>
+        <sample>
+        Per la funzione <b>Avviso SMS</b>, i messaggi a volte arrivano contemporaneamente alla chiamata
+         o pochi secondi dopo, e aggiungere un ritardo di 2~3 secondi al filtraggio delle chiamate può evitare questi problemi.
+        </sample>
+        ]]>
+    </string>
 </resources>

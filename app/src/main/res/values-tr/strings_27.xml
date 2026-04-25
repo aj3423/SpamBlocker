@@ -47,4 +47,48 @@
         &ensp; <sample>1111<b>22</b></sample> numarasını kişi olarak kaydettiyseniz, <sample>1111<b>33</b></sample> numarasından gelen aramaya da izin verilir.<br>
         ]]>
     </string>
+    <string name="caller_id">Arayan Kimliği</string>
+    <string name="help_caller_id">
+        <![CDATA[
+        Arayan kimliğini yüzen pencerede gösterir. <br>
+        <br>
+        <b>Taşımak için sürükleyin.</b> <br>
+        <br>
+        <b>Not</b> <br>
+        Yüzen pencere etkinken bildirim alanında, bu uygulamanın diğer uygulamaların üzerinde bir pencere gösterdiğini belirten bir sistem uyarısı görebilirsiniz.
+        Bunun nedeni, yüzen pencerenin geçmişte kötü amaçlı yazılımlar tarafından sahte oturum açma ekranları göstermek için kötüye kullanılmış olmasıdır. <br>
+        Bu uyarıyı yok sayın; yüzen pencereyle birlikte kaybolacaktır.
+        ]]>
+    </string>
+    <string name="perm_show_overlay">Kaplamayı Göster</string>
+    <string name="preview">Önizleme</string>
+    <string name="hide">Gizle</string>
+    <string name="content_template">İçerik Şablonu</string>
+    <string name="help_caller_id_template">
+        <![CDATA[
+        Arayan kimliği penceresinde gösterilen içerik, HTML biçimindedir. <br>
+        <br>
+        <title>Desteklenen etiketler</title>: <br>
+        - <sub>{reason}</sub> <br>
+        &emsp; Aramaya neden izin verildiği, çağrı geçmişinde gösterilen nedenin aynısı. <br>
+        - <sub>{geolocation}</sub> <br>
+        &emsp; Telefon numarasının coğrafi konumu. <br>
+        <br>
+        <title>Desteklenen HTML etiketleri</title>: <br>
+        Bkz: [link](%s)
+        ]]>
+    </string>
+    <string name="background_color">Arka Plan Rengi</string>
+    <string name="wait">Bekle</string>
+    <string name="help_action_wait">
+        <![CDATA[
+        N saniye geciktirir. <br>
+        <br>
+        <b>Kullanım durumu</b>: <br>
+        <sample>
+        <b>SMS Uyarısı</b> özelliğinde mesajlar bazen aramayla aynı anda
+         veya aramadan birkaç saniye sonra gelir; arama taramasına 2~3 saniyelik bir gecikme eklemek bu tür sorunları önleyebilir.
+        </sample>
+        ]]>
+    </string>
 </resources>

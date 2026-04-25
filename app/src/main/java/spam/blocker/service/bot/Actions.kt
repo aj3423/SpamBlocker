@@ -3012,3 +3012,58 @@ class SetTag(
         }
     }
 }
+
+
+@Serializable
+@SerialName("Wait")
+class Wait(
+    var seconds: Int = 0,
+) : IPermissiveAction {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        aCtx.logger?.debug(ctx.getString(R.string.wait) + " " + ctx.getString(R.string.seconds_template).format(seconds))
+        Thread.sleep((seconds * 1000).toLong())
+
+        return true
+    }
+
+    override fun label(ctx: Context): String {
+        return ctx.getString(R.string.wait)
+    }
+
+    @Composable
+    override fun Summary(showIcon: Boolean) {
+        SummaryLabel(Str(R.string.seconds_template).format(seconds))
+    }
+
+    override fun tooltip(ctx: Context): String {
+        return ctx.getString(R.string.help_action_wait)
+    }
+
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    @Composable
+    override fun Icon() {
+        GreyIcon(R.drawable.ic_delay)
+    }
+
+    @Composable
+    override fun Options() {
+        Column {
+            NumberInputBox(
+                intValue = seconds,
+                label = { Text(Str(R.string.duration_in_seconds)) },
+                onValueChange = { newVal, hasError ->
+                    if (!hasError) {
+                        seconds = newVal!!
+                    }
+                }
+            )
+        }
+    }
+}

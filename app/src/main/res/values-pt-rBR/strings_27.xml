@@ -47,4 +47,49 @@
         &ensp; Se você tiver <sample>1111<b>22</b></sample> salvo como contato, uma chamada de <sample>1111<b>33</b></sample> também será permitida.<br>
         ]]>
     </string>
+    <string name="caller_id">Identificador de chamadas</string>
+    <string name="help_caller_id">
+        <![CDATA[
+        Mostra o identificador de chamadas em uma janela flutuante. <br>
+        <br>
+        <b>Arraste para mover.</b> <br>
+        <br>
+        <b>Nota</b> <br>
+        Você pode notar um alerta do sistema na área de notificações enquanto a janela flutuante estiver ativa,
+          indicando que este app está exibindo uma janela sobre outros apps.
+        Isso acontece porque a janela flutuante foi historicamente abusada por programas maliciosos para mostrar telas falsas de login. <br>
+        Basta ignorar esse alerta; ele desaparecerá junto com a janela flutuante.
+        ]]>
+    </string>
+    <string name="perm_show_overlay">Mostrar sobreposição</string>
+    <string name="preview">Prévia</string>
+    <string name="hide">Ocultar</string>
+    <string name="content_template">Modelo de conteúdo</string>
+    <string name="help_caller_id_template">
+        <![CDATA[
+        O conteúdo exibido na janela do identificador de chamadas, em formato HTML. <br>
+        <br>
+        <title>Tags compatíveis</title>: <br>
+        - <sub>{reason}</sub> <br>
+        &emsp; Por que a chamada foi permitida, o mesmo motivo exibido no histórico de chamadas. <br>
+        - <sub>{geolocation}</sub> <br>
+        &emsp; A geolocalização do número de telefone. <br>
+        <br>
+        <title>Tags HTML compatíveis</title>: <br>
+        Veja: [link](%s)
+        ]]>
+    </string>
+    <string name="background_color">Cor de fundo</string>
+    <string name="wait">Aguardar</string>
+    <string name="help_action_wait">
+        <![CDATA[
+        Aguarda N segundos. <br>
+        <br>
+        <b>Caso de uso</b>: <br>
+        <sample>
+        Para o recurso <b>Alerta SMS</b>, as mensagens às vezes chegam ao mesmo tempo que a chamada
+         ou alguns segundos depois, e adicionar um atraso de 2~3 segundos à triagem de chamadas pode evitar esses problemas.
+        </sample>
+        ]]>
+    </string>
 </resources>
