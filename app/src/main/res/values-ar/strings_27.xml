@@ -76,7 +76,7 @@
         &emsp; الموقع الجغرافي لرقم الهاتف. <br>
         <br>
         <title>وسوم HTML المدعومة</title>: <br>
-        راجع: [link](%s)
+        راجع: <a href="%s">link</a>
         ]]>
     </string>
     <string name="background_color">لون الخلفية</string>

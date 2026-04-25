@@ -75,7 +75,7 @@
         &emsp; Telefon numarasının coğrafi konumu. <br>
         <br>
         <title>Desteklenen HTML etiketleri</title>: <br>
-        Bkz: [link](%s)
+        Bkz: <a href="%s">link</a>
         ]]>
     </string>
     <string name="background_color">Arka Plan Rengi</string>

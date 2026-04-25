@@ -76,7 +76,7 @@
         &emsp; موقعیت جغرافیایی شماره تلفن. <br>
         <br>
         <title>برچسب‌های HTML پشتیبانی‌شده</title>: <br>
-        ببینید: [link](%s)
+        ببینید: <a href="%s">link</a>
         ]]>
     </string>
     <string name="background_color">رنگ پس‌زمینه</string>

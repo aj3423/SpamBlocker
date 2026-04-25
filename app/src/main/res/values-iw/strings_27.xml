@@ -76,7 +76,7 @@
         &emsp; המיקום הגיאוגרפי של מספר הטלפון. <br>
         <br>
         <title>תגיות HTML נתמכות</title>: <br>
-        ראו: [link](%s)
+        ראו: <a href="%s">link</a>
         ]]>
     </string>
     <string name="background_color">צבע רקע</string>

@@ -76,7 +76,7 @@
         &emsp; La géolocalisation du numéro de téléphone. <br>
         <br>
         <title>Balises HTML prises en charge</title>: <br>
-        Voir : [link](%s)
+        Voir : <a href="%s">link</a>
         ]]>
     </string>
     <string name="background_color">Couleur de fond</string>

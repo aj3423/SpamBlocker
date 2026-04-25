@@ -76,7 +76,7 @@
         &emsp; Геолокация телефонного номера. <br>
         <br>
         <title>Поддерживаемые HTML-теги</title>: <br>
-        См.: [link](%s)
+        См.: <a href="%s">link</a>
         ]]>
     </string>
     <string name="background_color">Цвет фона</string>

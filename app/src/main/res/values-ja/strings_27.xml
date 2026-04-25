@@ -76,7 +76,7 @@
         &emsp; 電話番号の地理情報です。 <br>
         <br>
         <title>対応HTMLタグ</title>: <br>
-        参照: [link](%s)
+        参照: <a href="%s">link</a>
         ]]>
     </string>
     <string name="background_color">背景色</string>

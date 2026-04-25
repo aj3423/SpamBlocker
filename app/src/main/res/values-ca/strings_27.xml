@@ -76,7 +76,7 @@
         &emsp; La geolocalització del número de telèfon. <br>
         <br>
         <title>Etiquetes HTML compatibles</title>: <br>
-        Vegeu: [link](%s)
+        Vegeu: <a href="%s">link</a>
         ]]>
     </string>
     <string name="background_color">Color de fons</string>

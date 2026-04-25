@@ -76,7 +76,7 @@
         &emsp; 电话号码的地理位置。 <br>
         <br>
         <title>支持的 HTML 标签</title>: <br>
-        参见：[link](%s)
+        参见：<a href="%s">link</a>
         ]]>
     </string>
     <string name="background_color">背景颜色</string>

@@ -76,7 +76,7 @@
         &emsp; Lokasi geografis nomor telepon. <br>
         <br>
         <title>Tag HTML yang didukung</title>: <br>
-        Lihat: [link](%s)
+        Lihat: <a href="%s">link</a>
         ]]>
     </string>
     <string name="background_color">Warna Latar Belakang</string>

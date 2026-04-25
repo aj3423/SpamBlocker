@@ -76,7 +76,7 @@
         &emsp; The number\'s geolocation. <br>
         <br>
         <title>Supported HTML tags</title>: <br>
-        See: [link](%s)
+        See: <a href="%s">link</a>
         ]]>
     </string>
     <string name="background_color">Background Color</string>

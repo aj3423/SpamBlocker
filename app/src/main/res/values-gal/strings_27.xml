@@ -76,7 +76,7 @@
         &emsp; A xeolocalización do número de teléfono. <br>
         <br>
         <title>Etiquetas HTML compatibles</title>: <br>
-        Vexa: [link](%s)
+        Vexa: <a href="%s">link</a>
         ]]>
     </string>
     <string name="background_color">Cor de fondo</string>
