@@ -1,7 +1,6 @@
 <resources>
-    <string name="enable_call_screening_first">まず、着信スクリーニングを有効にしてください。</string>
-    <string name="enable_sms_screening_first">まず、SMSスクリーニングを有効にしてください。</string>
-    <string name="it_is_at_top">一番上のオプションです。</string>
+    <string name="call_screening_not_enabled">着信スクリーニングが有効になっていません。</string>
+    <string name="sms_screening_not_enabled">SMSスクリーニングが有効になっていません。</string>
     <string name="category_mapping">カテゴリマッピング</string>
     <string name="help_category_mapping">
     <![CDATA[

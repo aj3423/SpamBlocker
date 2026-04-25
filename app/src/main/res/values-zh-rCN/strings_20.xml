@@ -1,7 +1,6 @@
 <resources>
-    <string name="enable_call_screening_first">请先启用呼叫筛选。</string>
-    <string name="enable_sms_screening_first">请先启用短信筛选。</string>
-    <string name="it_is_at_top">这是最顶部的选项。</string>
+    <string name="call_screening_not_enabled">未启用来电筛选。</string>
+    <string name="sms_screening_not_enabled">未启用短信筛选。</string>
     <string name="category_mapping">类别映射</string>
     <string name="help_category_mapping">
     <![CDATA[

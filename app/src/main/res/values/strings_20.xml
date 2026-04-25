@@ -1,7 +1,6 @@
 <resources>
-    <string name="enable_call_screening_first">Please enable call screening first.</string>
-    <string name="enable_sms_screening_first">Please enable SMS screening first.</string>
-    <string name="it_is_at_top">It\'s the topmost option.</string>
+    <string name="call_screening_not_enabled">Call screening is not enabled.</string>
+    <string name="sms_screening_not_enabled">SMS screening is not enabled.</string>
     <string name="category_mapping">Category Mapping</string>
     <string name="help_category_mapping">
     <![CDATA[

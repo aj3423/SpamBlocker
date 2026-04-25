@@ -1,7 +1,6 @@
 <resources>
-    <string name="enable_call_screening_first">الرجاء تمكين فحص المكالمات أولاً.</string>
-    <string name="enable_sms_screening_first">الرجاء تمكين فحص الرسائل النصية القصيرة أولاً.</string>
-    <string name="it_is_at_top">إنه الخيار الأعلى.</string>
+    <string name="call_screening_not_enabled">فحص المكالمات غير مفعّل.</string>
+    <string name="sms_screening_not_enabled">فحص الرسائل النصية القصيرة غير مفعّل.</string>
     <string name="category_mapping">تعيين الفئات</string>
     <string name="help_category_mapping">
     <![CDATA[

@@ -1,7 +1,6 @@
 <resources>
-    <string name="enable_call_screening_first">Por favor, habilite primeiro a detección de chamadas.</string>
-    <string name="enable_sms_screening_first">Por favor, habilite primeiro a detección de SMS.</string>
-    <string name="it_is_at_top">É a opción superior.</string>
+    <string name="call_screening_not_enabled">O filtrado de chamadas non está activado.</string>
+    <string name="sms_screening_not_enabled">O filtrado de SMS non está activado.</string>
     <string name="category_mapping">Mapeo de Categorías</string>
     <string name="help_category_mapping">
     <![CDATA[

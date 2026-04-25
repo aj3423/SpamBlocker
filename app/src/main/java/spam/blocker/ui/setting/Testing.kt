@@ -32,7 +32,6 @@ import spam.blocker.service.SmsReceiver
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.BalloonQuestionMark
 import spam.blocker.ui.widgets.GreyLabel
-import spam.blocker.ui.widgets.GreyText
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.PopupSize
 import spam.blocker.ui.widgets.RadioGroup
@@ -111,31 +110,8 @@ fun TestDialog(
                 }
             }
 
-            // "Please enable call/sms first"
-            val warningTrigger = remember { mutableStateOf(false) }
-            PopupDialog(
-                trigger = warningTrigger
-            ) {
-                Text(
-                    text = Str(
-                        if (isForCall)
-                            R.string.enable_call_screening_first
-                        else
-                            R.string.enable_sms_screening_first
-                    ),
-                    color = C.warning,
-                )
-                GreyText(Str(R.string.it_is_at_top))
-            }
-
             // Test Button
             StrokeButton(label = Str(R.string.test), color = C.teal200) {
-                // Prompt to "enable the call/sms option first"
-                if ((isForCall && !G.callEnabled.value) || (!isForCall && !G.smsEnabled.value)) {
-                    warningTrigger.value = true
-                    return@StrokeButton
-                }
-
                 clearPreviousResult()
                 logTrigger.value = true
 
@@ -237,6 +213,24 @@ fun TestDialog(
                             vm.sms.value = it
                             clearPreviousResult()
                         }
+                    )
+                }
+
+                // Warning
+                val isForCall by remember {
+                    derivedStateOf {
+                        vm.selectedType.intValue == 0
+                    }
+                }
+                if ((isForCall && !G.callEnabled.value) || (!isForCall && !G.smsEnabled.value)) {
+                    Text(
+                        text = Str(
+                            if (isForCall)
+                                R.string.call_screening_not_enabled
+                            else
+                                R.string.sms_screening_not_enabled
+                        ),
+                        color = C.warning,
                     )
                 }
             }

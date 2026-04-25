@@ -48,24 +48,48 @@ open class SmsReceiver : BroadcastReceiver() {
     override fun onReceive(ctx: Context, intent: Intent) {
         logi("Received SMS")
 
-        if (!spf.Global(ctx).isGloballyEnabled || !spf.Global(ctx).isSmsEnabled) {
+        // Only handle incoming messages
+        if (intent.action != Telephony.Sms.Intents.SMS_RECEIVED_ACTION) {
             return
         }
-        val action = intent.action
-        if (action != Telephony.Sms.Intents.SMS_RECEIVED_ACTION) {
+
+        val spf = spf.Global(ctx)
+
+        if (!spf.isGloballyEnabled) {
             return
         }
+
         val messages = Telephony.Sms.Intents.getMessagesFromIntent(intent)
         // A single long message can be split into multiple parts due to character
         // limitations of SMS messages. These parts are then reassembled by the
         // phone and delivered together.
         val messageBody = messages.fold("") { acc, it -> acc + it.messageBody }
+
+        // When SMS screening is not enabled, only check if it matches SMS Alert
+        if (!spf.isSmsEnabled) {
+            this.checkSmsAlert(ctx, messageBody)
+            return
+        }
+
         val rawNumber = messages[0].originatingAddress!!
 
         val simSlot = getSimSlotFromSmsIntent(ctx, intent)
 
         processSms(ctx, rawNumber = rawNumber, messageBody = messageBody, simSlot = simSlot,
             isTest = false, logger = SaveableLogger())
+    }
+
+    // Update SmsAlert timestamp in SharedPref if it's enabled
+    fun checkSmsAlert(ctx: Context, messageBody: String) {
+        val spf = spf.SmsAlert(ctx)
+        val regex = spf.regexStr
+        if (spf.isEnabled) {
+            val flags = spf.regexFlags
+            val matches = regex.regexMatches(messageBody, flags)
+            if (matches) {
+                spf.timestamp = Now.currentMillis()
+            }
+        }
     }
 
     fun processSms(
@@ -105,19 +129,8 @@ open class SmsReceiver : BroadcastReceiver() {
             }
         }
 
-        // 3. update SmsAlert timestamp to SharedPref if it's enabled
-        run {
-            val spf = spf.SmsAlert(ctx)
-            val regex = spf.regexStr
-            if (spf.isEnabled) {
-                val flags = spf.regexFlags
-                val matches = regex.regexMatches(messageBody, flags)
-                if (matches) {
-                    spf.timestamp = Now.currentMillis()
-                }
-            }
-        }
-
+        // 3. Update SmsAlert timestamp, it's necessary to check it here, so testing would also work.
+        this.checkSmsAlert(ctx, messageBody)
 
         // 4. show notification
         val showName = Contacts.findContactByRawNumber(ctx, rawNumber)?.name ?: rawNumber
@@ -130,7 +143,7 @@ open class SmsReceiver : BroadcastReceiver() {
             }.setAction("action_sms_block")
 
             val toCopy = Checker.checkQuickCopy(
-                ctx, rawNumber, messageBody, false, true
+                ctx, rawNumber, messageBody, isCall = false, isBlocked = true
             )
 
             Notification.show(

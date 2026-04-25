@@ -1,7 +1,6 @@
 <resources>
-    <string name="enable_call_screening_first">لطفاً ابتدا مسدودسازی تماس را فعال کنید.</string>
-    <string name="enable_sms_screening_first">لطفاً ابتدا مسدودسازی پیامک را فعال کنید.</string>
-    <string name="it_is_at_top">این گزینه بالاترین است.</string>
+    <string name="call_screening_not_enabled">غربالگری تماس فعال نیست.</string>
+    <string name="sms_screening_not_enabled">غربالگری پیامک فعال نیست.</string>
     <string name="category_mapping">نگاشت دسته‌بندی</string>
     <string name="help_category_mapping">
     <![CDATA[

@@ -1,7 +1,6 @@
 <resources>
-    <string name="enable_call_screening_first">Por favor, ative a triagem de chamadas primeiro.</string>
-    <string name="enable_sms_screening_first">Por favor, ative a triagem de SMS primeiro.</string>
-    <string name="it_is_at_top">É a opção superior.</string>
+    <string name="call_screening_not_enabled">A triagem de chamadas não está ativada.</string>
+    <string name="sms_screening_not_enabled">A triagem de SMS não está ativada.</string>
     <string name="category_mapping">Mapeamento de Categoria</string>
     <string name="help_category_mapping">
     <![CDATA[

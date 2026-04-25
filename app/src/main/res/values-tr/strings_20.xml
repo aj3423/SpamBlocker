@@ -1,7 +1,6 @@
 <resources>
-    <string name="enable_call_screening_first">Lütfen önce çağrı engellemeyi etkinleştirin.</string>
-    <string name="enable_sms_screening_first">Lütfen önce SMS engellemeyi etkinleştirin.</string>
-    <string name="it_is_at_top">En üstteki seçenektir.</string>
+    <string name="call_screening_not_enabled">Çağrı taraması etkin değil.</string>
+    <string name="sms_screening_not_enabled">SMS taraması etkin değil.</string>
     <string name="category_mapping">Kategori Eşleştirme</string>
     <string name="help_category_mapping">
     <![CDATA[
