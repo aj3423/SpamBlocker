@@ -1,7 +1,7 @@
 <resources>
     <string name="start_time">開始時間</string>
     <string name="end_time">終了時間</string>
-    <string name="switch_mode">モード切り替え</string>
+    <string name="regex_mode">正規表現モード</string>
     <string name="contact_group">連絡先グループ</string>
     <string name="text_too_long">テキストが長すぎるため、編集は無効になっています</string>
     <string name="system"><short>システム</short></string>

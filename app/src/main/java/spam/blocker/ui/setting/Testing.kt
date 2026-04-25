@@ -169,9 +169,9 @@ fun TestDialog(
                         clearPreviousResult()
                     },
                     supportingTextStr = geoLocation?.let {
-                        // Geo Location
+                        // Geolocation
                         Str(R.string.label_value_pair).format(
-                            Str(R.string.geo_location), geoLocation
+                            Str(R.string.geolocation), geoLocation
                         )
                     },
                     supportingTextColor = C.textGrey,

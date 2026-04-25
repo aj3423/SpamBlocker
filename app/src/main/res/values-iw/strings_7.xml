@@ -1,7 +1,7 @@
 <resources>
     <string name="start_time">שעת התחלה</string>
     <string name="end_time">שעת סיום</string>
-    <string name="switch_mode">החלף מצב</string>
+    <string name="regex_mode">מצב Regex</string>
     <string name="contact_group">קבוצת אנשי קשר</string>
     <string name="text_too_long">טקסט ארוך מדי, העריכה מושבתת</string>
     <string name="system"><short>מערכת</short></string>

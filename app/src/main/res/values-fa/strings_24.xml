@@ -78,9 +78,9 @@
     </string>
     <string name="forwarded_number_modified_to">این شماره دایورت‌شده به %s تغییر یافته است.</string>
     <string name="filter">فیلتر</string>
-    <string name="geo_location">موقعیت جغرافیایی</string>
-    <string name="geo_location_rule">قانون موقعیت جغرافیایی</string>
-    <string name="help_regex_mode_geo_location">
+    <string name="geolocation">موقعیت جغرافیایی</string>
+    <string name="geolocation_rule">قانون موقعیت جغرافیایی</string>
+    <string name="help_regex_mode_geolocation">
         <![CDATA[
         <title><b>موقعیت جغرافیایی</b></title>:<br>
         &ensp; عبارت منظم با موقعیت جغرافیایی شماره مطابقت می‌کند. <br>

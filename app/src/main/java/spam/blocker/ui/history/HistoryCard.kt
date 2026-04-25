@@ -206,7 +206,7 @@ fun HistoryCard(
                         )
                     }
 
-                    // Row 2: Geo Location
+                    // Row 2: Geolocation
                     if (showHistoryGeoLocation.value) {
                         val loc = Util.numberGeoLocation(ctx, record.peer)
                         loc?.let {

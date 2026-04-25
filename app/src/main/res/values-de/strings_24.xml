@@ -79,9 +79,9 @@
     </string>
     <string name="forwarded_number_modified_to">Diese weitergeleitete Nummer wurde auf %s geändert.</string>
     <string name="filter">Filter</string>
-    <string name="geo_location">Geo-Standort</string>
-    <string name="geo_location_rule">Regel für Geo-Standort</string>
-    <string name="help_regex_mode_geo_location">
+    <string name="geolocation">Geo-Standort</string>
+    <string name="geolocation_rule">Regel für Geo-Standort</string>
+    <string name="help_regex_mode_geolocation">
         <![CDATA[
         <title><b>Geo-Standort</b></title>:<br>
         &ensp; Der reguläre Ausdruck stimmt mit dem Geo-Standort der Nummer überein. <br>

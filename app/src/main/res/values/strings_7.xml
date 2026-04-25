@@ -1,18 +1,18 @@
 <resources>
     <string name="start_time">Start Time</string>
     <string name="end_time">End Time</string>
-    <string name="switch_mode">Switch Mode</string>
+    <string name="regex_mode">RegEx Mode</string>
     <string name="contact_group">Contact Group</string>
     <string name="help_regex_mode_phone_number">
         <![CDATA[
         <title><b>Phone Number</b></title>:<br>
-        &ensp; The default mode, the regex will match against the phone number.<br>
+        &ensp; The default mode, the regex matches against the phone number.<br>
         ]]>
     </string>
     <string name="help_regex_mode_contact">
         <![CDATA[
         <title><b>Contacts</b></title>:<br>
-        &ensp; The regex will match against the contact name associated with the incoming number.<br>
+        &ensp; The regex matches against the contact name associated with the incoming number.<br>
         &ensp;  - Use case:<br>
         &emsp; <sample>Block all non-contacts at weekend with regex `.*`. </sample><br>
         ]]>
@@ -20,7 +20,7 @@
     <string name="help_regex_mode_contact_group">
         <![CDATA[
         <title><b>Contact Group</b></title>:<br>
-        &ensp; The regex will match against the contact group name associated with the incoming number,
+        &ensp; The regex matches against the contact group name associated with the incoming number,
                  impacting all contacts in that group, so you don\'t need to add them individually,
                  and no need to update it even when there are personnel changes.<br>
         &ensp;  - Use case:<br>

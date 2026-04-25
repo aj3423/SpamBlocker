@@ -77,9 +77,9 @@
     </string>
     <string name="forwarded_number_modified_to">Este número reenviado foi modificado a %s.</string>
     <string name="filter">Filtro</string>
-    <string name="geo_location">Localización Xeográfica</string>
-    <string name="geo_location_rule">Regra de Localización Xeográfica</string>
-    <string name="help_regex_mode_geo_location">
+    <string name="geolocation">Localización Xeográfica</string>
+    <string name="geolocation_rule">Regra de Localización Xeográfica</string>
+    <string name="help_regex_mode_geolocation">
         <![CDATA[
         <title><b>Localización Xeográfica</b></title>:<br>
         &ensp; O regex coincidirá coa localización xeográfica do number. <br>

@@ -529,7 +529,7 @@ class ByRegexRule(
             }
 
             RESULT_ALLOWED_BY_GEO_LOCATION_REGEX, RESULT_BLOCKED_BY_GEO_LOCATION_REGEX -> {
-                ctx.getString(R.string.geo_location) + ": $summary"
+                ctx.getString(R.string.geolocation) + ": $summary"
             }
 
             RESULT_ALLOWED_BY_CONTACT_PREFIX_REGEX, RESULT_BLOCKED_BY_CONTACT_PREFIX_REGEX -> {

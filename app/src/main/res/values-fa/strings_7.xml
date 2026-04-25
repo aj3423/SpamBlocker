@@ -1,7 +1,7 @@
 <resources>
     <string name="start_time">زمان شروع</string>
     <string name="end_time">زمان پایان</string>
-    <string name="switch_mode">حالت سوئیچ</string>
+    <string name="regex_mode">حالت Regex</string>
     <string name="contact_group">گروه مخاطبین</string>
     <string name="text_too_long">متن بیش از حد طولانی است، ویرایش غیرفعال است</string>
     <string name="system"><short>سیستم</short></string>

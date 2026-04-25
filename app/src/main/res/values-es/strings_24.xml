@@ -79,9 +79,9 @@
     </string>
     <string name="forwarded_number_modified_to">Este número desviado ha sido modificado a %s.</string>
     <string name="filter">Filtro</string>
-    <string name="geo_location">Ubicación geográfica</string>
-    <string name="geo_location_rule">Regla de ubicación geográfica</string>
-    <string name="help_regex_mode_geo_location">
+    <string name="geolocation">Ubicación geográfica</string>
+    <string name="geolocation_rule">Regla de ubicación geográfica</string>
+    <string name="help_regex_mode_geolocation">
         <![CDATA[
         <title><b>Ubicación geográfica</b></title>:<br>
         &ensp; La expresión regular coincidirá con la ubicación geográfica del número. <br>

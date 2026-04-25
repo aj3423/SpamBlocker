@@ -77,9 +77,9 @@
     </string>
     <string name="forwarded_number_modified_to">Nomor yang diteruskan ini telah diubah menjadi %s.</string>
     <string name="filter">Filter</string>
-    <string name="geo_location">Lokasi Geo</string>
-    <string name="geo_location_rule">Aturan Lokasi Geo</string>
-    <string name="help_regex_mode_geo_location">
+    <string name="geolocation">Lokasi Geo</string>
+    <string name="geolocation_rule">Aturan Lokasi Geo</string>
+    <string name="help_regex_mode_geolocation">
         <![CDATA[
         <title><b>Lokasi Geo</b></title>:<br>
         &ensp; Regex akan mencocokkan lokasi geo nomor. <br>

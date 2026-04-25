@@ -78,9 +78,9 @@
     </string>
     <string name="forwarded_number_modified_to">此转接号码已修改为%s。</string>
     <string name="filter">过滤</string>
-    <string name="geo_location">地理位置</string>
-    <string name="geo_location_rule">地理位置规则</string>
-    <string name="help_regex_mode_geo_location">
+    <string name="geolocation">地理位置</string>
+    <string name="geolocation_rule">地理位置规则</string>
+    <string name="help_regex_mode_geolocation">
         <![CDATA[
         <title><b>地理位置</b></title>:<br>
         &ensp; 正则表达式将匹配号码的地理位置。 <br>

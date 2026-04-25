@@ -79,11 +79,11 @@
     </string>
     <string name="forwarded_number_modified_to">Цей переадресований номер було змінено на %s.</string>
     <string name="filter">Фільтр</string>
-    <string name="geo_location">Гео-локація</string>
-    <string name="geo_location_rule">Правило гео-локації</string>
-    <string name="help_regex_mode_geo_location">
+    <string name="geolocation">Гео-локація</string>
+    <string name="geolocation_rule">Правило гео-локації</string>
+    <string name="help_regex_mode_geolocation">
         <![CDATA[
-        <title><b>Geo Location</b></title>:<br>
+        <title><b>Гео-локація</b></title>:<br>
         &ensp; Регулярний вираз буде порівнювати гео‑локацію номера. <br>
         <br>
         &ensp; Це спирається на бібліотеку Google <a href="https://github.com/google/libphonenumber">libphonenumber</a>,

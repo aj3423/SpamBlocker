@@ -73,9 +73,9 @@
     </string>
     <string name="forwarded_number_modified_to">この転送された電話番号は%sに修正されました。</string>
     <string name="filter">フィルター</string>
-    <string name="geo_location">ジオロケーション</string>
-    <string name="geo_location_rule">ジオロケーション規則</string>
-    <string name="help_regex_mode_geo_location">
+    <string name="geolocation">ジオロケーション</string>
+    <string name="geolocation_rule">ジオロケーション規則</string>
+    <string name="help_regex_mode_geolocation">
         <![CDATA[
         <title><b>ジオロケーション</b></title>:<br>
         &ensp; 正規表現は電話番号のジオロケーションに一致します。 <br>

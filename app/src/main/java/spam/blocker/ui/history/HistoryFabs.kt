@@ -387,9 +387,9 @@ fun HistoryFabs(
                             )
                         }
 
-                        // Geo Location
+                        // Geolocation
                         LabeledRow(
-                            labelId = R.string.geo_location,
+                            labelId = R.string.geolocation,
                         ) {
                             SwitchBox(checked = showHistoryGeoLocation.value, onCheckedChange = { isOn ->
                                 spf.showGeoLocation = isOn

@@ -78,9 +78,9 @@
     </string>
     <string name="forwarded_number_modified_to">מספר טלפון מועבר זה שונה ל-%s.</string>
     <string name="filter">סינון</string>
-    <string name="geo_location">מיקום גאוגרפי</string>
-    <string name="geo_location_rule">כלל מיקום גאוגרפי</string>
-    <string name="help_regex_mode_geo_location">
+    <string name="geolocation">מיקום גאוגרפי</string>
+    <string name="geolocation_rule">כלל מיקום גאוגרפי</string>
+    <string name="help_regex_mode_geolocation">
         <![CDATA[
         <title><b>מיקום גאוגרפי</b></title>:<br>
         &ensp; הביטוי הרגולרי יתאים למיקום הגאוגרפי של המספר. <br>

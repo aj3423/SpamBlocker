@@ -627,12 +627,12 @@ class RuleTest {
         assertEquals("should pass by default", Def.RESULT_ALLOWED_BY_DEFAULT, r.type)
     }
 
-    // Geo Location rule
+    // Geolocation rule
     @Test
     fun geo_location_rule() {
         mock_phone_state_permission_granted()
 
-        // block by geo location "Texas"
+        // block by geolocation "Texas"
         add_number_rule(
             build_rule("texas", "", 0, isBlacklist = true, Def.FLAG_FOR_CALL, patternFlags = Def.FLAG_REGEX_FOR_GEO_LOCATION)
         )

@@ -1,7 +1,7 @@
 <resources>
     <string name="start_time">Başlangıç Zaman</string>
     <string name="end_time">Bitiş Zamanı</string>
-    <string name="switch_mode">Modu Değiştir</string>
+    <string name="regex_mode">Regex modu</string>
     <string name="contact_group">İletişim Grubu</string>
     <string name="text_too_long">Metin çok uzun, düzenleme devre dışı</string>
     <string name="system"><short>Sist</short></string>

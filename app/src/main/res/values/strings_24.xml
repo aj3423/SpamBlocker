@@ -21,7 +21,7 @@
     <string name="help_regex_mode_caller_name">
         <![CDATA[
         <title><b>Caller Name</b></title>:<br>
-        &ensp; The regex will match against the caller display name(CNAP). <br>
+        &ensp; The regex matches against the caller display name(CNAP). <br>
         <br>
         In the call history log, the caller name will appear after the phone number in parentheses if it exists, like: <br>
         &ensp; <sample>12345 (Display Name)</sample> <br>
@@ -79,12 +79,12 @@
     </string>
     <string name="forwarded_number_modified_to">This forwarded number has been modified to %s.</string>
     <string name="filter">Filter</string>
-    <string name="geo_location">Geo Location</string>
-    <string name="geo_location_rule">Geo Location Rule</string>
-    <string name="help_regex_mode_geo_location">
+    <string name="geolocation">Geolocation</string>
+    <string name="geolocation_rule">Geolocation Rule</string>
+    <string name="help_regex_mode_geolocation">
         <![CDATA[
-        <title><b>Geo Location</b></title>:<br>
-        &ensp; The regex will match against the number\'s geo location. <br>
+        <title><b>Geolocation</b></title>:<br>
+        &ensp; The regex matches against the number\'s geolocation. <br>
         <br>
         &ensp; This relies on Google\'s library <a href="https://github.com/google/libphonenumber">libphonenumber</a>,
          an offline library that provides geographical information for phone numbers. <br>

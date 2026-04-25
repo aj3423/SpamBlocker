@@ -76,9 +76,9 @@
     </string>
     <string name="forwarded_number_modified_to">此轉接號碼已修改為 %s。</string>
     <string name="filter">篩選</string>
-    <string name="geo_location">地理位置</string>
-    <string name="geo_location_rule">地理位置規則</string>
-    <string name="help_regex_mode_geo_location">
+    <string name="geolocation">地理位置</string>
+    <string name="geolocation_rule">地理位置規則</string>
+    <string name="help_regex_mode_geolocation">
         <![CDATA[
         <title><b>地理位置</b></title>:<br>
         &ensp; 此正則表達式將對電話號碼的地理位置進行匹配。 <br>

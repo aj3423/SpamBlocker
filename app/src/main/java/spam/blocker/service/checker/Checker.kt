@@ -93,7 +93,7 @@ fun RegexRule.toChecker(
     else if (forCNAP)
         Checker.CNAP(ctx, this)
     else if (forGeo)
-        Checker.GeoLocation(ctx, this)
+        Checker.Geolocation(ctx, this)
     else
         Checker.Number(ctx, this)
 }
@@ -1091,8 +1091,8 @@ class Checker { // for namespace only
         }
     }
 
-    // Check if the regex matches the geo location of the incoming number
-    class GeoLocation(
+    // Check if the regex matches the geolocation of the incoming number
+    class Geolocation(
         ctx: Context,
         rule: RegexRule,
     ) : RegexRuleChecker(ctx, rule) {
@@ -1111,7 +1111,7 @@ class Checker { // for namespace only
             logger?.debug(
                 (ctx.getString(R.string.checking_template)+ ": %s")
                     .formatAnnotated(
-                        ctx.getString(R.string.geo_location_rule).A(C.infoBlue),
+                        ctx.getString(R.string.geolocation_rule).A(C.infoBlue),
                         priority().toString().A(C.priority),
                         rule.desc().A(if (rule.isBlacklist) C.error else C.success),
                     )
@@ -1126,12 +1126,12 @@ class Checker { // for namespace only
                 if (block)
                     logger?.error(
                         ctx.getString(R.string.blocked_by)
-                            .format(ctx.getString(R.string.geo_location_rule)) + ": ${rule.desc()}"
+                            .format(ctx.getString(R.string.geolocation_rule)) + ": ${rule.desc()}"
                     )
                 else
                     logger?.success(
                         ctx.getString(R.string.allowed_by)
-                            .format(ctx.getString(R.string.geo_location_rule)) + ": ${rule.desc()}"
+                            .format(ctx.getString(R.string.geolocation_rule)) + ": ${rule.desc()}"
                     )
 
                 return ByRegexRule(

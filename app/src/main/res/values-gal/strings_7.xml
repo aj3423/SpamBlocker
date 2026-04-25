@@ -1,7 +1,7 @@
 <resources>
     <string name="start_time">Hora de Inicio</string>
     <string name="end_time">Hora de Fin</string>
-    <string name="switch_mode">Cambiar Modo</string>
+    <string name="regex_mode">Modo regex</string>
     <string name="contact_group">Grupo de Contactos</string>
     <string name="text_too_long">Texto demasiado longo, a edición está desactivada</string>
     <string name="system"><short>Sistema</short></string>

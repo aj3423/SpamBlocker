@@ -1,7 +1,7 @@
 <resources>
     <string name="start_time">开始时间</string>
     <string name="end_time">结束时间</string>
-    <string name="switch_mode">切换模式</string>
+    <string name="regex_mode">正则模式</string>
     <string name="contact_group">联系人组</string>
     <string name="text_too_long">文本过长，编辑功能已禁用</string>
     <string name="system"><short>系统</short></string>

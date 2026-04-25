@@ -75,7 +75,7 @@
         It will only check notifications from this app.<br>
         <br>
         <h6><title>- Notification Content</title></h6>
-        This regex will match <b>both the notification title and body</b>.<br>
+        This regex matches against <b>both the notification title and body</b>.<br>
         An example for the above use case:<br>
         &emsp; <highlight><translate>order update.*taken by driver.*</translate></highlight><br>
         <br>

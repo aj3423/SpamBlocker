@@ -1,7 +1,7 @@
 <resources>
     <string name="start_time">Время начала</string>
     <string name="end_time">Время окончания</string>
-    <string name="switch_mode">Переключить режим</string>
+    <string name="regex_mode">Режим regex</string>
     <string name="contact_group">Группа контактов</string>
     <string name="text_too_long">Текст слишком длинный, редактирование отключено</string>
     <string name="system"><short>Система</short></string>

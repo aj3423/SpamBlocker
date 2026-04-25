@@ -124,15 +124,14 @@ fun RegexLeadingDropdownIcon(
             R.string.help_regex_mode_contact,
             R.string.help_regex_mode_contact_group,
             R.string.help_regex_mode_contact_prefix,
-            R.string.help_regex_mode_geo_location,
+            R.string.help_regex_mode_geolocation,
         )
         if (forType == Def.ForNumber) {
             tooltipIds += R.string.help_regex_mode_caller_name
         }
         val items: MutableList<IMenuItem> = mutableListOf(
             LabelItem(
-                label = ctx.getString(R.string.switch_mode),
-                tooltip = tooltipIds.joinToString("<br>") { ctx.getString(it) }
+                label = "     "/*padding...*/ + ctx.getString(R.string.regex_mode),
             ),
             DividerItem(thickness = 1),
         )
@@ -141,7 +140,7 @@ fun RegexLeadingDropdownIcon(
             R.string.contact,
             R.string.contact_group,
             R.string.contact_prefix,
-            R.string.geo_location,
+            R.string.geolocation,
         )
         if (forType == Def.ForNumber) {
             labelIds += R.string.caller_name
@@ -160,6 +159,7 @@ fun RegexLeadingDropdownIcon(
             LabelItem(
                 label = ctx.getString(labelId),
                 leadingIcon = iconIds[index],
+                tooltip = ctx.getString(tooltipIds[index]),
                 dismissOnClick = index != 1 && index != 2
             ) { menuExpanded ->
                 when (index) {
@@ -184,7 +184,7 @@ fun RegexLeadingDropdownIcon(
                             }
                         }
                     }
-                    4 -> { // Geo Location
+                    4 -> { // Geolocation
                         regexFlags.intValue = regexFlags.intValue
                             .clearRegexMode()
                             .addFlag(FLAG_REGEX_FOR_GEO_LOCATION)
@@ -259,7 +259,7 @@ fun RegexFieldLabel(
                     else if (flags.hasFlag(FLAG_REGEX_FOR_CNAP))
                         R.string.caller_name
                     else if (flags.hasFlag(FLAG_REGEX_FOR_GEO_LOCATION))
-                        R.string.geo_location
+                        R.string.geolocation
                     else
                         R.string.phone_number
                 }

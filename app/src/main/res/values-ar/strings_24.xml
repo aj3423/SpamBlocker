@@ -76,9 +76,9 @@
     </string>
     <string name="forwarded_number_modified_to">تم تعديل هذا الرقم المحوّل إلى %s.</string>
     <string name="filter">تصفية</string>
-    <string name="geo_location">الموقع الجغرافي</string>
-    <string name="geo_location_rule">قاعدة الموقع الجغرافي</string>
-    <string name="help_regex_mode_geo_location">
+    <string name="geolocation">الموقع الجغرافي</string>
+    <string name="geolocation_rule">قاعدة الموقع الجغرافي</string>
+    <string name="help_regex_mode_geolocation">
         <![CDATA[
         <title><b>الموقع الجغرافي</b></title>:<br>
         &ensp; سيطابق regex الموقع الجغرافي للـ number. <br>

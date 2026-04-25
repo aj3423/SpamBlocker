@@ -79,9 +79,9 @@
     </string>
     <string name="forwarded_number_modified_to">Этот переадресованный номер был изменен на %s.</string>
     <string name="filter">Фильтр</string>
-    <string name="geo_location">Геолокация</string>
-    <string name="geo_location_rule">Правило геолокации</string>
-    <string name="help_regex_mode_geo_location">
+    <string name="geolocation">Геолокация</string>
+    <string name="geolocation_rule">Правило геолокации</string>
+    <string name="help_regex_mode_geolocation">
         <![CDATA[
         <title><b>Геолокация</b></title>:<br>
         &ensp; Регулярное выражение будет сопоставлять геолокацию номера. <br>
