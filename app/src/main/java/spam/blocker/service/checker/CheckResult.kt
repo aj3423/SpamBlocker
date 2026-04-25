@@ -418,11 +418,16 @@ class ByApiQuery(
     }
 
     override fun resultReasonStr(ctx: Context): String {
-        return ctx.getString(R.string.query) + ": " + detail.apiSummary +
-                if (detail.queryResult.category?.isNotEmpty() == true)
-                    " (${detail.queryResult.category})"
-                else
-                    ""
+        val category = if (detail.queryResult.category?.isNotEmpty() == true)
+            " (${detail.queryResult.category})"
+        else
+            ""
+        val comment = if (detail.queryResult.comment?.isNotEmpty() == true)
+            " : ${detail.queryResult.comment}"
+        else
+            ""
+
+        return ctx.getString(R.string.query) + ": " + detail.apiSummary + category + comment
     }
 }
 
