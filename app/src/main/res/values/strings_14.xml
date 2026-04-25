@@ -82,7 +82,7 @@
     <string name="sms_alert"><short>SMS Alert</short></string>
     <string name="help_sms_alert">
         <![CDATA[
-        Some services will text you first to inform you that a call is imminent, typically within a minute.<br>
+        Some services text you first to inform you that a call is imminent, typically within a minute.<br>
         <br>
         For example, an SMS message like:<br>
         &ensp; <sample>[some service] We are calling you to inform …, please feel free to answer.</sample><br>
@@ -94,6 +94,8 @@
         allowed in the next two minutes after receiving such message.<br>
         <br>
         It works for both regular SMS and flash SMS(class 0 SMS).<br>
+        <br>
+        It works without the global SMS screening being enabled. <br>
         <br>
         <priority><b>Priority: 10</b></priority>
         ]]>

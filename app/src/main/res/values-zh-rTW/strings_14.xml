@@ -95,6 +95,8 @@
         <br>
         適用於一般簡訊和快閃簡訊（Class 0 簡訊）。<br>
         <br>
+        即使未啟用全域簡訊篩選，也能正常運作。<br>
+        <br>
         <priority><b>優先順序：10</b></priority>
         ]]>
     </string>

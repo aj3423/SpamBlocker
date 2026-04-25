@@ -94,6 +94,8 @@
         <br>
         Es funktioniert sowohl für reguläre SMS als auch für Flash-SMS (Klasse 0 SMS).<br>
         <br>
+        Es funktioniert, ohne dass die globale SMS-Filterung aktiviert sein muss.<br>
+        <br>
         <priority><b>Priorität: 10</b></priority>
         ]]>
     </string>

@@ -93,6 +93,8 @@
         <br>
         通常のSMSとフラッシュSMS（クラス0 SMS）の両方で機能します。<br>
         <br>
+        グローバルSMSスクリーニングを有効にしていなくても動作します。<br>
+        <br>
         <priority><b>優先順位：10</b></priority>
         ]]>
     </string>

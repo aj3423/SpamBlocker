@@ -533,7 +533,8 @@ class ByRegexRule(
             }
 
             RESULT_ALLOWED_BY_CONTACT_PREFIX_REGEX, RESULT_BLOCKED_BY_CONTACT_PREFIX_REGEX -> {
-                ctx.getString(R.string.contact_prefix) + ": $summary - $details" // details == contact name
+                // No need to add $summary here, usually there'll be only 1 contact prefix regex enabled
+                ctx.getString(R.string.contact_prefix) + ": $details" // details == contact name
             }
 
             else -> "bug, please report"

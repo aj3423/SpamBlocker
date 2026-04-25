@@ -95,6 +95,8 @@
         <br>
         Dapat digunakan untuk SMS biasa dan SMS kilat (SMS kelas 0).<br>
         <br>
+        Ini berfungsi tanpa perlu mengaktifkan penyaringan SMS global.<br>
+        <br>
         <priority><b>Prioritas: 10</b></priority>
         ]]>
     </string>

@@ -94,6 +94,8 @@
         <br>
         Hem normal SMS hem de flaş SMS (sınıf 0 SMS) için çalışır.<br>
         <br>
+        Genel SMS taraması etkinleştirilmeden de çalışır.<br>
+        <br>
         <priority><b>Öncelik: 10</b></priority>
         ]]>
     </string>

@@ -95,6 +95,8 @@
         <br>
         Funciona para SMS regulares e SMS flash (SMS classe 0).<br>
         <br>
+        Funciona sem que a triagem global de SMS esteja ativada.<br>
+        <br>
         <priority><b>Prioridade: 10</b></priority>
         ]]>
     </string>

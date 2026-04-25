@@ -131,7 +131,7 @@ val RegexPresets = mapOf(
                     priority = 1,
                     isBlacklist = false,
                     flags = Def.FLAG_FOR_CALL or Def.FLAG_FOR_SMS,
-                    patternFlags = Def.FLAG_REGEX_FOR_CONTACT_PREFIX,
+                    patternFlags = Def.FLAG_REGEX_FOR_CONTACT_PREFIX or Def.FLAG_REGEX_IGNORE_CC,
                 )
             )
         },
