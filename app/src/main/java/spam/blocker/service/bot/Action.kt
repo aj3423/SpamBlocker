@@ -111,8 +111,10 @@ data class ActionContext(
     var smsContent: String? = null,
     // The spam category, used when reporting.
     //  tagCategory will be converted to realCategory in Action CategoryConfig, and will then be used in http request
-    var tagCategory: String? = null,
-    var realCategory: String? = null,
+    var tagCategoryValue: String? = null,
+    var realCategoryValue: String? = null,
+    var tagCommentValue: String? = null,
+
     // set by HttpDownload, used by ImportToSpamDB as detailInfo
     var httpUrl: String? = null,
     // The check result by the first api that successfully identified the number,

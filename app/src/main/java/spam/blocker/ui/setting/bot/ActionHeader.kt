@@ -79,7 +79,7 @@ fun TestActionButton(
                             logger = JetpackTextLogger(logStr),
                             rawNumber = content,
                             smsContent = content,
-                            tagCategory = tagOther,
+                            tagCategoryValue = tagOther,
                             botId = botId,
                         )
                         actions.executeAll(ctx, aCtx)

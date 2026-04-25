@@ -141,6 +141,11 @@ fun String.regexMatches(targetStr: String, regexFlags: Int): Boolean {
     return this.toRegex(opts).matches(targetStr)
 }
 
+fun String.regexExtract(html: String, regexFlags: Int): String? {
+    val opts = Util.flagsToRegexOptions(regexFlags)
+    return Util.extractString(regex = this.toRegex(opts), haystack = html)
+}
+
 fun String.regexReplace(
     from: String,
     to: String,

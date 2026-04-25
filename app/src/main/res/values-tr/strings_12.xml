@@ -35,23 +35,18 @@
     </string>
     <string name="help_category_identifier">
         <![CDATA[
-        Sorgu sonucundan <title>kategoriyi</title> ve <title>yorumları</title>
-         çıkarın ve bildirim ile geçmiş günlüğünde gösterin. (isteğe bağlı)<br>
+        Sorgu sonucundan <title>kategoriyi</title> bildirimde ve geçmiş günlüğünde göstermek için çıkarın. (isteğe bağlı)<br>
         <br>
         Örneğin, bu sorgu sonucu için: <br>
         <sample>
         { <br>
           &ensp; \"type\": \"MARKETING\", <br>
-          &ensp; \"comments\": \"Better call Saul\", <br>
           &ensp;  … <br>
         } <br>
         </sample>
         <br>
-        - Yalnızca <title>kategoriyi</title> çıkarın: <br>
+        Bunu şu şekilde çıkarın: <br>
         &ensp; <sample>\"type\": \"(.+?)\"</sample> <br>
-        <br>
-        - Hem <title>kategoriyi</title> hem de <title>yorumları</title> çıkarın: <br>
-        &ensp; <sample>(?:\"type\":\"(.+?)\"|\"comments\":\"(.+?)\")</sample><br>
         ]]>
     </string>
     <string name="action_parse_query_result">Sonucu Ayrıştır</string>
@@ -62,7 +57,7 @@
         Spam kategorisini çıkarmak için ekstra bir regex kullanılabilir. (isteğe bağlı)
         ]]>
     </string>
-    <string name="action_parse_incoming_number">Gelen Numarayı Ayrıştır</string>
+    <string name="action_parse_incoming_number">Numarayı Ayrıştır</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         Gelen arama numarası farklı etiketlere ayrıştırılacaktır:<br>
@@ -98,7 +93,7 @@
     <string name="android_ver_lower_than_11">Android sürümü 11\'den düşük, atla.</string>
     <string name="query">Sorgu</string>
     <string name="report_api">Rapor API\'sı</string>
-    <string name="action_parse_incoming_sms">Gelen SMS\'i Ayrıştır</string>
+    <string name="action_parse_incoming_sms">SMS\'i Ayrıştır</string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
         Gelen SMS içeriği <b>{sms}</b> etiketine ayrıştırılacaktır,<br>

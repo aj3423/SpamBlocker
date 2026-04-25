@@ -70,9 +70,9 @@
         The content displayed in the caller ID window, in HTML format. <br>
         <br>
         <title>Supported tags</title>: <br>
-        - <sub>{reason}</sub> <br>
-        &emsp; Why the call was allowed, the same reason displayed in the call history. <br>
-        - <sub>{geolocation}</sub> <br>
+        - <minor>{reason}</minor> <br>
+        &emsp; Why the call was allowed, same as displayed in call history. <br>
+        - <minor>{geolocation}</minor> <br>
         &emsp; The number\'s geolocation. <br>
         <br>
         <title>Supported HTML tags</title>: <br>
@@ -90,6 +90,28 @@
         For the feature <b>SMS Alert</b>, messages sometimes arrive simultaneously with
          or a few seconds after a call, adding a 2~3 second call screening delay can prevent such issues.
         </sample>
+        ]]>
+    </string>
+    <string name="comment_optional">Comment (optional)</string>
+    <string name="comment_identifier">Comment Identifier</string>
+    <string name="hint_comment_identifier">
+        E.g.: \"comment\":\"(.+?)\"
+    </string>
+    <string name="help_comment_identifier">
+        <![CDATA[
+        Extract the <title>comment</title> from the query result for displaying in the notification and history log. (optional)<br>
+        <br>
+        For example, for this query result: <br>
+        <sample>
+        { <br>
+          &ensp; \"type\": \"MARKETING\", <br>
+          &ensp; \"comment\": \"Better call Saul\", <br>
+          &ensp;  … <br>
+        } <br>
+        </sample>
+        <br>
+        Extract it with: <br>
+        &ensp; <sample>\"comment\": \"(.+?)\"</sample> <br>
         ]]>
     </string>
 </resources>

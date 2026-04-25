@@ -20,8 +20,8 @@
     <string name="find_rule_with_desc">説明が%sのルールを%s件検出しました。</string>
     <string name="modify_n_rules">%s個のルールを変更しています。</string>
     <string name="fail_detect_cc">国番号の検出に失敗しました。</string>
-    <string name="identified_as_spam">スパム番号と識別されました。カテゴリ: %s。</string>
-    <string name="identified_as_valid">有効な番号と識別されました。カテゴリ: %s。</string>
+    <string name="identified_as_spam">スパム電話番号と識別されました。カテゴリ: %s、コメント: %s。</string>
+    <string name="identified_as_valid">有効な電話番号と識別されました。カテゴリ: %s、コメント: %s。</string>
     <string name="unidentified_number">未識別番号。</string>
     <string name="help_http_url">
         <![CDATA[

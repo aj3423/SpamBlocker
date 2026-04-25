@@ -20,8 +20,8 @@
     <string name="find_rule_with_desc">Знайдено %s правил з описом %s.</string>
     <string name="modify_n_rules">Модифікація %s правил.</string>
     <string name="fail_detect_cc">Не вдалося визначити код країни.</string>
-    <string name="identified_as_spam">Визначено як спам-номер, категорія: %s.</string>
-    <string name="identified_as_valid">Визначено як валідний номер, категорія: %s.</string>
+    <string name="identified_as_spam">Визначено як спам-номер, категорія: %s, коментар: %s.</string>
+    <string name="identified_as_valid">Визначено як дійсний номер, категорія: %s, коментар: %s.</string>
     <string name="unidentified_number">Невизначений номер.</string>
     <string name="help_http_url">
         <![CDATA[

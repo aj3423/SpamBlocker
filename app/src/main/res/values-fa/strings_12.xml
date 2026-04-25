@@ -36,23 +36,18 @@
     </string>
     <string name="help_category_identifier">
         <![CDATA[
-        <title>دسته</title> و <title>نظرات</title> را
-         از نتیجه بررسی استخراج کرده و در اعلان و تاریخچه نمایش می‌دهد. (اختیاری)<br>
+        <title>دسته</title> را از نتیجه بررسی استخراج کرده و در اعلان و تاریخچه نمایش دهید. (اختیاری)<br>
         <br>
         برای مثال، برای این نتیجه بررسی: <br>
         <sample>
         { <br>
           &ensp; \"type\": \"MARKETING\", <br>
-          &ensp; \"comments\": \"Better call Saul\", <br>
           &ensp;  … <br>
         } <br>
         </sample>
         <br>
-        - فقط <title>دسته</title> را استخراج کنید: <br>
+        آن را با این الگو استخراج کنید: <br>
         &ensp; <sample>\"type\": \"(.+?)\"</sample> <br>
-        <br>
-        - هم <title>دسته</title> و هم <title>نظرات</title> را استخراج کنید: <br>
-        &ensp; <sample>(?:\"type\":\"(.+?)\"|\"comments\":\"(.+?)\")</sample><br>
         ]]>
     </string>
     <string name="action_parse_query_result">تجزیه نتیجه</string>
@@ -63,7 +58,7 @@
         یک عبارت باقاعده اضافی می‌تواند برای استخراج دسته‌بندی مزاحمت استفاده شود. (اختیاری)
         ]]>
     </string>
-    <string name="action_parse_incoming_number">تجزیه شماره ورودی</string>
+    <string name="action_parse_incoming_number">تجزیه شماره</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         شماره تماس ورودی به برچسب‌های مختلف تجزیه می‌شود:<br>
@@ -98,7 +93,7 @@
     <string name="blocked_by">مسدود شده توسط: %s</string>
     <string name="outside_time_schedule">خارج از برنامه زمانی، رد می‌شود.</string>
     <string name="android_ver_lower_than_11">نسخه اندروید کمتر از 11 است، رد می‌شود.</string>
-    <string name="action_parse_incoming_sms">تجزیه پیامک ورودی</string>
+    <string name="action_parse_incoming_sms">تجزیه پیامک</string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
         محتوای پیامک ورودی به برچسب <b>{sms}</b> تجزیه می‌شود

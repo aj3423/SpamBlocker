@@ -35,22 +35,18 @@
     </string>
     <string name="help_category_identifier">
         <![CDATA[
-        照会結果から<title>カテゴリ</title>と<title>コメント</title>を抽出し、通知と履歴ログに表示します。(オプション)<br>
+        照会結果から<title>カテゴリ</title>を抽出して、通知と履歴ログに表示します。(オプション)<br>
         <br>
         例として、この照会結果の場合: <br>
         <sample>
         { <br>
           &ensp; \"type\": \"MARKETING\", <br>
-          &ensp; \"comments\": \"Better call Saul\", <br>
           &ensp;  … <br>
         } <br>
         </sample>
         <br>
-        - <title>カテゴリ</title>のみを抽出: <br>
+        次のパターンで抽出します: <br>
         &ensp; <sample>\"type\": \"(.+?)\"</sample> <br>
-        <br>
-        - <title>カテゴリ</title>と<title>コメント</title>の両方を抽出: <br>
-        &ensp; <sample>(?:\"type\":\"(.+?)\"|\"comments\":\"(.+?)\")</sample><br>
         ]]>
     </string>
     <string name="action_parse_query_result">結果を解析</string>
@@ -61,7 +57,7 @@
         迷惑電話のカテゴリを抽出するために、追加の正規表現を使用できます。（オプション）
         ]]>
     </string>
-    <string name="action_parse_incoming_number">着信番号を解析</string>
+    <string name="action_parse_incoming_number">番号を解析</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         着信番号はさまざまなタグに解析されます。<br>
@@ -97,7 +93,7 @@
     <string name="android_ver_lower_than_11">Androidバージョンが11より低いため、スキップ。</string>
     <string name="query">照会</string>
     <string name="report_api">報告API</string>
-    <string name="action_parse_incoming_sms">受信SMSを解析</string>
+    <string name="action_parse_incoming_sms">SMSを解析</string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
         受信したSMSの内容はタグ <b>{sms}</b> に解析され、

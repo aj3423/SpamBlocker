@@ -70,9 +70,9 @@
         Il contenuto visualizzato nella finestra dell\'ID chiamante, in formato HTML. <br>
         <br>
         <title>Tag supportati</title>: <br>
-        - <sub>{reason}</sub> <br>
+        - <minor>{reason}</minor> <br>
         &emsp; Perché la chiamata è stata consentita, lo stesso motivo mostrato nella cronologia chiamate. <br>
-        - <sub>{geolocation}</sub> <br>
+        - <minor>{geolocation}</minor> <br>
         &emsp; La geolocalizzazione del numero di telefono. <br>
         <br>
         <title>Tag HTML supportati</title>: <br>
@@ -90,6 +90,28 @@
         Per la funzione <b>Avviso SMS</b>, i messaggi a volte arrivano contemporaneamente alla chiamata
          o pochi secondi dopo, e aggiungere un ritardo di 2~3 secondi al filtraggio delle chiamate può evitare questi problemi.
         </sample>
+        ]]>
+    </string>
+    <string name="comment_optional">Commento (facoltativo)</string>
+    <string name="comment_identifier">Identificatore Commento</string>
+    <string name="hint_comment_identifier">
+        Es.: \"comment\":\"(.+?)\"
+    </string>
+    <string name="help_comment_identifier">
+        <![CDATA[
+        Estrai il <title>commento</title> dal risultato della query per visualizzarlo nella notifica e nel registro storico. (opzionale)<br>
+        <br>
+        Ad esempio, per questo risultato della query: <br>
+        <sample>
+        { <br>
+          &ensp; \"type\": \"MARKETING\", <br>
+          &ensp; \"comment\": \"Better call Saul\", <br>
+          &ensp;  … <br>
+        } <br>
+        </sample>
+        <br>
+        Estrailo con: <br>
+        &ensp; <sample>\"comment\": \"(.+?)\"</sample> <br>
         ]]>
     </string>
 </resources>

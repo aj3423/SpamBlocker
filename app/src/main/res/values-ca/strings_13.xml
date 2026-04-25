@@ -21,8 +21,8 @@
     <string name="modify_n_rules">Modificant %s regles.</string>
     <string name="number_not_match_filter">El número %s no coincideix amb el filtre %s, s\'omet.</string>
     <string name="fail_detect_cc">No s\'ha pogut detectar el codi de país.</string>
-    <string name="identified_as_spam">Identificat com a número de correu brossa, categoria: %s.</string>
-    <string name="identified_as_valid">Identificat com a número vàlid, categoria: %s.</string>
+    <string name="identified_as_spam">Identificat com a número de telèfon spam, categoria: %s, comentari: %s.</string>
+    <string name="identified_as_valid">Identificat com a número de telèfon vàlid, categoria: %s, comentari: %s.</string>
     <string name="unidentified_number">Número no identificat.</string>
     <string name="auto_detect_cc_permission">Es requereix el permís READ_PHONE_STATE per detectar el codi de país.</string>
     <string name="number_tags">

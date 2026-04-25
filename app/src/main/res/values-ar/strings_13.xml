@@ -21,8 +21,8 @@
     <string name="modify_n_rules">تعديل %s قواعد.</string>
     <string name="number_not_match_filter">الرقم %s لا يتطابق مع الفلتر %s، تخطي.</string>
     <string name="fail_detect_cc">فشل اكتشاف رمز البلد.</string>
-    <string name="identified_as_spam">تم تحديده كرقم رسائل مزعجة، الفئة: %s.</string>
-    <string name="identified_as_valid">تم تحديده كرقم صالح، الفئة: %s.</string>
+    <string name="identified_as_spam">تم تحديده كرقم مزعج، الفئة: %s، التعليق: %s.</string>
+    <string name="identified_as_valid">تم تحديده كرقم صالح، الفئة: %s، التعليق: %s.</string>
     <string name="unidentified_number">رقم غير محدد.</string>
     <string name="auto_detect_cc_permission">إذن READ_PHONE_STATE مطلوب لاكتشاف رمز البلد.</string>
     <string name="number_tags">

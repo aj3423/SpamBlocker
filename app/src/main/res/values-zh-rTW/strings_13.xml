@@ -21,8 +21,8 @@
     <string name="modify_n_rules">正在修改 %s 條規則。</string>
     <string name="number_not_match_filter">號碼 %s 不符合過濾規則 %s，略過。</string>
     <string name="fail_detect_cc">無法偵測國碼。</string>
-    <string name="identified_as_spam">已識別為垃圾號碼，類別：%s。</string>
-    <string name="identified_as_valid">已識別為有效號碼，類別：%s。</string>
+    <string name="identified_as_spam">已識別為騷擾電話號碼，類別：%s，備註：%s。</string>
+    <string name="identified_as_valid">已識別為有效電話號碼，類別：%s，備註：%s。</string>
     <string name="unidentified_number">未識別的號碼。</string>
     <string name="auto_detect_cc_permission">需要 READ_PHONE_STATE 權限才能自動偵測國碼。</string>
     <string name="number_tags">

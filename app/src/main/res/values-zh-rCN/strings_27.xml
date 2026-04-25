@@ -70,9 +70,9 @@
         来电显示窗口中显示的内容，采用 HTML 格式。 <br>
         <br>
         <title>支持的标签</title>: <br>
-        - <sub>{reason}</sub> <br>
+        - <minor>{reason}</minor> <br>
         &emsp; 通话被允许的原因，与通话记录中显示的原因相同。 <br>
-        - <sub>{geolocation}</sub> <br>
+        - <minor>{geolocation}</minor> <br>
         &emsp; 电话号码的地理位置。 <br>
         <br>
         <title>支持的 HTML 标签</title>: <br>
@@ -90,6 +90,28 @@
         对于 <b>短信提醒</b> 功能，消息有时会与来电同时到达，
          或者在来电后的几秒内到达，增加 2~3 秒的通话筛查延迟可以避免这类问题。
         </sample>
+        ]]>
+    </string>
+    <string name="comment_optional">备注（选填）</string>
+    <string name="comment_identifier">备注标识符</string>
+    <string name="hint_comment_identifier">
+        例如：\"comment\":\"(.+?)\"
+    </string>
+    <string name="help_comment_identifier">
+        <![CDATA[
+        从查询结果中提取<title>备注</title>，用于在通知和历史记录中显示。（可选）<br>
+        <br>
+        例如，对于此查询结果：<br>
+        <sample>
+        { <br>
+          &ensp; \"type\": \"MARKETING\", <br>
+          &ensp; \"comment\": \"Better call Saul\", <br>
+          &ensp;  … <br>
+        } <br>
+        </sample>
+        <br>
+        可用以下方式提取：<br>
+        &ensp; <sample>\"comment\": \"(.+?)\"</sample> <br>
         ]]>
     </string>
 </resources>

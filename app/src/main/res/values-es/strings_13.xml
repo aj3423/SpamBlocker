@@ -20,8 +20,8 @@
     <string name="find_rule_with_desc">Encontradas %s reglas con descripción %s.</string>
     <string name="modify_n_rules">Modificando %s reglas.</string>
     <string name="fail_detect_cc">Error al detectar el código de país.</string>
-    <string name="identified_as_spam">Identificado como número spam, categoría: %s.</string>
-    <string name="identified_as_valid">Identificado como número válido, categoría: %s.</string>
+    <string name="identified_as_spam">Identificado como número de teléfono spam, categoría: %s, comentario: %s.</string>
+    <string name="identified_as_valid">Identificado como número de teléfono válido, categoría: %s, comentario: %s.</string>
     <string name="unidentified_number">Número no identificado.</string>
     <string name="help_http_url">
         <![CDATA[

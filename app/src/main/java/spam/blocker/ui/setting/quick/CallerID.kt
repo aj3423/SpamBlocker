@@ -99,15 +99,6 @@ private fun ConfigDialog(
         popupSize = PopupSize(),
         onDismiss = {
             FloatingWindow.hide(ctx)
-        },
-        buttons = {
-            // Preview
-            StrokeButton(
-                label = Str(R.string.preview),
-                color = G.palette.teal200,
-            ) {
-                showCallerIdWindow(ctx)
-            }
         }
     ) {
         // BG Color
@@ -159,9 +150,11 @@ fun CallerID() {
 
                     // Setting button
                     StrokeButton(
-                        label = Str(R.string.setting),
+                        label = Str(R.string.preview),
                         color = C.textGrey,
                     ) {
+                        showCallerIdWindow(ctx)
+
                         trigger.value = true
                     }
                 }

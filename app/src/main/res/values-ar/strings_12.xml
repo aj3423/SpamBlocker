@@ -37,23 +37,18 @@
     </string>
     <string name="help_category_identifier">
         <![CDATA[
-        استخرج <title>الفئة</title> و<title>التعليقات</title>
-         من نتيجة الاستعلام واعرضها في الإشعارات وسجل التاريخ. (اختياري)<br>
+        استخرج <title>الفئة</title> من نتيجة الاستعلام لعرضها في الإشعار وسجل التاريخ. (اختياري)<br>
         <br>
         على سبيل المثال، لنتيجة الاستعلام هذه: <br>
         <sample>
         { <br>
           &ensp; \"type\": \"MARKETING\", <br>
-          &ensp; \"comments\": \"Better call Saul\", <br>
           &ensp;  … <br>
         } <br>
         </sample>
         <br>
-        - استخرج <title>الفئة</title> فقط: <br>
+        استخرجها باستخدام: <br>
         &ensp; <sample>\"type\": \"(.+?)\"</sample> <br>
-        <br>
-        - استخرج كلاً من <title>الفئة</title> و<title>التعليقات</title>: <br>
-        &ensp; <sample>(?:\"type\":\"(.+?)\"|\"comments\":\"(.+?)\")</sample><br>
         ]]>
     </string>
     <string name="action_parse_query_result"><translate>تحليل النتيجة</translate></string>
@@ -64,7 +59,7 @@
         <translate>يمكن استخدام regex إضافي لاستخراج فئة الرسائل المزعجة. (اختياري)</translate>
         ]]>
     </string>
-    <string name="action_parse_incoming_number"><translate>تحليل الرقم الوارد</translate></string>
+    <string name="action_parse_incoming_number"><translate>تحليل الرقم</translate></string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         <translate>سيتم تحليل رقم المكالمة الواردة إلى علامات مختلفة:</translate><br>
@@ -74,7 +69,7 @@
         <translate>يمكن استخدام هذه العلامات في طلبات HTTP اللاحقة.</translate><br>
         ]]>
     </string>
-    <string name="action_parse_incoming_sms"><translate>تحليل الرسائل القصيرة الواردة</translate></string>
+    <string name="action_parse_incoming_sms"><translate>تحليل الرسائل القصيرة</translate></string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
         <translate>سيتم تحليل محتوى الرسائل القصيرة الواردة إلى العلامة <b>{sms}</b>،</translate>

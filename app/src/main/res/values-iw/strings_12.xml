@@ -37,23 +37,18 @@
     </string>
     <string name="help_category_identifier">
         <![CDATA[
-        חלץ את ה<title>קטגוריה</title> ואת ה<title>הערות</title>
-         מתוצאת השאילתה והצג אותם בהתראה ובלוג ההיסטוריה. (אופציונלי)<br>
+        חלץ את ה<title>קטגוריה</title> מתוצאת השאילתה כדי להציג אותה בהתראה ובלוג ההיסטוריה. (אופציונלי)<br>
         <br>
         לדוגמה, עבור תוצאת שאילתה זו: <br>
         <sample>
         { <br>
           &ensp; \"type\": \"MARKETING\", <br>
-          &ensp; \"comments\": \"Better call Saul\", <br>
           &ensp;  … <br>
         } <br>
         </sample>
         <br>
-        - חלץ את ה<title>קטגוריה</title> בלבד: <br>
+        חלץ אותה באמצעות: <br>
         &ensp; <sample>\"type\": \"(.+?)\"</sample> <br>
-        <br>
-        - חלץ גם את ה<title>קטגוריה</title> וגם את ה<title>הערות</title>: <br>
-        &ensp; <sample>(?:\"type\":\"(.+?)\"|\"comments\":\"(.+?)\")</sample><br>
         ]]>
     </string>
     <string name="action_parse_query_result">ניתוח תוצאה</string>
@@ -64,7 +59,7 @@
         ניתן להשתמש ב-Regex נוסף לחילוץ קטגוריית הספאם. (אופציונלי)
         ]]>
     </string>
-    <string name="action_parse_incoming_number">פענוח מספר נכנס</string>
+    <string name="action_parse_incoming_number">פענוח מספר</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         מספר השיחה הנכנסת יפורק לתגיות שונות:<br>
@@ -74,7 +69,7 @@
         תגיות אלה יכולות לשמש בבקשות HTTP הבאות.<br>
         ]]>
     </string>
-    <string name="action_parse_incoming_sms">פענוח SMS נכנס</string>
+    <string name="action_parse_incoming_sms">פענוח SMS</string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
         תוכן ה-SMS הנכנס יפורק לתגית <b>{sms}</b>,

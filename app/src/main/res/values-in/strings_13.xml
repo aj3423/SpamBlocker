@@ -21,8 +21,8 @@
     <string name="modify_n_rules">Memodifikasi %s aturan.</string>
     <string name="number_not_match_filter">Nomor %s tidak cocok dengan filter %s, lewati.</string>
     <string name="fail_detect_cc">Gagal mendeteksi kode negara.</string>
-    <string name="identified_as_spam">Diidentifikasi sebagai nomor spam, kategori: %s.</string>
-    <string name="identified_as_valid">Diidentifikasi sebagai nomor yang sah, kategori: %s.</string>
+    <string name="identified_as_spam">Diidentifikasi sebagai nomor spam, kategori: %s, komentar: %s.</string>
+    <string name="identified_as_valid">Diidentifikasi sebagai nomor yang sah, kategori: %s, komentar: %s.</string>
     <string name="unidentified_number">Nomor tidak dikenal.</string>
     <string name="auto_detect_cc_permission">Izin READ_PHONE_STATE diperlukan untuk mendeteksi kode negara.</string>
     <string name="number_tags">

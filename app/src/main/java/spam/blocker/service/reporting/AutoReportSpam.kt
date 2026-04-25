@@ -81,7 +81,7 @@ private fun reportImmediately(
                     scope = scope,
                     logger = AdbLogger(),
                     rawNumber = rawNumber,
-                    tagCategory = tagOther,
+                    tagCategoryValue = tagOther,
                 )
                 api.actions.executeAll(ctx, aCtx)
             }

@@ -36,23 +36,18 @@
     </string>
     <string name="help_category_identifier">
         <![CDATA[
-        Extrae a <title>categoría</title> e os <title>comentarios</title>
-         do resultado da consulta e móstraos na notificación e no rexistro de historial. (opcional)<br>
+        Extrae a <title>categoría</title> do resultado da consulta para mostrala na notificación e no rexistro de historial. (opcional)<br>
         <br>
         Por exemplo, para este resultado de consulta: <br>
         <sample>
         { <br>
           &ensp; \"type\": \"MARKETING\", <br>
-          &ensp; \"comments\": \"Better call Saul\", <br>
           &ensp;  … <br>
         } <br>
         </sample>
         <br>
-        - Extraer só a <title>categoría</title>: <br>
+        Extráea con: <br>
         &ensp; <sample>\"type\": \"(.+?)\"</sample> <br>
-        <br>
-        - Extraer tanto a <title>categoría</title> coma os <title>comentarios</title>: <br>
-        &ensp; <sample>(?:\"type\":\"(.+?)\"|\"comments\":\"(.+?)\")</sample><br>
         ]]>
     </string>
     <string name="action_parse_query_result">Analizar resultado</string>
@@ -63,7 +58,7 @@
         Pode usarse un regex extra para extraer a categoría de spam. (opcional)
         ]]>
     </string>
-    <string name="action_parse_incoming_number">Analizar número entrante</string>
+    <string name="action_parse_incoming_number">Analizar número</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         O número da chamada entrante analizarase en diferentes etiquetas:<br>
@@ -99,7 +94,7 @@
     <string name="android_ver_lower_than_11">A versión de Android é inferior a 11, saltando.</string>
     <string name="query">Consulta</string>
     <string name="report_api">API de reporte</string>
-    <string name="action_parse_incoming_sms">Analizar SMS entrante</string>
+    <string name="action_parse_incoming_sms">Analizar SMS</string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
         O contido do SMS entrante analizarase na etiqueta <b>{sms}</b>,<br>

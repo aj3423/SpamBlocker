@@ -20,8 +20,8 @@
     <string name="find_rule_with_desc">Açıklaması %s olan %s kural bulundu.</string>
     <string name="modify_n_rules">%s kural değiştiriliyor.</string>
     <string name="fail_detect_cc">Ülke kodu tespit edilemedi.</string>
-    <string name="identified_as_spam">Spam numarası olarak tanımlandı, kategori: %s.</string>
-    <string name="identified_as_valid">Geçerli numara olarak tanımlandı, kategori: %s.</string>
+    <string name="identified_as_spam">Spam numarası olarak tanımlandı, kategori: %s, yorum: %s.</string>
+    <string name="identified_as_valid">Geçerli numara olarak tanımlandı, kategori: %s, yorum: %s.</string>
     <string name="unidentified_number">Tanımlanamayan numara.</string>
     <string name="help_http_url">
         <![CDATA[

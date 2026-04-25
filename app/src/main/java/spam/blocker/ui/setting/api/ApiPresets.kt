@@ -38,6 +38,7 @@ data class AuthConfig(
 )
 
 const val tagCategory = "{category}"
+const val tagComment = "{comment}"
 
 const val tagValid = "{valid}"
 const val tagOther = "{other}"
@@ -151,6 +152,7 @@ val ApiQueryPresets = listOf<ApiPreset>(
                     ParseQueryResult(
                         negativeSig = "(D_POLL|G_FRAUD|E_ADVERTISING|F_GAMBLE|B_MISSED)",
                         categorySig = "\"rating\":\"(.+?)\"",
+                        commentSig = "\"comment\":\"(.+?)\""
                     ),
                     FilterSpamResult(),
                     ImportToSpamDB(
@@ -265,7 +267,8 @@ val ApiReportPreset_PhoneBlock = ApiPreset(
                     body = """
                             {
                                 "phone": "00{cc}{domestic}",
-                                "rating": "{category}"
+                                "rating": "{category}",
+                                "comment": "{comment}"
                             }
                         """.trimIndent()
                 )

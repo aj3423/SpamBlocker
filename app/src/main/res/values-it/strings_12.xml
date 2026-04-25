@@ -37,23 +37,18 @@
     </string>
     <string name="help_category_identifier">
         <![CDATA[
-        Estrai la <title>categoria</title> e i <title>commenti</title>
-         dal risultato della query e visualizzali nella notifica e nel registro storico. (opzionale)<br>
+        Estrai la <title>categoria</title> dal risultato della query per visualizzarla nella notifica e nel registro storico. (opzionale)<br>
         <br>
         Ad esempio, per questo risultato della query: <br>
         <sample>
         { <br>
           &ensp; \"type\": \"MARKETING\", <br>
-          &ensp; \"comments\": \"Better call Saul\", <br>
           &ensp;  … <br>
         } <br>
         </sample>
         <br>
-        - Estrai solo la <title>categoria</title>: <br>
+        Estraila con: <br>
         &ensp; <sample>\"type\": \"(.+?)\"</sample> <br>
-        <br>
-        - Estrai sia la <title>categoria</title> che i <title>commenti</title>: <br>
-        &ensp; <sample>(?:\"type\":\"(.+?)\"|\"comments\":\"(.+?)\")</sample><br>
         ]]>
     </string>
     <string name="action_parse_query_result">Analizza Risultato</string>
@@ -64,7 +59,7 @@
         Può essere usata una regex aggiuntiva per estrarre la categoria spam (opzionale).
         ]]>
     </string>
-    <string name="action_parse_incoming_number">Analizza numero in arrivo</string>
+    <string name="action_parse_incoming_number">Analizza numero</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         Il numero della chiamata in arrivo verrà analizzato in diversi tag:<br>
@@ -99,7 +94,7 @@
     <string name="blocked_by">Bloccato da: %s</string>
     <string name="outside_time_schedule">Fuori dalla programmazione, salta.</string>
     <string name="android_ver_lower_than_11">Versione Android inferiore all\'11, salta.</string>
-    <string name="action_parse_incoming_sms">Analizza SMS in arrivo</string>
+    <string name="action_parse_incoming_sms">Analizza SMS</string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
         Il contenuto dell\'SMS in arrivo verrà analizzato nel tag <b>{sms}</b>,<br>

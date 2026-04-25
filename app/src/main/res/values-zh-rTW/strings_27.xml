@@ -70,9 +70,9 @@
         來電顯示視窗中顯示的內容，採用 HTML 格式。 <br>
         <br>
         <title>支援的標籤</title>: <br>
-        - <sub>{reason}</sub> <br>
+        - <minor>{reason}</minor> <br>
         &emsp; 通話被允許的原因，與通話記錄中顯示的原因相同。 <br>
-        - <sub>{geolocation}</sub> <br>
+        - <minor>{geolocation}</minor> <br>
         &emsp; 電話號碼的地理位置。 <br>
         <br>
         <title>支援的 HTML 標籤</title>: <br>
@@ -90,6 +90,28 @@
         對於 <b>簡訊提醒</b> 功能，訊息有時會與來電同時到達，
          或是在來電後幾秒內到達，增加 2~3 秒的通話篩查延遲可以避免這類問題。
         </sample>
+        ]]>
+    </string>
+    <string name="comment_optional">備註（選填）</string>
+    <string name="comment_identifier">備註識別</string>
+    <string name="hint_comment_identifier">
+        例如：\"comment\":\"(.+?)\"
+    </string>
+    <string name="help_comment_identifier">
+        <![CDATA[
+        從查詢結果中提取<title>備註</title>，用於在通知和歷史記錄中顯示。(可選)<br>
+        <br>
+        例如，對於此查詢結果： <br>
+        <sample>
+        { <br>
+          &ensp; \"type\": \"MARKETING\", <br>
+          &ensp; \"comment\": \"Better call Saul\", <br>
+          &ensp;  … <br>
+        } <br>
+        </sample>
+        <br>
+        可用以下方式提取： <br>
+        &ensp; <sample>\"comment\": \"(.+?)\"</sample> <br>
         ]]>
     </string>
 </resources>

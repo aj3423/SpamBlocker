@@ -36,23 +36,18 @@
     </string>
     <string name="help_category_identifier">
         <![CDATA[
-        Extrae la <title>categoría</title> y los <title>comentarios</title>
-         del resultado de la consulta y muéstralos en la notificación y el registro de historial. (opcional)<br>
+        Extrae la <title>categoría</title> del resultado de la consulta para mostrarla en la notificación y el registro de historial. (opcional)<br>
         <br>
         Por ejemplo, para este resultado de consulta: <br>
         <sample>
         { <br>
           &ensp; \"type\": \"MARKETING\", <br>
-          &ensp; \"comments\": \"Better call Saul\", <br>
           &ensp;  … <br>
         } <br>
         </sample>
         <br>
-        - Extraer solo la <title>categoría</title>: <br>
+        Extráela con: <br>
         &ensp; <sample>\"type\": \"(.+?)\"</sample> <br>
-        <br>
-        - Extraer tanto la <title>categoría</title> como los <title>comentarios</title>: <br>
-        &ensp; <sample>(?:\"type\":\"(.+?)\"|\"comments\":\"(.+?)\")</sample><br>
         ]]>
     </string>
     <string name="action_parse_query_result">Analizar resultado</string>
@@ -63,7 +58,7 @@
         Se puede usar una expresión regular adicional para extraer la categoría de spam (opcional).
         ]]>
     </string>
-    <string name="action_parse_incoming_number">Analizar número entrante</string>
+    <string name="action_parse_incoming_number">Analizar número</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         El número de la llamada entrante se analizará en diferentes etiquetas:<br>
@@ -99,7 +94,7 @@
     <string name="android_ver_lower_than_11">La versión de Android es inferior a la 11, omitir.</string>
     <string name="query">Consulta</string>
     <string name="report_api">API de reporte</string>
-    <string name="action_parse_incoming_sms">Analizar SMS entrante</string>
+    <string name="action_parse_incoming_sms">Analizar SMS</string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
         El contenido del SMS entrante se analizará en la etiqueta <b>{sms}</b>,

@@ -70,9 +70,9 @@
         Konten yang ditampilkan di jendela ID penelepon, dalam format HTML. <br>
         <br>
         <title>Tag yang didukung</title>: <br>
-        - <sub>{reason}</sub> <br>
+        - <minor>{reason}</minor> <br>
         &emsp; Mengapa panggilan diizinkan, alasan yang sama seperti yang ditampilkan di riwayat panggilan. <br>
-        - <sub>{geolocation}</sub> <br>
+        - <minor>{geolocation}</minor> <br>
         &emsp; Lokasi geografis nomor telepon. <br>
         <br>
         <title>Tag HTML yang didukung</title>: <br>
@@ -90,6 +90,28 @@
         Untuk fitur <b>Prt. SMS</b>, pesan kadang tiba bersamaan dengan panggilan
          atau beberapa detik setelah panggilan; menambahkan jeda penyaringan panggilan 2~3 detik dapat mencegah masalah seperti ini.
         </sample>
+        ]]>
+    </string>
+    <string name="comment_optional">Komentar (opsional)</string>
+    <string name="comment_identifier">Pengenal Komentar</string>
+    <string name="hint_comment_identifier">
+        Contoh: \"comment\":\"(.+?)\"
+    </string>
+    <string name="help_comment_identifier">
+        <![CDATA[
+        Ekstrak <title>komentar</title> dari hasil kueri untuk ditampilkan dalam notifikasi dan log riwayat. (opsional)<br>
+        <br>
+        Sebagai contoh, untuk hasil kueri ini: <br>
+        <sample>
+        { <br>
+          &ensp; \"type\": \"MARKETING\", <br>
+          &ensp; \"comment\": \"Better call Saul\", <br>
+          &ensp;  … <br>
+        } <br>
+        </sample>
+        <br>
+        Ekstrak dengan: <br>
+        &ensp; <sample>\"comment\": \"(.+?)\"</sample> <br>
         ]]>
     </string>
 </resources>

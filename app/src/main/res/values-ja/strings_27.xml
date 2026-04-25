@@ -70,9 +70,9 @@
         発信者IDウィンドウに表示される内容です。HTML形式です。 <br>
         <br>
         <title>対応タグ</title>: <br>
-        - <sub>{reason}</sub> <br>
+        - <minor>{reason}</minor> <br>
         &emsp; 通話が許可された理由です。通話履歴に表示される理由と同じです。 <br>
-        - <sub>{geolocation}</sub> <br>
+        - <minor>{geolocation}</minor> <br>
         &emsp; 電話番号の地理情報です。 <br>
         <br>
         <title>対応HTMLタグ</title>: <br>
@@ -90,6 +90,28 @@
         <b>SMS警告</b> 機能では、メッセージが通話と同時に届いたり
          通話の数秒後に届いたりすることがあります。通話スクリーニングに 2~3 秒の遅延を追加すると、このような問題を防げます。
         </sample>
+        ]]>
+    </string>
+    <string name="comment_optional">コメント（任意）</string>
+    <string name="comment_identifier">コメント識別子</string>
+    <string name="hint_comment_identifier">
+        例: \"comment\":\"(.+?)\"
+    </string>
+    <string name="help_comment_identifier">
+        <![CDATA[
+        照会結果から<title>コメント</title>を抽出して、通知と履歴ログに表示します。(オプション)<br>
+        <br>
+        例として、この照会結果の場合: <br>
+        <sample>
+        { <br>
+          &ensp; \"type\": \"MARKETING\", <br>
+          &ensp; \"comment\": \"Better call Saul\", <br>
+          &ensp;  … <br>
+        } <br>
+        </sample>
+        <br>
+        次のパターンで抽出します: <br>
+        &ensp; <sample>\"comment\": \"(.+?)\"</sample> <br>
         ]]>
     </string>
 </resources>

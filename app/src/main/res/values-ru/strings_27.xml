@@ -70,9 +70,9 @@
         Содержимое, отображаемое в окне определителя номера, в формате HTML. <br>
         <br>
         <title>Поддерживаемые теги</title>: <br>
-        - <sub>{reason}</sub> <br>
+        - <minor>{reason}</minor> <br>
         &emsp; Почему вызов был разрешён, та же причина отображается в истории вызовов. <br>
-        - <sub>{geolocation}</sub> <br>
+        - <minor>{geolocation}</minor> <br>
         &emsp; Геолокация телефонного номера. <br>
         <br>
         <title>Поддерживаемые HTML-теги</title>: <br>
@@ -90,6 +90,28 @@
         Для функции <b>SMS-оповещение</b> сообщения иногда приходят одновременно со звонком
          или через несколько секунд после него, и добавление задержки проверки звонка на 2~3 секунды может предотвратить такие проблемы.
         </sample>
+        ]]>
+    </string>
+    <string name="comment_optional">Комментарий (необязательно)</string>
+    <string name="comment_identifier">Идентификатор комментария</string>
+    <string name="hint_comment_identifier">
+        Например: \"comment\":\"(.+?)\"
+    </string>
+    <string name="help_comment_identifier">
+        <![CDATA[
+        Извлеките <title>комментарий</title> из результата запроса, чтобы отображать его в уведомлении и журнале истории. (необязательно)<br>
+        <br>
+        Например, для этого результата запроса: <br>
+        <sample>
+        { <br>
+          &ensp; \"type\": \"MARKETING\", <br>
+          &ensp; \"comment\": \"Better call Saul\", <br>
+          &ensp;  … <br>
+        } <br>
+        </sample>
+        <br>
+        Извлеките его с помощью: <br>
+        &ensp; <sample>\"comment\": \"(.+?)\"</sample> <br>
         ]]>
     </string>
 </resources>

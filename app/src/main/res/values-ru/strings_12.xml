@@ -37,23 +37,18 @@
     </string>
     <string name="help_category_identifier">
         <![CDATA[
-        Извлекает <title>категорию</title> и <title>комментарии</title>
-         из результата запроса и отображает их в уведомлении и журнале истории. (необязательно)<br>
+        Извлеките <title>категорию</title> из результата запроса, чтобы отображать ее в уведомлении и журнале истории. (необязательно)<br>
         <br>
         Например, для этого результата запроса: <br>
         <sample>
         { <br>
           &ensp; \"type\": \"MARKETING\", <br>
-          &ensp; \"comments\": \"Better call Saul\", <br>
           &ensp;  … <br>
         } <br>
         </sample>
         <br>
-        - Извлечь только <title>категорию</title>: <br>
+        Извлеките ее с помощью: <br>
         &ensp; <sample>\"type\": \"(.+?)\"</sample> <br>
-        <br>
-        - Извлечь как <title>категорию</title>, так и <title>комментарии</title>: <br>
-        &ensp; <sample>(?:\"type\":\"(.+?)\"|\"comments\":\"(.+?)\")</sample><br>
         ]]>
     </string>
     <string name="action_parse_query_result">Обработать результат</string>
@@ -64,7 +59,7 @@
         Дополнительное регулярное выражение может использоваться для извлечения категории спама. (необязательно)
         ]]>
     </string>
-    <string name="action_parse_incoming_number">Разобрать входящий номер</string>
+    <string name="action_parse_incoming_number">Разобрать номер</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         Номер входящего звонка будет разобран на разные теги:<br>
@@ -74,7 +69,7 @@
         Эти теги можно использовать в последующих HTTP-запросах.<br>
         ]]>
     </string>
-    <string name="action_parse_incoming_sms">Разобрать входящее SMS</string>
+    <string name="action_parse_incoming_sms">Разобрать SMS</string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
         Содержимое входящего SMS будет разобрано в тег <b>{sms}</b>,

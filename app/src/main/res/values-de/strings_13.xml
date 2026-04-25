@@ -20,8 +20,8 @@
     <string name="find_rule_with_desc">%s Regeln mit Beschreibung %s gefunden.</string>
     <string name="modify_n_rules">Ändere %s Regeln.</string>
     <string name="fail_detect_cc">Fehler beim Erkennen der Landesvorwahl.</string>
-    <string name="identified_as_spam">Als Spam-Nummer identifiziert, Kategorie: %s.</string>
-    <string name="identified_as_valid">Als gültige Nummer identifiziert, Kategorie: %s.</string>
+    <string name="identified_as_spam">Als Spam-Telefonnummer identifiziert, Kategorie: %s, Kommentar: %s.</string>
+    <string name="identified_as_valid">Als gültige Telefonnummer identifiziert, Kategorie: %s, Kommentar: %s.</string>
     <string name="unidentified_number">Unbekannte Nummer.</string>
     <string name="help_http_url">
         <![CDATA[

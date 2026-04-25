@@ -35,22 +35,18 @@
     </string>
     <string name="help_category_identifier">
         <![CDATA[
-        从查询结果中提取<title>类别</title>和<title>评论</title>，并在通知和历史记录中显示。（可选）<br>
+        从查询结果中提取<title>类别</title>，用于在通知和历史记录中显示。（可选）<br>
         <br>
         例如，对于此查询结果：<br>
         <sample>
         { <br>
           &ensp; \"type\": \"MARKETING\", <br>
-          &ensp; \"comments\": \"Better call Saul\", <br>
           &ensp;  … <br>
         } <br>
         </sample>
         <br>
-        - 仅提取<title>类别</title>：<br>
+        可用以下方式提取：<br>
         &ensp; <sample>\"type\": \"(.+?)\"</sample> <br>
-        <br>
-        - 同时提取<title>类别</title>和<title>评论</title>：<br>
-        &ensp; <sample>(?:\"type\":\"(.+?)\"|\"comments\":\"(.+?)\")</sample><br>
         ]]>
     </string>
     <string name="action_parse_query_result">解析结果</string>
@@ -61,7 +57,7 @@
         可以使用额外的正则表达式来提取骚扰类别。（可选）
         ]]>
     </string>
-    <string name="action_parse_incoming_number">解析来电号码</string>
+    <string name="action_parse_incoming_number">解析号码</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         将把来电号码解析成不同的标签：<br>
@@ -97,7 +93,7 @@
     <string name="android_ver_lower_than_11">Android版本低于11，跳过。</string>
     <string name="query">查询</string>
     <string name="report_api">举报API</string>
-    <string name="action_parse_incoming_sms">解析收到的短信</string>
+    <string name="action_parse_incoming_sms">解析短信</string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
         收到的短信内容将被解析为标签 <b>{sms}</b>，

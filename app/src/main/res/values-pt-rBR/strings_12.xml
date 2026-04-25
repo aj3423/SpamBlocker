@@ -36,23 +36,18 @@
     </string>
     <string name="help_category_identifier">
         <![CDATA[
-        Extraia a <title>categoria</title> e os <title>comentários</title>
-         do resultado da consulta e exiba-os na notificação e no histórico. (opcional)<br>
+        Extraia a <title>categoria</title> do resultado da consulta e exiba-a na notificação e no histórico. (opcional)<br>
         <br>
         Por exemplo, para este resultado da consulta: <br>
         <sample>
         { <br>
           &ensp; \"type\": \"MARKETING\", <br>
-          &ensp; \"comments\": \"Better call Saul\", <br>
           &ensp;  … <br>
         } <br>
         </sample>
         <br>
-        - Extrair apenas a <title>categoria</title>: <br>
+        Extraia-a com: <br>
         &ensp; <sample>\"type\": \"(.+?)\"</sample> <br>
-        <br>
-        - Extrair tanto a <title>categoria</title> quanto os <title>comentários</title>: <br>
-        &ensp; <sample>(?:\"type\":\"(.+?)\"|\"comments\":\"(.+?)\")</sample><br>
         ]]>
     </string>
     <string name="action_parse_query_result">Analisar Resultado</string>
@@ -63,7 +58,7 @@
         Uma expressão regular extra pode ser usada para extrair a categoria de spam. (opcional)
         ]]>
     </string>
-    <string name="action_parse_incoming_number">Analisar Número Recebido</string>
+    <string name="action_parse_incoming_number">Analisar Número</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         O número da chamada recebida será analisado em diferentes tags:<br>
@@ -99,7 +94,7 @@
     <string name="android_ver_lower_than_11">Versão do Android inferior a 11, ignorar.</string>
     <string name="query">Consulta</string>
     <string name="report_api">API de Relatório</string>
-    <string name="action_parse_incoming_sms">Analisar SMS Recebido</string>
+    <string name="action_parse_incoming_sms">Analisar SMS</string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
         O conteúdo do SMS recebido será analisado na tag <b>{sms}</b>,<br>

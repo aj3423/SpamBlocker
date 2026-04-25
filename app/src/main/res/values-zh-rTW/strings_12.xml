@@ -37,22 +37,18 @@
     </string>
     <string name="help_category_identifier">
         <![CDATA[
-        從查詢結果中提取<title>類別</title>和<title>備註</title>，並將其顯示在通知和歷史記錄中。(可選)<br>
+        從查詢結果中提取<title>類別</title>，用於在通知和歷史記錄中顯示。(可選)<br>
         <br>
         例如，對於此查詢結果： <br>
         <sample>
         { <br>
           &ensp; \"type\": \"MARKETING\", <br>
-          &ensp; \"comments\": \"Better call Saul\", <br>
           &ensp;  … <br>
         } <br>
         </sample>
         <br>
-        - 僅提取<title>類別</title>： <br>
+        可用以下方式提取： <br>
         &ensp; <sample>\"type\": \"(.+?)\"</sample> <br>
-        <br>
-        - 提取<title>類別</title>和<title>備註</title>： <br>
-        &ensp; <sample>(?:\"type\":\"(.+?)\"|\"comments\":\"(.+?)\")</sample><br>
         ]]>
     </string>
     <string name="action_parse_query_result">解析結果</string>
@@ -63,7 +59,7 @@
         可以使用額外的正規表示式來擷取騷擾電話類別（選用）。
         ]]>
     </string>
-    <string name="action_parse_incoming_number">解析來電號碼</string>
+    <string name="action_parse_incoming_number">解析號碼</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         將把來電號碼解析成不同的標籤：<br>
@@ -73,7 +69,7 @@
         這些標籤可用於後續的 HTTP 請求。<br>
         ]]>
     </string>
-    <string name="action_parse_incoming_sms">解析收到的簡訊</string>
+    <string name="action_parse_incoming_sms">解析簡訊</string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
         收到的簡訊內容將被解析為標籤 <b>{sms}</b>，

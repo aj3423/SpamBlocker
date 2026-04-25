@@ -21,8 +21,8 @@
     <string name="modify_n_rules">Modifying %s rules.</string>
     <string name="number_not_match_filter">The number %s doesn\'t match the filter %s, skip.</string>
     <string name="fail_detect_cc">Failed to detect country code.</string>
-    <string name="identified_as_spam">Identified as spam number, category: %s.</string>
-    <string name="identified_as_valid">Identified as valid number, category: %s.</string>
+    <string name="identified_as_spam">Identified as spam number, category: %s, comment: %s.</string>
+    <string name="identified_as_valid">Identified as valid number, category: %s, comment: %s.</string>
     <string name="unidentified_number">Unidentified number.</string>
     <string name="auto_detect_cc_permission">The permission READ_PHONE_STATE is required for detecting country code.</string>
     <string name="number_tags">

@@ -37,23 +37,18 @@
     </string>
     <string name="help_category_identifier">
         <![CDATA[
-        Ekstrak <title>kategori</title> dan <title>komentar</title>
-         dari hasil kueri dan tampilkan dalam notifikasi serta log riwayat. (opsional)<br>
+        Ekstrak <title>kategori</title> dari hasil kueri untuk ditampilkan dalam notifikasi dan log riwayat. (opsional)<br>
         <br>
-        Contoh, untuk hasil kueri ini: <br>
+        Sebagai contoh, untuk hasil kueri ini: <br>
         <sample>
         { <br>
           &ensp; \"type\": \"MARKETING\", <br>
-          &ensp; \"comments\": \"Better call Saul\", <br>
           &ensp;  … <br>
         } <br>
         </sample>
         <br>
-        - Ekstrak <title>kategori</title> saja: <br>
+        Ekstrak dengan: <br>
         &ensp; <sample>\"type\": \"(.+?)\"</sample> <br>
-        <br>
-        - Ekstrak <title>kategori</title> dan <title>komentar</title>: <br>
-        &ensp; <sample>(?:\"type\":\"(.+?)\"|\"comments\":\"(.+?)\")</sample><br>
         ]]>
     </string>
     <string name="action_parse_query_result">Urai Hasil</string>
@@ -64,7 +59,7 @@
         Regex tambahan dapat digunakan untuk mengekstrak kategori spam. (opsional)
         ]]>
     </string>
-    <string name="action_parse_incoming_number">Uraikan Nomor Masuk</string>
+    <string name="action_parse_incoming_number">Uraikan Nomor</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         Nomor panggilan masuk akan diuraikan menjadi beberapa tag yang berbeda:<br>
@@ -74,7 +69,7 @@
         Tag-tag ini dapat digunakan dalam permintaan HTTP berikutnya.<br>
         ]]>
     </string>
-    <string name="action_parse_incoming_sms">Uraikan SMS Masuk</string>
+    <string name="action_parse_incoming_sms">Uraikan SMS</string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
         Isi SMS masuk akan diuraikan menjadi tag <b>{sms}</b>,

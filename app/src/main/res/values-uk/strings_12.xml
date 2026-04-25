@@ -36,23 +36,18 @@
     </string>
     <string name="help_category_identifier">
         <![CDATA[
-        Витягнути <title>категорію</title> та <title>коментарі</title>
-         з результату запиту та відобразити їх у сповіщенні та журналі історії. (необов\'язково)<br>
+        Витягніть <title>категорію</title> з результату запиту, щоб відображати її у сповіщенні та журналі історії. (необов\'язково)<br>
         <br>
         Наприклад, для цього результату запиту: <br>
         <sample>
         { <br>
           &ensp; \"type\": \"MARKETING\", <br>
-          &ensp; \"comments\": \"Better call Saul\", <br>
           &ensp;  … <br>
         } <br>
         </sample>
         <br>
-        - Витягнути лише <title>категорію</title>: <br>
+        Витягніть її за допомогою: <br>
         &ensp; <sample>\"type\": \"(.+?)\"</sample> <br>
-        <br>
-        - Витягнути як <title>категорію</title>, так і <title>коментарі</title>: <br>
-        &ensp; <sample>(?:\"type\":\"(.+?)\"|\"comments\":\"(.+?)\")</sample><br>
         ]]>
     </string>
     <string name="action_parse_query_result">Розбір результату</string>
@@ -63,7 +58,7 @@
         Для вилучення категорії спаму можна використовувати додатковий регулярний вираз (необов\'язково).
         ]]>
     </string>
-    <string name="action_parse_incoming_number">Розібрати вхідний номер</string>
+    <string name="action_parse_incoming_number">Розібрати номер</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         Номер вхідного дзвінка буде розібрано на різні теги:<br>
@@ -99,7 +94,7 @@
     <string name="android_ver_lower_than_11">Версія Android нижче 11, пропущено.</string>
     <string name="query">Запит</string>
     <string name="report_api">API звітування</string>
-    <string name="action_parse_incoming_sms">Розібрати вхідне SMS</string>
+    <string name="action_parse_incoming_sms">Розібрати SMS</string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
         Вміст вхідного SMS буде розібрано в тег <b>{sms}</b>,<br>

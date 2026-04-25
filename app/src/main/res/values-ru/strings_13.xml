@@ -21,8 +21,8 @@
     <string name="modify_n_rules">Изменение %s правил.</string>
     <string name="number_not_match_filter">Номер %s не соответствует фильтру %s, пропуск.</string>
     <string name="fail_detect_cc">Не удалось определить код страны.</string>
-    <string name="identified_as_spam">Определено как спам-номер, категория: %s.</string>
-    <string name="identified_as_valid">Определено как надёжный номер, категория: %s.</string>
+    <string name="identified_as_spam">Определено как спам-номер, категория: %s, комментарий: %s.</string>
+    <string name="identified_as_valid">Определено как действительный номер, категория: %s, комментарий: %s.</string>
     <string name="unidentified_number">Неизвестный номер.</string>
     <string name="auto_detect_cc_permission">Для определения кода страны требуется разрешение READ_PHONE_STATE.</string>
     <string name="number_tags">

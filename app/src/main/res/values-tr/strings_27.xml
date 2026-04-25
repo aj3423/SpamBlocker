@@ -69,9 +69,9 @@
         Arayan kimliği penceresinde gösterilen içerik, HTML biçimindedir. <br>
         <br>
         <title>Desteklenen etiketler</title>: <br>
-        - <sub>{reason}</sub> <br>
+        - <minor>{reason}</minor> <br>
         &emsp; Aramaya neden izin verildiği, çağrı geçmişinde gösterilen nedenin aynısı. <br>
-        - <sub>{geolocation}</sub> <br>
+        - <minor>{geolocation}</minor> <br>
         &emsp; Telefon numarasının coğrafi konumu. <br>
         <br>
         <title>Desteklenen HTML etiketleri</title>: <br>
@@ -89,6 +89,28 @@
         <b>SMS Uyarısı</b> özelliğinde mesajlar bazen aramayla aynı anda
          veya aramadan birkaç saniye sonra gelir; arama taramasına 2~3 saniyelik bir gecikme eklemek bu tür sorunları önleyebilir.
         </sample>
+        ]]>
+    </string>
+    <string name="comment_optional">Yorum (isteğe bağlı)</string>
+    <string name="comment_identifier">Yorum Tanımlayıcı</string>
+    <string name="hint_comment_identifier">
+        Örn.: \"comment\":\"(.+?)\"
+    </string>
+    <string name="help_comment_identifier">
+        <![CDATA[
+        Sorgu sonucundan <title>yorumu</title> bildirimde ve geçmiş günlüğünde göstermek için çıkarın. (isteğe bağlı)<br>
+        <br>
+        Örneğin, bu sorgu sonucu için: <br>
+        <sample>
+        { <br>
+          &ensp; \"type\": \"MARKETING\", <br>
+          &ensp; \"comment\": \"Better call Saul\", <br>
+          &ensp;  … <br>
+        } <br>
+        </sample>
+        <br>
+        Bunu şu şekilde çıkarın: <br>
+        &ensp; <sample>\"comment\": \"(.+?)\"</sample> <br>
         ]]>
     </string>
 </resources>

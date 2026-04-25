@@ -21,8 +21,8 @@
     <string name="modify_n_rules">משנה %s כללים.</string>
     <string name="number_not_match_filter">המספר %s אינו תואם את המסנן %s, מדלג.</string>
     <string name="fail_detect_cc">נכשלה זיהוי קידומת מדינה.</string>
-    <string name="identified_as_spam">זוהה כמספר ספאם, קטגוריה: %s.</string>
-    <string name="identified_as_valid">זוהה כמספר חוקי, קטגוריה: %s.</string>
+    <string name="identified_as_spam">זוהה כמספר ספאם, קטגוריה: %s, הערה: %s.</string>
+    <string name="identified_as_valid">זוהה כמספר תקין, קטגוריה: %s, הערה: %s.</string>
     <string name="unidentified_number">מספר לא מזוהה.</string>
     <string name="auto_detect_cc_permission">ההרשאה READ_PHONE_STATE נדרשת לזיהוי קידומת מדינה.</string>
     <string name="number_tags">

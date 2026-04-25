@@ -70,9 +70,9 @@
         Der im Fenster der Anruferkennung angezeigte Inhalt im HTML-Format. <br>
         <br>
         <title>Unterstützte Tags</title>: <br>
-        - <sub>{reason}</sub> <br>
+        - <minor>{reason}</minor> <br>
         &emsp; Warum der Anruf zugelassen wurde, derselbe Grund wie im Anrufverlauf. <br>
-        - <sub>{geolocation}</sub> <br>
+        - <minor>{geolocation}</minor> <br>
         &emsp; Der geografische Standort der Telefonnummer. <br>
         <br>
         <title>Unterstützte HTML-Tags</title>: <br>
@@ -90,6 +90,28 @@
         Bei der Funktion <b>SMS Alarm</b> treffen Nachrichten manchmal gleichzeitig mit einem Anruf
          oder wenige Sekunden danach ein. Eine Verzögerung der Anrufprüfung um 2~3 Sekunden kann solche Probleme vermeiden.
         </sample>
+        ]]>
+    </string>
+    <string name="comment_optional">Kommentar (optional)</string>
+    <string name="comment_identifier">Kommentar-Identifier</string>
+    <string name="hint_comment_identifier">
+        Z.B.: \"comment\":\"(.+?)\"
+    </string>
+    <string name="help_comment_identifier">
+        <![CDATA[
+        Extrahieren Sie den <title>Kommentar</title> aus dem Abfrageergebnis, um ihn in der Benachrichtigung und dem Verlaufsprotokoll anzuzeigen. (optional)<br>
+        <br>
+        Zum Beispiel für dieses Abfrageergebnis: <br>
+        <sample>
+        { <br>
+          &ensp; \"type\": \"MARKETING\", <br>
+          &ensp; \"comment\": \"Better call Saul\", <br>
+          &ensp;  … <br>
+        } <br>
+        </sample>
+        <br>
+        Extrahieren Sie ihn mit: <br>
+        &ensp; <sample>\"comment\": \"(.+?)\"</sample> <br>
         ]]>
     </string>
 </resources>

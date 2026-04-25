@@ -37,23 +37,18 @@
     </string>
     <string name="help_category_identifier">
         <![CDATA[
-        Extreu la <title>categoria</title> i els <title>comentaris</title>
-         del resultat de la consulta i els mostra a la notificació i al registre d\'historial. (opcional)<br>
+        Extreu la <title>categoria</title> del resultat de la consulta per mostrar-la a la notificació i al registre d\'historial. (opcional)<br>
         <br>
         Per exemple, per a aquest resultat de consulta: <br>
         <sample>
         { <br>
           &ensp; \"type\": \"MARKETING\", <br>
-          &ensp; \"comments\": \"Better call Saul\", <br>
           &ensp;  … <br>
         } <br>
         </sample>
         <br>
-        - Extreu només la <title>categoria</title>: <br>
+        Extreu-la amb: <br>
         &ensp; <sample>\"type\": \"(.+?)\"</sample> <br>
-        <br>
-        - Extreu tant la <title>categoria</title> com els <title>comentaris</title>: <br>
-        &ensp; <sample>(?:\"type\":\"(.+?)\"|\"comments\":\"(.+?)\")</sample><br>
         ]]>
     </string>
     <string name="action_parse_query_result"><translate>Analitzar el resultat</translate></string>
@@ -64,7 +59,7 @@
         Es pot utilitzar una expressió regular addicional per extreure la categoria de correu brossa (opcional).
         ]]>
     </string>
-    <string name="action_parse_incoming_number"><translate>Analitzar número entrant</translate></string>
+    <string name="action_parse_incoming_number"><translate>Analitzar número</translate></string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         El número de la trucada entrant s\'analitzarà en diferents etiquetes:<br>
@@ -74,7 +69,7 @@
         Aquestes etiquetes es poden utilitzar en les sol·licituds HTTP posteriors.<br>
         ]]>
     </string>
-    <string name="action_parse_incoming_sms"><translate>Analitzar SMS entrant</translate></string>
+    <string name="action_parse_incoming_sms"><translate>Analitzar SMS</translate></string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
         El contingut de l\'SMS entrant s\'analitzarà a l\'etiqueta <b>{sms}</b>,

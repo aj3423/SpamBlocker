@@ -37,23 +37,18 @@
     </string>
     <string name="help_category_identifier">
         <![CDATA[
-        Extract the <title>category</title> and <title>comments</title>
-         from the query result and display them in the notification and history log. (optional)<br>
+        Extract the <title>category</title> from the query result for displaying in the notification and history log. (optional)<br>
         <br>
         For example, for this query result: <br>
         <sample>
         { <br>
           &ensp; \"type\": \"MARKETING\", <br>
-          &ensp; \"comments\": \"Better call Saul\", <br>
           &ensp;  … <br>
         } <br>
         </sample>
         <br>
-        - Extract the <title>category</title> only: <br>
+        Extract it with: <br>
         &ensp; <sample>\"type\": \"(.+?)\"</sample> <br>
-        <br>
-        - Extract both the <title>category</title> and the <title>comments</title>: <br>
-        &ensp; <sample>(?:"type":"(.+?)"|"comments":"(.+?)")</sample><br>
         ]]>
     </string>
     <string name="action_parse_query_result">Parse Result</string>
@@ -64,7 +59,7 @@
         An extra regex can be used to extract the spam category. (optional)
         ]]>
     </string>
-    <string name="action_parse_incoming_number">Parse Incoming Number</string>
+    <string name="action_parse_incoming_number">Parse Number</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         The incoming call number will be parsed into different tags:<br>
@@ -74,7 +69,7 @@
         These tags can be used in subsequent HTTP requests.<br>
         ]]>
     </string>
-    <string name="action_parse_incoming_sms">Parse Incoming SMS</string>
+    <string name="action_parse_incoming_sms">Parse SMS</string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
         The incoming SMS content will be parsed into tag <b>{sms}</b>,

@@ -70,9 +70,9 @@
         محتوای نمایش‌داده‌شده در پنجره شناسه تماس‌گیرنده، در قالب HTML. <br>
         <br>
         <title>برچسب‌های پشتیبانی‌شده</title>: <br>
-        - <sub>{reason}</sub> <br>
+        - <minor>{reason}</minor> <br>
         &emsp; دلیل مجاز شدن تماس، همان دلیلی که در سابقه تماس نمایش داده می‌شود. <br>
-        - <sub>{geolocation}</sub> <br>
+        - <minor>{geolocation}</minor> <br>
         &emsp; موقعیت جغرافیایی شماره تلفن. <br>
         <br>
         <title>برچسب‌های HTML پشتیبانی‌شده</title>: <br>
@@ -90,6 +90,28 @@
         برای قابلیت <b>هشدار پیامکی</b>، گاهی پیام‌ها هم‌زمان با تماس
          یا چند ثانیه پس از آن می‌رسند؛ افزودن 2~3 ثانیه تأخیر در غربال تماس می‌تواند از این مشکلات جلوگیری کند.
         </sample>
+        ]]>
+    </string>
+    <string name="comment_optional">نظر (اختیاری)</string>
+    <string name="comment_identifier">شناسه نظر</string>
+    <string name="hint_comment_identifier">
+        مثال: \"comment\":\"(.+?)\"
+    </string>
+    <string name="help_comment_identifier">
+        <![CDATA[
+        <title>نظر</title> را از نتیجه بررسی استخراج کرده و در اعلان و تاریخچه نمایش دهید. (اختیاری)<br>
+        <br>
+        برای مثال، برای این نتیجه بررسی: <br>
+        <sample>
+        { <br>
+          &ensp; \"type\": \"MARKETING\", <br>
+          &ensp; \"comment\": \"Better call Saul\", <br>
+          &ensp;  … <br>
+        } <br>
+        </sample>
+        <br>
+        آن را با این الگو استخراج کنید: <br>
+        &ensp; <sample>\"comment\": \"(.+?)\"</sample> <br>
         ]]>
     </string>
 </resources>

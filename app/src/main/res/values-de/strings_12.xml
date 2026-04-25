@@ -35,23 +35,18 @@
     </string>
     <string name="help_category_identifier">
         <![CDATA[
-        Extrahieren Sie die <title>Kategorie</title> und <title>Kommentare</title>
-         aus dem Abfrageergebnis und zeigen Sie diese in der Benachrichtigung und dem Verlaufsprotokoll an. (optional)<br>
+        Extrahieren Sie die <title>Kategorie</title> aus dem Abfrageergebnis, um sie in der Benachrichtigung und dem Verlaufsprotokoll anzuzeigen. (optional)<br>
         <br>
         Zum Beispiel für dieses Abfrageergebnis: <br>
         <sample>
         { <br>
           &ensp; \"type\": \"MARKETING\", <br>
-          &ensp; \"comments\": \"Better call Saul\", <br>
           &ensp;  … <br>
         } <br>
         </sample>
         <br>
-        - Nur die <title>Kategorie</title> extrahieren: <br>
+        Extrahieren Sie sie mit: <br>
         &ensp; <sample>\"type\": \"(.+?)\"</sample> <br>
-        <br>
-        - Sowohl die <title>Kategorie</title> als auch die <title>Kommentare</title> extrahieren: <br>
-        &ensp; <sample>(?:\"type\":\"(.+?)\"|\"comments\":\"(.+?)\")</sample><br>
         ]]>
     </string>
     <string name="action_parse_query_result">Ergebnis parsen</string>
@@ -62,7 +57,7 @@
         Ein zusätzliches Regex kann verwendet werden, um die Spam-Kategorie zu extrahieren (optional).
         ]]>
     </string>
-    <string name="action_parse_incoming_number">Eingehende Nummer parsen</string>
+    <string name="action_parse_incoming_number">Nummer parsen</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         Die Nummer des eingehenden Anrufs wird in verschiedene Tags geparst:<br>
@@ -98,7 +93,7 @@
     <string name="android_ver_lower_than_11">Android-Version ist niedriger als 11, überspringen.</string>
     <string name="query">Abfrage</string>
     <string name="report_api">Melde-API</string>
-    <string name="action_parse_incoming_sms">Eingehende SMS parsen</string>
+    <string name="action_parse_incoming_sms">SMS parsen</string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
         Der Inhalt der eingehenden SMS wird in das Tag <b>{sms}</b> geparst,

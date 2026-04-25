@@ -79,63 +79,6 @@ const val CardPaddingVertical = 8 // the top/bottom padding
 const val ItemHeight = CardHeight - 2 * CardPaddingVertical // the height of Avatar and Time
 
 
-@OptIn(ExperimentalLayoutApi::class)
-@Composable
-fun ReportSpamDialog(
-    trigger: MutableState<Boolean>,
-    rawNumber: String,
-) {
-    val ctx = LocalContext.current
-    val C = G.palette
-    val scope = CoroutineScope(IO)
-
-    PopupDialog(
-        trigger = trigger,
-    ) {
-        val nameMap = spamCategoryNamesMap(ctx)
-
-        val keyTags = nameMap.keys.toList()
-
-        val reportResult = remember { mutableStateOf(buildAnnotatedString {  }) }
-
-        // Category buttons
-        FlowRowSpaced (
-            space = 20,
-            vSpace = 30,
-        ) {
-            keyTags.forEach { keyTag ->
-                StrokeButton(
-                    label = nameMap[keyTag]!!,
-                    color = if(keyTag == tagValid) Color.Cyan else  Color(keyTag.hashCode().toLong() or 0xffc08080),
-                ) {
-                    reportResult.value = buildAnnotatedString {  } // clear prev result
-
-                    val apis = listReportableAPIs(ctx = ctx, rawNumber = rawNumber, domainFilter = null, isManualReport = true, blockReason = null)
-                    apis.forEach { api ->
-                        scope.launch {
-                            withContext(IO) {
-                                val aCtx = ActionContext(
-                                    scope = scope,
-                                    logger = JetpackTextLogger(reportResult),
-                                    rawNumber = rawNumber,
-                                    tagCategory = keyTag,
-                                )
-
-                                val success = api.actions.executeAll(ctx, aCtx)
-                                logi("report number $rawNumber to ${api.summary()}, success: $success")
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        if (reportResult.value.text.isNotEmpty()) {
-            Spacer(modifier = M.height(10.dp))
-            Text(text = reportResult.value, color = C.textGrey)
-        }
-    }
-}
-
 @Composable
 fun HistoryCard(
     forType: Int,

@@ -46,6 +46,7 @@ import spam.blocker.service.checker.Checker.RegexRuleChecker
 import spam.blocker.ui.darken
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.api.tagCategory
+import spam.blocker.ui.setting.api.tagComment
 import spam.blocker.ui.setting.api.tagValid
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.ComboBox
@@ -82,6 +83,7 @@ import spam.blocker.util.Xml
 import spam.blocker.util.formatAnnotated
 import spam.blocker.util.httpRequest
 import spam.blocker.util.logi
+import spam.blocker.util.regexExtract
 import spam.blocker.util.regexMatches
 import spam.blocker.util.regexReplace
 import spam.blocker.util.resolveBase64Tag
@@ -236,7 +238,8 @@ open class HttpRequest(
                         fullNumber = aCtx.fullNumber,
                         rawNumber = aCtx.rawNumber,
                     )
-                    .replace(tagCategory, aCtx.realCategory ?: "")
+                    .replace(tagCategory, aCtx.realCategoryValue ?: "")
+                    .replace(tagComment, aCtx.tagCommentValue ?: "")
                     .resolveSHA1Tag()
                     .resolveCustomTag(aCtx.customTags)
                 aCtx.logger?.debug(ctx.getString(R.string.resolved_url).formatAnnotated(resolvedUrl.A(C.textGrey.darken())))
@@ -259,7 +262,8 @@ open class HttpRequest(
                     )
                     .resolveSmsTag(aCtx.smsContent)
                     .resolveEscapeTag()
-                    .replace(tagCategory, aCtx.realCategory ?: "")
+                    .replace(tagCategory, aCtx.realCategoryValue ?: "")
+                    .replace(tagComment, aCtx.tagCommentValue ?: "")
                     .resolveCustomTag(aCtx.customTags)
                 if (method == HTTP_POST) {
                     aCtx.logger?.debug("${ctx.getString(R.string.http_post_body)}: %s".formatAnnotated(resolvedBody.A(C.textGrey.darken())))
@@ -2073,6 +2077,7 @@ data class ApiQueryResult(
     // These values are only useful when determined == true
     val isSpam: Boolean = false,
     val category: String? = null,
+    val comment: String? = null,
     val serverEcho: String? = null,
 )
 
@@ -2087,6 +2092,9 @@ class ParseQueryResult(
 
     var categorySig: String = "",
     var categoryFlags: Int = Def.DefaultRegexFlags,
+
+    var commentSig: String = "",
+    var commentFlags: Int = Def.DefaultRegexFlags,
 
     var categoryMapping: String = "",
 ) : IPermissiveAction {
@@ -2118,10 +2126,11 @@ class ParseQueryResult(
             positiveSig.toRegex(positiveOpts).containsMatchIn(html)
 
         var category: String? = null
+        var comment: String? = null
 
         val determined = isNegative == true || isPositive == true
 
-        // 3. category
+        // 3. extract category
         if (determined) {
             if (categorySig.trim().isNotEmpty()) {
                 val mapping = if (categoryMapping.isNotEmpty()) {
@@ -2130,8 +2139,8 @@ class ParseQueryResult(
                     mapOf()
                 }
 
-                val categoryOpts = Util.flagsToRegexOptions(categoryFlags)
-                category = categorySig.trim().toRegex(categoryOpts).findAll(html)
+                val opts = Util.flagsToRegexOptions(categoryFlags)
+                category = categorySig.trim().toRegex(opts).findAll(html)
                     .map {
                         it.groups
                             .drop(1)
@@ -2148,16 +2157,23 @@ class ParseQueryResult(
             }
         }
 
+        // 4. extract comments
+        if (determined) {
+            if (commentSig.trim().isNotEmpty()) {
+                comment = commentSig.regexExtract(html, commentFlags)
+            }
+        }
+
         // show log
         if (isNegative == true) {
             aCtx.logger?.error(
                 ctx.getString(R.string.identified_as_spam)
-                    .format(category ?: "")
+                    .format(category ?: "", comment ?: "")
             )
         } else if (isPositive == true) {
             aCtx.logger?.success(
                 ctx.getString(R.string.identified_as_valid)
-                    .format(category ?: "")
+                    .format(category ?: "", comment ?: "")
             )
         } else {
             aCtx.logger?.debug(ctx.getString(R.string.unidentified_number))
@@ -2169,6 +2185,7 @@ class ParseQueryResult(
                 determined = determined,
                 isSpam = isNegative == true,
                 category = category,
+                comment = comment,
                 serverEcho = html,
             )
             aCtx.lastOutput = result
@@ -2293,6 +2310,25 @@ class ParseQueryResult(
                 categoryMapping = newVal
             }
         )
+
+        val commentFlagsCopy = remember { mutableIntStateOf(commentFlags) }
+        RegexInputBox(
+            regexStr = commentSig,
+            label = { Text(Str(R.string.comment_identifier)) },
+            leadingIcon = { GreyIcon18(R.drawable.ic_note) },
+            helpTooltipId = R.string.help_comment_identifier,
+            placeholder = { Placeholder(Str(R.string.hint_comment_identifier)) },
+            regexFlags = commentFlagsCopy,
+            onRegexStrChange = { newVal, hasError ->
+                if (!hasError) {
+                    commentSig = newVal
+                }
+            },
+            onFlagsChange = {
+                commentFlagsCopy.intValue = it
+                commentFlags = it
+            }
+        )
     }
 }
 
@@ -2314,7 +2350,7 @@ class FilterSpamResult() : IPermissiveAction {
             } else
                 listOf()
         } else { // This is an api report workflow
-            aCtx.lastOutput = if (aCtx.tagCategory == tagValid) {
+            aCtx.lastOutput = if (aCtx.tagCategoryValue == tagValid) {
                 listOf()
             } else {
                 listOf(
@@ -2382,12 +2418,12 @@ class CategoryConfig(
         val C = G.palette
 
         // 1. check it in the map config
-        val realCategoryStr = map[aCtx.tagCategory]
+        val realCategoryStr = map[aCtx.tagCategoryValue]
 
         if (realCategoryStr == null) {
             aCtx.logger?.warn(
                 ctx.getString(R.string.missing_category).formatAnnotated(
-                    aCtx.tagCategory!!.A(C.infoBlue),
+                    aCtx.tagCategoryValue!!.A(C.infoBlue),
                     ctx.getString(R.string.action_category_config).A(C.textGrey.darken())
                 )
             )
@@ -2395,7 +2431,7 @@ class CategoryConfig(
         }
 
         // 2. save it in ActionContext, it will be used in the next http Action
-        aCtx.realCategory = realCategoryStr
+        aCtx.realCategoryValue = realCategoryStr
         return true
     }
 
@@ -2486,7 +2522,7 @@ class ScheduledAutoReportNumber(
                     scope = scope,
                     logger = AdbLogger(),
                     rawNumber = rawNumber,
-                    tagCategory = asTagCategory,
+                    tagCategoryValue = asTagCategory,
                 )
                 val success = api.actions.executeAll(ctx, aCtx)
                 logi("report number $rawNumber to ${api.summary()}, success: $success")

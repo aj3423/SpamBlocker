@@ -70,9 +70,9 @@
         El contenido mostrado en la ventana del identificador de llamadas, en formato HTML. <br>
         <br>
         <title>Etiquetas compatibles</title>: <br>
-        - <sub>{reason}</sub> <br>
+        - <minor>{reason}</minor> <br>
         &emsp; Por qué se permitió la llamada, la misma razón mostrada en el historial de llamadas. <br>
-        - <sub>{geolocation}</sub> <br>
+        - <minor>{geolocation}</minor> <br>
         &emsp; La ubicación geográfica del número de teléfono. <br>
         <br>
         <title>Etiquetas HTML compatibles</title>: <br>
@@ -90,6 +90,28 @@
         Para la función <b>Alerta SMS</b>, los mensajes a veces llegan al mismo tiempo que la llamada
          o unos segundos después, y añadir un retraso de 2~3 segundos al filtrado de llamadas puede evitar estos problemas.
         </sample>
+        ]]>
+    </string>
+    <string name="comment_optional">Comentario (opcional)</string>
+    <string name="comment_identifier">Identificador de comentario</string>
+    <string name="hint_comment_identifier">
+        Ej.: \"comment\":\"(.+?)\"
+    </string>
+    <string name="help_comment_identifier">
+        <![CDATA[
+        Extrae el <title>comentario</title> del resultado de la consulta para mostrarlo en la notificación y el registro de historial. (opcional)<br>
+        <br>
+        Por ejemplo, para este resultado de consulta: <br>
+        <sample>
+        { <br>
+          &ensp; \"type\": \"MARKETING\", <br>
+          &ensp; \"comment\": \"Better call Saul\", <br>
+          &ensp;  … <br>
+        } <br>
+        </sample>
+        <br>
+        Extráelo con: <br>
+        &ensp; <sample>\"comment\": \"(.+?)\"</sample> <br>
         ]]>
     </string>
 </resources>

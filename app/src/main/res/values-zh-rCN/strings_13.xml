@@ -20,8 +20,8 @@
     <string name="find_rule_with_desc">找到%s条描述为%s的规则。</string>
     <string name="modify_n_rules">正在修改%s条规则。</string>
     <string name="fail_detect_cc">国家代码检测失败。</string>
-    <string name="identified_as_spam">识别为垃圾号码，类别：%s。</string>
-    <string name="identified_as_valid">识别为有效号码，类别：%s。</string>
+    <string name="identified_as_spam">识别为骚扰电话号码，类别：%s，备注：%s。</string>
+    <string name="identified_as_valid">识别为有效电话号码，类别：%s，备注：%s。</string>
     <string name="unidentified_number">无法识别的号码。</string>
     <string name="help_http_url">
         <![CDATA[

@@ -21,8 +21,8 @@
     <string name="modify_n_rules">Modifica di %s regole.</string>
     <string name="number_not_match_filter">Il numero %s non corrisponde al filtro %s, salta.</string>
     <string name="fail_detect_cc">Impossibile rilevare il codice paese.</string>
-    <string name="identified_as_spam">Identificato come numero spam, categoria: %s.</string>
-    <string name="identified_as_valid">Identificato come numero valido, categoria: %s.</string>
+    <string name="identified_as_spam">Identificato come numero di telefono spam, categoria: %s, commento: %s.</string>
+    <string name="identified_as_valid">Identificato come numero di telefono valido, categoria: %s, commento: %s.</string>
     <string name="unidentified_number">Numero non identificato.</string>
     <string name="auto_detect_cc_permission">L\'autorizzazione READ_PHONE_STATE è richiesta per rilevare il codice paese.</string>
     <string name="number_tags">

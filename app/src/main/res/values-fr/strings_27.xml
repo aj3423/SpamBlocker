@@ -70,9 +70,9 @@
         Le contenu affiché dans la fenêtre d\'identification de l\'appelant, au format HTML. <br>
         <br>
         <title>Balises prises en charge</title>: <br>
-        - <sub>{reason}</sub> <br>
+        - <minor>{reason}</minor> <br>
         &emsp; Pourquoi l\'appel a été autorisé, la même raison que celle affichée dans l\'historique des appels. <br>
-        - <sub>{geolocation}</sub> <br>
+        - <minor>{geolocation}</minor> <br>
         &emsp; La géolocalisation du numéro de téléphone. <br>
         <br>
         <title>Balises HTML prises en charge</title>: <br>
@@ -90,6 +90,28 @@
         Pour la fonctionnalité <b>Alerte SMS</b>, les messages arrivent parfois en même temps qu\'un appel
          ou quelques secondes après, et ajouter un délai de filtrage des appels de 2~3 secondes peut éviter ce type de problème.
         </sample>
+        ]]>
+    </string>
+    <string name="comment_optional">Commentaire (facultatif)</string>
+    <string name="comment_identifier">Identificateur de commentaire</string>
+    <string name="hint_comment_identifier">
+        Ex. : \"comment\":\"(.+?)\"
+    </string>
+    <string name="help_comment_identifier">
+        <![CDATA[
+        Extrayez le <title>commentaire</title> du résultat de la requête pour l\'afficher dans la notification et le journal d\'historique. (facultatif)<br>
+        <br>
+        Par exemple, pour ce résultat de requête : <br>
+        <sample>
+        { <br>
+          &ensp; \"type\": \"MARKETING\", <br>
+          &ensp; \"comment\": \"Better call Saul\", <br>
+          &ensp;  … <br>
+        } <br>
+        </sample>
+        <br>
+        Extrayez-le avec : <br>
+        &ensp; <sample>\"comment\": \"(.+?)\"</sample> <br>
         ]]>
     </string>
 </resources>

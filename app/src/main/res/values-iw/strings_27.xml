@@ -70,9 +70,9 @@
         התוכן שמוצג בחלון זיהוי המתקשר, בפורמט HTML. <br>
         <br>
         <title>תגיות נתמכות</title>: <br>
-        - <sub>{reason}</sub> <br>
+        - <minor>{reason}</minor> <br>
         &emsp; למה השיחה הותרה, אותה סיבה שמוצגת בהיסטוריית השיחות. <br>
-        - <sub>{geolocation}</sub> <br>
+        - <minor>{geolocation}</minor> <br>
         &emsp; המיקום הגיאוגרפי של מספר הטלפון. <br>
         <br>
         <title>תגיות HTML נתמכות</title>: <br>
@@ -90,6 +90,28 @@
         עבור התכונה <b>התראת סמס</b>, הודעות לפעמים מגיעות בו-זמנית עם השיחה
          או כמה שניות אחריה, והוספת עיכוב של 2~3 שניות לסינון שיחות יכולה למנוע בעיות כאלה.
         </sample>
+        ]]>
+    </string>
+    <string name="comment_optional">הערה (אופציונלית)</string>
+    <string name="comment_identifier">מזהה הערה</string>
+    <string name="hint_comment_identifier">
+        לדוגמה: \"comment\":\"(.+?)\"
+    </string>
+    <string name="help_comment_identifier">
+        <![CDATA[
+        חלץ את ה<title>הערה</title> מתוצאת השאילתה כדי להציג אותה בהתראה ובלוג ההיסטוריה. (אופציונלי)<br>
+        <br>
+        לדוגמה, עבור תוצאת שאילתה זו: <br>
+        <sample>
+        { <br>
+          &ensp; \"type\": \"MARKETING\", <br>
+          &ensp; \"comment\": \"Better call Saul\", <br>
+          &ensp;  … <br>
+        } <br>
+        </sample>
+        <br>
+        חלץ אותה באמצעות: <br>
+        &ensp; <sample>\"comment\": \"(.+?)\"</sample> <br>
         ]]>
     </string>
 </resources>

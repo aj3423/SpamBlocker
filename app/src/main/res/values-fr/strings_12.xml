@@ -35,23 +35,18 @@
     </string>
     <string name="help_category_identifier">
         <![CDATA[
-        Extrayez la <title>catégorie</title> et les <title>commentaires</title>
-         du résultat de la requête et affichez-les dans la notification et le journal d\'historique. (facultatif)<br>
+        Extrayez la <title>catégorie</title> du résultat de la requête pour l\'afficher dans la notification et le journal d\'historique. (facultatif)<br>
         <br>
         Par exemple, pour ce résultat de requête : <br>
         <sample>
         { <br>
           &ensp; \"type\": \"MARKETING\", <br>
-          &ensp; \"comments\": \"Better call Saul\", <br>
           &ensp;  … <br>
         } <br>
         </sample>
         <br>
-        - Extrayez uniquement la <title>catégorie</title> : <br>
+        Extrayez-la avec : <br>
         &ensp; <sample>\"type\": \"(.+?)\"</sample> <br>
-        <br>
-        - Extrayez à la fois la <title>catégorie</title> et les <title>commentaires</title> : <br>
-        &ensp; <sample>(?:\"type\":\"(.+?)\"|\"comments\":\"(.+?)\")</sample><br>
         ]]>
     </string>
     <string name="action_parse_query_result">Analyser le résultat</string>
@@ -62,7 +57,7 @@
         Une expression régulière supplémentaire peut être utilisée pour extraire la catégorie d’appel indésirable. (facultatif)
         ]]>
     </string>
-    <string name="action_parse_incoming_number">Analyser le numéro entrant</string>
+    <string name="action_parse_incoming_number">Analyser le numéro</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         Le numéro de l’appel entrant sera analysé en différentes balises :<br>
@@ -98,7 +93,7 @@
     <string name="android_ver_lower_than_11">Version Android inférieure à 11, ignorer.</string>
     <string name="query">Requête</string>
     <string name="report_api">API de rapport</string>
-    <string name="action_parse_incoming_sms">Analyser le SMS entrant</string>
+    <string name="action_parse_incoming_sms">Analyser le SMS</string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
         Le contenu du SMS entrant sera analysé dans la balise <b>{sms}</b>,
