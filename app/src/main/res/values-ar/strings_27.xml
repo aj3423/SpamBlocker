@@ -116,4 +116,15 @@
         &ensp; <sample>\"comment\": \"(.+?)\"</sample> <br>
         ]]>
     </string>
+    <string name="carrier">مشغّل</string>
+    <string name="carrier_rule">قاعدة المشغّل</string>
+    <string name="help_regex_mode_carrier">
+        <![CDATA[
+        سيطابق regex اسم مشغّل الرقم. <br>
+        <br>
+        <warn>ملاحظة</warn> <br>
+        &ensp; تعتمد معلومات المشغّل على التسجيل الأولي وقد تكون غير دقيقة إذا نُقل
+        الرقم إلى مشغّل آخر.
+        ]]>
+    </string>
 </resources>

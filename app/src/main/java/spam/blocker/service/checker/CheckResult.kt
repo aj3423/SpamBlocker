@@ -31,6 +31,8 @@ import spam.blocker.def.Def
 import spam.blocker.def.Def.DEFAULT_HANG_UP_DELAY
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_ANSWERED
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_API_QUERY
+import spam.blocker.def.Def.RESULT_ALLOWED_BY_CARRIER_REGEX
+import spam.blocker.def.Def.RESULT_BLOCKED_BY_CARRIER_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CNAP_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_GROUP_REGEX
@@ -536,6 +538,9 @@ class ByRegexRule(
             RESULT_ALLOWED_BY_GEO_LOCATION_REGEX, RESULT_BLOCKED_BY_GEO_LOCATION_REGEX -> {
                 ctx.getString(R.string.geolocation) + ": $summary"
             }
+            RESULT_ALLOWED_BY_CARRIER_REGEX, RESULT_BLOCKED_BY_CARRIER_REGEX -> {
+                ctx.getString(R.string.carrier) + ": $summary"
+            }
 
             RESULT_ALLOWED_BY_CONTACT_PREFIX_REGEX, RESULT_BLOCKED_BY_CONTACT_PREFIX_REGEX -> {
                 // No need to add $summary here, usually there'll be only 1 contact prefix regex enabled
@@ -630,6 +635,7 @@ fun parseCheckResultFromDb(ctx: Context, result: Int, reason: String): ICheckRes
         RESULT_ALLOWED_BY_CONTACT_REGEX, RESULT_BLOCKED_BY_CONTACT_REGEX,
         RESULT_ALLOWED_BY_CNAP_REGEX, RESULT_BLOCKED_BY_CNAP_REGEX,
         RESULT_ALLOWED_BY_GEO_LOCATION_REGEX, RESULT_BLOCKED_BY_GEO_LOCATION_REGEX,
+        RESULT_ALLOWED_BY_CARRIER_REGEX, RESULT_BLOCKED_BY_CARRIER_REGEX,
         RESULT_ALLOWED_BY_CONTACT_PREFIX_REGEX, RESULT_BLOCKED_BY_CONTACT_PREFIX_REGEX -> {
             try {
                 // try new format, `reason` is a json string like: {"ruleId": 123, "details": "..."}

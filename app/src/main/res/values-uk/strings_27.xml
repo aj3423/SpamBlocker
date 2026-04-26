@@ -116,4 +116,15 @@
         &ensp; <sample>\"comment\": \"(.+?)\"</sample> <br>
         ]]>
     </string>
+    <string name="carrier">Оператор</string>
+    <string name="carrier_rule">Правило оператора</string>
+    <string name="help_regex_mode_carrier">
+        <![CDATA[
+        Регулярний вираз буде порівнювати назву оператора номера телефону. <br>
+        <br>
+        <warn>Примітка</warn> <br>
+        &ensp; Інформація про оператора базується на початковій реєстрації й може бути
+        неточною, якщо номер було перенесено до іншого оператора.
+        ]]>
+    </string>
 </resources>

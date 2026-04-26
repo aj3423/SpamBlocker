@@ -116,4 +116,15 @@
         &ensp; <sample>\"comment\": \"(.+?)\"</sample> <br>
         ]]>
     </string>
+    <string name="carrier">Operadora</string>
+    <string name="carrier_rule">Regra da operadora</string>
+    <string name="help_regex_mode_carrier">
+        <![CDATA[
+        O regex coincidirá co nome da operadora do número. <br>
+        <br>
+        <warn>Nota</warn> <br>
+        &ensp; A información da operadora baséase no rexistro inicial e pode ser
+        imprecisa se o número foi transferido a outra operadora.
+        ]]>
+    </string>
 </resources>

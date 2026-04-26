@@ -116,4 +116,15 @@
         &ensp; <sample>\"comment\": \"(.+?)\"</sample> <br>
         ]]>
     </string>
+    <string name="carrier">מפעיל</string>
+    <string name="carrier_rule">כלל מפעיל</string>
+    <string name="help_regex_mode_carrier">
+        <![CDATA[
+        הביטוי הרגולרי יתאים לשם המפעיל של מספר הטלפון. <br>
+        <br>
+        <warn>הערה</warn> <br>
+        &ensp; פרטי המפעיל מבוססים על הרישום הראשוני ועשויים להיות לא מדויקים אם
+        מספר הטלפון נויד למפעיל אחר.
+        ]]>
+    </string>
 </resources>

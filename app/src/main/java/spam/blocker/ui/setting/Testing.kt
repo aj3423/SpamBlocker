@@ -158,6 +158,9 @@ fun TestDialog(
                 val geoLocation = remember(vm.phone.value) {
                     Util.numberGeoLocation(ctx, vm.phone.value)
                 }
+                val carrier = remember(vm.phone.value) {
+                    Util.numberCarrier(ctx, vm.phone.value)
+                }
 
                 // Phone number
                 StrInputBox(
@@ -168,12 +171,20 @@ fun TestDialog(
                         vm.phone.value = it
                         clearPreviousResult()
                     },
-                    supportingTextStr = geoLocation?.let {
+                    supportingTextStr = listOf(
                         // Geolocation
-                        Str(R.string.label_value_pair).format(
-                            Str(R.string.geolocation), geoLocation
-                        )
-                    },
+                        geoLocation?.let {
+                            Str(R.string.label_value_pair).format(
+                                Str(R.string.geolocation), geoLocation
+                            )
+                        },
+                        // Carrier
+                        carrier?.let {
+                            Str(R.string.label_value_pair).format(
+                                Str(R.string.carrier), carrier
+                            )
+                        }
+                    ).filterNotNull().joinToString("\n"),
                     supportingTextColor = C.textGrey,
                 )
 

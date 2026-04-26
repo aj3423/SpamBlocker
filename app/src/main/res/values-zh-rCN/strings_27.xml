@@ -116,4 +116,15 @@
         &ensp; <sample>\"comment\": \"(.+?)\"</sample> <br>
         ]]>
     </string>
+    <string name="carrier">运营商</string>
+    <string name="carrier_rule">运营商规则</string>
+    <string name="help_regex_mode_carrier">
+        <![CDATA[
+        正则表达式将匹配号码的运营商名称。 <br>
+        <br>
+        <warn>注意</warn> <br>
+        &ensp; 运营商信息基于初始登记，如果号码已携号转网到其他运营商，
+        可能不准确。
+        ]]>
+    </string>
 </resources>

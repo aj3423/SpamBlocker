@@ -116,4 +116,15 @@
         &ensp; <sample>\"comment\": \"(.+?)\"</sample> <br>
         ]]>
     </string>
+    <string name="carrier">通信事業者</string>
+    <string name="carrier_rule">通信事業者ルール</string>
+    <string name="help_regex_mode_carrier">
+        <![CDATA[
+        正規表現は電話番号の通信事業者名に一致します。 <br>
+        <br>
+        <warn>注</warn> <br>
+        &ensp; 通信事業者情報は最初の登録時点に基づくため、番号が他社へ移転されている
+        場合は不正確なことがあります。
+        ]]>
+    </string>
 </resources>

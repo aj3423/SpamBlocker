@@ -116,4 +116,15 @@
         &ensp; <sample>\"comment\": \"(.+?)\"</sample> <br>
         ]]>
     </string>
+    <string name="carrier">Netzbetreiber</string>
+    <string name="carrier_rule">Regel für Netzbetreiber</string>
+    <string name="help_regex_mode_carrier">
+        <![CDATA[
+        Der reguläre Ausdruck stimmt mit dem Namen des Netzbetreibers der Telefonnummer überein. <br>
+        <br>
+        <warn>Hinweis</warn> <br>
+        &ensp; Die Angaben zum Netzbetreiber basieren auf der ursprünglichen Registrierung
+        und können ungenau sein, wenn die Nummer zu einem anderen Anbieter portiert wurde.
+        ]]>
+    </string>
 </resources>

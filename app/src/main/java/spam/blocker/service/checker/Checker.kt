@@ -84,6 +84,8 @@ fun RegexRule.toChecker(
     val forContactPrefix = this.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_PREFIX)
     val forCNAP = this.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CNAP)
     val forGeo = this.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_GEO_LOCATION)
+    val forCarrier = this.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CARRIER)
+
     return if (forContact)
         Checker.RegexContact(ctx, this)
     else if (forContactGroup)
@@ -94,6 +96,8 @@ fun RegexRule.toChecker(
         Checker.CNAP(ctx, this)
     else if (forGeo)
         Checker.Geolocation(ctx, this)
+    else if (forCarrier)
+        Checker.Carrier(ctx, this)
     else
         Checker.Number(ctx, this)
 }
@@ -1120,7 +1124,7 @@ class Checker { // for namespace only
             val location = Util.numberGeoLocation(ctx, cCtx.rawNumber) ?: ""
 
             // check regex
-            if (rule.pattern.regexMatchesNumber(location, rule.patternFlags)) {
+            if (rule.pattern.regexMatches(location, rule.patternFlags)) {
                 val block = rule.isBlacklist
 
                 if (block)
@@ -1136,6 +1140,56 @@ class Checker { // for namespace only
 
                 return ByRegexRule(
                     type = if (block) Def.RESULT_BLOCKED_BY_GEO_LOCATION_REGEX else Def.RESULT_ALLOWED_BY_GEO_LOCATION_REGEX,
+                    rule = rule,
+                )
+            }
+
+            return null
+        }
+    }
+
+    // Check if the regex matches the carrier of the incoming number
+    class Carrier(
+        ctx: Context,
+        rule: RegexRule,
+    ) : RegexRuleChecker(ctx, rule) {
+        override fun check(cCtx: CheckContext): ICheckResult? {
+            val C = G.palette
+
+            if (!isEnabled(cCtx)) {
+                return null
+            }
+
+            val logger = cCtx.logger
+
+            logger?.debug(
+                (ctx.getString(R.string.checking_template)+ ": %s")
+                    .formatAnnotated(
+                        ctx.getString(R.string.carrier_rule).A(C.infoBlue),
+                        priority().toString().A(C.priority),
+                        rule.desc().A(if (rule.isBlacklist) C.error else C.success),
+                    )
+            )
+
+            val carrier = Util.numberCarrier(ctx, cCtx.rawNumber) ?: ""
+
+            // check regex
+            if (rule.pattern.regexMatches(carrier, rule.patternFlags)) {
+                val block = rule.isBlacklist
+
+                if (block)
+                    logger?.error(
+                        ctx.getString(R.string.blocked_by)
+                            .format(ctx.getString(R.string.carrier_rule)) + ": ${rule.desc()}"
+                    )
+                else
+                    logger?.success(
+                        ctx.getString(R.string.allowed_by)
+                            .format(ctx.getString(R.string.carrier_rule)) + ": ${rule.desc()}"
+                    )
+
+                return ByRegexRule(
+                    type = if (block) Def.RESULT_BLOCKED_BY_CARRIER_REGEX else Def.RESULT_ALLOWED_BY_CARRIER_REGEX,
                     rule = rule,
                 )
             }

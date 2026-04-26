@@ -645,4 +645,23 @@ class RuleTest {
         r = Checker.checkCall(ctx, rawNumber = "").first
         assertEquals("should allow non-Texas by default", Def.RESULT_ALLOWED_BY_DEFAULT, r.type)
     }
+
+    // Carrier rule
+    @Test
+    fun carrier_rule() {
+        mock_phone_state_permission_granted()
+
+        // block by carrier "Texas"
+        add_number_rule(
+            build_rule("SFR", "", 0, isBlacklist = true, Def.FLAG_FOR_CALL, patternFlags = Def.FLAG_REGEX_FOR_CARRIER)
+        )
+
+        // SFR
+        var r = Checker.checkCall(ctx, rawNumber = "+33612345678").first
+        assertEquals("should block SFR(carrier)", Def.RESULT_BLOCKED_BY_CARRIER_REGEX, r.type)
+
+        // non-SFR
+        r = Checker.checkCall(ctx, rawNumber = "").first
+        assertEquals("should allow non-SFR(carrier) by default", Def.RESULT_ALLOWED_BY_DEFAULT, r.type)
+    }
 }

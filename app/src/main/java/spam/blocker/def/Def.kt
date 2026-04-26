@@ -45,6 +45,8 @@ object Def {
     const val RESULT_ALLOWED_BY_GEO_LOCATION_REGEX = 109
 //    const val RESULT_ALLOWED_BY_CONTACT_PREFIX = 110 // 110 was used in some action build which causes conflict, skip this slot
     const val RESULT_ALLOWED_BY_CONTACT_PREFIX_REGEX = 111
+    const val RESULT_ALLOWED_BY_CARRIER_REGEX = 112
+
 
 
     // blocked (10~99)
@@ -61,6 +63,7 @@ object Def {
     const val RESULT_BLOCKED_BY_CNAP_REGEX = 20
     const val RESULT_BLOCKED_BY_GEO_LOCATION_REGEX = 21
     const val RESULT_BLOCKED_BY_CONTACT_PREFIX_REGEX = 22
+    const val RESULT_BLOCKED_BY_CARRIER_REGEX = 23
 
 
     fun isBlocked(result: Int): Boolean {
@@ -95,6 +98,7 @@ object Def {
     const val FLAG_REGEX_FOR_CNAP = 1 shl 14
     const val FLAG_REGEX_FOR_GEO_LOCATION = 1 shl 15
     const val FLAG_REGEX_FOR_CONTACT_PREFIX = 1 shl 16
+    const val FLAG_REGEX_FOR_CARRIER = 1 shl 17
 
 
 
@@ -111,6 +115,7 @@ object Def {
         FLAG_REGEX_IGNORE_CC to "🌐",
         FLAG_REGEX_FOR_CNAP to "☑",
         FLAG_REGEX_FOR_GEO_LOCATION to "⚲",
+        FLAG_REGEX_FOR_CARRIER to "🗼",
         FLAG_REGEX_FOR_CONTACT_PREFIX to "≈c"
     )
     const val REGEX_FLAGS_RIC = FLAG_REGEX_RAW_NUMBER or FLAG_REGEX_IGNORE_CC or FLAG_REGEX_CASE_SENSITIVE

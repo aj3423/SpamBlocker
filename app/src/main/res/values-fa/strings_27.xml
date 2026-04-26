@@ -116,4 +116,15 @@
         &ensp; <sample>\"comment\": \"(.+?)\"</sample> <br>
         ]]>
     </string>
+    <string name="carrier">اپراتور</string>
+    <string name="carrier_rule">قانون اپراتور</string>
+    <string name="help_regex_mode_carrier">
+        <![CDATA[
+        عبارت منظم با نام اپراتور شماره مطابقت می‌کند. <br>
+        <br>
+        <warn>توجه</warn> <br>
+        &ensp; اطلاعات اپراتور بر پایه ثبت اولیه است و اگر شماره به اپراتور دیگری
+        منتقل شده باشد ممکن است نادقیق باشد.
+        ]]>
+    </string>
 </resources>

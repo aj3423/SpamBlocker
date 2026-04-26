@@ -40,6 +40,7 @@ import spam.blocker.db.newRegexRule
 import spam.blocker.def.Def
 import spam.blocker.def.Def.ANDROID_12
 import spam.blocker.def.Def.DEFAULT_HANG_UP_DELAY
+import spam.blocker.def.Def.FLAG_REGEX_FOR_CARRIER
 import spam.blocker.def.Def.FLAG_REGEX_FOR_CNAP
 import spam.blocker.def.Def.FLAG_REGEX_FOR_CONTACT
 import spam.blocker.def.Def.FLAG_REGEX_FOR_CONTACT_GROUP
@@ -125,6 +126,7 @@ fun RegexLeadingDropdownIcon(
             R.string.help_regex_mode_contact_group,
             R.string.help_regex_mode_contact_prefix,
             R.string.help_regex_mode_geolocation,
+            R.string.help_regex_mode_carrier
         )
         if (forType == Def.ForNumber) {
             tooltipIds += R.string.help_regex_mode_caller_name
@@ -141,6 +143,7 @@ fun RegexLeadingDropdownIcon(
             R.string.contact_group,
             R.string.contact_prefix,
             R.string.geolocation,
+            R.string.carrier,
         )
         if (forType == Def.ForNumber) {
             labelIds += R.string.caller_name
@@ -151,6 +154,7 @@ fun RegexLeadingDropdownIcon(
             { RegexModeIcon(FLAG_REGEX_FOR_CONTACT_GROUP) },
             { RegexModeIcon(FLAG_REGEX_FOR_CONTACT_PREFIX) },
             { RegexModeIcon(FLAG_REGEX_FOR_GEO_LOCATION) },
+            { RegexModeIcon(FLAG_REGEX_FOR_CARRIER) },
         )
         if (forType == Def.ForNumber) {
             iconIds += { RegexModeIcon(FLAG_REGEX_FOR_CNAP)}
@@ -189,7 +193,12 @@ fun RegexLeadingDropdownIcon(
                             .clearRegexMode()
                             .addFlag(FLAG_REGEX_FOR_GEO_LOCATION)
                     }
-                    5 -> { // CNAP
+                    5 -> { // Carrier
+                        regexFlags.intValue = regexFlags.intValue
+                            .clearRegexMode()
+                            .addFlag(FLAG_REGEX_FOR_CARRIER)
+                    }
+                    6 -> { // CNAP
                         regexFlags.intValue = regexFlags.intValue
                             .clearRegexMode()
                             .addFlag(FLAG_REGEX_FOR_CNAP)
@@ -208,6 +217,7 @@ fun RegexLeadingDropdownIcon(
         val forContactPrefix = regexFlags.intValue.hasFlag(FLAG_REGEX_FOR_CONTACT_PREFIX)
         val forCNAP = regexFlags.intValue.hasFlag(FLAG_REGEX_FOR_CNAP)
         val forGeoLocation= regexFlags.intValue.hasFlag(FLAG_REGEX_FOR_GEO_LOCATION)
+        val forCarrier= regexFlags.intValue.hasFlag(FLAG_REGEX_FOR_CARRIER)
 
         Box {
             if (forContact) {
@@ -220,6 +230,8 @@ fun RegexLeadingDropdownIcon(
                 RegexModeIcon(FLAG_REGEX_FOR_CNAP)
             } else if (forGeoLocation) {
                 RegexModeIcon(FLAG_REGEX_FOR_GEO_LOCATION)
+            } else if (forCarrier) {
+                RegexModeIcon(FLAG_REGEX_FOR_CARRIER)
             } else {
                 ResIcon(
                     iconId = R.drawable.ic_number_sign,
@@ -260,6 +272,8 @@ fun RegexFieldLabel(
                         R.string.caller_name
                     else if (flags.hasFlag(FLAG_REGEX_FOR_GEO_LOCATION))
                         R.string.geolocation
+                    else if (flags.hasFlag(FLAG_REGEX_FOR_CARRIER))
+                        R.string.carrier
                     else
                         R.string.phone_number
                 }

@@ -115,4 +115,15 @@
         &ensp; <sample>\"comment\": \"(.+?)\"</sample> <br>
         ]]>
     </string>
+    <string name="carrier">Operatör</string>
+    <string name="carrier_rule">Operatör Kuralı</string>
+    <string name="help_regex_mode_carrier">
+        <![CDATA[
+        Regex, telefon numarasının operatör adıyla eşleşecektir. <br>
+        <br>
+        <warn>Not</warn> <br>
+        &ensp; Operatör bilgisi ilk kayda dayanır ve numara başka bir operatöre
+        taşındıysa hatalı olabilir.
+        ]]>
+    </string>
 </resources>
