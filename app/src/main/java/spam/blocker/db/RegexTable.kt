@@ -5,6 +5,7 @@ import android.app.NotificationManager.IMPORTANCE_HIGH
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
+import androidx.compose.foundation.text.appendInlineContent
 import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
@@ -38,10 +39,13 @@ import spam.blocker.util.PermissiveJson
 import spam.blocker.util.TimeSchedule
 import spam.blocker.util.Util
 import spam.blocker.util.Util.truncate
+import spam.blocker.util.enabledRegexFlagsStr
+import spam.blocker.util.enabledRegexMode
 import spam.blocker.util.hasFlag
 import spam.blocker.util.regexMatches
+import spam.blocker.util.regexModeInlineId
 import spam.blocker.util.setFlag
-import spam.blocker.util.toFlagStr
+
 
 
 // v4.15 changed `importance`(Int) to `channel`(String), use this class for history compatibility
@@ -176,10 +180,14 @@ data class RegexRule(
                 }
             }
 
-            // 2. imdlc
+            // 2. Regex modes
+            val mode = patternFlags.enabledRegexMode()
+            appendInlineContent(id = mode.regexModeInlineId())
+
+            // 3. Regex flags
             // format:
             //   imdl .*   <-   imdl particular.*
-            val imdlc = patternFlags.toFlagStr()
+            val imdlc = patternFlags.enabledRegexFlagsStr()
             withStyle(
                 style = SpanStyle(
                     fontSize = 12.sp,
@@ -189,7 +197,7 @@ data class RegexRule(
                 append(if (imdlc.isEmpty()) "" else "$imdlc ")
             }
 
-            // 3. regex
+            // 4. regex
             withStyle(style = SpanStyle(fontWeight = FontWeight.Bold, color = regexColor)) {
                 append(
                     // For old xml layout, when the TextView has maxLines=10, it will truncate the
@@ -200,13 +208,18 @@ data class RegexRule(
                 )
             }
 
-            // 4. Particular Number
+            // 5. Particular Number
             if (patternExtra != "") {
                 withStyle(style = SpanStyle(color = G.palette.textGrey/*old: LightGrey*/)) {
                     append("   <-   ")
                 }
 
-                val imdlcEx = patternExtraFlags.toFlagStr()
+                // 6. Regex mode (particular number)
+                val mode = patternExtraFlags.enabledRegexMode()
+                appendInlineContent(id = mode.regexModeInlineId())
+
+                // Regex Flags (particular number)
+                val imdlcEx = patternExtraFlags.enabledRegexFlagsStr()
                 withStyle(
                     style = SpanStyle(
                         fontSize = 12.sp,

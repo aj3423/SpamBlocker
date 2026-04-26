@@ -15,6 +15,7 @@ import spam.blocker.db.ContentRegexTable
 import spam.blocker.db.NumberRegexTable
 import spam.blocker.db.SpamTable
 import spam.blocker.def.Def
+import spam.blocker.def.Def.RESULT_ALLOWED_BY_CARRIER_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CNAP_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_GROUP_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_PREFIX_REGEX
@@ -22,6 +23,7 @@ import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTENT_RULE
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_GEO_LOCATION_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_NUMBER_REGEX
+import spam.blocker.def.Def.RESULT_BLOCKED_BY_CARRIER_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CNAP_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTACT_GROUP_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTACT_PREFIX_REGEX
@@ -77,6 +79,9 @@ fun IndicatorIcons(indicators: Indicators) {
                 }
                 RESULT_ALLOWED_BY_GEO_LOCATION_REGEX, RESULT_BLOCKED_BY_GEO_LOCATION_REGEX -> {
                     ResIcon(R.drawable.ic_location, modifier = M.size(16.dp), color = if(isBlocked(it.type)) C.error else C.success)
+                }
+                RESULT_ALLOWED_BY_CARRIER_REGEX, RESULT_BLOCKED_BY_CARRIER_REGEX -> {
+                    ResIcon(R.drawable.ic_cellular_network, modifier = M.size(16.dp), color = if(isBlocked(it.type)) C.error else C.success)
                 }
 
                 RESULT_ALLOWED_BY_CONTENT_RULE -> {
@@ -177,8 +182,10 @@ fun IndicatorsWrapper(
                         RESULT_ALLOWED_BY_CONTACT_GROUP_REGEX, RESULT_BLOCKED_BY_CONTACT_GROUP_REGEX,
                         RESULT_ALLOWED_BY_CONTACT_PREFIX_REGEX, RESULT_BLOCKED_BY_CONTACT_PREFIX_REGEX,
                         RESULT_ALLOWED_BY_CNAP_REGEX, RESULT_BLOCKED_BY_CNAP_REGEX,
-                        RESULT_ALLOWED_BY_GEO_LOCATION_REGEX, RESULT_BLOCKED_BY_GEO_LOCATION_REGEX
-                             -> {
+                        RESULT_ALLOWED_BY_GEO_LOCATION_REGEX, RESULT_BLOCKED_BY_GEO_LOCATION_REGEX,
+                        RESULT_ALLOWED_BY_CARRIER_REGEX, RESULT_BLOCKED_BY_CARRIER_REGEX
+
+                            -> {
                                 add(
                                     Indicator(
                                         type = resultType,
@@ -209,7 +216,8 @@ fun IndicatorsWrapper(
                         RESULT_ALLOWED_BY_CONTACT_GROUP_REGEX, RESULT_BLOCKED_BY_CONTACT_GROUP_REGEX,
                         RESULT_ALLOWED_BY_CONTACT_PREFIX_REGEX, RESULT_BLOCKED_BY_CONTACT_PREFIX_REGEX,
                         RESULT_ALLOWED_BY_CNAP_REGEX, RESULT_BLOCKED_BY_CNAP_REGEX,
-                        RESULT_ALLOWED_BY_GEO_LOCATION_REGEX, RESULT_BLOCKED_BY_GEO_LOCATION_REGEX
+                        RESULT_ALLOWED_BY_GEO_LOCATION_REGEX, RESULT_BLOCKED_BY_GEO_LOCATION_REGEX,
+                        RESULT_ALLOWED_BY_CARRIER_REGEX, RESULT_BLOCKED_BY_CARRIER_REGEX
                             -> {
                                 add(
                                     Indicator(

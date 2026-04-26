@@ -31,6 +31,7 @@ import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.SimCardIcon
 import spam.blocker.util.hasFlag
+import spam.blocker.util.regexModeInlineMap
 import spam.blocker.util.spf
 
 @Composable
@@ -62,6 +63,7 @@ fun RegexCard(
                             ctx = LocalContext.current,
                             forType = forType,
                         ),
+                        inlineContent = regexModeInlineMap,
                         fontWeight = FontWeight.Bold,
                         fontSize = 18.sp,
                         modifier = M.padding(top = 2.dp),

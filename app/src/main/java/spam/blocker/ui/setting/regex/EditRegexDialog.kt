@@ -49,6 +49,7 @@ import spam.blocker.def.Def.FLAG_REGEX_FOR_GEO_LOCATION
 import spam.blocker.def.Def.ForNumber
 import spam.blocker.def.Def.ForSms
 import spam.blocker.def.Def.MAP_REGEX_FLAGS
+import spam.blocker.def.Def.regexModeIconMap
 import spam.blocker.ui.LaunchedEffectOnlyOnChange
 import spam.blocker.ui.M
 import spam.blocker.ui.rememberSaveableMutableStateListOf
@@ -103,11 +104,10 @@ fun Int.clearRegexMode(): Int {
 
 @Composable
 fun RegexModeIcon(mode: Int) {
-    Text(
-        MAP_REGEX_FLAGS[mode]!!,
+    ResIcon(
+        regexModeIconMap[mode]!!,
         color = G.palette.regexFlags,
-        modifier = M.widthIn(16.dp),
-        textAlign = TextAlign.Center
+        modifier = M.size(16.dp)
     )
 }
 
