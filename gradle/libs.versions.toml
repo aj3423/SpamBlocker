@@ -12,7 +12,7 @@ reorderable = "2.3.3"
 
 libphonenumber = "9.0.29"
 geocoder = "3.29" # https://repo1.maven.org/maven2/com/googlecode/libphonenumber/geocoder/maven-metadata.xml
-#carrier  = "2.21" # https://repo1.maven.org/maven2/com/googlecode/libphonenumber/carrier/maven-metadata.xml
+carrier  = "2.29" # https://repo1.maven.org/maven2/com/googlecode/libphonenumber/carrier/maven-metadata.xml
 
 serialization = "1.11.0"
 mockk = "1.14.9"
@@ -25,7 +25,7 @@ androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", vers
 androidx-junit = { module = "androidx.test.ext:junit", version.ref = "junitVersion" }
 androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "workRuntimeKtx" }
 geocoder = { module = "com.googlecode.libphonenumber:geocoder", version.ref = "geocoder" }
-#carrier = { module = "com.googlecode.libphonenumber:carrier", version.ref = "carrier" }
+carrier = { module = "com.googlecode.libphonenumber:carrier", version.ref = "carrier" }
 libphonenumber = { module = "com.googlecode.libphonenumber:libphonenumber", version.ref = "libphonenumber" }
 mockk = { group = "io.mockk", name = "mockk-android", version.ref = "mockk" }
 reorderable = { module = "sh.calvin.reorderable:reorderable", version.ref = "reorderable" }

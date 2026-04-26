@@ -85,7 +85,7 @@ dependencies {
     // google
     implementation(libs.libphonenumber) // for checking whether 33123 and +33123 are the same number
     implementation(libs.geocoder) // geo database from libphonenumber
-//    implementation(libs.carrier) // carrier database from libphonenumber
+    implementation(libs.carrier) // carrier database from libphonenumber
 
     // jetbrains kotlinx
     implementation(libs.serialization.json) // for backup/restore json serialization

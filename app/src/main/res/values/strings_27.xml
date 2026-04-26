@@ -52,7 +52,7 @@
         <![CDATA[
         Show caller ID in a floating window. <br>
         <br>
-        <b>Drag to move it.</b> <br>
+        Drag to move it. <br>
         <br>
         <b>Note</b> <br>
         You might notice a system alert appears in your notification shade while the floating window is active,
@@ -74,6 +74,8 @@
         &emsp; Why the call was allowed, same as displayed in call history. <br>
         - <minor>{geolocation}</minor> <br>
         &emsp; The number\'s geolocation. <br>
+        - <minor>{carrier}</minor> <br>
+        &emsp; The number\'s carrier name. <br>
         <br>
         <title>Supported HTML tags</title>: <br>
         See: <a href="%s">link</a>

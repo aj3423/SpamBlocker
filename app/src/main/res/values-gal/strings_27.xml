@@ -52,7 +52,7 @@
         <![CDATA[
         Mostra o identificador de chamadas nunha xanela flotante. <br>
         <br>
-        <b>Arrástrao para movelo.</b> <br>
+        Arrástrao para movelo. <br>
         <br>
         <b>Nota</b> <br>
         É posible que vexas un aviso do sistema na área de notificacións mentres a xanela flotante estea activa,
@@ -74,6 +74,8 @@
         &emsp; Por que se permitiu a chamada, a mesma razón mostrada no historial de chamadas. <br>
         - <minor>{geolocation}</minor> <br>
         &emsp; A xeolocalización do número de teléfono. <br>
+        - <minor>{carrier}</minor> <br>
+        &emsp; O nome da operadora do número de teléfono. <br>
         <br>
         <title>Etiquetas HTML compatibles</title>: <br>
         Vexa: <a href="%s">link</a>

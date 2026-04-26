@@ -17,6 +17,7 @@ import spam.blocker.db.Notification.CHANNEL_HIGH_MUTED
 import spam.blocker.db.Notification.CHANNEL_LOW
 import spam.blocker.def.Def
 import spam.blocker.def.Def.DEFAULT_HANG_UP_DELAY
+import spam.blocker.ui.setting.quick.DefaultCallerIdBgColor
 import spam.blocker.ui.setting.quick.DefaultCallerIdTemplate
 import spam.blocker.ui.theme.Black111111
 import spam.blocker.ui.theme.ColdGrey
@@ -341,7 +342,7 @@ class spf { // for namespace only
         var isEnabled by bool("caller_id")
         var x by int("caller_id_window_x")
         var y by int("caller_id_window_y")
-        var bgColor by int("caller_id_bg_color", 0x10808080)
+        var bgColor by int("caller_id_bg_color", DefaultCallerIdBgColor)
         var template by str("caller_id_template", DefaultCallerIdTemplate)
     }
 

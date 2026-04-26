@@ -52,7 +52,7 @@
         <![CDATA[
         Mostra o identificador de chamadas em uma janela flutuante. <br>
         <br>
-        <b>Arraste para mover.</b> <br>
+        Arraste para mover. <br>
         <br>
         <b>Nota</b> <br>
         Você pode notar um alerta do sistema na área de notificações enquanto a janela flutuante estiver ativa,
@@ -74,6 +74,8 @@
         &emsp; Por que a chamada foi permitida, o mesmo motivo exibido no histórico de chamadas. <br>
         - <minor>{geolocation}</minor> <br>
         &emsp; A geolocalização do número de telefone. <br>
+        - <minor>{carrier}</minor> <br>
+        &emsp; O nome da operadora do número de telefone. <br>
         <br>
         <title>Tags HTML compatíveis</title>: <br>
         Veja: <a href="%s">link</a>

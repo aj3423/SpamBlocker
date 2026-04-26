@@ -33,6 +33,7 @@ import spam.blocker.util.RingtoneUtil
 import spam.blocker.util.SaveableLogger
 import spam.blocker.util.SimUtils
 import spam.blocker.util.Util
+import spam.blocker.util.Util.numberCarrier
 import spam.blocker.util.Util.numberGeoLocation
 import spam.blocker.util.logi
 import spam.blocker.util.spf
@@ -192,7 +193,8 @@ class CallScreeningService : CallScreeningService() {
                     showCallerIdWindow(
                         ctx = ctx,
                         r = r,
-                        geoLocation = numberGeoLocation(ctx, rawNumber)
+                        geoLocation = numberGeoLocation(ctx, rawNumber),
+                        carrier = numberCarrier(ctx, rawNumber)
                     )
                 }
             }

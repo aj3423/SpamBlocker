@@ -34,7 +34,7 @@
     <string name="reset">Сброс</string>
     <string name="status">Статус</string>
     <string name="inactive">Неактивно</string>
-    <string name="confirm_reset">Подтвердить сброс?</string>
+    <string name="confirm_to_reset">Подтвердить сброс?</string>
     <string name="check_stir_attestation">Проверять аттестацию STIR (?)</string>
     <string name="additional_numbers">Дополнительные номера</string>
     <string name="path_tags">

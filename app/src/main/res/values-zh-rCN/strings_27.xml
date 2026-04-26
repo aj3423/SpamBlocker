@@ -52,7 +52,7 @@
         <![CDATA[
         在悬浮窗中显示来电信息。 <br>
         <br>
-        <b>拖动即可移动。</b> <br>
+        拖动即可移动。 <br>
         <br>
         <b>注意</b> <br>
         当悬浮窗处于活动状态时，你可能会在通知栏看到一条系统提醒，
@@ -74,6 +74,8 @@
         &emsp; 通话被允许的原因，与通话记录中显示的原因相同。 <br>
         - <minor>{geolocation}</minor> <br>
         &emsp; 电话号码的地理位置。 <br>
+        - <minor>{carrier}</minor> <br>
+        &emsp; 电话号码的运营商名称。 <br>
         <br>
         <title>支持的 HTML 标签</title>: <br>
         参见：<a href="%s">link</a>

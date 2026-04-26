@@ -52,7 +52,7 @@
         <![CDATA[
         Muestra el identificador de llamadas en una ventana flotante. <br>
         <br>
-        <b>Arrástrelo para moverlo.</b> <br>
+        Arrástrelo para moverlo. <br>
         <br>
         <b>Nota</b> <br>
         Puede que vea una alerta del sistema en el panel de notificaciones mientras la ventana flotante esté activa,
@@ -74,6 +74,8 @@
         &emsp; Por qué se permitió la llamada, la misma razón mostrada en el historial de llamadas. <br>
         - <minor>{geolocation}</minor> <br>
         &emsp; La ubicación geográfica del número de teléfono. <br>
+        - <minor>{carrier}</minor> <br>
+        &emsp; El nombre del operador del número de teléfono. <br>
         <br>
         <title>Etiquetas HTML compatibles</title>: <br>
         Consulte: <a href="%s">link</a>

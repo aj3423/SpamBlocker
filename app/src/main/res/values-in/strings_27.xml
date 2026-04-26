@@ -52,7 +52,7 @@
         <![CDATA[
         Tampilkan ID penelepon dalam jendela mengambang. <br>
         <br>
-        <b>Seret untuk memindahkannya.</b> <br>
+        Seret untuk memindahkannya. <br>
         <br>
         <b>Catatan</b> <br>
         Anda mungkin melihat peringatan sistem di panel notifikasi saat jendela mengambang aktif,
@@ -74,6 +74,8 @@
         &emsp; Mengapa panggilan diizinkan, alasan yang sama seperti yang ditampilkan di riwayat panggilan. <br>
         - <minor>{geolocation}</minor> <br>
         &emsp; Lokasi geografis nomor telepon. <br>
+        - <minor>{carrier}</minor> <br>
+        &emsp; Nama operator nomor telepon. <br>
         <br>
         <title>Tag HTML yang didukung</title>: <br>
         Lihat: <a href="%s">link</a>

@@ -52,7 +52,7 @@
         <![CDATA[
         Arayan kimliğini yüzen pencerede gösterir. <br>
         <br>
-        <b>Taşımak için sürükleyin.</b> <br>
+        Taşımak için sürükleyin. <br>
         <br>
         <b>Not</b> <br>
         Yüzen pencere etkinken bildirim alanında, bu uygulamanın diğer uygulamaların üzerinde bir pencere gösterdiğini belirten bir sistem uyarısı görebilirsiniz.
@@ -73,6 +73,8 @@
         &emsp; Aramaya neden izin verildiği, çağrı geçmişinde gösterilen nedenin aynısı. <br>
         - <minor>{geolocation}</minor> <br>
         &emsp; Telefon numarasının coğrafi konumu. <br>
+        - <minor>{carrier}</minor> <br>
+        &emsp; Telefon numarasının operatör adı. <br>
         <br>
         <title>Desteklenen HTML etiketleri</title>: <br>
         Bkz: <a href="%s">link</a>

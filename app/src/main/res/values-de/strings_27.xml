@@ -52,7 +52,7 @@
         <![CDATA[
         Zeigt die Anruferkennung in einem schwebenden Fenster an. <br>
         <br>
-        <b>Zum Verschieben ziehen.</b> <br>
+        Zum Verschieben ziehen. <br>
         <br>
         <b>Hinweis</b> <br>
         Möglicherweise erscheint im Benachrichtigungsbereich ein Systemhinweis, während das schwebende Fenster aktiv ist.
@@ -74,6 +74,8 @@
         &emsp; Warum der Anruf zugelassen wurde, derselbe Grund wie im Anrufverlauf. <br>
         - <minor>{geolocation}</minor> <br>
         &emsp; Der geografische Standort der Telefonnummer. <br>
+        - <minor>{carrier}</minor> <br>
+        &emsp; Der Name des Netzbetreibers der Telefonnummer. <br>
         <br>
         <title>Unterstützte HTML-Tags</title>: <br>
         Siehe: <a href="%s">link</a>

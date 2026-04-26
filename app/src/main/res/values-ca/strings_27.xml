@@ -52,7 +52,7 @@
         <![CDATA[
         Mostra l\'identificador del trucador en una finestra flotant. <br>
         <br>
-        <b>Arrossegueu-la per moure-la.</b> <br>
+        Arrossegueu-la per moure-la. <br>
         <br>
         <b>Nota</b> <br>
         És possible que aparegui un avís del sistema a la safata de notificacions mentre la finestra flotant estigui activa,
@@ -74,6 +74,8 @@
         &emsp; Per què es va permetre la trucada, el mateix motiu que es mostra a l\'historial de trucades. <br>
         - <minor>{geolocation}</minor> <br>
         &emsp; La geolocalització del número de telèfon. <br>
+        - <minor>{carrier}</minor> <br>
+        &emsp; El nom de l\'operador del número de telèfon. <br>
         <br>
         <title>Etiquetes HTML compatibles</title>: <br>
         Vegeu: <a href="%s">link</a>

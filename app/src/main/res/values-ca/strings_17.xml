@@ -34,7 +34,7 @@
     <string name="reset">Restablir</string>
     <string name="status">Estat</string>
     <string name="inactive">Inactiu</string>
-    <string name="confirm_reset">Confirma restablir?</string>
+    <string name="confirm_to_reset">Confirma restablir?</string>
     <string name="check_stir_attestation">Verificar STIR (?)</string>
     <string name="additional_numbers">Números addicionals</string>
     <string name="path_tags">

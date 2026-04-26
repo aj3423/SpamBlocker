@@ -75,7 +75,7 @@ fun EmergencySituation() {
             }
         }
     ) {
-        GreyText(Str(R.string.confirm_reset))
+        GreyText(Str(R.string.confirm_to_reset))
     }
 
     // Test popup

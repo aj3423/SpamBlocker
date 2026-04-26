@@ -34,7 +34,7 @@
     <string name="reset">Reset</string>
     <string name="status">Status</string>
     <string name="inactive">Inactive</string>
-    <string name="confirm_reset">Confirm to reset?</string>
+    <string name="confirm_to_reset">Confirm to reset?</string>
     <string name="check_stir_attestation">Check STIR (?)</string>
     <string name="additional_numbers">Additional Numbers</string>
     <string name="path_tags">

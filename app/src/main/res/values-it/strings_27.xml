@@ -52,7 +52,7 @@
         <![CDATA[
         Mostra l\'ID chiamante in una finestra flottante. <br>
         <br>
-        <b>Trascinala per spostarla.</b> <br>
+        Trascinala per spostarla. <br>
         <br>
         <b>Nota</b> <br>
         Potresti notare un avviso di sistema nell\'area notifiche mentre la finestra flottante è attiva,
@@ -74,6 +74,8 @@
         &emsp; Perché la chiamata è stata consentita, lo stesso motivo mostrato nella cronologia chiamate. <br>
         - <minor>{geolocation}</minor> <br>
         &emsp; La geolocalizzazione del numero di telefono. <br>
+        - <minor>{carrier}</minor> <br>
+        &emsp; Il nome dell\'operatore del numero di telefono. <br>
         <br>
         <title>Tag HTML supportati</title>: <br>
         Vedi: <a href="%s">link</a>

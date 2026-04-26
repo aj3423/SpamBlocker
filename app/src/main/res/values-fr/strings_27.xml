@@ -52,7 +52,7 @@
         <![CDATA[
         Affiche l\'identification de l\'appelant dans une fenêtre flottante. <br>
         <br>
-        <b>Faites-la glisser pour la déplacer.</b> <br>
+        Faites-la glisser pour la déplacer. <br>
         <br>
         <b>Remarque</b> <br>
         Il se peut qu\'une alerte système apparaisse dans le panneau de notifications pendant que la fenêtre flottante est active,
@@ -74,6 +74,8 @@
         &emsp; Pourquoi l\'appel a été autorisé, la même raison que celle affichée dans l\'historique des appels. <br>
         - <minor>{geolocation}</minor> <br>
         &emsp; La géolocalisation du numéro de téléphone. <br>
+        - <minor>{carrier}</minor> <br>
+        &emsp; Le nom de l\'opérateur du numéro de téléphone. <br>
         <br>
         <title>Balises HTML prises en charge</title>: <br>
         Voir : <a href="%s">link</a>

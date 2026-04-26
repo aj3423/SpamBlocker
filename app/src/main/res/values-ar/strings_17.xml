@@ -34,7 +34,7 @@
     <string name="reset"><translate>إعادة تعيين</translate></string>
     <string name="status"><translate>الحالة</translate></string>
     <string name="inactive"><translate>غير نشط</translate></string>
-    <string name="confirm_reset"><translate>تأكيد إعادة التعيين؟</translate></string>
+    <string name="confirm_to_reset"><translate>تأكيد إعادة التعيين؟</translate></string>
     <string name="check_stir_attestation"><translate>التحقق من STIR (?)</translate></string>
     <string name="additional_numbers"><translate>أرقام إضافية</translate></string>
     <string name="path_tags">

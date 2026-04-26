@@ -32,7 +32,7 @@
     <string name="reset">重設</string>
     <string name="status">狀態</string>
     <string name="inactive">停用</string>
-    <string name="confirm_reset">確認重設？</string>
+    <string name="confirm_to_reset">確認重設？</string>
     <string name="check_stir_attestation">檢查 STIR (?)</string>
     <string name="additional_numbers">額外號碼</string>
     <string name="path_tags">

@@ -18,12 +18,11 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import spam.blocker.G
 import spam.blocker.R
-import spam.blocker.def.Def
-import spam.blocker.service.checker.ByApiQuery
 import spam.blocker.service.checker.ICheckResult
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.widgets.ColorPickerButton
 import spam.blocker.ui.widgets.FloatingWindow
+import spam.blocker.ui.widgets.GreyText
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.PopupSize
 import spam.blocker.ui.widgets.RowVCenterSpaced
@@ -33,14 +32,15 @@ import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionWrapper
-import spam.blocker.util.Util.numberGeoLocation
-import spam.blocker.util.logi
 import spam.blocker.util.spf
 
+const val DefaultCallerIdBgColor = 0x10808080
 const val DefaultCallerIdTemplate =
-"""<font color="#50c878"><big><big>{reason}</big></big></font>
+"""<font color="#50c878"><big><big><big>{reason}</big></big></big></font>
 <br>
-<font color="#00BFFF"><big>{geolocation}</big></font>
+<font color="#00bfff"><big>{geolocation}</big></font>
+<br>
+<font color="#ea86ff"><big>{carrier}</big></font>
 """
 
 const val FullHtmlTagList = "https://github.com/aj3423/SpamBlocker/issues/555"
@@ -55,6 +55,7 @@ fun callerIdView(ctx: Context, template: String) : View {
 fun showCallerIdWindow(
     ctx: Context,
     geoLocation: String? = null,
+    carrier: String? = null,
     r: ICheckResult? = null
 ) {
     val spf = spf.CallerID(ctx)
@@ -66,6 +67,9 @@ fun showCallerIdWindow(
     }
     if (geoLocation != null) {
         content = content.replace("{geolocation}", geoLocation)
+    }
+    if (carrier != null) {
+        content = content.replace("{carrier}", carrier)
     }
 
     FloatingWindow.apply {
@@ -99,6 +103,32 @@ private fun ConfigDialog(
         popupSize = PopupSize(),
         onDismiss = {
             FloatingWindow.hide(ctx)
+        },
+        buttons = {
+            val C = G.palette
+
+            val confirmTrigger = remember { mutableStateOf(false) }
+            PopupDialog(
+                trigger = confirmTrigger,
+                buttons = {
+                    // Reset
+                    StrokeButton(Str(R.string.reset), color = C.error) {
+                        spf.bgColor = DefaultCallerIdBgColor
+                        spf.template = DefaultCallerIdTemplate
+                        bgColor = Color(DefaultCallerIdBgColor)
+                        template = DefaultCallerIdTemplate
+                        showCallerIdWindow(ctx)
+                        confirmTrigger.value = false
+                    }
+                }
+            ) {
+                GreyText(Str(R.string.confirm_to_reset))
+            }
+
+            // Reset button
+            StrokeButton(Str(R.string.reset), color = G.palette.error) {
+                confirmTrigger.value = true
+            }
         }
     ) {
         // BG Color

@@ -34,7 +34,7 @@
     <string name="reset">Reset</string>
     <string name="status">Status</string>
     <string name="inactive">Tidak Aktif</string>
-    <string name="confirm_reset">Konfirmasi reset?</string>
+    <string name="confirm_to_reset">Konfirmasi reset?</string>
     <string name="check_stir_attestation">Periksa STIR (?)</string>
     <string name="additional_numbers">Nomor Tambahan</string>
     <string name="path_tags">

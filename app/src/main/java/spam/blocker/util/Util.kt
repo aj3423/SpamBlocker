@@ -34,6 +34,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
 import androidx.core.content.edit
 import androidx.core.database.getStringOrNull
+import com.google.i18n.phonenumbers.PhoneNumberToCarrierMapper
 import com.google.i18n.phonenumbers.PhoneNumberUtil
 import com.google.i18n.phonenumbers.geocoding.PhoneNumberOfflineGeocoder
 import kotlinx.coroutines.Dispatchers.IO
@@ -513,7 +514,7 @@ object Util {
         }
     }
 
-    // Get the geo-location from the number, using libphonenumber's geo database
+    // Get the geolocation from the number using libphonenumber's geo database
     fun numberGeoLocation(ctx: Context, rawNumber: String) : String? {
         return try {
             val phoneUtil = PhoneNumberUtil.getInstance()
@@ -527,6 +528,24 @@ object Util {
             }
             val location = geocoder.getDescriptionForNumber(phoneNumber, Locale.getDefault())
             location
+        } catch (_: Exception) {
+            null
+        }
+    }
+    // Get the carrier name from the number using libphonenumber's carrier database
+    fun numberCarrier(ctx: Context, rawNumber: String) : String? {
+        return try {
+            val phoneUtil = PhoneNumberUtil.getInstance()
+            val carrierMapper = PhoneNumberToCarrierMapper.getInstance()
+
+            val ccAlpha2 = CountryCode.alpha2(ctx) // "US"
+            val phoneNumber = phoneUtil.parse(rawNumber, ccAlpha2)
+
+            if (!phoneUtil.isValidNumber(phoneNumber)) {
+                return null
+            }
+            val carrier = carrierMapper.getNameForNumber(phoneNumber, Locale.getDefault())
+            carrier
         } catch (_: Exception) {
             null
         }

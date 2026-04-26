@@ -52,7 +52,7 @@
         <![CDATA[
         在浮動視窗中顯示來電資訊。 <br>
         <br>
-        <b>拖曳即可移動。</b> <br>
+        拖曳即可移動。 <br>
         <br>
         <b>注意</b> <br>
         當浮動視窗啟用時，你可能會在通知欄看到系統提醒，
@@ -74,6 +74,8 @@
         &emsp; 通話被允許的原因，與通話記錄中顯示的原因相同。 <br>
         - <minor>{geolocation}</minor> <br>
         &emsp; 電話號碼的地理位置。 <br>
+        - <minor>{carrier}</minor> <br>
+        &emsp; 電話號碼的營運商名稱。 <br>
         <br>
         <title>支援的 HTML 標籤</title>: <br>
         參見：<a href="%s">link</a>
