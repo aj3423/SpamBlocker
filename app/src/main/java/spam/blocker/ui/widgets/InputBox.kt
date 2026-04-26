@@ -48,7 +48,7 @@ import spam.blocker.def.Def.FLAG_REGEX_CASE_SENSITIVE
 import spam.blocker.def.Def.FLAG_REGEX_IGNORE_CC
 import spam.blocker.def.Def.FLAG_REGEX_RAW_NUMBER
 import spam.blocker.def.Def.MAP_REGEX_FLAGS
-import spam.blocker.def.Def.REGEX_FLAGS_RIC
+import spam.blocker.def.Def.REGEX_FLAG_IDS
 import spam.blocker.ui.M
 import spam.blocker.util.Lambda
 import spam.blocker.util.Lambda1
@@ -694,7 +694,7 @@ fun RegexInputBox(
                         items = dropdownItems,
                     ) { expanded ->
 
-                        val ric = (regexFlags.intValue and REGEX_FLAGS_RIC).toFlagStr() // ric: Raw-number, Ignore-country-code, Case-sensitive
+                        val ric = (regexFlags.intValue and REGEX_FLAG_IDS).toFlagStr() // Raw-number, Ignore-country-code, Case-sensitive
                         val clickableModifier = M
                             .clickable {
                                 expanded.value = true

@@ -120,7 +120,8 @@
     <string name="carrier_rule">運營商規則</string>
     <string name="help_regex_mode_carrier">
         <![CDATA[
-        此正規表達式將對電話號碼的運營商名稱進行匹配。 <br>
+        <title><b>運營商</b></title>:<br>
+        &ensp; 此正規表達式將對電話號碼的運營商名稱進行匹配。 <br>
         <br>
         <warn>注意</warn> <br>
         &ensp; 運營商資訊基於初始登記，如果號碼已攜碼轉移到其他運營商，

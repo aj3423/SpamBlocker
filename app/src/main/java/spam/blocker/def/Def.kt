@@ -102,14 +102,17 @@ object Def {
 
 
 
-    const val DefaultRegexFlags =  0
+    const val DefaultRegexFlags = 0
 
     val MAP_REGEX_FLAGS = mapOf(
+        // Regex Flags
         FLAG_REGEX_CASE_SENSITIVE to "I",
 //        FLAG_REGEX_MULTILINE to "m",
 //        FLAG_REGEX_DOT_MATCH_ALL to "d",
 //        FLAG_REGEX_LITERAL to "l",
         FLAG_REGEX_RAW_NUMBER to "®", // r
+
+        // Regex Modes
         FLAG_REGEX_FOR_CONTACT_GROUP to "g",
         FLAG_REGEX_FOR_CONTACT to "c",
         FLAG_REGEX_IGNORE_CC to "🌐",
@@ -118,7 +121,7 @@ object Def {
         FLAG_REGEX_FOR_CARRIER to "🗼",
         FLAG_REGEX_FOR_CONTACT_PREFIX to "≈c"
     )
-    const val REGEX_FLAGS_RIC = FLAG_REGEX_RAW_NUMBER or FLAG_REGEX_IGNORE_CC or FLAG_REGEX_CASE_SENSITIVE
+    const val REGEX_FLAG_IDS = FLAG_REGEX_RAW_NUMBER or FLAG_REGEX_IGNORE_CC or FLAG_REGEX_CASE_SENSITIVE
 
     const val ForNumber = 0
     const val ForSms = 1

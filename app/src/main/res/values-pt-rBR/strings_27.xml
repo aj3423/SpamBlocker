@@ -120,7 +120,8 @@
     <string name="carrier_rule">Regra da operadora</string>
     <string name="help_regex_mode_carrier">
         <![CDATA[
-        A expressão regular corresponderá ao nome da operadora do número. <br>
+        <title><b>Operadora</b></title>:<br>
+        &ensp; A expressão regular corresponderá ao nome da operadora do número. <br>
         <br>
         <warn>Nota</warn> <br>
         &ensp; As informações da operadora se baseiam no registro inicial e podem estar

@@ -120,7 +120,8 @@
     <string name="carrier_rule">قاعدة المشغّل</string>
     <string name="help_regex_mode_carrier">
         <![CDATA[
-        سيطابق regex اسم مشغّل الرقم. <br>
+        <title><b>مشغّل</b></title>:<br>
+        &ensp; سيطابق regex اسم مشغّل الرقم. <br>
         <br>
         <warn>ملاحظة</warn> <br>
         &ensp; تعتمد معلومات المشغّل على التسجيل الأولي وقد تكون غير دقيقة إذا نُقل

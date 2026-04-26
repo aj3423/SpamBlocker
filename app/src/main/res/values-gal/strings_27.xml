@@ -120,7 +120,8 @@
     <string name="carrier_rule">Regra da operadora</string>
     <string name="help_regex_mode_carrier">
         <![CDATA[
-        O regex coincidirá co nome da operadora do número. <br>
+        <title><b>Operadora</b></title>:<br>
+        &ensp; O regex coincidirá co nome da operadora do número. <br>
         <br>
         <warn>Nota</warn> <br>
         &ensp; A información da operadora baséase no rexistro inicial e pode ser

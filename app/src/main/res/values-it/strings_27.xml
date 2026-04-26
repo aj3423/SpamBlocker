@@ -120,7 +120,8 @@
     <string name="carrier_rule">Regola operatore</string>
     <string name="help_regex_mode_carrier">
         <![CDATA[
-        L\'espressione regolare corrisponderà al nome dell\'operatore del numero. <br>
+        <title><b>Operatore</b></title>:<br>
+        &ensp; L\'espressione regolare corrisponderà al nome dell\'operatore del numero. <br>
         <br>
         <warn>Nota</warn> <br>
         &ensp; Le informazioni sull\'operatore si basano sulla registrazione iniziale e

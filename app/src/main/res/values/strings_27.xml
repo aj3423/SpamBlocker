@@ -120,7 +120,8 @@
     <string name="carrier_rule">Carrier Rule</string>
     <string name="help_regex_mode_carrier">
         <![CDATA[
-        The regex applies to the number\'s carrier name. <br>
+        <title><b>Carrier</b></title>:<br>
+        &ensp; The regex applies to the number\'s carrier name. <br>
         <br>
         <warn>Note</warn> <br>
         &ensp; Carrier information is based on the initial registration and may

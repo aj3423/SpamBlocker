@@ -119,7 +119,8 @@
     <string name="carrier_rule">Operatör Kuralı</string>
     <string name="help_regex_mode_carrier">
         <![CDATA[
-        Regex, telefon numarasının operatör adıyla eşleşecektir. <br>
+        <title><b>Operatör</b></title>:<br>
+        &ensp; Regex, telefon numarasının operatör adıyla eşleşecektir. <br>
         <br>
         <warn>Not</warn> <br>
         &ensp; Operatör bilgisi ilk kayda dayanır ve numara başka bir operatöre

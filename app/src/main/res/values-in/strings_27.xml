@@ -120,7 +120,8 @@
     <string name="carrier_rule">Aturan Operator</string>
     <string name="help_regex_mode_carrier">
         <![CDATA[
-        Regex akan mencocokkan nama operator nomor telepon. <br>
+        <title><b>Operator</b></title>:<br>
+        &ensp; Regex akan mencocokkan nama operator nomor telepon. <br>
         <br>
         <warn>Catatan</warn> <br>
         &ensp; Informasi operator didasarkan pada pendaftaran awal dan mungkin tidak
