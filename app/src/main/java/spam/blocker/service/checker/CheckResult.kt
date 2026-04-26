@@ -650,7 +650,7 @@ fun parseCheckResultFromDb(ctx: Context, result: Int, reason: String): ICheckRes
             try {
                 // try new format, `reason` is a json string like: {"ruleId": 123, "details": "..."}
                 val data = Json.decodeFromString<ByRegexRule.DbData>(reason)
-                val rule = NumberRegexTable().findRuleById(ctx, data.ruleId)
+                val rule = ContentRegexTable().findRuleById(ctx, data.ruleId)
 
                 ByRegexRule(result, rule, data.details)
             } catch (_: Exception) {
