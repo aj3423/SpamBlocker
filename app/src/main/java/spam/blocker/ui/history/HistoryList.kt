@@ -39,7 +39,7 @@ fun HistoryList(
     vm: HistoryViewModel,
 ) {
     val ctx = LocalContext.current
-    val spf = spf.HistoryOptions(ctx)
+//    val spf = spf.HistoryOptions(ctx)
 
     val coroutineScope = rememberCoroutineScope()
 
