@@ -182,7 +182,10 @@ data class RegexRule(
 
             // 2. Regex modes
             val mode = patternFlags.enabledRegexMode()
-            appendInlineContent(id = mode.regexModeInlineId())
+            mode?.let {
+                appendInlineContent(id = mode.regexModeInlineId())
+            }
+
 
             // 3. Regex flags
             // format:
@@ -216,7 +219,9 @@ data class RegexRule(
 
                 // 6. Regex mode (particular number)
                 val mode = patternExtraFlags.enabledRegexMode()
-                appendInlineContent(id = mode.regexModeInlineId())
+                mode?.let {
+                    appendInlineContent(id = mode.regexModeInlineId())
+                }
 
                 // Regex Flags (particular number)
                 val imdlcEx = patternExtraFlags.enabledRegexFlagsStr()

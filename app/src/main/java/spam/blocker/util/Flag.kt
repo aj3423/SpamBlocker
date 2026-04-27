@@ -5,6 +5,11 @@ import androidx.compose.ui.text.Placeholder
 import androidx.compose.ui.text.PlaceholderVerticalAlign
 import androidx.compose.ui.unit.sp
 import spam.blocker.G
+import spam.blocker.def.Def.FLAG_REGEX_FOR_CNAP
+import spam.blocker.def.Def.FLAG_REGEX_FOR_CONTACT
+import spam.blocker.def.Def.FLAG_REGEX_FOR_CONTACT_GROUP
+import spam.blocker.def.Def.FLAG_REGEX_FOR_CONTACT_PREFIX
+import spam.blocker.def.Def.FLAG_REGEX_FOR_GEO_LOCATION
 import spam.blocker.def.Def.MAP_REGEX_FLAGS
 import spam.blocker.def.Def.MAP_REGEX_MODES
 import spam.blocker.def.Def.regexModeIconMap
@@ -30,6 +35,11 @@ fun Int.removeFlag(f: Int): Int {
     return setFlag(f, false)
 }
 
+
+
+/*
+*   Regex flags helper
+*/
 // List all enabled regex flags from an Int
 fun Int.enabledRegexFlags(): List<Int> {
     return MAP_REGEX_FLAGS.keys.filter { flagBit ->
@@ -37,8 +47,8 @@ fun Int.enabledRegexFlags(): List<Int> {
     }
 }
 // Get the enabled regex mode from an Int
-fun Int.enabledRegexMode(): Int {
-    return MAP_REGEX_MODES.keys.first { mode ->
+fun Int.enabledRegexMode(): Int? {
+    return MAP_REGEX_MODES.keys.firstOrNull() { mode ->
         (this and mode) == mode
     }
 }
@@ -57,17 +67,21 @@ fun Int.enabledRegexFlagsStr(): String {
     return this.enabledRegexFlags().toRegexFlagsStr()
 }
 
-val regexModeInlineMap = MAP_REGEX_MODES.map { (key, value) ->
-    value to InlineTextContent(
-        placeholder = Placeholder(
-            width = 16.sp,
-            height = 16.sp,
-            placeholderVerticalAlign = PlaceholderVerticalAlign.TextCenter
-        )
-    ) {
-        ResIcon(
-            regexModeIconMap[key]!!,
-            color = G.palette.regexFlags
-        )
+fun Int.clearRegexMode(): Int {
+    // Combine all flags from the map keys into one mask
+    val mask = MAP_REGEX_MODES.keys.reduce { acc, flag -> acc or flag }
+
+    // Clear the entire mask at once
+    return this and mask.inv()
+}
+val regexModeInlineMap = buildMap {
+    // 2. Others modes
+    MAP_REGEX_MODES.forEach { (key, value) ->
+        put(value, InlineTextContent(
+            placeholder = Placeholder(16.sp, 16.sp, PlaceholderVerticalAlign.TextCenter)
+        ) {
+            ResIcon(regexModeIconMap[key]!!, color = G.palette.regexFlags)
+        })
     }
-}.toMap()
+}
+

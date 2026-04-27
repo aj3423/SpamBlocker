@@ -90,17 +90,12 @@ import spam.blocker.util.PermissionWrapper
 import spam.blocker.util.TimeSchedule
 import spam.blocker.util.TimeUtils.timeRangeStr
 import spam.blocker.util.addFlag
+import spam.blocker.util.clearRegexMode
 import spam.blocker.util.hasFlag
 import spam.blocker.util.removeFlag
 import spam.blocker.util.setFlag
 
-fun Int.clearRegexMode(): Int {
-    return this.removeFlag(FLAG_REGEX_FOR_CONTACT_GROUP)
-        .removeFlag(FLAG_REGEX_FOR_CONTACT)
-        .removeFlag(FLAG_REGEX_FOR_CNAP)
-        .removeFlag(FLAG_REGEX_FOR_GEO_LOCATION)
-        .removeFlag(FLAG_REGEX_FOR_CONTACT_PREFIX)
-}
+
 
 @Composable
 fun RegexModeIcon(mode: Int) {
