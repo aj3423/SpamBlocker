@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -28,7 +27,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.vectorResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import spam.blocker.Events
 import spam.blocker.G
@@ -48,7 +46,6 @@ import spam.blocker.def.Def.FLAG_REGEX_FOR_CONTACT_PREFIX
 import spam.blocker.def.Def.FLAG_REGEX_FOR_GEO_LOCATION
 import spam.blocker.def.Def.ForNumber
 import spam.blocker.def.Def.ForSms
-import spam.blocker.def.Def.MAP_REGEX_FLAGS
 import spam.blocker.def.Def.regexModeIconMap
 import spam.blocker.ui.LaunchedEffectOnlyOnChange
 import spam.blocker.ui.M
@@ -69,6 +66,7 @@ import spam.blocker.ui.widgets.GreyIcon20
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.IMenuItem
 import spam.blocker.ui.widgets.LabelItem
+import spam.blocker.ui.widgets.Placeholder
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.PopupSize
 import spam.blocker.ui.widgets.PriorityBox
@@ -92,7 +90,6 @@ import spam.blocker.util.TimeUtils.timeRangeStr
 import spam.blocker.util.addFlag
 import spam.blocker.util.clearRegexMode
 import spam.blocker.util.hasFlag
-import spam.blocker.util.removeFlag
 import spam.blocker.util.setFlag
 
 
@@ -475,10 +472,11 @@ fun EditRegexDialog(
                     text = description,
                     label = {
                         Text(
-                            Str(R.string.description) + " " + Str(R.string.optional),
+                            Str(R.string.description),
                             color = Color.Unspecified
                         )
                     },
+                    placeholder = { Placeholder(Str(R.string.optional)) },
                     onValueChange = { description = it },
                     leadingIconId = R.drawable.ic_note,
                     maxLines = 10,

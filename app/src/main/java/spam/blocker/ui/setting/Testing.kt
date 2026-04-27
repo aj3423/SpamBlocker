@@ -171,7 +171,7 @@ fun TestDialog(
                         vm.phone.value = it
                         clearPreviousResult()
                     },
-                    supportingTextStr = listOf(
+                    supportingTextStr = listOfNotNull(
                         // Geolocation
                         geoLocation?.let {
                             Str(R.string.label_value_pair).format(
@@ -184,7 +184,7 @@ fun TestDialog(
                                 Str(R.string.carrier), carrier
                             )
                         }
-                    ).filterNotNull().joinToString("\n"),
+                    ).takeIf { it.isNotEmpty() }?.joinToString("\n"),
                     supportingTextColor = C.textGrey,
                 )
 
