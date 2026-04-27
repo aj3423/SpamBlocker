@@ -4,10 +4,7 @@ import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
@@ -16,7 +13,6 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -27,32 +23,22 @@ import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.HistoryRecord
-import spam.blocker.db.listReportableAPIs
-import spam.blocker.service.bot.ActionContext
-import spam.blocker.service.bot.executeAll
 import spam.blocker.service.checker.parseCheckResultFromDb
 import spam.blocker.ui.M
 import spam.blocker.ui.history.HistoryOptions.forceShowSIM
+import spam.blocker.ui.history.HistoryOptions.showHistoryCarrier
 import spam.blocker.ui.history.HistoryOptions.showHistoryGeoLocation
-import spam.blocker.ui.setting.api.spamCategoryNamesMap
-import spam.blocker.ui.setting.api.tagValid
 import spam.blocker.ui.slightDiff
 import spam.blocker.ui.widgets.BUTTON_CORNER_RADIUS
 import spam.blocker.ui.widgets.BUTTON_H_PADDING
 import spam.blocker.ui.widgets.Button
-import spam.blocker.ui.widgets.FlowRowSpaced
 import spam.blocker.ui.widgets.OutlineCard
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.PopupSize
@@ -60,16 +46,13 @@ import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.ResImage
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.SimCardIcon
-import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.Contacts
-import spam.blocker.util.JetpackTextLogger
 import spam.blocker.util.MarkupText
 import spam.blocker.util.PermissiveJson
 import spam.blocker.util.TimeUtils.FreshnessColor
 import spam.blocker.util.TimeUtils.formatTime
 import spam.blocker.util.TimeUtils.timeColor
 import spam.blocker.util.Util
-import spam.blocker.util.logi
 import androidx.compose.foundation.Image as ComposeImage
 
 
@@ -149,20 +132,22 @@ fun HistoryCard(
                         )
                     }
 
-                    // Row 2: Geolocation
-                    if (showHistoryGeoLocation.value) {
-                        val loc = Util.numberGeoLocation(ctx, record.peer)
-                        loc?.let {
-                            Text(
-                                text = loc,
-                                style = TextStyle(
-                                    fontSize = 12.sp,
-                                    color = C.textGrey.slightDiff(),
-                                    fontWeight = FontWeight.W500,
-                                ),
-                                modifier = M.padding(start = 4.dp),
-                            )
-                        }
+                    // Row 2: Geolocation | Carrier
+                    val label = listOfNotNull(
+                        if (showHistoryGeoLocation.value) Util.numberGeoLocation(ctx, record.peer) else null,
+                        if (showHistoryCarrier.value) Util.numberCarrier(ctx, record.peer) else null,
+                    ).joinToString(" | ")
+
+                    if (label.isNotEmpty()) {
+                        Text(
+                            text = label,
+                            style = TextStyle(
+                                fontSize = 12.sp,
+                                color = C.textGrey.slightDiff(),
+                                fontWeight = FontWeight.W500,
+                            ),
+                            modifier = M.padding(start = 4.dp),
+                        )
                     }
 
                     val r = parseCheckResultFromDb(ctx, record.result, record.reason)

@@ -24,6 +24,7 @@ import spam.blocker.util.spf
 object HistoryOptions {
     val showHistoryIndicator : MutableState<Boolean> = mutableStateOf(false)
     val showHistoryGeoLocation : MutableState<Boolean> = mutableStateOf(false)
+    val showHistoryCarrier : MutableState<Boolean> = mutableStateOf(false)
     val forceShowSIM : MutableState<Boolean> = mutableStateOf(false)
     val showHistoryPassed : MutableState<Boolean> = mutableStateOf(false)
     val showHistoryBlocked : MutableState<Boolean> = mutableStateOf(false)
@@ -43,6 +44,7 @@ fun HistoryScreen(
         HistoryOptions.apply {
             showHistoryIndicator.value = spf.showIndicator
             showHistoryGeoLocation.value = spf.showGeoLocation
+            showHistoryCarrier.value = spf.showCarrier
             forceShowSIM.value = spf.forceShowSim
             // these two are loaded at startup for calculating the unread count on bottom bar
 //            showHistoryPassed.value = spf.showPassed

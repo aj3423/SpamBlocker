@@ -86,6 +86,7 @@ class HistoryOptions : IConfig {
     var showBlocked = true
     var showIndicator = false
     var showGeoLocation = false
+    var showCarrier = false
     var forceShowSim = false
     var loggingEnabled = true
     var expiryEnabled = true
@@ -101,6 +102,7 @@ class HistoryOptions : IConfig {
         showBlocked = spf.showBlocked
         showIndicator = spf.showIndicator
         showGeoLocation = spf.showGeoLocation
+        showCarrier = spf.showCarrier
         forceShowSim = spf.forceShowSim
         loggingEnabled = spf.isLoggingEnabled
         expiryEnabled = spf.isExpiryEnabled
@@ -118,6 +120,7 @@ class HistoryOptions : IConfig {
             showBlocked = me.showBlocked
             showIndicator = me.showIndicator
             showGeoLocation = me.showGeoLocation
+            showCarrier = me.showCarrier
             forceShowSim = me.forceShowSim
             isLoggingEnabled = me.loggingEnabled
             isExpiryEnabled = me.expiryEnabled

@@ -245,6 +245,7 @@ class spf { // for namespace only
         var showBlocked by bool("show_blocked", true)
         var showIndicator by bool("show_indicator")
         var showGeoLocation by bool("show_geo_location", true)
+        var showCarrier by bool("show_carrier", false)
         var forceShowSim by bool("force_show_sim")
 
         var isLoggingEnabled by bool("history_logging_enabled", true)

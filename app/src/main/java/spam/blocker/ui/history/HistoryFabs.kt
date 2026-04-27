@@ -25,6 +25,7 @@ import spam.blocker.service.bot.serialize
 import spam.blocker.ui.history.HistoryOptions.forceShowSIM
 import spam.blocker.ui.history.HistoryOptions.historyTimeColors
 import spam.blocker.ui.history.HistoryOptions.showHistoryBlocked
+import spam.blocker.ui.history.HistoryOptions.showHistoryCarrier
 import spam.blocker.ui.history.HistoryOptions.showHistoryGeoLocation
 import spam.blocker.ui.history.HistoryOptions.showHistoryIndicator
 import spam.blocker.ui.history.HistoryOptions.showHistoryPassed
@@ -394,6 +395,16 @@ fun HistoryFabs(
                             SwitchBox(checked = showHistoryGeoLocation.value, onCheckedChange = { isOn ->
                                 spf.showGeoLocation = isOn
                                 showHistoryGeoLocation.value = isOn
+                            })
+                        }
+
+                        // Carrier
+                        LabeledRow(
+                            labelId = R.string.carrier,
+                        ) {
+                            SwitchBox(checked = showHistoryCarrier.value, onCheckedChange = { isOn ->
+                                spf.showCarrier = isOn
+                                showHistoryCarrier.value = isOn
                             })
                         }
 
