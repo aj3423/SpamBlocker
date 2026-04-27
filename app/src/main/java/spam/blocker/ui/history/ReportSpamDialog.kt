@@ -59,14 +59,14 @@ fun ReportSpamDialog(
 
         var comment by remember { mutableStateOf("")}
 
-        StrInputBox(
-            text = comment,
-            label = { Text(Str(R.string.comment_optional))},
-            onValueChange = {
-                comment = it
-            }
-        )
-        Spacer(modifier = M.height(8.dp))
+//        StrInputBox(
+//            text = comment,
+//            label = { Text(Str(R.string.comment_optional))},
+//            onValueChange = {
+//                comment = it
+//            }
+//        )
+//        Spacer(modifier = M.height(8.dp))
 
         // Category buttons
         FlowRowSpaced (

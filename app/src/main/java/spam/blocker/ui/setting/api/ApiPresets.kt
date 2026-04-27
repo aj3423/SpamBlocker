@@ -151,8 +151,8 @@ val ApiQueryPresets = listOf<ApiPreset>(
                     ),
                     ParseQueryResult(
                         negativeSig = "(D_POLL|G_FRAUD|E_ADVERTISING|F_GAMBLE|B_MISSED)",
-                        categorySig = "\"rating\":\"(.+?)\"",
-                        commentSig = "\"comment\":\"(.+?)\""
+                        categorySig = "\"rating\":\"(.+?)\""
+//                        commentSig = "\"comment\":\"(.+?)\""
                     ),
                     FilterSpamResult(),
                     ImportToSpamDB(
@@ -267,10 +267,10 @@ val ApiReportPreset_PhoneBlock = ApiPreset(
                     body = """
                             {
                                 "phone": "00{cc}{domestic}",
-                                "rating": "{category}",
-                                "comment": "{comment}"
+                                "rating": "{category}"
                             }
                         """.trimIndent()
+                    // add to the above json:  "comment": "{comment}"
                 )
             )
         )
