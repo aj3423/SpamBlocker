@@ -47,7 +47,7 @@
         &ensp; Если у вас сохранён контакт <sample>1111<b>22</b></sample>, то звонок с номера <sample>1111<b>33</b></sample> тоже будет разрешён.<br>
         ]]>
     </string>
-    <string name="caller_id">Определитель номера</string>
+    <string name="caller_id">АОН</string>
     <string name="help_caller_id">
         <![CDATA[
         Показывает определитель номера в плавающем окне. <br>
