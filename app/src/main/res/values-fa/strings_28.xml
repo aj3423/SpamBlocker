@@ -2,4 +2,10 @@
     <string name="perm_access_dir">دسترسی به پوشه</string>
     <string name="dir_not_specified">پوشه مشخص نشده است.</string>
     <string name="no_access_to_dir">دسترسی به پوشه ممکن نیست: %s.</string>
+    <string name="grant_access_to_dir">
+        <![CDATA[
+        دسترسی به پوشه را بدهید: <br>
+        <highlight>%s</highlight>
+        ]]>
+    </string>
 </resources>

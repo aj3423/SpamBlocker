@@ -44,12 +44,15 @@ import spam.blocker.util.Permission
 import spam.blocker.util.PermissionType
 import spam.blocker.util.PermissionWrapper
 import spam.blocker.util.formatAnnotated
+import spam.blocker.util.hasFolderAccess
+import spam.blocker.util.logi
+import spam.blocker.util.toFolderDisplayName
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 const val Backup_Last_Dir_Tag = "backup_last_dir_tag"
 
-fun missingBotSafPermissions(bots: List<Bot>) : List<Uri> {
+fun missingBotSafUris(bots: List<Bot>) : List<Uri> {
     return bots.flatMap { bot ->
         bot.actions
             .filterIsInstance<FileAction>() // Only keep FileActions
@@ -145,8 +148,8 @@ fun ImportButton() {
     var errorStr by remember { mutableStateOf("") }
 
     val resultTrigger = rememberSaveable { mutableStateOf(false) }
-    var prevPermissions by remember { mutableStateOf("") }
-    val botSafPermissions = remember { mutableStateListOf<Uri>() }
+    var missingGlobalPermissions by remember { mutableStateOf("") }
+    val missingBotSafUris = remember { mutableStateListOf<Uri>() }
 
     if (resultTrigger.value) {
         PopupDialog(
@@ -173,11 +176,11 @@ fun ImportButton() {
                 }
 
                 if (succeeded &&
-                    (prevPermissions.isNotEmpty() || botSafPermissions.isNotEmpty())
+                    (missingGlobalPermissions.isNotEmpty() || missingBotSafUris.isNotEmpty())
                 ) {
 
                     // 1. System permissions
-                    val prevNames = prevPermissions
+                    val prevNames = missingGlobalPermissions
                         .split(",")
                         .filter { it.isNotEmpty() }
 
@@ -196,10 +199,15 @@ fun ImportButton() {
                         }.toMutableList()
 
                     // 2. Workflow file permissions
-                    botSafPermissions.forEach {
-                        val perm = PermissionType.SafDirAccess(uri = it)
-                        missingPermissions += PermissionWrapper(perm)
-                    }
+                    missingBotSafUris
+                        .filter { !it.hasFolderAccess(ctx)  }
+                        .forEach {
+                            val perm = PermissionType.SafDirAccess(uri = it)
+                            missingPermissions += PermissionWrapper(
+                                perm,
+                                prompt = ctx.getString(R.string.grant_access_to_dir).format("${it.toFolderDisplayName()}")
+                            )
+                        }
 
                     if (missingPermissions.isNotEmpty()) {
                         Text(
@@ -215,7 +223,16 @@ fun ImportButton() {
                             label = Str(R.string.grant_permissions),
                             color = C.teal200,
                         ) {
-                            G.permissionChain.ask(ctx, missingPermissions) { }
+                            G.permissionChain.ask(ctx, missingPermissions) {
+                                // After finished, refresh `SAF permissions`.
+                                // No need to refresh global permissions, they trigger recomposition, but SAF doesn't.
+                                missingBotSafUris.apply {
+                                    clear()
+                                    addAll(missingBotSafUris.filter {
+                                        !it.hasFolderAccess(ctx)
+                                    })
+                                }
+                            }
                         }
                     }
                 }
@@ -244,10 +261,10 @@ fun ImportButton() {
                         val newCfg = Configs.fromByteArray(bytes)
                         newCfg.apply(ctx, includeSpamDB)
 
-                        prevPermissions = newCfg.permissions.allEnabledNames
-                        botSafPermissions.apply {
+                        missingGlobalPermissions = newCfg.permissions.allEnabledNames
+                        missingBotSafUris.apply {
                             clear()
-                            addAll(missingBotSafPermissions(newCfg.bots.bots))
+                            addAll(missingBotSafUris(newCfg.bots.bots))
                         }
                         succeeded = true
                         resultTrigger.value = true

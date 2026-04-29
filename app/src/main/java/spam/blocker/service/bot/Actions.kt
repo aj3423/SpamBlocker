@@ -3,6 +3,7 @@ package spam.blocker.service.bot
 import android.content.Context
 import android.net.Uri
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -13,6 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import com.google.i18n.phonenumbers.PhoneNumberUtil
 import com.google.i18n.phonenumbers.Phonenumber
@@ -45,6 +47,7 @@ import spam.blocker.db.ruleTableForType
 import spam.blocker.def.Def
 import spam.blocker.service.checker.Checker
 import spam.blocker.service.checker.Checker.RegexRuleChecker
+import spam.blocker.ui.M
 import spam.blocker.ui.darken
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.api.tagCategory
@@ -65,6 +68,7 @@ import spam.blocker.ui.widgets.PriorityBox
 import spam.blocker.ui.widgets.RadioGroup
 import spam.blocker.ui.widgets.RadioItem
 import spam.blocker.ui.widgets.RegexInputBox
+import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
@@ -656,7 +660,15 @@ abstract class FileAction : IPermissiveAction {
 
     @Composable
     override fun Summary(showIcon: Boolean) {
-        SummaryLabel("${getTreeUri()?.toFolderDisplayName() ?: "?"} / $filename")
+        val ctx = LocalContext.current
+
+        RowVCenterSpaced(2) {
+            val uri = getTreeUri()
+            if (uri?.hasFolderAccess(ctx) == false) {
+                ResIcon(R.drawable.ic_lock, modifier = M.size(16.dp), color = G.palette.warning)
+            }
+            SummaryLabel("${uri?.toFolderDisplayName() ?: "?"} / $filename")
+        }
     }
 
     @Composable

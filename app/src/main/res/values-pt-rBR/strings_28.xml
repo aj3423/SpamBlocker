@@ -2,4 +2,10 @@
     <string name="perm_access_dir">Acessar Pasta</string>
     <string name="dir_not_specified">Pasta não especificada.</string>
     <string name="no_access_to_dir">Sem acesso à pasta: %s.</string>
+    <string name="grant_access_to_dir">
+        <![CDATA[
+        Conceder acesso à pasta: <br>
+        <highlight>%s</highlight>
+        ]]>
+    </string>
 </resources>

@@ -90,7 +90,7 @@ fun HtmlText(
         },
         update = { textView ->
             textView.text =
-                html.parseAsHtml(HtmlCompat.FROM_HTML_MODE_COMPACT, { source ->
+                html.resolveHtmlTooltipTags().parseAsHtml(HtmlCompat.FROM_HTML_MODE_COMPACT, { source ->
                     val resourceId =
                         ctx.resources.getIdentifier(source, "drawable", ctx.packageName)
                     if (resourceId != 0) {

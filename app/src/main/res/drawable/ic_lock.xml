@@ -1,0 +1,35 @@
+<!--
+  ~ Copyright (C) 2026 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+  <path
+      android:pathData="M0,0h24v24h-24z"
+      android:strokeAlpha="0"
+      android:fillColor="#000000"
+      android:strokeColor="#00000000"
+      android:fillAlpha="0"/>
+  <path
+      android:pathData="M12,1.99C10.298,1.99 8.827,2.697 7.909,3.843C6.992,4.989 6.61,6.475 6.61,8.078L6.61,8.92L8.92,8.92L8.92,8.078C8.92,6.863 9.221,5.906 9.714,5.287C10.207,4.667 10.878,4.3 12,4.3C13.125,4.3 13.793,4.646 14.286,5.263C14.779,5.879 15.08,6.848 15.08,8.078L15.08,8.92L17.39,8.92L17.39,8.078C17.39,6.466 16.984,4.965 16.067,3.819C15.149,2.673 13.699,1.99 12,1.99ZM6.61,9.69C5.335,9.69 4.3,10.725 4.3,12L4.3,19.7C4.3,20.975 5.335,22.01 6.61,22.01L17.39,22.01C18.665,22.01 19.7,20.975 19.7,19.7L19.7,12C19.7,10.725 18.665,9.69 17.39,9.69ZM12,13.54C12.851,13.54 13.54,14.229 13.54,15.08C13.54,15.648 13.23,16.136 12.77,16.403L12.77,18.16C12.77,18.584 12.424,18.93 12,18.93C11.576,18.93 11.23,18.584 11.23,18.16L11.23,16.403C10.77,16.136 10.46,15.648 10.46,15.08C10.46,14.229 11.149,13.54 12,13.54Z"
+      android:strokeLineJoin="miter"
+      android:strokeWidth="0.77"
+      android:fillColor="#000000"
+      android:fillType="nonZero"
+      android:strokeColor="#00000000"
+      android:strokeLineCap="butt"/>
+</vector>

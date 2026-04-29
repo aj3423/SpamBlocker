@@ -2,4 +2,10 @@
     <string name="perm_access_dir">Klasöre Erişim</string>
     <string name="dir_not_specified">Klasör belirtilmedi.</string>
     <string name="no_access_to_dir">Klasöre erişim yok: %s.</string>
+    <string name="grant_access_to_dir">
+        <![CDATA[
+        Klasöre erişim ver: <br>
+        <highlight>%s</highlight>
+        ]]>
+    </string>
 </resources>

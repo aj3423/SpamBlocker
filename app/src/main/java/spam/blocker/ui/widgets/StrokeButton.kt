@@ -387,7 +387,7 @@ fun DirButton(
         else if (uri.value == null) {
             null
         } else {
-            { ResIcon(R.drawable.ic_question_circle) }
+            { ResIcon(R.drawable.ic_lock, modifier = M.size(16.dp), color = G.palette.warning) }
         },
 
         color = G.palette.textGrey,
@@ -400,6 +400,10 @@ fun DirButton(
         ) { granted ->
             if (granted) {
                 // After a dir is selected, the `perm.uri` is the selected Uri
+
+                // Make sure `uri` is changed, to force this button to recompose, otherwise the lock icon won't disappear
+                uri.value = null
+
                 uri.value = perm.uri
             }
         }

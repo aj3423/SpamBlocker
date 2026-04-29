@@ -2,4 +2,10 @@
     <string name="perm_access_dir">Доступ к папке</string>
     <string name="dir_not_specified">Папка не указана.</string>
     <string name="no_access_to_dir">Нет доступа к папке: %s.</string>
+    <string name="grant_access_to_dir">
+        <![CDATA[
+        Предоставьте доступ к папке: <br>
+        <highlight>%s</highlight>
+        ]]>
+    </string>
 </resources>

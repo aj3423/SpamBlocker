@@ -37,7 +37,7 @@ fun Color.alpha6(): String {
     return String.format("%06X", toArgb() and 0xFFFFFF)
         // .uppercase()
 }
-fun String.resolveTooltipTags() : String {
+fun String.resolveHtmlTooltipTags() : String {
     val C = G.palette
     val tagMap = mapOf(
         "error" to C.error,
@@ -95,7 +95,7 @@ fun BalloonWrapper(
             ) {
                 val state = rememberScrollState()
                 HtmlText(
-                    tooltip.resolveTooltipTags(),
+                    tooltip,
                     modifier = M
                         .maxScreenHeight(0.9f)
                         .verticalScroll(state)
