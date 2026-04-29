@@ -118,7 +118,20 @@
     </string>
     <string name="help_action_import_as_regex_rule">
         <![CDATA[
-        צור כלל ביטוי רגולרי חדש מרשימת מספרים.
+        צור כלל ביטוי רגולרי חדש. <br>
+        <br>
+        לדוגמה: <br>
+        <sample>
+        &ensp; לאחר ניתוח קובץ ה-CSV, שלב את כל המספרים בכלל ביטוי רגולרי אחד.
+        </sample>
+        ]]>
+    </string>
+    <string name="help_action_import_as_multiple_regex_rules">
+        <![CDATA[
+        צור כללי ביטוי רגולרי מרובים. <br>
+        <br>
+        לדוגמה: <br>
+        &ensp; צור כלל ביטוי רגולרי נפרד עבור כל שורה בקובץ ה-CSV.
         ]]>
     </string>
     <string name="help_action_replace_number">
@@ -136,7 +149,8 @@
         ]]>
     </string>
     <string name="action_replace_number">החלף מספר</string>
-    <string name="action_import_as_regex_rule">ייבא ככלל ביטוי רגולרי</string>
+    <string name="action_import_as_regex_rule">ייבוא ככלל Regex יחיד</string>
+    <string name="action_import_as_multiple_regex_rules">ייבוא ככללי Regex מרובים</string>
     <string name="duration_in_minutes">משך זמן (דקות)</string>
     <string name="help_trigger_manual">
         <![CDATA[

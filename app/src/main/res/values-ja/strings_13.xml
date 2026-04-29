@@ -10,7 +10,8 @@
     <string name="parsed_n_rules">%s個のルールを解析しました。</string>
     <string name="add_n_numbers_to_spam_db">%s件の電話番号をスパムDBに追加しています。</string>
     <string name="nothing_to_import">電話番号リストが空です。インポートするものがありません。</string>
-    <string name="importing_n_numbers">%s件の電話番号を正規表現ルールとしてインポートしています。</string>
+    <string name="importing_n_numbers">%s件の電話番号をインポートしています。</string>
+    <string name="importing_n_rules">%s件のルールをインポートしています。</string>
     <string name="create_rule_with_numbers">%s件の電話番号でルールを作成しています。</string>
     <string name="replace_rule_with_desc">説明: %s のルールを置き換えています。</string>
     <string name="rule_with_desc_not_found">説明が%sのルールが見つかりません。</string>

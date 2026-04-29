@@ -118,7 +118,20 @@
     </string>
     <string name="help_action_import_as_regex_rule">
         <![CDATA[
-        یک قانون عبارت باقاعده جدید از لیستی از شماره‌ها ایجاد کنید.
+        یک قانون عبارت باقاعده جدید ایجاد کنید. <br>
+        <br>
+        برای مثال: <br>
+        <sample>
+        &ensp; پس از تجزیه CSV، همه شماره‌ها را در یک قانون عبارت باقاعده واحد ترکیب کنید.
+        </sample>
+        ]]>
+    </string>
+    <string name="help_action_import_as_multiple_regex_rules">
+        <![CDATA[
+        چند قانون عبارت باقاعده ایجاد کنید. <br>
+        <br>
+        برای مثال: <br>
+        &ensp; برای هر خط در فایل CSV یک قانون عبارت باقاعده جداگانه ایجاد کنید.
         ]]>
     </string>
     <string name="help_action_replace_number">
@@ -136,7 +149,8 @@
         ]]>
     </string>
     <string name="action_replace_number">جایگزینی شماره</string>
-    <string name="action_import_as_regex_rule">وارد کردن به قانون عبارت منظم</string>
+    <string name="action_import_as_regex_rule">وارد کردن به‌عنوان یک قانون Regex</string>
+    <string name="action_import_as_multiple_regex_rules">وارد کردن به‌عنوان چند قانون Regex</string>
     <string name="duration_in_minutes">مدت زمان (دقیقه)</string>
     <string name="help_trigger_manual">
         <![CDATA[

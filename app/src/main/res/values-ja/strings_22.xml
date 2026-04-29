@@ -118,7 +118,20 @@
     </string>
     <string name="help_action_import_as_regex_rule">
         <![CDATA[
-        電話番号のリストから新しい正規表現ルールを生成します。
+        新しい正規表現ルールを生成します。<br>
+        <br>
+        例えば：<br>
+        <sample>
+        &ensp; CSV を解析した後、すべての番号を 1 つの正規表現ルールにまとめます。
+        </sample>
+        ]]>
+    </string>
+    <string name="help_action_import_as_multiple_regex_rules">
+        <![CDATA[
+        複数の正規表現ルールを生成します。<br>
+        <br>
+        例えば：<br>
+        &ensp; CSV ファイルの各行ごとに個別の正規表現ルールを生成します。
         ]]>
     </string>
     <string name="help_action_replace_number">
@@ -136,7 +149,8 @@
         ]]>
     </string>
     <string name="action_replace_number">電話番号の置換</string>
-    <string name="action_import_as_regex_rule">正規表現ルールとしてインポート</string>
+    <string name="action_import_as_regex_rule">1つの正規表現ルールとしてインポート</string>
+    <string name="action_import_as_multiple_regex_rules">複数の正規表現ルールとしてインポート</string>
     <string name="duration_in_minutes">期間 (分)</string>
     <string name="help_trigger_manual">
         <![CDATA[

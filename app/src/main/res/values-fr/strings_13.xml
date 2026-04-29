@@ -10,7 +10,8 @@
     <string name="parsed_n_rules">%s règles analysées.</string>
     <string name="add_n_numbers_to_spam_db">Ajout de %s numéros à la base de données des appels indésirables.</string>
     <string name="nothing_to_import">La liste des numéros est vide, rien à importer.</string>
-    <string name="importing_n_numbers">Importation de %s numéros en tant que règle d\'expression régulière.</string>
+    <string name="importing_n_numbers">Importation de %s numéros.</string>
+    <string name="importing_n_rules">Importation de %s règles.</string>
     <string name="create_rule_with_numbers">Création d\'une règle avec %s numéros.</string>
     <string name="replace_rule_with_desc">Remplacement de la règle par la description : %s.</string>
     <string name="rule_with_desc_not_found">Règle avec la description %s introuvable.</string>

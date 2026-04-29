@@ -10,7 +10,8 @@
     <string name="parsed_n_rules">נותחו %s כללים.</string>
     <string name="add_n_numbers_to_spam_db">מוסיף %s מספרים לבסיס נתוני ספאם.</string>
     <string name="nothing_to_import">רשימת המספרים ריקה, אין מה לייבא.</string>
-    <string name="importing_n_numbers">מייבא %s מספרים ככלל רגולרי.</string>
+    <string name="importing_n_numbers">מייבא %s מספרים.</string>
+    <string name="importing_n_rules">מייבא %s כללים.</string>
     <string name="create_rule_with_numbers">יוצר כלל עם %s מספרים.</string>
     <string name="replace_rule_with_desc">מחליף את הכלל עם התיאור: %s.</string>
     <string name="rule_with_desc_not_found">כלל עם התיאור %s לא נמצא.</string>

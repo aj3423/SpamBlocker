@@ -118,7 +118,20 @@
     </string>
     <string name="help_action_import_as_regex_rule">
         <![CDATA[
-        Genera una nuova regola regex da un elenco di numeri.
+        Genera una nuova regola regex. <br>
+        <br>
+        Per esempio: <br>
+        <sample>
+        &ensp; Dopo aver analizzato il CSV, combina tutti i numeri in un\'unica regola regex.
+        </sample>
+        ]]>
+    </string>
+    <string name="help_action_import_as_multiple_regex_rules">
+        <![CDATA[
+        Genera regole regex multiple. <br>
+        <br>
+        Per esempio: <br>
+        &ensp; Genera una regola regex separata per ogni riga nel file CSV.
         ]]>
     </string>
     <string name="help_action_replace_number">
@@ -136,7 +149,8 @@
         ]]>
     </string>
     <string name="action_replace_number">Sostituisci Numero</string>
-    <string name="action_import_as_regex_rule">Importa come Regola Regex</string>
+    <string name="action_import_as_regex_rule">Importa come una Regola Regex</string>
+    <string name="action_import_as_multiple_regex_rules">Importa come più Regole Regex</string>
     <string name="duration_in_minutes">Durata (minuti)</string>
     <string name="help_trigger_manual">
         <![CDATA[

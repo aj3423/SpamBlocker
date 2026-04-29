@@ -22,7 +22,7 @@ import spam.blocker.util.ILogger
 import spam.blocker.util.PermissionWrapper
 
 // When adding a new IAction type, follow all the steps:
-//  - implement it in Actions.kt
+//  - implement it in ActionsX.kt
 //  - add to  `botTriggers` / `botActions` / `apiActions` below
 //  - add to  `botModule` in SerializersModule.kt
 
@@ -45,6 +45,7 @@ val botActions = listOf(
     ParseXML(),
     RegexExtract(),
     ImportAsRegexRule(),
+    ImportAsMultipleRegexRules(),
     ImportToSpamDB(),
     FindRules(),
     ModifyRules(),

@@ -118,7 +118,20 @@
     </string>
     <string name="help_action_import_as_regex_rule">
         <![CDATA[
-        Генерує нове правило регулярного виразу зі списку номерів.
+        Генерує нове правило регулярного виразу. <br>
+        <br>
+        Наприклад: <br>
+        <sample>
+        &ensp; Після обробки CSV об\'єднайте всі номери в одне правило регулярного виразу.
+        </sample>
+        ]]>
+    </string>
+    <string name="help_action_import_as_multiple_regex_rules">
+        <![CDATA[
+        Генерує кілька правил регулярного виразу. <br>
+        <br>
+        Наприклад: <br>
+        &ensp; Створіть окреме правило регулярного виразу для кожного рядка у файлі CSV.
         ]]>
     </string>
     <string name="help_action_replace_number">
@@ -136,7 +149,8 @@
         ]]>
     </string>
     <string name="action_replace_number">Замінити номер</string>
-    <string name="action_import_as_regex_rule">Імпортувати як правило Regex</string>
+    <string name="action_import_as_regex_rule">Імпорт як одне правило Regex</string>
+    <string name="action_import_as_multiple_regex_rules">Імпорт як кілька правил Regex</string>
     <string name="duration_in_minutes">Тривалість (хвилини)</string>
     <string name="help_trigger_manual">
         <![CDATA[

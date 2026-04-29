@@ -118,7 +118,20 @@
     </string>
     <string name="help_action_import_as_regex_rule">
         <![CDATA[
-        Bir telefon numaraları listesinden yeni bir regex kuralı oluşturun.
+        Yeni bir regex kuralı oluşturun. <br>
+        <br>
+        Örneğin: <br>
+        <sample>
+        &ensp; CSV ayrıştırıldıktan sonra tüm numaraları tek bir regex kuralında birleştirin.
+        </sample>
+        ]]>
+    </string>
+    <string name="help_action_import_as_multiple_regex_rules">
+        <![CDATA[
+        Birden çok regex kuralı oluşturun. <br>
+        <br>
+        Örneğin: <br>
+        &ensp; CSV dosyasındaki her satır için ayrı bir regex kuralı oluşturun.
         ]]>
     </string>
     <string name="help_action_replace_number">
@@ -136,7 +149,8 @@
         ]]>
     </string>
     <string name="action_replace_number">Numarayı Değiştir</string>
-    <string name="action_import_as_regex_rule">Regex Kuralına Aktar</string>
+    <string name="action_import_as_regex_rule">Tek Regex Kuralı Olarak İçe Aktar</string>
+    <string name="action_import_as_multiple_regex_rules">Birden Çok Regex Kuralı Olarak İçe Aktar</string>
     <string name="duration_in_minutes">Süre (dakika)</string>
     <string name="help_trigger_manual">
         <![CDATA[

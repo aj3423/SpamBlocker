@@ -10,7 +10,8 @@
     <string name="parsed_n_rules">%s قوانین تجزیه شدند.</string>
     <string name="add_n_numbers_to_spam_db">اضافه کردن %s شماره به پایگاه داده تماس‌های مزاحم.</string>
     <string name="nothing_to_import">لیست شماره‌ها خالی است، چیزی برای وارد کردن وجود ندارد.</string>
-    <string name="importing_n_numbers">وارد کردن %s شماره به عنوان قانون عبارات باقاعده.</string>
+    <string name="importing_n_numbers">وارد کردن %s شماره.</string>
+    <string name="importing_n_rules">وارد کردن %s قانون.</string>
     <string name="create_rule_with_numbers">ایجاد قانون با %s شماره.</string>
     <string name="replace_rule_with_desc">جایگزینی قانون با توضیحات: %s.</string>
     <string name="rule_with_desc_not_found">قانون با توضیحات %s یافت نشد.</string>

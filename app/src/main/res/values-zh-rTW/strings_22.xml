@@ -118,7 +118,20 @@
     </string>
     <string name="help_action_import_as_regex_rule">
         <![CDATA[
-        從電話號碼列表產生新的正規表達式規則。
+        產生新的正規表達式規則。 <br>
+        <br>
+        例如： <br>
+        <sample>
+        &ensp; 解析 CSV 後，將所有電話號碼合併為單一正規表達式規則。
+        </sample>
+        ]]>
+    </string>
+    <string name="help_action_import_as_multiple_regex_rules">
+        <![CDATA[
+        產生多個正規表達式規則。 <br>
+        <br>
+        例如： <br>
+        &ensp; 為 CSV 檔案中的每一行分別產生一個正規表達式規則。
         ]]>
     </string>
     <string name="help_action_replace_number">
@@ -136,7 +149,8 @@
         ]]>
     </string>
     <string name="action_replace_number">取代電話號碼</string>
-    <string name="action_import_as_regex_rule">匯入為正則表達式規則</string>
+    <string name="action_import_as_regex_rule">匯入為單一正則規則</string>
+    <string name="action_import_as_multiple_regex_rules">匯入為多個正則規則</string>
     <string name="duration_in_minutes">持續時間 (分鐘)</string>
     <string name="help_trigger_manual">
         <![CDATA[

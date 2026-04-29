@@ -25,6 +25,7 @@ import spam.blocker.service.bot.HttpRequest
 import spam.blocker.service.bot.IAction
 import spam.blocker.service.bot.ISchedule
 import spam.blocker.service.bot.ITriggerAction
+import spam.blocker.service.bot.ImportAsMultipleRegexRules
 import spam.blocker.service.bot.ImportAsRegexRule
 import spam.blocker.service.bot.ImportToSpamDB
 import spam.blocker.service.bot.InterceptCall
@@ -97,6 +98,7 @@ val botModule = SerializersModule {
         subclass(RegexExtract::class)
         subclass(ImportToSpamDB::class)
         subclass(ImportAsRegexRule::class)
+        subclass(ImportAsMultipleRegexRules::class)
         subclass(ConvertNumber::class)
         subclass(FindRules::class)
         subclass(ModifyRules::class)

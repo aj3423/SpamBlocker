@@ -10,7 +10,8 @@
     <string name="parsed_n_rules">Analitzades %s regles.</string>
     <string name="add_n_numbers_to_spam_db">S\'estan afegint %s números a la base de dades de correu brossa.</string>
     <string name="nothing_to_import">La llista de números està buida, no hi ha res per importar.</string>
-    <string name="importing_n_numbers">S\'estan important %s números com a regla regex.</string>
+    <string name="importing_n_numbers">S\'estan important %s números.</string>
+    <string name="importing_n_rules">S\'estan important %s regles.</string>
     <string name="create_rule_with_numbers">Creant regla amb %s números.</string>
     <string name="replace_rule_with_desc">Substituint la regla per la descripció: %s.</string>
     <string name="rule_with_desc_not_found">No s\'ha trobat cap regla amb la descripció %s.</string>

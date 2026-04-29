@@ -118,7 +118,20 @@
     </string>
     <string name="help_action_import_as_regex_rule">
         <![CDATA[
-        Menghasilkan aturan regex baru dari daftar nomor telepon.
+        Menghasilkan aturan regex baru. <br>
+        <br>
+        Contoh: <br>
+        <sample>
+        &ensp; Setelah mengurai CSV, gabungkan semua nomor telepon menjadi satu aturan regex.
+        </sample>
+        ]]>
+    </string>
+    <string name="help_action_import_as_multiple_regex_rules">
+        <![CDATA[
+        Menghasilkan beberapa aturan regex. <br>
+        <br>
+        Contoh: <br>
+        &ensp; Hasilkan aturan regex terpisah untuk setiap baris di file CSV.
         ]]>
     </string>
     <string name="help_action_replace_number">
@@ -136,7 +149,8 @@
         ]]>
     </string>
     <string name="action_replace_number">Ganti Nomor Telepon</string>
-    <string name="action_import_as_regex_rule">Impor ke Aturan Regex</string>
+    <string name="action_import_as_regex_rule">Impor sebagai Satu Aturan Regex</string>
+    <string name="action_import_as_multiple_regex_rules">Impor sebagai Beberapa Aturan Regex</string>
     <string name="duration_in_minutes">Durasi (menit)</string>
     <string name="help_trigger_manual">
         <![CDATA[

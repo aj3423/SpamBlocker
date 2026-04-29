@@ -158,7 +158,7 @@ fun EditChannelDialog(
                     // Show a warning: this channel is currently used by following rules...
                     val usedByRules = (NumberRegexTable().listAll(ctx) + ContentRegexTable().listAll(ctx))
                         .filter { it.channel == chId }
-                        .map { ctx.getString(R.string.regex_pattern) + " " + it.desc() }
+                        .map { ctx.getString(R.string.regex_pattern) + " " + it.descOrPattern() }
                         .toMutableList()
                     val spf = spf.Notification(ctx)
                     if (spf.spamCallChannelId == chId) {

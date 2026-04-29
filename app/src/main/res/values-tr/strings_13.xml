@@ -10,7 +10,8 @@
     <string name="parsed_n_rules">%s kural çözümlendi.</string>
     <string name="add_n_numbers_to_spam_db">Spam veritabanına %s numara ekleniyor.</string>
     <string name="nothing_to_import">Numara listesi boş, içe aktarılacak hiçbir şey yok.</string>
-    <string name="importing_n_numbers">%s numara regex kuralı olarak içe aktarılıyor.</string>
+    <string name="importing_n_numbers">%s numara içe aktarılıyor.</string>
+    <string name="importing_n_rules">%s kural içe aktarılıyor.</string>
     <string name="create_rule_with_numbers">%s numara ile kural oluşturuluyor.</string>
     <string name="replace_rule_with_desc">Kural, açıklaması: %s ile değiştiriliyor.</string>
     <string name="rule_with_desc_not_found">Açıklaması %s olan kural bulunamadı.</string>

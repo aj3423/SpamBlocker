@@ -10,7 +10,8 @@
     <string name="parsed_n_rules">%s Regeln analysiert.</string>
     <string name="add_n_numbers_to_spam_db">Hinzufügen von %s Nummern zur Spam-Datenbank.</string>
     <string name="nothing_to_import">Die Nummernliste ist leer, nichts zum Importieren.</string>
-    <string name="importing_n_numbers">Importiere %s Nummern als Regex-Regel.</string>
+    <string name="importing_n_numbers">Importiere %s Nummern.</string>
+    <string name="importing_n_rules">Importiere %s Regeln.</string>
     <string name="create_rule_with_numbers">Erstelle Regel mit %s Nummern.</string>
     <string name="replace_rule_with_desc">Ersetze die Regel mit der Beschreibung: %s.</string>
     <string name="rule_with_desc_not_found">Regel mit Beschreibung %s nicht gefunden.</string>

@@ -10,7 +10,8 @@
     <string name="parsed_n_rules">%s Aturan diuraikan.</string>
     <string name="add_n_numbers_to_spam_db">Menambahkan %s nomor ke db spam.</string>
     <string name="nothing_to_import">Daftar nomor kosong, tidak ada yang perlu diimpor.</string>
-    <string name="importing_n_numbers">Mengimpor %s nomor sebagai aturan regex.</string>
+    <string name="importing_n_numbers">Mengimpor %s nomor.</string>
+    <string name="importing_n_rules">Mengimpor %s aturan.</string>
     <string name="create_rule_with_numbers">Membuat aturan dengan %s nomor.</string>
     <string name="replace_rule_with_desc">Mengganti aturan dengan deskripsi: %s.</string>
     <string name="rule_with_desc_not_found">Aturan dengan deskripsi %s tidak ditemukan.</string>

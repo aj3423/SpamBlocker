@@ -10,7 +10,8 @@
     <string name="parsed_n_rules">Розпарсено %s правил.</string>
     <string name="add_n_numbers_to_spam_db">Додавання %s номерів до спам-бази даних.</string>
     <string name="nothing_to_import">Список номерів порожній, немає чого імпортувати.</string>
-    <string name="importing_n_numbers">Імпорт %s номерів як правила регулярних виразів.</string>
+    <string name="importing_n_numbers">Імпорт %s номерів.</string>
+    <string name="importing_n_rules">Імпорт %s правил.</string>
     <string name="create_rule_with_numbers">Створення правила з %s номерами.</string>
     <string name="replace_rule_with_desc">Заміна правила з описом: %s.</string>
     <string name="rule_with_desc_not_found">Правило з описом %s не знайдено.</string>

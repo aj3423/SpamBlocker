@@ -118,7 +118,20 @@
     </string>
     <string name="help_action_import_as_regex_rule">
         <![CDATA[
-        توليد قاعدة تعبير منتظم جديدة من قائمة أرقام.
+        توليد قاعدة تعبير منتظم جديدة. <br>
+        <br>
+        على سبيل المثال: <br>
+        <sample>
+        &ensp; بعد تحليل ملف CSV، ادمج جميع الأرقام في قاعدة تعبير منتظم واحدة.
+        </sample>
+        ]]>
+    </string>
+    <string name="help_action_import_as_multiple_regex_rules">
+        <![CDATA[
+        توليد قواعد تعبير منتظم متعددة. <br>
+        <br>
+        على سبيل المثال: <br>
+        &ensp; أنشئ قاعدة تعبير منتظم منفصلة لكل سطر في ملف CSV.
         ]]>
     </string>
     <string name="help_action_replace_number">
@@ -136,7 +149,8 @@
         ]]>
     </string>
     <string name="action_replace_number">استبدال الرقم</string>
-    <string name="action_import_as_regex_rule">استيراد كقاعدة تعبير نمطي</string>
+    <string name="action_import_as_regex_rule">استيراد كقاعدة Regex واحدة</string>
+    <string name="action_import_as_multiple_regex_rules">استيراد كقواعد Regex متعددة</string>
     <string name="duration_in_minutes">المدة (بالدقائق)</string>
     <string name="help_trigger_manual">
         <![CDATA[

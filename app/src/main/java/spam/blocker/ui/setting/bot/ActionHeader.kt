@@ -31,6 +31,7 @@ import spam.blocker.ui.setting.SettingRow
 import spam.blocker.ui.setting.api.tagOther
 import spam.blocker.ui.widgets.BalloonQuestionMark
 import spam.blocker.ui.widgets.GreyLabel
+import spam.blocker.ui.widgets.GreyText
 import spam.blocker.ui.widgets.Placeholder
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.RowVCenterSpaced
@@ -140,7 +141,7 @@ fun ActionPresetCard(
         // Icon
         action.Icon()
         // Title
-        GreyLabel(
+        GreyText(
             text = action.label(ctx),
             modifier = M
                 .weight(1f)

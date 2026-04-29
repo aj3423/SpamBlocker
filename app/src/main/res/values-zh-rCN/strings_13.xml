@@ -10,7 +10,8 @@
     <string name="parsed_n_rules">已解析%s条规则。</string>
     <string name="add_n_numbers_to_spam_db">正在将%s个号码添加到垃圾电话数据库。</string>
     <string name="nothing_to_import">号码列表为空，无需导入。</string>
-    <string name="importing_n_numbers">正在导入%s个号码作为正则表达式规则。</string>
+    <string name="importing_n_numbers">正在导入%s个号码。</string>
+    <string name="importing_n_rules">正在导入%s条规则。</string>
     <string name="create_rule_with_numbers">正在创建包含%s个号码的规则。</string>
     <string name="replace_rule_with_desc">用描述替换规则：%s。</string>
     <string name="rule_with_desc_not_found">未找到描述为%s的规则。</string>

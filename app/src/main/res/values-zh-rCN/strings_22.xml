@@ -118,7 +118,20 @@
     </string>
     <string name="help_action_import_as_regex_rule">
         <![CDATA[
-        从号码列表生成新的正则表达式规则。
+        生成新的正则表达式规则。 <br>
+        <br>
+        例如： <br>
+        <sample>
+        &ensp; 解析 CSV 后，将所有号码合并为一条正则表达式规则。
+        </sample>
+        ]]>
+    </string>
+    <string name="help_action_import_as_multiple_regex_rules">
+        <![CDATA[
+        生成多个正则表达式规则。 <br>
+        <br>
+        例如： <br>
+        &ensp; 为 CSV 文件中的每一行分别生成一条正则表达式规则。
         ]]>
     </string>
     <string name="help_action_replace_number">
@@ -136,7 +149,8 @@
         ]]>
     </string>
     <string name="action_replace_number">替换号码</string>
-    <string name="action_import_as_regex_rule">导入为正则表达式规则</string>
+    <string name="action_import_as_regex_rule">导入为单条正则规则</string>
+    <string name="action_import_as_multiple_regex_rules">导入为多条正则规则</string>
     <string name="duration_in_minutes">持续时间（分钟）</string>
     <string name="help_trigger_manual">
         <![CDATA[

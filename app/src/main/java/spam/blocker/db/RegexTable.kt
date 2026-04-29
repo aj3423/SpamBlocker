@@ -113,11 +113,10 @@ data class RegexRule(
     var simSlot: Int? = null,
 ) {
 
-    fun desc(): String {
-        return if (description.isNotEmpty())
-            description
-        else
+    fun descOrPattern(): String {
+        return description.ifEmpty {
             truncate(patternStr(), limit = 40)
+        }
     }
 
     // This function is only used for matching normal text like sms content or anything other than

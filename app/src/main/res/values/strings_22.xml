@@ -117,10 +117,24 @@
         Add a list of numbers to the spam database.
         ]]>
     </string>
-    <string name="action_import_as_regex_rule">Import to Regex Rule</string>
+    <string name="action_import_as_regex_rule">Import as a Regex Rule</string>
     <string name="help_action_import_as_regex_rule">
         <![CDATA[
-        Generate a new regex rule from a list of numbers.
+        Generate a new regex rule. <br>
+        <br>
+        For example: <br>
+        <sample>
+        &ensp; After parsing the CSV, combine all the numbers into a single regex rule.
+        </sample>
+        ]]>
+    </string>
+    <string name="action_import_as_multiple_regex_rules">Import as Multiple Regex Rules</string>
+    <string name="help_action_import_as_multiple_regex_rules">
+        <![CDATA[
+        Generate multiple regex rules. <br>
+        <br>
+        For example: <br>
+        &ensp; Generate a separate regex rule for each line in the CSV file.
         ]]>
     </string>
     <string name="action_replace_number">Replace Number</string>
