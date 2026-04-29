@@ -75,7 +75,7 @@ val regexModeInlineMap = buildMap {
         put(value, InlineTextContent(
             placeholder = Placeholder(16.sp, 16.sp, PlaceholderVerticalAlign.TextCenter)
         ) {
-            ResIcon(regexModeIconMap[key]!!, color = G.palette.regexFlags)
+            ResIcon(regexModeIconMap[key]!!, color = G.palette.infoBlue)
         })
     }
 }

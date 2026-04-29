@@ -1,6 +1,7 @@
 <resources>
     <string name="contact">Контакт</string>
     <string name="non_contact">Не контакт</string>
+    <string name="contact_name">Имя контакта</string>
     <string name="help_contacts">
         <![CDATA[
         Разрешить номера контактов. <br>

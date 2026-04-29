@@ -1,6 +1,7 @@
 <resources>
     <string name="contact">איש קשר</string>
     <string name="non_contact">שאינו איש קשר</string>
+    <string name="contact_name">שם איש הקשר</string>
     <string name="help_contacts">
         <![CDATA[
         אפשר מספרי אנשי קשר. <br>

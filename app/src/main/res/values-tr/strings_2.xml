@@ -1,6 +1,7 @@
 <resources>
     <string name="contact">Kişiler</string>
     <string name="non_contact">Rehberde Olmayan</string>
+    <string name="contact_name">Kişi Adı</string>
     <string name="help_contacts">
         <![CDATA[
         Kişi numaralarına izin ver. <br>

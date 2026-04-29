@@ -1,6 +1,7 @@
 <resources>
     <string name="contact">جهات الاتصال</string>
     <string name="non_contact">جهات غير مسجلة</string>
+    <string name="contact_name">اسم جهة الاتصال</string>
     <string name="help_contacts">
         <![CDATA[
         السماح بأرقام جهات الاتصال. <br>

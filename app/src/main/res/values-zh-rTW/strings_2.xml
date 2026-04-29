@@ -1,6 +1,7 @@
 <resources>
     <string name="contact">聯絡人</string>
     <string name="non_contact">非聯絡人</string>
+    <string name="contact_name">聯絡人姓名</string>
     <string name="help_contacts">
         <![CDATA[
         允許聯絡人號碼。 <br>

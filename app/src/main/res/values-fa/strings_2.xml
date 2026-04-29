@@ -1,6 +1,7 @@
 <resources>
     <string name="contact">مخاطبین</string>
     <string name="non_contact">ناشناس ها</string>
+    <string name="contact_name">نام مخاطب</string>
     <string name="help_contacts">
         <![CDATA[
         اجازه شماره‌های مخاطب. <br>

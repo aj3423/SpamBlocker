@@ -1,6 +1,7 @@
 <resources>
     <string name="contact">Kontak</string>
     <string name="non_contact">Non Kontak</string>
+    <string name="contact_name">Nama Kontak</string>
     <string name="help_contacts">
         <![CDATA[
         Izinkan nomor kontak. <br>

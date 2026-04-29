@@ -1,6 +1,7 @@
 <resources>
     <string name="contact">Contacto</string>
     <string name="non_contact">No Contacto</string>
+    <string name="contact_name">Nombre del contacto</string>
     <string name="help_contacts">
         <![CDATA[
         Permitir números de contacto. <br>

@@ -98,7 +98,7 @@ import spam.blocker.util.setFlag
 fun RegexModeIcon(mode: Int) {
     ResIcon(
         regexModeIconMap[mode]!!,
-        color = G.palette.regexFlags,
+        color = G.palette.infoBlue,
         modifier = M.size(16.dp)
     )
 }
@@ -131,7 +131,7 @@ fun RegexLeadingDropdownIcon(
         )
         val labelIds = mutableListOf(
             R.string.phone_number,
-            R.string.contact,
+            R.string.contact_name,
             R.string.contact_group,
             R.string.contact_prefix,
             R.string.geolocation,
@@ -257,7 +257,7 @@ fun RegexFieldLabel(
                     if (flags.hasFlag(FLAG_REGEX_FOR_CONTACT_GROUP))
                         R.string.contact_group
                     else if (flags.hasFlag(FLAG_REGEX_FOR_CONTACT))
-                        R.string.contact
+                        R.string.contact_name
                     else if (flags.hasFlag(FLAG_REGEX_FOR_CONTACT_PREFIX))
                         R.string.contact_prefix
                     else if (flags.hasFlag(FLAG_REGEX_FOR_CNAP))
