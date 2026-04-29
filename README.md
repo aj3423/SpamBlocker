@@ -82,7 +82,6 @@ You can kill the app after setup, it doesn’t need to stay running in the backg
 | Permission (all optional)                                                         | Why                                                                    |
 |-----------------------------------------------------------------------------------|------------------------------------------------------------------------|
 | INTERNET                                                                          | For database downloading / instant query / number reporting            | 
-| MANAGE_EXTERNAL_STORAGE (Android 11+)<br>READ/WRITE_EXTERNAL_STORAGE (Android 10) | For file access via automated workflow                                 | 
 | ANSWER_PHONE_CALLS                                                                | Reject, answer and hang-up calls                                       |
 | POST_NOTIFICATIONS                                                                | Show notifications                                                     |
 | READ_CONTACTS                                                                     | Match contacts                                                         |

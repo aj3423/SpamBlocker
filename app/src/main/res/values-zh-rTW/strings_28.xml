@@ -1,0 +1,5 @@
+<resources>
+    <string name="perm_access_dir">存取資料夾</string>
+    <string name="dir_not_specified">未指定資料夾。</string>
+    <string name="no_access_to_dir">無法存取資料夾：%s。</string>
+</resources>

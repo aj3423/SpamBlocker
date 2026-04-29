@@ -70,28 +70,12 @@
     </string>
     <string name="help_action_read_file">
         <![CDATA[
-        从文件读取数据字节。 <br>
-        <br>
-        支持的<highlight>路径</highlight>标签： <br>
-        <br>
-        %s <br>
-        <br>
-        支持的<highlight>文件名</highlight>标签： <br>
-        <br>
-        %s
+        从文件读取数据字节。
         ]]>
     </string>
     <string name="help_action_write_file">
         <![CDATA[
-        将数据字节写入文件。 <br>
-        <br>
-        支持的<highlight><b>路径</b></highlight>标签： <br>
-        <br>
-        %s <br>
-        <br>
-        支持的<highlight><b>文件名</b></highlight>标签： <br>
-        <br>
-        %s
+        将数据字节写入文件。
         ]]>
     </string>
     <string name="action_find_rules">查找规则</string>

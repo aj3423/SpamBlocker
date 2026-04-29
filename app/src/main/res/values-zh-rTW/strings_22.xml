@@ -70,28 +70,12 @@
     </string>
     <string name="help_action_read_file">
         <![CDATA[
-        從檔案讀取資料位元組。 <br>
-        <br>
-        支援的 <highlight>路徑</highlight> 標籤： <br>
-        <br>
-        %s <br>
-        <br>
-        支援的 <highlight>檔案名稱</highlight> 標籤： <br>
-        <br>
-        %s
+        從檔案讀取資料位元組。
         ]]>
     </string>
     <string name="help_action_write_file">
         <![CDATA[
-        將資料位元組寫入檔案。 <br>
-        <br>
-        支援的 <highlight><b>路徑</b></highlight> 標籤： <br>
-        <br>
-        %s <br>
-        <br>
-        支援的 <highlight><b>檔案名稱</b></highlight> 標籤： <br>
-        <br>
-        %s
+        將資料位元組寫入檔案。
         ]]>
     </string>
     <string name="action_find_rules">尋找規則</string>

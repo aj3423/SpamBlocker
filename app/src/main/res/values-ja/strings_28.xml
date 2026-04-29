@@ -1,0 +1,5 @@
+<resources>
+    <string name="perm_access_dir">フォルダにアクセス</string>
+    <string name="dir_not_specified">フォルダが指定されていません。</string>
+    <string name="no_access_to_dir">フォルダにアクセスできません：%s。</string>
+</resources>

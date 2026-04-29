@@ -70,28 +70,12 @@
     </string>
     <string name="help_action_read_file">
         <![CDATA[
-        Membaca byte data dari file. <br>
-        <br>
-        Tag <highlight>jalur</highlight> yang didukung: <br>
-        <br>
-        %s <br>
-        <br>
-        Tag <highlight>nama file</highlight> yang didukung: <br>
-        <br>
-        %s
+        Membaca byte data dari file.
         ]]>
     </string>
     <string name="help_action_write_file">
         <![CDATA[
-        Menulis byte data ke file. <br>
-        <br>
-        Tag <highlight><b>jalur</b></highlight> yang didukung: <br>
-        <br>
-        %s <br>
-        <br>
-        Tag <highlight><b>nama file</b></highlight> yang didukung: <br>
-        <br>
-        %s
+        Menulis byte data ke file.
         ]]>
     </string>
     <string name="action_find_rules">Temukan Aturan</string>

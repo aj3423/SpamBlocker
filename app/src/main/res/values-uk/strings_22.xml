@@ -70,28 +70,12 @@
     </string>
     <string name="help_action_read_file">
         <![CDATA[
-        Зчитує байти даних з файлу. <br>
-        <br>
-        Підтримувані теги <highlight>шляху</highlight>: <br>
-        <br>
-        %s <br>
-        <br>
-        Підтримувані теги <highlight>імені файлу</highlight>: <br>
-        <br>
-        %s
+        Зчитує байти даних з файлу.
         ]]>
     </string>
     <string name="help_action_write_file">
         <![CDATA[
-        Записує байти даних у файл. <br>
-        <br>
-        Підтримувані теги <highlight><b>шляху</b></highlight>: <br>
-        <br>
-        %s <br>
-        <br>
-        Підтримувані теги <highlight><b>імені файлу</b></highlight>: <br>
-        <br>
-        %s
+        Записує байти даних у файл.
         ]]>
     </string>
     <string name="action_find_rules">Знайти правила</string>

@@ -32,7 +32,6 @@ import spam.blocker.def.Def.DEFAULT_HANG_UP_DELAY
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_ANSWERED
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_API_QUERY
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CARRIER_REGEX
-import spam.blocker.def.Def.RESULT_BLOCKED_BY_CARRIER_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CNAP_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_GROUP_REGEX
@@ -52,6 +51,7 @@ import spam.blocker.def.Def.RESULT_ALLOWED_BY_REPEATED
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_SMS_ALERT
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_STIR
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_API_QUERY
+import spam.blocker.def.Def.RESULT_BLOCKED_BY_CARRIER_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CNAP_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTACT_GROUP_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTACT_PREFIX_REGEX

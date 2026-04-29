@@ -70,28 +70,12 @@
     </string>
     <string name="help_action_read_file">
         <![CDATA[
-        Bir dosyadan veri baytları okuyun. <br>
-        <br>
-        Desteklenen <highlight>yol</highlight> etiketleri: <br>
-        <br>
-        %s <br>
-        <br>
-        Desteklenen <highlight>dosya adı</highlight> etiketleri: <br>
-        <br>
-        %s
+        Bir dosyadan veri baytları okuyun.
         ]]>
     </string>
     <string name="help_action_write_file">
         <![CDATA[
-        Veri baytlarını bir dosyaya yazın. <br>
-        <br>
-        Desteklenen <highlight><b>yol</b></highlight> etiketleri: <br>
-        <br>
-        %s <br>
-        <br>
-        Desteklenen <highlight><b>dosya adı</b></highlight> etiketleri: <br>
-        <br>
-        %s
+        Veri baytlarını bir dosyaya yazın.
         ]]>
     </string>
     <string name="action_find_rules">Kuralları Bul</string>

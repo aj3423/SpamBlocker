@@ -1,6 +1,6 @@
 <resources>
     <string name="contact_rule">Regola Contatto</string>
-    <string name="directory">Directory</string>
+    <string name="directory_abbrev">Dir.</string>
     <string name="filename">Nome File</string>
     <string name="url">URL</string>
     <string name="expiry_days">Giorni di Scadenza</string>

@@ -1,0 +1,5 @@
+<resources>
+    <string name="perm_access_dir">Доступ до папки</string>
+    <string name="dir_not_specified">Папку не вказано.</string>
+    <string name="no_access_to_dir">Немає доступу до папки: %s.</string>
+</resources>

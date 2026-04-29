@@ -1,0 +1,5 @@
+<resources>
+    <string name="perm_access_dir">גישה לתיקייה</string>
+    <string name="dir_not_specified">התיקייה לא צוינה.</string>
+    <string name="no_access_to_dir">אין גישה לתיקייה: %s.</string>
+</resources>

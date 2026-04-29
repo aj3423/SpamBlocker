@@ -1,0 +1,5 @@
+<resources>
+    <string name="perm_access_dir">Accéder au dossier</string>
+    <string name="dir_not_specified">Dossier non spécifié.</string>
+    <string name="no_access_to_dir">Aucun accès au dossier : %s.</string>
+</resources>

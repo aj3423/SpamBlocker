@@ -29,7 +29,6 @@ import spam.blocker.ui.widgets.SnackBar
 import spam.blocker.ui.widgets.SwipeInfo
 import spam.blocker.util.Launcher
 import spam.blocker.util.SimUtils
-import spam.blocker.util.spf
 
 
 @OptIn(ExperimentalFoundationApi::class)

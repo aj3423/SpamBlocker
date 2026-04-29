@@ -71,28 +71,12 @@
     </string>
     <string name="help_action_read_file">
         <![CDATA[
-        Read data bytes from a file. <br>
-        <br>
-        Supported <highlight>path</highlight> tags: <br>
-        <br>
-        %s <br>
-        <br>
-        Supported <highlight>file name</highlight> tags: <br>
-        <br>
-        %s
+        Read data bytes from a file.
         ]]>
     </string>
     <string name="help_action_write_file">
         <![CDATA[
-        Write data bytes to a file. <br>
-        <br>
-        Supported <highlight><b>path</b></highlight> tags: <br>
-        <br>
-        %s <br>
-        <br>
-        Supported <highlight><b>filename</b></highlight> tags: <br>
-        <br>
-        %s
+        Write data bytes to a file.
         ]]>
     </string>
     <string name="action_find_rules">Find Rules</string>

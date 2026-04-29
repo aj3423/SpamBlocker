@@ -10,9 +10,9 @@ import spam.blocker.ui.widgets.InitFile
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.MIME_CSV
 import spam.blocker.util.CSVParser
+import spam.blocker.util.FileUtils.getFilename
+import spam.blocker.util.FileUtils.readDataFromUri
 import spam.blocker.util.Util
-import spam.blocker.util.Util.getFilename
-import spam.blocker.util.Util.readDataFromUri
 import java.io.BufferedReader
 import java.io.ByteArrayInputStream
 import java.io.InputStreamReader

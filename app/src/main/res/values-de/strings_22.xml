@@ -70,28 +70,12 @@
     </string>
     <string name="help_action_read_file">
         <![CDATA[
-        Liest Daten-Bytes aus einer Datei. <br>
-        <br>
-        Unterstützte <highlight>Pfad</highlight>-Tags: <br>
-        <br>
-        %s <br>
-        <br>
-        Unterstützte <highlight>Dateiname</highlight>-Tags: <br>
-        <br>
-        %s
+        Liest Daten-Bytes aus einer Datei.
         ]]>
     </string>
     <string name="help_action_write_file">
         <![CDATA[
-        Schreibt Daten-Bytes in eine Datei. <br>
-        <br>
-        Unterstützte <highlight><b>Pfad</b></highlight>-Tags: <br>
-        <br>
-        %s <br>
-        <br>
-        Unterstützte <highlight><b>Dateiname</b></highlight>-Tags: <br>
-        <br>
-        %s
+        Schreibt Daten-Bytes in eine Datei.
         ]]>
     </string>
     <string name="action_find_rules">Regeln finden</string>

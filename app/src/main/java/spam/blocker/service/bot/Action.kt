@@ -19,7 +19,6 @@ import kotlinx.serialization.builtins.ListSerializer
 import spam.blocker.service.checker.CheckContext
 import spam.blocker.util.BotJson
 import spam.blocker.util.ILogger
-import spam.blocker.util.Permission
 import spam.blocker.util.PermissionWrapper
 
 // When adding a new IAction type, follow all the steps:
@@ -212,29 +211,6 @@ interface IPermissiveAction : IAction {
         return listOf()
     }
 }
-
-// Actions that require Internet permission, such as HTTP, FTP ...
-//interface IInternetAction: IAction {
-//    override fun isPermissionGranted(ctx: Context): Boolean {
-//        return Permissions.isInternetPermissionGranted(ctx)
-//    }
-//    override fun askForPermission(ctx: Context) { }
-//}
-
-// Actions that require file read/write permissions
-interface IFileAction : IAction {
-    override fun requiredPermissions(ctx: Context): List<PermissionWrapper> {
-        val ret = mutableListOf<PermissionWrapper>()
-
-        if (!Permission.fileRead.isGranted)
-            ret.add(PermissionWrapper(Permission.fileRead))
-        if (!Permission.fileWrite.isGranted)
-            ret.add(PermissionWrapper(Permission.fileWrite))
-
-        return ret
-    }
-}
-
 
 val actionsSaver = Saver<SnapshotStateList<IAction>, String>(
     save = { it.serialize() },

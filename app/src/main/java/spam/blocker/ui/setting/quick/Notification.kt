@@ -55,6 +55,7 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
+import spam.blocker.util.FileUtils.readDataFromUri
 import spam.blocker.util.Lambda2
 import spam.blocker.util.Notification
 import spam.blocker.util.Notification.createChannel
@@ -63,7 +64,6 @@ import spam.blocker.util.Notification.manager
 import spam.blocker.util.Notification.openChannelSettings
 import spam.blocker.util.Notification.reloadChannels
 import spam.blocker.util.RingtoneUtil
-import spam.blocker.util.Util.readDataFromUri
 import spam.blocker.util.spf
 import androidx.compose.foundation.Image as ComposeImage
 

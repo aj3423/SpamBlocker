@@ -70,28 +70,12 @@
     </string>
     <string name="help_action_read_file">
         <![CDATA[
-        قراءة بايتات البيانات من ملف. <br>
-        <br>
-        علامات <highlight>المسار</highlight> المدعومة: <br>
-        <br>
-        %s <br>
-        <br>
-        علامات <highlight>اسم الملف</highlight> المدعومة: <br>
-        <br>
-        %s
+        قراءة بايتات البيانات من ملف.
         ]]>
     </string>
     <string name="help_action_write_file">
         <![CDATA[
-        كتابة بايتات البيانات إلى ملف. <br>
-        <br>
-        علامات <highlight><b>المسار</b></highlight> المدعومة: <br>
-        <br>
-        %s <br>
-        <br>
-        علامات <highlight><b>اسم الملف</b></highlight> المدعومة: <br>
-        <br>
-        %s
+        كتابة بايتات البيانات إلى ملف.
         ]]>
     </string>
     <string name="action_find_rules">البحث عن القواعد</string>

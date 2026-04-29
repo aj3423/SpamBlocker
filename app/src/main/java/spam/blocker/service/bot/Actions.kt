@@ -1,10 +1,11 @@
 package spam.blocker.service.bot
 
-import android.annotation.SuppressLint
 import android.content.Context
+import android.net.Uri
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -12,6 +13,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
+import androidx.core.net.toUri
 import com.google.i18n.phonenumbers.PhoneNumberUtil
 import com.google.i18n.phonenumbers.Phonenumber
 import kotlinx.coroutines.CancellationException
@@ -50,6 +52,7 @@ import spam.blocker.ui.setting.api.tagComment
 import spam.blocker.ui.setting.api.tagValid
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.ComboBox
+import spam.blocker.ui.widgets.DirButton
 import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.GreyIcon18
@@ -72,6 +75,8 @@ import spam.blocker.util.A
 import spam.blocker.util.AdbLogger
 import spam.blocker.util.CSVParser
 import spam.blocker.util.CountryCode
+import spam.blocker.util.FileUtils.readFileFromTree
+import spam.blocker.util.FileUtils.writeFileInTree
 import spam.blocker.util.Now
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionWrapper
@@ -81,6 +86,7 @@ import spam.blocker.util.Util
 import spam.blocker.util.Util.domainFromUrl
 import spam.blocker.util.Xml
 import spam.blocker.util.formatAnnotated
+import spam.blocker.util.hasFolderAccess
 import spam.blocker.util.httpRequest
 import spam.blocker.util.logi
 import spam.blocker.util.regexExtract
@@ -91,11 +97,11 @@ import spam.blocker.util.resolveCustomTag
 import spam.blocker.util.resolveEscapeTag
 import spam.blocker.util.resolveHttpAuthTag
 import spam.blocker.util.resolveNumberTag
-import spam.blocker.util.resolvePathTags
 import spam.blocker.util.resolveSHA1Tag
 import spam.blocker.util.resolveSmsTag
 import spam.blocker.util.resolveTimeTags
 import spam.blocker.util.spf
+import spam.blocker.util.toFolderDisplayName
 import spam.blocker.util.toMap
 import spam.blocker.util.toStringMap
 import spam.blocker.util.unescapeUnicode
@@ -639,23 +645,76 @@ class BackupImport(
         }
     }
 }
+@Serializable
+abstract class FileAction : IPermissiveAction {
+    // These must be implemented by subclasses
+    abstract var uriStr: String?
+    abstract var filename: String
+
+    // Helper to get the resolved URI
+    protected fun getTreeUri() = uriStr?.toUri()
+
+    @Composable
+    override fun Summary(showIcon: Boolean) {
+        SummaryLabel("${getTreeUri()?.toFolderDisplayName() ?: "?"} / $filename")
+    }
+
+    @Composable
+    override fun Options() {
+        Column {
+            val uriState = remember { mutableStateOf(getTreeUri()) }
+            LaunchedEffect(uriState.value) {
+                uriStr = uriState.value?.toString()
+            }
+            LabeledRow(R.string.directory_abbrev) {
+                DirButton(uri = uriState)
+            }
+            StrInputBox(
+                text = filename,
+                label = { Text(Str(R.string.filename)) },
+                helpTooltip = Str(R.string.tags_supported) + Str(R.string.time_tags),
+                onValueChange = { filename = it }
+            )
+        }
+    }
+
+    // Shared validation and logging logic to keep execute() clean
+    protected fun validateAndLog(ctx: Context, aCtx: ActionContext): Uri? {
+        val treeUri = getTreeUri()
+        val fn = filename.resolveTimeTags()
+
+        if (treeUri == null) {
+            aCtx.logger?.error(label(ctx) + ": " + ctx.getString(R.string.dir_not_specified))
+            return null
+        }
+        if (!treeUri.hasFolderAccess(ctx)) {
+            aCtx.logger?.error(label(ctx) + ": " + ctx.getString(R.string.no_access_to_dir).format(treeUri.toFolderDisplayName()))
+            return null
+        }
+
+        aCtx.logger?.debug(label(ctx) + ": ${treeUri.toFolderDisplayName() ?: "?"} / $fn")
+        return treeUri
+    }
+}
 
 @Serializable
 @SerialName("ReadFile")
 class ReadFile(
-    var dir: String = "{Downloads}",
-    var filename: String = "",
-) : IFileAction {
+    override var uriStr: String? = null,
+    override var filename: String = "",
+) : FileAction() {
+    override fun label(ctx: Context) = ctx.getString(R.string.action_read_file)
+    override fun tooltip(ctx: Context) = ctx.getString(R.string.help_action_read_file)
+    override fun inputParamType() = listOf(ParamType.None)
+    override fun outputParamType() = listOf(ParamType.ByteArray)
+
+    @Composable
+    override fun Icon() = GreyIcon(R.drawable.ic_file_read)
 
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-        val path = dir.resolvePathTags()
-
-        val fn = filename.resolveTimeTags()
-
+        val treeUri = validateAndLog(ctx, aCtx) ?: return false
         return try {
-            aCtx.logger?.debug(label(ctx) + ": $path/$fn")
-
-            val bytes = Util.readFile(path, fn)
+            val bytes = readFileFromTree(ctx, treeUri, filename)
             aCtx.lastOutput = bytes
             true
         } catch (e: Exception) {
@@ -663,125 +722,31 @@ class ReadFile(
             false
         }
     }
-
-    override fun label(ctx: Context): String {
-        return ctx.getString(R.string.action_read_file)
-    }
-
-    @Composable
-    override fun Summary(showIcon: Boolean) {
-        SummaryLabel("$dir/$filename")
-    }
-
-    @SuppressLint("StringFormatInvalid")
-    override fun tooltip(ctx: Context): String {
-        return ctx.getString(R.string.help_action_read_file).format(
-            ctx.getString(R.string.path_tags),
-            ctx.getString(R.string.time_tags)
-        )
-    }
-
-    override fun inputParamType(): List<ParamType> {
-        return listOf(ParamType.None)
-    }
-
-    override fun outputParamType(): List<ParamType> {
-        return listOf(ParamType.ByteArray)
-    }
-
-    @Composable
-    override fun Icon() {
-        GreyIcon(R.drawable.ic_file_read)
-    }
-
-    @Composable
-    override fun Options() {
-        Column {
-            StrInputBox(
-                text = dir,
-                label = { Text(Str(R.string.directory)) },
-                helpTooltip = Str(R.string.tags_supported) + Str(R.string.path_tags),
-                onValueChange = { dir = it }
-            )
-            StrInputBox(
-                text = filename,
-                label = { Text(Str(R.string.filename)) },
-                helpTooltip = Str(R.string.tags_supported) + Str(R.string.time_tags),
-                onValueChange = { filename = it }
-            )
-        }
-    }
 }
 
 @Serializable
 @SerialName("WriteFile")
 class WriteFile(
-    var dir: String = "{Downloads}",
-    var filename: String = "",
-) : IFileAction {
+    override var uriStr: String? = null,
+    override var filename: String = "",
+) : FileAction() {
+    override fun label(ctx: Context) = ctx.getString(R.string.action_write_file)
+    override fun tooltip(ctx: Context) = ctx.getString(R.string.help_action_write_file)
+    override fun inputParamType() = listOf(ParamType.ByteArray)
+    override fun outputParamType() = listOf(ParamType.None)
+
+    @Composable
+    override fun Icon() = GreyIcon(R.drawable.ic_file_write)
 
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-        val input = aCtx.lastOutput as ByteArray
-
-        val path = dir.resolvePathTags()
-        val fn = filename.resolveTimeTags()
-
-        aCtx.logger?.debug(label(ctx) + ": $path/$fn")
-
+        val input = aCtx.lastOutput as? ByteArray ?: return false
+        val treeUri = validateAndLog(ctx, aCtx) ?: return false
         return try {
-            Util.writeFile(path, fn, input)
+            writeFileInTree(ctx, treeUri, filename, input)
             true
         } catch (e: Exception) {
             aCtx.logger?.error("$e")
             false
-        }
-    }
-
-    override fun label(ctx: Context): String {
-        return ctx.getString(R.string.action_write_file)
-    }
-
-    @Composable
-    override fun Summary(showIcon: Boolean) {
-        SummaryLabel("$dir/$filename")
-    }
-
-    @SuppressLint("StringFormatInvalid")
-    override fun tooltip(ctx: Context): String {
-        return ctx.getString(R.string.help_action_write_file).format(
-            ctx.getString(R.string.path_tags),
-            ctx.getString(R.string.time_tags)
-        )
-    }
-
-    override fun inputParamType(): List<ParamType> {
-        return listOf(ParamType.ByteArray)
-    }
-
-    override fun outputParamType(): List<ParamType> {
-        return listOf(ParamType.None)
-    }
-
-    @Composable
-    override fun Icon() {
-        GreyIcon(R.drawable.ic_file_write)
-    }
-
-    @Composable
-    override fun Options() {
-        Column {
-            StrInputBox(
-                text = dir,
-                label = { Text(Str(R.string.directory)) },
-                helpTooltip = Str(R.string.tags_supported) + Str(R.string.path_tags),
-                onValueChange = { dir = it }
-            )
-            StrInputBox(
-                text = filename,
-                label = { Text(Str(R.string.filename)) },
-                helpTooltip = Str(R.string.tags_supported) + Str(R.string.time_tags),
-                onValueChange = { filename = it }
-            )
         }
     }
 }
@@ -1132,7 +1097,7 @@ class ImportAsRegexRule(
             // Do nothing when there isn't any number to add, to prevent adding a `()`
             if (numberList.isEmpty()) {
                 aCtx.logger?.warn(ctx.getString(R.string.nothing_to_import))
-                true
+                return true
             }
 
             aCtx.logger?.info(

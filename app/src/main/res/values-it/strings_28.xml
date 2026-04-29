@@ -1,0 +1,5 @@
+<resources>
+    <string name="perm_access_dir">Accedi alla cartella</string>
+    <string name="dir_not_specified">Cartella non specificata.</string>
+    <string name="no_access_to_dir">Nessun accesso alla cartella: %s.</string>
+</resources>

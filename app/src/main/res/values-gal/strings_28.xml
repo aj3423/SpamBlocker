@@ -1,0 +1,5 @@
+<resources>
+    <string name="perm_access_dir">Acceder ao cartafol</string>
+    <string name="dir_not_specified">Cartafol non especificado.</string>
+    <string name="no_access_to_dir">Sen acceso ao cartafol: %s.</string>
+</resources>

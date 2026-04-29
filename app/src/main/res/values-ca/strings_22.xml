@@ -70,28 +70,12 @@
     </string>
     <string name="help_action_read_file">
         <![CDATA[
-        Llegiu bytes de dades d\'un fitxer. <br>
-        <br>
-        Etiquetes de <highlight>ruta</highlight> admeses: <br>
-        <br>
-        %s <br>
-        <br>
-        Etiquetes de <highlight>nom de fitxer</highlight> admeses: <br>
-        <br>
-        %s
+        Llegiu bytes de dades d\'un fitxer.
         ]]>
     </string>
     <string name="help_action_write_file">
         <![CDATA[
-        Escriviu bytes de dades a un fitxer. <br>
-        <br>
-        Etiquetes de <highlight><b>ruta</b></highlight> admeses: <br>
-        <br>
-        %s <br>
-        <br>
-        Etiquetes de <highlight><b>nom de fitxer</b></highlight> admeses: <br>
-        <br>
-        %s
+        Escriviu bytes de dades a un fitxer.
         ]]>
     </string>
     <string name="action_find_rules">Cerca regles</string>

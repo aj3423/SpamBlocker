@@ -1,0 +1,5 @@
+<resources>
+    <string name="perm_access_dir">Akses Folder</string>
+    <string name="dir_not_specified">Folder tidak ditentukan.</string>
+    <string name="no_access_to_dir">Tidak ada akses ke folder: %s.</string>
+</resources>

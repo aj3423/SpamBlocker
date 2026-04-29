@@ -21,7 +21,7 @@ import android.os.PowerManager
 import android.os.UserManager
 import android.provider.CalendarContract
 import android.provider.CallLog.Calls
-import android.provider.OpenableColumns
+import android.provider.DocumentsContract
 import android.provider.Settings
 import android.provider.Telephony
 import android.provider.Telephony.Sms
@@ -37,17 +37,12 @@ import androidx.core.database.getStringOrNull
 import com.google.i18n.phonenumbers.PhoneNumberToCarrierMapper
 import com.google.i18n.phonenumbers.PhoneNumberUtil
 import com.google.i18n.phonenumbers.geocoding.PhoneNumberOfflineGeocoder
-import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
 import org.json.JSONArray
 import org.json.JSONObject
 import spam.blocker.R
 import spam.blocker.def.Def
 import spam.blocker.def.Def.ANDROID_13
-import java.io.File
-import java.io.IOException
 import java.util.Locale
 import java.util.UUID
 import java.util.regex.Pattern
@@ -154,6 +149,35 @@ fun String.regexReplace(
 ): String {
     val opts = Util.flagsToRegexOptions(regexFlags)
     return from.toRegex(opts).replace(this, to)
+}
+
+fun Uri.toFolderDisplayName(): String? {
+    return try {
+        val documentId = DocumentsContract.getTreeDocumentId(this)
+            ?: DocumentsContract.getDocumentId(this)
+
+        // Extract the part after the last colon
+        val name = documentId.substringAfterLast(':')
+
+        // Decode in case there are encoded characters (like %3A for :)
+        Uri.decode(name)
+            .replace("/", " > ") // make nested folders nicer
+            .ifBlank { "?" }
+
+    } catch (e: Exception) {
+        null
+    }
+}
+
+fun Uri.hasFolderAccess(ctx: Context): Boolean {
+    // Get all the URIs the app currently has persisted access to
+    val persistedPermissions = ctx.contentResolver.persistedUriPermissions
+
+    return persistedPermissions.any { permission ->
+        permission.uri == this &&
+                permission.isReadPermission && // Read
+                permission.isWritePermission   // Write
+    }
 }
 
 object Util {
@@ -601,68 +625,6 @@ object Util {
             um.isManagedProfile
         } else
             false
-    }
-
-    fun writeDataToUri(ctx: Context, uri: Uri, dataToWrite: ByteArray): Boolean {
-        return try {
-            ctx.contentResolver.openOutputStream(uri, "wt")?.use { outputStream ->
-                outputStream.write(dataToWrite)
-                outputStream.flush()
-            }
-            true
-        } catch (_: IOException) {
-            false
-        }
-    }
-
-    fun readDataFromUri(ctx: Context, uri: Uri): ByteArray? {
-        return runBlocking {
-            withContext(IO) {
-                try {
-                    // Use coroutine to avoid accessing network on main thread,
-                    //   for importing backup directly from cloud file.
-                    ctx.contentResolver.openInputStream(uri)?.use { inputStream ->
-                        inputStream.buffered().readBytes()
-                    }
-                } catch (_: IOException) {
-                    null
-                }
-            }
-        }
-    }
-
-    fun getFilename(ctx: Context, uri: Uri): String? {
-        val cursor = ctx.contentResolver.query(uri, null, null, null, null)
-        var filename: String? = null
-
-        cursor?.getColumnIndex(OpenableColumns.DISPLAY_NAME)?.let { nameIndex ->
-            cursor.moveToFirst()
-
-            filename = cursor.getString(nameIndex)
-            cursor.close()
-        }
-
-        return filename
-    }
-
-    fun basename(fn: String): String {
-        val lastDotIndex = fn.lastIndexOf('.')
-        return if (lastDotIndex > 0) {
-            fn.substring(0, lastDotIndex)
-        } else {
-            fn
-        }
-    }
-
-    fun readFile(dir: String, filename: String): ByteArray {
-        val file = File(dir, filename)
-        val data = file.readBytes()
-        return data
-    }
-
-    fun writeFile(dir: String, filename: String, data: ByteArray) {
-        val file = File(dir, filename)
-        file.writeBytes(data)
     }
 
     // returns `true` if it's the first time

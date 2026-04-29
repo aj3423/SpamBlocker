@@ -70,28 +70,12 @@
     </string>
     <string name="help_action_read_file">
         <![CDATA[
-        קרא בייטים של נתונים מקובץ. <br>
-        <br>
-        תגי <highlight>נתיב</highlight> נתמכים: <br>
-        <br>
-        %s <br>
-        <br>
-        תגי <highlight>שם קובץ</highlight> נתמכים: <br>
-        <br>
-        %s
+        קרא בייטים של נתונים מקובץ.
         ]]>
     </string>
     <string name="help_action_write_file">
         <![CDATA[
-        כתוב בייטים של נתונים לקובץ. <br>
-        <br>
-        תגי <highlight><b>נתיב</b></highlight> נתמכים: <br>
-        <br>
-        %s <br>
-        <br>
-        תגי <highlight><b>שם קובץ</b></highlight> נתמכים: <br>
-        <br>
-        %s
+        כתוב בייטים של נתונים לקובץ.
         ]]>
     </string>
     <string name="action_find_rules">מצא כללים</string>

@@ -17,7 +17,7 @@ import spam.blocker.ui.widgets.MIME_TEXT
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
-import spam.blocker.util.Util.writeDataToUri
+import spam.blocker.util.FileUtils.writeDataToUri
 
 const val REPO = "https://github.com/aj3423/SpamBlocker"
 

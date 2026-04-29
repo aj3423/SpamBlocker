@@ -1,9 +1,11 @@
 package spam.blocker.ui.setting.misc
 
+import android.net.Uri
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -11,13 +13,16 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.core.net.toUri
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import spam.blocker.Events
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.config.Configs
+import spam.blocker.db.Bot
 import spam.blocker.db.SpamTable
+import spam.blocker.service.bot.FileAction
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.FileChooser
@@ -32,16 +37,25 @@ import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.A
+import spam.blocker.util.FileUtils.readDataFromUri
+import spam.blocker.util.FileUtils.writeDataToUri
 import spam.blocker.util.Launcher
 import spam.blocker.util.Permission
+import spam.blocker.util.PermissionType
 import spam.blocker.util.PermissionWrapper
-import spam.blocker.util.Util.readDataFromUri
-import spam.blocker.util.Util.writeDataToUri
 import spam.blocker.util.formatAnnotated
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 const val Backup_Last_Dir_Tag = "backup_last_dir_tag"
+
+fun missingBotSafPermissions(bots: List<Bot>) : List<Uri> {
+    return bots.flatMap { bot ->
+        bot.actions
+            .filterIsInstance<FileAction>() // Only keep FileActions
+            .mapNotNull { it.uriStr?.toUri() } // Convert to Uri, skip if null
+    }
+}
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -132,6 +146,7 @@ fun ImportButton() {
 
     val resultTrigger = rememberSaveable { mutableStateOf(false) }
     var prevPermissions by remember { mutableStateOf("") }
+    val botSafPermissions = remember { mutableStateListOf<Uri>() }
 
     if (resultTrigger.value) {
         PopupDialog(
@@ -157,8 +172,11 @@ fun ImportButton() {
                     Text(errorStr, color = C.error)
                 }
 
-                if (succeeded && prevPermissions.isNotEmpty()) {
+                if (succeeded &&
+                    (prevPermissions.isNotEmpty() || botSafPermissions.isNotEmpty())
+                ) {
 
+                    // 1. System permissions
                     val prevNames = prevPermissions
                         .split(",")
                         .filter { it.isNotEmpty() }
@@ -175,7 +193,14 @@ fun ImportButton() {
                         // map to Wrapper
                         .map {
                             PermissionWrapper(it)
-                        }
+                        }.toMutableList()
+
+                    // 2. Workflow file permissions
+                    botSafPermissions.forEach {
+                        val perm = PermissionType.SafDirAccess(uri = it)
+                        missingPermissions += PermissionWrapper(perm)
+                    }
+
                     if (missingPermissions.isNotEmpty()) {
                         Text(
                             text = Str(R.string.missing_permissions),
@@ -220,6 +245,10 @@ fun ImportButton() {
                         newCfg.apply(ctx, includeSpamDB)
 
                         prevPermissions = newCfg.permissions.allEnabledNames
+                        botSafPermissions.apply {
+                            clear()
+                            addAll(missingBotSafPermissions(newCfg.bots.bots))
+                        }
                         succeeded = true
                         resultTrigger.value = true
 

@@ -1,6 +1,5 @@
 package spam.blocker.util
 
-import android.os.Environment
 import spam.blocker.def.Def
 import spam.blocker.util.Algorithm.b64Encode
 import spam.blocker.util.Algorithm.sha1
@@ -91,26 +90,6 @@ fun String.resolveTimeTags(): String {
 
         .replace("{day_of_week}", time.dayOfWeek.toString())
         .replace("{day_of_week_index}", time.dayOfWeek.value.toString())
-}
-
-fun String.resolvePathTags(): String {
-    return this
-        .replace(
-            "{Download}",
-            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).absolutePath
-        )
-        .replace(
-            "{Downloads}", // for history compatibility
-            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).absolutePath
-        )
-        .replace(
-            "{Documents}",
-            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).absolutePath
-        )
-        .replace(
-            "{sdcard}",
-            Environment.getExternalStorageDirectory().absolutePath
-        )
 }
 
 fun String.resolveNumberTag(

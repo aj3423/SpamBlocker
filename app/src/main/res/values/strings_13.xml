@@ -10,7 +10,7 @@
     <string name="parsed_n_rules">Parsed %s rules.</string>
     <string name="add_n_numbers_to_spam_db">Adding %s numbers to spam db.</string>
     <string name="nothing_to_import">Number list is empty, nothing to import.</string>
-    <string name="importing_n_numbers">Importing %s numbers as regex rule.</string>
+    <string name="importing_n_numbers">Importing %s numbers as regex rules.</string>
     <string name="create_rule_with_numbers">Creating rule with %s numbers.</string>
     <string name="replace_rule_with_desc">Replacing the rule with description: %s.</string>
     <string name="rule_with_desc_not_found">Rule with description %s not found.</string>

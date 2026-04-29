@@ -1,6 +1,6 @@
 <resources>
     <string name="contact_rule">Regra de Contato</string>
-    <string name="directory">Diretório</string>
+    <string name="directory_abbrev">Dir.</string>
     <string name="filename">Nome do Arquivo</string>
     <string name="url">URL</string>
     <string name="expiry_days">Dias de Validade</string>

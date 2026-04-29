@@ -70,28 +70,12 @@
     </string>
     <string name="help_action_read_file">
         <![CDATA[
-        ファイルからデータバイトを読み取ります。<br>
-        <br>
-        サポートされている<highlight>パス</highlight>タグ：<br>
-        <br>
-        %s<br>
-        <br>
-        サポートされている<highlight>ファイル名</highlight>タグ：<br>
-        <br>
-        %s
+        ファイルからデータバイトを読み取ります。
         ]]>
     </string>
     <string name="help_action_write_file">
         <![CDATA[
-        ファイルにデータバイトを書き込みます。<br>
-        <br>
-        サポートされている<highlight><b>パス</b></highlight>タグ：<br>
-        <br>
-        %s<br>
-        <br>
-        サポートされている<highlight><b>ファイル名</b></highlight>タグ：<br>
-        <br>
-        %s
+        ファイルにデータバイトを書き込みます。
         ]]>
     </string>
     <string name="action_find_rules">ルールを検索</string>

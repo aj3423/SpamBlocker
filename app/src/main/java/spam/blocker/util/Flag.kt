@@ -5,11 +5,6 @@ import androidx.compose.ui.text.Placeholder
 import androidx.compose.ui.text.PlaceholderVerticalAlign
 import androidx.compose.ui.unit.sp
 import spam.blocker.G
-import spam.blocker.def.Def.FLAG_REGEX_FOR_CNAP
-import spam.blocker.def.Def.FLAG_REGEX_FOR_CONTACT
-import spam.blocker.def.Def.FLAG_REGEX_FOR_CONTACT_GROUP
-import spam.blocker.def.Def.FLAG_REGEX_FOR_CONTACT_PREFIX
-import spam.blocker.def.Def.FLAG_REGEX_FOR_GEO_LOCATION
 import spam.blocker.def.Def.MAP_REGEX_FLAGS
 import spam.blocker.def.Def.MAP_REGEX_MODES
 import spam.blocker.def.Def.regexModeIconMap

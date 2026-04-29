@@ -70,28 +70,12 @@
     </string>
     <string name="help_action_read_file">
         <![CDATA[
-        Lit les octets de données depuis un fichier. <br>
-        <br>
-        Balises de <highlight>chemin</highlight> prises en charge : <br>
-        <br>
-        %s <br>
-        <br>
-        Balises de <highlight>nom de fichier</highlight> prises en charge : <br>
-        <br>
-        %s
+        Lit les octets de données depuis un fichier.
         ]]>
     </string>
     <string name="help_action_write_file">
         <![CDATA[
-        Écrit les octets de données dans un fichier. <br>
-        <br>
-        Balises de <highlight><b>chemin</b></highlight> prises en charge : <br>
-        <br>
-        %s <br>
-        <br>
-        Balises de <highlight><b>nom de fichier</b></highlight> prises en charge : <br>
-        <br>
-        %s
+        Écrit les octets de données dans un fichier.
         ]]>
     </string>
     <string name="action_find_rules">Trouver des Règles</string>

@@ -70,28 +70,12 @@
     </string>
     <string name="help_action_read_file">
         <![CDATA[
-        Читать байты данных из файла. <br>
-        <br>
-        Поддерживаемые теги <highlight>пути</highlight>: <br>
-        <br>
-        %s <br>
-        <br>
-        Поддерживаемые теги <highlight>имени файла</highlight>: <br>
-        <br>
-        %s
+        Читать байты данных из файла.
         ]]>
     </string>
     <string name="help_action_write_file">
         <![CDATA[
-        Записать байты данных в файл. <br>
-        <br>
-        Поддерживаемые теги <highlight><b>пути</b></highlight>: <br>
-        <br>
-        %s <br>
-        <br>
-        Поддерживаемые теги <highlight><b>имени файла</b></highlight>: <br>
-        <br>
-        %s
+        Записать байты данных в файл.
         ]]>
     </string>
     <string name="action_find_rules">Найти правила</string>

@@ -2,7 +2,6 @@ package spam.blocker.util
 
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.Color
@@ -10,7 +9,6 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.core.content.edit
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
-import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.Notification.CHANNEL_HIGH
 import spam.blocker.db.Notification.CHANNEL_HIGH_MUTED

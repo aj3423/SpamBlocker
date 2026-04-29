@@ -1,5 +1,6 @@
 package spam.blocker.ui.widgets
 
+import android.net.Uri
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -25,6 +26,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
@@ -36,7 +38,11 @@ import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.util.Lambda
 import spam.blocker.util.Lambda1
 import spam.blocker.util.Lambda2
+import spam.blocker.util.PermissionType
+import spam.blocker.util.PermissionWrapper
 import spam.blocker.util.Util.inRange
+import spam.blocker.util.hasFolderAccess
+import spam.blocker.util.toFolderDisplayName
 
 const val BUTTON_CORNER_RADIUS = 4
 const val BUTTON_H_PADDING = 12
@@ -358,5 +364,44 @@ fun DurationButton(
         }
     ) {
         trigger.value = true
+    }
+}
+
+/*
+  A button for choosing dir, the param `uri` will be updated after a dir is selected.
+ */
+@Composable
+fun DirButton(
+    uri: MutableState<Uri?>,
+) {
+    val ctx = LocalContext.current
+
+    StrokeButton(
+        label = if (uri.value == null)
+            Str(R.string.choose)
+        else
+            uri.value!!.toFolderDisplayName(),
+
+        icon = if (uri.value?.hasFolderAccess(ctx) == true)
+            null
+        else if (uri.value == null) {
+            null
+        } else {
+            { ResIcon(R.drawable.ic_question_circle) }
+        },
+
+        color = G.palette.textGrey,
+    ) {
+        val perm = PermissionType.SafDirAccess(uri = uri.value)
+
+        G.permissionChain.ask(
+            ctx,
+            listOf(PermissionWrapper(perm))
+        ) { granted ->
+            if (granted) {
+                // After a dir is selected, the `perm.uri` is the selected Uri
+                uri.value = perm.uri
+            }
+        }
     }
 }

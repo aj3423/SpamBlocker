@@ -1,6 +1,7 @@
 package spam.blocker.util
 
 import android.content.Context
+import android.content.Intent
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Spacer
@@ -19,6 +20,7 @@ import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.PermissionLauncher.launcherProtected
 import spam.blocker.util.PermissionLauncher.launcherRegular
+import spam.blocker.util.PermissionLauncher.launcherSAF
 import spam.blocker.util.Util.doOnce
 
 
@@ -77,7 +79,7 @@ class PermissionChain() {
         launcherRegular = rememberLauncherForActivityResult(
             contract = ActivityResultContracts.RequestPermission()
         ) { isGranted ->
-            // Update the global permission
+            // Update the permission object
             curr.perm.onResult(ctx, isGranted)
 
             if (isGranted || curr.isOptional) {
@@ -103,6 +105,21 @@ class PermissionChain() {
 
             // Call the result callback
             curr.perm.onResult(ctx, isGranted)
+
+            if (isGranted || curr.isOptional) {
+                checkNext(ctx)
+            } else {
+                onResult(false)
+            }
+        }
+
+        launcherSAF = rememberLauncherForActivityResult(
+            contract = ActivityResultContracts.OpenDocumentTree()
+        ) { uri ->
+            val isGranted = uri != null
+
+            // Update the permission object
+            curr.perm.onResult(ctx, isGranted, uri)
 
             if (isGranted || curr.isOptional) {
                 checkNext(ctx)

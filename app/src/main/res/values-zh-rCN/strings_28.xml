@@ -1,0 +1,5 @@
+<resources>
+    <string name="perm_access_dir">访问文件夹</string>
+    <string name="dir_not_specified">未指定文件夹。</string>
+    <string name="no_access_to_dir">无法访问文件夹：%s。</string>
+</resources>

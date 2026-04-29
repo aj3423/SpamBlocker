@@ -70,28 +70,12 @@
     </string>
     <string name="help_action_read_file">
         <![CDATA[
-        Ler bytes de dados de um arquivo. <br>
-        <br>
-        Tags de <highlight>caminho</highlight> suportadas: <br>
-        <br>
-        %s <br>
-        <br>
-        Tags de <highlight>nome de arquivo</highlight> suportadas: <br>
-        <br>
-        %s
+        Ler bytes de dados de um arquivo.
         ]]>
     </string>
     <string name="help_action_write_file">
         <![CDATA[
-        Escrever bytes de dados em um arquivo. <br>
-        <br>
-        Tags de <highlight><b>caminho</b></highlight> suportadas: <br>
-        <br>
-        %s <br>
-        <br>
-        Tags de <highlight><b>nome de arquivo</b></highlight> suportadas: <br>
-        <br>
-        %s
+        Escrever bytes de dados em um arquivo.
         ]]>
     </string>
     <string name="action_find_rules">Encontrar Regras</string>

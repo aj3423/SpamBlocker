@@ -70,28 +70,12 @@
     </string>
     <string name="help_action_read_file">
         <![CDATA[
-        بایت‌های داده را از یک فایل بخوانید. <br>
-        <br>
-        تگ‌های <highlight>مسیر</highlight> پشتیبانی شده: <br>
-        <br>
-        %s <br>
-        <br>
-        تگ‌های <highlight>نام فایل</highlight> پشتیبانی شده: <br>
-        <br>
-        %s
+        بایت‌های داده را از یک فایل بخوانید.
         ]]>
     </string>
     <string name="help_action_write_file">
         <![CDATA[
-        بایت‌های داده را در یک فایل بنویسید. <br>
-        <br>
-        تگ‌های <highlight><b>مسیر</b></highlight> پشتیبانی شده: <br>
-        <br>
-        %s <br>
-        <br>
-        تگ‌های <highlight><b>نام فایل</b></highlight> پشتیبانی شده: <br>
-        <br>
-        %s
+        بایت‌های داده را در یک فایل بنویسید.
         ]]>
     </string>
     <string name="action_find_rules">یافتن قوانین</string>

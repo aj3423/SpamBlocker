@@ -19,7 +19,6 @@ import spam.blocker.R
 import spam.blocker.ui.M
 import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.HourMinInput
-import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowCenter
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.SummaryLabel
