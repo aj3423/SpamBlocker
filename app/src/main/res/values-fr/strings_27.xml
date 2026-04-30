@@ -47,8 +47,7 @@
         &ensp; Si le numéro <sample>1111<b>22</b></sample> est enregistré comme contact, un appel depuis <sample>1111<b>33</b></sample> sera aussi autorisé.<br>
         ]]>
     </string>
-    <string name="caller_id">Identification de l\'appelant</string>
-    <string name="show_caller_id">Afficher l\'identification de l\'appelant</string>
+    <string name="caller_id">ID appelant</string>
     <string name="help_caller_id">
         <![CDATA[
         Affiche l\'identification de l\'appelant dans une fenêtre flottante. <br>

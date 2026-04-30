@@ -47,8 +47,7 @@
         &ensp; Wenn Sie <sample>1111<b>22</b></sample> als Kontakt gespeichert haben, wird auch ein Anruf von <sample>1111<b>33</b></sample> zugelassen.<br>
         ]]>
     </string>
-    <string name="caller_id">Anruferkennung</string>
-    <string name="show_caller_id">Anruferkennung anzeigen</string>
+    <string name="caller_id">Anrufer-ID</string>
     <string name="help_caller_id">
         <![CDATA[
         Zeigt die Anruferkennung in einem schwebenden Fenster an. <br>

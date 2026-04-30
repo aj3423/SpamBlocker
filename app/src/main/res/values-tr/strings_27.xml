@@ -47,8 +47,7 @@
         &ensp; <sample>1111<b>22</b></sample> numarasını kişi olarak kaydettiyseniz, <sample>1111<b>33</b></sample> numarasından gelen aramaya da izin verilir.<br>
         ]]>
     </string>
-    <string name="caller_id">Arayan Kimliği</string>
-    <string name="show_caller_id">Arayan kimliğini göster</string>
+    <string name="caller_id">Arayan ID</string>
     <string name="help_caller_id">
         <![CDATA[
         Arayan kimliğini yüzen pencerede gösterir. <br>

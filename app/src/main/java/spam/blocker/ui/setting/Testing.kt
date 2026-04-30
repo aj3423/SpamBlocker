@@ -31,6 +31,7 @@ import spam.blocker.service.CallScreeningService
 import spam.blocker.service.SmsReceiver
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.BalloonQuestionMark
+import spam.blocker.ui.widgets.FloatingWindow
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.PopupSize
@@ -46,6 +47,7 @@ import spam.blocker.util.JetpackTextLogger
 import spam.blocker.util.MultiLogger
 import spam.blocker.util.SaveableLogger
 import spam.blocker.util.Util
+import spam.blocker.util.spf
 
 
 class TestingViewModel {
@@ -98,6 +100,11 @@ fun TestDialog(
     PopupDialog(
         trigger = trigger,
         popupSize = PopupSize(maxWidthPercentage = 0.8f, minWidthDp = 340, maxWidthDp = 500),
+        onDismiss = {
+            if (spf.CallerID(ctx).isEnabled) {
+                FloatingWindow.hide(ctx)
+            }
+        },
         title = {
             RowVCenter {
                 GreyLabel(Str(R.string.title_rule_testing))
@@ -127,7 +134,7 @@ fun TestDialog(
                         CallScreeningService().processCall(
                             ctx, rawNumber = vm.phone.value, simSlot = vm.simSlot.value,
                             callDetails = null, cnap = vm.callerName.value.ifEmpty { null },
-                            isTest = true, logger = multiLogger,
+                            isTest = true, logger = multiLogger, showCallerId = vm.showCallerID.value
                         )
                     else
                         SmsReceiver().processSms(
@@ -138,9 +145,7 @@ fun TestDialog(
             }
         },
         content = {
-            Column(
-                verticalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
+            Column {
                 val isForCall by remember {
                     derivedStateOf {
                         vm.selectedType.intValue == 0
@@ -164,9 +169,9 @@ fun TestDialog(
                 }
 
                 // Show Caller ID
-                AnimatedVisibleV(isForCall) {
+                AnimatedVisibleV(spf.CallerID(ctx).isEnabled && isForCall) {
                     LabeledRow(
-                        labelId = R.string.show_caller_id
+                        labelId = R.string.caller_id
                     ) {
                         SwitchBox(vm.showCallerID.value) { isTurningOn ->
                             vm.showCallerID.value = isTurningOn

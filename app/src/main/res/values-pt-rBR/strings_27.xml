@@ -47,8 +47,7 @@
         &ensp; Se você tiver <sample>1111<b>22</b></sample> salvo como contato, uma chamada de <sample>1111<b>33</b></sample> também será permitida.<br>
         ]]>
     </string>
-    <string name="caller_id">Identificador de chamadas</string>
-    <string name="show_caller_id">Mostrar identificador de chamadas</string>
+    <string name="caller_id">ID chamada</string>
     <string name="help_caller_id">
         <![CDATA[
         Mostra o identificador de chamadas em uma janela flutuante. <br>

@@ -48,7 +48,6 @@
         ]]>
     </string>
     <string name="caller_id">来电显示</string>
-    <string name="show_caller_id">显示来电信息</string>
     <string name="help_caller_id">
         <![CDATA[
         在悬浮窗中显示来电信息。 <br>

@@ -48,7 +48,6 @@
         ]]>
     </string>
     <string name="caller_id">來電顯示</string>
-    <string name="show_caller_id">顯示來電資訊</string>
     <string name="help_caller_id">
         <![CDATA[
         在浮動視窗中顯示來電資訊。 <br>

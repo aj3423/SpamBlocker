@@ -47,8 +47,7 @@
         &ensp; Si tens <sample>1111<b>22</b></sample> desat com a contacte, també es permetrà una trucada de <sample>1111<b>33</b></sample>.<br>
         ]]>
     </string>
-    <string name="caller_id">Identificador del trucador</string>
-    <string name="show_caller_id">Mostra l\'identificador del trucador</string>
+    <string name="caller_id">ID trucador</string>
     <string name="help_caller_id">
         <![CDATA[
         Mostra l\'identificador del trucador en una finestra flotant. <br>

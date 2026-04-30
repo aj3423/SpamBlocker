@@ -47,8 +47,7 @@
         &ensp; Si tienes <sample>1111<b>22</b></sample> guardado como contacto, también se permitirá una llamada desde <sample>1111<b>33</b></sample>.<br>
         ]]>
     </string>
-    <string name="caller_id">Identificador de llamadas</string>
-    <string name="show_caller_id">Mostrar identificador de llamadas</string>
+    <string name="caller_id">ID llamada</string>
     <string name="help_caller_id">
         <![CDATA[
         Muestra el identificador de llamadas en una ventana flotante. <br>

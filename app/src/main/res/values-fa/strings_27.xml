@@ -47,8 +47,7 @@
         &ensp; اگر <sample>1111<b>22</b></sample> را به‌عنوان مخاطب ذخیره کرده باشید، تماس از <sample>1111<b>33</b></sample> هم مجاز خواهد بود.<br>
         ]]>
     </string>
-    <string name="caller_id">شناسه تماس‌گیرنده</string>
-    <string name="show_caller_id">نمایش شناسه تماس‌گیرنده</string>
+    <string name="caller_id">شناسه تماس</string>
     <string name="help_caller_id">
         <![CDATA[
         شناسه تماس‌گیرنده را در یک پنجره شناور نشان می‌دهد. <br>

@@ -48,7 +48,6 @@
         ]]>
     </string>
     <string name="caller_id">АОН</string>
-    <string name="show_caller_id">Показывать АОН</string>
     <string name="help_caller_id">
         <![CDATA[
         Показывает определитель номера в плавающем окне. <br>

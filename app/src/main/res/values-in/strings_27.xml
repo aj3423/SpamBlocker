@@ -48,7 +48,6 @@
         ]]>
     </string>
     <string name="caller_id">ID Penelepon</string>
-    <string name="show_caller_id">Tampilkan ID Penelepon</string>
     <string name="help_caller_id">
         <![CDATA[
         Tampilkan ID penelepon dalam jendela mengambang. <br>

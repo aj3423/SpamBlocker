@@ -48,7 +48,6 @@
         ]]>
     </string>
     <string name="caller_id">معرّف المتصل</string>
-    <string name="show_caller_id">إظهار معرّف المتصل</string>
     <string name="help_caller_id">
         <![CDATA[
         اعرض معرّف المتصل في نافذة عائمة. <br>

@@ -170,7 +170,8 @@ class CallScreeningService : CallScreeningService() {
 
         val r = processCall(
             ctx = ctx, logger = SaveableLogger(), rawNumber = rawNumber,
-            cnap = cnap, callDetails = details, simSlot = ringingSimSlot, isTest = false
+            cnap = cnap, callDetails = details, simSlot = ringingSimSlot, isTest = false,
+            showCallerId = spf.CallerID(ctx).isEnabled
         )
         logi("processCall() result: $r")
 
@@ -282,6 +283,7 @@ class CallScreeningService : CallScreeningService() {
         callDetails: Details?, // it's null when testing
         simSlot: Int?,
         isTest: Boolean,
+        showCallerId: Boolean = false,
         logger: ILogger? = null,
     ): ICheckResult {
         logi("processCall()")
@@ -302,8 +304,10 @@ class CallScreeningService : CallScreeningService() {
                 autoReportSpam(ctx, r, rawNumber, isTest)
             } else { // allowed
                 // 4. Show CallerID window
-                withContext(Main) {
-                    showCallerId(ctx, r, rawNumber)
+                if (showCallerId) {
+                    withContext(Main) {
+                        showCallerId(ctx, r, rawNumber)
+                    }
                 }
             }
         }

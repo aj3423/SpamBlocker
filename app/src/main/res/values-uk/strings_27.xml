@@ -47,8 +47,7 @@
         &ensp; Якщо у вас збережено контакт <sample>1111<b>22</b></sample>, то дзвінок з номера <sample>1111<b>33</b></sample> також буде дозволено.<br>
         ]]>
     </string>
-    <string name="caller_id">Визначник номера</string>
-    <string name="show_caller_id">Показувати визначник номера</string>
+    <string name="caller_id">ID номера</string>
     <string name="help_caller_id">
         <![CDATA[
         Показує визначник номера у плаваючому вікні. <br>

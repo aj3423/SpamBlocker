@@ -48,7 +48,6 @@
         ]]>
     </string>
     <string name="caller_id">Caller ID</string>
-    <string name="show_caller_id">Show Caller ID</string>
     <string name="help_caller_id">
         <![CDATA[
         Show caller ID in a floating window. <br>

@@ -48,7 +48,6 @@
         ]]>
     </string>
     <string name="caller_id">発信者ID</string>
-    <string name="show_caller_id">発信者IDを表示</string>
     <string name="help_caller_id">
         <![CDATA[
         発信者IDをフローティングウィンドウに表示します。 <br>

@@ -48,7 +48,6 @@
         ]]>
     </string>
     <string name="caller_id">ID chiamante</string>
-    <string name="show_caller_id">Mostra l\'ID chiamante</string>
     <string name="help_caller_id">
         <![CDATA[
         Mostra l\'ID chiamante in una finestra flottante. <br>
