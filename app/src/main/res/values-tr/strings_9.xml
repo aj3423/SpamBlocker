@@ -50,7 +50,7 @@
     <string name="mode">Mod</string>
     <string name="help_regex_action_add_mode">
         <![CDATA[
-        -<title><b>Oluştur</b></title><br>
+        - <title><b>Oluştur</b></title><br>
         &ensp; Her zaman yeni bir regex kuralı oluşturun.<br>
         <br>
         - <title><b>Değiştir</b></title><br>
@@ -62,6 +62,13 @@
         &ensp;- Aynı açıklamalı bir kural varsa, yeni numaralar ona birleştirilecektir,<br>
          yinelenen numaralar otomatik olarak kaldırılacaktır.<br>
         &ensp;- Var yoksa, <b>Oluştur</b> ile aynı şekilde yeni bir kural oluşturulacaktır.<br>
+        ]]>
+    </string>
+    <string name="help_regex_action_add_mode_multiple">
+        <![CDATA[
+        Her kural aşağıdaki mantığı izler: <br>
+        <br>
+        %s
         ]]>
     </string>
     <string-array name="regex_action_add_mode">

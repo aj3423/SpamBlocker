@@ -48,6 +48,7 @@
         ]]>
     </string>
     <string name="caller_id">来电显示</string>
+    <string name="show_caller_id">显示来电信息</string>
     <string name="help_caller_id">
         <![CDATA[
         在悬浮窗中显示来电信息。 <br>
@@ -68,6 +69,8 @@
     <string name="help_caller_id_template">
         <![CDATA[
         来电显示窗口中显示的内容，采用 HTML 格式。 <br>
+        <br>
+        如果值为空，则会显示短横线 (-)，例如号码没有运营商信息时。
         <br>
         <title>支持的标签</title>: <br>
         - <minor>{reason}</minor> <br>

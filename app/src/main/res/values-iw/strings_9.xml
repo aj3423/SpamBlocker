@@ -56,7 +56,7 @@
     </string-array>
     <string name="help_regex_action_add_mode">
         <![CDATA[
-        -<title><b>צור</b></title><br>
+        - <title><b>צור</b></title><br>
         &ensp; צור תמיד כלל ביטוי רגולרי חדש.<br>
         <br>
         - <title><b>החלף</b></title><br>
@@ -68,6 +68,13 @@
         &ensp;- אם קיים כלל עם אותו תיאור, המספרים החדשים ימוזגו לתוכו,<br>
          מספרים כפולים יוסרו אוטומטית.<br>
         &ensp;- אם לא קיים, כלל חדש ייווצר, בדומה ל<b>צור</b>.<br>
+        ]]>
+    </string>
+    <string name="help_regex_action_add_mode_multiple">
+        <![CDATA[
+        כל כלל פועל לפי הלוגיקה הבאה: <br>
+        <br>
+        %s
         ]]>
     </string>
     <string name="action_enable_workflow">הפעל זרימת עבודה</string>

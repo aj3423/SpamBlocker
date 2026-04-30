@@ -54,7 +54,7 @@
     </string-array>
     <string name="help_regex_action_add_mode">
         <![CDATA[
-        -<title><b>作成</b></title><br>
+        - <title><b>作成</b></title><br>
         &ensp; 常に新しい正規表現ルールを作成します。<br>
         <br>
         - <title><b>置換</b></title><br>
@@ -66,6 +66,13 @@
         &ensp;- 同じ説明を持つルールが存在する場合、新しい番号がマージされます。<br>
          重複した番号は自動的に削除されます。<br>
         &ensp;- 存在しない場合、<b>作成</b>と同じように新しいルールが作成されます。<br>
+        ]]>
+    </string>
+    <string name="help_regex_action_add_mode_multiple">
+        <![CDATA[
+        各ルールは次のロジックに従います。<br>
+        <br>
+        %s
         ]]>
     </string>
 

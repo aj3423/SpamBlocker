@@ -48,6 +48,7 @@
         ]]>
     </string>
     <string name="caller_id">معرّف المتصل</string>
+    <string name="show_caller_id">إظهار معرّف المتصل</string>
     <string name="help_caller_id">
         <![CDATA[
         اعرض معرّف المتصل في نافذة عائمة. <br>
@@ -68,6 +69,8 @@
     <string name="help_caller_id_template">
         <![CDATA[
         المحتوى المعروض في نافذة معرّف المتصل، بتنسيق HTML. <br>
+        <br>
+        تُعرض شرطة (-) إذا كانت القيمة فارغة، على سبيل المثال عندما لا تتوفر معلومات المشغّل للرقم.
         <br>
         <title>الوسوم المدعومة</title>: <br>
         - <minor>{reason}</minor> <br>

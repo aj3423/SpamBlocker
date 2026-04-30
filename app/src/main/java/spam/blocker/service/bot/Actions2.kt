@@ -517,7 +517,8 @@ class ImportAsMultipleRegexRules(
             // Type Create/Replace/Merge
             LabeledRow(
                 R.string.mode,
-                helpTooltip = Str(R.string.help_regex_action_add_mode),
+                helpTooltip = Str(R.string.help_regex_action_add_mode_multiple)
+                    .format(Str(R.string.help_regex_action_add_mode)),
             ) {
                 var selected by rememberSaveable {
                     mutableIntStateOf(ImportType.entries.indexOf(importType))

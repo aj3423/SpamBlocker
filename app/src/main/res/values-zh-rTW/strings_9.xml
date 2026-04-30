@@ -71,6 +71,13 @@
         &ensp;- 如果不存在，將建立新規則，與<b>建立</b>模式相同。<br>
         ]]>
     </string>
+    <string name="help_regex_action_add_mode_multiple">
+        <![CDATA[
+        每條規則遵循以下邏輯：<br>
+        <br>
+        %s
+        ]]>
+    </string>
     <string name="action_enable_workflow">啟用工作流程</string>
     <string name="help_action_enable_workflow">
         <![CDATA[

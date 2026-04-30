@@ -48,6 +48,7 @@
         ]]>
     </string>
     <string name="caller_id">Identificador de chamadas</string>
+    <string name="show_caller_id">Mostrar identificador de chamadas</string>
     <string name="help_caller_id">
         <![CDATA[
         Mostra o identificador de chamadas em uma janela flutuante. <br>
@@ -68,6 +69,8 @@
     <string name="help_caller_id_template">
         <![CDATA[
         O conteúdo exibido na janela do identificador de chamadas, em formato HTML. <br>
+        <br>
+        Um traço (-) é exibido se o valor estiver vazio, por exemplo, quando não há informações da operadora para o número.
         <br>
         <title>Tags compatíveis</title>: <br>
         - <minor>{reason}</minor> <br>

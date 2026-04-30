@@ -48,6 +48,7 @@
         ]]>
     </string>
     <string name="caller_id">Визначник номера</string>
+    <string name="show_caller_id">Показувати визначник номера</string>
     <string name="help_caller_id">
         <![CDATA[
         Показує визначник номера у плаваючому вікні. <br>
@@ -68,6 +69,8 @@
     <string name="help_caller_id_template">
         <![CDATA[
         Вміст, що відображається у вікні визначника номера, у форматі HTML. <br>
+        <br>
+        Якщо значення порожнє, відображається дефіс (-), наприклад коли для номера немає інформації про оператора.
         <br>
         <title>Підтримувані теги</title>: <br>
         - <minor>{reason}</minor> <br>

@@ -48,6 +48,7 @@
         ]]>
     </string>
     <string name="caller_id">発信者ID</string>
+    <string name="show_caller_id">発信者IDを表示</string>
     <string name="help_caller_id">
         <![CDATA[
         発信者IDをフローティングウィンドウに表示します。 <br>
@@ -68,6 +69,8 @@
     <string name="help_caller_id_template">
         <![CDATA[
         発信者IDウィンドウに表示される内容です。HTML形式です。 <br>
+        <br>
+        値が空の場合はダッシュ (-) が表示されます。たとえば、その番号に通信事業者情報がない場合です。
         <br>
         <title>対応タグ</title>: <br>
         - <minor>{reason}</minor> <br>

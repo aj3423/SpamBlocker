@@ -48,6 +48,7 @@
         ]]>
     </string>
     <string name="caller_id">Caller ID</string>
+    <string name="show_caller_id">Show Caller ID</string>
     <string name="help_caller_id">
         <![CDATA[
         Show caller ID in a floating window. <br>
@@ -68,6 +69,8 @@
     <string name="help_caller_id_template">
         <![CDATA[
         The content displayed in the caller ID window, in HTML format. <br>
+        <br>
+        A dash (-) is displayed if the value is empty, for example, when there is no carrier information for the number.
         <br>
         <title>Supported tags</title>: <br>
         - <minor>{reason}</minor> <br>

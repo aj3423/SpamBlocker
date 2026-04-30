@@ -57,7 +57,7 @@
     </string-array>
     <string name="help_regex_action_add_mode">
         <![CDATA[
-        -<title><b>Создать</b></title><br>
+        - <title><b>Создать</b></title><br>
         &ensp; Всегда создавать новое правило регулярного выражения.<br>
         <br>
         - <title><b>Заменить</b></title><br>
@@ -69,6 +69,13 @@
         &ensp;- Если существует правило с тем же описанием, новые номера будут объединены в него,<br>
          дублируемые номера будут автоматически удалены.<br>
         &ensp;- Если не существует, будет создано новое правило, то же самое, что и <b>Создать</b>.<br>
+        ]]>
+    </string>
+    <string name="help_regex_action_add_mode_multiple">
+        <![CDATA[
+        Каждое правило следует следующей логике: <br>
+        <br>
+        %s
         ]]>
     </string>
     <string name="action_enable_workflow">Включить рабочий процесс</string>

@@ -48,6 +48,7 @@
         ]]>
     </string>
     <string name="caller_id">АОН</string>
+    <string name="show_caller_id">Показывать АОН</string>
     <string name="help_caller_id">
         <![CDATA[
         Показывает определитель номера в плавающем окне. <br>
@@ -68,6 +69,8 @@
     <string name="help_caller_id_template">
         <![CDATA[
         Содержимое, отображаемое в окне определителя номера, в формате HTML. <br>
+        <br>
+        Если значение пустое, отображается дефис (-), например когда для номера нет информации об операторе.
         <br>
         <title>Поддерживаемые теги</title>: <br>
         - <minor>{reason}</minor> <br>

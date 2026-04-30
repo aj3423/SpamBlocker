@@ -55,7 +55,7 @@
     </string-array>
     <string name="help_regex_action_add_mode">
         <![CDATA[
-        -<title><b>ایجاد</b></title><br>
+        - <title><b>ایجاد</b></title><br>
         &ensp; همیشه یک قانون عبارت باقاعده جدید ایجاد کنید.<br>
         <br>
         - <title><b>جایگزینی</b></title><br>
@@ -67,6 +67,13 @@
         &ensp;- اگر قانونی با همان شرح وجود داشته باشد، شماره های جدید به آن اضافه می شوند،<br>
          شماره های تکراری به طور خودکار حذف می شوند.<br>
         &ensp;- اگر وجود نداشته باشد، یک قانون جدید ایجاد می شود، مانند <b>ایجاد</b>.<br>
+        ]]>
+    </string>
+    <string name="help_regex_action_add_mode_multiple">
+        <![CDATA[
+        هر قانون از منطق زیر پیروی می‌کند: <br>
+        <br>
+        %s
         ]]>
     </string>
     <string name="action_enable_workflow">فعال کردن گردش کار</string>

@@ -48,6 +48,7 @@
         ]]>
     </string>
     <string name="caller_id">شناسه تماس‌گیرنده</string>
+    <string name="show_caller_id">نمایش شناسه تماس‌گیرنده</string>
     <string name="help_caller_id">
         <![CDATA[
         شناسه تماس‌گیرنده را در یک پنجره شناور نشان می‌دهد. <br>
@@ -68,6 +69,8 @@
     <string name="help_caller_id_template">
         <![CDATA[
         محتوای نمایش‌داده‌شده در پنجره شناسه تماس‌گیرنده، در قالب HTML. <br>
+        <br>
+        اگر مقدار خالی باشد، یک خط تیره (-) نمایش داده می‌شود، برای مثال وقتی اطلاعات اپراتور برای شماره وجود ندارد.
         <br>
         <title>برچسب‌های پشتیبانی‌شده</title>: <br>
         - <minor>{reason}</minor> <br>

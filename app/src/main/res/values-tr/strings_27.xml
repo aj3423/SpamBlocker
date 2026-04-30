@@ -48,6 +48,7 @@
         ]]>
     </string>
     <string name="caller_id">Arayan Kimliği</string>
+    <string name="show_caller_id">Arayan kimliğini göster</string>
     <string name="help_caller_id">
         <![CDATA[
         Arayan kimliğini yüzen pencerede gösterir. <br>
@@ -67,6 +68,8 @@
     <string name="help_caller_id_template">
         <![CDATA[
         Arayan kimliği penceresinde gösterilen içerik, HTML biçimindedir. <br>
+        <br>
+        Değer boşsa, örneğin numara için operatör bilgisi olmadığında, tire (-) gösterilir.
         <br>
         <title>Desteklenen etiketler</title>: <br>
         - <minor>{reason}</minor> <br>

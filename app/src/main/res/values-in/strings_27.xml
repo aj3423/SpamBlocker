@@ -48,6 +48,7 @@
         ]]>
     </string>
     <string name="caller_id">ID Penelepon</string>
+    <string name="show_caller_id">Tampilkan ID Penelepon</string>
     <string name="help_caller_id">
         <![CDATA[
         Tampilkan ID penelepon dalam jendela mengambang. <br>
@@ -68,6 +69,8 @@
     <string name="help_caller_id_template">
         <![CDATA[
         Konten yang ditampilkan di jendela ID penelepon, dalam format HTML. <br>
+        <br>
+        Tanda hubung (-) ditampilkan jika nilainya kosong, misalnya saat tidak ada informasi operator untuk nomor tersebut.
         <br>
         <title>Tag yang didukung</title>: <br>
         - <minor>{reason}</minor> <br>

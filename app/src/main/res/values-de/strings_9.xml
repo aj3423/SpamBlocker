@@ -55,7 +55,7 @@
     </string-array>
     <string name="help_regex_action_add_mode">
         <![CDATA[
-        -<title><b>Erstellen</b></title><br>
+        - <title><b>Erstellen</b></title><br>
         &ensp; Erstelle immer eine neue Regex-Regel.<br>
         <br>
         - <title><b>Ersetzen</b></title><br>
@@ -67,6 +67,13 @@
         &ensp;- Wenn eine Regel mit derselben Beschreibung existiert, werden die neuen Nummern in sie zusammengeführt,<br>
          doppelte Nummern werden automatisch entfernt.<br>
         &ensp;- Wenn sie nicht existiert, wird eine neue Regel erstellt, genauso wie bei <b>Erstellen</b>.<br>
+        ]]>
+    </string>
+    <string name="help_regex_action_add_mode_multiple">
+        <![CDATA[
+        Jede Regel folgt der folgenden Logik: <br>
+        <br>
+        %s
         ]]>
     </string>
 

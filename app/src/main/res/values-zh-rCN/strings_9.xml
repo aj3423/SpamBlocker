@@ -56,7 +56,7 @@
     </string-array>
     <string name="help_regex_action_add_mode">
         <![CDATA[
-        -<title><b>创建</b></title><br>
+        - <title><b>创建</b></title><br>
         &ensp; 始终创建一个新的正则表达式规则。<br>
         <br>
         - <title><b>替换</b></title><br>
@@ -68,6 +68,13 @@
         &ensp;- 如果存在具有相同描述的规则，则新号码将合并到其中，<br>
          重复的号码将被自动删除。<br>
         &ensp;- 如果不存在，将创建一个新规则，与<b>创建</b>相同。<br>
+        ]]>
+    </string>
+    <string name="help_regex_action_add_mode_multiple">
+        <![CDATA[
+        每条规则遵循以下逻辑：<br>
+        <br>
+        %s
         ]]>
     </string>
 

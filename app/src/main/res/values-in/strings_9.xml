@@ -56,7 +56,7 @@
     </string-array>
     <string name="help_regex_action_add_mode">
         <![CDATA[
-        -<title><b>Buat</b></title><br>
+        - <title><b>Buat</b></title><br>
         &ensp; Selalu buat aturan regex baru.<br>
         <br>
         - <title><b>Ganti</b></title><br>
@@ -68,6 +68,13 @@
         &ensp;- Jika ada aturan dengan deskripsi yang sama, nomor baru akan digabungkan ke dalamnya,<br>
          nomor yang digandakan akan dihapus secara otomatis.<br>
         &ensp;- Jika tidak ada, aturan baru akan dibuat, sama seperti aturan <b>Baru</b>.<br>
+        ]]>
+    </string>
+    <string name="help_regex_action_add_mode_multiple">
+        <![CDATA[
+        Setiap aturan mengikuti logika berikut: <br>
+        <br>
+        %s
         ]]>
     </string>
     <string name="action_enable_workflow">Enable Workflow</string>

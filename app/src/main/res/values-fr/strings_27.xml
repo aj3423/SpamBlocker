@@ -48,6 +48,7 @@
         ]]>
     </string>
     <string name="caller_id">Identification de l\'appelant</string>
+    <string name="show_caller_id">Afficher l\'identification de l\'appelant</string>
     <string name="help_caller_id">
         <![CDATA[
         Affiche l\'identification de l\'appelant dans une fenêtre flottante. <br>
@@ -68,6 +69,8 @@
     <string name="help_caller_id_template">
         <![CDATA[
         Le contenu affiché dans la fenêtre d\'identification de l\'appelant, au format HTML. <br>
+        <br>
+        Un tiret (-) s\'affiche si la valeur est vide, par exemple lorsqu\'il n\'existe aucune information sur l\'opérateur pour le numéro.
         <br>
         <title>Balises prises en charge</title>: <br>
         - <minor>{reason}</minor> <br>

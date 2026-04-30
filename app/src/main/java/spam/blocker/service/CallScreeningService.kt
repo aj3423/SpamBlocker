@@ -186,18 +186,6 @@ class CallScreeningService : CallScreeningService() {
             // 1. Set ringtone + pass()
             val shouldMute = setRingtone(ctx, r)
             pass(details, shouldMute)
-
-            // 2. Show Caller ID window if enabled
-            if (spf.CallerID(ctx).isEnabled) {
-                withContext(Main) {
-                    showCallerIdWindow(
-                        ctx = ctx,
-                        r = r,
-                        geoLocation = numberGeoLocation(ctx, rawNumber),
-                        carrier = numberCarrier(ctx, rawNumber)
-                    )
-                }
-            }
         }
         logi("doScreenCall() finished")
     }
@@ -276,6 +264,17 @@ class CallScreeningService : CallScreeningService() {
         )
     }
 
+    private fun showCallerId(ctx: Context, r: ICheckResult, rawNumber: String) {
+        if (spf.CallerID(ctx).isEnabled) {
+            showCallerIdWindow(
+                ctx = ctx,
+                reason = r.resultReasonStr(ctx),
+                geolocation = numberGeoLocation(ctx, rawNumber),
+                carrier = numberCarrier(ctx, rawNumber)
+            )
+        }
+    }
+
     fun processCall(
         ctx: Context,
         rawNumber: String,
@@ -294,16 +293,21 @@ class CallScreeningService : CallScreeningService() {
         // 1. log result to history db
         logToHistoryDb(ctx, r, rawNumber, cnap, simSlot, isTest, fullScreeningLog, anythingWrong)
 
-        if (r.shouldBlock()) {
-            CoroutineScope(IO).launch {
-
+        CoroutineScope(IO).launch {
+            if (r.shouldBlock()) { // blocked
                 // 2. Show notification
                 showSpamNotification(ctx, r, rawNumber)
 
                 // 3. Report spam number
                 autoReportSpam(ctx, r, rawNumber, isTest)
+            } else { // allowed
+                // 4. Show CallerID window
+                withContext(Main) {
+                    showCallerId(ctx, r, rawNumber)
+                }
             }
         }
+
 
         return r
     }

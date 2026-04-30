@@ -41,6 +41,7 @@ import spam.blocker.ui.widgets.SimPicker
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
+import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.JetpackTextLogger
 import spam.blocker.util.MultiLogger
 import spam.blocker.util.SaveableLogger
@@ -53,6 +54,7 @@ class TestingViewModel {
     val callerName = mutableStateOf("")
     val sms = mutableStateOf("")
     val simSlot = mutableStateOf<Int?>(null)
+    val showCallerID = mutableStateOf(false)
 }
 
 
@@ -139,6 +141,12 @@ fun TestDialog(
             Column(
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
+                val isForCall by remember {
+                    derivedStateOf {
+                        vm.selectedType.intValue == 0
+                    }
+                }
+
                 // Type   [Call, SMS]
                 LabeledRow(labelId = R.string.type) {
                     RadioGroup(items = items, selectedIndex = vm.selectedType.intValue) { newSel ->
@@ -153,6 +161,17 @@ fun TestDialog(
                     helpTooltip = Str(R.string.help_test_sim_card)
                 ) {
                     SimPicker(vm.simSlot)
+                }
+
+                // Show Caller ID
+                AnimatedVisibleV(isForCall) {
+                    LabeledRow(
+                        labelId = R.string.show_caller_id
+                    ) {
+                        SwitchBox(vm.showCallerID.value) { isTurningOn ->
+                            vm.showCallerID.value = isTurningOn
+                        }
+                    }
                 }
 
                 val geoLocation = remember(vm.phone.value) {
@@ -203,7 +222,7 @@ fun TestDialog(
                 }
 
                 // Caller Name
-                AnimatedVisibleV(vm.selectedType.intValue == Def.ForNumber && hasCnapRule) {
+                AnimatedVisibleV(isForCall && hasCnapRule) {
                     StrInputBox(
                         text = vm.callerName.value,
                         label = { GreyLabel(Str(R.string.caller_name)) },
@@ -215,7 +234,7 @@ fun TestDialog(
                     )
                 }
                 // SMS content
-                AnimatedVisibleV(vm.selectedType.intValue != Def.ForNumber) {
+                AnimatedVisibleV(!isForCall) {
                     StrInputBox(
                         text = vm.sms.value,
                         label = { GreyLabel(Str(R.string.sms_content)) },
@@ -227,12 +246,6 @@ fun TestDialog(
                     )
                 }
 
-                // Warning
-                val isForCall by remember {
-                    derivedStateOf {
-                        vm.selectedType.intValue == 0
-                    }
-                }
                 if ((isForCall && !G.callEnabled.value) || (!isForCall && !G.smsEnabled.value)) {
                     Text(
                         text = Str(

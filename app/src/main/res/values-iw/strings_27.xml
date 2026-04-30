@@ -48,6 +48,7 @@
         ]]>
     </string>
     <string name="caller_id">זיהוי מתקשר</string>
+    <string name="show_caller_id">הצג זיהוי מתקשר</string>
     <string name="help_caller_id">
         <![CDATA[
         הצג זיהוי מתקשר בחלון צף. <br>
@@ -68,6 +69,8 @@
     <string name="help_caller_id_template">
         <![CDATA[
         התוכן שמוצג בחלון זיהוי המתקשר, בפורמט HTML. <br>
+        <br>
+        מקף (-) מוצג אם הערך ריק, למשל כאשר אין מידע על המפעיל עבור המספר.
         <br>
         <title>תגיות נתמכות</title>: <br>
         - <minor>{reason}</minor> <br>

@@ -48,6 +48,7 @@
         ]]>
     </string>
     <string name="caller_id">Identificador del trucador</string>
+    <string name="show_caller_id">Mostra l\'identificador del trucador</string>
     <string name="help_caller_id">
         <![CDATA[
         Mostra l\'identificador del trucador en una finestra flotant. <br>
@@ -68,6 +69,8 @@
     <string name="help_caller_id_template">
         <![CDATA[
         El contingut que es mostra a la finestra de l\'identificador del trucador, en format HTML. <br>
+        <br>
+        Es mostra un guionet (-) si el valor és buit, per exemple quan no hi ha informació de l\'operador per al número.
         <br>
         <title>Etiquetes compatibles</title>: <br>
         - <minor>{reason}</minor> <br>

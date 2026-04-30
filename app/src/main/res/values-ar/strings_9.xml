@@ -57,7 +57,7 @@
     </string-array>
     <string name="help_regex_action_add_mode">
         <![CDATA[
-        -<title><b>إنشاء</b></title><br>
+        - <title><b>إنشاء</b></title><br>
         &ensp; قم دائمًا بإنشاء قاعدة تعبير عادي جديدة.<br>
         <br>
         - <title><b>استبدال</b></title><br>
@@ -69,6 +69,13 @@
         &ensp;- إذا كانت هناك قاعدة بنفس الوصف، فسيتم دمج الأرقام الجديدة فيها،<br>
          ستتم إزالة الأرقام المكررة تلقائيًا.<br>
         &ensp;- إذا لم يكن موجودًا، فسيتم إنشاء قاعدة جديدة، تمامًا مثل <b>إنشاء</b>.<br>
+        ]]>
+    </string>
+    <string name="help_regex_action_add_mode_multiple">
+        <![CDATA[
+        تتبع كل قاعدة المنطق التالي: <br>
+        <br>
+        %s
         ]]>
     </string>
     <string name="action_enable_workflow">تمكين سير العمل</string>

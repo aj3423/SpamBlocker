@@ -48,6 +48,7 @@
         ]]>
     </string>
     <string name="caller_id">來電顯示</string>
+    <string name="show_caller_id">顯示來電資訊</string>
     <string name="help_caller_id">
         <![CDATA[
         在浮動視窗中顯示來電資訊。 <br>
@@ -68,6 +69,8 @@
     <string name="help_caller_id_template">
         <![CDATA[
         來電顯示視窗中顯示的內容，採用 HTML 格式。 <br>
+        <br>
+        如果值為空，則會顯示短橫線 (-)，例如號碼沒有營運商資訊時。
         <br>
         <title>支援的標籤</title>: <br>
         - <minor>{reason}</minor> <br>

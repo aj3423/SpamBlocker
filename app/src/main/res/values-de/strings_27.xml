@@ -48,6 +48,7 @@
         ]]>
     </string>
     <string name="caller_id">Anruferkennung</string>
+    <string name="show_caller_id">Anruferkennung anzeigen</string>
     <string name="help_caller_id">
         <![CDATA[
         Zeigt die Anruferkennung in einem schwebenden Fenster an. <br>
@@ -68,6 +69,8 @@
     <string name="help_caller_id_template">
         <![CDATA[
         Der im Fenster der Anruferkennung angezeigte Inhalt im HTML-Format. <br>
+        <br>
+        Ein Bindestrich (-) wird angezeigt, wenn der Wert leer ist, zum Beispiel wenn keine Betreiberinformationen für die Nummer vorhanden sind.
         <br>
         <title>Unterstützte Tags</title>: <br>
         - <minor>{reason}</minor> <br>

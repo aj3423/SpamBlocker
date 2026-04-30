@@ -18,7 +18,6 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import spam.blocker.G
 import spam.blocker.R
-import spam.blocker.service.checker.ICheckResult
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.widgets.ColorPickerButton
 import spam.blocker.ui.widgets.FloatingWindow
@@ -34,13 +33,25 @@ import spam.blocker.util.Permission
 import spam.blocker.util.PermissionWrapper
 import spam.blocker.util.spf
 
-const val DefaultCallerIdBgColor = 0x10808080
+const val DefaultCallerIdBgColor = 0x20808080
 const val DefaultCallerIdTemplate =
-"""<font color="#50c878"><big><big><big>{reason}</big></big></big></font>
+"""<font color="#50c878">
+    <big><big>
+        {reason}
+    </big></big>
+</font>
 <br>
-<font color="#00bfff"><big>{geolocation}</big></font>
+<font color="#00bfff">
+    <big>
+        {geolocation}
+    </big>
+</font>
 <br>
-<font color="#ea86ff"><big>{carrier}</big></font>
+<font color="#ea86ff">
+    <big>
+        {carrier}
+    </big>
+</font>
 """
 
 const val FullHtmlTagList = "https://github.com/aj3423/SpamBlocker/issues/555"
@@ -54,23 +65,17 @@ fun callerIdView(ctx: Context, template: String) : View {
 
 fun showCallerIdWindow(
     ctx: Context,
-    geoLocation: String? = null,
-    carrier: String? = null,
-    r: ICheckResult? = null
+    reason: String? = "{reason}",
+    geolocation: String? = "{geolocation}",
+    carrier: String? = "{carrier}",
 ) {
     val spf = spf.CallerID(ctx)
 
     // Resolve tags: {reason} {api_result} {geolocation}
-    var content = spf.template
-    if (r != null) {
-        content = content.replace("{reason}", r.resultReasonStr(ctx))
-    }
-    if (geoLocation != null) {
-        content = content.replace("{geolocation}", geoLocation)
-    }
-    if (carrier != null) {
-        content = content.replace("{carrier}", carrier)
-    }
+    val content = spf.template
+        .replace("{reason}", reason?.trim() ?: "—")
+        .replace("{geolocation}", geolocation?.trim() ?: "—")
+        .replace("{carrier}", carrier?.trim() ?: "—")
 
     FloatingWindow.apply {
         update(ctx, bgColor = spf.bgColor, x = spf.x, y = spf.y)
@@ -178,7 +183,7 @@ fun CallerID() {
 
                 if (isEnabled) {
 
-                    // Setting button
+                    // Preview button
                     StrokeButton(
                         label = Str(R.string.preview),
                         color = C.textGrey,
