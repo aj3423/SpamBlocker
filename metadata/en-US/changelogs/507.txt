@@ -1,0 +1,21 @@
+Breaking Change:
+- "All File Access" permission is removed.
+  You can now specify which folders the app can access.
+
+New:
+- Caller ID
+  A floating overlay during ringing, for displaying the screening result, geolocation and carrier.
+- New regex modes 
+  - "Contact Prefix"
+    Allow calls based on contact prefix matching, ideal for organizations that use sequential numbers, such as clinics.
+    e.g., auto allow xxxxxxx000~xxxxxxx999 when xxxxxxx111 is a contact
+  - "Carrier"
+    Block numbers by the carrier name
+
+Improvements:
+- "SMS Alert" no longer requires enabling the global SMS screening.
+- Regex flags `IgnoreCC` and `RawNumber` are now compatible and can work together.
+  "IgnoreCC" stripes +CC first, then RawNumber clears the leading 0s.
+   e.g. +330123456 -> 123456
+- Regex Mode indicators ('c', 'g', '📍', '☑') are replaced by intuitive icons
+- API query now supports extracting a custom comment for displaying on caller ID

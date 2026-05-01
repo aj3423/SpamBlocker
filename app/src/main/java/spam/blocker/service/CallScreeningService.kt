@@ -29,6 +29,7 @@ import spam.blocker.util.Contacts
 import spam.blocker.util.ILogger
 import spam.blocker.util.Notification
 import spam.blocker.util.Notification.ShowType
+import spam.blocker.util.Permission
 import spam.blocker.util.RingtoneUtil
 import spam.blocker.util.SaveableLogger
 import spam.blocker.util.SimUtils
@@ -304,14 +305,13 @@ class CallScreeningService : CallScreeningService() {
                 autoReportSpam(ctx, r, rawNumber, isTest)
             } else { // allowed
                 // 4. Show CallerID window
-                if (showCallerId) {
+                if (showCallerId && Permission.phoneState.isGranted) {
                     withContext(Main) {
                         showCallerId(ctx, r, rawNumber)
                     }
                 }
             }
         }
-
 
         return r
     }

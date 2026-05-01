@@ -170,7 +170,7 @@ fun CallerID() {
     val ctx = LocalContext.current
     val spf = spf.CallerID(ctx)
 
-    var isEnabled by remember { mutableStateOf(spf.isEnabled) }
+    var isEnabled by remember { mutableStateOf(spf.isEnabled && Permission.phoneState.isGranted) }
 
     LabeledRow(
         R.string.caller_id,
