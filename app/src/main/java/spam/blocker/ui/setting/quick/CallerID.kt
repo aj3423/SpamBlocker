@@ -71,11 +71,11 @@ fun showCallerIdWindow(
 ) {
     val spf = spf.CallerID(ctx)
 
-    // Resolve tags: {reason} {api_result} {geolocation}
+    // Resolve tags: {reason} {carrier} {geolocation}
     val content = spf.template
-        .replace("{reason}", reason?.trim() ?: "—")
-        .replace("{geolocation}", geolocation?.trim() ?: "—")
-        .replace("{carrier}", carrier?.trim() ?: "—")
+        .replace("{reason}", reason?.trim().takeIf { !it.isNullOrBlank() } ?: "—")
+        .replace("{geolocation}", geolocation?.trim().takeIf { !it.isNullOrBlank() } ?: "—")
+        .replace("{carrier}", carrier?.trim().takeIf { !it.isNullOrBlank() } ?: "—")
 
     FloatingWindow.apply {
         update(ctx, bgColor = spf.bgColor, x = spf.x, y = spf.y)
