@@ -79,22 +79,22 @@ You can kill the app after setup, it doesn’t need to stay running in the backg
 
 # Permissions 
 
-| Permission (all optional)                                                         | Why                                                                    |
-|-----------------------------------------------------------------------------------|------------------------------------------------------------------------|
-| INTERNET                                                                          | For database downloading / instant query / number reporting            | 
-| ANSWER_PHONE_CALLS                                                                | Reject, answer and hang-up calls                                       |
-| POST_NOTIFICATIONS                                                                | Show notifications                                                     |
-| READ_CONTACTS                                                                     | Match contacts                                                         |
-| RECEIVE_SMS / RECEIVE_MMS                                                         | For SMS notification screening                                         |
-| READ_CALL_LOG<br>READ_SMS                                                         | For allowing repeated calls                                            |
-| PACKAGE_USAGE_STATS                                                               | For feature: Recent Apps (check whether an app has been used recently) |
-| READ_PHONE_STATE                                                                  | For BlockMode: Answer+Hang-up (monitor ringing state)                  |
-| REQUEST_IGNORE_BATTERY_OPTIMIZATIONS                                              | For it to keep working after being swiped and killed                   |
-| NOTIFICATION_ACCESS                                                               | For feature: Push Alert (receiving notifications from other apps)      |
-| WRITE_SETTINGS                                                                    | For customizing call ringtone                                          | 
-| READ_LOG                                                                          | For reporting bugs with logcat messages                                |   
-
-# Privacy
+| Permission (all optional)            | Why                                                                    |
+|--------------------------------------|------------------------------------------------------------------------|
+| INTERNET                             | For database downloading / instant query / number reporting            | 
+| ANSWER_PHONE_CALLS                   | Reject, answer and hang-up calls                                       |
+| POST_NOTIFICATIONS                   | Show notifications                                                     |
+| READ_CONTACTS                        | Match contacts                                                         |
+| RECEIVE_SMS / RECEIVE_MMS            | For SMS notification screening                                         |
+| READ_CALL_LOG / READ_SMS             | For allowing repeated calls                                            |
+| PACKAGE_USAGE_STATS                  | For feature: Recent Apps (check whether an app has been used recently) |
+| READ_PHONE_STATE                     | For BlockMode: Answer+Hang-up (monitor ringing state)                  |
+| REQUEST_IGNORE_BATTERY_OPTIMIZATIONS | For it to keep working after being swiped and killed                   |
+| NOTIFICATION_ACCESS                  | For feature: Push Alert (receiving notifications from other apps)      |
+| WRITE_SETTINGS                       | For customizing call ringtone                                          | 
+| READ_LOG                             | For reporting bugs with logcat messages                                |   
+| SYSTEM_ALERT_WINDOW                  | For the caller ID floating window                                      |   
+y Privacy
  - For offline features
 
    No data collection.

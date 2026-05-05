@@ -112,6 +112,7 @@ fun BotHeader(
             hasReportApi = reportApi != null,
         ) { alsoReport, formFields ->
             // 1. add the bot
+            authConfig.preProcessor(initialBotToEdit.value.actions, formFields.map { it.value })
             addBotToDB(ctx, initialBotToEdit.value)
             afterCreated.value?.let { it(ctx) }
 
