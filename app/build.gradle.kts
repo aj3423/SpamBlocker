@@ -30,7 +30,7 @@ android {
     defaultConfig {
         applicationId = "spam.blocker"
         minSdk = 29
-        targetSdk g= 36
+        targetSdk = 36
         versionCode = 507
         versionName = "5.7"
 
