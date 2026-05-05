@@ -1,6 +1,5 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.compose.compiler)
     kotlin("plugin.serialization") version "1.9.24"
 }
@@ -26,12 +25,12 @@ android {
         }
     }
     namespace = "spam.blocker"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "spam.blocker"
         minSdk = 29
-        targetSdk = 36
+        targetSdk g= 36
         versionCode = 507
         versionName = "5.7"
 
@@ -56,9 +55,6 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = "17"
-    }
     buildFeatures {
         compose = true
         viewBinding = true
@@ -66,7 +62,7 @@ android {
     }
 
     testOptions {
-        packagingOptions {
+        packaging {
             resources.excludes.add("META-INF/LICENSE.md")
             resources.excludes.add("META-INF/LICENSE-notice.md")
             jniLibs {
@@ -74,7 +70,6 @@ android {
             }
         }
     }
-    buildToolsVersion = "35.0.0"
 }
 
 dependencies {
