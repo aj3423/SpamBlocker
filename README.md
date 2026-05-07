@@ -94,7 +94,8 @@ You can kill the app after setup, it doesn’t need to stay running in the backg
 | WRITE_SETTINGS                       | For customizing call ringtone                                          | 
 | READ_LOG                             | For reporting bugs with logcat messages                                |   
 | SYSTEM_ALERT_WINDOW                  | For the caller ID floating window                                      |   
-y Privacy
+
+# Privacy
  - For offline features
 
    No data collection.

@@ -33,7 +33,6 @@
     <string name="daily">Diario</string>
     <string name="weekly">Semanal</string>
     <string name="periodically">Periodicamente</string>
-    <string name="time">Tempo</string>
     <string name="workdays">Días laborables</string>
 
     <string name="help_backup">

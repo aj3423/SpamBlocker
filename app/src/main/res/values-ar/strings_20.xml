@@ -93,7 +93,6 @@
     <string name="sms_throttling">تقييد الرسائل القصيرة</string>
     <string name="sms_throttling_triggered">تم تفعيل تقييد الرسائل القصيرة</string>
     <string name="target_rule_desc">وصف القاعدة المستهدفة</string>
-    <string name="template_generated">تم إنشاء القالب.</string>
     <string name="throttled_call">مكالمة مقيدة</string>
     <string name="throttled_sms">رسائل قصيرة مقيدة</string>
 </resources>

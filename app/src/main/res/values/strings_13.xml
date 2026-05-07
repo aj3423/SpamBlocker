@@ -143,5 +143,4 @@
         ]]>
     </string>
     <string name="bug_number">If this is a valid number, please report it on GitHub.</string>
-    <string name="skip_alpha_empty_number">Skipping alphanumeric or empty number.</string>
 </resources>

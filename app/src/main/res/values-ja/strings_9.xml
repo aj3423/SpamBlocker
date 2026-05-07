@@ -32,7 +32,6 @@
     <string name="daily">毎日</string>
     <string name="weekly">毎週</string>
     <string name="periodically">定期的に</string>
-    <string name="time">時間</string>
     <string name="workdays">勤務日</string>
 
     <string name="help_backup">

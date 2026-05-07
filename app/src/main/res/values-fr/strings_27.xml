@@ -3,7 +3,6 @@
     <string name="info_feature">Information / Fonctionnalité</string>
     <string name="success_allow">Succès / Autoriser</string>
     <string name="error_block">Erreur / Bloquer</string>
-    <string name="highlight">Mettre en évidence</string>
     <string name="disable">Désactiver</string>
     <string name="dialog_bg">Fond de la boîte de dialogue</string>
     <string name="app_bg">Fond de l\'application</string>
@@ -63,7 +62,6 @@
     </string>
     <string name="perm_show_overlay">Afficher la superposition</string>
     <string name="preview">Aperçu</string>
-    <string name="hide">Masquer</string>
     <string name="content_template">Modèle de contenu</string>
     <string name="help_caller_id_template">
         <![CDATA[
@@ -96,7 +94,6 @@
         </sample>
         ]]>
     </string>
-    <string name="comment_optional">Commentaire (facultatif)</string>
     <string name="comment_identifier">Identificateur de commentaire</string>
     <string name="hint_comment_identifier">
         Ex. : \"comment\":\"(.+?)\"

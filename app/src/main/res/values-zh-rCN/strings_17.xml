@@ -35,21 +35,6 @@
     <string name="confirm_to_reset">确认重置？</string>
     <string name="check_stir_attestation">检查 STIR (?)</string>
     <string name="additional_numbers">附加号码</string>
-    <string name="path_tags">
-        <![CDATA[
-        <title><b>{sdcard}</b></title><br>
-        外部存储目录，与以下目录相同： <br>
-        <sample>/storage/emulated/0</sample><br>
-        <br>
-        <title><b>{Download}</b></title><br>
-        与以下目录相同： <br>
-        <sample>{sdcard}/Download</sample><br>
-        <br>
-        <title><b>{Documents}</b></title><br>
-        与以下目录相同： <br>
-        <sample>{sdcard}/Documents</sample>
-        ]]>
-    </string>
     <string name="call_to_number">呼叫号码</string>
     <string name="call_to">呼叫至</string>
     <string name="push_alert">推送提醒</string>

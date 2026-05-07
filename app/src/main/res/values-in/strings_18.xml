@@ -31,8 +31,6 @@
     <string name="missing_permissions">Izin berikut sebelumnya telah diberikan namun saat ini hilang:</string>
     <string name="grant_permissions">Berikan Izin</string>
     <string name="perm_call_screening">Penyaringan Panggilan</string>
-    <string name="perm_file_read">Baca Berkas</string>
-    <string name="perm_file_write">Tulis Berkas</string>
     <string name="perm_contacts">Kontak</string>
     <string name="perm_receive_sms">Terima SMS</string>
     <string name="perm_receive_mms">Terima MMS</string>

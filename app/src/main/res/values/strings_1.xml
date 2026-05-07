@@ -17,8 +17,6 @@
     <string name="clear">Clear</string>
     <string name="test">Test</string>
     <string name="save">Save</string>
-    <string name="whitelist">Whitelist</string>
-    <string name="blacklist">Blacklist</string>
     <string name="content">Content</string>
     <string name="priority">Priority</string>
     <string name="deleted_filter">(deleted rule)</string>

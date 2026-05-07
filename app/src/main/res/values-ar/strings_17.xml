@@ -37,21 +37,6 @@
     <string name="confirm_to_reset"><translate>تأكيد إعادة التعيين؟</translate></string>
     <string name="check_stir_attestation"><translate>التحقق من STIR (?)</translate></string>
     <string name="additional_numbers"><translate>أرقام إضافية</translate></string>
-    <string name="path_tags">
-        <![CDATA[
-        <title><b>{sdcard}</b></title><br>
-        دليل التخزين الخارجي، نفس: <br>
-        <sample>/storage/emulated/0</sample><br>
-        <br>
-        <title><b>{Download}</b></title><br>
-        نفس: <br>
-        <sample>{sdcard}/Download</sample><br>
-        <br>
-        <title><b>{Documents}</b></title><br>
-        نفس: <br>
-        <sample>{sdcard}/Documents</sample>
-        ]]>
-    </string>
     <string name="call_to_number"><translate>للرقم</translate></string>
     <string name="call_to"><translate>اتصل بـ</translate></string>
     <string name="push_alert">تنبيهات الدفع</string>

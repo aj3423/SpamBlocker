@@ -31,8 +31,6 @@
     <string name="missing_permissions">Следующие разрешения были ранее предоставлены, но в настоящее время отсутствуют:</string>
     <string name="grant_permissions">Предоставить разрешения</string>
     <string name="perm_call_screening">Отсев вызовов</string>
-    <string name="perm_file_read">Чтение файлов</string>
-    <string name="perm_file_write">Запись файлов</string>
     <string name="perm_contacts">Контакты</string>
     <string name="perm_receive_sms">Получение SMS</string>
     <string name="perm_receive_mms">Получение MMS</string>

@@ -127,7 +127,6 @@
         ]]>
     </string>
     <string name="bug_number">اگر این یک شماره معتبر است، لطفا آن را در GitHub گزارش دهید.</string>
-    <string name="skip_alpha_empty_number">رد کردن شماره‌های الفبایی یا خالی.</string>
     <string name="sms_tags">
         <![CDATA[
         - <title><b>{sms}</b></title><br>

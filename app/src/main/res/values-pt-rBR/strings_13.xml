@@ -127,7 +127,6 @@
           <title><b><no_translate>{hour+2}</no_translate></b></title>.
         ]]>
     </string>
-    <string name="skip_alpha_empty_number">Pular número alfa ou vazio.</string>
     <string name="sms_tags">
         <![CDATA[
         - <title><b>{sms}</b></title><br>

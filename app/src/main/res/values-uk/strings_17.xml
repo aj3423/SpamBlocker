@@ -37,21 +37,6 @@
     <string name="confirm_to_reset">Підтвердити скидання?</string>
     <string name="check_stir_attestation"><translate>Перевірка STIR (?)</translate></string>
     <string name="additional_numbers">Додаткові номери</string>
-    <string name="path_tags">
-        <![CDATA[
-        <title><b>{sdcard}</b></title><br>
-        Каталог зовнішнього сховища, як: <br>
-        <sample>/storage/emulated/0</sample><br>
-        <br>
-        <title><b>{Download}</b></title><br>
-        Те саме що: <br>
-        <sample>{sdcard}/Download</sample><br>
-        <br>
-        <title><b>{Documents}</b></title><br>
-        Те саме що: <br>
-        <sample>{sdcard}/Documents</sample>
-        ]]>
-    </string>
     <string name="call_to_number">На номер</string>
     <string name="call_to">Дзвінок на</string>
     <string name="push_alert">Push-сповіщення</string>

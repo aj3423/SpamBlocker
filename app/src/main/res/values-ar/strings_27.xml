@@ -3,7 +3,6 @@
     <string name="info_feature">معلومات / ميزة</string>
     <string name="success_allow">نجاح / السماح</string>
     <string name="error_block">خطأ / حظر</string>
-    <string name="highlight">تمييز</string>
     <string name="disable">تعطيل</string>
     <string name="dialog_bg">خلفية الحوار</string>
     <string name="app_bg">خلفية التطبيق</string>
@@ -63,7 +62,6 @@
     </string>
     <string name="perm_show_overlay">إظهار النافذة العائمة</string>
     <string name="preview">معاينة</string>
-    <string name="hide">إخفاء</string>
     <string name="content_template">قالب المحتوى</string>
     <string name="help_caller_id_template">
         <![CDATA[
@@ -96,7 +94,6 @@
         </sample>
         ]]>
     </string>
-    <string name="comment_optional">تعليق (اختياري)</string>
     <string name="comment_identifier">معرف التعليق</string>
     <string name="hint_comment_identifier">
         مثال: \"comment\":\"(.+?)\"

@@ -37,21 +37,6 @@
     <string name="confirm_to_reset">Confirmer la réinitialisation ?</string>
     <string name="check_stir_attestation"><translate>Vérifier STIR (?)</translate></string>
     <string name="additional_numbers">Numéros supplémentaires</string>
-    <string name="path_tags">
-        <![CDATA[
-        <title><b>{sdcard}</b></title><br>
-        Le répertoire de stockage externe, identique à : <br>
-        <sample>/storage/emulated/0</sample><br>
-        <br>
-        <title><b>{Download}</b></title><br>
-        Identique à : <br>
-        <sample>{sdcard}/Download</sample><br>
-        <br>
-        <title><b>{Documents}</b></title><br>
-        Identique à : <br>
-        <sample>{sdcard}/Documents</sample>
-        ]]>
-    </string>
     <string name="call_to_number">Vers numéro</string>
     <string name="call_to">Appeler</string>
     <string name="push_alert">Alerte push</string>

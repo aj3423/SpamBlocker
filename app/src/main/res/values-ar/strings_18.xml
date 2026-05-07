@@ -31,8 +31,6 @@
     <string name="missing_permissions">الأذونات التالية مُنحت سابقًا ولكنها مفقودة حاليًا:</string>
     <string name="grant_permissions">منح الأذونات</string>
     <string name="perm_call_screening">فحص المكالمات</string>
-    <string name="perm_file_read">قراءة الملفات</string>
-    <string name="perm_file_write">كتابة الملفات</string>
     <string name="perm_contacts">جهات الاتصال</string>
     <string name="perm_receive_sms">استلام الرسائل النصية</string>
     <string name="perm_receive_mms">استلام رسائل الوسائط المتعددة</string>

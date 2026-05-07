@@ -17,8 +17,6 @@
     <string name="clear">クリア</string>
     <string name="test">テスト</string>
     <string name="save">保存</string>
-    <string name="whitelist">ホワイトリスト</string>
-    <string name="blacklist">ブラックリスト</string>
     <string name="content">コンテンツ</string>
     <string name="priority">優先順位</string>
     <string name="deleted_filter">(削除されたルール)</string>

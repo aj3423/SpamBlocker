@@ -33,7 +33,6 @@
     <string name="daily">Günlük</string>
     <string name="weekly">Haftalık</string>
     <string name="periodically">Düzenli olarak</string>
-    <string name="time">Zaman</string>
     <string name="workdays">İş günleri</string>
 
     <string name="help_backup">

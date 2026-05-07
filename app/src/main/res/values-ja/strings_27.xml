@@ -3,7 +3,6 @@
     <string name="info_feature">情報 / 機能</string>
     <string name="success_allow">成功 / 許可</string>
     <string name="error_block">エラー / ブロック</string>
-    <string name="highlight">ハイライト</string>
     <string name="disable">無効化</string>
     <string name="dialog_bg">ダイアログ背景</string>
     <string name="app_bg">アプリ背景</string>
@@ -63,7 +62,6 @@
     </string>
     <string name="perm_show_overlay">オーバーレイを表示</string>
     <string name="preview">プレビュー</string>
-    <string name="hide">非表示</string>
     <string name="content_template">コンテンツテンプレート</string>
     <string name="help_caller_id_template">
         <![CDATA[
@@ -96,7 +94,6 @@
         </sample>
         ]]>
     </string>
-    <string name="comment_optional">コメント（任意）</string>
     <string name="comment_identifier">コメント識別子</string>
     <string name="hint_comment_identifier">
         例: \"comment\":\"(.+?)\"

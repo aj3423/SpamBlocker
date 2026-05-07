@@ -137,7 +137,6 @@
         ]]>
     </string>
     <string name="bug_number">Если это надёжный номер, пожалуйста, сообщите об этом на GitHub.</string>
-    <string name="skip_alpha_empty_number">Пропуск буквенных или пустых номеров.</string>
     <string name="escape_tags">
         <![CDATA[
         - <title><b><no_translate>{escape(…)}</no_translate></b></title><br>

@@ -31,8 +31,6 @@
     <string name="missing_permissions">As seguintes permissões foram concedidas anteriormente, mas estão atualmente ausentes:</string>
     <string name="grant_permissions">Conceder Permissões</string>
     <string name="perm_call_screening">Triagem de Chamadas</string>
-    <string name="perm_file_read">Leitura de Arquivo</string>
-    <string name="perm_file_write">Escrita de Arquivo</string>
     <string name="perm_contacts">Contatos</string>
     <string name="perm_receive_sms">Receber SMS</string>
     <string name="perm_receive_mms">Receber MMS</string>

@@ -94,7 +94,6 @@
     <string name="sms_throttling">Обмеження SMS</string>
     <string name="sms_throttling_triggered">Запущено обмеження SMS</string>
     <string name="target_rule_desc">Опис цільового правила</string>
-    <string name="template_generated">Шаблон створено.</string>
     <string name="throttled_call">Обмежений дзвінок</string>
     <string name="throttled_sms">Обмежені SMS</string>
 </resources>

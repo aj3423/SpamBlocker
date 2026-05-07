@@ -33,7 +33,6 @@
     <string name="daily">Ежедневно</string>
     <string name="weekly">Еженедельно</string>
     <string name="periodically">Периодически</string>
-    <string name="time">Время</string>
     <string name="workdays">Рабочие дни</string>
 
     <string name="help_backup">

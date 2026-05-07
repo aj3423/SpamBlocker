@@ -33,7 +33,6 @@
     <string name="daily">يومي</string>
     <string name="weekly">أسبوعي</string>
     <string name="periodically">بشكل دوري</string>
-    <string name="time">وقت</string>
     <string name="workdays">أيام العمل</string>
 
     <string name="help_backup">

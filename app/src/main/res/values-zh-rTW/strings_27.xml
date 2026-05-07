@@ -3,7 +3,6 @@
     <string name="info_feature">資訊 / 功能</string>
     <string name="success_allow">成功 / 允許</string>
     <string name="error_block">錯誤 / 阻止</string>
-    <string name="highlight">突出顯示</string>
     <string name="disable">停用</string>
     <string name="dialog_bg">對話框背景</string>
     <string name="app_bg">應用程式背景</string>
@@ -63,7 +62,6 @@
     </string>
     <string name="perm_show_overlay">顯示浮動視窗</string>
     <string name="preview">預覽</string>
-    <string name="hide">隱藏</string>
     <string name="content_template">內容範本</string>
     <string name="help_caller_id_template">
         <![CDATA[
@@ -96,7 +94,6 @@
         </sample>
         ]]>
     </string>
-    <string name="comment_optional">備註（選填）</string>
     <string name="comment_identifier">備註識別</string>
     <string name="hint_comment_identifier">
         例如：\"comment\":\"(.+?)\"

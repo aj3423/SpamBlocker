@@ -3,7 +3,6 @@
     <string name="info_feature">Інформація / Функція</string>
     <string name="success_allow">Успіх / Дозволити</string>
     <string name="error_block">Помилка / Блокувати</string>
-    <string name="highlight">Виділити</string>
     <string name="disable">Вимкнути</string>
     <string name="dialog_bg">Фон діалогу</string>
     <string name="app_bg">Фон додатку</string>
@@ -63,7 +62,6 @@
     </string>
     <string name="perm_show_overlay">Показувати поверх</string>
     <string name="preview">Попередній перегляд</string>
-    <string name="hide">Приховати</string>
     <string name="content_template">Шаблон вмісту</string>
     <string name="help_caller_id_template">
         <![CDATA[
@@ -96,7 +94,6 @@
         </sample>
         ]]>
     </string>
-    <string name="comment_optional">Коментар (за бажанням)</string>
     <string name="comment_identifier">Ідентифікатор коментаря</string>
     <string name="hint_comment_identifier">
         Наприклад: \"comment\":\"(.+?)\"

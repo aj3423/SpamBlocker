@@ -31,8 +31,6 @@
     <string name="missing_permissions">ההרשאות הבאות ניתנו בעבר אך חסרות כעת:</string>
     <string name="grant_permissions">הענק הרשאות</string>
     <string name="perm_call_screening">סינון שיחות</string>
-    <string name="perm_file_read">קריאת קובץ</string>
-    <string name="perm_file_write">כתיבת קובץ</string>
     <string name="perm_contacts">אנשי קשר</string>
     <string name="perm_receive_sms">קבלת SMS</string>
     <string name="perm_receive_mms">קבלת MMS</string>

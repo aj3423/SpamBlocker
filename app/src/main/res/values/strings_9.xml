@@ -32,7 +32,6 @@
     <string name="daily">Daily</string>
     <string name="weekly">Weekly</string>
     <string name="periodically">Periodically</string>
-    <string name="time">Time</string>
     <string name="workdays">Workdays</string>
 
     <string name="help_backup">

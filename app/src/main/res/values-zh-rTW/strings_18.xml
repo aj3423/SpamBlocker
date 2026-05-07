@@ -44,8 +44,6 @@
     <string name="missing_permissions">下列權限先前已授予，但目前未啟用：</string>
     <string name="grant_permissions">授予權限</string>
     <string name="perm_call_screening">電話篩選</string>
-    <string name="perm_file_read">讀取檔案</string>
-    <string name="perm_file_write">寫入檔案</string>
     <string name="perm_contacts">聯絡人</string>
     <string name="perm_receive_sms">接收簡訊</string>
     <string name="perm_receive_mms">接收 MMS</string>

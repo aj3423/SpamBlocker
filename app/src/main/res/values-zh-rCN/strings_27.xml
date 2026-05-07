@@ -3,7 +3,6 @@
     <string name="info_feature">信息 / 功能</string>
     <string name="success_allow">成功 / 允许</string>
     <string name="error_block">错误 / 阻止</string>
-    <string name="highlight">高亮</string>
     <string name="disable">禁用</string>
     <string name="dialog_bg">对话框背景</string>
     <string name="app_bg">应用背景</string>
@@ -63,7 +62,6 @@
     </string>
     <string name="perm_show_overlay">显示悬浮窗</string>
     <string name="preview">预览</string>
-    <string name="hide">隐藏</string>
     <string name="content_template">内容模板</string>
     <string name="help_caller_id_template">
         <![CDATA[
@@ -96,7 +94,6 @@
         </sample>
         ]]>
     </string>
-    <string name="comment_optional">备注（选填）</string>
     <string name="comment_identifier">备注标识符</string>
     <string name="hint_comment_identifier">
         例如：\"comment\":\"(.+?)\"

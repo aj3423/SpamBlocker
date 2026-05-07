@@ -31,8 +31,6 @@
     <string name="missing_permissions">以下权限之前已授予，但目前缺失：</string>
     <string name="grant_permissions">授予权限</string>
     <string name="perm_call_screening">来电筛选</string>
-    <string name="perm_file_read">文件读取</string>
-    <string name="perm_file_write">文件写入</string>
     <string name="perm_contacts">联系人</string>
     <string name="perm_receive_sms">接收短信</string>
     <string name="perm_receive_mms">接收彩信</string>

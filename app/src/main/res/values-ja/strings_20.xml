@@ -90,7 +90,6 @@
     <string name="sms_throttling">SMSスロットリング</string>
     <string name="sms_throttling_triggered">SMSスロットリングがトリガーされました</string>
     <string name="target_rule_desc">ターゲットルール説明</string>
-    <string name="template_generated">テンプレートが生成されました。</string>
     <string name="throttled_call">スロットリングされた着信</string>
     <string name="throttled_sms">スロットリングされたSMS</string>
 </resources>

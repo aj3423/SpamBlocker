@@ -31,8 +31,6 @@
     <string name="missing_permissions">Els permisos següents es van concedir prèviament però actualment no estan disponibles:</string>
     <string name="grant_permissions">Concedeix Permisos</string>
     <string name="perm_call_screening">Filtrat de Trucades</string>
-    <string name="perm_file_read">Lectura de Fitxers</string>
-    <string name="perm_file_write">Escriptura de Fitxers</string>
     <string name="perm_contacts">Contactes</string>
     <string name="perm_receive_sms">Rebre SMS</string>
     <string name="perm_receive_mms">Rebre MMS</string>

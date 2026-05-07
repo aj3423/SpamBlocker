@@ -3,7 +3,6 @@
     <string name="info_feature">מידע / תכונה</string>
     <string name="success_allow">הצלחה / לאפשר</string>
     <string name="error_block">שגיאה / לחסום</string>
-    <string name="highlight">הדגש</string>
     <string name="disable">השבת</string>
     <string name="dialog_bg">רקע תיבת דו-שיח</string>
     <string name="app_bg">רקע האפליקציה</string>
@@ -63,7 +62,6 @@
     </string>
     <string name="perm_show_overlay">הצג שכבת-על</string>
     <string name="preview">תצוגה מקדימה</string>
-    <string name="hide">הסתר</string>
     <string name="content_template">תבנית תוכן</string>
     <string name="help_caller_id_template">
         <![CDATA[
@@ -96,7 +94,6 @@
         </sample>
         ]]>
     </string>
-    <string name="comment_optional">הערה (אופציונלית)</string>
     <string name="comment_identifier">מזהה הערה</string>
     <string name="hint_comment_identifier">
         לדוגמה: \"comment\":\"(.+?)\"

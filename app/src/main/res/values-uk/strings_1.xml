@@ -17,8 +17,6 @@
     <string name="clear">Очистити</string>
     <string name="test">Тест</string>
     <string name="save">Зберегти</string>
-    <string name="whitelist">Білий список</string>
-    <string name="blacklist">Чорний список</string>
     <string name="content">Зміст</string>
     <string name="priority">Пріоритет</string>
     <string name="deleted_filter">(видалене правило)</string>

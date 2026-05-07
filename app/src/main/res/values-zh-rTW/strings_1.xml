@@ -17,8 +17,6 @@
     <string name="clear">清除</string>
     <string name="test">測試</string>
     <string name="save">儲存</string>
-    <string name="whitelist">白名單</string>
-    <string name="blacklist">黑名單</string>
     <string name="content">內容</string>
     <string name="priority">優先順序</string>
     <string name="deleted_filter">（已刪除的規則）</string>

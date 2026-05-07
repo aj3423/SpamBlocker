@@ -51,7 +51,6 @@
     若接聽的通話時間過短，也會視為垃圾來電並啟用此功能。<br>
     ]]>
     </string>
-    <string name="template_generated">已建立範本。</string>
     <string name="throttled_sms">節流簡訊</string>
     <string name="throttled_call">節流來電</string>
     <string name="including_blocked">包含已封鎖</string>

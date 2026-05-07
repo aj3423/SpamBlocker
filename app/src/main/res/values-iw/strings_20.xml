@@ -93,7 +93,6 @@
     <string name="sms_throttling">ויסות הודעות SMS</string>
     <string name="sms_throttling_triggered">ויסות הודעות SMS הופעל</string>
     <string name="target_rule_desc">תיאור כלל יעד</string>
-    <string name="template_generated">תבנית נוצרה.</string>
     <string name="throttled_call">שיחה מווסתת</string>
     <string name="throttled_sms">הודעת SMS מווסתת</string>
 </resources>

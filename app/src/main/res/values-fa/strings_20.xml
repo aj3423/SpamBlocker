@@ -93,7 +93,6 @@
     <string name="sms_throttling">محدودسازی پیامک</string>
     <string name="sms_throttling_triggered">محدودسازی پیامک فعال شد</string>
     <string name="target_rule_desc">توضیحات قانون هدف</string>
-    <string name="template_generated">الگو تولید شد.</string>
     <string name="throttled_call">تماس محدود شده</string>
     <string name="throttled_sms">پیامک محدود شده</string>
 </resources>

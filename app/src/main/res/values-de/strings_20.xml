@@ -93,7 +93,6 @@
     <string name="sms_throttling">SMS-Drosselung</string>
     <string name="sms_throttling_triggered">SMS-Drosselung ausgelöst</string>
     <string name="target_rule_desc">Zielregelbeschreibung</string>
-    <string name="template_generated">Vorlage generiert.</string>
     <string name="throttled_call">Gedrosselter Anruf</string>
     <string name="throttled_sms">Gedrosselte SMS</string>
 </resources>

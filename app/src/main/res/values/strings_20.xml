@@ -54,7 +54,6 @@
      a call is also considered a spam call. <br>
     ]]>
     </string>
-    <string name="template_generated">Template Generated.</string>
     <string name="throttled_sms">Throttled SMS</string>
     <string name="throttled_call">Throttled Call</string>
     <string name="including_blocked">Including Blocked</string>

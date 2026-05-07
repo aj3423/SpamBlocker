@@ -17,8 +17,6 @@
     <string name="clear">Bersihkan</string>
     <string name="test">Uji</string>
     <string name="save">Simpan</string>
-    <string name="whitelist">Daftar Putih</string>
-    <string name="blacklist">Daftar Hitam</string>
     <string name="content">Isi</string>
     <string name="priority">Prioritas</string>
     <string name="deleted_filter">(aturan dihapus)</string>

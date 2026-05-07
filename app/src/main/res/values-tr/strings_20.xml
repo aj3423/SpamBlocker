@@ -92,7 +92,6 @@
     <string name="sms_throttling">SMS Kısıtlama</string>
     <string name="sms_throttling_triggered">SMS Kısıtlama tetiklendi</string>
     <string name="target_rule_desc">Hedef Kural Açıklaması</string>
-    <string name="template_generated">Şablon Oluşturuldu.</string>
     <string name="throttled_call">Kısıtlanmış Çağrı</string>
     <string name="throttled_sms">Kısıtlanmış SMS</string>
 </resources>

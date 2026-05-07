@@ -31,8 +31,6 @@
     <string name="missing_permissions">مجوزهای زیر قبلاً اعطا شده بودند اما در حال حاضر موجود نیستند:</string>
     <string name="grant_permissions">اعطای مجوزها</string>
     <string name="perm_call_screening">فیلتر تماس</string>
-    <string name="perm_file_read">خواندن فایل</string>
-    <string name="perm_file_write">نوشتن فایل</string>
     <string name="perm_contacts">مخاطبین</string>
     <string name="perm_receive_sms">دریافت پیامک</string>
     <string name="perm_receive_mms">دریافت MMS</string>

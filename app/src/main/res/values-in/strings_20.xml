@@ -93,7 +93,6 @@
     <string name="sms_throttling">Pembatasan SMS</string>
     <string name="sms_throttling_triggered">Pembatasan SMS terpicu</string>
     <string name="target_rule_desc">Deskripsi Aturan Target</string>
-    <string name="template_generated">Templat Dihasilkan.</string>
     <string name="throttled_call">Panggilan Dibatasi</string>
     <string name="throttled_sms">SMS Dibatasi</string>
 </resources>

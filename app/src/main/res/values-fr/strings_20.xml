@@ -93,7 +93,6 @@
     <string name="sms_throttling">Régulation des SMS</string>
     <string name="sms_throttling_triggered">La régulation des SMS est déclenchée</string>
     <string name="target_rule_desc">Description de la Règle Cible</string>
-    <string name="template_generated">Modèle généré.</string>
     <string name="throttled_call">Appel régulé</string>
     <string name="throttled_sms">SMS régulés</string>
 </resources>

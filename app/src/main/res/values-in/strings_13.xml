@@ -137,7 +137,6 @@
         ]]>
     </string>
     <string name="bug_number">Jika ini adalah nomor yang sah, silakan laporkan di GitHub.</string>
-    <string name="skip_alpha_empty_number">Lewati alfa atau nomor kosong.</string>
     <string name="escape_tags">
         <![CDATA[
         - <title><b><no_translate>{escape(…)}</no_translate></b></title><br>

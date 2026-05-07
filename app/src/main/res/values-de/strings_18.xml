@@ -31,8 +31,6 @@
     <string name="missing_permissions">Folgende Berechtigungen wurden zuvor erteilt, fehlen aber derzeit:</string>
     <string name="grant_permissions">Berechtigungen erteilen</string>
     <string name="perm_call_screening">Anruf-Filterung</string>
-    <string name="perm_file_read">Datei lesen</string>
-    <string name="perm_file_write">Datei schreiben</string>
     <string name="perm_contacts">Kontakte</string>
     <string name="perm_receive_sms">SMS empfangen</string>
     <string name="perm_receive_mms">MMS empfangen</string>

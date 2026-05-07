@@ -3,7 +3,6 @@
     <string name="info_feature">Informasi / Fitur</string>
     <string name="success_allow">Berhasil / Izinkan</string>
     <string name="error_block">Kesalahan / Blokir</string>
-    <string name="highlight">Sorot</string>
     <string name="disable">Nonaktifkan</string>
     <string name="dialog_bg">Latar Belakang Dialog</string>
     <string name="app_bg">Latar Belakang Aplikasi</string>
@@ -63,7 +62,6 @@
     </string>
     <string name="perm_show_overlay">Tampilkan Overlay</string>
     <string name="preview">Pratinjau</string>
-    <string name="hide">Sembunyikan</string>
     <string name="content_template">Templat Konten</string>
     <string name="help_caller_id_template">
         <![CDATA[
@@ -96,7 +94,6 @@
         </sample>
         ]]>
     </string>
-    <string name="comment_optional">Komentar (opsional)</string>
     <string name="comment_identifier">Pengenal Komentar</string>
     <string name="hint_comment_identifier">
         Contoh: \"comment\":\"(.+?)\"

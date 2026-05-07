@@ -17,8 +17,6 @@
     <string name="clear">پاک کردن</string>
     <string name="test">آزمایش</string>
     <string name="save">ذخیره</string>
-    <string name="whitelist">لیست سفید</string>
-    <string name="blacklist">لیست سیاه</string>
     <string name="content">محتوا</string>
     <string name="priority">اولویت</string>
     <string name="deleted_filter">(قانون حذف شده)</string>

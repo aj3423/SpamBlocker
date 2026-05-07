@@ -31,8 +31,6 @@
     <string name="missing_permissions">Aşağıdaki izinler daha önce verilmişti ancak şu anda eksik:</string>
     <string name="grant_permissions">İzinleri Ver</string>
     <string name="perm_call_screening">Çağrı Tarama</string>
-    <string name="perm_file_read">Dosya Okuma</string>
-    <string name="perm_file_write">Dosya Yazma</string>
     <string name="perm_contacts">Kişiler</string>
     <string name="perm_receive_sms">SMS Al</string>
     <string name="perm_receive_mms">MMS Al</string>

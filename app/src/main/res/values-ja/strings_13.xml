@@ -125,7 +125,6 @@
           <title><b><no_translate>{hour+2}</no_translate></b></title>。
         ]]>
     </string>
-    <string name="skip_alpha_empty_number">英数字または空の番号をスキップします。</string>
     <string name="sms_tags">
         <![CDATA[
         - <title><b>{sms}</b></title><br>

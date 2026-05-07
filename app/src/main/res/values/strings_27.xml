@@ -3,7 +3,6 @@
     <string name="info_feature">Information / Feature</string>
     <string name="success_allow">Success / Allow</string>
     <string name="error_block">Error / Block</string>
-    <string name="highlight">Highlight</string>
     <string name="disable">Disable</string>
     <string name="dialog_bg">Dialog Background</string>
     <string name="app_bg">App Background</string>
@@ -63,7 +62,6 @@
     </string>
     <string name="perm_show_overlay">Show Overlay</string>
     <string name="preview">Preview</string>
-    <string name="hide">Hide</string>
     <string name="content_template">Content Template</string>
     <string name="help_caller_id_template">
         <![CDATA[
@@ -96,7 +94,6 @@
         </sample>
         ]]>
     </string>
-    <string name="comment_optional">Comment (optional)</string>
     <string name="comment_identifier">Comment Identifier</string>
     <string name="hint_comment_identifier">
         E.g.: \"comment\":\"(.+?)\"

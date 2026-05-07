@@ -33,7 +33,6 @@
     <string name="daily">每日</string>
     <string name="weekly">每週</string>
     <string name="periodically">定期</string>
-    <string name="time">時間</string>
     <string name="workdays">工作日</string>
 
     <string name="help_backup">

@@ -17,8 +17,6 @@
     <string name="clear">Löschen</string>
     <string name="test">Testen</string>
     <string name="save">Speichern</string>
-    <string name="whitelist">Whitelist</string>
-    <string name="blacklist">Blacklist</string>
     <string name="content">Inhalt</string>
     <string name="priority">Priorität</string>
     <string name="deleted_filter">(gelöschte Regel)</string>

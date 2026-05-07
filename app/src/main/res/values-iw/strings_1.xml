@@ -17,8 +17,6 @@
     <string name="clear">נקה</string>
     <string name="test">בדיקה</string>
     <string name="save">שמור</string>
-    <string name="whitelist">רשימה לבנה</string>
-    <string name="blacklist">רשימה שחורה</string>
     <string name="content">תוכן</string>
     <string name="priority">עדיפות</string>
     <string name="deleted_filter">(כלל שנמחק)</string>

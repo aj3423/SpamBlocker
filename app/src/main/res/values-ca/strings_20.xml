@@ -94,7 +94,6 @@
     <string name="sms_throttling">Limitació de SMS</string>
     <string name="sms_throttling_triggered">La limitació de SMS s\'ha activat</string>
     <string name="target_rule_desc">Descripció de la regla objectiu</string>
-    <string name="template_generated">Plantilla generada.</string>
     <string name="throttled_call">Trucada limitada</string>
     <string name="throttled_sms">SMS limitat</string>
 </resources>

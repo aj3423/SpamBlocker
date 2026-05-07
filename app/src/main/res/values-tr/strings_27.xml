@@ -3,7 +3,6 @@
     <string name="info_feature">Bilgi / Özellik</string>
     <string name="success_allow">Başarı / İzin Ver</string>
     <string name="error_block">Hata / Engelle</string>
-    <string name="highlight">Vurgula</string>
     <string name="disable">Devre Dışı Bırak</string>
     <string name="dialog_bg">Diyalog Arka Planı</string>
     <string name="app_bg">Uygulama Arka Planı</string>
@@ -62,7 +61,6 @@
     </string>
     <string name="perm_show_overlay">Kaplamayı Göster</string>
     <string name="preview">Önizleme</string>
-    <string name="hide">Gizle</string>
     <string name="content_template">İçerik Şablonu</string>
     <string name="help_caller_id_template">
         <![CDATA[
@@ -95,7 +93,6 @@
         </sample>
         ]]>
     </string>
-    <string name="comment_optional">Yorum (isteğe bağlı)</string>
     <string name="comment_identifier">Yorum Tanımlayıcı</string>
     <string name="hint_comment_identifier">
         Örn.: \"comment\":\"(.+?)\"

@@ -3,7 +3,6 @@
     <string name="info_feature">Informació / Funcionalitat</string>
     <string name="success_allow">Èxit / Permetre</string>
     <string name="error_block">Error / Bloqueig</string>
-    <string name="highlight">Ressaltar</string>
     <string name="disable">Desactivar</string>
     <string name="dialog_bg">Fons del diàleg</string>
     <string name="app_bg">Fons de l\'aplicació</string>
@@ -63,7 +62,6 @@
     </string>
     <string name="perm_show_overlay">Mostrar superposició</string>
     <string name="preview">Vista prèvia</string>
-    <string name="hide">Amaga</string>
     <string name="content_template">Plantilla del contingut</string>
     <string name="help_caller_id_template">
         <![CDATA[
@@ -96,7 +94,6 @@
         </sample>
         ]]>
     </string>
-    <string name="comment_optional">Comentari (opcional)</string>
     <string name="comment_identifier">Identificador de comentari</string>
     <string name="hint_comment_identifier">
         Ex.: \"comment\":\"(.+?)\"

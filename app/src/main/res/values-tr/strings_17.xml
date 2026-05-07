@@ -35,21 +35,6 @@
     <string name="confirm_to_reset">Sıfırlamayı onayla?</string>
     <string name="check_stir_attestation">STIR Onayını Kontrol Et (?)</string>
     <string name="additional_numbers">Ek Numaralar</string>
-    <string name="path_tags">
-        <![CDATA[
-        <title><b>{sdcard}</b></title><br>
-        Harici depolama dizini, aynı zamanda: <br>
-        <sample>/storage/emulated/0</sample><br>
-        <br>
-        <title><b>{Download}</b></title><br>
-        Aynı zamanda: <br>
-        <sample>{sdcard}/Download</sample><br>
-        <br>
-        <title><b>{Documents}</b></title><br>
-        Aynı zamanda: <br>
-        <sample>{sdcard}/Documents</sample>
-        ]]>
-    </string>
     <string name="call_to_number">Numaraya Çağrı</string>
     <string name="call_to">Ara</string>
     <string name="push_alert">Bildirim Uyarısı</string>

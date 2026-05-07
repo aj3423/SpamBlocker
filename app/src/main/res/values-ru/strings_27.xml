@@ -3,7 +3,6 @@
     <string name="info_feature">Информация / Функция</string>
     <string name="success_allow">Успешно / Разрешить</string>
     <string name="error_block">Ошибка / Блокировать</string>
-    <string name="highlight">Выделить</string>
     <string name="disable">Отключить</string>
     <string name="dialog_bg">Фон диалога</string>
     <string name="app_bg">Фон приложения</string>
@@ -63,7 +62,6 @@
     </string>
     <string name="perm_show_overlay">Показывать поверх</string>
     <string name="preview">Предпросмотр</string>
-    <string name="hide">Скрыть</string>
     <string name="content_template">Шаблон содержимого</string>
     <string name="help_caller_id_template">
         <![CDATA[
@@ -96,7 +94,6 @@
         </sample>
         ]]>
     </string>
-    <string name="comment_optional">Комментарий (необязательно)</string>
     <string name="comment_identifier">Идентификатор комментария</string>
     <string name="hint_comment_identifier">
         Например: \"comment\":\"(.+?)\"

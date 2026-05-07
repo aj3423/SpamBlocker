@@ -17,8 +17,6 @@
     <string name="clear">Temizle</string>
     <string name="test">Test</string>
     <string name="save">Kaydet</string>
-    <string name="whitelist">Beyaz Liste</string>
-    <string name="blacklist">Kara Liste</string>
     <string name="content">İçerik</string>
     <string name="priority">Öncelik</string>
     <string name="deleted_filter">(silinmiş kural)</string>

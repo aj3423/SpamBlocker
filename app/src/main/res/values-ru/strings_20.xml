@@ -90,7 +90,6 @@
     <string name="sms_throttling">Ограничение SMS</string>
     <string name="sms_throttling_triggered">Ограничение SMS активировано</string>
     <string name="target_rule_desc">Описание целевого правила</string>
-    <string name="template_generated">Шаблон сгенерирован.</string>
     <string name="throttled_call">Ограниченный вызов</string>
     <string name="throttled_sms">Ограниченное SMS</string>
 </resources>

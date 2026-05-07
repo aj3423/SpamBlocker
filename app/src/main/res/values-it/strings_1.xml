@@ -17,8 +17,6 @@
     <string name="clear">Pulisci</string>
     <string name="test">Prova</string>
     <string name="save">Salva</string>
-    <string name="whitelist">Lista bianca</string>
-    <string name="blacklist">Lista nera</string>
     <string name="content">Contenuto</string>
     <string name="priority">Priorità</string>
     <string name="deleted_filter">(cancella regola)</string>

@@ -35,21 +35,6 @@
     <string name="confirm_to_reset">بازنشانی تایید شود؟</string>
     <string name="check_stir_attestation">بررسی گواهی STIR (?)</string>
     <string name="additional_numbers">شماره های اضافی</string>
-    <string name="path_tags">
-        <![CDATA[
-        <title><b>{sdcard}</b></title><br>
-        مسیر حافظه خارجی، مشابه:<br>
-        <sample>/storage/emulated/0</sample><br>
-        <br>
-        <title><b>{Download}</b></title><br>
-        مشابه:<br>
-        <sample>{sdcard}/Download</sample><br>
-        <br>
-        <title><b>{Documents}</b></title><br>
-        مشابه:<br>
-        <sample>{sdcard}/Documents</sample>
-        ]]>
-    </string>
     <string name="call_to_number">شماره تماس</string>
     <string name="call_to">تماس با</string>
     <string name="push_alert">هشدار پوش</string>

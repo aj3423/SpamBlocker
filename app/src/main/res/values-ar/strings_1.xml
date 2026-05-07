@@ -17,8 +17,6 @@
     <string name="clear">مسح</string>
     <string name="test">اختبار</string>
     <string name="save">حفظ</string>
-    <string name="whitelist">القائمة البيضاء</string>
-    <string name="blacklist">القائمة السوداء</string>
     <string name="content">المحتوى</string>
     <string name="priority">الأولوية</string>
     <string name="deleted_filter">(قاعدة محذوفة)</string>

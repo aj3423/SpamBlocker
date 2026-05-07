@@ -94,7 +94,6 @@
     <string name="sms_throttling">Limitación de SMS</string>
     <string name="sms_throttling_triggered">Limitación de SMS activada</string>
     <string name="target_rule_desc">Descripción de la Regla Objetivo</string>
-    <string name="template_generated">Plantilla Generada.</string>
     <string name="throttled_call">Llamada Limitada</string>
     <string name="throttled_sms">SMS Limitado</string>
 </resources>

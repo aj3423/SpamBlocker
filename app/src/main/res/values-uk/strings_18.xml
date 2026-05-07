@@ -31,8 +31,6 @@
     <string name="missing_permissions">Наступні дозволи були раніше надані, але наразі відсутні:</string>
     <string name="grant_permissions">Надати дозволи</string>
     <string name="perm_call_screening">Фільтрація дзвінків</string>
-    <string name="perm_file_read">Читання файлів</string>
-    <string name="perm_file_write">Запис файлів</string>
     <string name="perm_contacts">Контакти</string>
     <string name="perm_receive_sms">Отримання SMS</string>
     <string name="perm_receive_mms">Отримання MMS</string>

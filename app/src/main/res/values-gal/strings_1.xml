@@ -17,8 +17,6 @@
     <string name="clear">Limpar</string>
     <string name="test">Probar</string>
     <string name="save">Gardar</string>
-    <string name="whitelist">Lista branca</string>
-    <string name="blacklist">Lista negra</string>
     <string name="content">Contido</string>
     <string name="priority">Prioridade</string>
     <string name="deleted_filter">(regra eliminada)</string>

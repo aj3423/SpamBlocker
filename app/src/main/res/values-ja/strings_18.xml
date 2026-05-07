@@ -31,8 +31,6 @@
     <string name="missing_permissions">以下の権限は以前付与されていましたが、現在不足しています:</string>
     <string name="grant_permissions">権限を付与する</string>
     <string name="perm_call_screening">通話スクリーニング</string>
-    <string name="perm_file_read">ファイルの読み取り</string>
-    <string name="perm_file_write">ファイルの書き込み</string>
     <string name="perm_contacts">連絡先</string>
     <string name="perm_receive_sms">SMSの受信</string>
     <string name="perm_receive_mms">MMSの受信</string>

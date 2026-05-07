@@ -90,7 +90,6 @@
     <string name="sms_throttling">短信节流</string>
     <string name="sms_throttling_triggered">短信节流已触发</string>
     <string name="target_rule_desc">目标规则描述</string>
-    <string name="template_generated">模板已生成。</string>
     <string name="throttled_call">已节流通话</string>
     <string name="throttled_sms">已节流短信</string>
 </resources>
