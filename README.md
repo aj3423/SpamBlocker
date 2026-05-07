@@ -47,22 +47,29 @@ You can kill the app after setup, it doesn’t need to stay running in the backg
 
 # Features:
 
-| Filter                        | It checks |
-|-------------------------------|----------|
-| Contacts                      | From a contact? |
-| STIR/SHAKEN                   | Fails STIR/SHAKEN attestation? |
-| Repeated                      | Multiple calls from the same number in a short while? |
-| Dialed                        | Have you dialed the number? |
-| Push Alert                    | Allow calls after receiving notifications from other apps, e.g.: "Your order has been taken by driver ...", the driver may then contact you. | 
-| SMS Alert                     | Allow calls after receiving SMS messages like: "[From ...] We are calling to inform ..., please feel free to answer." | 
-| Recent Apps                   | Allow calls if some apps have been used recently.<br>Use case:<br>&emsp; You ordered Pizza online and soon they call you to refund. |
-| Meeting Mode                  | Decline calls during online video meetings. |
-| Off Time                      | A time period that always allows calls, usually no spams at night. |
+| Filter                        | It checks                                                                                                                                                                                      |
+|-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Contacts                      | From a contact?                                                                                                                                                                                |
+| Contact Group                 | From a contact group?                                                                                                                                                                          |
+| Contact Prefix                | Matches prefix of an existing contact? Use case: save one clinic number `xxxx22` to allow its full range `xxxx11`-`xxxx99`                                                                     |
+| STIR/SHAKEN                   | Fails STIR/SHAKEN attestation?                                                                                                                                                                 |
+| Repeated Calls                | Multiple calls from the same number in a short while?                                                                                                                                          |
+| Dialed Number                 | Have you dialed the number?                                                                                                                                                                    |
+| Answered Number               | Allow previously answered numbers                                                                                                                                                              |
+| Emergency                     | Allow calls for a while after dialing an emergency number                                                                                                                                      |
+| Push Alert                    | Allow calls after receiving notifications from other apps, e.g.: "Your order has been taken by driver ...", the driver may then contact you.                                                   | 
+| SMS Alert                     | Allow calls after receiving SMS messages like: "[From ...] We are calling to inform ..., please feel free to answer."                                                                          | 
+| SMS Bomb                      | Block continuous OTP message floods                                                                                                                                                            |
+| Recent Apps                   | Allow calls if some apps have been used recently.<br>Use case:<br>&emsp; You ordered Pizza online and soon they call you to refund.                                                            |
+| Meeting Mode                  | Decline calls during online video meetings.                                                                                                                                                    |
+| Off Time                      | A time period that always allows calls, usually no spams at night.                                                                                                                             |
 | Spam Database                 | If it exists in the spam database. Any public downloadable spam databases can be integrated, such as the [DNC](https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data). |
-| Instant Query                 | Check the incoming number online in real time, querying multiple API endpoints simultaneously, such as the [PhoneBlock](https://phoneblock.net/). |
-| Report Spam                   | Automatically or manually report the number to build our crowd-sourced databases, protecting others and yourself.  |
-| Regex<br>(regular expression) | Check the [Wiki](https://github.com/aj3423/SpamBlocker/wiki/Regex-Workflow-Templates) for examples.<br><br>Some typical patterns:<br> - Any number: `.*` (the regex `.*` is equivalent to the wildcard `*` in other apps) <br> - Unknown/Private/Empty number (it's actually empty text): `.{0}` or `^$`<br> - Exact number: `12345` <br> - Start with 789: `789.*` <br> - End with 123: `.*123` <br> - 7 digits: `.{7}` <br> - Shorter than 5: `.{0,4}` <br> - Longer than 10: `.{11,}` <br> - Contain word "verification": `.*verification.*` <br> - Contain any of the words: `.*(police\|hospital\|verification).*` <br> - Start with 789, with leading country code 11 or not: `(?:11)?789.*` <br>- Extract verification code from SMS message: `code.*?(\d+)` |
-
+| Schedule & Calendar           | Auto adjust rules based on time schedule and calendar events                                                                                                                                   |
+| Geolocation & Carrier         | Block numbers based on geolocation or carrier name                                                                                                                                             | 
+| CNAP                          | The caller's display name                                                                                                                                                                      |
+| Instant Query                 | Check the incoming number online in real time, querying multiple API endpoints simultaneously, such as the [PhoneBlock](https://phoneblock.net/).                                              |
+| Report Spam                   | Automatically or manually report the number to build our crowd-sourced databases, protecting others and yourself.                                                                              |
+| Regex<br>(regular expression) | Check the [Wiki](https://github.com/aj3423/SpamBlocker/wiki/Regex-Workflow-Templates) for examples.                                                                                            |
 
 # Limitations 
 - Auto clear SMS: [No plan](https://github.com/aj3423/SpamBlocker/issues/274)
