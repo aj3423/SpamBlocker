@@ -726,7 +726,7 @@ class ReadFile(
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val treeUri = validateAndLog(ctx, aCtx) ?: return false
         return try {
-            val bytes = readFileFromTree(ctx, treeUri, filename)
+            val bytes = readFileFromTree(ctx, treeUri, filename.resolveTimeTags())
             aCtx.lastOutput = bytes
             true
         } catch (e: Exception) {
@@ -754,7 +754,7 @@ class WriteFile(
         val input = aCtx.lastOutput as? ByteArray ?: return false
         val treeUri = validateAndLog(ctx, aCtx) ?: return false
         return try {
-            writeFileInTree(ctx, treeUri, filename, input)
+            writeFileInTree(ctx, treeUri, filename.resolveTimeTags(), input)
             true
         } catch (e: Exception) {
             aCtx.logger?.error("$e")
