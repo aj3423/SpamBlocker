@@ -45,7 +45,6 @@ import spam.blocker.util.PermissionType
 import spam.blocker.util.PermissionWrapper
 import spam.blocker.util.formatAnnotated
 import spam.blocker.util.hasFolderAccess
-import spam.blocker.util.logi
 import spam.blocker.util.toFolderDisplayName
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter

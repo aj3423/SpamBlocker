@@ -2,7 +2,6 @@ package spam.blocker.service.bot
 
 import android.content.Context
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -30,7 +29,6 @@ import spam.blocker.ui.darken
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.ui.widgets.GreyIcon
-import spam.blocker.ui.widgets.GreyIcon18
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.Placeholder
 import spam.blocker.ui.widgets.PriorityBox

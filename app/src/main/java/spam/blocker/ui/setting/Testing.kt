@@ -1,7 +1,6 @@
 package spam.blocker.ui.setting
 
 import android.os.Build
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -16,7 +15,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import spam.blocker.G
@@ -24,7 +22,6 @@ import spam.blocker.R
 import spam.blocker.db.ContentRegexTable
 import spam.blocker.db.Db
 import spam.blocker.db.NumberRegexTable
-import spam.blocker.def.Def
 import spam.blocker.def.Def.ANDROID_12
 import spam.blocker.def.Def.FLAG_REGEX_FOR_CNAP
 import spam.blocker.service.CallScreeningService
