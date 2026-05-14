@@ -117,6 +117,14 @@
             </intent-filter>
         </service>
 
+        <service
+            android:name=".service.PublicSMSScreeningService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="sms.screening.provider.PublicSMSScreeningService" />
+            </intent-filter>
+        </service>
+
         <receiver
             android:name=".service.CallStateReceiver"
             android:exported="true" >
