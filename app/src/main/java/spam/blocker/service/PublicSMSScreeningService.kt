@@ -16,8 +16,8 @@ import spam.blocker.util.logi
 object Protocol {
     const val action = "sms.screening.provider.PublicSMSScreeningService"
 
-    const val screeningSms = 1
-    const val screeningSmsResult = 2
+    const val smsScreening = 1
+    const val smsScreeningResult = 2
 
     // request
     const val keyNumber = "number"
@@ -35,7 +35,7 @@ class PublicSMSScreeningService : Service() {
     private val messenger = Messenger(
         Handler(mainHandler.looper) { message ->
             when (message.what) {
-                Protocol.screeningSms -> {
+                Protocol.smsScreening -> {
                     handleQuery(message)
                     true
                 }
@@ -73,7 +73,7 @@ class PublicSMSScreeningService : Service() {
 
             val response = Message.obtain(
                 null,
-                Protocol.screeningSmsResult,
+                Protocol.smsScreeningResult,
             ).apply {
                 data = Bundle().apply {
                     putBoolean(Protocol.keyShouldBlock, r.shouldBlock())

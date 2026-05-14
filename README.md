@@ -38,10 +38,14 @@ Table of Contents
 
 # How it works
 It works without replacing your call/SMS app.
- - For call: <br>
- &ensp; It's the Caller ID app.
- - For SMS: <br>
- &ensp; It takes over SMS notifications but only filters them, spam messages will still appear in the SMS app.
+- For call: <br>
+  It's a Caller ID app.
+
+- For SMS:
+  - Standalone Mode:
+    - It takes over SMS notifications, but it only filters them, spam messages will still appear in the SMS app.
+  - Screening provider mode:
+    - Serves as a service, the SMS app invokes this app to check the messages, notifications are handled by the SMS app. See [SMS screening protocol](https://github.com/aj3423/SpamBlocker/wiki/SMS-Screening-protocol) for details.
 
 You can kill the app after setup, it doesn’t need to stay running in the background.
 
@@ -118,7 +122,6 @@ You can kill the app after setup, it doesn’t need to stay running in the backg
    Nothing else.
 
    You can also [disable the internet access](https://github.com/aj3423/SpamBlocker/issues/147) , or download the offline apk from the release page.
- - No communication with other apps
  - [Reproducible](https://f-droid.org/docs/Reproducible_Builds/) apk
  - Apk signing signature:
 
