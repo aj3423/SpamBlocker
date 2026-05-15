@@ -34,6 +34,9 @@
         Les flux de travail peuvent être utilisés pour exécuter des tâches automatiquement, ils peuvent être déclenchés par une planification ou des événements. <br>
         <br>
         Il existe des préréglages pour une configuration rapide, vous pouvez également le construire à partir de zéro, ou importer à partir d\'un fichier JSON partagé par d\'autres utilisateurs.<br>
+        <br>
+        Astuce :<br>
+        <b>Appuyez longuement</b> sur un flux de travail pour afficher le menu contextuel. Les flux de travail basés sur le temps afficheront également le journal de la dernière exécution et la prochaine heure d\'exécution.
         ]]>
     </string>
     <string name="manual">Manuel</string>

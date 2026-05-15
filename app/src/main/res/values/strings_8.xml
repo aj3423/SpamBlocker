@@ -34,6 +34,9 @@
         Workflows can be used to run tasks automatically, they can be triggered by schedule or events. <br>
         <br>
         There are presets for a quick setup, you can also build it from scratch, or import from a json that shared from other users.<br>
+        <br>
+        Tip:<br>
+        <b>Long-press</b> a workflow to view the context menu. Time-based workflows will also display the last execution log and the next run time.
         ]]>
     </string>
     <string name="manual">Manual</string>

@@ -34,6 +34,9 @@
         Los flujos de trabajo se pueden utilizar para ejecutar tareas automáticamente, pueden activarse por programación o por eventos. <br>
         <br>
         Hay preajustes para una configuración rápida, también puede construirlo desde cero o importarlo desde un json compartido por otros usuarios.<br>
+        <br>
+        Consejo:<br>
+        <b>Mantenga pulsado</b> un flujo de trabajo para ver el menú contextual. Los flujos de trabajo basados en el tiempo también mostrarán el registro de la última ejecución y la próxima hora de ejecución.
         ]]>
     </string>
     <string name="manual">Manual</string>

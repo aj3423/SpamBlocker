@@ -34,6 +34,9 @@
         I flussi di lavoro possono essere utilizzati per eseguire attività automaticamente, possono essere attivati da una pianificazione o da eventi. <br>
         <br>
         Ci sono preimpostazioni per una configurazione rapida, puoi anche crearli da zero, o importarli da un JSON condiviso da altri utenti.<br>
+        <br>
+        Suggerimento:<br>
+        <b>Premi a lungo</b> un workflow per visualizzare il menu contestuale. I workflow basati sul tempo mostreranno anche il registro dell\'ultima esecuzione e il prossimo orario di esecuzione.
         ]]>
     </string>
     <string name="manual">Manuale</string>

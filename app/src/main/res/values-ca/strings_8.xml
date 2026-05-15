@@ -34,6 +34,9 @@
         Els fluxos de treball es poden utilitzar per executar tasques automàticament, es poden activar per programació o esdeveniments. <br>
         <br>
         Hi ha preajustos per a una configuració ràpida, també pots crear-ho des de zero o importar-ho d\'un JSON compartit per altres usuaris.<br>
+        <br>
+        Consell:<br>
+        <b>Mantén premut</b> un flux de treball per veure el menú contextual. Els fluxos de treball basats en el temps també mostraran el registre de l\'última execució i la propera hora d\'execució.
         ]]>
     </string>
     <string name="manual">Manual</string>

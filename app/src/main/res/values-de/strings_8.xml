@@ -34,6 +34,9 @@
         Workflows können verwendet werden, um Aufgaben automatisch auszuführen, sie können durch Zeitpläne oder Ereignisse ausgelöst werden. <br>
         <br>
         Es gibt Voreinstellungen für eine schnelle Einrichtung, Sie können sie auch von Grund auf neu erstellen oder aus einem JSON importieren, das von anderen Benutzern geteilt wurde.<br>
+        <br>
+        Tipp:<br>
+        <b>Drücken Sie lange</b> auf einen Workflow, um das Kontextmenü anzuzeigen. Zeitbasierte Workflows zeigen außerdem das Protokoll der letzten Ausführung und die nächste Ausführungszeit an.
         ]]>
     </string>
     <string name="manual">Manuell</string>

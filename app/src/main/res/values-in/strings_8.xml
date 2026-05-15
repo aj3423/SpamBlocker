@@ -34,6 +34,9 @@
         Alur kerja dapat digunakan untuk menjalankan tugas secara otomatis, dapat dipicu oleh jadwal atau peristiwa. <br>
         <br>
         Terdapat preset untuk pengaturan cepat, Anda juga dapat membuatnya dari awal, atau mengimpor dari json yang dibagikan dari pengguna lain.<br>
+        <br>
+        Tips:<br>
+        <b>Tekan lama</b> alur kerja untuk melihat menu konteks. Alur kerja berbasis waktu juga akan menampilkan log eksekusi terakhir dan waktu berjalan berikutnya.
         ]]>
     </string>
     <string name="manual">Manual</string>
