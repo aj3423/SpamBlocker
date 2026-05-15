@@ -128,13 +128,13 @@ fun TestDialog(
 
                 coroutine.launch(IO) {
                     if (isForCall)
-                        CallScreeningService().processCall(
+                        CallScreeningService.processCall(
                             ctx, rawNumber = vm.phone.value, simSlot = vm.simSlot.value,
                             callDetails = null, cnap = vm.callerName.value.ifEmpty { null },
                             isTest = true, logger = multiLogger, showCallerId = vm.showCallerID.value
                         )
                     else
-                        SmsReceiver().processSms(
+                        SmsReceiver.processSms(
                             ctx, rawNumber = vm.phone.value, messageBody = vm.sms.value,
                             simSlot = vm.simSlot.value, isTest = true, logger = multiLogger
                         )

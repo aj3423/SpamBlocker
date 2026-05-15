@@ -42,12 +42,30 @@ It works without replacing your call/SMS app.
   It's a Caller ID app.
 
 - For SMS:
-  - Standalone Mode:
-    - It takes over SMS notifications, but it only filters them, spam messages will still appear in the SMS app.
-  - Screening provider mode:
-    - Serves as a service, the SMS app invokes this app to check the messages, notifications are handled by the SMS app. See [SMS screening protocol](https://github.com/aj3423/SpamBlocker/wiki/SMS-Screening-protocol) for details.
+  - <b>Standalone Mode</b>:
+    
+    The app takes over SMS notifications, you need to disable notifications from the SMS app to avoid duplicates. 
+    - Pros
+      - Works with any SMS app.
+      - Advanced notification management (customizable sound/icon/color/LED)
+      - Built-in "Quick Copy" support (for copying OTP codes)
+    - Cons
+      - Feels disconnected, as messages and notifications are handled by two different apps. 
+      - The app doesn't handle RCS and MMS multi media content.
+      - SMS permission is required.
+  - <b>Screening provider mode</b>:
+    
+    Similar to call screening, the app works as a service. The SMS app asks it to check messages in real time, this app simply replies "block" or "allow". 
+    - Pros
+      - Notifications are handled by the SMS app, feels more natural and intuitive.
+      - Works without SMS permission.
+      - Better RCS/MMS support.
+    - Cons
+      - It **Only** works with SMS apps that support this [SMS screening protocol](https://github.com/aj3423/SpamBlocker/wiki/SMS-Screening-protocol)
+      - The SMS app might not support features like "Quick Copy" or notification customizing.
 
-You can kill the app after setup, it doesn’t need to stay running in the background.
+> [!TIP]
+> You can kill the app after setup, it doesn't need to stay running in the background.
 
 # Features:
 

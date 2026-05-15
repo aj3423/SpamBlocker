@@ -10,6 +10,7 @@ import android.os.Message
 import android.os.Messenger
 import android.os.RemoteException
 import spam.blocker.service.checker.Checker
+import spam.blocker.util.SaveableLogger
 import spam.blocker.util.loge
 import spam.blocker.util.logi
 
@@ -62,12 +63,14 @@ class PublicSMSScreeningService : Service() {
         }
 
         Runnable {
-            val (r, _, _) = Checker.checkSms(
+            val r = SmsReceiver.processSms(
                 ctx = ctx,
-                logger = null,
+                logger = SaveableLogger(),
                 rawNumber = number ?: "",
                 messageBody = smsContent ?: "",
                 simSlot = simSlot,
+                isTest = false,
+                showNotification = false, // disable for sms-screening-mode
             )
             logi("sms screening result: ${r.shouldBlock()}, ${r.resultReasonStr(ctx)}")
 

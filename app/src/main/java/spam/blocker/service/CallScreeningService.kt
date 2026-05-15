@@ -60,17 +60,6 @@ fun Details.getRawNumber(): String {
 
 class CallScreeningService : CallScreeningService() {
 
-    companion object {
-        // Save the timestamp for the feature "Emergency"
-        fun updateOutgoingEmergencyTimestamp(ctx: Context, rawNumber: String) {
-            val spf = spf.EmergencySituation(ctx)
-            val extraNumbers = spf.getExtraNumbers()
-            if (Util.isEmergencyNumber(ctx, rawNumber) || extraNumbers.contains(rawNumber)) {
-                spf.timestamp = System.currentTimeMillis()
-            }
-        }
-    }
-
     private fun pass(details: Details, shouldMute: Boolean = false) {
         logi("allow call")
 
@@ -147,7 +136,7 @@ class CallScreeningService : CallScreeningService() {
         }
     }
 
-    private suspend fun doScreenCall(details: Details) {
+    private fun doScreenCall(details: Details) {
         logi("doScreenCall()")
 
         // Outgoing
@@ -192,127 +181,138 @@ class CallScreeningService : CallScreeningService() {
         logi("doScreenCall() finished")
     }
 
-    // Return value: should mute or not
-    //  true -> mute the ringtone
-    //  false -> play the ringtone
-    private fun setRingtone(ctx: Context, r: ICheckResult) : Boolean {
-        // 1. Get all workflows that are linked to this regex rule
-        val bots = BotTable.listAll(ctx).filter {
-            it.trigger is Ringtone
-        }
-        if (bots.isEmpty())
-            return false
-
-        // 2. Save the current ringtone to shared prefs
-        val current = RingtoneUtil.getCurrent(ctx)
-        spf.Temporary(ctx).ringtone = current.toString()
-
-        // 3. Change the system default ringtone, it will be reset after 2 seconds
-        var shouldMute = false
-        bots.forEach { bot ->
-            val aCtx = ActionContext(lastOutput = r, botId = bot.id)
-            listOf(bot.trigger).executeAll(ctx, aCtx)
-            shouldMute = aCtx.shouldMute
-        }
-
-        return shouldMute
-    }
-
-    private fun logToHistoryDb(
-        ctx: Context, r: ICheckResult, rawNumber: String, cnap: String?, simSlot: Int?, isTest: Boolean,
-        fullScreeningLog: String?, anythingWrong: Boolean
-    ) {
-        val isDbLogEnabled = spf.HistoryOptions(ctx).isLoggingEnabled
-        if (!isDbLogEnabled)
-            return
-
-        val recordId = CallTable().addNewRecord(
-            ctx, HistoryRecord(
-                peer = rawNumber,
-                cnap = cnap,
-                time = System.currentTimeMillis(),
-                result = r.type,
-                reason = r.reasonToDb(),
-                simSlot = simSlot,
-                isTest = isTest,
-                fullScreeningLog = fullScreeningLog,
-                anythingWrong = anythingWrong
-            )
-        )
-        // broadcast the call to add a new item in history page
-        Events.onNewCall.fire(recordId)
-    }
-
-    private fun showSpamNotification(ctx: Context, r: ICheckResult, rawNumber: String) {
-        // click the notification to launch this app
-        val intent = Intent(ctx, NotificationTrampolineActivity::class.java).apply {
-            putExtra("type", "call")
-            putExtra("blocked", true)
-        }.setAction("action_call")
-
-        val toCopy = Checker.checkQuickCopy(
-            ctx, rawNumber, null, true, true
-        )
-
-
-        Notification.show(
-            ctx,
-            showType =  ShowType.SPAM_CALL,
-            channel = r.getNotificationChannel(ctx, showType = ShowType.SPAM_CALL),
-            title = Contacts.findContactByRawNumber(ctx, rawNumber)?.name ?: rawNumber,
-            body = r.resultReasonStr(ctx),
-            intent = intent,
-            toCopy = toCopy
-        )
-    }
-
-    private fun showCallerId(ctx: Context, r: ICheckResult, rawNumber: String) {
-        if (spf.CallerID(ctx).isEnabled) {
-            showCallerIdWindow(
-                ctx = ctx,
-                reason = r.resultReasonStr(ctx),
-                geolocation = numberGeoLocation(ctx, rawNumber),
-                carrier = numberCarrier(ctx, rawNumber)
-            )
-        }
-    }
-
-    fun processCall(
-        ctx: Context,
-        rawNumber: String,
-        cnap: String?,
-        callDetails: Details?, // it's null when testing
-        simSlot: Int?,
-        isTest: Boolean,
-        showCallerId: Boolean = false,
-        logger: ILogger? = null,
-    ): ICheckResult {
-        logi("processCall()")
-
-        // 0. check the number with all rules, get the result
-        val (r, fullScreeningLog, anythingWrong) = Checker.checkCall(
-            ctx, rawNumber = rawNumber, cnap = cnap, callDetails = callDetails, simSlot = simSlot, logger = logger)
-
-        // 1. log result to history db
-        logToHistoryDb(ctx, r, rawNumber, cnap, simSlot, isTest, fullScreeningLog, anythingWrong)
-
-        CoroutineScope(IO).launch {
-            if (r.shouldBlock()) { // blocked
-                // 2. Show notification
-                showSpamNotification(ctx, r, rawNumber)
-
-                // 3. Report spam number
-                autoReportSpam(ctx, r, rawNumber, isTest)
-            } else { // allowed
-                // 4. Show CallerID window
-                if (showCallerId && Permission.phoneState.isGranted) {
-                    withContext(Main) {
-                        showCallerId(ctx, r, rawNumber)
-                    }
-                }
+    companion object {
+        // Save the timestamp for the feature "Emergency"
+        fun updateOutgoingEmergencyTimestamp(ctx: Context, rawNumber: String) {
+            val spf = spf.EmergencySituation(ctx)
+            val extraNumbers = spf.getExtraNumbers()
+            if (Util.isEmergencyNumber(ctx, rawNumber) || extraNumbers.contains(rawNumber)) {
+                spf.timestamp = System.currentTimeMillis()
             }
         }
 
-        return r
+        // Return value: should mute or not
+        //  true -> mute the ringtone
+        //  false -> play the ringtone
+        private fun setRingtone(ctx: Context, r: ICheckResult) : Boolean {
+            // 1. Get all workflows that are linked to this regex rule
+            val bots = BotTable.listAll(ctx).filter {
+                it.trigger is Ringtone
+            }
+            if (bots.isEmpty())
+                return false
+
+            // 2. Save the current ringtone to shared prefs
+            val current = RingtoneUtil.getCurrent(ctx)
+            spf.Temporary(ctx).ringtone = current.toString()
+
+            // 3. Change the system default ringtone, it will be reset after 2 seconds
+            var shouldMute = false
+            bots.forEach { bot ->
+                val aCtx = ActionContext(lastOutput = r, botId = bot.id)
+                listOf(bot.trigger).executeAll(ctx, aCtx)
+                shouldMute = aCtx.shouldMute
+            }
+
+            return shouldMute
+        }
+
+        private fun logToHistoryDb(
+            ctx: Context, r: ICheckResult, rawNumber: String, cnap: String?, simSlot: Int?, isTest: Boolean,
+            fullScreeningLog: String?, anythingWrong: Boolean
+        ) {
+            val isDbLogEnabled = spf.HistoryOptions(ctx).isLoggingEnabled
+            if (!isDbLogEnabled)
+                return
+
+            val recordId = CallTable().addNewRecord(
+                ctx, HistoryRecord(
+                    peer = rawNumber,
+                    cnap = cnap,
+                    time = System.currentTimeMillis(),
+                    result = r.type,
+                    reason = r.reasonToDb(),
+                    simSlot = simSlot,
+                    isTest = isTest,
+                    fullScreeningLog = fullScreeningLog,
+                    anythingWrong = anythingWrong
+                )
+            )
+            // broadcast the call to add a new item in history page
+            Events.onNewCall.fire(recordId)
+        }
+
+        private fun showSpamNotification(ctx: Context, r: ICheckResult, rawNumber: String) {
+            // click the notification to launch this app
+            val intent = Intent(ctx, NotificationTrampolineActivity::class.java).apply {
+                putExtra("type", "call")
+                putExtra("blocked", true)
+            }.setAction("action_call")
+
+            val toCopy = Checker.checkQuickCopy(
+                ctx, rawNumber, null, true, true
+            )
+
+
+            Notification.show(
+                ctx,
+                showType =  ShowType.SPAM_CALL,
+                channel = r.getNotificationChannel(ctx, showType = ShowType.SPAM_CALL),
+                title = Contacts.findContactByRawNumber(ctx, rawNumber)?.name ?: rawNumber,
+                body = r.resultReasonStr(ctx),
+                intent = intent,
+                toCopy = toCopy
+            )
+        }
+
+        private fun showCallerId(ctx: Context, r: ICheckResult, rawNumber: String) {
+            if (spf.CallerID(ctx).isEnabled) {
+                showCallerIdWindow(
+                    ctx = ctx,
+                    reason = r.resultReasonStr(ctx),
+                    geolocation = numberGeoLocation(ctx, rawNumber),
+                    carrier = numberCarrier(ctx, rawNumber)
+                )
+            }
+        }
+
+        fun processCall(
+            ctx: Context,
+            rawNumber: String,
+            cnap: String?,
+            callDetails: Details?, // it's null when testing
+            simSlot: Int?,
+            isTest: Boolean,
+            showCallerId: Boolean = false,
+            logger: ILogger? = null,
+        ): ICheckResult {
+            logi("processCall()")
+
+            // 0. check the number with all rules, get the result
+            val (r, fullScreeningLog, anythingWrong) = Checker.checkCall(
+                ctx, rawNumber = rawNumber, cnap = cnap, callDetails = callDetails, simSlot = simSlot, logger = logger)
+
+            // 1. log result to history db
+            logToHistoryDb(ctx, r, rawNumber, cnap, simSlot, isTest, fullScreeningLog, anythingWrong)
+
+            CoroutineScope(IO).launch {
+                if (r.shouldBlock()) { // blocked
+                    // 2. Show notification
+                    showSpamNotification(ctx, r, rawNumber)
+
+                    // 3. Report spam number
+                    autoReportSpam(ctx, r, rawNumber, isTest)
+                } else { // allowed
+                    // 4. Show CallerID window
+                    if (showCallerId && Permission.phoneState.isGranted) {
+                        withContext(Main) {
+                            showCallerId(ctx, r, rawNumber)
+                        }
+                    }
+                }
+            }
+
+            return r
+        }
     }
 }
