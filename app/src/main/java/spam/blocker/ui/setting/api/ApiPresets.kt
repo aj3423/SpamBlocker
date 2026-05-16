@@ -267,10 +267,10 @@ val ApiReportPreset_PhoneBlock = ApiPreset(
                     body = """
                             {
                                 "phone": "00{cc}{domestic}",
-                                "rating": "{category}"
+                                "rating": "{category}",
+                                "comment": "{comment}"
                             }
                         """.trimIndent()
-                    // add to the above json:  "comment": "{comment}"
                 )
             )
         )

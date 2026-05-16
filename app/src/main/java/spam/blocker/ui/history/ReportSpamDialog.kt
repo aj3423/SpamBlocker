@@ -1,15 +1,27 @@
 package spam.blocker.ui.history
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.fitOutside
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
+import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.buildAnnotatedString
@@ -19,14 +31,21 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import spam.blocker.G
+import spam.blocker.R
 import spam.blocker.db.listReportableAPIs
 import spam.blocker.service.bot.ActionContext
 import spam.blocker.service.bot.executeAll
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.api.spamCategoryNamesMap
 import spam.blocker.ui.setting.api.tagValid
+import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.FlowRowSpaced
+import spam.blocker.ui.widgets.GreyButton
+import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.PopupDialog
+import spam.blocker.ui.widgets.RowVCenter
+import spam.blocker.ui.widgets.Str
+import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.JetpackTextLogger
 import spam.blocker.util.logi
@@ -42,6 +61,7 @@ fun ReportSpamDialog(
     val C = G.palette
     val scope = CoroutineScope(IO)
 
+
     PopupDialog(
         trigger = trigger,
     ) {
@@ -49,18 +69,10 @@ fun ReportSpamDialog(
 
         val keyTags = nameMap.keys.toList()
 
+        var comment by remember { mutableStateOf<String?>(null)}
+        val focusRequester = remember { FocusRequester() }
+
         val reportResult = remember { mutableStateOf(buildAnnotatedString {  }) }
-
-        var comment by remember { mutableStateOf("")}
-
-//        StrInputBox(
-//            text = comment,
-//            label = { Text(Str(R.string.comment_optional))},
-//            onValueChange = {
-//                comment = it
-//            }
-//        )
-//        Spacer(modifier = M.height(8.dp))
 
         // Category buttons
         FlowRowSpaced (
@@ -94,6 +106,37 @@ fun ReportSpamDialog(
                 }
             }
         }
+
+        // Comment
+        HorizontalDivider(modifier = M.padding(top = 10.dp))
+        if(comment == null) {
+            RowVCenter(
+                horizontalArrangement = Arrangement.End,
+                modifier = M
+                    .padding(top = 10.dp)
+                    .align(Alignment.End)
+            ) {
+                StrokeButton(
+                    Str(R.string.comment),
+                    color = C.textGrey,
+                    icon = { GreyIcon16(R.drawable.ic_note) }
+                ) {
+                    comment = ""
+                    focusRequester.requestFocus()
+                }
+            }
+        }
+        if(comment != null) {
+            StrInputBox(
+                text = comment!!,
+                label = { Text(Str(R.string.comment)) },
+                modifier = M.focusRequester(focusRequester).fillMaxWidth(),
+                onValueChange = {
+                    comment = it
+                }
+            )
+        }
+
         if (reportResult.value.text.isNotEmpty()) {
             Spacer(modifier = M.height(10.dp))
             Text(text = reportResult.value, color = C.textGrey)

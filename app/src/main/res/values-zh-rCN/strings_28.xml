@@ -8,4 +8,5 @@
         <highlight>%s</highlight>
         ]]>
     </string>
+    <string name="comment">备注</string>
 </resources>

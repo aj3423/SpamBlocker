@@ -8,4 +8,5 @@
         <highlight>%s</highlight>
         ]]>
     </string>
+    <string name="comment">Comentario</string>
 </resources>
