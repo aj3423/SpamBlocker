@@ -35,67 +35,38 @@ import spam.blocker.db.Notification.CHANNEL_LOW
 import spam.blocker.db.Notification.CHANNEL_NONE
 import spam.blocker.def.Def
 import spam.blocker.ui.lighten
+import spam.blocker.ui.setting.regex.RegexMode
+import spam.blocker.ui.setting.regex.RegexMode.ModeType
+import spam.blocker.ui.setting.regex.RegexMode.isForNumberRegexMode
+import spam.blocker.ui.setting.regex.RegexMode.regexModeByType
 import spam.blocker.util.PermissiveJson
 import spam.blocker.util.TimeSchedule
 import spam.blocker.util.Util
 import spam.blocker.util.Util.truncate
 import spam.blocker.util.enabledRegexFlagsStr
-import spam.blocker.util.enabledRegexMode
 import spam.blocker.util.hasFlag
 import spam.blocker.util.regexMatches
-import spam.blocker.util.regexModeInlineId
 import spam.blocker.util.setFlag
 
 
 
-// v4.15 changed `importance`(Int) to `channel`(String), use this class for history compatibility
-// (Remove this after 2027-01-01)
-object CompatibleChannelSerializer : KSerializer<String> {
-    override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("channel", PrimitiveKind.STRING)
+// v5.9 refactored regex mode and added `patternModeType`/`patternExtraModeType`, use this class for history compatibility
+// (Remove this after 2027-06-01)
 
-    override fun serialize(encoder: Encoder, value: String) {
-        encoder.encodeString(value)
-    }
-
-    override fun deserialize(decoder: Decoder): String {
-        val jsonDecoder = decoder as? JsonDecoder
-            ?: throw SerializationException("This serializer can only be used with JSON")
-
-        val element = jsonDecoder.decodeJsonElement()
-        return when {
-            // Handle new format: channel as String
-            element is JsonPrimitive && element.isString -> element.content
-            // Handle old format: importance as Int in parent object
-            element is JsonObject && element.containsKey("importance") -> {
-                val importance = element["importance"]?.jsonPrimitive?.intOrNull ?: IMPORTANCE_HIGH
-                when (importance) {
-                    0 -> CHANNEL_NONE
-                    1,2 -> CHANNEL_LOW
-                    else -> CHANNEL_HIGH
-                }
-            }
-            // Fallback to default
-            else -> Def.DEF_SPAM_CHANNEL
-        }
-    }
-}
 
 @Serializable
 data class RegexRule(
     var id: Long = 0,
 
     var pattern: String = "",
-    /*
-      This patternFlags contains both:
-        - Regex Flags, e.g. Case Sensitive
-        - Regex Modes, e.g. Contact Group mode
-      Separate it into two attributes when necessary.
-     */
-    var patternFlags: Int = Def.DefaultRegexFlags,
+
+    var patternFlags: Int = Def.DefaultRegexFlags, // regex flags, e.g. Case Sensitive
+    var patternModeType: Int = ModeType.PhoneNumber, // PhoneNumber/ContactPrefix/Geolocation/...
 
     // for now, this is only used for ParticularNumber
     var patternExtra: String = "",
-    var patternExtraFlags: Int = Def.DefaultRegexFlags,
+    var patternExtraFlags: Int = Def.DefaultRegexFlags, // regex flags, e.g. Case Sensitive
+    var patternExtraModeType: Int = ModeType.PhoneNumber, // PhoneNumber/ContactPrefix/Geolocation/...
 
     var description: String = "",
     var priority: Int = 0,
@@ -103,7 +74,6 @@ data class RegexRule(
 
     var flags: Int = Def.FLAG_FOR_SMS or Def.FLAG_FOR_CALL, // applies to SMS or Call or both
 
-    @Serializable(with = CompatibleChannelSerializer::class)
     var channel: String = if(isBlacklist) Def.DEF_SPAM_CHANNEL else CHANNEL_HIGH, // notification channel
 
     var schedule: String = "",
@@ -180,9 +150,9 @@ data class RegexRule(
             }
 
             // 2. Regex modes
-            val mode = patternFlags.enabledRegexMode()
-            mode?.let {
-                appendInlineContent(id = mode.regexModeInlineId())
+            if (patternModeType.isForNumberRegexMode() && patternModeType != ModeType.PhoneNumber) {
+                val m = regexModeByType(patternModeType) as RegexMode.NumberMode
+                appendInlineContent(id = m.textPlaceholder)
             }
 
 
@@ -217,9 +187,11 @@ data class RegexRule(
                 }
 
                 // 6. Regex mode (particular number)
-                val mode = patternExtraFlags.enabledRegexMode()
-                mode?.let {
-                    appendInlineContent(id = mode.regexModeInlineId())
+                if(patternExtraModeType != ModeType.PhoneNumber) {
+                    if (patternExtraModeType.isForNumberRegexMode() && patternExtraModeType != ModeType.PhoneNumber) {
+                        val m = regexModeByType(patternExtraModeType) as RegexMode.NumberMode
+                        appendInlineContent(id = m.textPlaceholder)
+                    }
                 }
 
                 // Regex Flags (particular number)
@@ -257,39 +229,6 @@ fun defaultRegexRuleByType(forType: Int): RegexRule {
     }
 }
 
-fun newRegexRule(
-    id: Long,
-    pattern: String,
-    patternExtra: String,
-    patternFlags: Int,
-    patternExtraFlags: Int,
-    description: String,
-    priority: Int,
-    isBlacklist: Boolean,
-    flags: Int,
-    channel: String,
-    schedule: String,
-    blockType: Int,
-    blockTypeConfig: String,
-    simSlot: Int?,
-): RegexRule {
-    return RegexRule(
-        id = id,
-        pattern = pattern,
-        patternExtra = patternExtra,
-        patternFlags = patternFlags,
-        patternExtraFlags = patternExtraFlags,
-        description = description,
-        priority = priority,
-        isBlacklist = isBlacklist,
-        flags = flags,
-        channel = channel,
-        schedule = schedule,
-        blockType = blockType,
-        blockTypeConfig = blockTypeConfig,
-        simSlot = simSlot,
-    )
-}
 
 
 abstract class RegexTable {
@@ -320,6 +259,8 @@ abstract class RegexTable {
             patternExtra = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_PATTERN_EXTRA)) ?: "",
             patternFlags = it.getInt(it.getColumnIndex(Db.COLUMN_PATTERN_FLAGS)),
             patternExtraFlags = it.getInt(it.getColumnIndex(Db.COLUMN_PATTERN_EXTRA_FLAGS)),
+            patternModeType = it.getInt(it.getColumnIndex(Db.COLUMN_PATTERN_MODE_TYPE)),
+            patternExtraModeType = it.getInt(it.getColumnIndex(Db.COLUMN_PATTERN_EXTRA_MODE_TYPE)),
             description = it.getString(it.getColumnIndex(Db.COLUMN_DESC)),
             priority = it.getInt(it.getColumnIndex(Db.COLUMN_PRIORITY)),
             isBlacklist = it.getInt(it.getColumnIndex(Db.COLUMN_IS_BLACK)) == 1,
@@ -444,6 +385,8 @@ abstract class RegexTable {
         cv.put(Db.COLUMN_PATTERN_EXTRA, f.patternExtra)
         cv.put(Db.COLUMN_PATTERN_FLAGS, f.patternFlags)
         cv.put(Db.COLUMN_PATTERN_EXTRA_FLAGS, f.patternExtraFlags)
+        cv.put(Db.COLUMN_PATTERN_MODE_TYPE, f.patternModeType)
+        cv.put(Db.COLUMN_PATTERN_EXTRA_MODE_TYPE, f.patternExtraModeType)
         cv.put(Db.COLUMN_DESC, f.description)
         cv.put(Db.COLUMN_PRIORITY, f.priority)
         cv.put(Db.COLUMN_FLAGS, f.flags)
@@ -465,6 +408,8 @@ abstract class RegexTable {
         cv.put(Db.COLUMN_PATTERN_EXTRA, f.patternExtra)
         cv.put(Db.COLUMN_PATTERN_FLAGS, f.patternFlags)
         cv.put(Db.COLUMN_PATTERN_EXTRA_FLAGS, f.patternExtraFlags)
+        cv.put(Db.COLUMN_PATTERN_MODE_TYPE, f.patternModeType)
+        cv.put(Db.COLUMN_PATTERN_EXTRA_MODE_TYPE, f.patternExtraModeType)
         cv.put(Db.COLUMN_DESC, f.description)
         cv.put(Db.COLUMN_PRIORITY, f.priority)
         cv.put(Db.COLUMN_FLAGS, f.flags)
@@ -485,6 +430,8 @@ abstract class RegexTable {
         cv.put(Db.COLUMN_PATTERN_EXTRA, f.patternExtra)
         cv.put(Db.COLUMN_PATTERN_FLAGS, f.patternFlags)
         cv.put(Db.COLUMN_PATTERN_EXTRA_FLAGS, f.patternExtraFlags)
+        cv.put(Db.COLUMN_PATTERN_MODE_TYPE, f.patternModeType)
+        cv.put(Db.COLUMN_PATTERN_EXTRA_MODE_TYPE, f.patternExtraModeType)
         cv.put(Db.COLUMN_DESC, f.description)
         cv.put(Db.COLUMN_PRIORITY, f.priority)
         cv.put(Db.COLUMN_FLAGS, f.flags)

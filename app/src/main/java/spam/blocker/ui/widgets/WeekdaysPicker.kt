@@ -18,8 +18,8 @@ import spam.blocker.util.Lambda1
 import java.time.DayOfWeek
 
 
-// Two implementations using Calendar and DayOfWeek, the Calendar is for historical compatible,
-// later code should always use DayOfWeek(use the WeekdayPick2)
+// Two implementations using Calendar and DayOfWeek, the Calendar is for historical compatibility,
+// New code should always use DayOfWeek(use the WeekdayPick2)
 
 /*
   Deprecated.

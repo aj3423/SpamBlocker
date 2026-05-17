@@ -1,5 +1,6 @@
 package spam.blocker.service.bot
 
+import android.annotation.SuppressLint
 import android.content.Context
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -34,6 +35,7 @@ import spam.blocker.service.checker.ICheckResult
 import spam.blocker.ui.M
 import spam.blocker.ui.SizedBox
 import spam.blocker.ui.setting.LabeledRow
+import spam.blocker.ui.setting.regex.RegexMode.ModeType
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.BalloonQuestionMark
 import spam.blocker.ui.widgets.ComboBox
@@ -63,7 +65,6 @@ import spam.blocker.util.PermissiveJson
 import spam.blocker.util.RingtoneUtil
 import spam.blocker.util.Util
 import spam.blocker.util.formatAnnotated
-import spam.blocker.util.hasFlag
 import spam.blocker.util.regexMatches
 import spam.blocker.util.regexMatchesNumber
 import spam.blocker.util.spf
@@ -621,7 +622,7 @@ class CallEvent(
             leadingIcon = { GreyIcon18(R.drawable.ic_filter) },
             regexFlags = flagsNumber,
             placeholder = { Placeholder(".*") },
-            showNumberFlags = true,
+            enableNumberFlags = true,
             onRegexStrChange = { newVal, hasError ->
                 if (!hasError) {
                     number = newVal
@@ -848,8 +849,8 @@ class SmsThrottling(
             return false
         val rule = rules[0]
 
-        val forContact = rule.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT)
-        val forContactGroup = rule.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
+        val forContact = rule.patternModeType == ModeType.ContactName
+        val forContactGroup = rule.patternModeType == ModeType.ContactGroup
 
         val matches = fun(rawNumber: String) : Boolean {
             return if (forContact) {
@@ -1162,6 +1163,7 @@ class Ringtone(
         GreyIcon(R.drawable.ic_music)
     }
 
+    @SuppressLint("LocalContextGetResourceValueCall")
     @Composable
     override fun Options() {
         val ctx = LocalContext.current

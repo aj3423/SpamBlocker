@@ -9,7 +9,6 @@ import android.os.Looper
 import android.os.Message
 import android.os.Messenger
 import android.os.RemoteException
-import spam.blocker.service.checker.Checker
 import spam.blocker.util.SaveableLogger
 import spam.blocker.util.loge
 import spam.blocker.util.logi

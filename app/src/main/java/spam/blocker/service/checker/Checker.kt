@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Build
 import android.telecom.Call
 import android.telecom.Connection
+import androidx.annotation.RequiresApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.delay
@@ -22,6 +23,7 @@ import spam.blocker.db.RegexRule
 import spam.blocker.db.SmsTable
 import spam.blocker.db.SpamTable
 import spam.blocker.def.Def
+import spam.blocker.def.Def.ANDROID_11
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NON_CONTACT
 import spam.blocker.service.bot.ActionContext
 import spam.blocker.service.bot.CalendarEvent
@@ -34,6 +36,7 @@ import spam.blocker.service.bot.SmsEvent
 import spam.blocker.service.bot.SmsThrottling
 import spam.blocker.service.bot.executeAll
 import spam.blocker.ui.darken
+import spam.blocker.ui.setting.regex.RegexMode.ModeType
 import spam.blocker.util.A
 import spam.blocker.util.Clipboard
 import spam.blocker.util.Contacts
@@ -76,30 +79,18 @@ interface IChecker {
     fun check(cCtx: CheckContext): ICheckResult?
 }
 
-fun RegexRule.toChecker(
+fun RegexRule.numberRuleToChecker(
     ctx: Context,
 ): IChecker {
-    val forContact = this.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT)
-    val forContactGroup = this.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
-    val forContactPrefix = this.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_PREFIX)
-    val forCNAP = this.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CNAP)
-    val forGeo = this.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_GEO_LOCATION)
-    val forCarrier = this.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CARRIER)
-
-    return if (forContact)
-        Checker.RegexContact(ctx, this)
-    else if (forContactGroup)
-        Checker.ContactGroup(ctx, this)
-    else if (forContactPrefix)
-        Checker.ContactPrefix(ctx, this)
-    else if (forCNAP)
-        Checker.CNAP(ctx, this)
-    else if (forGeo)
-        Checker.Geolocation(ctx, this)
-    else if (forCarrier)
-        Checker.Carrier(ctx, this)
-    else
-        Checker.Number(ctx, this)
+    return when (patternModeType) {
+        ModeType.ContactName -> Checker.RegexContact(ctx, this)
+        ModeType.ContactGroup -> Checker.ContactGroup(ctx, this)
+        ModeType.ContactPrefix -> Checker.ContactPrefix(ctx, this)
+        ModeType.CallerName -> Checker.CNAP(ctx, this)
+        ModeType.Geolocation -> Checker.Geolocation(ctx, this)
+        ModeType.Carrier -> Checker.Carrier(ctx, this)
+        else -> Checker.Number(ctx, this)
+    }
 }
 
 // Before the call/SMS is checked by the rules, run all related workflows first.
@@ -233,6 +224,7 @@ class Checker { // for namespace only
             return Int.MAX_VALUE
         }
 
+        @RequiresApi(ANDROID_11)
         override fun check(cCtx: CheckContext): ICheckResult? {
             val C = G.palette
             val spf = spf.EmergencySituation(ctx)
@@ -975,7 +967,7 @@ class Checker { // for namespace only
             }
             // 1. check time schedule
             if (TimeSchedule.dissatisfyNow(rule.schedule)) {
-                cCtx.logger?.debug(ctx.getString(R.string.outside_time_schedule))
+//                cCtx.logger?.debug(ctx.getString(R.string.outside_time_schedule))
                 return false
             }
 
@@ -1412,11 +1404,11 @@ class Checker { // for namespace only
                     return true
                 }
 
-                val forContactGroup = rule.patternExtraFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
-                val forContact = rule.patternExtraFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT)
+                val forContactGroup = rule.patternExtraModeType == ModeType.ContactGroup
+                val forContact = rule.patternExtraModeType == ModeType.ContactName
                 // SMSes don't have CNAP
 //                val forCNAP =
-                val forGeoLocation = rule.patternExtraFlags.hasFlag(Def.FLAG_REGEX_FOR_GEO_LOCATION)
+                val forGeoLocation = rule.patternExtraModeType == ModeType.Geolocation
 
                 return if (forContactGroup) {
                     Contacts.findGroupsContainNumber(ctx, rawNumber)
@@ -1645,7 +1637,7 @@ class Checker { // for namespace only
             // Add number rules to checkers
             val rules = NumberRegexTable().listAll(ctx)
             checkers += rules.map {
-                it.toChecker(ctx)
+                it.numberRuleToChecker(ctx)
             }
             return checkers
         }
@@ -1706,7 +1698,7 @@ class Checker { // for namespace only
             //  add number rules to checkers
             val numberRules = NumberRegexTable().listAll(ctx)
             checkers += numberRules.map {
-                it.toChecker(ctx)
+                it.numberRuleToChecker(ctx)
             }
 
             //  add sms content rules to checkers

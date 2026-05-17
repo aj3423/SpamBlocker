@@ -31,7 +31,7 @@ class Db private constructor(
 ) : SQLiteOpenHelper(ctx, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 48
+        const val DB_VERSION = 49
         const val DB_NAME = "spam_blocker.db"
 
         // ---- regex rule table ----
@@ -44,6 +44,8 @@ class Db private constructor(
         const val COLUMN_PATTERN_EXTRA = "pattern_extra"
         const val COLUMN_PATTERN_FLAGS = "pattern_flag"
         const val COLUMN_PATTERN_EXTRA_FLAGS = "pattern_extra_flag"
+        const val COLUMN_PATTERN_MODE_TYPE = "pattern_mode_type"
+        const val COLUMN_PATTERN_EXTRA_MODE_TYPE = "pattern_extra_mode_type"
         const val COLUMN_DESC = "description"
         const val COLUMN_FLAGS = "flag_call_sms" // the column name should be just "flags", but android<12 doesn't support renaming column
         const val COLUMN_PRIORITY = "priority"
@@ -130,6 +132,8 @@ class Db private constructor(
                         "$COLUMN_PATTERN_EXTRA TEXT, " +
                         "$COLUMN_PATTERN_FLAGS INTEGER DEFAULT 0, " +
                         "$COLUMN_PATTERN_EXTRA_FLAGS INTEGER DEFAULT 0, " +
+                        "$COLUMN_PATTERN_MODE_TYPE INTEGER DEFAULT 0, " +
+                        "$COLUMN_PATTERN_EXTRA_MODE_TYPE INTEGER DEFAULT 0, " +
                         "$COLUMN_DESC TEXT, " +
                         "$COLUMN_PRIORITY INTEGER, " +
                         "$COLUMN_IS_BLACK INTEGER, " +
@@ -216,7 +220,7 @@ class Db private constructor(
             "CREATE TABLE IF NOT EXISTS $TABLE_BOT (" +
                     "$COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     "$COLUMN_DESC TEXT, " +
-                    "$COLUMN_TRIGGER TEXT, " +
+                    "[$COLUMN_TRIGGER] TEXT, " + // "trigger" is a keyword
                     "$COLUMN_ACTIONS TEXT, " +
                     "$COLUMN_CUSTOM_TAGS TEXT, " +
                     "$COLUMN_ENABLED INTEGER, " +
@@ -516,6 +520,55 @@ class Db private constructor(
             addColumnIfNotExist(db, TABLE_CALL, COLUMN_ANYTHING_WRONG, "INTEGER")
             addColumnIfNotExist(db, TABLE_SMS, COLUMN_FULL_SCREENING_LOG, "TEXT")
             addColumnIfNotExist(db, TABLE_SMS, COLUMN_ANYTHING_WRONG, "INTEGER")
+        }
+
+        // v5.9 refactored RegexMode, previously `regexFlags` contains both mode/flag
+        if ((newVersion >= 49) && (oldVersion < 49)) {
+            db.execSQL("ALTER TABLE $TABLE_NUMBER_RULE ADD COLUMN $COLUMN_PATTERN_MODE_TYPE INTEGER DEFAULT 0")
+            db.execSQL("ALTER TABLE $TABLE_NUMBER_RULE ADD COLUMN $COLUMN_PATTERN_EXTRA_MODE_TYPE INTEGER DEFAULT 0")
+            db.execSQL("ALTER TABLE $TABLE_CONTENT_RULE ADD COLUMN $COLUMN_PATTERN_MODE_TYPE INTEGER DEFAULT 0")
+            db.execSQL("ALTER TABLE $TABLE_CONTENT_RULE ADD COLUMN $COLUMN_PATTERN_EXTRA_MODE_TYPE INTEGER DEFAULT 0")
+            db.execSQL("ALTER TABLE $TABLE_QUICK_COPY_RULE ADD COLUMN $COLUMN_PATTERN_MODE_TYPE INTEGER DEFAULT 0")
+            db.execSQL("ALTER TABLE $TABLE_QUICK_COPY_RULE ADD COLUMN $COLUMN_PATTERN_EXTRA_MODE_TYPE INTEGER DEFAULT 0")
+
+
+            val FLAG_CONTACT_GROUP = 0x800       // 1 shl 11
+            val FLAG_CONTACT_NAME = 0x1000       // 1 shl 12
+            val FLAG_CALLER_NAME = 0x4000        // 1 shl 14
+            val FLAG_GEOLOCATION = 0x8000        // 1 shl 15
+            val FLAG_CONTACT_PREFIX = 0x10000    // 1 shl 16
+            val FLAG_CARRIER = 0x20000           // 1 shl 17
+
+            // Migrate from `patternFlags` to `patternModeType`
+            // Migrate from `patternExtraFlags` to `patternExtraModeType`
+            fun updateTable(tableName: String) {
+                db.execSQL("""
+                    UPDATE $tableName 
+                    SET 
+                        $COLUMN_PATTERN_MODE_TYPE = CASE 
+                            WHEN ($COLUMN_PATTERN_FLAGS & $FLAG_CONTACT_GROUP) != 0 THEN 4
+                            WHEN ($COLUMN_PATTERN_FLAGS & $FLAG_CONTACT_NAME) != 0 THEN 3
+                            WHEN ($COLUMN_PATTERN_FLAGS & $FLAG_CALLER_NAME) != 0 THEN 8
+                            WHEN ($COLUMN_PATTERN_FLAGS & $FLAG_GEOLOCATION) != 0 THEN 6
+                            WHEN ($COLUMN_PATTERN_FLAGS & $FLAG_CONTACT_PREFIX) != 0 THEN 5
+                            WHEN ($COLUMN_PATTERN_FLAGS & $FLAG_CARRIER) != 0 THEN 7
+                            ELSE 0 
+                        END,
+                        
+                        $COLUMN_PATTERN_EXTRA_MODE_TYPE = CASE 
+                            WHEN ($COLUMN_PATTERN_EXTRA_FLAGS & $FLAG_CONTACT_GROUP) != 0 THEN 4
+                            WHEN ($COLUMN_PATTERN_EXTRA_FLAGS & $FLAG_CONTACT_NAME) != 0 THEN 3
+                            WHEN ($COLUMN_PATTERN_EXTRA_FLAGS & $FLAG_CALLER_NAME) != 0 THEN 8
+                            WHEN ($COLUMN_PATTERN_EXTRA_FLAGS & $FLAG_GEOLOCATION) != 0 THEN 6
+                            WHEN ($COLUMN_PATTERN_EXTRA_FLAGS & $FLAG_CONTACT_PREFIX) != 0 THEN 5
+                            WHEN ($COLUMN_PATTERN_EXTRA_FLAGS & $FLAG_CARRIER) != 0 THEN 7
+                            ELSE 0 
+                        END
+                """.trimIndent())
+            }
+            updateTable(TABLE_NUMBER_RULE)
+            updateTable(TABLE_CONTENT_RULE)
+            updateTable(TABLE_QUICK_COPY_RULE)
         }
     }
 }

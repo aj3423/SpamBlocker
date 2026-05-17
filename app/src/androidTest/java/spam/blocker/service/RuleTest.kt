@@ -14,6 +14,7 @@ import spam.blocker.db.NumberRegexTable
 import spam.blocker.db.RegexRule
 import spam.blocker.def.Def
 import spam.blocker.service.checker.Checker
+import spam.blocker.ui.setting.regex.RegexMode.ModeType
 import spam.blocker.util.ContactInfo
 import spam.blocker.util.Contacts
 import spam.blocker.util.Now
@@ -56,6 +57,8 @@ class RuleTest {
         flagCallSms: Int,
         patternFlags: Int = 0,
         patternExtraFlags: Int = 0,
+        patternModeType: Int = ModeType.PhoneNumber,
+        patternExtraModeType: Int = ModeType.PhoneNumber,
         schedule: String = "",
         simSlot: Int? = null,
     ): RegexRule {
@@ -68,6 +71,8 @@ class RuleTest {
         r.flags = flagCallSms
         r.patternFlags = patternFlags
         r.patternExtraFlags = patternExtraFlags
+        r.patternModeType = patternModeType
+        r.patternExtraModeType = patternExtraModeType
         r.schedule = schedule
         r.simSlot = simSlot
 
@@ -612,7 +617,7 @@ class RuleTest {
     fun cnap_rule() {
         // block by display name "block"
         add_number_rule(
-            build_rule("block", "", 99, isBlacklist = true, Def.FLAG_FOR_CALL, patternFlags = Def.FLAG_REGEX_FOR_CNAP)
+            build_rule("block", "", 99, isBlacklist = true, Def.FLAG_FOR_CALL, patternModeType = ModeType.CallerName)
         )
 
         var r = Checker.checkCall(ctx, rawNumber = "", cnap = "block").first
@@ -634,7 +639,7 @@ class RuleTest {
 
         // block by geolocation "Texas"
         add_number_rule(
-            build_rule("texas", "", 0, isBlacklist = true, Def.FLAG_FOR_CALL, patternFlags = Def.FLAG_REGEX_FOR_GEO_LOCATION)
+            build_rule("texas", "", 0, isBlacklist = true, Def.FLAG_FOR_CALL, patternModeType = ModeType.Geolocation)
         )
 
         // Texas
@@ -653,7 +658,7 @@ class RuleTest {
 
         // block by carrier "Texas"
         add_number_rule(
-            build_rule("SFR", "", 0, isBlacklist = true, Def.FLAG_FOR_CALL, patternFlags = Def.FLAG_REGEX_FOR_CARRIER)
+            build_rule("SFR", "", 0, isBlacklist = true, Def.FLAG_FOR_CALL, patternModeType = ModeType.Carrier)
         )
 
         // SFR

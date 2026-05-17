@@ -1,6 +1,5 @@
 package spam.blocker.def
 
-import spam.blocker.R
 import spam.blocker.db.Notification.CHANNEL_LOW
 
 object Def {
@@ -93,45 +92,16 @@ object Def {
     const val FLAG_REGEX_CASE_SENSITIVE = 1 shl 4
     const val FLAG_REGEX_RAW_NUMBER = 1 shl 10 // 0x400
     const val FLAG_REGEX_IGNORE_CC = 1 shl 13 // 0x2000
-    // regex Modes
-    const val FLAG_REGEX_FOR_CONTACT_GROUP = 1 shl 11 // 0x800
-    const val FLAG_REGEX_FOR_CONTACT = 1 shl 12 // 0x1000
-    const val FLAG_REGEX_FOR_CNAP = 1 shl 14 // 0x4000
-    const val FLAG_REGEX_FOR_GEO_LOCATION = 1 shl 15 // 0x8000
-    const val FLAG_REGEX_FOR_CONTACT_PREFIX = 1 shl 16 // 0x10000
-    const val FLAG_REGEX_FOR_CARRIER = 1 shl 17 // 0x20000
-
-
 
     const val DefaultRegexFlags = 0
 
     // Regex Flags, saved in RegexRule.patternFlags
     val MAP_REGEX_FLAGS = mapOf(
         FLAG_REGEX_CASE_SENSITIVE to "I",
-//        FLAG_REGEX_MULTILINE to "m",
-//        FLAG_REGEX_DOT_MATCH_ALL to "d",
-//        FLAG_REGEX_LITERAL to "l",
         FLAG_REGEX_RAW_NUMBER to "®", // r
         FLAG_REGEX_IGNORE_CC to "🌐",
     )
-    // Regex Modes, also saved in RegexRule.patternFlags
-    val MAP_REGEX_MODES = mapOf(
-        FLAG_REGEX_FOR_CONTACT_GROUP to "contact_group",
-        FLAG_REGEX_FOR_CONTACT to "contact",
-        FLAG_REGEX_FOR_CNAP to "cnap",
-        FLAG_REGEX_FOR_GEO_LOCATION to "geoloc",
-        FLAG_REGEX_FOR_CARRIER to "carrier",
-        FLAG_REGEX_FOR_CONTACT_PREFIX to "contact_prefix"
-    )
 
-    val regexModeIconMap = mapOf(
-        FLAG_REGEX_FOR_CONTACT_GROUP to R.drawable.ic_contact_group,
-        FLAG_REGEX_FOR_CONTACT to R.drawable.ic_contact_square,
-        FLAG_REGEX_FOR_CNAP to R.drawable.ic_id_card,
-        FLAG_REGEX_FOR_GEO_LOCATION to R.drawable.ic_location,
-        FLAG_REGEX_FOR_CARRIER to R.drawable.ic_cellular_network,
-        FLAG_REGEX_FOR_CONTACT_PREFIX to R.drawable.ic_contact_eq,
-    )
 
     const val ForNumber = 0
     const val ForSms = 1

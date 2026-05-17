@@ -19,11 +19,12 @@ import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.RegexRule
 import spam.blocker.def.Def
-import spam.blocker.def.Def.FLAG_REGEX_FOR_CNAP
 import spam.blocker.def.Def.ForNumber
 import spam.blocker.def.Def.ForSms
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.quick.ChannelIcons
+import spam.blocker.ui.setting.regex.RegexMode.ModeType
+import spam.blocker.ui.setting.regex.RegexMode.regexModeInlineMap
 import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.GreyIcon20
 import spam.blocker.ui.widgets.OutlineCard
@@ -31,7 +32,6 @@ import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.SimCardIcon
 import spam.blocker.util.hasFlag
-import spam.blocker.util.regexModeInlineMap
 import spam.blocker.util.spf
 
 @Composable
@@ -63,7 +63,7 @@ fun RegexCard(
                             ctx = LocalContext.current,
                             forType = forType,
                         ),
-                        inlineContent = regexModeInlineMap,
+                        inlineContent = regexModeInlineMap(),
                         fontWeight = FontWeight.Bold,
                         fontSize = 18.sp,
                         modifier = M.padding(top = 2.dp),
@@ -126,7 +126,7 @@ fun RegexCard(
                 RowVCenterSpaced(space = 8) {
 
                     // [NotifyType]
-                    val forCNAP = forType == ForNumber && rule.patternFlags.hasFlag(FLAG_REGEX_FOR_CNAP)
+                    val forCNAP = forType == ForNumber && rule.patternModeType == ModeType.CallerName
                     val applyToSms = rule.isForSms()
 
                     val visible = when (forType) {

@@ -8,6 +8,7 @@ import spam.blocker.db.Notification
 import spam.blocker.db.RegexRule
 import spam.blocker.def.Def
 import spam.blocker.def.Def.ANDROID_12
+import spam.blocker.ui.setting.regex.RegexMode.ModeType
 import spam.blocker.util.Lambda
 import spam.blocker.util.Lambda1
 import spam.blocker.util.Permission
@@ -95,7 +96,7 @@ val RegexPresets = mapOf(
                     priority = 12,
                     isBlacklist = false,
                     simSlot = 1,
-                    patternFlags = Def.FLAG_REGEX_FOR_CONTACT,
+                    patternModeType = ModeType.ContactName,
                 ),
                 RegexRule(
                     pattern = ".*",
@@ -131,7 +132,8 @@ val RegexPresets = mapOf(
                     priority = 1,
                     isBlacklist = false,
                     flags = Def.FLAG_FOR_CALL or Def.FLAG_FOR_SMS,
-                    patternFlags = Def.FLAG_REGEX_FOR_CONTACT_PREFIX or Def.FLAG_REGEX_IGNORE_CC,
+                    patternFlags = Def.FLAG_REGEX_IGNORE_CC,
+                    patternModeType = ModeType.ContactPrefix
                 )
             )
         },
@@ -166,7 +168,7 @@ val RegexPresets = mapOf(
                     priority = 1,
                     isBlacklist = false,
                     flags = Def.FLAG_FOR_CALL,
-                    patternFlags = Def.FLAG_REGEX_FOR_CNAP,
+                    patternModeType = ModeType.CallerName
                 )
             )
         },
@@ -196,7 +198,7 @@ val RegexPresets = mapOf(
                     priority = 0,
                     isBlacklist = true,
                     flags = Def.FLAG_FOR_CALL or Def.FLAG_FOR_SMS,
-                    patternFlags = Def.FLAG_REGEX_FOR_GEO_LOCATION,
+                    patternModeType = ModeType.Geolocation
                 )
             )
         },
@@ -233,6 +235,6 @@ val RegexPresets = mapOf(
                     flags = Def.FLAG_FOR_CONTENT or Def.FLAG_FOR_SMS or Def.FLAG_FOR_PASSED
                 )
             )
-        },
+        }
     )
 )

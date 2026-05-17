@@ -621,7 +621,7 @@ class ConvertNumber(
                 flagsState.intValue = it
                 flags = it
             },
-            showNumberFlags = true
+            enableNumberFlags = true
         )
         StrInputBox(
             label = { Text(Str(R.string.replace_to)) },

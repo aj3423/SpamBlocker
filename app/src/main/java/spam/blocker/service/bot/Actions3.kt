@@ -1005,7 +1005,7 @@ class ModifyNumber(
             regexStr = from,
             label = { Text(Str(R.string.replace_from)) },
             regexFlags = fromFlagsState,
-            showNumberFlags = true,
+            enableNumberFlags = true,
             onRegexStrChange = { newVal, hasError ->
                 if (!hasError) {
                     from = newVal

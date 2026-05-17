@@ -37,7 +37,7 @@ import spam.blocker.service.checker.ByRegexRule
 import spam.blocker.service.checker.Checker
 import spam.blocker.service.checker.Checker.PassedByDefault
 import spam.blocker.service.checker.IChecker
-import spam.blocker.service.checker.toChecker
+import spam.blocker.service.checker.numberRuleToChecker
 import spam.blocker.ui.M
 import spam.blocker.ui.history.HistoryOptions.showHistoryIndicator
 import spam.blocker.ui.widgets.ResIcon
@@ -122,7 +122,7 @@ fun IndicatorsWrapper(
     fun loadNumberCheckers(): List<IChecker> {
         val ret = if (showIndicator) {
             NumberRegexTable().listAll(ctx).map {
-                it.toChecker(ctx)
+                it.numberRuleToChecker(ctx)
             }
         } else listOf()
 

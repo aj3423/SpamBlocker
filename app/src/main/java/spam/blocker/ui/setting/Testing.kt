@@ -1,5 +1,6 @@
 package spam.blocker.ui.setting
 
+import android.annotation.SuppressLint
 import android.os.Build
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
@@ -19,13 +20,10 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import spam.blocker.G
 import spam.blocker.R
-import spam.blocker.db.ContentRegexTable
-import spam.blocker.db.Db
-import spam.blocker.db.NumberRegexTable
 import spam.blocker.def.Def.ANDROID_12
-import spam.blocker.def.Def.FLAG_REGEX_FOR_CNAP
 import spam.blocker.service.CallScreeningService
 import spam.blocker.service.SmsReceiver
+import spam.blocker.ui.setting.regex.RegexMode.ModeType
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.BalloonQuestionMark
 import spam.blocker.ui.widgets.FloatingWindow
@@ -57,6 +55,7 @@ class TestingViewModel {
 }
 
 
+@SuppressLint("LocalContextGetResourceValueCall")
 @Composable
 fun TestDialog(
     trigger: MutableState<Boolean>,
@@ -211,14 +210,13 @@ fun TestDialog(
 
                 // Only show the Caller Name field when there's at least 1 CNAP rule configured
                 var hasCnapRule by remember(G.NumberRuleVM.rules, G.ContentRuleVM.rules) {
-                    // either `patterFlags` or `patternExtraFlags` has CNAP flag
-                    val foundNumberRule = NumberRegexTable().findByFilter(ctx,
-                        " WHERE (${Db.COLUMN_PATTERN_FLAGS} & ${FLAG_REGEX_FOR_CNAP}) = $FLAG_REGEX_FOR_CNAP LIMIT 1"
-                    ).isNotEmpty()
+                    val foundNumberRule = G.NumberRuleVM.rules.any {
+                        it.patternModeType == ModeType.CallerName
+                    }
 
-                    val foundContentRule = ContentRegexTable().findByFilter(ctx,
-                        " WHERE (${Db.COLUMN_PATTERN_EXTRA_FLAGS} & ${FLAG_REGEX_FOR_CNAP}) = $FLAG_REGEX_FOR_CNAP LIMIT 1"
-                    ).isNotEmpty()
+                    val foundContentRule = G.ContentRuleVM.rules.any {
+                        it.patternExtraModeType == ModeType.CallerName
+                    }
 
                     mutableStateOf(foundNumberRule || foundContentRule)
                 }

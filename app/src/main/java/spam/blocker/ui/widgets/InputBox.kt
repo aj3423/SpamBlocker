@@ -1,5 +1,6 @@
 package spam.blocker.ui.widgets
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
@@ -348,7 +349,7 @@ fun NumberInputBox(
         },
         helpTooltip = {
             helpTooltipId?.let {
-                BalloonQuestionMark(LocalContext.current.getString(it))
+                BalloonQuestionMark(Str(it))
             }
         },
     )
@@ -521,7 +522,7 @@ fun RegexInputBox(
     label: @Composable (() -> Unit)? = null,
     placeholder: @Composable (() -> Unit)? = null,
     leadingIcon: @Composable (() -> Unit)? = null, // it can be a clickable icon
-    showNumberFlags: Boolean = false, // enable 2 more flags
+    enableNumberFlags: Boolean = false, // enable 2 more flags
     helpTooltipId: Int? = null,
     testable: Boolean = false,
     showFlagsIcon: Boolean = true,
@@ -543,15 +544,12 @@ fun RegexInputBox(
     fun validateError(): String? {
         return Util.validateRegex(
             ctx,
-            lastText,
-            regexFlags.intValue.hasFlag(Def.FLAG_REGEX_RAW_NUMBER) ||
-                    regexFlags.intValue.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP) ||
-                    regexFlags.intValue.hasFlag(Def.FLAG_REGEX_FOR_CONTACT) ||
-                    regexFlags.intValue.hasFlag(Def.FLAG_REGEX_FOR_CNAP) ||
-                    regexFlags.intValue.hasFlag(Def.FLAG_REGEX_FOR_GEO_LOCATION)
+            regexStr = lastText,
+            disableNumberOptimization = regexFlags.intValue.hasFlag(Def.FLAG_REGEX_RAW_NUMBER)
         )
     }
 
+    @SuppressLint("LocalContextGetResourceValueCall")
     fun validateWarning(): List<String> {
 
         val ret = mutableListOf<String>()
@@ -628,8 +626,8 @@ fun RegexInputBox(
                         CheckItem(
                             label = label,
                             enabled = when(idx) {
-                                0 -> showNumberFlags
-                                1 -> showNumberFlags
+                                0 -> enableNumberFlags
+                                1 -> enableNumberFlags
                                 else -> true
                             },
                             trailingIcon = {
@@ -740,7 +738,7 @@ fun RegexInputBox(
 
                 // Help question icon
                 helpTooltipId?.let {
-                    BalloonQuestionMark(LocalContext.current.getString(it))
+                    BalloonQuestionMark(Str(it))
                 }
             }
         }

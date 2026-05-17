@@ -40,6 +40,19 @@ fun ResIcon(
     )
 }
 @Composable
+fun ResIcon16(
+    iconId: Int,
+    modifier: Modifier = Modifier,
+    color: Color = LocalContentColor.current,
+) {
+    Icon(
+        modifier = modifier.size(16.dp),
+        tint = color,
+        painter = painterResource(id = iconId),
+        contentDescription = ""
+    )
+}
+@Composable
 fun GreyIcon(
     iconId: Int,
     modifier: Modifier = Modifier,

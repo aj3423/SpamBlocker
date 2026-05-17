@@ -1,5 +1,6 @@
 package spam.blocker.ui.setting.regex
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
@@ -377,6 +378,7 @@ fun RegexList(
 
 
 // A wrapper for RuleCard to make it swipeable and clickable(short and long)
+@SuppressLint("LocalContextGetResourceValueCall")
 @OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun RegexItem(
