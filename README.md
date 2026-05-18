@@ -51,8 +51,8 @@ It works without replacing your call/SMS app.
       - Built-in "Quick Copy" support (for copying OTP codes)
     - Cons
       - Feels disconnected, as messages and notifications are handled by two different apps. 
-      - The app doesn't handle RCS and MMS multi media content.
-      - SMS permission is required.
+      - The app doesn't handle RCS and MMS multimedia content.
+      - Requires SMS permission.
   - <b>Screening provider mode</b>:
     
     Similar to call screening, the app works as a service. The SMS app asks it to check messages in real time, this app simply replies "block" or "allow". 
