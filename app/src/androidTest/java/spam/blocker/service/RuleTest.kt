@@ -12,7 +12,6 @@ import org.junit.Test
 import spam.blocker.db.ContentRegexTable
 import spam.blocker.db.NumberRegexTable
 import spam.blocker.db.RegexRule
-import spam.blocker.db.SpamNumber
 import spam.blocker.db.SpamTable
 import spam.blocker.def.Def
 import spam.blocker.service.checker.Checker
@@ -463,8 +462,8 @@ class RuleTest {
         assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER_REGEX, r.type)
     }
 
-    // block all msg contain "discount"
-    // but pass for particular number even it contains "discount"
+    // block all messages that contain "discount"
+    // but allow for particular number even if it contains "discount"
     @Test
     fun for_particular_number() {
         val particularNumber = "123"

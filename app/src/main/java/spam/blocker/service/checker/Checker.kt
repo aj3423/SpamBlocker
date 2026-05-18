@@ -21,6 +21,7 @@ import spam.blocker.db.PushAlertTable
 import spam.blocker.db.QuickCopyRegexTable
 import spam.blocker.db.RegexRule
 import spam.blocker.db.SmsTable
+import spam.blocker.db.SpamNumber
 import spam.blocker.db.SpamTable
 import spam.blocker.def.Def
 import spam.blocker.def.Def.ANDROID_11
@@ -39,6 +40,7 @@ import spam.blocker.ui.darken
 import spam.blocker.ui.setting.regex.RegexMode.ModeType
 import spam.blocker.util.A
 import spam.blocker.util.Clipboard
+import spam.blocker.util.ContactInfo
 import spam.blocker.util.Contacts
 import spam.blocker.util.CountryCode
 import spam.blocker.util.ILogger
@@ -1012,7 +1014,7 @@ class Checker { // for namespace only
             )
 
             // 2. check regex
-            if (rule.pattern.regexMatchesNumber(rawNumber, rule.patternFlags)) {
+            if (doCheck(rawNumber)) {
                 val block = rule.isBlacklist
 
                 if (block)
@@ -1034,6 +1036,9 @@ class Checker { // for namespace only
 
             return null
         }
+        fun doCheck(rawNumber: String): Boolean {
+            return rule.pattern.regexMatchesNumber(rawNumber, rule.patternFlags)
+        }
     }
 
     // Check if the regex matches the caller display name
@@ -1044,7 +1049,6 @@ class Checker { // for namespace only
         override fun check(cCtx: CheckContext): ICheckResult? {
             val C = G.palette
 
-            val cnap = cCtx.cnap
             val logger = cCtx.logger
 
             if (!isEnabled(cCtx)) {
@@ -1059,12 +1063,9 @@ class Checker { // for namespace only
                         rule.descOrPattern().A(if (rule.isBlacklist) C.error else C.success),
                     )
             )
-            if (cnap == null) {
-                return null
-            }
 
             // 2. check regex
-            if (rule.pattern.regexMatchesNumber(cnap, rule.patternFlags)) {
+            if (doCheck(cCtx.cnap)) {
                 val block = rule.isBlacklist
 
                 if (block)
@@ -1085,6 +1086,12 @@ class Checker { // for namespace only
             }
 
             return null
+        }
+        fun doCheck(cnap: String?): Boolean {
+            if (cnap == null) {
+                return false
+            }
+            return rule.pattern.regexMatchesNumber(cnap, rule.patternFlags)
         }
     }
 
@@ -1114,10 +1121,7 @@ class Checker { // for namespace only
                     )
             )
 
-            val location = Util.numberGeoLocation(ctx, cCtx.rawNumber) ?: ""
-
-            // check regex
-            if (rule.pattern.regexMatches(location, rule.patternFlags)) {
+            if (doCheck(cCtx.rawNumber)) {
                 val block = rule.isBlacklist
 
                 if (block)
@@ -1138,6 +1142,12 @@ class Checker { // for namespace only
             }
 
             return null
+        }
+        fun doCheck(rawNumber: String): Boolean {
+            val location = Util.numberGeoLocation(ctx, rawNumber) ?: ""
+
+            // check regex
+            return rule.pattern.regexMatches(location, rule.patternFlags)
         }
     }
 
@@ -1164,10 +1174,8 @@ class Checker { // for namespace only
                     )
             )
 
-            val carrier = Util.numberCarrier(ctx, cCtx.rawNumber) ?: ""
-
             // check regex
-            if (rule.pattern.regexMatches(carrier, rule.patternFlags)) {
+            if (doCheck(cCtx.rawNumber)) {
                 val block = rule.isBlacklist
 
                 if (block)
@@ -1188,6 +1196,12 @@ class Checker { // for namespace only
             }
 
             return null
+        }
+        fun doCheck(rawNumber: String): Boolean {
+            val carrier = Util.numberCarrier(ctx, rawNumber) ?: ""
+
+            // check regex
+            return rule.pattern.regexMatches(carrier, rule.patternFlags)
         }
     }
 
@@ -1220,30 +1234,31 @@ class Checker { // for namespace only
             )
 
             // 2. check regex
-            val contactInfo = Contacts.findContactByRawNumber(ctx, rawNumber)
-            if (contactInfo != null) {
+            if (doCheck(rawNumber)) {
+                val block = rule.isBlacklist
 
-                if (rule.matches(contactInfo.name)) {
-                    val block = rule.isBlacklist
-
-                    if (block)
-                        logger?.error(
-                            ctx.getString(R.string.blocked_by)
-                                .format(ctx.getString(R.string.contact_rule)) + ": ${rule.descOrPattern()}"
-                        )
-                    else
-                        logger?.success(
-                            ctx.getString(R.string.allowed_by)
-                                .format(ctx.getString(R.string.contact_rule)) + ": ${rule.descOrPattern()}"
-                        )
-
-                    return ByRegexRule(
-                        type = if (block) Def.RESULT_BLOCKED_BY_CONTACT_REGEX else Def.RESULT_ALLOWED_BY_CONTACT_REGEX,
-                        rule = rule,
+                if (block)
+                    logger?.error(
+                        ctx.getString(R.string.blocked_by)
+                            .format(ctx.getString(R.string.contact_rule)) + ": ${rule.descOrPattern()}"
                     )
-                }
+                else
+                    logger?.success(
+                        ctx.getString(R.string.allowed_by)
+                            .format(ctx.getString(R.string.contact_rule)) + ": ${rule.descOrPattern()}"
+                    )
+
+                return ByRegexRule(
+                    type = if (block) Def.RESULT_BLOCKED_BY_CONTACT_REGEX else Def.RESULT_ALLOWED_BY_CONTACT_REGEX,
+                    rule = rule,
+                )
             }
             return null
+        }
+        fun doCheck(rawNumber: String): Boolean {
+            val contactInfo = Contacts.findContactByRawNumber(ctx, rawNumber)
+            return contactInfo != null &&
+                    rule.matches(contactInfo.name)
         }
     }
 
@@ -1276,12 +1291,7 @@ class Checker { // for namespace only
             )
 
             // 2. check regex
-            val group = Contacts.findGroupsContainNumber(ctx, rawNumber)
-                .find { groupName ->
-                    rule.matches(groupName)
-                }
-
-            if (group != null) { // found match
+            if (doCheck(rawNumber)) { // found match
                 val block = rule.isBlacklist
 
                 if (block)
@@ -1301,6 +1311,12 @@ class Checker { // for namespace only
                 )
             }
             return null
+        }
+        fun doCheck(rawNumber: String): Boolean {
+            return Contacts.findGroupsContainNumber(ctx, rawNumber)
+                .any { groupName ->
+                    rule.matches(groupName)
+                }
         }
     }
 
@@ -1332,14 +1348,8 @@ class Checker { // for namespace only
                     )
             )
 
-            // Both the incoming number and the contact number should match this regex,
-            //   check the incoming number here.
-            if (!rule.pattern.regexMatchesNumber(rawNumber, rule.patternFlags)) {
-                return null
-            }
-
             // 2. check regex
-            val contactInfo = Contacts.findContactByNumberPrefix(ctx, rawNumber, rule.pattern, rule.patternFlags)
+            val contactInfo = doCheck(rawNumber)
             if (contactInfo != null) {
                 val block = rule.isBlacklist
 
@@ -1361,6 +1371,14 @@ class Checker { // for namespace only
                 )
             }
             return null
+        }
+        fun doCheck(rawNumber: String): ContactInfo? {
+            // Both the incoming number and the contact number should match this regex,
+            //   check the incoming number here.
+            if (!rule.pattern.regexMatchesNumber(rawNumber, rule.patternFlags)) {
+                return null
+            }
+            return Contacts.findContactByNumberPrefix(ctx, rawNumber, rule.pattern, rule.patternFlags)
         }
     }
 
@@ -1388,16 +1406,9 @@ class Checker { // for namespace only
                     )
             )
 
-            // Both the incoming number and the database number should match this regex,
-            //   check the incoming number here.
-            if (!rule.pattern.regexMatchesNumber(rawNumber, rule.patternFlags)) {
-                return null
-            }
-
             // Find all numbers instead of checking if any exists, maybe it will support "min match count" in the future
-            val similarNumbers = SpamTable.findByNumberPrefix(ctx, rawNumber, rule.pattern, rule.patternFlags)
+            val similarNumbers = doCheck(rawNumber)
 
-            // 2. check regex
             if (similarNumbers.isNotEmpty()) {
                 val firstNumber = similarNumbers[0]
 
@@ -1421,6 +1432,16 @@ class Checker { // for namespace only
                 )
             }
             return null
+        }
+        fun doCheck(rawNumber: String) : List<SpamNumber> {
+            // Both the incoming number and the database number should match this regex,
+            //   check the incoming number here.
+            if (!rule.pattern.regexMatchesNumber(rawNumber, rule.patternFlags)) {
+                return listOf()
+            }
+
+            val similarNumbers = SpamTable.findByNumberPrefix(ctx, rawNumber, rule.pattern, rule.patternFlags)
+            return similarNumbers
         }
     }
 
@@ -1465,26 +1486,21 @@ class Checker { // for namespace only
                     return true
                 }
 
-                val forContactGroup = rule.patternExtraModeType == ModeType.ContactGroup
-                val forContact = rule.patternExtraModeType == ModeType.ContactName
-                // SMSes don't have CNAP
-//                val forCNAP =
-                val forGeoLocation = rule.patternExtraModeType == ModeType.Geolocation
+                val tempRule = rule.apply {
+                    pattern = rule.patternExtra
+                    patternFlags = rule.patternExtraFlags
+                }
+                return when(rule.patternExtraModeType) {
+                    ModeType.PhoneNumber -> Number(ctx, tempRule).doCheck(rawNumber)
+                    ModeType.ContactName -> RegexContact(ctx, tempRule).doCheck(rawNumber)
+                    ModeType.ContactGroup -> ContactGroup(ctx, tempRule).doCheck(rawNumber)
+                    ModeType.ContactPrefix -> ContactPrefix(ctx, tempRule).doCheck(rawNumber) != null
+                    ModeType.DatabasePrefix -> DatabasePrefix(ctx, tempRule).doCheck(rawNumber).isNotEmpty()
+                    ModeType.Geolocation -> Geolocation(ctx, tempRule).doCheck(rawNumber)
+                    ModeType.Carrier -> Carrier(ctx, tempRule).doCheck(rawNumber)
+                    ModeType.CallerName -> CNAP(ctx, tempRule).doCheck(cCtx.cnap)
 
-                return if (forContactGroup) {
-                    Contacts.findGroupsContainNumber(ctx, rawNumber)
-                        .any { groupName ->
-                            rule.extraMatches(groupName)
-                        }
-                } else if (forContact) {
-                    val contactInfo = Contacts.findContactByRawNumber(ctx, rawNumber)
-                    contactInfo != null && rule.extraMatches(contactInfo.name)
-                } else if (forGeoLocation) {
-                    val location = Util.numberGeoLocation(ctx, cCtx.rawNumber) ?: ""
-                    rule.extraMatches(location)
-                } else {
-                    // regular number
-                    rule.patternExtra.regexMatchesNumber(rawNumber, rule.patternExtraFlags)
+                    else -> false
                 }
             }
 

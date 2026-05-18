@@ -59,7 +59,6 @@ import spam.blocker.util.TimeUtils.timeRangeStr
 //  4. add to Checker.Content.particularMatches
 //  5. add to Checker.numberRuleToChecker
 //  6. add to HistoryIndicator
-//  TODO...
 object RegexMode {
 
     object ModeType {
