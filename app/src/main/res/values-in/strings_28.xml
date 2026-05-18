@@ -9,4 +9,24 @@
         ]]>
     </string>
     <string name="comment">Komentar</string>
+    <string name="database_prefix">Prefiks Basis Data</string>
+    <string name="help_regex_mode_database_prefix">
+        <![CDATA[
+        <title><b>Prefiks Basis Data</b></title>:<br>
+        &ensp; Pemblokiran rentang untuk nomor telepon dalam basis data.<br>
+        <br>
+        <warn>Regex ini harus diakhiri dengan titik</warn>, dalam mode regex ini, titik-titik akhir tersebut mewakili digit yang berubah. <br>
+        <br>
+        <b>Contoh:</b> <br>
+        &ensp; <sample><b>.{5,}..</b></sample> mengharuskan prefiks minimal 5 digit, sambil mengizinkan variasi 2 digit di akhir.
+        ]]>
+    </string>
+    <string name="help_regex_preset_database_prefix">
+        <![CDATA[
+        Mencocokkan nomor telepon dalam basis data berdasarkan prefiks; prefiks harus minimal 5 digit, sambil mengizinkan variasi 2 digit di akhir. <br>
+        <br>
+        <b>Contoh</b>: <br>
+        &ensp; Jika <sample>12345678<b>00</b></sample> ada dalam basis data, panggilan dari <sample>12345678<b>99</b></sample> juga akan diblokir.
+        ]]>
+    </string>
 </resources>

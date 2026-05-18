@@ -89,6 +89,7 @@ fun RegexRule.numberRuleToChecker(
         ModeType.CallerName -> Checker.CNAP(ctx, this)
         ModeType.Geolocation -> Checker.Geolocation(ctx, this)
         ModeType.Carrier -> Checker.Carrier(ctx, this)
+        ModeType.DatabasePrefix -> Checker.DatabasePrefix(ctx, this)
         else -> Checker.Number(ctx, this)
     }
 }
@@ -1332,7 +1333,7 @@ class Checker { // for namespace only
             )
 
             // Both the incoming number and the contact number should match this regex,
-            //   here, check the incoming number first.
+            //   check the incoming number here.
             if (!rule.pattern.regexMatchesNumber(rawNumber, rule.patternFlags)) {
                 return null
             }
@@ -1357,6 +1358,66 @@ class Checker { // for namespace only
                     type = if (block) Def.RESULT_BLOCKED_BY_CONTACT_PREFIX_REGEX else Def.RESULT_ALLOWED_BY_CONTACT_PREFIX_REGEX,
                     rule = rule,
                     details = contactInfo.name
+                )
+            }
+            return null
+        }
+    }
+
+    // The regex flag `Database Prefix`, fuzzy prefix match.
+    class DatabasePrefix(
+        ctx: Context,
+        rule: RegexRule
+    ) : RegexRuleChecker(ctx, rule) {
+        override fun check(cCtx: CheckContext): ICheckResult? {
+            val C = G.palette
+
+            val rawNumber = cCtx.rawNumber
+            val logger = cCtx.logger
+
+            if (!isEnabled(cCtx)) {
+                return null
+            }
+
+            logger?.debug(
+                (ctx.getString(R.string.checking_template) + ": %s")
+                    .formatAnnotated(
+                        ctx.getString(R.string.database_prefix).A(C.infoBlue),
+                        priority().toString().A(C.priority),
+                        rule.descOrPattern().A(if (rule.isBlacklist) C.error else C.success)
+                    )
+            )
+
+            // Both the incoming number and the database number should match this regex,
+            //   check the incoming number here.
+            if (!rule.pattern.regexMatchesNumber(rawNumber, rule.patternFlags)) {
+                return null
+            }
+
+            // Find all numbers instead of checking if any exists, maybe it will support "min match count" in the future
+            val similarNumbers = SpamTable.findByNumberPrefix(ctx, rawNumber, rule.pattern, rule.patternFlags)
+
+            // 2. check regex
+            if (similarNumbers.isNotEmpty()) {
+                val firstNumber = similarNumbers[0]
+
+                val block = rule.isBlacklist
+
+                if (block)
+                    logger?.error(
+                        ctx.getString(R.string.blocked_by)
+                            .format(ctx.getString(R.string.database_prefix)) + ": ${rule.descOrPattern()} - ${firstNumber.peer}"
+                    )
+                else
+                    logger?.success(
+                        ctx.getString(R.string.allowed_by)
+                            .format(ctx.getString(R.string.database_prefix)) + ": ${rule.descOrPattern()} - ${firstNumber.peer}"
+                    )
+
+                return ByRegexRule(
+                    type = if (block) Def.RESULT_BLOCKED_BY_DATABASE_PREFIX_REGEX else Def.RESULT_ALLOWED_BY_DATABASE_PREFIX_REGEX,
+                    rule = rule,
+                    details = firstNumber.peer
                 )
             }
             return null

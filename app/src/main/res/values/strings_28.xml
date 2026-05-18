@@ -9,4 +9,24 @@
         ]]>
     </string>
     <string name="comment">Comment</string>
+    <string name="database_prefix">Database Prefix</string>
+    <string name="help_regex_mode_database_prefix">
+        <![CDATA[
+        <title><b>Database Prefix</b></title>:<br>
+        &ensp; Range blocking for database numbers.<br>
+        <br>
+        <warn>This regex must end with dots</warn>, in this regex mode, these trailing dots represent the variable digits. <br>
+        <br>
+        <b>For example:</b> <br>
+        &ensp; <sample><b>.{5,}..</b></sample> requires the prefix to be at least 5 digits long, while allowing a 2-digit variation at the end.
+        ]]>
+    </string>
+    <string name="help_regex_preset_database_prefix">
+        <![CDATA[
+        Matches database numbers by prefix, the prefix must be at least 5 digits long, while allowing a 2-digit variation at the end. <br>
+        <br>
+        <b>For example</b>: <br>
+        &ensp; If <sample>12345678<b>00</b></sample> exists in database, a call from <sample>12345678<b>99</b></sample> will also be blocked.
+        ]]>
+    </string>
 </resources>

@@ -9,4 +9,24 @@
         ]]>
     </string>
     <string name="comment">备注</string>
+    <string name="database_prefix">数据库前缀</string>
+    <string name="help_regex_mode_database_prefix">
+        <![CDATA[
+        <title><b>数据库前缀</b></title>:<br>
+        &ensp; 对数据库中的电话号码进行范围屏蔽。<br>
+        <br>
+        <warn>此正则表达式必须以点结尾</warn>，在此正则模式下，这些结尾的点表示可变数字。 <br>
+        <br>
+        <b>例如：</b> <br>
+        &ensp; <sample><b>.{5,}..</b></sample> 要求前缀至少为 5 位数字，同时允许末尾有 2 位数字的变化。
+        ]]>
+    </string>
+    <string name="help_regex_preset_database_prefix">
+        <![CDATA[
+        按前缀匹配数据库中的电话号码，前缀必须至少为 5 位数字，同时允许末尾有 2 位数字的变化。 <br>
+        <br>
+        <b>例如</b>: <br>
+        &ensp; 如果 <sample>12345678<b>00</b></sample> 存在于数据库中，则来自 <sample>12345678<b>99</b></sample> 的来电也会被屏蔽。
+        ]]>
+    </string>
 </resources>

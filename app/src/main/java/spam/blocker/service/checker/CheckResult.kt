@@ -38,6 +38,7 @@ import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_GROUP_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_PREFIX_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTENT_RULE
+import spam.blocker.def.Def.RESULT_ALLOWED_BY_DATABASE_PREFIX_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_DEFAULT
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_DIALED
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_EMERGENCY_CALL
@@ -57,6 +58,7 @@ import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTACT_GROUP_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTACT_PREFIX_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTACT_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTENT_RULE
+import spam.blocker.def.Def.RESULT_BLOCKED_BY_DATABASE_PREFIX_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_GEO_LOCATION_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_MEETING_MODE
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NON_CONTACT
@@ -546,6 +548,10 @@ class ByRegexRule(
                 // No need to add $summary here, usually there'll be only 1 contact prefix regex enabled
                 ctx.getString(R.string.contact_prefix) + ": $details" // details == contact name
             }
+            RESULT_ALLOWED_BY_DATABASE_PREFIX_REGEX, RESULT_BLOCKED_BY_DATABASE_PREFIX_REGEX -> {
+                // No need to add $summary here, usually there'll be only 1 contact prefix regex enabled
+                ctx.getString(R.string.database_prefix) + ": $details" // details == db number
+            }
 
             else -> "bug, please report"
         }
@@ -636,7 +642,8 @@ fun parseCheckResultFromDb(ctx: Context, result: Int, reason: String): ICheckRes
         RESULT_ALLOWED_BY_CNAP_REGEX, RESULT_BLOCKED_BY_CNAP_REGEX,
         RESULT_ALLOWED_BY_GEO_LOCATION_REGEX, RESULT_BLOCKED_BY_GEO_LOCATION_REGEX,
         RESULT_ALLOWED_BY_CARRIER_REGEX, RESULT_BLOCKED_BY_CARRIER_REGEX,
-        RESULT_ALLOWED_BY_CONTACT_PREFIX_REGEX, RESULT_BLOCKED_BY_CONTACT_PREFIX_REGEX -> {
+        RESULT_ALLOWED_BY_CONTACT_PREFIX_REGEX, RESULT_BLOCKED_BY_CONTACT_PREFIX_REGEX,
+        RESULT_ALLOWED_BY_DATABASE_PREFIX_REGEX, RESULT_BLOCKED_BY_DATABASE_PREFIX_REGEX -> {
             try {
                 // try new format, `reason` is a json string like: {"ruleId": 123, "details": "..."}
                 val data = Json.decodeFromString<ByRegexRule.DbData>(reason)

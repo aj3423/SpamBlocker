@@ -9,4 +9,24 @@
         ]]>
     </string>
     <string name="comment">نظر</string>
+    <string name="database_prefix">پیشوند پایگاه داده</string>
+    <string name="help_regex_mode_database_prefix">
+        <![CDATA[
+        <title><b>پیشوند پایگاه داده</b></title>:<br>
+        &ensp; مسدودسازی بازه‌ای برای شماره‌های تلفن موجود در پایگاه داده.<br>
+        <br>
+        <warn>این regex باید با نقطه پایان یابد</warn>، در این حالت regex این نقطه‌های پایانی نشان‌دهنده رقم‌های متغیر هستند. <br>
+        <br>
+        <b>برای مثال:</b> <br>
+        &ensp; <sample><b>.{5,}..</b></sample> نیاز دارد که پیشوند دست‌کم 5 رقم داشته باشد، در حالی که تغییر 2 رقم در پایان مجاز است.
+        ]]>
+    </string>
+    <string name="help_regex_preset_database_prefix">
+        <![CDATA[
+        شماره‌های تلفن پایگاه داده را بر اساس پیشوند تطبیق می‌دهد؛ پیشوند باید دست‌کم 5 رقم داشته باشد، در حالی که تغییر 2 رقم در پایان مجاز است. <br>
+        <br>
+        <b>برای مثال</b>: <br>
+        &ensp; اگر <sample>12345678<b>00</b></sample> در پایگاه داده وجود داشته باشد، تماس از <sample>12345678<b>99</b></sample> نیز مسدود می‌شود.
+        ]]>
+    </string>
 </resources>

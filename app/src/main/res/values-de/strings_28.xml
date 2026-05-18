@@ -9,4 +9,24 @@
         ]]>
     </string>
     <string name="comment">Kommentar</string>
+    <string name="database_prefix">Datenbank-Präfix</string>
+    <string name="help_regex_mode_database_prefix">
+        <![CDATA[
+        <title><b>Datenbank-Präfix</b></title>:<br>
+        &ensp; Bereichssperre für Telefonnummern in der Datenbank.<br>
+        <br>
+        <warn>Dieser Regex muss mit Punkten enden</warn>, in diesem Regex-Modus stehen diese abschließenden Punkte für die variablen Ziffern. <br>
+        <br>
+        <b>Zum Beispiel:</b> <br>
+        &ensp; <sample><b>.{5,}..</b></sample> erfordert ein Präfix mit mindestens 5 Ziffern und erlaubt am Ende eine 2-stellige Abweichung.
+        ]]>
+    </string>
+    <string name="help_regex_preset_database_prefix">
+        <![CDATA[
+        Gleicht Telefonnummern in der Datenbank nach Präfix ab; das Präfix muss mindestens 5 Ziffern lang sein und erlaubt am Ende eine 2-stellige Abweichung. <br>
+        <br>
+        <b>Zum Beispiel</b>: <br>
+        &ensp; Wenn <sample>12345678<b>00</b></sample> in der Datenbank vorhanden ist, wird auch ein Anruf von <sample>12345678<b>99</b></sample> blockiert.
+        ]]>
+    </string>
 </resources>

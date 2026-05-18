@@ -46,6 +46,7 @@ object Def {
 //    const val RESULT_ALLOWED_BY_CONTACT_PREFIX = 110 // 110 was used in some action build which causes conflict, skip this slot
     const val RESULT_ALLOWED_BY_CONTACT_PREFIX_REGEX = 111
     const val RESULT_ALLOWED_BY_CARRIER_REGEX = 112
+    const val RESULT_ALLOWED_BY_DATABASE_PREFIX_REGEX = 113
 
 
 
@@ -64,6 +65,7 @@ object Def {
     const val RESULT_BLOCKED_BY_GEO_LOCATION_REGEX = 21
     const val RESULT_BLOCKED_BY_CONTACT_PREFIX_REGEX = 22
     const val RESULT_BLOCKED_BY_CARRIER_REGEX = 23
+    const val RESULT_BLOCKED_BY_DATABASE_PREFIX_REGEX = 24
 
 
     fun isBlocked(result: Int): Boolean {

@@ -116,6 +116,9 @@ object Contacts {
         val prefixLength = number.length - tolerance
         val prefix = number.substring(0, prefixLength)
 
+        // Here we can't search with `LIKE%` because contact numbers can contain special characters, e.g.
+        //  + 1 222-333-4444
+        // So we list all contacts and compare them one by one. The performance should be okay...
         val projection = arrayOf(
             ContactsContract.CommonDataKinds.Phone.CONTACT_ID,
             ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,

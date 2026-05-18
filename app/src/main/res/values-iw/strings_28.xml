@@ -9,4 +9,24 @@
         ]]>
     </string>
     <string name="comment">הערה</string>
+    <string name="database_prefix">קידומת מסד נתונים</string>
+    <string name="help_regex_mode_database_prefix">
+        <![CDATA[
+        <title><b>קידומת מסד נתונים</b></title>:<br>
+        &ensp; חסימה לפי טווח עבור מספרי טלפון במסד הנתונים.<br>
+        <br>
+        <warn>ה-regex הזה חייב להסתיים בנקודות</warn>, במצב regex זה הנקודות שבסוף מייצגות את הספרות המשתנות. <br>
+        <br>
+        <b>לדוגמה:</b> <br>
+        &ensp; <sample><b>.{5,}..</b></sample> דורש שהקידומת תהיה באורך של לפחות 5 ספרות, תוך מתן אפשרות לשינוי של 2 ספרות בסוף.
+        ]]>
+    </string>
+    <string name="help_regex_preset_database_prefix">
+        <![CDATA[
+        מתאים מספרי טלפון במסד הנתונים לפי קידומת; הקידומת חייבת להיות באורך של לפחות 5 ספרות, תוך מתן אפשרות לשינוי של 2 ספרות בסוף. <br>
+        <br>
+        <b>לדוגמה</b>: <br>
+        &ensp; אם <sample>12345678<b>00</b></sample> קיים במסד הנתונים, גם שיחה מ-<sample>12345678<b>99</b></sample> תיחסם.
+        ]]>
+    </string>
 </resources>

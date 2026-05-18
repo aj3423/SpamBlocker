@@ -9,4 +9,24 @@
         ]]>
     </string>
     <string name="comment">Comentari</string>
+    <string name="database_prefix">Prefix de la base de dades</string>
+    <string name="help_regex_mode_database_prefix">
+        <![CDATA[
+        <title><b>Prefix de la base de dades</b></title>:<br>
+        &ensp; Bloqueig per rang dels números de telèfon de la base de dades.<br>
+        <br>
+        <warn>Aquesta regex ha d\'acabar amb punts</warn>, en aquest mode regex aquests punts finals representen els dígits variables. <br>
+        <br>
+        <b>Per exemple:</b> <br>
+        &ensp; <sample><b>.{5,}..</b></sample> requereix que el prefix tingui almenys 5 dígits, tot permetent una variació de 2 dígits al final.
+        ]]>
+    </string>
+    <string name="help_regex_preset_database_prefix">
+        <![CDATA[
+        Fa coincidir els números de telèfon de la base de dades pel prefix; el prefix ha de tenir almenys 5 dígits, tot permetent una variació de 2 dígits al final. <br>
+        <br>
+        <b>Per exemple</b>: <br>
+        &ensp; Si <sample>12345678<b>00</b></sample> existeix a la base de dades, una trucada de <sample>12345678<b>99</b></sample> també es bloquejarà.
+        ]]>
+    </string>
 </resources>

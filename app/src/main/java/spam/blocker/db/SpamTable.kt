@@ -15,7 +15,9 @@ import spam.blocker.db.Db.Companion.COLUMN_REASON_EXTRA
 import spam.blocker.db.Db.Companion.COLUMN_TIME
 import spam.blocker.db.Db.Companion.TABLE_SPAM
 import spam.blocker.def.Def.ANDROID_14
+import spam.blocker.util.applyRegexFlags
 import spam.blocker.util.loge
+import spam.blocker.util.regexMatchesNumber
 
 enum class ImportDbReason {
     Manually,
@@ -140,6 +142,40 @@ object SpamTable {
             whereClause = " WHERE $COLUMN_PEER LIKE ? ORDER BY $COLUMN_TIME DESC LIMIT ?",
             whereParams = arrayOf("%$pattern%", limit.toString())
         )
+    }
+    fun findByNumberPrefix(
+        ctx: Context,
+        rawNumber: String, // This function assumes the `incomingNumber` matches the `pattern`
+        pattern: String,
+        patternFlags: Int,
+    ): List<SpamNumber> {
+        val tolerance = pattern.takeLastWhile { it == '.' }.length
+
+        // 1. Process `Ignore Country Code` and `Raw Number` first
+        val number = rawNumber.applyRegexFlags(patternFlags)
+
+        if (number.length <= tolerance) {
+            return listOf()
+        }
+
+        val prefixLength = number.length - tolerance
+        val prefix = number.substring(0, prefixLength)
+
+
+        // Query like "SELECT ... LIKE 123456%"
+        return listAll(
+            ctx,
+            "WHERE $COLUMN_PEER LIKE ?",
+            arrayOf("$prefix%")
+        ).filter {
+            // The number must match the regex
+            if(!pattern.regexMatchesNumber(it.peer, patternFlags))
+                return@filter false
+
+            // Check if the contact number starts with the prefix AND has 'tolerance' more digits
+            it.peer.startsWith(prefix) &&
+                    it.peer.length == prefix.length + tolerance
+        }
     }
 
     fun findByNumber(ctx: Context, number: String): SpamNumber? {

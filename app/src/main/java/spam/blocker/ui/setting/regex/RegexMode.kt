@@ -31,7 +31,6 @@ import spam.blocker.ui.widgets.CheckBox
 import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.ui.widgets.FlowRowSpaced
 import spam.blocker.ui.widgets.GreyButton
-import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.GreyIcon20
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.LabelItem
@@ -59,6 +58,7 @@ import spam.blocker.util.TimeUtils.timeRangeStr
 //  3. add to Def and CheckResult.kt
 //  4. add to Checker.Content.particularMatches
 //  5. add to Checker.numberRuleToChecker
+//  6. add to HistoryIndicator
 //  TODO...
 object RegexMode {
 
@@ -73,6 +73,7 @@ object RegexMode {
         const val Geolocation = 6
         const val Carrier = 7
         const val CallerName = 8
+        const val DatabasePrefix = 9
     }
 
     fun regexModeByType(modeType: Int): Base {
@@ -87,6 +88,7 @@ object RegexMode {
             ModeType.Geolocation -> Geolocation()
             ModeType.Carrier -> Carrier()
             ModeType.CallerName -> CallerName()
+            ModeType.DatabasePrefix -> DatabasePrefix()
 
             else -> throw IllegalArgumentException("Unexpected ModeType key: $modeType")
         }
@@ -99,6 +101,7 @@ object RegexMode {
             ContactName(),
             ContactGroup(),
             ContactPrefix(),
+            DatabasePrefix(),
             Geolocation(),
             Carrier(),
             CallerName(),
@@ -140,7 +143,10 @@ object RegexMode {
         // Mode label / icon
         abstract val labelId: Int
         @Composable
-        abstract fun Icon()
+        abstract fun Icon(
+            color: Color = if(modeType == ModeType.PhoneNumber)
+                G.palette.textGrey else G.palette.infoBlue
+        )
 
         @Composable
         open fun Compose(state: RegexState) {
@@ -493,8 +499,8 @@ object RegexMode {
         override val textPlaceholder = ""
         override val labelId = R.string.phone_number
         @Composable
-        override fun Icon() {
-            GreyIcon16(R.drawable.ic_number_sign)
+        override fun Icon(color: Color) {
+            ResIcon16(R.drawable.ic_number_sign, color = color)
         }
         override val helpTooltipId = R.string.help_regex_mode_phone_number
     }
@@ -510,8 +516,8 @@ object RegexMode {
         override val textPlaceholder = "[contact_name]"
         override val labelId = R.string.contact_name
         @Composable
-        override fun Icon() {
-            ResIcon16(R.drawable.ic_contact_square, color = G.palette.infoBlue)
+        override fun Icon(color: Color) {
+            ResIcon16(R.drawable.ic_contact_square, color = color)
         }
         override val helpTooltipId = R.string.help_regex_mode_contact
     }
@@ -521,8 +527,8 @@ object RegexMode {
         override val textPlaceholder = "[contact_group]"
         override val labelId = R.string.contact_group
         @Composable
-        override fun Icon() {
-            ResIcon16(R.drawable.ic_contact_group, color = G.palette.infoBlue)
+        override fun Icon(color: Color) {
+            ResIcon16(R.drawable.ic_contact_group, color = color)
         }
         override val helpTooltipId = R.string.help_regex_mode_contact_group
     }
@@ -532,18 +538,28 @@ object RegexMode {
         override val textPlaceholder = "[contact_prefix]"
         override val labelId = R.string.contact_prefix
         @Composable
-        override fun Icon() {
-            ResIcon16(R.drawable.ic_contact_eq, color = G.palette.infoBlue)
+        override fun Icon(color: Color) {
+            ResIcon16(R.drawable.ic_contact_eq, color = color)
         }
         override val helpTooltipId = R.string.help_regex_mode_contact_prefix
+    }
+    class DatabasePrefix : NumberMode() {
+        override val modeType = ModeType.DatabasePrefix
+        override val textPlaceholder = "[database_prefix]"
+        override val labelId = R.string.database_prefix
+        @Composable
+        override fun Icon(color: Color) {
+            ResIcon16(R.drawable.ic_db_share, color = color)
+        }
+        override val helpTooltipId = R.string.help_regex_mode_database_prefix
     }
     class Geolocation : NumberMode() {
         override val modeType = ModeType.Geolocation
         override val textPlaceholder = "[geoloc]"
         override val labelId = R.string.geolocation
         @Composable
-        override fun Icon() {
-            ResIcon16(R.drawable.ic_location, color = G.palette.infoBlue)
+        override fun Icon(color: Color) {
+            ResIcon16(R.drawable.ic_location, color = color)
         }
         override val helpTooltipId = R.string.help_regex_mode_phone_number
     }
@@ -552,8 +568,8 @@ object RegexMode {
         override val textPlaceholder = "[carrier]"
         override val labelId = R.string.carrier
         @Composable
-        override fun Icon() {
-            ResIcon16(R.drawable.ic_cellular_network, color = G.palette.infoBlue)
+        override fun Icon(color: Color) {
+            ResIcon16(R.drawable.ic_cellular_network, color = color)
         }
         override val helpTooltipId = R.string.help_regex_mode_carrier
     }
@@ -562,8 +578,8 @@ object RegexMode {
         override val textPlaceholder = "[caller_name]"
         override val labelId = R.string.caller_name
         @Composable
-        override fun Icon() {
-            ResIcon16(R.drawable.ic_id_card, color = G.palette.infoBlue)
+        override fun Icon(color: Color) {
+            ResIcon16(R.drawable.ic_id_card, color = color)
         }
         override val helpTooltipId = R.string.help_regex_mode_caller_name
     }
@@ -571,7 +587,7 @@ object RegexMode {
         override val modeType = ModeType.SmsContent
         override val labelId = R.string.sms_content
         @Composable
-        override fun Icon() {
+        override fun Icon(color: Color) {
             ResIcon16(R.drawable.ic_open_msg)
         }
 
@@ -589,7 +605,7 @@ object RegexMode {
         override val modeType = ModeType.QuickCopy
         override val labelId = R.string.quick_copy
         @Composable
-        override fun Icon() {
+        override fun Icon(color: Color) {
             ResIcon16(R.drawable.ic_open_msg)
         }
 

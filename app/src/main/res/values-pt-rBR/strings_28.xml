@@ -9,4 +9,24 @@
         ]]>
     </string>
     <string name="comment">Comentário</string>
+    <string name="database_prefix">Prefixo do banco de dados</string>
+    <string name="help_regex_mode_database_prefix">
+        <![CDATA[
+        <title><b>Prefixo do banco de dados</b></title>:<br>
+        &ensp; Bloqueio por intervalo para números de telefone no banco de dados.<br>
+        <br>
+        <warn>Esta regex deve terminar com pontos</warn>, neste modo regex esses pontos finais representam os dígitos variáveis. <br>
+        <br>
+        <b>Por exemplo:</b> <br>
+        &ensp; <sample><b>.{5,}..</b></sample> exige que o prefixo tenha pelo menos 5 dígitos, permitindo uma variação de 2 dígitos no final.
+        ]]>
+    </string>
+    <string name="help_regex_preset_database_prefix">
+        <![CDATA[
+        Corresponde aos números de telefone no banco de dados pelo prefixo; o prefixo deve ter pelo menos 5 dígitos, permitindo uma variação de 2 dígitos no final. <br>
+        <br>
+        <b>Por exemplo</b>: <br>
+        &ensp; Se <sample>12345678<b>00</b></sample> existir no banco de dados, uma chamada de <sample>12345678<b>99</b></sample> também será bloqueada.
+        ]]>
+    </string>
 </resources>

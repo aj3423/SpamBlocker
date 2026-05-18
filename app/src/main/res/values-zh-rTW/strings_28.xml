@@ -9,4 +9,24 @@
         ]]>
     </string>
     <string name="comment">備註</string>
+    <string name="database_prefix">資料庫前綴</string>
+    <string name="help_regex_mode_database_prefix">
+        <![CDATA[
+        <title><b>資料庫前綴</b></title>:<br>
+        &ensp; 對資料庫中的電話號碼進行範圍封鎖。<br>
+        <br>
+        <warn>此正規表示式必須以點號結尾</warn>，在此正則模式下，這些結尾的點號表示可變數字。 <br>
+        <br>
+        <b>例如：</b> <br>
+        &ensp; <sample><b>.{5,}..</b></sample> 要求前綴至少為 5 位數字，同時允許末尾有 2 位數字的變化。
+        ]]>
+    </string>
+    <string name="help_regex_preset_database_prefix">
+        <![CDATA[
+        按前綴比對資料庫中的電話號碼，前綴必須至少為 5 位數字，同時允許末尾有 2 位數字的變化。 <br>
+        <br>
+        <b>例如</b>: <br>
+        &ensp; 如果 <sample>12345678<b>00</b></sample> 存在於資料庫中，則來自 <sample>12345678<b>99</b></sample> 的來電也會被封鎖。
+        ]]>
+    </string>
 </resources>

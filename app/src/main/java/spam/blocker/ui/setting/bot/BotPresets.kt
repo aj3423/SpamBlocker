@@ -104,9 +104,6 @@ val BotPresets = listOf(
                     "<a href=\"https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data\">FTC - Do Not Call</a>"
                 )
         },
-        requiredPermissions = listOf(
-            PermissionWrapper(Permission.phoneState)
-        ),
         newInstance = { ctx ->
             Bot(
                 desc = ctx.getString(R.string.bot_preset_dnc),

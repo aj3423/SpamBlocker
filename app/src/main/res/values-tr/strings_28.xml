@@ -9,4 +9,24 @@
         ]]>
     </string>
     <string name="comment">Yorum</string>
+    <string name="database_prefix">Veritabanı Öneki</string>
+    <string name="help_regex_mode_database_prefix">
+        <![CDATA[
+        <title><b>Veritabanı Öneki</b></title>:<br>
+        &ensp; Veritabanındaki telefon numaraları için aralık engelleme.<br>
+        <br>
+        <warn>Bu regex nokta ile bitmelidir</warn>, bu regex modunda sondaki bu noktalar değişken rakamları temsil eder. <br>
+        <br>
+        <b>Örneğin:</b> <br>
+        &ensp; <sample><b>.{5,}..</b></sample> önekin en az 5 basamak uzunluğunda olmasını gerektirir ve sonda 2 basamaklık değişime izin verir.
+        ]]>
+    </string>
+    <string name="help_regex_preset_database_prefix">
+        <![CDATA[
+        Veritabanındaki telefon numaralarını öneke göre eşleştirir; önek en az 5 basamak uzunluğunda olmalıdır ve sonda 2 basamaklık değişime izin verir. <br>
+        <br>
+        <b>Örneğin</b>: <br>
+        &ensp; Veritabanında <sample>12345678<b>00</b></sample> varsa, <sample>12345678<b>99</b></sample> numarasından gelen arama da engellenir.
+        ]]>
+    </string>
 </resources>

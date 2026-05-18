@@ -49,10 +49,36 @@ import spam.blocker.util.regexMatches
 import spam.blocker.util.setFlag
 
 
+// v4.15 changed `importance`(Int) to `channel`(String), use this class for history compatibility
+// (Remove this after 2027-01-01)
+object CompatibleChannelSerializer : KSerializer<String> {
+    override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("channel", PrimitiveKind.STRING)
+    override fun serialize(encoder: Encoder, value: String) {
+        encoder.encodeString(value)
+    }
 
-// v5.9 refactored regex mode and added `patternModeType`/`patternExtraModeType`, use this class for history compatibility
-// (Remove this after 2027-06-01)
+    override fun deserialize(decoder: Decoder): String {
+        val jsonDecoder = decoder as? JsonDecoder
+            ?: throw SerializationException("This serializer can only be used with JSON")
 
+        val element = jsonDecoder.decodeJsonElement()
+        return when {
+            // Handle new format: channel as String
+            element is JsonPrimitive && element.isString -> element.content
+            // Handle old format: importance as Int in parent object
+            element is JsonObject && element.containsKey("importance") -> {
+                val importance = element["importance"]?.jsonPrimitive?.intOrNull ?: IMPORTANCE_HIGH
+                when (importance) {
+                    0 -> CHANNEL_NONE
+                    1,2 -> CHANNEL_LOW
+                    else -> CHANNEL_HIGH
+                }
+            }
+            // Fallback to default
+            else -> Def.DEF_SPAM_CHANNEL
+        }
+    }
+}
 
 @Serializable
 data class RegexRule(
@@ -74,6 +100,7 @@ data class RegexRule(
 
     var flags: Int = Def.FLAG_FOR_SMS or Def.FLAG_FOR_CALL, // applies to SMS or Call or both
 
+    @Serializable(with = CompatibleChannelSerializer::class)
     var channel: String = if(isBlacklist) Def.DEF_SPAM_CHANNEL else CHANNEL_HIGH, // notification channel
 
     var schedule: String = "",

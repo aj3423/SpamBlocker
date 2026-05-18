@@ -138,6 +138,24 @@ val RegexPresets = mapOf(
             )
         },
         RegexPreset(
+            label = { it.getString(R.string.database_prefix) },
+            tooltip = {
+                it.getString(R.string.help_regex_preset_database_prefix)
+            }
+        ) { ctx ->
+            listOf(
+                RegexRule(
+                    pattern = ".{5,}..",
+                    description = "",
+                    priority = 0,
+                    isBlacklist = true,
+                    flags = Def.FLAG_FOR_CALL or Def.FLAG_FOR_SMS,
+                    patternFlags = Def.FLAG_REGEX_RAW_NUMBER,
+                    patternModeType = ModeType.DatabasePrefix
+                )
+            )
+        },
+        RegexPreset(
             label = { it.getString(R.string.forwarded_call) },
             tooltip = {
                 it.getString(R.string.help_regex_preset_forwarded_call).format(

@@ -9,4 +9,24 @@
         ]]>
     </string>
     <string name="comment">Коментар</string>
+    <string name="database_prefix">Префікс бази даних</string>
+    <string name="help_regex_mode_database_prefix">
+        <![CDATA[
+        <title><b>Префікс бази даних</b></title>:<br>
+        &ensp; Блокування діапазонів для телефонних номерів із бази даних.<br>
+        <br>
+        <warn>Цей regex має закінчуватися крапками</warn>, у цьому режимі regex ці кінцеві крапки позначають змінні цифри. <br>
+        <br>
+        <b>Наприклад:</b> <br>
+        &ensp; <sample><b>.{5,}..</b></sample> вимагає, щоб префікс мав щонайменше 5 цифр, дозволяючи зміну 2 цифр наприкінці.
+        ]]>
+    </string>
+    <string name="help_regex_preset_database_prefix">
+        <![CDATA[
+        Зіставляє телефонні номери в базі даних за префіксом; префікс має містити щонайменше 5 цифр, дозволяючи зміну 2 цифр наприкінці. <br>
+        <br>
+        <b>Наприклад</b>: <br>
+        &ensp; Якщо <sample>12345678<b>00</b></sample> є в базі даних, дзвінок із <sample>12345678<b>99</b></sample> також буде заблоковано.
+        ]]>
+    </string>
 </resources>

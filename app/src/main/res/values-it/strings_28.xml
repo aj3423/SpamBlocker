@@ -9,4 +9,24 @@
         ]]>
     </string>
     <string name="comment">Commento</string>
+    <string name="database_prefix">Prefisso del database</string>
+    <string name="help_regex_mode_database_prefix">
+        <![CDATA[
+        <title><b>Prefisso del database</b></title>:<br>
+        &ensp; Blocco per intervallo dei numeri di telefono nel database.<br>
+        <br>
+        <warn>Questa regex deve terminare con punti</warn>, in questa modalità regex questi punti finali rappresentano le cifre variabili. <br>
+        <br>
+        <b>Per esempio:</b> <br>
+        &ensp; <sample><b>.{5,}..</b></sample> richiede che il prefisso sia lungo almeno 5 cifre, consentendo una variazione di 2 cifre alla fine.
+        ]]>
+    </string>
+    <string name="help_regex_preset_database_prefix">
+        <![CDATA[
+        Corrisponde ai numeri di telefono nel database in base al prefisso; il prefisso deve essere lungo almeno 5 cifre, consentendo una variazione di 2 cifre alla fine. <br>
+        <br>
+        <b>Per esempio</b>: <br>
+        &ensp; Se <sample>12345678<b>00</b></sample> esiste nel database, anche una chiamata da <sample>12345678<b>99</b></sample> verrà bloccata.
+        ]]>
+    </string>
 </resources>

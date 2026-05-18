@@ -21,6 +21,7 @@ import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_GROUP_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_PREFIX_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTENT_RULE
+import spam.blocker.def.Def.RESULT_ALLOWED_BY_DATABASE_PREFIX_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_GEO_LOCATION_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_NUMBER_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CARRIER_REGEX
@@ -29,6 +30,7 @@ import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTACT_GROUP_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTACT_PREFIX_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTACT_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTENT_RULE
+import spam.blocker.def.Def.RESULT_BLOCKED_BY_DATABASE_PREFIX_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_GEO_LOCATION_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NUMBER_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_SPAM_DB
@@ -36,10 +38,12 @@ import spam.blocker.def.Def.isBlocked
 import spam.blocker.service.checker.ByRegexRule
 import spam.blocker.service.checker.Checker
 import spam.blocker.service.checker.Checker.PassedByDefault
+import spam.blocker.service.checker.ICheckResult
 import spam.blocker.service.checker.IChecker
 import spam.blocker.service.checker.numberRuleToChecker
 import spam.blocker.ui.M
 import spam.blocker.ui.history.HistoryOptions.showHistoryIndicator
+import spam.blocker.ui.setting.regex.RegexMode
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.util.spf
@@ -63,31 +67,33 @@ fun IndicatorIcons(indicators: Indicators) {
                 }
 
                 RESULT_ALLOWED_BY_NUMBER_REGEX, RESULT_BLOCKED_BY_NUMBER_REGEX -> {
-                    ResIcon(R.drawable.ic_number_sign, modifier = M.size(16.dp), color = if(isBlocked(it.type)) C.error else C.success)
+                    RegexMode.PhoneNumber().Icon(color = if(isBlocked(it.type)) C.error else C.success)
                 }
                 RESULT_ALLOWED_BY_CONTACT_REGEX, RESULT_BLOCKED_BY_CONTACT_REGEX -> {
-                    ResIcon(R.drawable.ic_contact_square, modifier = M.size(16.dp), color = if(isBlocked(it.type)) C.error else C.success)
+                    RegexMode.ContactName().Icon(color = if(isBlocked(it.type)) C.error else C.success)
                 }
                 RESULT_ALLOWED_BY_CONTACT_GROUP_REGEX, RESULT_BLOCKED_BY_CONTACT_GROUP_REGEX -> {
-                    ResIcon(R.drawable.ic_contact_group, modifier = M.size(16.dp), color = if(isBlocked(it.type)) C.error else C.success)
+                    RegexMode.ContactGroup().Icon(color = if(isBlocked(it.type)) C.error else C.success)
                 }
                 RESULT_ALLOWED_BY_CONTACT_PREFIX_REGEX, RESULT_BLOCKED_BY_CONTACT_PREFIX_REGEX -> {
-                    ResIcon(R.drawable.ic_contact_eq, modifier = M.size(16.dp), color = if(isBlocked(it.type)) C.error else C.success)
+                    RegexMode.ContactPrefix().Icon(color = if(isBlocked(it.type)) C.error else C.success)
                 }
                 RESULT_ALLOWED_BY_CNAP_REGEX, RESULT_BLOCKED_BY_CNAP_REGEX -> {
-                    ResIcon(R.drawable.ic_id_card, modifier = M.size(16.dp), color = if(isBlocked(it.type)) C.error else C.success)
+                    RegexMode.CallerName().Icon(color = if(isBlocked(it.type)) C.error else C.success)
                 }
                 RESULT_ALLOWED_BY_GEO_LOCATION_REGEX, RESULT_BLOCKED_BY_GEO_LOCATION_REGEX -> {
-                    ResIcon(R.drawable.ic_location, modifier = M.size(16.dp), color = if(isBlocked(it.type)) C.error else C.success)
+                    RegexMode.Geolocation().Icon(color = if(isBlocked(it.type)) C.error else C.success)
                 }
                 RESULT_ALLOWED_BY_CARRIER_REGEX, RESULT_BLOCKED_BY_CARRIER_REGEX -> {
-                    ResIcon(R.drawable.ic_cellular_network, modifier = M.size(16.dp), color = if(isBlocked(it.type)) C.error else C.success)
+                    RegexMode.Carrier().Icon(color = if(isBlocked(it.type)) C.error else C.success)
+                }
+                RESULT_ALLOWED_BY_DATABASE_PREFIX_REGEX, RESULT_BLOCKED_BY_DATABASE_PREFIX_REGEX -> {
+                    RegexMode.DatabasePrefix().Icon(color = if(isBlocked(it.type)) C.error else C.success)
                 }
 
                 RESULT_ALLOWED_BY_CONTENT_RULE -> {
                     ResIcon(R.drawable.ic_sms_pass, modifier = M.size(14.dp), color = C.success)
                 }
-
                 RESULT_BLOCKED_BY_CONTENT_RULE -> {
                     ResIcon(R.drawable.ic_sms_blocked, modifier = M.size(14.dp), color = C.error)
                 }
@@ -162,6 +168,8 @@ fun IndicatorsWrapper(
                 }
             }
 
+            var checkResult : ICheckResult
+
             if (vm.forType == Def.ForNumber) { // in Call Tab
                 // 2. Check if the call number matches any Number Rule?
                 run {
@@ -183,7 +191,8 @@ fun IndicatorsWrapper(
                         RESULT_ALLOWED_BY_CONTACT_PREFIX_REGEX, RESULT_BLOCKED_BY_CONTACT_PREFIX_REGEX,
                         RESULT_ALLOWED_BY_CNAP_REGEX, RESULT_BLOCKED_BY_CNAP_REGEX,
                         RESULT_ALLOWED_BY_GEO_LOCATION_REGEX, RESULT_BLOCKED_BY_GEO_LOCATION_REGEX,
-                        RESULT_ALLOWED_BY_CARRIER_REGEX, RESULT_BLOCKED_BY_CARRIER_REGEX
+                        RESULT_ALLOWED_BY_CARRIER_REGEX, RESULT_BLOCKED_BY_CARRIER_REGEX,
+                        RESULT_ALLOWED_BY_DATABASE_PREFIX_REGEX, RESULT_BLOCKED_BY_DATABASE_PREFIX_REGEX
 
                             -> {
                                 add(
@@ -217,7 +226,9 @@ fun IndicatorsWrapper(
                         RESULT_ALLOWED_BY_CONTACT_PREFIX_REGEX, RESULT_BLOCKED_BY_CONTACT_PREFIX_REGEX,
                         RESULT_ALLOWED_BY_CNAP_REGEX, RESULT_BLOCKED_BY_CNAP_REGEX,
                         RESULT_ALLOWED_BY_GEO_LOCATION_REGEX, RESULT_BLOCKED_BY_GEO_LOCATION_REGEX,
-                        RESULT_ALLOWED_BY_CARRIER_REGEX, RESULT_BLOCKED_BY_CARRIER_REGEX
+                        RESULT_ALLOWED_BY_CARRIER_REGEX, RESULT_BLOCKED_BY_CARRIER_REGEX,
+                        RESULT_ALLOWED_BY_DATABASE_PREFIX_REGEX, RESULT_BLOCKED_BY_DATABASE_PREFIX_REGEX
+
                             -> {
                                 add(
                                     Indicator(

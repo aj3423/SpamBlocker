@@ -9,4 +9,24 @@
         ]]>
     </string>
     <string name="comment">Commentaire</string>
+    <string name="database_prefix">Préfixe de base de données</string>
+    <string name="help_regex_mode_database_prefix">
+        <![CDATA[
+        <title><b>Préfixe de base de données</b></title>:<br>
+        &ensp; Blocage par plage pour les numéros de téléphone de la base de données.<br>
+        <br>
+        <warn>Cette expression régulière doit se terminer par des points</warn>, dans ce mode, ces points finaux représentent les chiffres variables. <br>
+        <br>
+        <b>Par exemple :</b> <br>
+        &ensp; <sample><b>.{5,}..</b></sample> exige un préfixe comportant au moins 5 chiffres, tout en autorisant une variation de 2 chiffres à la fin.
+        ]]>
+    </string>
+    <string name="help_regex_preset_database_prefix">
+        <![CDATA[
+        Correspond aux numéros de téléphone de la base de données par préfixe, le préfixe doit comporter au moins 5 chiffres, tout en autorisant une variation de 2 chiffres à la fin. <br>
+        <br>
+        <b>Par exemple</b>: <br>
+        &ensp; Si <sample>12345678<b>00</b></sample> existe dans la base de données, un appel depuis <sample>12345678<b>99</b></sample> sera aussi bloqué.
+        ]]>
+    </string>
 </resources>
