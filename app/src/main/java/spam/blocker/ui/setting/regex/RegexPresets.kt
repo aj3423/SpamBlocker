@@ -59,6 +59,35 @@ val RegexPresets = mapOf(
             )
         },
         RegexPreset(
+            label = { it.getString(R.string.local_number) },
+            tooltip = {
+                it.getString(R.string.help_regex_preset_local_number)
+            },
+            preCheck = { ctx, onSuccess, onFail ->
+                G.permissionChain.ask(
+                    ctx,
+                    listOf(
+                        PermissionWrapper(Permission.phoneState),
+                    )
+                ) { granted ->
+                    if (granted) {
+                        onSuccess()
+                    }
+                }
+            }
+        ) { ctx ->
+            listOf(
+                RegexRule(
+                    pattern = "(?!___$).*",
+                    description = ctx.getString(R.string.non_local_number),
+                    priority = 0,
+                    isBlacklist = true,
+                    flags = Def.FLAG_FOR_CALL or Def.FLAG_FOR_SMS,
+                    patternModeType = ModeType.Geolocation
+                )
+            )
+        },
+        RegexPreset(
             label = { it.getString(R.string.sim_2_contacts) },
             tooltip = {
                 it.getString(R.string.help_sim_2_contacts)
@@ -191,35 +220,6 @@ val RegexPresets = mapOf(
             )
         },
 
-        RegexPreset(
-            label = { it.getString(R.string.local_number) },
-            tooltip = {
-                it.getString(R.string.help_regex_preset_local_number)
-            },
-            preCheck = { ctx, onSuccess, onFail ->
-                G.permissionChain.ask(
-                    ctx,
-                    listOf(
-                        PermissionWrapper(Permission.phoneState),
-                    )
-                ) { granted ->
-                    if (granted) {
-                        onSuccess()
-                    }
-                }
-            }
-        ) { ctx ->
-            listOf(
-                RegexRule(
-                    pattern = "(?!___$).*",
-                    description = ctx.getString(R.string.non_local_number),
-                    priority = 0,
-                    isBlacklist = true,
-                    flags = Def.FLAG_FOR_CALL or Def.FLAG_FOR_SMS,
-                    patternModeType = ModeType.Geolocation
-                )
-            )
-        },
     ),
 
     Def.ForSms to listOf(

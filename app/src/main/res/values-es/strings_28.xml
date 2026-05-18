@@ -26,7 +26,7 @@
         Coincide con números de teléfono de la base de datos por prefijo; el prefijo debe tener al menos 5 dígitos, permitiendo una variación de 2 dígitos al final. <br>
         <br>
         <b>Por ejemplo</b>: <br>
-        &ensp; Si <sample>12345678<b>00</b></sample> existe en la base de datos, una llamada de <sample>12345678<b>99</b></sample> también se bloqueará.
+        &ensp; Si <sample>12345678</sample><error>00</error> existe en la base de datos, una llamada de <sample>12345678</sample><error>99</error> también se bloqueará.
         ]]>
     </string>
 </resources>

@@ -26,7 +26,7 @@
         Correspond aux numéros de téléphone de la base de données par préfixe, le préfixe doit comporter au moins 5 chiffres, tout en autorisant une variation de 2 chiffres à la fin. <br>
         <br>
         <b>Par exemple</b>: <br>
-        &ensp; Si <sample>12345678<b>00</b></sample> existe dans la base de données, un appel depuis <sample>12345678<b>99</b></sample> sera aussi bloqué.
+        &ensp; Si <sample>12345678</sample><error>00</error> existe dans la base de données, un appel depuis <sample>12345678</sample><error>99</error> sera aussi bloqué.
         ]]>
     </string>
 </resources>

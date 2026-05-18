@@ -12,6 +12,8 @@ import org.junit.Test
 import spam.blocker.db.ContentRegexTable
 import spam.blocker.db.NumberRegexTable
 import spam.blocker.db.RegexRule
+import spam.blocker.db.SpamNumber
+import spam.blocker.db.SpamTable
 import spam.blocker.def.Def
 import spam.blocker.service.checker.Checker
 import spam.blocker.ui.setting.regex.RegexMode.ModeType
@@ -43,6 +45,7 @@ class RuleTest {
         spf.SharedPref(ctx).clear()
         NumberRegexTable().clearAll(ctx)
         ContentRegexTable().clearAll(ctx)
+        SpamTable.clearAll(ctx)
     }
 
     @After
@@ -668,5 +671,45 @@ class RuleTest {
         // non-SFR
         r = Checker.checkCall(ctx, rawNumber = "").first
         assertEquals("should allow non-SFR(carrier) by default", Def.RESULT_ALLOWED_BY_DEFAULT, r.type)
+    }
+
+    // Database Prefix
+    @Test
+    fun database_prefix() {
+        SpamTable.add(ctx, rawNumber = "1234567800")
+
+        add_number_rule(
+            build_rule(".*..", "", 99, isBlacklist = true, Def.FLAG_FOR_CALL, patternModeType = ModeType.DatabasePrefix)
+        )
+
+        // Should work with "1234567811" and regex `.*..`
+        var r = Checker.checkCall(ctx, rawNumber = "1234567811").first
+        assertEquals("1. should block", Def.RESULT_BLOCKED_BY_DATABASE_PREFIX_REGEX, r.type)
+
+        // Should not work with "1234567111" and regex `.*..` (3 digits off)
+        r = Checker.checkCall(ctx, rawNumber = "1234567111").first
+        assertEquals("2. should ignore 3 digits off", Def.RESULT_ALLOWED_BY_DEFAULT, r.type)
+
+        // More precise regex test
+        SpamTable.apply {
+            clearAll(ctx)
+            add(ctx, rawNumber = "1234500") // 5-digit prefix
+            add(ctx, rawNumber = "12345600") // 6-digit prefix
+        }
+        add_number_rule(
+            build_rule(".{5,6}..", "", 99, isBlacklist = true, Def.FLAG_FOR_CALL, patternModeType = ModeType.DatabasePrefix)
+        )
+
+        // Should work with numbers with a 5~6 digit prefix
+        r = Checker.checkCall(ctx, rawNumber = "1234511").first
+        assertEquals("3. should work with 5 digit prefix", Def.RESULT_BLOCKED_BY_DATABASE_PREFIX_REGEX, r.type)
+        r = Checker.checkCall(ctx, rawNumber = "12345611").first
+        assertEquals("4. should work with 6 digit prefix", Def.RESULT_BLOCKED_BY_DATABASE_PREFIX_REGEX, r.type)
+
+        // Should ignore numbers with prefix length "<5" or ">6"
+        r = Checker.checkCall(ctx, rawNumber = "123411").first
+        assertEquals("5. should ignore 4 digit prefix", Def.RESULT_ALLOWED_BY_DEFAULT, r.type)
+        r = Checker.checkCall(ctx, rawNumber = "123456711").first
+        assertEquals("6. should ignore 7 digit prefix", Def.RESULT_ALLOWED_BY_DEFAULT, r.type)
     }
 }

@@ -26,7 +26,7 @@
         Coincide cos números de teléfono da base de datos polo prefixo; o prefixo debe ter polo menos 5 díxitos, permitindo unha variación de 2 díxitos ao final. <br>
         <br>
         <b>Por exemplo</b>: <br>
-        &ensp; Se <sample>12345678<b>00</b></sample> existe na base de datos, unha chamada de <sample>12345678<b>99</b></sample> tamén se bloqueará.
+        &ensp; Se <sample>12345678</sample><error>00</error> existe na base de datos, unha chamada de <sample>12345678</sample><error>99</error> tamén se bloqueará.
         ]]>
     </string>
 </resources>

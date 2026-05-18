@@ -26,7 +26,7 @@
         Veritabanındaki telefon numaralarını öneke göre eşleştirir; önek en az 5 basamak uzunluğunda olmalıdır ve sonda 2 basamaklık değişime izin verir. <br>
         <br>
         <b>Örneğin</b>: <br>
-        &ensp; Veritabanında <sample>12345678<b>00</b></sample> varsa, <sample>12345678<b>99</b></sample> numarasından gelen arama da engellenir.
+        &ensp; Veritabanında <sample>12345678</sample><error>00</error> varsa, <sample>12345678</sample><error>99</error> numarasından gelen arama da engellenir.
         ]]>
     </string>
 </resources>

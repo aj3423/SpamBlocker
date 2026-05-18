@@ -26,7 +26,7 @@
         Gleicht Telefonnummern in der Datenbank nach Präfix ab; das Präfix muss mindestens 5 Ziffern lang sein und erlaubt am Ende eine 2-stellige Abweichung. <br>
         <br>
         <b>Zum Beispiel</b>: <br>
-        &ensp; Wenn <sample>12345678<b>00</b></sample> in der Datenbank vorhanden ist, wird auch ein Anruf von <sample>12345678<b>99</b></sample> blockiert.
+        &ensp; Wenn <sample>12345678</sample><error>00</error> in der Datenbank vorhanden ist, wird auch ein Anruf von <sample>12345678</sample><error>99</error> blockiert.
         ]]>
     </string>
 </resources>

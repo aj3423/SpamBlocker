@@ -26,7 +26,7 @@
         Corrisponde ai numeri di telefono nel database in base al prefisso; il prefisso deve essere lungo almeno 5 cifre, consentendo una variazione di 2 cifre alla fine. <br>
         <br>
         <b>Per esempio</b>: <br>
-        &ensp; Se <sample>12345678<b>00</b></sample> esiste nel database, anche una chiamata da <sample>12345678<b>99</b></sample> verrà bloccata.
+        &ensp; Se <sample>12345678</sample><error>00</error> esiste nel database, anche una chiamata da <sample>12345678</sample><error>99</error> verrà bloccata.
         ]]>
     </string>
 </resources>

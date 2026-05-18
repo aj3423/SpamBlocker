@@ -26,7 +26,7 @@
         Mencocokkan nomor telepon dalam basis data berdasarkan prefiks; prefiks harus minimal 5 digit, sambil mengizinkan variasi 2 digit di akhir. <br>
         <br>
         <b>Contoh</b>: <br>
-        &ensp; Jika <sample>12345678<b>00</b></sample> ada dalam basis data, panggilan dari <sample>12345678<b>99</b></sample> juga akan diblokir.
+        &ensp; Jika <sample>12345678</sample><error>00</error> ada dalam basis data, panggilan dari <sample>12345678</sample><error>99</error> juga akan diblokir.
         ]]>
     </string>
 </resources>

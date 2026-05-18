@@ -26,7 +26,7 @@
         Fa coincidir els números de telèfon de la base de dades pel prefix; el prefix ha de tenir almenys 5 dígits, tot permetent una variació de 2 dígits al final. <br>
         <br>
         <b>Per exemple</b>: <br>
-        &ensp; Si <sample>12345678<b>00</b></sample> existeix a la base de dades, una trucada de <sample>12345678<b>99</b></sample> també es bloquejarà.
+        &ensp; Si <sample>12345678</sample><error>00</error> existeix a la base de dades, una trucada de <sample>12345678</sample><error>99</error> també es bloquejarà.
         ]]>
     </string>
 </resources>
