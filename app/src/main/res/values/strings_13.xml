@@ -105,7 +105,9 @@
         <![CDATA[
         Primarily designed for the German FRITZ!Box, it also works with phone numbers from any other countries.<br>
         <br>
-        It supports querying by hash instead of the number itself, providing better privacy.<br>
+        <b>Highlights</b>: <br>
+        - <highlight>Queries by hash</highlight> instead of the actual phone number, providing better privacy. <br>
+        - Uses <highlight>range-based detection</highlight> when the exact number is not found, ignoring the last two digits. <br>
         <br>
         Website: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
         <br>

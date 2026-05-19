@@ -144,15 +144,15 @@ val ApiQueryPresets = listOf<ApiPreset>(
                     ),
                     HttpRequest(
                         url = if (BuildConfig.DEBUG)
-                            "https://phoneblock.net/pb-test/api/check?sha1={sha1(+{cc}{domestic})}"
+                            "https://phoneblock.net/pb-test/api/check?sha1={sha1(+{cc}{domestic})}&prefix100={sha1({drop_last(+{cc}{domestic},2)})}"
                         else
-                            "https://phoneblock.net/phoneblock/api/check?sha1={sha1(+{cc}{domestic})}",
+                            "https://phoneblock.net/phoneblock/api/check?sha1={sha1(+{cc}{domestic})}&prefix100={sha1({drop_last(+{cc}{domestic},2)})}",
                         header = "{bearer_auth({api_key})}",
                     ),
                     ParseQueryResult(
                         negativeSig = "(D_POLL|G_FRAUD|E_ADVERTISING|F_GAMBLE|B_MISSED)",
                         categorySig = "\"rating\":\"(.+?)\""
-//                        commentSig = "\"comment\":\"(.+?)\""
+//                        commentSig = "\"comment\":\"(.+?)\"" // waiting for PhoneBlock to support this
                     ),
                     FilterSpamResult(),
                     ImportToSpamDB(

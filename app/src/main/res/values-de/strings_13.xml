@@ -39,7 +39,9 @@
         <![CDATA[
         Hauptsächlich für die deutsche FRITZ!Box konzipiert, funktioniert es auch für Telefonnummern aus anderen Ländern.<br>
         <br>
-        Es unterstützt die Abfrage per Hash anstatt der Nummer selbst, was mehr Datenschutz bietet.<br>
+        <b>Highlights</b>: <br>
+        - <highlight>Abfragen per Hash</highlight> statt mit der tatsächlichen Telefonnummer, was mehr Datenschutz bietet. <br>
+        - Verwendet <highlight>bereichsbasierte Erkennung</highlight>, wenn die exakte Nummer nicht gefunden wird, und ignoriert dabei die letzten zwei Ziffern. <br>
         <br>
         Website: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
         <br>

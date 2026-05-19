@@ -99,7 +99,9 @@
         <![CDATA[
         Dissenyat principalment per al FRITZ!Box alemany, també funciona amb números de telèfon d\'altres països.<br>
         <br>
-        Admet consultes per hash en comptes del número en si, proporcionant una millor privacitat.<br>
+        <b>Aspectes destacats</b>: <br>
+        - <highlight>Consultes per hash</highlight> en comptes del número de telèfon real, proporcionant una millor privacitat. <br>
+        - Utilitza <highlight>detecció basada en rangs</highlight> quan no es troba el número exacte, ignorant els dos últims dígits. <br>
         <br>
         Lloc web: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
         <br>

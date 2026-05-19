@@ -99,7 +99,9 @@
         <![CDATA[
         Dirancang terutama untuk FRITZ!Box Jerman, ini juga dapat digunakan dengan nomor telepon dari negara lain.<br>
         <br>
-        Mendukung permintaan dengan hash dan bukan nomor itu sendiri, memberikan privasi yang lebih baik.<br>
+        <b>Fitur utama</b>: <br>
+        - <highlight>Kueri dengan hash</highlight>, bukan nomor telepon sebenarnya, sehingga memberikan privasi yang lebih baik. <br>
+        - Menggunakan <highlight>deteksi berbasis rentang</highlight> saat nomor persis tidak ditemukan, dengan mengabaikan dua digit terakhir. <br>
         <br>
         Situs web: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
         <br>

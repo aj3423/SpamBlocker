@@ -39,7 +39,9 @@
         <![CDATA[
         主にドイツのFRITZ!Box向けに設計されていますが、他の国の電話番号にも対応しています。<br>
         <br>
-        番号自体ではなくハッシュでクエリを実行できるため、プライバシーが向上します。<br>
+        <b>主な特徴</b>: <br>
+        - 実際の電話番号ではなく<highlight>ハッシュでクエリ</highlight>するため、プライバシーが向上します。 <br>
+        - 完全一致する番号が見つからない場合は、末尾2桁を無視して<highlight>範囲ベースの検出</highlight>を使用します。 <br>
         <br>
         ウェブサイト：<a href="https://phoneblock.net">https://phoneblock.net</a><br>
         <br>

@@ -39,7 +39,9 @@
         <![CDATA[
         Öncelikle Alman FRITZ!Box için tasarlanmıştır, ancak diğer ülkelerden gelen telefon numaraları için de çalışır.<br>
         <br>
-        Numaranın kendisi yerine karma ile sorguyu destekler, daha iyi gizlilik sağlar.<br>
+        <b>Öne çıkanlar</b>: <br>
+        - Gerçek telefon numarası yerine <highlight>karma ile sorgular</highlight>, daha iyi gizlilik sağlar. <br>
+        - Tam numara bulunamadığında son iki basamağı yok sayarak <highlight>aralık tabanlı algılama</highlight> kullanır. <br>
         <br>
         Web sitesi: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
         <br>

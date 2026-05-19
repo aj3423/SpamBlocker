@@ -66,6 +66,7 @@ import spam.blocker.util.resolveHttpAuthTag
 import spam.blocker.util.resolveNumberTag
 import spam.blocker.util.resolveSHA1Tag
 import spam.blocker.util.resolveSmsTag
+import spam.blocker.util.resolveStringTransformTag
 import spam.blocker.util.resolveTimeTags
 import spam.blocker.util.toFolderDisplayName
 import spam.blocker.util.toStringMap
@@ -210,6 +211,7 @@ open class HttpRequest(
                     )
                     .replace(tagCategory, aCtx.realCategoryValue ?: "")
                     .replace(tagComment, aCtx.tagCommentValue ?: "")
+                    .resolveStringTransformTag()
                     .resolveSHA1Tag()
                     .resolveCustomTag(aCtx.customTags)
                 aCtx.logger?.debug(ctx.getString(R.string.resolved_url).formatAnnotated(resolvedUrl.A(C.textGrey.darken())))
