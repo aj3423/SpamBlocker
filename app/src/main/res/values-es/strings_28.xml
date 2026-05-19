@@ -23,7 +23,7 @@
     </string>
     <string name="help_regex_preset_database_prefix">
         <![CDATA[
-        Coincide con números de teléfono de la base de datos por prefijo; el prefijo debe tener al menos 5 dígitos, permitiendo una variación de 2 dígitos al final. <br>
+        Coincide con números de teléfono de la base de datos por prefijo; el prefijo debe tener al menos <minor><b>5</b></minor> dígitos, permitiendo una variación de <minor><b>2</b></minor> dígitos al final. <br>
         <br>
         <b>Por ejemplo</b>: <br>
         &ensp; Si <sample>12345678</sample><error>00</error> existe en la base de datos, una llamada de <sample>12345678</sample><error>99</error> también se bloqueará.

@@ -23,7 +23,7 @@
     </string>
     <string name="help_regex_preset_database_prefix">
         <![CDATA[
-        Matches database numbers by prefix, the prefix must be at least 5 digits long, while allowing a 2-digit variation at the end. <br>
+        Matches database numbers by prefix, the prefix must be at least <minor><b>5</b></minor> digits long, while allowing a <minor><b>2</b></minor>-digit variation at the end. <br>
         <br>
         <b>For example</b>: <br>
         &ensp; If <sample>12345678</sample><error>00</error> exists in database, a call from <sample>12345678</sample><error>99</error> will also be blocked.

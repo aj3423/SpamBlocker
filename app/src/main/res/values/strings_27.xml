@@ -40,10 +40,10 @@
     </string>
     <string name="help_regex_preset_contact_prefix">
         <![CDATA[
-        Match contacts by prefix, allowing for variation in the last 2 digits. <br>
+        Match contacts by prefix, allowing for variation in the last <minor><b>2</b></minor> digits. <br>
         <br>
         <b>For example</b>: <br>
-        &ensp; If you have <sample>1111<b>22</b></sample> saved as a contact, a call from <sample>1111<b>33</b></sample> will also be allowed.<br>
+        &ensp; If you have <sample>111111</sample><highlight>22</highlight> saved as a contact, a call from <sample>111111</sample><highlight>33</highlight> will also be allowed.
         ]]>
     </string>
     <string name="caller_id">Caller ID</string>

@@ -23,7 +23,7 @@
     </string>
     <string name="help_regex_preset_database_prefix">
         <![CDATA[
-        Veritabanındaki telefon numaralarını öneke göre eşleştirir; önek en az 5 basamak uzunluğunda olmalıdır ve sonda 2 basamaklık değişime izin verir. <br>
+        Veritabanındaki telefon numaralarını öneke göre eşleştirir; önek en az <minor><b>5</b></minor> basamak uzunluğunda olmalıdır ve sonda <minor><b>2</b></minor> basamaklık değişime izin verir. <br>
         <br>
         <b>Örneğin</b>: <br>
         &ensp; Veritabanında <sample>12345678</sample><error>00</error> varsa, <sample>12345678</sample><error>99</error> numarasından gelen arama da engellenir.

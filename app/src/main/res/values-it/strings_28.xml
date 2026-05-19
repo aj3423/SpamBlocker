@@ -23,7 +23,7 @@
     </string>
     <string name="help_regex_preset_database_prefix">
         <![CDATA[
-        Corrisponde ai numeri di telefono nel database in base al prefisso; il prefisso deve essere lungo almeno 5 cifre, consentendo una variazione di 2 cifre alla fine. <br>
+        Corrisponde ai numeri di telefono nel database in base al prefisso; il prefisso deve essere lungo almeno <minor><b>5</b></minor> cifre, consentendo una variazione di <minor><b>2</b></minor> cifre alla fine. <br>
         <br>
         <b>Per esempio</b>: <br>
         &ensp; Se <sample>12345678</sample><error>00</error> esiste nel database, anche una chiamata da <sample>12345678</sample><error>99</error> verrà bloccata.

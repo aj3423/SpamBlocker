@@ -40,10 +40,10 @@
     </string>
     <string name="help_regex_preset_contact_prefix">
         <![CDATA[
-        按前綴匹配聯絡人，並允許最後 2 位數不同。 <br>
+        按前綴匹配聯絡人，並允許最後 <minor><b>2</b></minor> 位數不同。 <br>
         <br>
         <b>例如</b>: <br>
-        &ensp; 如果你將 <sample>1111<b>22</b></sample> 儲存為聯絡人，則來自 <sample>1111<b>33</b></sample> 的來電也會被允許。<br>
+        &ensp; 如果你將 <sample>111111</sample><highlight>22</highlight> 儲存為聯絡人，則來自 <sample>111111</sample><highlight>33</highlight> 的來電也會被允許。
         ]]>
     </string>
     <string name="caller_id">來電顯示</string>

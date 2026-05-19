@@ -40,10 +40,10 @@
     </string>
     <string name="help_regex_preset_contact_prefix">
         <![CDATA[
-        Cocokkan kontak berdasarkan prefiks, dengan mengizinkan variasi pada 2 digit terakhir. <br>
+        Cocokkan kontak berdasarkan prefiks, dengan mengizinkan variasi pada <minor><b>2</b></minor> digit terakhir. <br>
         <br>
         <b>Contoh</b>: <br>
-        &ensp; Jika Anda menyimpan <sample>1111<b>22</b></sample> sebagai kontak, panggilan dari <sample>1111<b>33</b></sample> juga akan diizinkan.<br>
+        &ensp; Jika Anda menyimpan <sample>111111</sample><highlight>22</highlight> sebagai kontak, panggilan dari <sample>111111</sample><highlight>33</highlight> juga akan diizinkan.
         ]]>
     </string>
     <string name="caller_id">ID Penelepon</string>

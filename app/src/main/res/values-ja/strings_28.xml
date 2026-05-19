@@ -23,7 +23,7 @@
     </string>
     <string name="help_regex_preset_database_prefix">
         <![CDATA[
-        データベース内の電話番号をプレフィックスで照合します。プレフィックスは少なくとも 5 桁である必要があり、末尾の 2 桁の変化を許可します。 <br>
+        データベース内の電話番号をプレフィックスで照合します。プレフィックスは少なくとも <minor><b>5</b></minor> 桁である必要があり、末尾の <minor><b>2</b></minor> 桁の変化を許可します。 <br>
         <br>
         <b>例</b>: <br>
         &ensp; <sample>12345678</sample><error>00</error> がデータベースに存在する場合、<sample>12345678</sample><error>99</error> からの通話もブロックされます。

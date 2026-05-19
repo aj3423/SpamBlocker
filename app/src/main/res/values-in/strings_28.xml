@@ -23,7 +23,7 @@
     </string>
     <string name="help_regex_preset_database_prefix">
         <![CDATA[
-        Mencocokkan nomor telepon dalam basis data berdasarkan prefiks; prefiks harus minimal 5 digit, sambil mengizinkan variasi 2 digit di akhir. <br>
+        Mencocokkan nomor telepon dalam basis data berdasarkan prefiks; prefiks harus minimal <minor><b>5</b></minor> digit, sambil mengizinkan variasi <minor><b>2</b></minor> digit di akhir. <br>
         <br>
         <b>Contoh</b>: <br>
         &ensp; Jika <sample>12345678</sample><error>00</error> ada dalam basis data, panggilan dari <sample>12345678</sample><error>99</error> juga akan diblokir.

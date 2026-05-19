@@ -40,10 +40,10 @@
     </string>
     <string name="help_regex_preset_contact_prefix">
         <![CDATA[
-        Coincide con contactos por prefijo, permitiendo variación en los 2 últimos dígitos. <br>
+        Coincide con contactos por prefijo, permitiendo variación en los <minor><b>2</b></minor> últimos dígitos. <br>
         <br>
         <b>Por ejemplo</b>: <br>
-        &ensp; Si tienes <sample>1111<b>22</b></sample> guardado como contacto, también se permitirá una llamada desde <sample>1111<b>33</b></sample>.<br>
+        &ensp; Si tienes <sample>111111</sample><highlight>22</highlight> guardado como contacto, también se permitirá una llamada desde <sample>111111</sample><highlight>33</highlight>.
         ]]>
     </string>
     <string name="caller_id">ID llamada</string>

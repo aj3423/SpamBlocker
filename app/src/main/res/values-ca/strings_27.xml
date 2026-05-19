@@ -40,10 +40,10 @@
     </string>
     <string name="help_regex_preset_contact_prefix">
         <![CDATA[
-        Fa coincidir els contactes pel prefix, permetent variació en els 2 últims dígits. <br>
+        Fa coincidir els contactes pel prefix, permetent variació en els <minor><b>2</b></minor> últims dígits. <br>
         <br>
         <b>Per exemple</b>: <br>
-        &ensp; Si tens <sample>1111<b>22</b></sample> desat com a contacte, també es permetrà una trucada de <sample>1111<b>33</b></sample>.<br>
+        &ensp; Si tens <sample>111111</sample><highlight>22</highlight> desat com a contacte, també es permetrà una trucada de <sample>111111</sample><highlight>33</highlight>.
         ]]>
     </string>
     <string name="caller_id">ID trucador</string>

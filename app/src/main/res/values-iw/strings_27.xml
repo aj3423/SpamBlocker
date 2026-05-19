@@ -40,10 +40,10 @@
     </string>
     <string name="help_regex_preset_contact_prefix">
         <![CDATA[
-        התאם אנשי קשר לפי קידומת, עם אפשרות לשינוי ב-2 הספרות האחרונות. <br>
+        התאם אנשי קשר לפי קידומת, עם אפשרות לשינוי ב-<minor><b>2</b></minor> הספרות האחרונות. <br>
         <br>
         <b>לדוגמה</b>: <br>
-        &ensp; אם שמרת את <sample>1111<b>22</b></sample> כאיש קשר, גם שיחה מ-<sample>1111<b>33</b></sample> תאושר.<br>
+        &ensp; אם שמרת את <sample>111111</sample><highlight>22</highlight> כאיש קשר, גם שיחה מ-<sample>111111</sample><highlight>33</highlight> תאושר.
         ]]>
     </string>
     <string name="caller_id">זיהוי מתקשר</string>

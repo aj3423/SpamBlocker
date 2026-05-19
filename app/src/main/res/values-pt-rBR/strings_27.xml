@@ -40,10 +40,10 @@
     </string>
     <string name="help_regex_preset_contact_prefix">
         <![CDATA[
-        Faz a correspondência de contatos por prefixo, permitindo variação nos 2 dígitos finais. <br>
+        Faz a correspondência de contatos por prefixo, permitindo variação nos <minor><b>2</b></minor> dígitos finais. <br>
         <br>
         <b>Por exemplo</b>: <br>
-        &ensp; Se você tiver <sample>1111<b>22</b></sample> salvo como contato, uma chamada de <sample>1111<b>33</b></sample> também será permitida.<br>
+        &ensp; Se você tiver <sample>111111</sample><highlight>22</highlight> salvo como contato, uma chamada de <sample>111111</sample><highlight>33</highlight> também será permitida.
         ]]>
     </string>
     <string name="caller_id">ID chamada</string>

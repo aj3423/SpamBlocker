@@ -23,7 +23,7 @@
     </string>
     <string name="help_regex_preset_database_prefix">
         <![CDATA[
-        按前缀匹配数据库中的电话号码，前缀必须至少为 5 位数字，同时允许末尾有 2 位数字的变化。 <br>
+        按前缀匹配数据库中的电话号码，前缀必须至少为 <minor><b>5</b></minor> 位数字，同时允许末尾有 <minor><b>2</b></minor> 位数字的变化。 <br>
         <br>
         <b>例如</b>: <br>
         &ensp; 如果 <sample>12345678</sample><error>00</error> 存在于数据库中，则来自 <sample>12345678</sample><error>99</error> 的来电也会被屏蔽。

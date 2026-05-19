@@ -40,10 +40,10 @@
     </string>
     <string name="help_regex_preset_contact_prefix">
         <![CDATA[
-        連絡先をプレフィックスで照合し、末尾2桁の違いを許可します。 <br>
+        連絡先をプレフィックスで照合し、末尾<minor><b>2</b></minor>桁の違いを許可します。 <br>
         <br>
         <b>例えば</b>: <br>
-        &ensp; 連絡先として <sample>1111<b>22</b></sample> を保存している場合、<sample>1111<b>33</b></sample> からの着信も許可されます。<br>
+        &ensp; 連絡先として <sample>111111</sample><highlight>22</highlight> を保存している場合、<sample>111111</sample><highlight>33</highlight> からの着信も許可されます。
         ]]>
     </string>
     <string name="caller_id">発信者ID</string>

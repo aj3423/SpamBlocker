@@ -40,10 +40,10 @@
     </string>
     <string name="help_regex_preset_contact_prefix">
         <![CDATA[
-        Сопоставляет контакты по префиксу, допуская различие в последних 2 цифрах. <br>
+        Сопоставляет контакты по префиксу, допуская различие в последних <minor><b>2</b></minor> цифрах. <br>
         <br>
         <b>Например</b>: <br>
-        &ensp; Если у вас сохранён контакт <sample>1111<b>22</b></sample>, то звонок с номера <sample>1111<b>33</b></sample> тоже будет разрешён.<br>
+        &ensp; Если у вас сохранён контакт <sample>111111</sample><highlight>22</highlight>, то звонок с номера <sample>111111</sample><highlight>33</highlight> тоже будет разрешён.
         ]]>
     </string>
     <string name="caller_id">АОН</string>

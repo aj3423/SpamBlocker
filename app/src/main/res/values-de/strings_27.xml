@@ -40,10 +40,10 @@
     </string>
     <string name="help_regex_preset_contact_prefix">
         <![CDATA[
-        Kontakte nach Präfix abgleichen, wobei die letzten 2 Ziffern variieren dürfen. <br>
+        Kontakte nach Präfix abgleichen, wobei die letzten <minor><b>2</b></minor> Ziffern variieren dürfen. <br>
         <br>
         <b>Zum Beispiel</b>: <br>
-        &ensp; Wenn Sie <sample>1111<b>22</b></sample> als Kontakt gespeichert haben, wird auch ein Anruf von <sample>1111<b>33</b></sample> zugelassen.<br>
+        &ensp; Wenn Sie <sample>111111</sample><highlight>22</highlight> als Kontakt gespeichert haben, wird auch ein Anruf von <sample>111111</sample><highlight>33</highlight> zugelassen.
         ]]>
     </string>
     <string name="caller_id">Anrufer-ID</string>

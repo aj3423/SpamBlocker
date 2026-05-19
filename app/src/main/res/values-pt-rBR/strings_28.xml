@@ -23,7 +23,7 @@
     </string>
     <string name="help_regex_preset_database_prefix">
         <![CDATA[
-        Corresponde aos números de telefone no banco de dados pelo prefixo; o prefixo deve ter pelo menos 5 dígitos, permitindo uma variação de 2 dígitos no final. <br>
+        Corresponde aos números de telefone no banco de dados pelo prefixo; o prefixo deve ter pelo menos <minor><b>5</b></minor> dígitos, permitindo uma variação de <minor><b>2</b></minor> dígitos no final. <br>
         <br>
         <b>Por exemplo</b>: <br>
         &ensp; Se <sample>12345678</sample><error>00</error> existir no banco de dados, uma chamada de <sample>12345678</sample><error>99</error> também será bloqueada.

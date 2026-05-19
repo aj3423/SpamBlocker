@@ -40,10 +40,10 @@
     </string>
     <string name="help_regex_preset_contact_prefix">
         <![CDATA[
-        مخاطبان را بر اساس پیش‌شماره تطبیق می‌دهد و تغییر در ۲ رقم پایانی را مجاز می‌کند. <br>
+        مخاطبان را بر اساس پیش‌شماره تطبیق می‌دهد و تغییر در <minor><b>۲</b></minor> رقم پایانی را مجاز می‌کند. <br>
         <br>
         <b>برای مثال</b>: <br>
-        &ensp; اگر <sample>1111<b>22</b></sample> را به‌عنوان مخاطب ذخیره کرده باشید، تماس از <sample>1111<b>33</b></sample> هم مجاز خواهد بود.<br>
+        &ensp; اگر <sample>111111</sample><highlight>22</highlight> را به‌عنوان مخاطب ذخیره کرده باشید، تماس از <sample>111111</sample><highlight>33</highlight> هم مجاز خواهد بود.
         ]]>
     </string>
     <string name="caller_id">شناسه تماس</string>
