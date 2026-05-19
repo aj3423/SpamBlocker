@@ -25,7 +25,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -33,7 +32,6 @@ import spam.blocker.G
 import spam.blocker.ui.M
 import spam.blocker.ui.theme.White
 import spam.blocker.util.Lambda1
-import spam.blocker.util.spf
 import kotlin.math.min
 import kotlin.math.roundToInt
 
@@ -68,14 +66,11 @@ data class BottomBarViewModel(
 @Composable
 fun BottomBar(vm: BottomBarViewModel) {
     val C = G.palette
-    val ctx = LocalContext.current
 
 
     var itemWidth by remember {
         mutableFloatStateOf(0F)
     }
-
-    var currentRoute = remember { spf.Global(ctx).activeTab }
 
     val density = LocalDensity.current
     Box(
@@ -114,18 +109,20 @@ fun BottomBar(vm: BottomBarViewModel) {
                             .width(itemWidth.dp)
                             .background(C.dialogBg)
                             .clickable {
+                                val currentRoute = vm.tabItems.firstOrNull { it.isSelected.value }?.route
+
                                 if (currentRoute == tab.route) { // reselect current tab
                                     vm.onTabReSelected(tab.route)
                                 } else { // select new tab
-                                    vm.onTabLeave(currentRoute)
+                                    currentRoute?.let {
+                                        vm.onTabLeave(it)
+                                    }
 
-                                    // hide the previous tab
-                                    vm.tabItems.find { it.route == currentRoute }?.isSelected?.value =
-                                        false
-                                    // show the new tab
-                                    tab.isSelected.value = true
+                                    // Keep exactly one selected tab.
+                                    vm.tabItems.forEach {
+                                        it.isSelected.value = it.route == tab.route
+                                    }
 
-                                    currentRoute = tab.route
                                     vm.onTabSelected(tab.route)
                                 }
                             }
@@ -166,4 +163,3 @@ fun BottomBar(vm: BottomBarViewModel) {
         }
     }
 }
-
