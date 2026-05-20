@@ -99,7 +99,10 @@ class OAuthSetupDialog(
             if (tokenInSpf == null) {
                 GreyText(Str(R.string.login_and_get_a_token))
             }
-            GreyButton(Str(R.string.get_a_new_token)) {
+            StrokeButton(
+                Str(R.string.get_a_new_token),
+                color = if (tokenInSpf == null) G.palette.infoBlue else G.palette.textGrey
+            ) {
                 startAuthLogin(ctx, oauthUrl)
             }
         }

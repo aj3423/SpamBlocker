@@ -1,5 +1,7 @@
 package spam.blocker.ui.history
 
+import android.content.Context
+import android.view.inputmethod.InputMethodManager
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.Spacer
@@ -9,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -19,6 +22,9 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.CoroutineScope
@@ -64,8 +70,14 @@ fun ReportSpamDialog(
 
         var comment by remember { mutableStateOf<String?>(null)}
         val focusRequester = remember { FocusRequester() }
+        val view = LocalView.current
 
         val reportResult = remember { mutableStateOf(buildAnnotatedString {  }) }
+
+        fun hideKeyboard() {
+            val inputMethodManager = ctx.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+        }
 
         // Category buttons
         FlowRowSpaced (
@@ -77,6 +89,7 @@ fun ReportSpamDialog(
                     label = nameMap[keyTag]!!,
                     color = if(keyTag == tagValid) Color.Cyan else  Color(keyTag.hashCode().toLong() or 0xffc08080),
                 ) {
+                    hideKeyboard()
                     reportResult.value = buildAnnotatedString {  } // clear prev result
 
                     val apis = listReportableAPIs(ctx = ctx, rawNumber = rawNumber, domainFilter = null, isManualReport = true, blockReason = null)
@@ -115,11 +128,13 @@ fun ReportSpamDialog(
                     icon = { GreyIcon16(R.drawable.ic_note) }
                 ) {
                     comment = ""
-                    focusRequester.requestFocus()
                 }
             }
         }
         if(comment != null) {
+            LaunchedEffect(Unit) {
+                focusRequester.requestFocus()
+            }
             StrInputBox(
                 text = comment!!,
                 label = { Text(Str(R.string.comment)) },
