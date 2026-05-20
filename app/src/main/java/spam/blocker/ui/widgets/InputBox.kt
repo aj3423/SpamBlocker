@@ -57,6 +57,7 @@ import spam.blocker.util.Util
 import spam.blocker.util.Util.regexWildcardNotSupported
 import spam.blocker.util.enabledRegexFlagsStr
 import spam.blocker.util.hasFlag
+import spam.blocker.util.regexMatches
 import spam.blocker.util.regexMatchesNumber
 import spam.blocker.util.setFlag
 
@@ -525,7 +526,7 @@ fun RegexInputBox(
     onFlagsChange: Lambda1<Int>,
     modifier: Modifier = Modifier,
     label: @Composable (() -> Unit)? = null,
-    isSms: Boolean = False,
+    isSms: Boolean = false,
     placeholder: @Composable (() -> Unit)? = null,
     leadingIcon: @Composable (() -> Unit)? = null, // it can be a clickable icon
     enableNumberFlags: Boolean = false, // enable 2 more flags
