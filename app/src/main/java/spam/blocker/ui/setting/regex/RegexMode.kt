@@ -167,6 +167,7 @@ object RegexMode {
             // Pattern field
             RegexInputBox(
                 label = { Text(Str(labelId)) },
+                isSms = labelId == R.string.sms_content_pattern,
                 regexStr = state.pattern.value,
                 regexFlags = state.patternFlags,
                 onRegexStrChange = { newVal, hasErr ->

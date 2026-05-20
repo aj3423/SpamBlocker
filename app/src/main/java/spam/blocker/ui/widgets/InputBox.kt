@@ -459,6 +459,7 @@ fun TestRegexDialog(
     trigger: MutableState<Boolean>,
     regexStr: String,
     regexFlags: Int,
+    isSms: Boolean,
 ) {
     val C = G.palette
 
@@ -477,7 +478,11 @@ fun TestRegexDialog(
                     label = Str(R.string.test),
                     color = C.teal200,
                     onClick = {
-                        result.value = regexStr.regexMatchesNumber(regexTestString.value, regexFlags)
+                        if (isSms) {
+                            result.value = regexStr.regexMatches(regexTestString.value, regexFlags)
+                        } else {
+                            result.value = regexStr.regexMatchesNumber(regexTestString.value, regexFlags)
+                        }
                     }
                 )
             }
@@ -520,6 +525,7 @@ fun RegexInputBox(
     onFlagsChange: Lambda1<Int>,
     modifier: Modifier = Modifier,
     label: @Composable (() -> Unit)? = null,
+    isSms: Boolean = False,
     placeholder: @Composable (() -> Unit)? = null,
     leadingIcon: @Composable (() -> Unit)? = null, // it can be a clickable icon
     enableNumberFlags: Boolean = false, // enable 2 more flags
@@ -722,6 +728,7 @@ fun RegexInputBox(
                             trigger = trigger,
                             regexStr = state.text,
                             regexFlags = regexFlags.intValue,
+                            isSms = isSms,
                         )
                     }
 
