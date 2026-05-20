@@ -78,6 +78,19 @@
             android:excludeFromRecents="true"/>
         <activity android:name=".ui.crash.CrashReportActivity" />
 
+        <!-- For integrating third-party API services, such as PhoneBlock oauth login -->
+        <activity android:name=".ui.AuthCallbackActivity"
+            android:exported="true"
+            android:noHistory="true"
+            android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="spamblocker" android:host="auth" />
+            </intent-filter>
+        </activity>
+
         <service
             android:name=".service.CallScreeningService"
             android:exported="true"

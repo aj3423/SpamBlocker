@@ -15,6 +15,7 @@ import spam.blocker.db.Notification.CHANNEL_HIGH_MUTED
 import spam.blocker.db.Notification.CHANNEL_LOW
 import spam.blocker.def.Def
 import spam.blocker.def.Def.DEFAULT_HANG_UP_DELAY
+import spam.blocker.ui.setting.api.PhoneBlock
 import spam.blocker.ui.setting.quick.DefaultCallerIdBgColor
 import spam.blocker.ui.setting.quick.DefaultCallerIdTemplate
 import spam.blocker.ui.theme.Black111111
@@ -505,5 +506,9 @@ class spf { // for namespace only
         var regexFlags by int("sms_bomb_regex_flags", Def.DefaultRegexFlags)
         var timestamp by long("sms_bomb_timestamp")
         var isLockScreenProtectionEnabled by bool("sms_bomb_lockscreen_protection_enabled", true)
+    }
+
+    class OAuth(ctx: Context) : SharedPref(ctx) {
+        var phoneBlockToken by str(PhoneBlock.spfTokenKey)
     }
 }

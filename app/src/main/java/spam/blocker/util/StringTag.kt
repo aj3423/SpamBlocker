@@ -1,5 +1,6 @@
 package spam.blocker.util
 
+import android.content.Context
 import spam.blocker.def.Def
 import spam.blocker.util.Algorithm.b64Encode
 import spam.blocker.util.Algorithm.sha1
@@ -177,6 +178,21 @@ fun String.dropLast(): String {
 
 fun String.resolveStringTransformTag(): String {
     return this.dropLast()
+}
+
+// Load from shared prefs
+fun String.resolveSpfTag(ctx: Context): String {
+    // Using triple quotes removes the need for double-escaping backslashes
+    val regex = """\{shared_pref\((.*?)\)\}""".toRegex()
+
+    // replace() automatically finds and loops through ALL matches
+    return regex.replace(this) { matchResult ->
+        // Destructuring easily grabs the content inside the (.*?) group
+        val (key) = matchResult.destructured
+
+        // load this key from shared prefs
+        spf.SharedPref(ctx).prefs.getString(key, "") ?: ""
+    }
 }
 
 // Authorization: Basic {base64({username}:{password})}

@@ -29,4 +29,18 @@
         &ensp; اگر <sample>12345678</sample><error>00</error> در پایگاه داده وجود داشته باشد، تماس از <sample>12345678</sample><error>99</error> نیز مسدود می‌شود.
         ]]>
     </string>
+    <string name="api_preset_remote_llm">مدل زبانی بزرگ راه دور</string>
+    <string name="help_api_preset_remote_llm">
+        <![CDATA[
+            محتوای SMS را با مدل‌های زبانی بزرگ راه دور بررسی کنید. <br>
+            <br>
+            این فقط برای <warn>اهداف نمایشی</warn> ارائه شده است.<br>
+            <br>
+            برای باز کردن صفحه ویکی راهنما، لمس کنید.
+        ]]>
+    </string>
+    <string name="found_existing_auth_token">توکن احراز هویت موجود پیدا شد</string>
+    <string name="use_this_token">از این توکن استفاده کن</string>
+    <string name="login_and_get_a_token">در وب‌سایت ثبت‌نام و وارد شوید و توکن خود را دریافت کنید.</string>
+    <string name="get_a_new_token">دریافت توکن جدید</string>
 </resources>

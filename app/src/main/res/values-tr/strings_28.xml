@@ -29,4 +29,18 @@
         &ensp; Veritabanında <sample>12345678</sample><error>00</error> varsa, <sample>12345678</sample><error>99</error> numarasından gelen arama da engellenir.
         ]]>
     </string>
+    <string name="api_preset_remote_llm">Uzak LLM</string>
+    <string name="help_api_preset_remote_llm">
+        <![CDATA[
+            SMS içeriğini uzak büyük dil modelleriyle denetler. <br>
+            <br>
+            Bu yalnızca <warn>gösterim amaçları</warn> için sağlanır.<br>
+            <br>
+            Talimatlar için wiki sayfasını açmak üzere dokunun.
+        ]]>
+    </string>
+    <string name="found_existing_auth_token">Mevcut kimlik doğrulama belirteci bulundu</string>
+    <string name="use_this_token">Bu belirteci kullan</string>
+    <string name="login_and_get_a_token">Web sitesine kaydolup giriş yaparak belirtecinizi alın.</string>
+    <string name="get_a_new_token">Yeni belirteç al</string>
 </resources>

@@ -1,11 +1,14 @@
 package spam.blocker.ui.setting.bot
 
+import android.annotation.SuppressLint
 import android.content.Context
 import androidx.compose.foundation.clickable
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import spam.blocker.G
 import spam.blocker.R
@@ -17,8 +20,6 @@ import spam.blocker.service.bot.InterceptSms
 import spam.blocker.service.bot.Schedule
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
-import spam.blocker.ui.setting.api.ApiAuthConfigDialog
-import spam.blocker.ui.setting.api.addApiToDB
 import spam.blocker.ui.widgets.ConfigImportDialog
 import spam.blocker.ui.widgets.DividerItem
 import spam.blocker.ui.widgets.GreyIcon
@@ -26,9 +27,24 @@ import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.MenuButton
 import spam.blocker.ui.widgets.Str
 import spam.blocker.util.BotJson
-import spam.blocker.util.Lambda1
 import java.util.UUID
 
+
+fun addBotToDB(ctx: Context, newBot: Bot) {
+    // 1. add to db
+    BotTable.addNewRecord(ctx, newBot)
+
+    // 2. reload UI
+    G.botVM.reload(ctx)
+
+    // 3. expand the list
+    G.botVM.listCollapsed.value = false
+
+    // 4. re-schedule it
+    reScheduleBot(ctx, newBot)
+}
+
+@SuppressLint("LocalContextGetResourceValueCall")
 @Composable
 fun BotHeader(
     vm: BotViewModel,
@@ -37,22 +53,6 @@ fun BotHeader(
     val ctx = LocalContext.current
 
     val initialBotToEdit = remember { mutableStateOf(Bot()) }
-    val afterCreated = remember{ mutableStateOf<Lambda1<Context>?> (null) }
-
-    fun addBotToDB(ctx: Context, newBot: Bot) {
-        // 1. add to db
-        BotTable.addNewRecord(ctx, newBot)
-
-        // 2. reload UI
-        G.botVM.reload(ctx)
-
-        // 3. expand the list
-        if(vm.listCollapsed.value)
-            vm.toggleCollapse(ctx)
-
-        // 4. re-schedule it
-        reScheduleBot(ctx, newBot)
-    }
 
     val customizeTrigger = rememberSaveable { mutableStateOf(false) }
     if (customizeTrigger.value) {
@@ -99,29 +99,17 @@ fun BotHeader(
         }
     }
 
-    val tappedPreset = remember { mutableStateOf<BotPreset?>(null) }
+    var tappedPreset by remember { mutableStateOf<BotPreset?>(null) }
 
-    val authFormTrigger = remember { mutableStateOf(false) }
-    if (authFormTrigger.value) {
-        val authConfig = remember(tappedPreset.value) { tappedPreset.value!!.newAuthConfig?.let { it() } }
-        val reportApi = remember(tappedPreset.value) { tappedPreset.value!!.newReportApi?.let { it(ctx) } }
+    var setupDialog by remember(tappedPreset) {
+        mutableStateOf(
+            tappedPreset?.setupDialog
+        )
+    }
 
-        ApiAuthConfigDialog(
-            trigger = authFormTrigger,
-            authConfig = authConfig!!,
-            hasReportApi = reportApi != null,
-        ) { alsoReport, formFields ->
-            // 1. add the bot
-            authConfig.preProcessor(initialBotToEdit.value.actions, formFields.map { it.value })
-            addBotToDB(ctx, initialBotToEdit.value)
-            afterCreated.value?.let { it(ctx) }
-
-            // 2. if "Enable Reporting" is turned on (for the PhoneBlock workflow preset), also add its report API
-            if (alsoReport) {
-                authConfig.preProcessor(reportApi!!.actions, formFields.map { it.value })
-                addApiToDB(ctx, G.apiReportVM, reportApi)
-            }
-        }
+    val setupTrigger = remember { mutableStateOf(false) }
+    if (setupTrigger.value) {
+        setupDialog?.Compose(setupTrigger)
     }
 
     val dropdownItems = remember {
@@ -130,9 +118,7 @@ fun BotHeader(
                 label = ctx.getString(R.string.customize),
                 leadingIcon = { GreyIcon(R.drawable.ic_note) }
             ) {
-                tappedPreset.value = null
                 initialBotToEdit.value = Bot()
-                afterCreated.value = null
 
                 customizeTrigger.value = true
             },
@@ -145,31 +131,21 @@ fun BotHeader(
             DividerItem(),
         )
         ret += BotPresets.map { preset ->
-            val bot = preset.newInstance(ctx)
             LabelItem(
-                label = bot.desc,
+                label = ctx.getString(preset.descId),
                 tooltip = preset.tooltip(ctx)
             ) {
-                tappedPreset.value = preset
-                initialBotToEdit.value = bot
-                afterCreated.value = preset.afterCreated
+                tappedPreset = preset
 
-                val requiredPermissions = bot.triggerAndActions().flatMap {
-                    it.requiredPermissions(ctx)
-                } + preset.requiredPermissions
-
-                G.permissionChain.ask(ctx, requiredPermissions) { isGranted ->
+                G.permissionChain.ask(ctx, preset.requiredPermissions) { isGranted ->
                     if (isGranted) {
-                        // If the preset requires authorization, such as API_KEY/username/password,
-                        //  show a dialog asking for it.
-                        // Otherwise, create the actions directly.
-                        val authConfig = preset.newAuthConfig
-                        if (authConfig == null) {
-                            addBotToDB(ctx, bot)
-                            preset.afterCreated?.let { it(ctx) }
+                        // If the preset requires authentication, such as PhoneBlock OAuth,
+                        //  show an OAuth dialog.
+                        // Otherwise, just create the bot.
+                        if(preset.setupDialog == null) {
+                            preset.doAdd!!(ctx)
                         } else {
-                            // If it requires authorization, show a config dialog
-                            authFormTrigger.value = true
+                            setupTrigger.value = true
                         }
                     }
                 }

@@ -29,4 +29,18 @@
         &ensp; <sample>12345678</sample><error>00</error> がデータベースに存在する場合、<sample>12345678</sample><error>99</error> からの通話もブロックされます。
         ]]>
     </string>
+    <string name="api_preset_remote_llm">リモート LLM</string>
+    <string name="help_api_preset_remote_llm">
+        <![CDATA[
+            リモートの大規模言語モデルを使用して SMS の内容を確認します。 <br>
+            <br>
+            これは<warn>デモ目的</warn>でのみ提供されています。<br>
+            <br>
+            タップすると手順の wiki ページを開きます。
+        ]]>
+    </string>
+    <string name="found_existing_auth_token">既存の認証トークンが見つかりました</string>
+    <string name="use_this_token">このトークンを使用</string>
+    <string name="login_and_get_a_token">Web サイトに登録してログインし、トークンを取得します。</string>
+    <string name="get_a_new_token">新しいトークンを取得</string>
 </resources>

@@ -29,4 +29,19 @@
         &ensp; If <sample>12345678</sample><error>00</error> exists in database, a call from <sample>12345678</sample><error>99</error> will also be blocked.
         ]]>
     </string>
+    <string name="api_preset_remote_llm">Remote LLM</string>
+    <string name="help_api_preset_remote_llm">
+        <![CDATA[
+            Check SMS content using remote large language models. <br>
+            <br>
+            This is provided solely for <warn>demonstration purposes</warn>.<br>
+            <br>
+            Tap to open the wiki page for instructions.
+        ]]>
+    </string>
+    <string name="found_existing_auth_token">Found existing auth token</string>
+    <string name="use_this_token">Use this token</string>
+    <string name="login_and_get_a_token">Register and log in to the website and get your token.</string>
+    <string name="get_a_new_token">Get a new token</string>
+
 </resources>

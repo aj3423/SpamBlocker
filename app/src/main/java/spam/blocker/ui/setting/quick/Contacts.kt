@@ -101,7 +101,7 @@ fun Contacts() {
 
     LabeledRow(
         R.string.contacts,
-        helpTooltip = ctx.getString(R.string.help_contacts),
+        helpTooltip = Str(R.string.help_contacts),
         content = {
             if (isEnabled) {
                 StrokeButton(

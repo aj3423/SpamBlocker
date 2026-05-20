@@ -66,6 +66,7 @@ import spam.blocker.util.resolveHttpAuthTag
 import spam.blocker.util.resolveNumberTag
 import spam.blocker.util.resolveSHA1Tag
 import spam.blocker.util.resolveSmsTag
+import spam.blocker.util.resolveSpfTag
 import spam.blocker.util.resolveStringTransformTag
 import spam.blocker.util.resolveTimeTags
 import spam.blocker.util.toFolderDisplayName
@@ -176,11 +177,13 @@ open class HttpRequest(
         )
      */
     private fun splitHeader(
+        ctx: Context,
         allHeadersStr: String,
         customTags: Map<String, String>
     ): Map<String, String> {
         return allHeadersStr.lines().filter { it.trim().isNotEmpty() }.associate { line ->
             val resolved = line
+                .resolveSpfTag(ctx)
                 .resolveHttpAuthTag()
                 .resolveBase64Tag()
                 .resolveCustomTag(customTags)
@@ -217,7 +220,7 @@ open class HttpRequest(
                 aCtx.logger?.debug(ctx.getString(R.string.resolved_url).formatAnnotated(resolvedUrl.A(C.textGrey.darken())))
 
                 // 2. Headers
-                val headersMap = splitHeader(header, aCtx.customTags)
+                val headersMap = splitHeader(ctx, header, aCtx.customTags)
                 headersMap.forEach { (key, value) ->
                     aCtx.logger?.debug("${ctx.getString(R.string.http_header)}: %s -> %s".formatAnnotated(
                         key.A(C.textGrey.darken()), value.A(C.textGrey.darken())

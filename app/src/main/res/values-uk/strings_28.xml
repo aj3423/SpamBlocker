@@ -29,4 +29,18 @@
         &ensp; Якщо <sample>12345678</sample><error>00</error> є в базі даних, дзвінок із <sample>12345678</sample><error>99</error> також буде заблоковано.
         ]]>
     </string>
+    <string name="api_preset_remote_llm">Віддалена LLM</string>
+    <string name="help_api_preset_remote_llm">
+        <![CDATA[
+            Перевіряє вміст SMS за допомогою віддалених великих мовних моделей. <br>
+            <br>
+            Це надається лише для <warn>демонстраційних цілей</warn>.<br>
+            <br>
+            Торкніться, щоб відкрити wiki-сторінку з інструкціями.
+        ]]>
+    </string>
+    <string name="found_existing_auth_token">Знайдено наявний токен автентифікації</string>
+    <string name="use_this_token">Використати цей токен</string>
+    <string name="login_and_get_a_token">Зареєструйтеся та увійдіть на вебсайт, щоб отримати свій токен.</string>
+    <string name="get_a_new_token">Отримати новий токен</string>
 </resources>

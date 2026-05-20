@@ -756,6 +756,23 @@ class SpamNumbers : IConfig {
 }
 
 @Serializable
+class OAuth : IConfig {
+    var phoneBlockToken = ""
+    override fun load(ctx: Context) {
+        val spf = spf.OAuth(ctx)
+
+        phoneBlockToken = spf.phoneBlockToken
+    }
+
+    override fun apply(ctx: Context) {
+        val me = this
+        spf.OAuth(ctx).apply {
+            phoneBlockToken = me.phoneBlockToken
+        }
+    }
+}
+
+@Serializable
 class Permissions : IConfig {
     var allEnabledNames = ""
 
@@ -803,6 +820,8 @@ class Configs {
 
     val spamNumbers = SpamNumbers()
 
+    val oauth = OAuth()
+
     val permissions = Permissions()
 
     fun all(includeSpamDB: Boolean): List<IConfig> {
@@ -838,6 +857,8 @@ class Configs {
             apiQuery,
             apiReport,
             bots,
+
+            oauth,
 
             permissions,
         )

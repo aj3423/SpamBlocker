@@ -29,4 +29,18 @@
         &ensp; Jika <sample>12345678</sample><error>00</error> ada dalam basis data, panggilan dari <sample>12345678</sample><error>99</error> juga akan diblokir.
         ]]>
     </string>
+    <string name="api_preset_remote_llm">LLM jarak jauh</string>
+    <string name="help_api_preset_remote_llm">
+        <![CDATA[
+            Periksa konten SMS menggunakan model bahasa besar jarak jauh. <br>
+            <br>
+            Ini disediakan hanya untuk <warn>tujuan demonstrasi</warn>.<br>
+            <br>
+            Ketuk untuk membuka halaman wiki berisi instruksi.
+        ]]>
+    </string>
+    <string name="found_existing_auth_token">Token autentikasi yang ada ditemukan</string>
+    <string name="use_this_token">Gunakan token ini</string>
+    <string name="login_and_get_a_token">Daftar dan masuk ke situs web untuk mendapatkan token Anda.</string>
+    <string name="get_a_new_token">Dapatkan token baru</string>
 </resources>

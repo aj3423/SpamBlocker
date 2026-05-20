@@ -44,6 +44,19 @@ object Launcher {
         ctx.startActivity(smsIntent)
     }
 
+    fun openUrl(ctx: Context, url: String) {
+        try {
+            val intent = Intent(Intent.ACTION_VIEW, url.toUri())
+            // Optional: makes sure it works even from non-Activity context
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            ctx.startActivity(intent)
+        } catch (e: Exception) {
+            // Handle error (no browser, invalid URL, etc.)
+            loge("$e")
+        }
+    }
+
+
     fun restartProcess(context: Context) {
         val packageManager = context.packageManager
         val intent = packageManager.getLaunchIntentForPackage(context.packageName)

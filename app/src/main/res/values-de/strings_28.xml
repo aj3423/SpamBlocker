@@ -29,4 +29,18 @@
         &ensp; Wenn <sample>12345678</sample><error>00</error> in der Datenbank vorhanden ist, wird auch ein Anruf von <sample>12345678</sample><error>99</error> blockiert.
         ]]>
     </string>
+    <string name="api_preset_remote_llm">Remote-LLM</string>
+    <string name="help_api_preset_remote_llm">
+        <![CDATA[
+            SMS-Inhalte mit entfernten großen Sprachmodellen prüfen. <br>
+            <br>
+            Dies wird ausschließlich zu <warn>Demonstrationszwecken</warn> bereitgestellt.<br>
+            <br>
+            Tippe, um die Wiki-Seite mit Anweisungen zu öffnen.
+        ]]>
+    </string>
+    <string name="found_existing_auth_token">Vorhandenes Authentifizierungstoken gefunden</string>
+    <string name="use_this_token">Dieses Token verwenden</string>
+    <string name="login_and_get_a_token">Registriere dich, melde dich auf der Website an und hole dein Token.</string>
+    <string name="get_a_new_token">Neues Token holen</string>
 </resources>

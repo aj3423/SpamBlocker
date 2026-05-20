@@ -29,4 +29,18 @@
         &ensp; Si <sample>12345678</sample><error>00</error> existeix a la base de dades, una trucada de <sample>12345678</sample><error>99</error> també es bloquejarà.
         ]]>
     </string>
+    <string name="api_preset_remote_llm">LLM remot</string>
+    <string name="help_api_preset_remote_llm">
+        <![CDATA[
+            Comprova el contingut dels SMS amb models de llenguatge grans remots. <br>
+            <br>
+            Això es proporciona només amb <warn>finalitats de demostració</warn>.<br>
+            <br>
+            Toca per obrir la pàgina wiki amb les instruccions.
+        ]]>
+    </string>
+    <string name="found_existing_auth_token">S\'ha trobat un testimoni d\'autenticació existent</string>
+    <string name="use_this_token">Usa aquest testimoni</string>
+    <string name="login_and_get_a_token">Registra\'t i inicia sessió al lloc web per obtenir el teu testimoni.</string>
+    <string name="get_a_new_token">Obtén un testimoni nou</string>
 </resources>

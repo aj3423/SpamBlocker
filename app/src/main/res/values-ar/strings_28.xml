@@ -29,4 +29,18 @@
         &ensp; إذا كان <sample>12345678</sample><error>00</error> موجودًا في قاعدة البيانات، فسيتم أيضًا حظر مكالمة من <sample>12345678</sample><error>99</error>.
         ]]>
     </string>
+    <string name="api_preset_remote_llm">نموذج لغوي كبير عن بعد</string>
+    <string name="help_api_preset_remote_llm">
+        <![CDATA[
+            فحص محتوى رسائل SMS باستخدام نماذج لغوية كبيرة عن بعد. <br>
+            <br>
+            يتم توفير هذا فقط <warn>لأغراض العرض التوضيحي</warn>.<br>
+            <br>
+            اضغط لفتح صفحة الويكي للحصول على التعليمات.
+        ]]>
+    </string>
+    <string name="found_existing_auth_token">تم العثور على رمز مصادقة موجود</string>
+    <string name="use_this_token">استخدم هذا الرمز</string>
+    <string name="login_and_get_a_token">سجل وأنشئ جلسة دخول إلى الموقع واحصل على الرمز الخاص بك.</string>
+    <string name="get_a_new_token">احصل على رمز جديد</string>
 </resources>

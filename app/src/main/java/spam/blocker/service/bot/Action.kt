@@ -241,6 +241,12 @@ fun List<IAction>.serialize(): String {
     return BotJson.encodeToString(ListSerializer(PolymorphicSerializer(IAction::class)), this)
 }
 
+fun List<IAction>.requiredPermissions(ctx: Context): List<PermissionWrapper> {
+    return this.flatMap {
+        it.requiredPermissions(ctx)
+    }
+}
+
 fun String.parseActions(): List<IAction> {
     if (this.isEmpty())
         return listOf()

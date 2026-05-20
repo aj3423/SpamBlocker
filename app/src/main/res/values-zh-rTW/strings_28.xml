@@ -29,4 +29,18 @@
         &ensp; 如果 <sample>12345678</sample><error>00</error> 存在於資料庫中，則來自 <sample>12345678</sample><error>99</error> 的來電也會被封鎖。
         ]]>
     </string>
+    <string name="api_preset_remote_llm">遠端 LLM</string>
+    <string name="help_api_preset_remote_llm">
+        <![CDATA[
+            使用遠端大型語言模型檢查簡訊內容。 <br>
+            <br>
+            此功能僅供<warn>示範用途</warn>。<br>
+            <br>
+            點擊以開啟 Wiki 頁面查看說明。
+        ]]>
+    </string>
+    <string name="found_existing_auth_token">找到現有的驗證權杖</string>
+    <string name="use_this_token">使用此權杖</string>
+    <string name="login_and_get_a_token">註冊並登入網站，然後取得你的權杖。</string>
+    <string name="get_a_new_token">取得新權杖</string>
 </resources>

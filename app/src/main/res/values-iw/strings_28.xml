@@ -29,4 +29,18 @@
         &ensp; אם <sample>12345678</sample><error>00</error> קיים במסד הנתונים, גם שיחה מ-<sample>12345678</sample><error>99</error> תיחסם.
         ]]>
     </string>
+    <string name="api_preset_remote_llm">מודל שפה גדול מרוחק</string>
+    <string name="help_api_preset_remote_llm">
+        <![CDATA[
+            בדיקת תוכן SMS באמצעות מודלי שפה גדולים מרוחקים. <br>
+            <br>
+            זה מסופק רק ל<warn>מטרות הדגמה</warn>.<br>
+            <br>
+            הקש כדי לפתוח את דף הוויקי עם ההוראות.
+        ]]>
+    </string>
+    <string name="found_existing_auth_token">נמצא אסימון אימות קיים</string>
+    <string name="use_this_token">השתמש באסימון זה</string>
+    <string name="login_and_get_a_token">הירשם והתחבר לאתר כדי לקבל את האסימון שלך.</string>
+    <string name="get_a_new_token">קבל אסימון חדש</string>
 </resources>

@@ -29,4 +29,18 @@
         &ensp; Se <sample>12345678</sample><error>00</error> existir no banco de dados, uma chamada de <sample>12345678</sample><error>99</error> também será bloqueada.
         ]]>
     </string>
+    <string name="api_preset_remote_llm">LLM remoto</string>
+    <string name="help_api_preset_remote_llm">
+        <![CDATA[
+            Verifica o conteúdo de SMS usando modelos de linguagem grandes remotos. <br>
+            <br>
+            Isto é fornecido apenas para <warn>fins de demonstração</warn>.<br>
+            <br>
+            Toque para abrir a página wiki com instruções.
+        ]]>
+    </string>
+    <string name="found_existing_auth_token">Token de autenticação existente encontrado</string>
+    <string name="use_this_token">Usar este token</string>
+    <string name="login_and_get_a_token">Registre-se e entre no site para obter seu token.</string>
+    <string name="get_a_new_token">Obter um novo token</string>
 </resources>

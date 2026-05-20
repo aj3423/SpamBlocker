@@ -29,4 +29,18 @@
         &ensp; 如果 <sample>12345678</sample><error>00</error> 存在于数据库中，则来自 <sample>12345678</sample><error>99</error> 的来电也会被屏蔽。
         ]]>
     </string>
+    <string name="api_preset_remote_llm">远程 LLM</string>
+    <string name="help_api_preset_remote_llm">
+        <![CDATA[
+            使用远程大语言模型检查短信内容。 <br>
+            <br>
+            此功能仅用于<warn>演示目的</warn>。<br>
+            <br>
+            点击打开 Wiki 页面查看说明。
+        ]]>
+    </string>
+    <string name="found_existing_auth_token">发现已有的身份验证令牌</string>
+    <string name="use_this_token">使用此令牌</string>
+    <string name="login_and_get_a_token">注册并登录网站，然后获取你的令牌。</string>
+    <string name="get_a_new_token">获取新令牌</string>
 </resources>
