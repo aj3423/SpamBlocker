@@ -102,15 +102,6 @@
         API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
         ]]>
     </string>
-    <string name="help_api_preset_phoneblock_authorization">
-        <![CDATA[
-        1. در <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a> حساب کاربری ایجاد کنید<br>
-        <br>
-        2. در صفحه تنظیمات: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>، روی دکمه \"Generate API key\" کلیک کنید.<br>
-        <br>
-        3. کلید API تولید شده را در پایین وارد کنید.
-        ]]>
-    </string>
     <string name="not_enough_time_left">
         محدودیت زمانی غربالگری تماس 5 ثانیه است، با بافر %s میلی ثانیه برای عدم دقت توابع زمان، محدودیت زمانی کل در واقع %s میلی ثانیه است. مراحل قبلی %s میلی ثانیه طول کشید، زمان کافی باقی نمانده، رد شد.
     </string>

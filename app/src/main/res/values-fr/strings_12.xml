@@ -89,7 +89,6 @@
     <string name="skip_for_testing">Ignorer pour les tests.</string>
     <string name="allowed_by">Autorisé par : %s</string>
     <string name="blocked_by">Bloqué par : %s</string>
-    <string name="outside_time_schedule">Hors plage horaire, ignorer.</string>
     <string name="android_ver_lower_than_11">Version Android inférieure à 11, ignorer.</string>
     <string name="query">Requête</string>
     <string name="report_api">API de rapport</string>

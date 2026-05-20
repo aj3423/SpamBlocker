@@ -99,6 +99,5 @@
     <string name="skip_for_testing">測試時略過。</string>
     <string name="allowed_by">放行原因：%s</string>
     <string name="blocked_by">封鎖原因：%s</string>
-    <string name="outside_time_schedule">不在排程時段內，略過。</string>
     <string name="android_ver_lower_than_11">Android 版本低於 11，略過。</string>
 </resources>

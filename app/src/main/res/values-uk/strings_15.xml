@@ -1,31 +1,4 @@
 <resources>
-    <string name="api_preset_groq">Groq</string>
-    <string name="help_api_preset_groq">
-        <![CDATA[
-        Перевірте вміст SMS за допомогою <b>Groq AI</b>, для цього потрібна лише електронна пошта.
-        ]]>
-    </string>
-    <string name="help_api_preset_groq_authorization">
-        <![CDATA[
-        1. Зареєструйтеся та увійдіть: <br>
-         <a href="https://console.groq.com/login">https://console.groq.com/login</a><br>
-         <br>
-        2. Відкрийте сторінку API:<br>
-         <a href="https://console.groq.com/keys">https://console.groq.com/keys</a><br>
-        <br>
-        3. Натисніть кнопку <translate>\"Створити API ключ\"</translate>.<br>
-        <br>
-        4. Скопіюйте ключ, а потім вставте його нижче.
-        ]]>
-    </string>
-    <string name="spam_sms_prompt_template">
-        Класифікуйте це SMS-повідомлення як Політичне, Шахрайське, Опитування або Маркетингове.
-        Якщо ніщо не підходить, відповідайте \"Валідне\", інакше відповідайте лише категорією, нічого більше не відповідайте.
-        Текст SMS-повідомлення:
-        {escape({sms})}
-    </string>
-    <string name="spam_sms_negative_category"><translate>(Політичне|Шахрайське|Опитування|Маркетингове)</translate></string>
-    <string name="spam_sms_positive_category">Валідне</string>
     <string name="last_log">Останній лог</string>
     <string name="executed_at">Виконано о:</string>
     <string name="not_executed_yet">Ще не виконано</string>
@@ -74,8 +47,6 @@
         Потрібні два дозволи: RECEIVE_MMS та READ_SMS
         ]]>
     </string>
-    <string name="unknown_error">Невідома помилка.</string>
-    <string name="checking_auth_credential">Перевірка облікових даних авторизації.</string>
     <string name="sms_bomb"><short>SMS-бомба</short></string>
     <string name="help_sms_bomb">
         <![CDATA[

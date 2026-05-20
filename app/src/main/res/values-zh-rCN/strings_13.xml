@@ -56,15 +56,6 @@
         ]]>
     </string>
     <string name="canceling_thread">正在取消线程。</string>
-    <string name="help_api_preset_phoneblock_authorization">
-        <![CDATA[
-        1. 在<a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a>注册账户<br>
-        <br>
-        2. 在设置页面：<a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>，点击“生成API密钥”按钮。<br>
-        <br>
-        3. 在下方填写生成的API密钥。
-        ]]>
-    </string>
     <string name="auto_detect_cc_permission">检测国家代码需要 READ_PHONE_STATE 权限。</string>
     <string name="suggest_to_swipe">
         <![CDATA[

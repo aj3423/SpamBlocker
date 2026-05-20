@@ -114,16 +114,6 @@
         API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
         ]]>
     </string>
-    <string name="help_api_preset_phoneblock_authorization">
-        <![CDATA[
-        1. Register an account on <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>
-        <br>
-        2. On the settings page: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
-         press the button \"Generate API key\".<br>
-        <br>
-        3. Fill the generated API key in below.
-        ]]>
-    </string>
     <string name="not_enough_time_left">
         The call screening time limit is 5 seconds, with a %s ms buffer
         for time function inaccuracy. The total time limit is actually %s ms.

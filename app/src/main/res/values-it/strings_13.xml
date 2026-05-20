@@ -102,16 +102,6 @@
         API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
         ]]>
     </string>
-    <string name="help_api_preset_phoneblock_authorization">
-        <![CDATA[
-        1. Registra un account su <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>
-        <br>
-        2. Nella pagina delle impostazioni: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
-         premi il pulsante \"Genera chiave API\".<br>
-        <br>
-        3. Inserisci la chiave API generata qui sotto.
-        ]]>
-    </string>
     <string name="not_enough_time_left">
         Il limite di tempo per lo screening delle chiamate è di 5 secondi, con un buffer di %s ms
         per l\'imprecisione delle funzioni temporali, il limite di tempo totale è in realtà di %s ms.

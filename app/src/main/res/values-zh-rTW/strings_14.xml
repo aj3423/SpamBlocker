@@ -13,7 +13,6 @@
         %s
         ]]>
     </string>
-    <string name="invalid_auth_credentials">請輸入有效的驗證資訊。</string>
     <string name="delay">延遲</string>
     <string name="exclude_services">排除服務</string>
     <string name="help_exclude_bg_service">
@@ -102,5 +101,4 @@
     </string>
     <string name="waning_using_wildcard_as_regex">使用萬用字元 `*` 時未加前置點號，您是否要使用 `.*`？</string>
     <string name="import_as">匯入為</string>
-    <string name="api_key">API 金鑰</string>
 </resources>

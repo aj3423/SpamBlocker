@@ -47,7 +47,6 @@
     ]]>
     </string>
     <string name="quick_tile_is_active">Benutzerdefinierte Schnelleinstellung ist aktiv.</string>
-    <string name="http_status_code_template">HTTP-Statuscode: %d</string>
     <string name="help_preset_ringtone">
     <![CDATA[
         Passen Sie den Klingelton für eine Regex-Regel an; der angegebene Klingelton wird abgespielt, wenn der Anruf durch diese Regel
@@ -102,9 +101,5 @@
     <string name="csv_missing_column">
         Erforderliche Spalte %s fehlt. Sie können den Header %s für die Rufnummernspalte verwenden oder einen vorhandenen
         Header in \"CSV analysieren\" auf %s abbilden.
-    </string>
-    <string name="enable_reporting_number">Meldung aktivieren</string>
-    <string name="help_enable_reporting_number">
-        Diese API unterstützt auch das Melden von Telefonnummern. Aktivieren Sie dies, um auch den Melde-Workflow zu generieren.
     </string>
 </resources>

@@ -1,31 +1,4 @@
 <resources>
-    <string name="api_preset_groq">Groq</string>
-    <string name="help_api_preset_groq">
-        <![CDATA[
-        تحقق من محتوى الرسائل النصية باستخدام <b>Groq AI</b>، يتطلب فقط بريدًا إلكترونيًا.
-        ]]>
-    </string>
-    <string name="help_api_preset_groq_authorization">
-        <![CDATA[
-        1. التسجيل وتسجيل الدخول: <br>
-         <a href="https://console.groq.com/login">https://console.groq.com/login</a><br>
-         <br>
-        2. افتح صفحة API:<br>
-         <a href="https://console.groq.com/keys">https://console.groq.com/keys</a><br>
-        <br>
-        3. اضغط على الزر <translate>\"إنشاء مفتاح API\"</translate>.<br>
-        <br>
-        4. انسخ المفتاح، ثم املأه أدناه.
-        ]]>
-    </string>
-    <string name="spam_sms_prompt_template">
-        صنف هذه الرسالة النصية القصيرة على أنها سياسية أو احتيالية أو استطلاع أو تسويقية.
-        إذا لم ينطبق أي منها، فأجب بـ \"صالح\"، وإلا فأجب بالفئة فقط، ولا تجب على أي شيء آخر.
-        الرسالة النصية القصيرة هي:
-        {escape({sms})}
-    </string>
-    <string name="spam_sms_negative_category">(سياسية|احتيالية|استطلاع|تسويقية)</string>
-    <string name="spam_sms_positive_category">صالح</string>
     <string name="last_log">آخر سجل</string>
     <string name="executed_at">تم التنفيذ في:</string>
     <string name="not_executed_yet">لم يتم تنفيذه بعد</string>
@@ -72,8 +45,6 @@
         مطلوب إذنين: RECEIVE_MMS و READ_SMS
         ]]>
     </string>
-    <string name="unknown_error">خطأ غير معروف.</string>
-    <string name="checking_auth_credential">جارٍ التحقق من بيانات اعتماد التفويض.</string>
     <string name="sms_bomb">وابل رسائل</string>
     <string name="help_sms_bomb">
         <![CDATA[

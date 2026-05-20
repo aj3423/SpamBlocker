@@ -13,7 +13,6 @@
         %s
         ]]>
     </string>
-    <string name="invalid_auth_credentials">Si us plau, introduïu informació d\'autorització vàlida.</string>
     <string name="delay">Retard</string>
     <string name="exclude_services">Exclou Serveis</string>
     <string name="help_exclude_bg_service">
@@ -102,5 +101,4 @@
     </string>
     <string name="waning_using_wildcard_as_regex">S\'utilitza el comodí `*` sense un punt anterior, vols dir `.*`?</string>
     <string name="import_as">Importa com a</string>
-    <string name="api_key">Clau API</string>
 </resources>

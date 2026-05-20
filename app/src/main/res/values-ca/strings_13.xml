@@ -108,16 +108,6 @@
         API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
         ]]>
     </string>
-    <string name="help_api_preset_phoneblock_authorization">
-        <![CDATA[
-        1. Registreu un compte a <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>
-        <br>
-        2. A la pàgina de configuració: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
-         premeu el botó \"Genera clau API\".<br>
-        <br>
-        3. Introduïu la clau API generada a continuació.
-        ]]>
-    </string>
     <string name="not_enough_time_left">
         El límit de temps per al filtratge de trucades és de 5 segons, amb un buffer de %s ms
         per a la imprecisió de les funcions de temps, el límit de temps total és en realitat de %s ms.

@@ -108,16 +108,6 @@
         واجهة برمجة التطبيقات: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
         ]]>
     </string>
-    <string name="help_api_preset_phoneblock_authorization">
-        <![CDATA[
-        1. سجل حسابًا على <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>
-        <br>
-        2. في صفحة الإعدادات: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
-         اضغط على زر \"Generate API key\".<br>
-        <br>
-        3. املأ مفتاح API الذي تم إنشاؤه أدناه.
-        ]]>
-    </string>
     <string name="not_enough_time_left">
         الحد الزمني لفحص المكالمات هو 5 ثوانٍ، مع %s مللي ثانية كوقت احتياطي
         لعدم دقة وظائف الوقت، والحد الزمني الكلي هو في الواقع %s مللي ثانية.

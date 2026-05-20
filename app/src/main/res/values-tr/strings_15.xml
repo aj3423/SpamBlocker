@@ -1,31 +1,4 @@
 <resources>
-    <string name="api_preset_groq">Groq</string>
-    <string name="help_api_preset_groq">
-        <![CDATA[
-        SMS içeriğini <b>Groq AI</b> ile kontrol edin, yalnızca bir e-posta gerekir.
-        ]]>
-    </string>
-    <string name="help_api_preset_groq_authorization">
-        <![CDATA[
-        1. Kayıt ve giriş: <br>
-         <a href="https://console.groq.com/login">https://console.groq.com/login</a><br>
-         <br>
-        2. API sayfasını açın:<br>
-         <a href="https://console.groq.com/keys">https://console.groq.com/keys</a><br>
-        <br>
-        3. <translate>\"API anahtarı oluştur\"</translate> butonuna basın.<br>
-        <br>
-        4. Anahtarı kopyalayın, ardından aşağıya girin.
-        ]]>
-    </string>
-    <string name="spam_sms_prompt_template">
-        Bu SMS mesajını Siyasi, Sahtekarlık, Anket veya Pazarlama olarak kategorize edin.
-        Hiçbiri uygulanmazsa \"Geçerli\" yanıtını verin, aksi takdirde yalnızca kategoriyi yanıtlayın, başka bir şey yanıtlamayın.
-        SMS mesajı:
-        {escape({sms})}
-    </string>
-    <string name="spam_sms_negative_category"><translate>(Siyasi|Sahtekarlık|Anket|Pazarlama)</translate></string>
-    <string name="spam_sms_positive_category">Geçerli</string>
     <string name="last_log">Son Günlük</string>
     <string name="executed_at">Çalıştırıldı:</string>
     <string name="not_executed_yet">Henüz çalıştırılmadı</string>
@@ -72,8 +45,6 @@
         İki izin gereklidir: RECEIVE_MMS ve READ_SMS
         ]]>
     </string>
-    <string name="unknown_error">Bilinmeyen hata.</string>
-    <string name="checking_auth_credential">Yetkilendirme kimlik bilgileri kontrol ediliyor.</string>
     <string name="sms_bomb"><short>SMS Bombası</short></string>
     <string name="help_sms_bomb">
         <![CDATA[

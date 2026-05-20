@@ -1,31 +1,4 @@
 <resources>
-    <string name="api_preset_groq">Groq</string>
-    <string name="help_api_preset_groq">
-        <![CDATA[
-        使用 <b>Groq AI</b> 檢測簡訊內容，僅需一個電子郵件帳號。
-        ]]>
-    </string>
-    <string name="help_api_preset_groq_authorization">
-        <![CDATA[
-        1. 註冊登入：<br>
-         <a href="https://console.groq.com/login">https://console.groq.com/login</a><br>
-         <br>
-        2. 開啟 API 頁面：<br>
-         <a href="https://console.groq.com/keys">https://console.groq.com/keys</a><br>
-        <br>
-        3. 點擊 <translate>「建立 API 金鑰」</translate> 按鈕。<br>
-        <br>
-        4. 複製金鑰，然後填寫在下方。
-        ]]>
-    </string>
-    <string name="spam_sms_prompt_template">
-        將此簡訊分類為「政治」、「詐騙」、「問卷調查」或「行銷」。
-        如果都不符合，請回答「有效」，否則僅回答類別，不要回答其他內容。
-        簡訊內容為：
-        {escape({sms})}
-    </string>
-    <string name="spam_sms_negative_category"><translate>(政治|詐騙|問卷調查|行銷)</translate></string>
-    <string name="spam_sms_positive_category">有效</string>
     <string name="last_log">最新記錄</string>
     <string name="executed_at">執行時間：</string>
     <string name="not_executed_yet">尚未執行</string>
@@ -72,8 +45,6 @@
         需要兩個權限：RECEIVE_MMS 和 READ_SMS
         ]]>
     </string>
-    <string name="unknown_error">未知錯誤。</string>
-    <string name="checking_auth_credential">正在檢查驗證憑證。</string>
     <string name="sms_bomb"><short>簡訊轟炸</short></string>
     <string name="help_sms_bomb">
         <![CDATA[

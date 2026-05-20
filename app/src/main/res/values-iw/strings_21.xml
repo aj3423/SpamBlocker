@@ -47,7 +47,6 @@
     ]]>
     </string>
     <string name="quick_tile_is_active">אריח מהיר מותאם אישית פעיל.</string>
-    <string name="http_status_code_template">קוד מצב Http: %d</string>
     <string name="help_preset_ringtone">
     <![CDATA[
         התאם אישית את הרינגטון עבור כלל ביטוי רגולרי, הרינגטון שצוין יתנגן כאשר השיחה
@@ -102,9 +101,5 @@
     <string name="csv_missing_column">
         חסרה עמודה נדרשת %s. תוכל להשתמש בכותרת %s עבור עמודת מספרי הטלפון, או למפות כותרת קיימת
         ל- %s ב\"ניתוח CSV\".
-    </string>
-    <string name="enable_reporting_number">אפשר דיווח</string>
-    <string name="help_enable_reporting_number">
-        API זה תומך גם בדיווח על מספרי טלפון, הפעל זאת כדי ליצור גם את זרימת העבודה של הדיווח.
     </string>
 </resources>

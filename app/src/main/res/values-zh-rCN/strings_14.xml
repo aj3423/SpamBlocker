@@ -8,7 +8,6 @@
         %s
         ]]>
     </string>
-    <string name="invalid_auth_credentials">请输入有效的授权信息。</string>
     <string name="delay">延迟</string>
     <string name="report_number_require_call_log_permission">
         为防止重复呼叫或回拨号码被误报，举报号码需要通话记录权限。
@@ -100,5 +99,4 @@
     </string>
     <string name="waning_using_wildcard_as_regex">通配符`*`未使用点作为前缀，您的意思是`.*`吗？</string>
     <string name="import_as">导入为</string>
-    <string name="api_key">API 密钥</string>
 </resources>

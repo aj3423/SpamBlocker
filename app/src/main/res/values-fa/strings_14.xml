@@ -13,7 +13,6 @@
         %s
         ]]>
     </string>
-    <string name="invalid_auth_credentials">لطفاً اطلاعات احراز هویت معتبر را وارد کنید.</string>
     <string name="delay">تأخیر</string>
     <string name="exclude_services">سرویس‌های مستثنی</string>
     <string name="help_exclude_bg_service">
@@ -101,5 +100,4 @@
     </string>
     <string name="waning_using_wildcard_as_regex">کاراکتر وحشی `*` بدون نقطه قبل از آن استفاده شده است، آیا منظورتان `.*` است؟</string>
     <string name="import_as">وارد کردن به عنوان</string>
-    <string name="api_key">کلید API</string>
 </resources>

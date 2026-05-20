@@ -46,7 +46,6 @@
     ]]>
     </string>
     <string name="quick_tile_is_active">Пользовательская быстрая плитка активна.</string>
-    <string name="http_status_code_template">Код состояния Http: %d</string>
     <string name="help_preset_ringtone">
     <![CDATA[
         Настройте мелодию звонка для правила регулярного выражения; указанная мелодия звонка будет воспроизводиться, когда звонок
@@ -101,9 +100,5 @@
     <string name="csv_missing_column">
         Отсутствует обязательный столбец %s. Вы можете использовать заголовок %s для столбца с номером, или сопоставить существующий
         заголовок с %s в \"Парсинг CSV\".
-    </string>
-    <string name="enable_reporting_number">Включить отчетность</string>
-    <string name="help_enable_reporting_number">
-        Этот API также поддерживает отчетность по номерам, включите эту опцию, чтобы также сгенерировать рабочий процесс отчетности.
     </string>
 </resources>

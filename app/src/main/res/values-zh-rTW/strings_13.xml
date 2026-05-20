@@ -108,16 +108,6 @@
         API：<a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
         ]]>
     </string>
-    <string name="help_api_preset_phoneblock_authorization">
-        <![CDATA[
-        1. 在 <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a> 註冊帳號<br>
-        <br>
-        2. 在設定頁面：<a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>，
-         按下「產生 API 金鑰」按鈕。<br>
-        <br>
-        3. 在下方填入產生的 API 金鑰。
-        ]]>
-    </string>
     <string name="not_enough_time_left">
         通話過濾時間限制為 5 秒，加上時間函式不精確的 %s 毫秒緩衝，
         實際總時限為 %s 毫秒。

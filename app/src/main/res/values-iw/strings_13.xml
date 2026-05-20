@@ -108,15 +108,6 @@
         API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
         ]]>
     </string>
-    <string name="help_api_preset_phoneblock_authorization">
-        <![CDATA[
-        1. רשום חשבון ב- <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>
-        <br>
-        2. בדף ההגדרות: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>, לחץ על הכפתור \"צור מפתח API\".<br>
-        <br>
-        3. מלא את מפתח ה-API שנוצר למטה.
-        ]]>
-    </string>
     <string name="not_enough_time_left">
         מגבלת זמן סינון השיחות היא 5 שניות, עם חיץ של %s אלפיות שניה לאי דיוק של פונקציות זמן, מגבלת הזמן הכוללת היא למעשה %s אלפיות שניה.
         השלבים הקודמים עלו %s אלפיות שניה, לא נשאר מספיק זמן, מדלג.

@@ -58,7 +58,6 @@
     ]]>
     </string>
     <string name="quick_tile_is_active">Custom quick tile is active.</string>
-    <string name="http_status_code_template">Http Status Code: %d</string>
     <string name="remote_setup">Remote Setup</string>
     <string name="help_remote_setup">
     <![CDATA[
@@ -102,9 +101,5 @@
     <string name="csv_missing_column">
         Missing required column %s. You can use header %s for the number column, or map an existing
         header to %s in \"Parse CSV\".
-    </string>
-    <string name="enable_reporting_number">Enable Reporting</string>
-    <string name="help_enable_reporting_number">
-        This API also supports reporting numbers, enable this to also generate the reporting workflow.
     </string>
 </resources>

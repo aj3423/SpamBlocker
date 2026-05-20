@@ -13,7 +13,6 @@
         %s
         ]]>
     </string>
-    <string name="invalid_auth_credentials">Please input valid authorization information.</string>
     <string name="delay">Delay</string>
     <string name="exclude_services">Exclude Services</string>
     <string name="help_exclude_bg_service">
@@ -102,5 +101,4 @@
     </string>
     <string name="waning_using_wildcard_as_regex">Wildcard `*` is used without a preceding dot, do you mean `.*` ?</string>
     <string name="import_as">Import As</string>
-    <string name="api_key">API Key</string>
 </resources>

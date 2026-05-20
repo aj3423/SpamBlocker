@@ -13,7 +13,6 @@
         %s
         ]]>
     </string>
-    <string name="invalid_auth_credentials">Masukkan informasi otorisasi yang valid.</string>
     <string name="delay">Penundaan</string>
     <string name="exclude_services">Kecualikan Layanan</string>
     <string name="help_exclude_bg_service">
@@ -102,5 +101,4 @@
     </string>
     <string name="waning_using_wildcard_as_regex">Wildcard `*` digunakan tanpa titik yang mendahului titik sebelumnya, Apakah maksud Anda `.*` ?</string>
     <string name="import_as">Impor Sebagai</string>
-    <string name="api_key">Kunci API</string>
 </resources>

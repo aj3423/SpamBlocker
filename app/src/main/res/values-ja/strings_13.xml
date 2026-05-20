@@ -56,15 +56,6 @@
         ]]>
     </string>
     <string name="canceling_thread">スレッドをキャンセルしています。</string>
-    <string name="help_api_preset_phoneblock_authorization">
-        <![CDATA[
-        1. <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a>でアカウントを登録します。<br>
-        <br>
-        2. 設定ページ: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>で、「APIキーを生成」ボタンを押します。<br>
-        <br>
-        3. 生成されたAPIキーを下記に入力します。
-        ]]>
-    </string>
     <string name="auto_detect_cc_permission">国番号を検出するには、READ_PHONE_STATE権限が必要です。</string>
     <string name="suggest_to_swipe">
         <![CDATA[

@@ -1,31 +1,4 @@
 <resources>
-    <string name="api_preset_groq">Groq</string>
-    <string name="help_api_preset_groq">
-        <![CDATA[
-        בדוק את תוכן ה-SMS באמצעות <b>Groq AI</b>, זה דורש רק דוא\"ל.
-        ]]>
-    </string>
-    <string name="help_api_preset_groq_authorization">
-        <![CDATA[
-        1. הירשם והתחבר: <br>
-         <a href="https://console.groq.com/login">https://console.groq.com/login</a><br>
-         <br>
-        2. פתח את עמוד ה-API:<br>
-         <a href="https://console.groq.com/keys">https://console.groq.com/keys</a><br>
-        <br>
-        3. לחץ על הכפתור <translate>\"צור מפתח API\"</translate>.<br>
-        <br>
-        4. העתק את המפתח, ואז מלא אותו למטה.
-        ]]>
-    </string>
-    <string name="spam_sms_prompt_template">
-        קטלג הודעת SMS זו כפוליטית, הונאה, סקר, או שיווק.
-        אם אף אחד לא מתאים, ענה \"תקין\", אחרת, ענה על הקטגוריה בלבד, אל תענה על שום דבר אחר.
-        הודעת ה-SMS היא:
-        {escape({sms})}
-    </string>
-    <string name="spam_sms_negative_category">(פוליטי|הונאה|סקר|שיווק)</string>
-    <string name="spam_sms_positive_category">תקין</string>
     <string name="last_log">יומן אחרון</string>
     <string name="executed_at">בוצע ב:</string>
     <string name="not_executed_yet">טרם בוצע</string>
@@ -73,8 +46,6 @@
         נדרשות שתי הרשאות: RECEIVE_MMS ו-READ_SMS
         ]]>
     </string>
-    <string name="unknown_error">שגיאה לא ידועה.</string>
-    <string name="checking_auth_credential">בדיקת אישורי הרשאה.</string>
     <string name="sms_bomb">פצצת SMS</string>
     <string name="help_sms_bomb">
         <![CDATA[

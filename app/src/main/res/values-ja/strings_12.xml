@@ -89,7 +89,6 @@
     <string name="skip_for_testing">テストのためスキップ。</string>
     <string name="allowed_by">許可: %s</string>
     <string name="blocked_by">ブロック: %s</string>
-    <string name="outside_time_schedule">時間外のためスキップ。</string>
     <string name="android_ver_lower_than_11">Androidバージョンが11より低いため、スキップ。</string>
     <string name="query">照会</string>
     <string name="report_api">報告API</string>

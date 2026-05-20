@@ -13,7 +13,6 @@
         %s
         ]]>
     </string>
-    <string name="invalid_auth_credentials">Inserire informazioni di autorizzazione valide.</string>
     <string name="delay">Ritardo</string>
     <string name="exclude_services">Escludi Servizi</string>
     <string name="help_exclude_bg_service">
@@ -102,5 +101,4 @@
     </string>
     <string name="waning_using_wildcard_as_regex">Il carattere jolly `*` è usato senza un punto precedente, intendi `.*`?</string>
     <string name="import_as">Importa Come</string>
-    <string name="api_key">Chiave API</string>
 </resources>

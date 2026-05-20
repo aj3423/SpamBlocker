@@ -108,16 +108,6 @@
         API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
         ]]>
     </string>
-    <string name="help_api_preset_phoneblock_authorization">
-        <![CDATA[
-        1. Зарегистрируйте аккаунт на <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>
-        <br>
-        2. На странице настроек: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
-         нажмите кнопку \"Generate API key\".<br>
-        <br>
-        3. Введите сгенерированный ключ API ниже.
-        ]]>
-    </string>
     <string name="not_enough_time_left">
         Лимит времени проверки вызова составляет 5 секунд, с буфером %s мс 
         для неточности функций времени, общий лимит времени составляет %s мс. 

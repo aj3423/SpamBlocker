@@ -99,7 +99,6 @@
     <string name="skip_for_testing">Пропустить для тестирования.</string>
     <string name="allowed_by">Разрешено: %s</string>
     <string name="blocked_by">Заблокировано: %s</string>
-    <string name="outside_time_schedule">За пределами расписания, пропуск.</string>
     <string name="android_ver_lower_than_11">Версия Android ниже 11, пропуск.</string>
 
 

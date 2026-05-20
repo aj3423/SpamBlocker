@@ -99,6 +99,5 @@
     <string name="skip_for_testing">Lewati untuk pengujian.</string>
     <string name="allowed_by">Diizinkan oleh: %s</string>
     <string name="blocked_by">Diblokir oleh: %s</string>
-    <string name="outside_time_schedule">Di luar jadwal waktu, lewati.</string>
     <string name="android_ver_lower_than_11">Versi Android lebih rendah dari 11, lewati.</string>
 </resources>

@@ -47,7 +47,6 @@
     ]]>
     </string>
     <string name="quick_tile_is_active">El mosaico rápido personalizado está activo.</string>
-    <string name="http_status_code_template">Código de estado Http: %d</string>
     <string name="help_preset_ringtone">
     <![CDATA[
         Personaliza el tono de llamada para una regla de expresión regular, el tono de llamada especificado se reproducirá cuando la llamada sea
@@ -101,9 +100,5 @@
     </string>
     <string name="csv_missing_column">
         Falta la columna requerida %s. Puedes usar el encabezado %s para la columna de números, o mapear un encabezado existente a %s en \"Analizar CSV\".
-    </string>
-    <string name="enable_reporting_number">Habilitar informes</string>
-    <string name="help_enable_reporting_number">
-        Esta API también admite la denuncia de números de teléfono; habilítala para generar también el flujo de trabajo de denuncia.
     </string>
 </resources>

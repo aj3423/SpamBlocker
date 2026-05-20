@@ -56,16 +56,6 @@
         ]]>
     </string>
     <string name="canceling_thread">Annulation du fil d\'exécution.</string>
-    <string name="help_api_preset_phoneblock_authorization">
-        <![CDATA[
-        1. Créez un compte sur <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>
-        <br>
-        2. Sur la page des paramètres : <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
-         appuyez sur le bouton « Générer une clé API ».<br>
-        <br>
-        3. Saisissez la clé API générée ci-dessous.
-        ]]>
-    </string>
     <string name="auto_detect_cc_permission">L\'autorisation READ_PHONE_STATE est nécessaire pour détecter l\'indicatif pays.</string>
     <string name="suggest_to_swipe">
         <![CDATA[

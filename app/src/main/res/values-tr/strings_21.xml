@@ -45,7 +45,6 @@
     ]]>
     </string>
     <string name="quick_tile_is_active">Özel hızlı döşeme etkin.</string>
-    <string name="http_status_code_template">Http Durum Kodu: %d</string>
     <string name="help_preset_ringtone">
     <![CDATA[
         Bir regex kuralı için zil sesini özelleştirin, arama bu kural tarafından izin verildiğinde belirtilen zil sesi çalacaktır. <br>
@@ -99,9 +98,5 @@
     <string name="csv_missing_column">
         Gerekli %s sütunu eksik. Numara sütunu için %s başlığını kullanabilir veya mevcut bir
         başlığı \"CSV Ayrıştırma\" bölümünde %s ile eşleştirebilirsiniz.
-    </string>
-    <string name="enable_reporting_number">Raporlamayı Etkinleştir</string>
-    <string name="help_enable_reporting_number">
-        Bu API aynı zamanda telefon numarası raporlamayı da destekler, raporlama iş akışını da oluşturmak için bunu etkinleştirin.
     </string>
 </resources>

@@ -47,7 +47,6 @@
     ]]>
     </string>
     <string name="quick_tile_is_active">La rajola ràpida personalitzada està activa.</string>
-    <string name="http_status_code_template">Codi d\'estat Http: %d</string>
     <string name="help_preset_ringtone">
     <![CDATA[
         Personalitza el to de trucada per a una regla regex; el to de trucada especificat es reproduirà quan la trucada sigui permesa per aquesta regla. <br>
@@ -100,9 +99,5 @@
     </string>
     <string name="csv_missing_column">
         Falta la columna obligatòria %s. Pots utilitzar la capçalera %s per a la columna de números de telèfon, o assignar una capçalera existent a %s a \"Analitzar CSV\".
-    </string>
-    <string name="enable_reporting_number">Activar informes</string>
-    <string name="help_enable_reporting_number">
-        Aquesta API també admet la notificació de números de telèfon, activa-ho per generar també el flux de treball d\'informes.
     </string>
 </resources>

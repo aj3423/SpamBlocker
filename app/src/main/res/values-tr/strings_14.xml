@@ -8,7 +8,6 @@
         %s
         ]]>
     </string>
-    <string name="invalid_auth_credentials">Lütfen geçerli yetkilendirme bilgilerini girin.</string>
     <string name="delay">Gecikme</string>
     <string name="report_number_require_call_log_permission">
         Tekrarlanan aramaların veya geri aranan numaraların yanlış raporlanmasını önlemek için,
@@ -101,5 +100,4 @@
     </string>
     <string name="waning_using_wildcard_as_regex">Wildcard `*`, öncesinde nokta olmadan kullanıldı, `.*` demek istediniz mi?</string>
     <string name="import_as">Şu Olarak İçe Aktar</string>
-    <string name="api_key">API Anahtarı</string>
 </resources>

@@ -13,7 +13,6 @@
         %s
         ]]>
     </string>
-    <string name="invalid_auth_credentials">אנא הכנס פרטי הרשאה חוקיים.</string>
     <string name="delay">השהיה</string>
     <string name="exclude_services">החרג שירותים</string>
     <string name="help_exclude_bg_service">
@@ -102,5 +101,4 @@
     </string>
     <string name="waning_using_wildcard_as_regex">תו כללי `*` משמש ללא נקודה קודמת, האם התכוונת ל-`.*` ?</string>
     <string name="import_as">ייבא כ-</string>
-    <string name="api_key">מפתח API</string>
 </resources>

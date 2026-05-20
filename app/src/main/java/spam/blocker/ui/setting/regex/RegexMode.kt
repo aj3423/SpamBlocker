@@ -560,7 +560,7 @@ object RegexMode {
         override fun Icon(color: Color) {
             ResIcon16(R.drawable.ic_location, color = color)
         }
-        override val helpTooltipId = R.string.help_regex_mode_phone_number
+        override val helpTooltipId = R.string.help_regex_mode_geolocation
     }
     class Carrier : NumberMode() {
         override val modeType = ModeType.Carrier

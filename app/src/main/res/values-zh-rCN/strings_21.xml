@@ -45,7 +45,6 @@
     ]]>
     </string>
     <string name="quick_tile_is_active">自定义快捷磁贴已激活。</string>
-    <string name="http_status_code_template">Http 状态码：%d</string>
     <string name="help_preset_ringtone">
     <![CDATA[
         自定义正则表达式规则的铃声，当呼叫被此规则允许时，将播放指定的铃声。 <br>
@@ -98,9 +97,5 @@
     </string>
     <string name="csv_missing_column">
         缺少必需的列 %s。您可以将标头 %s 用作电话号码列，或者在“解析 CSV”中将现有标头映射到 %s。
-    </string>
-    <string name="enable_reporting_number">启用报告</string>
-    <string name="help_enable_reporting_number">
-        此 API 也支持报告电话号码，启用此项可同时生成报告工作流程。
     </string>
 </resources>

@@ -1,31 +1,4 @@
 <resources>
-    <string name="api_preset_groq">Groq</string>
-    <string name="help_api_preset_groq">
-        <![CDATA[
-        محتوای پیامک را با استفاده از <b>هوش مصنوعی Groq</b> بررسی کنید، فقط به یک ایمیل نیاز دارد.
-        ]]>
-    </string>
-    <string name="help_api_preset_groq_authorization">
-        <![CDATA[
-        1. ثبت نام و ورود به سیستم: <br>
-         <a href="https://console.groq.com/login">https://console.groq.com/login</a><br>
-         <br>
-        2. صفحه API را باز کنید:<br>
-         <a href="https://console.groq.com/keys">https://console.groq.com/keys</a><br>
-        <br>
-        3. دکمه <translate>\"ایجاد کلید API\"</translate> را فشار دهید.<br>
-        <br>
-        4. کلید را کپی کنید، سپس آن را در زیر وارد کنید.
-        ]]>
-    </string>
-    <string name="spam_sms_prompt_template">
-        این پیامک را به عنوان سیاسی، کلاهبرداری، نظرسنجی یا بازاریابی طبقه بندی کنید.
-        اگر هیچکدام صدق نمی کند، پاسخ دهید \"معتبر\"، در غیر این صورت فقط دسته را پاسخ دهید، چیز دیگری پاسخ ندهید.
-        پیامک:
-        {escape({sms})}
-    </string>
-    <string name="spam_sms_negative_category"><translate>(سیاسی|کلاهبرداری|نظرسنجی|بازاریابی)</translate></string>
-    <string name="spam_sms_positive_category">معتبر</string>
     <string name="last_log">آخرین لاگ</string>
     <string name="executed_at">اجرا شده در:</string>
     <string name="not_executed_yet">هنوز اجرا نشده</string>
@@ -72,8 +45,6 @@
         دو مجوز مورد نیاز است: RECEIVE_MMS و READ_SMS
         ]]>
     </string>
-    <string name="unknown_error">خطای ناشناخته.</string>
-    <string name="checking_auth_credential">در حال بررسی اعتبار مجوز.</string>
     <string name="sms_bomb"><short>بمباران پیامکی</short></string>
     <string name="help_sms_bomb">
         <![CDATA[

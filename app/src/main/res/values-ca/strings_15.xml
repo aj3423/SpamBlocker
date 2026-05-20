@@ -1,31 +1,4 @@
 <resources>
-    <string name="api_preset_groq">Groq</string>
-    <string name="help_api_preset_groq">
-        <![CDATA[
-        Comprova el contingut dels SMS utilitzant <b>Groq AI</b>, només requereix una adreça de correu electrònic.
-        ]]>
-    </string>
-    <string name="help_api_preset_groq_authorization">
-        <![CDATA[
-        1. Registra\'t i inicia sessió: <br>
-         <a href="https://console.groq.com/login">https://console.groq.com/login</a><br>
-         <br>
-        2. Obre la pàgina de l\'API:<br>
-         <a href="https://console.groq.com/keys">https://console.groq.com/keys</a><br>
-        <br>
-        3. Prem el botó <translate>\"Crea clau API\"</translate>.<br>
-        <br>
-        4. Copia la clau, i després omple-la a sota.
-        ]]>
-    </string>
-    <string name="spam_sms_prompt_template">
-        Classifica aquest missatge SMS com a Polític, Frau, Enquesta o Màrqueting.
-        Si no s\'aplica cap, respon \"Vàlid\", en cas contrari, respon només la categoria, no responguis res més.
-        El missatge SMS és:
-        {escape({sms})}
-    </string>
-    <string name="spam_sms_negative_category">(Political|Fraud|Survey|Marketing)</string>
-    <string name="spam_sms_positive_category">Vàlid</string>
     <string name="last_log">Últim registre</string>
     <string name="executed_at">Executat a:</string>
     <string name="not_executed_yet">Encara no s\'ha executat</string>
@@ -73,8 +46,6 @@
         Es necessiten dos permisos: RECEIVE_MMS i READ_SMS
         ]]>
     </string>
-    <string name="unknown_error">Error desconegut.</string>
-    <string name="checking_auth_credential">S\'estan comprovant les credencials d\'autorització.</string>
     <string name="sms_bomb"><short>Bombardeig SMS</short></string>
     <string name="help_sms_bomb">
         <![CDATA[

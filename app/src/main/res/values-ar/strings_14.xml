@@ -13,7 +13,6 @@
         %s
         ]]>
     </string>
-    <string name="invalid_auth_credentials">الرجاء إدخال معلومات ترخيص صالحة.</string>
     <string name="delay">تأخير</string>
     <string name="exclude_services">استبعاد الخدمات</string>
     <string name="help_exclude_bg_service">
@@ -102,5 +101,4 @@
     </string>
     <string name="waning_using_wildcard_as_regex">يتم استخدام حرف البدل `*` بدون نقطة سابقة، هل تقصد `.*`؟</string>
     <string name="import_as">استيراد كـ</string>
-    <string name="api_key">مفتاح API</string>
 </resources>

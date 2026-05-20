@@ -1,31 +1,4 @@
 <resources>
-    <string name="api_preset_groq">Groq</string>
-    <string name="help_api_preset_groq">
-        <![CDATA[
-        Verifique o conteúdo das mensagens SMS usando <b>Groq AI</b>, ela requer apenas um email.
-        ]]>
-    </string>
-    <string name="help_api_preset_groq_authorization">
-        <![CDATA[
-        1. Registrar e fazer login: <br>
-         <a href="https://console.groq.com/login">https://console.groq.com/login</a><br>
-         <br>
-        2. Abra a página da API:<br>
-         <a href="https://console.groq.com/keys">https://console.groq.com/keys</a><br>
-        <br>
-        3. Pressione o botão <translate>\"Criar chave de API\"</translate>.<br>
-        <br>
-        4. Copie a chave e preencha-a abaixo.
-        ]]>
-    </string>
-    <string name="spam_sms_prompt_template">
-        Classifique esta mensagem de SMS como Política, Fraude, Pesquisa ou Marketing.
-        Se nenhuma das opções se aplicar, responda \"Válido\", caso contrário, responda apenas com a categoria, não responda nada mais.
-        A mensagem de SMS é:
-        {escape({sms})}
-    </string>
-    <string name="spam_sms_negative_category"><translate>(Política|Fraude|Pesquisa|Marketing)</translate></string>
-    <string name="spam_sms_positive_category">Válido</string>
     <string name="last_log">Último Registro</string>
     <string name="executed_at">Executado em:</string>
     <string name="not_executed_yet">Ainda não executado</string>
@@ -74,8 +47,6 @@
         Duas permissões são necessárias: RECEIVE_MMS e READ_SMS
         ]]>
     </string>
-    <string name="unknown_error">Erro desconhecido.</string>
-    <string name="checking_auth_credential">Verificando credenciais de autorização.</string>
     <string name="sms_bomb"><short>Bombardeio SMS</short></string>
     <string name="help_sms_bomb">
         <![CDATA[

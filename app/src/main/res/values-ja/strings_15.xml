@@ -1,31 +1,4 @@
 <resources>
-    <string name="api_preset_groq">Groq</string>
-    <string name="help_api_preset_groq">
-        <![CDATA[
-        <b>Groq AI</b>を使ってSMSの内容を確認します。メールアドレスがあれば利用できます。
-        ]]>
-    </string>
-    <string name="help_api_preset_groq_authorization">
-        <![CDATA[
-        1. 登録とログイン：<br>
-         <a href="https://console.groq.com/login">https://console.groq.com/login</a><br>
-         <br>
-        2. APIページを開く：<br>
-         <a href="https://console.groq.com/keys">https://console.groq.com/keys</a><br>
-        <br>
-        3. <translate>\"Create API key\"</translate>ボタンを押します。<br>
-        <br>
-        4. キーをコピーし、下に貼り付けます。
-        ]]>
-    </string>
-    <string name="spam_sms_prompt_template">
-        このSMSメッセージを政治、詐欺、アンケート、マーケティングのいずれかに分類してください。
-        該当するものがない場合は「有効」と回答してください。それ以外の場合は、カテゴリのみを回答し、他の何も回答しないでください。
-        SMSメッセージは次のとおりです。
-        {escape({sms})}
-    </string>
-    <string name="spam_sms_negative_category"><translate>(政治|詐欺|アンケート|マーケティング)</translate></string>
-    <string name="spam_sms_positive_category">有効</string>
     <string name="last_log">最終ログ</string>
     <string name="executed_at">実行日時：</string>
     <string name="not_executed_yet">まだ実行されていません</string>
@@ -73,8 +46,6 @@
         2つの権限が必要です：RECEIVE_MMSとREAD_SMS
         ]]>
     </string>
-    <string name="unknown_error">不明なエラー。</string>
-    <string name="checking_auth_credential">認証情報を確認しています。</string>
     <string name="sms_bomb"><short>SMS爆撃</short></string>
     <string name="help_sms_bomb">
         <![CDATA[

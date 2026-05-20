@@ -56,16 +56,6 @@
         ]]>
     </string>
     <string name="canceling_thread">Thread wird abgebrochen.</string>
-    <string name="help_api_preset_phoneblock_authorization">
-        <![CDATA[
-        1. Registrieren Sie ein Konto unter <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>
-        <br>
-        2. Auf der Einstellungsseite: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
-         drücken Sie die Schaltfläche \"API-Schlüssel generieren\".<br>
-        <br>
-        3. Tragen Sie den generierten API-Schlüssel unten ein.
-        ]]>
-    </string>
     <string name="auto_detect_cc_permission">Die Berechtigung READ_PHONE_STATE wird benötigt, um die Landesvorwahl zu erkennen.</string>
     <string name="suggest_to_swipe">
         <![CDATA[

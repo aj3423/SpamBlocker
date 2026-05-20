@@ -1,31 +1,4 @@
 <resources>
-    <string name="api_preset_groq">Groq</string>
-    <string name="help_api_preset_groq">
-        <![CDATA[
-        Проверьте содержимое SMS с помощью <b>Groq AI</b>, для этого требуется только адрес электронной почты.
-        ]]>
-    </string>
-    <string name="help_api_preset_groq_authorization">
-        <![CDATA[
-        1. Зарегистрируйтесь и войдите: <br>
-         <a href="https://console.groq.com/login">https://console.groq.com/login</a><br>
-         <br>
-        2. Откройте страницу API:<br>
-         <a href="https://console.groq.com/keys">https://console.groq.com/keys</a><br>
-        <br>
-        3. Нажмите кнопку <translate>«Создать API-ключ»</translate>.<br>
-        <br>
-        4. Скопируйте ключ, затем вставьте его ниже.
-        ]]>
-    </string>
-    <string name="spam_sms_prompt_template">
-        Отнесите это SMS-сообщение к категории «Политика», «Мошенничество», «Опрос» или «Маркетинг».
-        Если ни одна категория не подходит, ответьте «Надёжный», иначе укажите только категорию, ничего больше не отвечая.
-        Текст SMS:
-        {escape({sms})}
-    </string>
-    <string name="spam_sms_negative_category">(Политика|Мошенничество|Опрос|Маркетинг)</string>
-    <string name="spam_sms_positive_category">Надёжный</string>
     <string name="last_log">Последний лог</string>
     <string name="executed_at">Выполнено в:</string>
     <string name="not_executed_yet">Ещё не выполнялось</string>
@@ -73,8 +46,6 @@
         Требуются два разрешения: RECEIVE_MMS и READ_SMS
         ]]>
     </string>
-    <string name="unknown_error">Неизвестная ошибка.</string>
-    <string name="checking_auth_credential">Проверка учётных данных авторизации.</string>
     <string name="sms_bomb"><short>SMS-бомбардировки</short></string>
     <string name="help_sms_bomb">
         <![CDATA[

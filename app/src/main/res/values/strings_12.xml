@@ -99,6 +99,5 @@
     <string name="skip_for_testing">Skip for testing.</string>
     <string name="allowed_by">Allowed by: %s</string>
     <string name="blocked_by">Blocked by: %s</string>
-    <string name="outside_time_schedule">Outside time schedule, skip.</string>
     <string name="android_ver_lower_than_11">Android version is lower than 11, skip.</string>
 </resources>

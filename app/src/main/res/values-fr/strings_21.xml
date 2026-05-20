@@ -47,7 +47,6 @@
     ]]>
     </string>
     <string name="quick_tile_is_active">La tuile rapide personnalisée est active.</string>
-    <string name="http_status_code_template">Code d\'état Http : %d</string>
     <string name="help_preset_ringtone">
     <![CDATA[
         Personnalisez la sonnerie pour une règle d\'expression régulière ; la sonnerie spécifiée sera jouée lorsque l\'appel est
@@ -101,9 +100,5 @@
     </string>
     <string name="csv_missing_column">
         Colonne requise %s manquante. Vous pouvez utiliser l\'en-tête %s pour la colonne des numéros de téléphone, ou mapper un en-tête existant à %s dans \"Analyser le CSV\".
-    </string>
-    <string name="enable_reporting_number">Activer le signalement</string>
-    <string name="help_enable_reporting_number">
-        Cette API prend également en charge le signalement des numéros de téléphone, activez ceci pour générer également le flux de travail de signalement.
     </string>
 </resources>

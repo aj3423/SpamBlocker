@@ -1,31 +1,4 @@
 <resources>
-    <string name="api_preset_groq">Groq</string>
-    <string name="help_api_preset_groq">
-        <![CDATA[
-        Periksa isi SMS menggunakan <b>Groq AI</b>, hanya memerlukan email.
-        ]]>
-    </string>
-    <string name="help_api_preset_groq_authorization">
-        <![CDATA[
-        1. Daftar dan masuk: <br>
-         <a href="https://console.groq.com/login">https://console.groq.com/login</a><br>
-         <br>
-        2. Buka halaman API:<br>
-         <a href="https://console.groq.com/keys">https://console.groq.com/keys</a><br>
-        <br>
-        3. Tekan tombol <translate>“Buat Kunci API”</translate>.<br>
-        <br>
-        4. Salin kuncinya, lalu isi di bawah ini.
-        ]]>
-    </string>
-    <string name="spam_sms_prompt_template">
-        Kategorikan pesan SMS ini sebagai Politik, Penipuan, Survei, atau Pemasaran.
-        Jika tidak ada, jawablah \"Sah\", jika tidak, jawablah kategorinya saja, jangan menjawab apa pun.
-        Pesan SMS-nya adalah:
-        {escape({sms})}
-    </string>
-    <string name="spam_sms_negative_category"><translate>(Politik|Penipuan|Survei|Pemasaran)</translate></string>
-    <string name="spam_sms_positive_category">Sah</string>
     <string name="last_log">Catatan Terakhir</string>
     <string name="executed_at">Dijalankan pada:</string>
     <string name="not_executed_yet">Belum dijalankan</string>
@@ -74,8 +47,6 @@
         Diperlukan dua izin: MENERIMA_MMS dan MEMBACA_SMS
         ]]>
     </string>
-    <string name="unknown_error">Kesalahan tidak diketahui.</string>
-    <string name="checking_auth_credential">Memeriksa kredensial otorisasi.</string>
     <string name="sms_bomb">Bom SMS</string>
     <string name="help_sms_bomb">
         <![CDATA[
