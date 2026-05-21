@@ -43,4 +43,9 @@
     <string name="use_this_token">このトークンを使用</string>
     <string name="login_and_get_a_token">Web サイトに登録してログインし、トークンを取得します。</string>
     <string name="get_a_new_token">新しいトークンを取得</string>
+    <string name="others">その他</string>
+    <string name="api_settings">API 設定</string>
+    <string name="include_settings">含める設定</string>
+    <string name="exclude_settings">除外設定</string>
+    <string name="backup_missing_category">この設定はバックアップファイルに存在しないため、復元できません。</string>
 </resources>

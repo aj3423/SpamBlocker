@@ -43,4 +43,9 @@
     <string name="use_this_token">Utiliser ce jeton</string>
     <string name="login_and_get_a_token">Inscrivez-vous et connectez-vous au site web pour obtenir votre jeton.</string>
     <string name="get_a_new_token">Obtenir un nouveau jeton</string>
+    <string name="others">Autres</string>
+    <string name="api_settings">Paramètres API</string>
+    <string name="include_settings">Paramètres d\'inclusion</string>
+    <string name="exclude_settings">Paramètres d\'exclusion</string>
+    <string name="backup_missing_category">Ce paramètre est absent du fichier de sauvegarde et ne peut pas être restauré.</string>
 </resources>

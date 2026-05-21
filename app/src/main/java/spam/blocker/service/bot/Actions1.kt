@@ -23,7 +23,10 @@ import org.json.JSONObject
 import spam.blocker.Events
 import spam.blocker.G
 import spam.blocker.R
+import spam.blocker.config.Category
+import spam.blocker.config.CategorySelection
 import spam.blocker.config.Configs
+import spam.blocker.config.defaultCategorySelection
 import spam.blocker.db.CallTable
 import spam.blocker.db.RegexRule
 import spam.blocker.db.SmsTable
@@ -497,7 +500,11 @@ class BackupExport(
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         // Generate config data bytes
         val curr = Configs()
-        curr.load(ctx, includeSpamDB)
+        curr.load(ctx, if (includeSpamDB) {
+            CategorySelection().select(Category.SPAM_NUMBERS)
+        } else {
+            CategorySelection().unselect(Category.SPAM_NUMBERS)
+        })
         val compressed = curr.toByteArray()
 
         aCtx.logger?.debug(ctx.getString(R.string.action_backup_export))
@@ -559,7 +566,11 @@ class BackupImport(
 
         try {
             val newCfg = Configs.fromByteArray(input)
-            newCfg.apply(ctx, includeSpamDB)
+            newCfg.apply(ctx, if (includeSpamDB) {
+                defaultCategorySelection.select(Category.SPAM_NUMBERS)
+            } else {
+                defaultCategorySelection.unselect(Category.SPAM_NUMBERS)
+            })
 
             aCtx.logger?.debug(ctx.getString(R.string.action_backup_import))
 

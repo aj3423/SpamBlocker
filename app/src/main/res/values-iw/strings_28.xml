@@ -43,4 +43,9 @@
     <string name="use_this_token">השתמש באסימון זה</string>
     <string name="login_and_get_a_token">הירשם והתחבר לאתר כדי לקבל את האסימון שלך.</string>
     <string name="get_a_new_token">קבל אסימון חדש</string>
+    <string name="others">אחר</string>
+    <string name="api_settings">הגדרות API</string>
+    <string name="include_settings">הגדרות הכללה</string>
+    <string name="exclude_settings">הגדרות החרגה</string>
+    <string name="backup_missing_category">הגדרה זו חסרה בקובץ הגיבוי ולא ניתן לשחזר אותה.</string>
 </resources>

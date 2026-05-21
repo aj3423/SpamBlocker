@@ -43,4 +43,9 @@
     <string name="use_this_token">از این توکن استفاده کن</string>
     <string name="login_and_get_a_token">در وب‌سایت ثبت‌نام و وارد شوید و توکن خود را دریافت کنید.</string>
     <string name="get_a_new_token">دریافت توکن جدید</string>
+    <string name="others">سایر موارد</string>
+    <string name="api_settings">تنظیمات API</string>
+    <string name="include_settings">تنظیمات شامل‌کردن</string>
+    <string name="exclude_settings">تنظیمات مستثنی‌کردن</string>
+    <string name="backup_missing_category">این تنظیم در فایل پشتیبان وجود ندارد و قابل بازیابی نیست.</string>
 </resources>

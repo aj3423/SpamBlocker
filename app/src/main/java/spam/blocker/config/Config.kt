@@ -6,9 +6,11 @@ import androidx.compose.ui.graphics.toArgb
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
 import kotlinx.serialization.json.encodeToStream
 import spam.blocker.G
+import spam.blocker.R
 import spam.blocker.db.Bot
 import spam.blocker.db.BotTable
 import spam.blocker.db.ContentRegexTable
@@ -36,6 +38,12 @@ import java.io.ByteArrayOutputStream
 import java.util.zip.GZIPInputStream
 import java.util.zip.GZIPOutputStream
 
+// ConfigJson is based on BotJson because backup files contain polymorphic bot/action/API objects,
+//   they require custom serializing modules that already registered in BotJson.
+@OptIn(ExperimentalSerializationApi::class)
+private val ConfigJson = Json(BotJson) {
+    explicitNulls = false
+}
 
 interface IConfig {
     fun load(ctx: Context) // load current settings into this object before saving to a backup file
@@ -784,97 +792,199 @@ class Permissions : IConfig {
     override fun apply(ctx: Context) { }
 }
 
+enum class Category(val labelId: Int) {
+    OTHERS(R.string.others),
+    REGEX_RULES(R.string.regex_settings),
+    APIS(R.string.api_settings),
+    WORKFLOWS(R.string.workflows),
+    LANGUAGE(R.string.language),
+    THEME(R.string.theme),
+    SPAM_NUMBERS(R.string.database)
+}
+
+@Serializable
+data class CategorySelection(
+    val all: Set<Category> = Category.entries
+        .filter { it != Category.SPAM_NUMBERS }
+        .toSet()
+) {
+    fun isSelected(category: Category): Boolean = category in all
+
+    // Returns a new state with the category added to the selection.
+    fun select(category: Category): CategorySelection {
+        return copy(all = all + category)
+    }
+
+    // Returns a new state with the category removed from the selection.
+    fun unselect(category: Category): CategorySelection {
+        return copy(all = all - category)
+    }
+
+    fun toggle(category: Category): CategorySelection {
+        return if (isSelected(category)) unselect(category) else select(category)
+    }
+
+    fun contains(category: Category): Boolean {
+        return category in all
+    }
+
+    fun negate(): CategorySelection {
+        return CategorySelection(allUnselected().toSet())
+    }
+
+    fun allSelected(): List<Category> = all.toList()
+
+    fun allUnselected(): List<Category> = Category.entries.filter { it !in all }
+}
+val defaultCategorySelection by lazy {
+    CategorySelection()
+}
+val emptyCategorySelection by lazy {
+    CategorySelection(emptySet())
+}
+
+
 @Serializable
 class Configs {
-    val global = Global()
-    val historyOptions = HistoryOptions()
-    val regexOptions = RegexOptions()
-    val botOptions = BotOptions()
-    val language = Language()
-    val theme = Theme()
+    var categories : CategorySelection? = null
 
-    val contacts = Contact()
-    val stir = STIR()
-    val spamDB = SpamDB()
-    val repeatedCall = RepeatedCall()
-    val dialed = Dialed()
-    val answered = Answered()
-    val recentApps = RecentApps()
-    val meetingMode = MeetingMode()
-    val blockType = BlockType()
-    val callerID = CallerID()
-    val notification = Notification()
-    val offTime = OffTime()
+    var global : Global? = null
+    var historyOptions : HistoryOptions? = null
+    var regexOptions : RegexOptions? = null
+    var botOptions : BotOptions? = null
+    var language : Language? = null
+    var theme : Theme? = null
 
-    val numberRules = NumberRules()
-    val contentRules = ContentRules()
-    val quickCopyRules = QuickCopyRules()
-    val pushAlert = PushAlert()
-    val smsAlert = SmsAlert()
-    val emergency = EmergencySituation()
-    val smsBomb = SmsBomb()
+    var contacts : Contact? = null
+    var stir : STIR? = null
+    var spamDB : SpamDB? = null
+    var repeatedCall : RepeatedCall? = null
+    var dialed : Dialed? = null
+    var answered : Answered? = null
+    var recentApps : RecentApps? = null
+    var meetingMode : MeetingMode? = null
+    var blockType : BlockType? = null
+    var callerID : CallerID? = null
+    var notification : Notification? = null
+    var offTime : OffTime? = null
 
-    val apiQuery = ApiQuery()
-    val apiReport = ApiReport()
-    val bots = Bots()
+    var numberRules : NumberRules? = null
+    var contentRules : ContentRules? = null
+    var quickCopyRules : QuickCopyRules? = null
+    var pushAlert : PushAlert? = null
+    var smsAlert : SmsAlert? = null
+    var emergency : EmergencySituation? = null
+    var smsBomb : SmsBomb? = null
 
-    val spamNumbers = SpamNumbers()
+    var apiQuery : ApiQuery? = null
+    var apiReport : ApiReport? = null
+    var bots : Bots? = null
 
-    val oauth = OAuth()
+    var spamNumbers : SpamNumbers? = null
 
-    val permissions = Permissions()
+    var oauth : OAuth? = null
 
-    fun all(includeSpamDB: Boolean): List<IConfig> {
-        val ret = mutableListOf(
-            global,
-            historyOptions,
-            regexOptions,
-            botOptions,
-            language,
-            theme,
+    var permissions : Permissions? = null
 
-            contacts,
-            stir,
-            spamDB,
-            repeatedCall,
-            dialed,
-            answered,
-            offTime,
-            recentApps,
-            meetingMode,
-            blockType,
-            notification,
-            callerID,
+    // Read all settings from SharedPref/Database into this object, for saving to file.
+    fun load(ctx: Context, categories: CategorySelection) {
+        this.categories = categories
 
-            numberRules,
-            contentRules,
-            quickCopyRules,
-            pushAlert,
-            smsAlert,
-            emergency,
-            smsBomb,
-
-            apiQuery,
-            apiReport,
-            bots,
-
-            oauth,
-
-            permissions,
-        )
-        if (includeSpamDB)
-            ret += spamNumbers
-
-        return ret
-    }
-    // Read all settings from SharedPref/Database to this object, preparing for saving to file.
-    fun load(ctx: Context, includeSpamDB: Boolean = true) {
-        all(includeSpamDB).forEach { it.load(ctx) }
+        if (categories.isSelected(Category.OTHERS)) {
+            global = Global().also { it.load(ctx) }
+            historyOptions = HistoryOptions().also { it.load(ctx) }
+            contacts = Contact().also { it.load(ctx) }
+            stir = STIR().also { it.load(ctx) }
+            spamDB = SpamDB().also { it.load(ctx) }
+            repeatedCall = RepeatedCall().also { it.load(ctx) }
+            dialed = Dialed().also { it.load(ctx) }
+            answered = Answered().also { it.load(ctx) }
+            offTime = OffTime().also { it.load(ctx) }
+            emergency = EmergencySituation().also { it.load(ctx) }
+            recentApps = RecentApps().also { it.load(ctx) }
+            meetingMode = MeetingMode().also { it.load(ctx) }
+            blockType = BlockType().also { it.load(ctx) }
+            notification = Notification().also { it.load(ctx) }
+            callerID = CallerID().also { it.load(ctx) }
+            oauth = OAuth().also { it.load(ctx) }
+            permissions = Permissions().also { it.load(ctx) }
+        }
+        if (categories.isSelected(Category.REGEX_RULES)) {
+            regexOptions = RegexOptions().also { it.load(ctx) }
+            numberRules = NumberRules().also { it.load(ctx) }
+            contentRules = ContentRules().also { it.load(ctx) }
+            quickCopyRules = QuickCopyRules().also { it.load(ctx) }
+            pushAlert = PushAlert().also { it.load(ctx) }
+            smsAlert = SmsAlert().also { it.load(ctx) }
+            smsBomb = SmsBomb().also { it.load(ctx) }
+        }
+        if (categories.isSelected(Category.APIS)) {
+            apiQuery = ApiQuery().also { it.load(ctx) }
+            apiReport = ApiReport().also { it.load(ctx) }
+        }
+        if (categories.isSelected(Category.WORKFLOWS)) {
+            botOptions = BotOptions().also { it.load(ctx) }
+            bots = Bots().also { it.load(ctx) }
+        }
+        if (categories.isSelected(Category.LANGUAGE)) {
+            language = Language().also { it.load(ctx) }
+        }
+        if (categories.isSelected(Category.THEME)) {
+            theme = Theme().also { it.load(ctx) }
+        }
+        if (categories.isSelected(Category.SPAM_NUMBERS)) {
+            spamNumbers = SpamNumbers().also { it.load(ctx) }
+        }
     }
 
     // This object has been full filled, apply the values to SharedPref/Database
-    fun apply(ctx: Context, includeSpamDB: Boolean = true) {
-        all(includeSpamDB).forEach { it.apply(ctx) }
+    fun apply(ctx: Context, categories: CategorySelection) {
+        if (categories.isSelected(Category.OTHERS)) {
+            global?.apply(ctx)
+            historyOptions?.apply(ctx)
+            contacts?.apply(ctx)
+            stir?.apply(ctx)
+            spamDB?.apply(ctx)
+            repeatedCall?.apply(ctx)
+            dialed?.apply(ctx)
+            answered?.apply(ctx)
+            offTime?.apply(ctx)
+            emergency?.apply(ctx)
+            recentApps?.apply(ctx)
+            meetingMode?.apply(ctx)
+            blockType?.apply(ctx)
+            notification?.apply(ctx)
+            callerID?.apply(ctx)
+            oauth?.apply(ctx)
+            permissions?.apply(ctx)
+        }
+        if (categories.isSelected(Category.REGEX_RULES)) {
+            regexOptions?.apply(ctx)
+
+            numberRules?.apply(ctx)
+            contentRules?.apply(ctx)
+            quickCopyRules?.apply(ctx)
+            pushAlert?.apply(ctx)
+            smsAlert?.apply(ctx)
+            smsBomb?.apply(ctx)
+        }
+        if (categories.isSelected(Category.APIS)) {
+            apiQuery?.apply(ctx)
+            apiReport?.apply(ctx)
+        }
+        if (categories.isSelected(Category.WORKFLOWS)) {
+            botOptions?.apply(ctx)
+            bots?.apply(ctx)
+        }
+        if (categories.isSelected(Category.LANGUAGE)) {
+            language?.apply(ctx)
+        }
+        if (categories.isSelected(Category.THEME)) {
+            theme?.apply(ctx)
+        }
+        if (categories.isSelected(Category.SPAM_NUMBERS)) {
+            spamNumbers?.apply(ctx)
+        }
     }
 
     @OptIn(ExperimentalSerializationApi::class)
@@ -882,7 +992,7 @@ class Configs {
         val me = this
         return ByteArrayOutputStream(128 * 1024).use { baos ->  // optional initial size hint
             GZIPOutputStream(baos).apply {
-                BotJson.encodeToStream(serializer(), me, this)
+                ConfigJson.encodeToStream(serializer(), me, this)
                 finish()  // explicit finish (good practice)
             }
             baos.toByteArray()
@@ -892,12 +1002,9 @@ class Configs {
     companion object {
         @OptIn(ExperimentalSerializationApi::class)
         fun fromByteArray(bytes: ByteArray) : Configs {
-//            val newCfg = BotJson.decodeFromString<Configs>(jsonStr)
-//            return newCfg
-
             return ByteArrayInputStream(bytes).use { input ->
                 GZIPInputStream(input).use { gzip ->
-                    BotJson.decodeFromStream(
+                    ConfigJson.decodeFromStream(
                         deserializer = Configs.serializer(),
                         stream = gzip
                     )

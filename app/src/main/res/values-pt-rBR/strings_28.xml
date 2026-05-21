@@ -43,4 +43,9 @@
     <string name="use_this_token">Usar este token</string>
     <string name="login_and_get_a_token">Registre-se e entre no site para obter seu token.</string>
     <string name="get_a_new_token">Obter um novo token</string>
+    <string name="others">Outros</string>
+    <string name="api_settings">Configurações da API</string>
+    <string name="include_settings">Configurações de inclusão</string>
+    <string name="exclude_settings">Configurações de exclusão</string>
+    <string name="backup_missing_category">Esta configuração está ausente no arquivo de backup e não pode ser restaurada.</string>
 </resources>

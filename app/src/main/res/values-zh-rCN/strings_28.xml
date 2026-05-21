@@ -43,4 +43,9 @@
     <string name="use_this_token">使用此令牌</string>
     <string name="login_and_get_a_token">注册并登录网站，然后获取你的令牌。</string>
     <string name="get_a_new_token">获取新令牌</string>
+    <string name="others">其他</string>
+    <string name="api_settings">API 设置</string>
+    <string name="include_settings">包含设置</string>
+    <string name="exclude_settings">排除设置</string>
+    <string name="backup_missing_category">此设置在备份文件中缺失，无法恢复。</string>
 </resources>

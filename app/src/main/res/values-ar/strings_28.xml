@@ -43,4 +43,9 @@
     <string name="use_this_token">استخدم هذا الرمز</string>
     <string name="login_and_get_a_token">سجل وأنشئ جلسة دخول إلى الموقع واحصل على الرمز الخاص بك.</string>
     <string name="get_a_new_token">احصل على رمز جديد</string>
+    <string name="others">أخرى</string>
+    <string name="api_settings">إعدادات API</string>
+    <string name="include_settings">إعدادات التضمين</string>
+    <string name="exclude_settings">إعدادات الاستبعاد</string>
+    <string name="backup_missing_category">هذا الإعداد مفقود من ملف النسخ الاحتياطي ولا يمكن استعادته.</string>
 </resources>

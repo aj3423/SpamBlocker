@@ -43,4 +43,9 @@
     <string name="use_this_token">Bu belirteci kullan</string>
     <string name="login_and_get_a_token">Web sitesine kaydolup giriş yaparak belirtecinizi alın.</string>
     <string name="get_a_new_token">Yeni belirteç al</string>
+    <string name="others">Diğerleri</string>
+    <string name="api_settings">API Ayarları</string>
+    <string name="include_settings">Dahil Etme Ayarları</string>
+    <string name="exclude_settings">Hariç Tutma Ayarları</string>
+    <string name="backup_missing_category">Bu ayar yedekleme dosyasında eksik ve geri yüklenemez.</string>
 </resources>

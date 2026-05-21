@@ -43,4 +43,9 @@
     <string name="use_this_token">Использовать этот токен</string>
     <string name="login_and_get_a_token">Зарегистрируйтесь и войдите на сайт, чтобы получить свой токен.</string>
     <string name="get_a_new_token">Получить новый токен</string>
+    <string name="others">Другое</string>
+    <string name="api_settings">Настройки API</string>
+    <string name="include_settings">Настройки включения</string>
+    <string name="exclude_settings">Настройки исключения</string>
+    <string name="backup_missing_category">Этот параметр отсутствует в файле резервной копии и не может быть восстановлен.</string>
 </resources>

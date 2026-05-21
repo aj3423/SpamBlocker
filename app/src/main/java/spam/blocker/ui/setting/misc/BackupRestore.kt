@@ -1,36 +1,46 @@
 package spam.blocker.ui.setting.misc
 
+import android.annotation.SuppressLint
 import android.net.Uri
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.retain.retain
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import spam.blocker.Events
 import spam.blocker.G
 import spam.blocker.R
+import spam.blocker.config.Category
+import spam.blocker.config.CategorySelection
 import spam.blocker.config.Configs
+import spam.blocker.config.defaultCategorySelection
+import spam.blocker.config.emptyCategorySelection
 import spam.blocker.db.Bot
 import spam.blocker.db.SpamTable
 import spam.blocker.service.bot.FileAction
+import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
-import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.FileChooser
 import spam.blocker.ui.widgets.FlowRowSpaced
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.InitFile
-import spam.blocker.ui.widgets.LabelItem
-import spam.blocker.ui.widgets.LongPressButton
 import spam.blocker.ui.widgets.MIME_GZ
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.ResIcon
@@ -39,12 +49,14 @@ import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.A
 import spam.blocker.util.FileUtils.readDataFromUri
 import spam.blocker.util.FileUtils.writeDataToUri
+import spam.blocker.util.Lambda1
 import spam.blocker.util.Launcher
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionType
 import spam.blocker.util.PermissionWrapper
 import spam.blocker.util.formatAnnotated
 import spam.blocker.util.hasFolderAccess
+import spam.blocker.util.logi
 import spam.blocker.util.toFolderDisplayName
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -56,6 +68,78 @@ fun missingBotSafUris(bots: List<Bot>) : List<Uri> {
         bot.actions
             .filterIsInstance<FileAction>() // Only keep FileActions
             .mapNotNull { it.uriStr?.toUri() } // Convert to Uri, skip if null
+    }
+}
+
+
+@Composable
+fun ChooseBackupCategoriesDialog(
+    trigger: MutableState<Boolean>,
+    initialCategories: CategorySelection,
+    okLabelId: Int,
+    disabledCategories: CategorySelection = emptyCategorySelection,
+    onOk: Lambda1<CategorySelection>,
+) {
+    var categories by retain(initialCategories) { mutableStateOf(initialCategories) }
+
+    PopupDialog(
+        trigger,
+        buttons = {
+            StrokeButton(Str(okLabelId), color = G.palette.teal200) {
+                onOk(categories)
+            }
+        }
+    ) {
+        Column {
+
+            Text(Str(R.string.include_settings), color = G.palette.teal200, modifier = M.padding(bottom = 16.dp))
+
+            // Included Category buttons
+            FlowRowSpaced (
+                space = 20,
+                vSpace = 30,
+            ) {
+                categories.allSelected().forEach { cat ->
+                    StrokeButton(
+                        label = Str(cat.labelId),
+                        color = Color(cat.name.hashCode().toLong() or 0xff808080),
+                    ) {
+                        categories = categories.toggle(cat)
+                    }
+                }
+            }
+            HorizontalDivider(thickness = 1.dp, color = G.palette.disabled, modifier = M.padding(top = 30.dp, bottom = 20.dp))
+
+            Text(Str(R.string.exclude_settings), color = G.palette.textGrey, modifier = M.padding(bottom = 16.dp))
+
+            // Show "this category is missing from the backup and can't be restored"
+            val errorTrigger = retain { mutableStateOf(false) }
+            PopupDialog(errorTrigger) {
+                Text(Str(R.string.backup_missing_category), color = G.palette.error)
+            }
+
+            // Excluded Category buttons
+            FlowRowSpaced (
+                space = 20,
+                vSpace = 30,
+            ) {
+                categories.allUnselected().forEach { cat ->
+                    StrokeButton(
+                        label = Str(cat.labelId),
+                        color = if (disabledCategories.contains(cat))
+                            G.palette.disabled
+                        else
+                            Color(cat.name.hashCode().toLong() or 0xff808080)
+                        ,
+                    ) {
+                        if (disabledCategories.contains(cat))
+                            errorTrigger.value = true
+                        else
+                            categories = categories.toggle(cat)
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -83,17 +167,24 @@ fun ExportButton() {
 
     // Show a system file chooser
 
-    fun chooseExportFile(includeSpamDB: Boolean) {
-        // prepare file name
+    @SuppressLint("LocalContextGetResourceValueCall")
+    fun chooseExportFile(categories: CategorySelection) {
+        val includeSpamDB = categories.isSelected(Category.SPAM_NUMBERS)
+
+        // Prepare file name
         val formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd")
         val ymd = LocalDate.now().format(formatter)
-        val fn = "SpamBlocker.${ymd}${if (includeSpamDB) ".db" else ""}.gz"
+        val fn = if (categories.all.size == 1) { // only exporting 1 category, use the category name
+            "SpamBlocker.${ymd}.${ctx.getString(categories.all.first().labelId)}.gz"
+        } else {
+            "SpamBlocker.${ymd}.gz"
+        }
 
         if (includeSpamDB) progressTrigger.value = true
 
         // prepare file content
         val curr = Configs()
-        curr.load(ctx, includeSpamDB)
+        curr.load(ctx, categories)
         val compressed = curr.toByteArray()
 
         FileChooser.popupWrite(
@@ -112,32 +203,28 @@ fun ExportButton() {
         )
     }
 
-    DropdownWrapper(
-        items = listOf(
-            LabelItem(
-                label = Str(R.string.include_spam_db)
-            ) {
-                coroutine.launch(IO) {
-                    chooseExportFile(includeSpamDB = true)
-                }
-            }
-        )
-    ) { expanded ->
-        LongPressButton(
-            label = Str(R.string.export),
-            color = C.teal200,
-            onClick = {
-                coroutine.launch(IO) {
-                    chooseExportFile(includeSpamDB = false)
-                }
-            },
-            onLongClick = {
-                expanded.value = true
-            }
-        )
+
+    val categoryTrigger = retain { mutableStateOf(false)}
+
+    ChooseBackupCategoriesDialog(
+        trigger = categoryTrigger,
+        initialCategories = CategorySelection(),
+        okLabelId = R.string.export
+    ) { selectedCategories ->
+        coroutine.launch(IO) {
+            chooseExportFile(selectedCategories)
+        }
+    }
+
+    StrokeButton(
+        label = Str(R.string.export),
+        color = C.teal200,
+    ) {
+        categoryTrigger.value = true
     }
 }
 
+@SuppressLint("LocalContextGetResourceValueCall")
 @Composable
 fun ImportButton() {
     val ctx = LocalContext.current
@@ -244,7 +331,36 @@ fun ImportButton() {
         )
     }
 
-    fun chooseImportFile(includeSpamDB: Boolean) {
+    val categoryTrigger = retain { mutableStateOf(false)}
+
+
+    var newCfg by remember { mutableStateOf(Configs()) }
+
+    ChooseBackupCategoriesDialog(
+        trigger = categoryTrigger,
+        initialCategories = newCfg.categories ?: defaultCategorySelection,
+        disabledCategories = newCfg.categories?.negate() ?: emptyCategorySelection,
+        okLabelId = R.string.import_
+    ) { selectedCategories ->
+
+        newCfg.apply(ctx, selectedCategories)
+
+        missingGlobalPermissions = newCfg.permissions?.allEnabledNames ?: ""
+        missingBotSafUris.apply {
+            clear()
+            addAll(missingBotSafUris(newCfg.bots?.bots ?: emptyList()))
+        }
+        succeeded = true
+        resultTrigger.value = true
+
+        // Fire an event to notify the configuration has changed,
+        // for example, the history cleanup schedule should restart
+        Events.configImported.fire()
+    }
+
+
+    fun chooseImportFile() {
+
         FileChooser.popupRead(
             init = InitFile(
                 filename = "",
@@ -257,51 +373,26 @@ fun ImportButton() {
                         ?: return@popupRead
 
                     try {
-                        val newCfg = Configs.fromByteArray(bytes)
-                        newCfg.apply(ctx, includeSpamDB)
+                        newCfg = Configs.fromByteArray(bytes)
 
-                        missingGlobalPermissions = newCfg.permissions.allEnabledNames
-                        missingBotSafUris.apply {
-                            clear()
-                            addAll(missingBotSafUris(newCfg.bots.bots))
-                        }
-                        succeeded = true
-                        resultTrigger.value = true
+                        categoryTrigger.value = true
 
-                        // Fire an event to notify the configuration has changed,
-                        // for example, the history cleanup schedule should restart
-                        Events.configImported.fire()
                     } catch (e: Exception) {
                         succeeded = false
                         errorStr = e.message ?: ""
                         resultTrigger.value = true
                     }
                 }
-            },
+            }
 
         )
     }
 
-    DropdownWrapper(
-        items = listOf(
-            LabelItem(
-                label = Str(R.string.include_spam_db)
-            ) {
-                chooseImportFile(true)
-            }
-        )
-    ) { expanded ->
-
-        LongPressButton(
-            label = Str(R.string.import_),
-            color = C.infoBlue,
-            onClick = {
-                chooseImportFile(false)
-            },
-            onLongClick = {
-                expanded.value = true
-            }
-        )
+    StrokeButton(
+        label = Str(R.string.import_),
+        color = C.infoBlue,
+    ) {
+        chooseImportFile()
     }
 }
 

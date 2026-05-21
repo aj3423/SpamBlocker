@@ -43,4 +43,9 @@
     <string name="use_this_token">Gunakan token ini</string>
     <string name="login_and_get_a_token">Daftar dan masuk ke situs web untuk mendapatkan token Anda.</string>
     <string name="get_a_new_token">Dapatkan token baru</string>
+    <string name="others">Lainnya</string>
+    <string name="api_settings">Pengaturan API</string>
+    <string name="include_settings">Pengaturan Penyertaan</string>
+    <string name="exclude_settings">Pengaturan Pengecualian</string>
+    <string name="backup_missing_category">Pengaturan ini tidak ada dalam file cadangan dan tidak dapat dipulihkan.</string>
 </resources>
