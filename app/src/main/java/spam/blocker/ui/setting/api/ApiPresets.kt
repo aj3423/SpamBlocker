@@ -100,9 +100,9 @@ val ApiQueryPresets by lazy {
                             ),
                             HttpRequest(
                                 url = if (BuildConfig.DEBUG)
-                                    "https://phoneblock.net/pb-test/api/check?sha1={sha1(+{cc}{domestic})}&prefix100={sha1({drop_last(+{cc}{domestic},2)})}"
+                                    "https://phoneblock.net/pb-test/api/check?sha1={sha1(+{cc}{domestic})}&prefix10={sha1({drop_last(+{cc}{domestic},1)})}&prefix100={sha1({drop_last(+{cc}{domestic},2)})}"
                                 else
-                                    "https://phoneblock.net/phoneblock/api/check?sha1={sha1(+{cc}{domestic})}&prefix100={sha1({drop_last(+{cc}{domestic},2)})}",
+                                    "https://phoneblock.net/phoneblock/api/check?sha1={sha1(+{cc}{domestic})}&prefix10={sha1({drop_last(+{cc}{domestic},1)})}&prefix100={sha1({drop_last(+{cc}{domestic},2)})}",
                                 header = "{bearer_auth({shared_pref(${PhoneBlock.spfTokenKey})})}",
                             ),
                             ParseQueryResult(
