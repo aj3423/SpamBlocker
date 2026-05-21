@@ -37,14 +37,7 @@
 
     <string name="help_backup">
         <![CDATA[
-        Format berkas cadangan adalah json terkompresi gzip, Anda dapat membuka dan mengubahnya dengan pengarsip apa pun.<br>
-        <br>
-        - <title><b>Sertakan Basis Data Spam</b></title><br>
-        Tekan lama tombol untuk mengekspor/mengimpor basis data spam.<br>
-        <br>
-        <warn>Catatan:</warn><br>
-        &ensp; Menyertakan basis data spam dalam berkas cadangan akan memperbesar ukurannya secara signifikan,
-        karena basis data akan diperbarui secara teratur, hal ini biasanya tidak diperlukan, kecuali jika Anda ingin mengkloningnya ke telepon lain.<br>
+        Format berkas cadangan adalah json terkompresi gzip, Anda dapat membuka dan mengubahnya dengan pengarsip apa pun.
         ]]>
     </string>
     <string name="mode">Mode</string>

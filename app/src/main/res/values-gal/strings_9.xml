@@ -37,15 +37,7 @@
 
     <string name="help_backup">
         <![CDATA[
-        O formato do ficheiro de copia de seguridade é un json comprimido gzip, podes abrilo e editalo con calquera arquivador.<br>
-        <br>
-        - <title><b>Incluir Base de Datos de Spam</b></title><br>
-        Presiona longamente o botón para exportar/importar tamén a base de datos de spam.<br>
-        <br>
-        <warn>Nota:</warn><br>
-        &ensp; Incluir a base de datos de spam no ficheiro de copia de seguridade aumentará significativamente o seu tamaño,
-        xa que a base de datos se actualizará regularmente, isto normalmente non é necesario, a menos que queiras clonala
-        a outro teléfono.<br>
+        O formato do ficheiro de copia de seguridade é un json comprimido gzip, podes abrilo e editalo con calquera arquivador.
         ]]>
     </string>
     <string name="mode">Modo</string>

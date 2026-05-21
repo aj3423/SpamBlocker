@@ -37,15 +37,7 @@
 
     <string name="help_backup">
         <![CDATA[
-        Le format du fichier de sauvegarde est un fichier json compressé gzip, vous pouvez l\'ouvrir et le modifier avec n\'importe quel archiveur.<br>
-        <br>
-        - <title><b>Inclure la base de données de spam</b></title><br>
-        Appuyez longuement sur le bouton pour également exporter/importer la base de données de spam.<br>
-        <br>
-        <warn>Remarque :</warn><br>
-        &ensp; L\'inclusion de la base de données de spam dans le fichier de sauvegarde augmentera considérablement sa taille,
-        étant donné que la base de données sera mise à jour régulièrement, cela est généralement inutile, sauf si vous souhaitez la cloner
-        sur un autre téléphone.<br>
+        Le format du fichier de sauvegarde est un fichier json compressé gzip, vous pouvez l\'ouvrir et le modifier avec n\'importe quel archiveur.
         ]]>
     </string>
     <string name="mode">Mode</string>

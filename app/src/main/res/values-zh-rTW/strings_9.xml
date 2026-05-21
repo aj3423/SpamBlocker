@@ -37,15 +37,7 @@
 
     <string name="help_backup">
         <![CDATA[
-        備份檔案格式為 gzip 壓縮的 JSON，您可以使用任何壓縮檔管理工具開啟和編輯。<br>
-        <br>
-        - <title><b>包含騷擾號碼資料庫</b></title><br>
-        長按按鈕以匯出/匯入騷擾號碼資料庫。<br>
-        <br>
-        <warn>注意：</warn><br>
-        &ensp; 在備份檔中包含騷擾號碼資料庫會大幅增加檔案大小，
-        由於資料庫會定期更新，這通常是不必要的，除非您想要複製到另一臺手機。<br>
-
+        備份檔案格式為 gzip 壓縮的 JSON，您可以使用任何壓縮檔管理工具開啟和編輯。
         ]]>
     </string>
     <string name="mode">模式</string>

@@ -37,15 +37,7 @@
 
     <string name="help_backup">
         <![CDATA[
-        Il formato del file di backup è un json compresso gzip, puoi aprirlo e modificarlo con qualsiasi programma di archiviazione.<br>
-        <br>
-        - <title><b>Includi Database Spam</b></title><br>
-        Premi a lungo il pulsante per esportare/importare anche il database spam.<br>
-        <br>
-        <warn>Nota:</warn><br>
-        &ensp; L\'inclusione del database spam nel file di backup aumenterà significativamente le sue dimensioni,
-        poiché il database verrà aggiornato regolarmente, questo di solito non è necessario, a meno che tu non voglia clonarlo
-        su un altro telefono.<br>
+        Il formato del file di backup è un json compresso gzip, puoi aprirlo e modificarlo con qualsiasi programma di archiviazione.
         ]]>
     </string>
     <string name="mode">Modalità</string>

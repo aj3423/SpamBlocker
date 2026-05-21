@@ -17,6 +17,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.retain.retain
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -43,6 +44,7 @@ import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.InitFile
 import spam.blocker.ui.widgets.MIME_GZ
 import spam.blocker.ui.widgets.PopupDialog
+import spam.blocker.ui.widgets.PopupSize
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
@@ -56,7 +58,6 @@ import spam.blocker.util.PermissionType
 import spam.blocker.util.PermissionWrapper
 import spam.blocker.util.formatAnnotated
 import spam.blocker.util.hasFolderAccess
-import spam.blocker.util.logi
 import spam.blocker.util.toFolderDisplayName
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -90,53 +91,52 @@ fun ChooseBackupCategoriesDialog(
             }
         }
     ) {
-        Column {
 
-            Text(Str(R.string.include_settings), color = G.palette.teal200, modifier = M.padding(bottom = 16.dp))
+        Text(Str(R.string.include_settings), color = G.palette.teal200, modifier = M.padding(bottom = 12.dp).align(Alignment.Start))
 
-            // Included Category buttons
-            FlowRowSpaced (
-                space = 20,
-                vSpace = 30,
-            ) {
-                categories.allSelected().forEach { cat ->
-                    StrokeButton(
-                        label = Str(cat.labelId),
-                        color = Color(cat.name.hashCode().toLong() or 0xff808080),
-                    ) {
-                        categories = categories.toggle(cat)
-                    }
+        // Included Category buttons
+        FlowRowSpaced (
+            space = 20,
+            vSpace = 30,
+        ) {
+            categories.allSelected().forEach { cat ->
+                StrokeButton(
+                    label = Str(cat.labelId),
+                    color = Color(cat.name.hashCode().toLong() or 0xff808080),
+                ) {
+                    categories = categories.toggle(cat)
                 }
             }
-            HorizontalDivider(thickness = 1.dp, color = G.palette.disabled, modifier = M.padding(top = 30.dp, bottom = 20.dp))
+        }
 
-            Text(Str(R.string.exclude_settings), color = G.palette.textGrey, modifier = M.padding(bottom = 16.dp))
+        HorizontalDivider(thickness = 1.dp, color = G.palette.disabled, modifier = M.padding(top = 20.dp, bottom = 10.dp))
 
-            // Show "this category is missing from the backup and can't be restored"
-            val errorTrigger = retain { mutableStateOf(false) }
-            PopupDialog(errorTrigger) {
-                Text(Str(R.string.backup_missing_category), color = G.palette.error)
-            }
+        Text(Str(R.string.exclude_settings), color = G.palette.textGrey, modifier = M.padding(bottom = 12.dp).align(Alignment.Start))
 
-            // Excluded Category buttons
-            FlowRowSpaced (
-                space = 20,
-                vSpace = 30,
-            ) {
-                categories.allUnselected().forEach { cat ->
-                    StrokeButton(
-                        label = Str(cat.labelId),
-                        color = if (disabledCategories.contains(cat))
-                            G.palette.disabled
-                        else
-                            Color(cat.name.hashCode().toLong() or 0xff808080)
-                        ,
-                    ) {
-                        if (disabledCategories.contains(cat))
-                            errorTrigger.value = true
-                        else
-                            categories = categories.toggle(cat)
-                    }
+        // Show "this category is missing from the backup and can't be restored"
+        val errorTrigger = retain { mutableStateOf(false) }
+        PopupDialog(errorTrigger) {
+            Text(Str(R.string.backup_missing_category), color = G.palette.error)
+        }
+
+        // Excluded Category buttons
+        FlowRowSpaced (
+            space = 20,
+            vSpace = 30,
+        ) {
+            categories.allUnselected().forEach { cat ->
+                StrokeButton(
+                    label = Str(cat.labelId),
+                    color = if (disabledCategories.contains(cat))
+                        G.palette.disabled
+                    else
+                        Color(cat.name.hashCode().toLong() or 0xff808080)
+                    ,
+                ) {
+                    if (disabledCategories.contains(cat))
+                        errorTrigger.value = true
+                    else
+                        categories = categories.toggle(cat)
                 }
             }
         }

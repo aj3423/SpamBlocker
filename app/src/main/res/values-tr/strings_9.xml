@@ -37,13 +37,7 @@
 
     <string name="help_backup">
         <![CDATA[
-        Yedek dosya formatı gzip sıkıştırılmış bir jsondur, herhangi bir arşivleyici ile açıp düzenleyebilirsiniz.<br>
-        <br>
-        - <title><b>Spam Veritabanını Dahil Et</b></title><br>
-        Spam veritabanını da içe/dışa aktarmak için düğmeye uzun basın.<br>
-        <br>
-        <warn>Not:</warn><br>
-        &ensp; Yedek dosyasına spam veritabanını dahil etmek, veritabanının düzenli olarak güncelleneceğinden boyutunu önemli ölçüde artıracaktır, bu genellikle başka bir telefona klonlamak istemediğiniz sürece gereksizdir.<br>
+        Yedek dosya formatı gzip sıkıştırılmış bir jsondur, herhangi bir arşivleyici ile açıp düzenleyebilirsiniz.
         ]]>
     </string>
     <string name="mode">Mod</string>

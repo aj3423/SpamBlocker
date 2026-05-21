@@ -37,15 +37,7 @@
 
     <string name="help_backup">
         <![CDATA[
-        El format del fitxer de còpia de seguretat és un json comprimit gzip, podeu obrir-lo i editar-lo amb qualsevol archivador.<br>
-        <br>
-        - <title><b>Incloure la base de dades de correu brossa</b></title><br>
-        Manteniu premut el botó per exportar/importar també la base de dades de correu brossa.<br>
-        <br>
-        <warn>Nota:</warn><br>
-        &ensp; Incloure la base de dades de correu brossa al fitxer de còpia de seguretat augmentarà significativament la seva mida,
-        ja que la base de dades s\'actualitzarà regularment, això sol ser innecessari, tret que vulgueu clonar-la
-        a un altre telèfon.<br>
+        El format del fitxer de còpia de seguretat és un json comprimit gzip, podeu obrir-lo i editar-lo amb qualsevol archivador.
         ]]>
     </string>
     <string name="mode">Mode</string>
