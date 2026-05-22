@@ -45,7 +45,7 @@
     <string name="get_a_new_token">Получить новый токен</string>
     <string name="others">Другое</string>
     <string name="api_settings">Настройки API</string>
-    <string name="include_settings">Настройки включения</string>
-    <string name="exclude_settings">Настройки исключения</string>
+    <string name="include_settings">Включить в резервную копию</string>
+    <string name="exclude_settings">Исключить из резервной копии</string>
     <string name="backup_missing_category">Этот параметр отсутствует в файле резервной копии и не может быть восстановлен.</string>
 </resources>

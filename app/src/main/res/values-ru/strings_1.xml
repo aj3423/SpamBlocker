@@ -30,7 +30,7 @@
     <string name="ok">OK</string>
     <string name="miscellaneous">Разное</string>
     <string name="quick_settings">Быстрые настройки</string>
-    <string name="regex_settings">Настройки регулярных выражений</string>
+    <string name="regex_settings">Настройки рег. выражений</string>
     <string name="backup">Резерв. копия</string>
     <string name="import_">Импорт</string>
     <string name="export">Экспорт</string>
