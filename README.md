@@ -29,7 +29,7 @@ Table of Contents
    * [Language Support](#language-support)
    * [Contributing](#contributing)
    * [Some ideas](#some-ideas)
-   * [Donate](#donate)
+   * [Donate](#donate-)
 
 # Screenshots
 | History | Settings | Notification |
@@ -163,6 +163,6 @@ Languages are translated using AI, PRs for corrections are welcome.
 # Some ideas
  - [A decentralized database](https://github.com/aj3423/SpamBlocker/issues/340)
 
-# Donate
+# Donate 🤑
 
-🤑  https://aj3423.github.io/donate
+https://aj3423.github.io/donate
