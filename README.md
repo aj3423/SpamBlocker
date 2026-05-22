@@ -165,4 +165,4 @@ Languages are translated using AI, PRs for corrections are welcome.
 
 # Donate
 
-:heart:  https://aj3423.github.io/donate
+🤑  https://aj3423.github.io/donate
