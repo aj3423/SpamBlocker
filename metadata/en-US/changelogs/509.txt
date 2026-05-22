@@ -1,0 +1,19 @@
+Breaking Change:
+- Regex rule mode
+  While existing settings will be migrated automatically, old backups do not preserve regex modes, make sure to manually re-select the modes again and do a re-backup.
+
+New:
+- SMS Screening Service
+  Similar to call screening, the app can now work as a service that to be queried by SMS apps. It works with any SMS app that implements this [SMS screening protocol](https://github.com/aj3423/SpamBlocker/wiki/SMS-Screening-Protocol)
+- Regex mode: "Database Prefix"
+  Block sibling numbers in database. E.g., block range `xxxx00`~`xxxx99` if `xxxx55` exists in database
+
+Fixes:
+- SMS regex option "For Particular Number", once enabled, it can't be turned off 
+- Workflow presets "PhoneBlock" and "FTC-DNC" no longer require PHONE_STATE permission
+
+Improvements:
+- PhoneBlock API Preset: Added range-based query support (ignores last 2 digits)
+- Backup/Restore now supports choosing specific settings to export/import
+- Reporting numbers now supports adding a comment.
+- Setting up API is now a lot easier, no more token copy/paste required

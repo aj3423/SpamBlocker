@@ -11,6 +11,7 @@ Note:
 - If the content contains tags <translate> and </translate>, always translate the text in between. 
 - If the content contains tags <no_translate> and </no_translate>, keep it as it is. 
 - Don't remove the \n.
+- When translating words like "regex", "call", "SMS", reference to existing translations(maybe in other files), don't use different words. 
 - If the content contains tags <short> and </short>, always translate the text in between with extreme short translations.
 - Add a backslash(\) before any single quote(') or double quote(") to escape them.
 
