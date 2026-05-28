@@ -9,10 +9,6 @@
         The default setting <highlight><b>120 Min</b></highlight> means all calls will be allowed
         in the next 120 minutes after dialing an emergency number.<br>
         <br>
-        <h5><title>- Check STIR</title></h5>
-         - When disabled, all calls will be allowed.<br>
-         - When enabled, calls that fail STIR attestation will not be allowed, only "Valid" and "Unverified" calls will be allowed.<br>
-        <br>
         <h5><title>- Additional Numbers</title></h5>
         Dialing any number in this list will also trigger this feature.<br>
         <br>
@@ -28,7 +24,10 @@
         <h5><title>- Test</title></h5>
         Simulate an outgoing call to test if that number is an emergency number.<br>
         <br>
-        <priority><b>Priority: Max</b></priority>
+        <priority><b>Default Priority: Max</b></priority> <br>
+        <warn>Note</warn> <br>
+        If you want to always block calls that fail STIR attestation or match specific rules,
+          lower this priority and increase theirs accordingly.
         ]]>
     </string>
     <string name="reset">Reset</string>

@@ -8,10 +8,6 @@
         <h5><title>- 持續時間</title></h5>
         預設設定 <highlight><b>120 分鐘</b></highlight> 表示撥打緊急號碼後的 120 分鐘內將允許所有來電。<br>
         <br>
-        <h5><title>- 檢查 STIR</title></h5>
-         - 停用時，將允許所有來電。<br>
-         - 啟用時，未獲 STIR 認證的來電將不被允許，僅允許「有效」和「未驗證」的來電。<br>
-        <br>
         <h5><title>- 額外號碼</title></h5>
         撥打此列表中的任何號碼也會觸發此功能。<br>
         <br>
@@ -26,7 +22,9 @@
         <h5><title>- 測試</title></h5>
         模擬撥出電話以測試該號碼是否為緊急號碼。<br>
         <br>
-        <priority><b>優先順序：最高</b></priority>
+        <priority><b>預設優先順序：最高</b></priority> <br>
+        <warn>注意</warn> <br>
+        如果您希望一律封鎖未通過 STIR 驗證或符合特定規則的來電，請降低此優先順序，並相應提高那些規則的優先順序。
         ]]>
     </string>
     <string name="reset">重設</string>

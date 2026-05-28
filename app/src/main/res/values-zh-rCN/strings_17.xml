@@ -8,10 +8,6 @@
         <h5><title>- 时长</title></h5>
         默认设置 <highlight><b>120 分钟</b></highlight> 表示在拨打紧急电话后的 120 分钟内，所有来电都将被允许。<br>
         <br>
-        <h5><title>- 检查STIR</title></h5>
-         - 禁用时，允许所有来电。<br>
-         - 启用后，STIR验证失败的呼叫将不被允许，只允许“有效”和“未验证”的呼叫。<br>
-        <br>
         <h5><title>- 附加号码</title></h5>
         拨打此列表中的任何号码也会触发此功能。<br>
         <br>
@@ -26,7 +22,9 @@
         <h5><title>- 测试</title></h5>
         模拟一个呼出电话，测试该号码是否为紧急号码。<br>
         <br>
-        <priority><b>优先级：最高</b></priority>
+        <priority><b>默认优先级：最高</b></priority> <br>
+        <warn>注意</warn> <br>
+        如果您希望始终阻止 STIR 验证失败或匹配特定规则的呼叫，请降低此优先级，并相应提高那些规则的优先级。
         ]]>
     </string>
     <string name="reset">重置</string>

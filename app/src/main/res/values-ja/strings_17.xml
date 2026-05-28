@@ -8,10 +8,6 @@
         <h5><title>- Duration (時間)</title></h5>
         デフォルト設定の<highlight><b>120 分</b></highlight> は、緊急番号発信後120分間、すべての着信を許可することを意味します。<br>
         <br>
-        <h5><title>- Check STIR (STIR確認)</title></h5>
-         - 無効の場合、すべての着信が許可されます。<br>
-         - 有効の場合、STIR認証に失敗した着信は許可されず、「Valid (有効)」および「Unverified (未検証)」の着信のみが許可されます。<br>
-        <br>
         <h5><title>- Additional Numbers (追加番号)</title></h5>
         このリストの番号に発信すると、この機能がトリガーされます。<br>
         <br>
@@ -26,7 +22,9 @@
         <h5><title>- Test (テスト)</title></h5>
         発信をシミュレートして、その番号が緊急番号かどうかをテストします。<br>
         <br>
-        <priority><b>Priority: Max (優先度：最大)</b></priority>
+        <priority><b>Default Priority: Max（デフォルト優先度：最大）</b></priority> <br>
+        <warn>Note（注意）</warn> <br>
+        STIR認証に失敗する着信や特定のルールに一致する着信を常にブロックしたい場合は、この優先度を下げ、そちらの優先度をそれに応じて上げてください。
         ]]>
     </string>
     <string name="reset">リセット</string>

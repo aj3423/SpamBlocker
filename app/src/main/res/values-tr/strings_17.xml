@@ -8,10 +8,6 @@
         <h5><title>- Süre</title></h5>
         Varsayılan ayar <highlight><b>120 Dakika</b></highlight>, acil bir numara çevirdikten sonraki 120 dakika içinde tüm çağrılara izin verileceği anlamına gelir.<br>
         <br>
-        <h5><title>- STIR\'ı Kontrol Et</title></h5>
-         - Devre dışı bırakıldığında, tüm çağrılara izin verilir.<br>
-         - Etkinleştirildiğinde, STIR onayı başarısız olan çağrılara izin verilmez, yalnızca "Geçerli" ve "Doğrulanmamış" çağrılara izin verilir.<br>
-        <br>
         <h5><title>- Ek Numaralar</title></h5>
         Bu listedeki herhangi bir numarayı çevirmek de bu özelliği tetikleyecektir.<br>
         <br>
@@ -26,7 +22,9 @@
         <h5><title>- Test</title></h5>
         Bu numaranın acil durum numarası olup olmadığını test etmek için giden bir aramayı simüle edin.<br>
         <br>
-        <priority><b>Öncelik: Maks</b></priority>
+        <priority><b>Varsayılan Öncelik: Maks</b></priority> <br>
+        <warn>Not</warn> <br>
+        STIR doğrulamasını geçemeyen veya belirli kurallarla eşleşen çağrıları her zaman engellemek istiyorsanız, bu önceliği düşürün ve onlarınkini buna göre yükseltin.
         ]]>
     </string>
     <string name="reset">Sıfırla</string>

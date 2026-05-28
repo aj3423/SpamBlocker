@@ -105,20 +105,18 @@ fun SettingScreen() {
     }
     FabWrapper(
         fabRow = { positionModifier ->
-            if (G.globallyEnabled.value) {
-                Fab(
-                    visible = !bottomReached,
-                    text = if (alsoShowText) ctx.getString(R.string.title_rule_testing) else null,
-                    iconId = R.drawable.ic_tube,
-                    iconColor = White,
-                    bgColor = C.teal200,
-                    modifier = positionModifier
-                ) {
-                    testingTrigger.value = true
+            Fab(
+                visible = !bottomReached,
+                text = if (alsoShowText) Str(R.string.title_rule_testing) else null,
+                iconId = R.drawable.ic_tube,
+                iconColor = White,
+                bgColor = C.teal200,
+                modifier = positionModifier
+            ) {
+                testingTrigger.value = true
 
-                    spf.isTestIconClicked = true
-                    alsoShowText = false
-                }
+                spf.isTestIconClicked = true
+                alsoShowText = false
             }
         }
     ) {
@@ -132,102 +130,103 @@ fun SettingScreen() {
                 // global
                 GloballyEnabled()
 
-                if (G.globallyEnabled.value) {
-                    // quick settings
-                    Section(
-                        title = Str(R.string.quick_settings),
-                        horizontalPadding = 8
-                    ) {
-                        Column {
-                            Contacts()
-                            Stir()
-                            SpamDB()
-                            RepeatedCall()
-                            Dialed()
-                            Answered()
-                            OffTime()
-                            EmergencySituation()
-                            RecentApps()
-                            MeetingMode()
+                // quick settings
+                Section(
+                    title = Str(R.string.quick_settings),
+                    horizontalPadding = 8
+                ) {
+                    Column {
+                        Contacts()
+                        Stir()
+                        SpamDB()
+                        RepeatedCall()
+                        Dialed()
+                        Answered()
+                        OffTime()
+                        EmergencySituation()
+                        RecentApps()
+                        MeetingMode()
 
-                            HorizontalDivider(thickness = 1.dp, color = G.palette.background.slightDiff())
+                        HorizontalDivider(
+                            thickness = 1.dp,
+                            color = G.palette.background.slightDiff()
+                        )
 
-                            BlockType()
-                            Notification()
-                            CallerID()
-                        }
+                        BlockType()
+                        Notification()
+                        CallerID()
                     }
+                }
 
-                    Section(
-                        title = Str(R.string.regex_settings),
-                        horizontalPadding = 8
-                    ) {
-                        Column {
-                            // NumberRule / ContentRule / QuickCopy
-                            listOf<RegexViewModel>(
-                                G.NumberRuleVM,
-                                G.ContentRuleVM,
-                                G.QuickCopyRuleVM,
-                            ).forEach { vm ->
-                                LaunchedEffect(true) { vm.reloadDbAndOptions(ctx) }
+                Section(
+                    title = Str(R.string.regex_settings),
+                    horizontalPadding = 8
+                ) {
+                    Column {
+                        // NumberRule / ContentRule / QuickCopy
+                        listOf<RegexViewModel>(
+                            G.NumberRuleVM,
+                            G.ContentRuleVM,
+                            G.QuickCopyRuleVM,
+                        ).forEach { vm ->
+                            LaunchedEffect(true) { vm.reloadDbAndOptions(ctx) }
 
-                                RegexHeader(vm)
-                                AnimatedVisibleV(!vm.listCollapsed.value) {
-                                    Column {
-                                        SearchBox(vm.searchEnabled, vm.filter) {
-                                            vm.reloadDb(ctx)
-                                        }
-                                        RegexList(vm)
+                            RegexHeader(vm)
+                            AnimatedVisibleV(!vm.listCollapsed.value) {
+                                Column {
+                                    SearchBox(vm.searchEnabled, vm.filter) {
+                                        vm.reloadDb(ctx)
                                     }
+                                    RegexList(vm)
                                 }
                             }
+                        }
 
-                            // Push Alert
-                            LaunchedEffect(true) { PushAlertViewModel.reloadDbAndOptions(ctx) }
-                            PushAlertHeader()
-                            AnimatedVisibleV(!PushAlertViewModel.listCollapsed.value) {
-                                PushAlertList()
-                            }
+                        // Push Alert
+                        LaunchedEffect(true) { PushAlertViewModel.reloadDbAndOptions(ctx) }
+                        PushAlertHeader()
+                        AnimatedVisibleV(!PushAlertViewModel.listCollapsed.value) {
+                            PushAlertList()
+                        }
 
-                            // SMS Alert
-                            SmsAlert()
+                        // SMS Alert
+                        SmsAlert()
 
-                            // SMS Bomb
-                            SmsBomb()
+                        // SMS Bomb
+                        SmsBomb()
+                    }
+                }
+
+                // Instant Query
+                Section(
+                    title = Str(R.string.instant_query),
+                    horizontalPadding = 8
+                ) {
+                    Column(
+                        verticalArrangement = Arrangement.spacedBy(0.dp),
+                    ) {
+                        // Api Query list
+                        LaunchedEffect(true) { G.apiQueryVM.reloadDb(ctx) }
+                        ApiHeader(G.apiQueryVM, ApiQueryPresets)
+                        AnimatedVisibleV(!G.apiQueryVM.listCollapsed.value) {
+                            ApiList(G.apiQueryVM)
                         }
                     }
+                }
 
-                    // Instant Query
-                    Section(
-                        title = Str(R.string.instant_query),
-                        horizontalPadding = 8
+                // Report Number
+                Section(
+                    title = Str(R.string.report_number),
+                    horizontalPadding = 8
+                ) {
+                    Column(
+                        verticalArrangement = Arrangement.spacedBy(0.dp),
                     ) {
-                        Column(
-                            verticalArrangement = Arrangement.spacedBy(0.dp),
-                        ) {
-                            // Api Query list
-                            LaunchedEffect(true) { G.apiQueryVM.reloadDb(ctx) }
-                            ApiHeader(G.apiQueryVM, ApiQueryPresets)
-                            AnimatedVisibleV(!G.apiQueryVM.listCollapsed.value) {
-                                ApiList(G.apiQueryVM)
-                            }
-                        }
-                    }
-
-                    // Report Number
-                    Section(
-                        title = Str(R.string.report_number),
-                        horizontalPadding = 8
-                    ) {
-                        Column(
-                            verticalArrangement = Arrangement.spacedBy(0.dp),
-                        ) {
-                            // Api Report list
-                            LaunchedEffect(true) { G.apiReportVM.reloadDb(ctx) }
-                            ApiHeader(G.apiReportVM, ApiReportPresets)
-                            AnimatedVisibleV(!G.apiReportVM.listCollapsed.value) {
-                                ApiList(G.apiReportVM)
-                            }
+                        // Api Report list
+                        LaunchedEffect(true) { G.apiReportVM.reloadDb(ctx) }
+                        ApiHeader(G.apiReportVM, ApiReportPresets)
+                        AnimatedVisibleV(!G.apiReportVM.listCollapsed.value) {
+                            ApiList(G.apiReportVM)
                         }
                     }
                 }

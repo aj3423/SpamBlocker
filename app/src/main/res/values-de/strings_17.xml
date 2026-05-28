@@ -9,10 +9,6 @@
         Die Standardeinstellung <highlight><b>120 Min</b></highlight> bedeutet, dass alle Anrufe
         in den nächsten 120 Minuten nach dem Wählen einer Notrufnummer erlaubt sind.<br>
         <br>
-        <h5><title>- STIR prüfen</title></h5>
-         - Wenn deaktiviert, werden alle Anrufe zugelassen.<br>
-         - Wenn aktiviert, werden Anrufe, die die STIR-Bestätigung nicht bestehen, nicht zugelassen, nur "Valid" und "Unverified" Anrufe werden zugelassen.<br>
-        <br>
         <h5><title>- Zusätzliche Nummern</title></h5>
         Das Wählen einer beliebigen Nummer in dieser Liste löst ebenfalls diese Funktion aus.<br>
         <br>
@@ -28,7 +24,9 @@
         <h5><title>- Testen</title></h5>
         Simulieren Sie einen abgehenden Anruf, um zu testen, ob diese Nummer eine Notrufnummer ist.<br>
         <br>
-        <priority><b>Priorität: Max</b></priority>
+        <priority><b>Standardpriorität: Max</b></priority> <br>
+        <warn>Hinweis</warn> <br>
+        Wenn Sie Anrufe, die die STIR-Bestätigung nicht bestehen oder bestimmten Regeln entsprechen, immer blockieren möchten, senken Sie diese Priorität und erhöhen Sie die Priorität dieser Regeln entsprechend.
         ]]>
     </string>
     <string name="reset">Zurücksetzen</string>

@@ -9,10 +9,6 @@
         A configuração padrão <highlight><b>120 Min</b></highlight> significa que todas as chamadas serão permitidas
         nos próximos 120 minutos após discar um número de emergência.<br>
         <br>
-        <h5><title>- Verificar STIR</title></h5>
-         - Quando desativado, todas as chamadas serão permitidas.<br>
-         - Quando ativado, as chamadas que falharem na comprovação STIR não serão permitidas, apenas chamadas "Válidas" e "Não Verificadas" serão permitidas.<br>
-        <br>
         <h5><title>- Números Adicionais</title></h5>
         Discar qualquer número nesta lista também acionará este recurso.<br>
         <br>
@@ -28,7 +24,9 @@
         <h5><title>- Teste</title></h5>
         Simule uma chamada de saída para testar se esse número é um número de emergência.<br>
         <br>
-        <priority><b>Prioridade: Máxima</b></priority>
+        <priority><b>Prioridade padrão: Máxima</b></priority> <br>
+        <warn>Nota</warn> <br>
+        Se você quiser sempre bloquear chamadas que falhem na comprovação STIR ou correspondam a regras específicas, reduza esta prioridade e aumente a prioridade delas de acordo.
         ]]>
     </string>
     <string name="reset">Redefinir</string>

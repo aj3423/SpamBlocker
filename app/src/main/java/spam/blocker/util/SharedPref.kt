@@ -193,7 +193,8 @@ class spf { // for namespace only
     class EmergencySituation(ctx: Context) : SharedPref(ctx) {
         var isEnabled by bool("emergency_enabled")
         var isCollapsed by bool("emergency_collapsed")
-        var isStirEnabled by bool("emergency_stir_enabled")
+        var priority by int("emergency_priority", Int.MAX_VALUE)
+
         var duration by int("emergency_duration", 120/*Min*/)
 
         var extraNumbers by str("emergency_extra_numbers")

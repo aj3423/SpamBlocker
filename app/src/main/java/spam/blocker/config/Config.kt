@@ -264,7 +264,7 @@ class SmsBomb : IConfig {
 @Serializable
 class EmergencySituation : IConfig {
     var enabled = false
-    var stirEnabled = false
+    var priority = Int.MAX_VALUE
     var collapsed = false
     var duration = 0
     var extraNumbers = listOf<String>()
@@ -273,7 +273,7 @@ class EmergencySituation : IConfig {
     override fun load(ctx: Context) {
         val spf = spf.EmergencySituation(ctx)
         enabled = spf.isEnabled
-        stirEnabled = spf.isStirEnabled
+        priority = spf.priority
         collapsed = spf.isCollapsed
         duration = spf.duration
         extraNumbers = spf.getExtraNumbers()
@@ -284,7 +284,7 @@ class EmergencySituation : IConfig {
         val me = this
         spf.EmergencySituation(ctx).apply {
             isEnabled = me.enabled
-            isStirEnabled = me.stirEnabled
+            priority = me.priority
             isCollapsed = me.collapsed
             duration = me.duration
             setExtraNumbers(me.extraNumbers)

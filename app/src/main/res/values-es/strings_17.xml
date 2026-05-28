@@ -9,10 +9,6 @@
         La configuración predeterminada <highlight><b>120 Min</b></highlight> significa que todas las llamadas serán permitidas
         en los próximos 120 minutos después de marcar un número de emergencia.<br>
         <br>
-        <h5><title>- Verificar STIR</title></h5>
-         - Cuando está desactivado, todas las llamadas serán permitidas.<br>
-         - Cuando está activado, las llamadas que fallen en la certificación STIR no serán permitidas, solo las llamadas "Válidas" y "No verificadas" serán permitidas.<br>
-        <br>
         <h5><title>- Números Adicionales</title></h5>
         Marcar cualquier número en esta lista también activará esta función.<br>
         <br>
@@ -28,7 +24,9 @@
         <h5><title>- Probar</title></h5>
         Simule una llamada saliente para probar si ese número es un número de emergencia.<br>
         <br>
-        <priority><b>Prioridad: Máxima</b></priority>
+        <priority><b>Prioridad predeterminada: Máxima</b></priority> <br>
+        <warn>Nota</warn> <br>
+        Si desea bloquear siempre las llamadas que fallen en la certificación STIR o coincidan con reglas específicas, reduzca esta prioridad y aumente la de esas reglas en consecuencia.
         ]]>
     </string>
     <string name="reset">Restablecer</string>

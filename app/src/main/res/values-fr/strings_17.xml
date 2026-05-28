@@ -9,10 +9,6 @@
         Le réglage par défaut <highlight><b>120 Min</b></highlight> signifie que tous les appels seront autorisés
         dans les 120 prochaines minutes après avoir composé un numéro d\'urgence.<br>
         <br>
-        <h5><title>- Vérifier STIR</title></h5>
-         - Lorsqu\'il est désactivé, tous les appels seront autorisés.<br>
-         - Lorsqu\'il est activé, les appels échouant à l\'attestation STIR ne seront pas autorisés, seuls les appels "Valides" et "Non vérifiés" seront autorisés.<br>
-        <br>
         <h5><title>- Numéros supplémentaires</title></h5>
         Composer n\'importe quel numéro dans cette liste déclenchera également cette fonctionnalité.<br>
         <br>
@@ -28,7 +24,9 @@
         <h5><title>- Tester</title></h5>
         Simulez un appel sortant pour vérifier si ce numéro est un numéro d\'urgence.<br>
         <br>
-        <priority><b>Priorité : Max</b></priority>
+        <priority><b>Priorité par défaut : Max</b></priority> <br>
+        <warn>Note</warn> <br>
+        Si vous souhaitez toujours bloquer les appels qui échouent à la validation STIR ou correspondent à des règles spécifiques, réduisez cette priorité et augmentez la leur en conséquence.
         ]]>
     </string>
     <string name="reset">Réinitialiser</string>

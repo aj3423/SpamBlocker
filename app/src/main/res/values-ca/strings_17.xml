@@ -9,10 +9,6 @@
         La configuració predeterminada <highlight><b>120 Min</b></highlight> significa que es permetran totes les trucades
         en els propers 120 minuts després de marcar un número d\'emergència.<br>
         <br>
-        <h5><title>- Comprova STIR</title></h5>
-         - Quan està desactivat, es permetran totes les trucades.<br>
-         - Quan està activat, les trucades que fallin l\'atestació STIR no es permetran, només es permetran les trucades "Vàlides" i "No verificades".<br>
-        <br>
         <h5><title>- Números addicionals</title></h5>
         Marcar qualsevol número d\'aquesta llista també activarà aquesta funció.<br>
         <br>
@@ -28,7 +24,9 @@
         <h5><title>- Prova</title></h5>
         Simuleu una trucada sortint per provar si aquest número és un número d\'emergència.<br>
         <br>
-        <priority><b>Prioritat: Màxima</b></priority>
+        <priority><b>Prioritat predeterminada: Màxima</b></priority> <br>
+        <warn>Nota</warn> <br>
+        Si voleu bloquejar sempre les trucades que no superin la validació STIR o coincideixin amb regles específiques, reduïu aquesta prioritat i augmenteu la seva en conseqüència.
         ]]>
     </string>
     <string name="reset">Restablir</string>

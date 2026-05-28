@@ -224,10 +224,9 @@ class Checker { // for namespace only
         private val ctx: Context,
     ) : IChecker {
         override fun priority(): Int {
-            return Int.MAX_VALUE
+            return spf.EmergencySituation(ctx).priority
         }
 
-        @RequiresApi(ANDROID_11)
         override fun check(cCtx: CheckContext): ICheckResult? {
             val C = G.palette
             val spf = spf.EmergencySituation(ctx)
@@ -235,7 +234,6 @@ class Checker { // for namespace only
                 return null
 
             val logger = cCtx.logger
-            val callDetails = cCtx.callDetails
             logger?.debug(
                 ctx.getString(R.string.checking_template)
                     .formatAnnotated(
@@ -250,16 +248,6 @@ class Checker { // for namespace only
             val now = System.currentTimeMillis()
             if (lastEccCallTime + duration < now) {
                 return null
-            }
-
-            // 2. check STIR
-            val isStirEnabled = spf.isStirEnabled
-            if (isStirEnabled && callDetails != null) { // only check for real call, there is no `callDetails` when testing
-                val stir = callDetails.callerNumberVerificationStatus
-                val fail = stir == Connection.VERIFICATION_STATUS_FAILED
-                if (fail) {
-                    return null
-                }
             }
 
             logger?.success(

@@ -9,10 +9,6 @@
         L\'impostazione predefinita <highlight><b>120 Min</b></highlight> significa che tutte le chiamate saranno consentite
         nei prossimi 120 minuti dopo aver composto un numero di emergenza.<br>
         <br>
-        <h5><title>- Controlla STIR</title></h5>
-         - Quando disabilitato, tutte le chiamate saranno consentite.<br>
-         - Quando abilitato, le chiamate che falliscono l\'attestazione STIR non saranno consentite, solo le chiamate "Valide" e "Non verificate" saranno consentite.<br>
-        <br>
         <h5><title>- Numeri Aggiuntivi</title></h5>
         Comporre qualsiasi numero in questa lista attiverà anche questa funzione.<br>
         <br>
@@ -28,7 +24,9 @@
         <h5><title>- Test</title></h5>
         Simula una chiamata in uscita per testare se quel numero è un numero di emergenza.<br>
         <br>
-        <priority><b>Priorità: Massima</b></priority>
+        <priority><b>Priorità predefinita: Massima</b></priority> <br>
+        <warn>Nota</warn> <br>
+        Se vuoi bloccare sempre le chiamate che non superano la verifica STIR o corrispondono a regole specifiche, abbassa questa priorità e aumenta di conseguenza la priorità di quelle regole.
         ]]>
     </string>
     <string name="reset">Reset</string>

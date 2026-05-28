@@ -9,10 +9,6 @@
         Pengaturan default <highlight><b>120 Menit</b></highlight> berarti semua panggilan akan diizinkan
         dalam 120 menit berikutnya setelah menghubungi nomor darurat.<br>
         <br>
-        <h5><title>- Periksa STIR</title></h5>
-         - Jika dinonaktifkan, semua panggilan akan diizinkan.<br>
-         - Jika diaktifkan, panggilan yang gagal dalam pengesahan STIR tidak akan diizinkan, hanya panggilan "Valid" dan "Unverified" yang akan diizinkan.<br>
-        <br>
         <h5><title>- Nomor Tambahan</title></h5>
         Menghubungi nomor apa pun dalam daftar ini juga akan memicu fitur ini.<br>
         <br>
@@ -28,7 +24,9 @@
         <h5><title>- Uji</title></h5>
         Simulasikan panggilan keluar untuk menguji apakah nomor tersebut adalah nomor darurat.<br>
         <br>
-        <priority><b>Prioritas: Maks</b></priority>
+        <priority><b>Prioritas bawaan: Maks</b></priority> <br>
+        <warn>Catatan</warn> <br>
+        Jika Anda ingin selalu memblokir panggilan yang gagal pengesahan STIR atau cocok dengan aturan tertentu, turunkan prioritas ini dan naikkan prioritas aturan tersebut.
         ]]>
     </string>
     <string name="reset">Reset</string>

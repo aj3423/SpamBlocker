@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -29,11 +30,17 @@ import spam.blocker.service.CallScreeningService
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.widgets.AnimatedVisibleV
+import spam.blocker.ui.widgets.Button
+import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.GreyText
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.OutlineCard
 import spam.blocker.ui.widgets.Placeholder
 import spam.blocker.ui.widgets.PopupDialog
+import spam.blocker.ui.widgets.PriorityBox
+import spam.blocker.ui.widgets.PriorityLabel
+import spam.blocker.ui.widgets.ResIcon
+import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
@@ -48,7 +55,7 @@ fun EmergencySituation() {
     val spf = spf.EmergencySituation(ctx)
 
     var isEnabled by rememberSaveable { mutableStateOf(spf.isEnabled) }
-    var isStirEnabled by rememberSaveable { mutableStateOf(spf.isStirEnabled) }
+    var priority by remember { mutableIntStateOf(spf.priority) }
     var extraNumbers by rememberSaveable { mutableStateOf(spf.getExtraNumbers().joinToString(", ")) }
     var duration by rememberSaveable { mutableIntStateOf(spf.duration) }
     var collapsed by rememberSaveable { mutableStateOf(spf.isCollapsed) }
@@ -127,7 +134,7 @@ fun EmergencySituation() {
                         } else {
                             Str(R.string.inactive)
                         },
-                        color = if (timeLeft > 0) C.teal200 else C.disabled,
+                        color = if (timeLeft > 0) C.warning else C.disabled,
                         fontWeight = FontWeight.Bold
                     )
                     Spacer(modifier = M.width(16.dp))
@@ -136,11 +143,11 @@ fun EmergencySituation() {
                     }
                 }
 
-                // STIR Check
-                LabeledRow(labelId = R.string.check_stir_attestation) {
-                    SwitchBox(isStirEnabled) { isTurningOn ->
-                        isStirEnabled = isTurningOn
-                        spf.isStirEnabled = isStirEnabled
+                // Priority
+                PriorityBox(priority) { newValue, hasError ->
+                    if (!hasError) {
+                        priority = newValue!!
+                        spf.priority = newValue
                     }
                 }
 
@@ -185,9 +192,16 @@ fun EmergencySituation() {
         helpTooltip = Str(R.string.help_emergency_situation),
         content = {
             if (isEnabled) {
-                StrokeButton(
-                    label = "$duration ${Str(R.string.min)}${if (isStirEnabled) "" else " (?)"}",
-                    color = if (timeLeft > 0) C.teal200 else C.textGrey
+                Button(
+                    borderColor = if (timeLeft > 0) C.warning else C.textGrey,
+                    content = {
+                        RowVCenterSpaced(6) {
+                            Text("$duration ${Str(R.string.min)}", color = if (timeLeft > 0) C.warning else C.textGrey)
+                            if (priority != Int.MAX_VALUE) {
+                                PriorityLabel(priority)
+                            }
+                        }
+                    }
                 ) {
                     configTrigger.value = true
                 }
