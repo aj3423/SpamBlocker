@@ -48,4 +48,12 @@
     <string name="include_settings">Impostazioni di inclusione</string>
     <string name="exclude_settings">Impostazioni di esclusione</string>
     <string name="backup_missing_category">Questa impostazione manca nel file di backup e non può essere ripristinata.</string>
+    <string name="warning_priority_conflict">
+        <![CDATA[
+        <highlight>Le regole della whitelist</highlight> e della <error>blacklist</error> non devono avere lo stesso valore di priorità<br>
+        <br>
+        Regole in conflitto:
+        ]]>
+    </string>
+    <string name="checking_template_new">%s Controllo: %s</string>
 </resources>

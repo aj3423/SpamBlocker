@@ -87,7 +87,6 @@
         &ensp; <highlight><b>.*</b></highlight>
         ]]>
     </string>
-    <string name="checking_template">بررسی: %s، اولویت: %s</string>
     <string name="skip_for_testing">برای تست رد می‌شود.</string>
     <string name="allowed_by">مجاز توسط: %s</string>
     <string name="blocked_by">مسدود شده توسط: %s</string>

@@ -48,4 +48,12 @@
     <string name="include_settings">Paramètres d\'inclusion</string>
     <string name="exclude_settings">Paramètres d\'exclusion</string>
     <string name="backup_missing_category">Ce paramètre est absent du fichier de sauvegarde et ne peut pas être restauré.</string>
+    <string name="warning_priority_conflict">
+        <![CDATA[
+        <highlight>Les règles de liste blanche</highlight> et de <error>liste noire</error> ne doivent pas avoir la même valeur de priorité<br>
+        <br>
+        Règles en conflit :
+        ]]>
+    </string>
+    <string name="checking_template_new">%s Vérification : %s</string>
 </resources>

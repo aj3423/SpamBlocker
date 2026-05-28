@@ -95,7 +95,6 @@
         &ensp; <highlight><b>.*</b></highlight>
         ]]>
     </string>
-    <string name="checking_template">Memeriksa: %s, prioritas: %s</string>
     <string name="skip_for_testing">Lewati untuk pengujian.</string>
     <string name="allowed_by">Diizinkan oleh: %s</string>
     <string name="blocked_by">Diblokir oleh: %s</string>

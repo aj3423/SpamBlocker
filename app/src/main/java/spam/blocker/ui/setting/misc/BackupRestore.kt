@@ -2,7 +2,6 @@ package spam.blocker.ui.setting.misc
 
 import android.annotation.SuppressLint
 import android.net.Uri
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.HorizontalDivider
@@ -44,7 +43,6 @@ import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.InitFile
 import spam.blocker.ui.widgets.MIME_GZ
 import spam.blocker.ui.widgets.PopupDialog
-import spam.blocker.ui.widgets.PopupSize
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton

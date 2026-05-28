@@ -48,4 +48,12 @@
     <string name="include_settings">Dahil Etme Ayarları</string>
     <string name="exclude_settings">Hariç Tutma Ayarları</string>
     <string name="backup_missing_category">Bu ayar yedekleme dosyasında eksik ve geri yüklenemez.</string>
+    <string name="warning_priority_conflict">
+        <![CDATA[
+        <highlight>Whitelist</highlight> ve <error>blacklist</error> kuralları aynı öncelik değerine sahip olmamalıdır<br>
+        <br>
+        Çakışan kurallar:
+        ]]>
+    </string>
+    <string name="checking_template_new">%s Kontrol ediliyor: %s</string>
 </resources>

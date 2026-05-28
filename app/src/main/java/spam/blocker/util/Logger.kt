@@ -117,9 +117,18 @@ data class Markup(
 )
 
 @Serializable
+data class StringMarkup(
+    val start: Int,
+    val end: Int,
+    val tag: String,
+    val value: String,
+)
+
+@Serializable
 data class MarkupText(
     var text: String = "",
     val markups: MutableList<Markup> = mutableListOf(),
+    val stringMarkups: MutableList<StringMarkup> = mutableListOf(),
 ) {
     fun serialize(): String {
         return try {
@@ -136,6 +145,14 @@ data class MarkupText(
             markups.forEach { markup ->
                 addStyle(
                     style = SpanStyle(color = Color(markup.color)),
+                    start = markup.start,
+                    end = markup.end
+                )
+            }
+            stringMarkups.forEach { markup ->
+                addStringAnnotation(
+                    tag = markup.tag,
+                    annotation = markup.value,
                     start = markup.start,
                     end = markup.end
                 )
@@ -203,6 +220,15 @@ class SaveableLogger(
             if (color != Color.Unspecified) {
                 output.markups += Markup(start, end, color.toArgb())
             }
+        }
+
+        message.getStringAnnotations(start = 0, end = message.length).forEach { annotation ->
+            output.stringMarkups += StringMarkup(
+                start = startOffset + annotation.start,
+                end = startOffset + annotation.end,
+                tag = annotation.tag,
+                value = annotation.item
+            )
         }
     }
 

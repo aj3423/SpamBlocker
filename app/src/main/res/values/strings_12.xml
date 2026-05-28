@@ -95,7 +95,6 @@
         &ensp; <highlight><b>.*</b></highlight>
         ]]>
     </string>
-    <string name="checking_template">Checking: %s, priority: %s</string>
     <string name="skip_for_testing">Skip for testing.</string>
     <string name="allowed_by">Allowed by: %s</string>
     <string name="blocked_by">Blocked by: %s</string>

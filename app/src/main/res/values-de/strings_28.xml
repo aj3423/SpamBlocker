@@ -48,4 +48,12 @@
     <string name="include_settings">Einschluss-Einstellungen</string>
     <string name="exclude_settings">Ausschluss-Einstellungen</string>
     <string name="backup_missing_category">Diese Einstellung fehlt in der Sicherungsdatei und kann nicht wiederhergestellt werden.</string>
+    <string name="warning_priority_conflict">
+        <![CDATA[
+        <highlight>Whitelist</highlight>- und <error>Blacklist-Regeln</error> sollten nicht denselben Prioritätswert haben<br>
+        <br>
+        Konfliktierende Regeln:
+        ]]>
+    </string>
+    <string name="checking_template_new">%s Prüfe: %s</string>
 </resources>

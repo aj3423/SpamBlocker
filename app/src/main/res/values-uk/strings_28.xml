@@ -48,4 +48,12 @@
     <string name="include_settings">Налаштування включення</string>
     <string name="exclude_settings">Налаштування виключення</string>
     <string name="backup_missing_category">Цей параметр відсутній у файлі резервної копії і не може бути відновлений.</string>
+    <string name="warning_priority_conflict">
+        <![CDATA[
+        <highlight>Правила білого списку</highlight> і <error>правила чорного списку</error> не повинні мати однакове значення пріоритету<br>
+        <br>
+        Конфліктні правила:
+        ]]>
+    </string>
+    <string name="checking_template_new">%s Перевірка: %s</string>
 </resources>

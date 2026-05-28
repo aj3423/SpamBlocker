@@ -83,7 +83,7 @@ fun GloballyEnabled() {
                 }
             },
         ) {
-            HtmlText(ctx.getString(R.string.warning_double_sms))
+            HtmlText(Str(R.string.warning_double_sms))
         }
     }
     // Show warnings `onResume`

@@ -95,7 +95,6 @@
         &ensp; <highlight><b>.*</b></highlight>
         ]]>
     </string>
-    <string name="checking_template">正在檢查：%s，優先順序：%s</string>
     <string name="skip_for_testing">測試時略過。</string>
     <string name="allowed_by">放行原因：%s</string>
     <string name="blocked_by">封鎖原因：%s</string>

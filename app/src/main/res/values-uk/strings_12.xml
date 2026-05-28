@@ -86,7 +86,6 @@
         &ensp; <highlight><b>.*</b></highlight>
         ]]>
     </string>
-    <string name="checking_template">Перевірка: %s, пріоритет: %s</string>
     <string name="skip_for_testing">Пропустити для тестування.</string>
     <string name="allowed_by">Дозволено: %s</string>
     <string name="blocked_by">Заблоковано: %s</string>

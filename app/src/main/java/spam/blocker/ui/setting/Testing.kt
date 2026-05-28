@@ -23,6 +23,7 @@ import spam.blocker.R
 import spam.blocker.def.Def.ANDROID_12
 import spam.blocker.service.CallScreeningService
 import spam.blocker.service.SmsReceiver
+import spam.blocker.ui.priorityInlineMap
 import spam.blocker.ui.setting.regex.RegexMode.ModeType
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.BalloonQuestionMark
@@ -83,6 +84,7 @@ fun TestDialog(
         Text(
             text = logStr.value,
             color = C.textGrey, // the default text color
+            inlineContent = priorityInlineMap()
         )
     }
 

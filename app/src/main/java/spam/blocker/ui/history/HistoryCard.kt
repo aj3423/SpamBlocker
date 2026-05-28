@@ -35,6 +35,7 @@ import spam.blocker.ui.M
 import spam.blocker.ui.history.HistoryOptions.forceShowSIM
 import spam.blocker.ui.history.HistoryOptions.showHistoryCarrier
 import spam.blocker.ui.history.HistoryOptions.showHistoryGeoLocation
+import spam.blocker.ui.priorityInlineMap
 import spam.blocker.ui.slightDiff
 import spam.blocker.ui.widgets.BUTTON_CORNER_RADIUS
 import spam.blocker.ui.widgets.BUTTON_H_PADDING
@@ -182,7 +183,10 @@ fun HistoryCard(
                                         AnnotatedString("")
                                     }
                                 }
-                                Text(annotatedLog)
+                                Text(
+                                    text = annotatedLog,
+                                    inlineContent = priorityInlineMap()
+                                )
                             }
 
                             Button(

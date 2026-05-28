@@ -48,4 +48,12 @@
     <string name="include_settings">הגדרות הכללה</string>
     <string name="exclude_settings">הגדרות החרגה</string>
     <string name="backup_missing_category">הגדרה זו חסרה בקובץ הגיבוי ולא ניתן לשחזר אותה.</string>
+    <string name="warning_priority_conflict">
+        <![CDATA[
+        <highlight>כללי רשימת ההיתרים</highlight> ו<error>כללי רשימת החסימות</error> לא צריכים לקבל אותו ערך קדימות<br>
+        <br>
+        כללים מתנגשים:
+        ]]>
+    </string>
+    <string name="checking_template_new">%s בודק: %s</string>
 </resources>

@@ -48,4 +48,12 @@
     <string name="include_settings">Pengaturan Penyertaan</string>
     <string name="exclude_settings">Pengaturan Pengecualian</string>
     <string name="backup_missing_category">Pengaturan ini tidak ada dalam file cadangan dan tidak dapat dipulihkan.</string>
+    <string name="warning_priority_conflict">
+        <![CDATA[
+        <highlight>Aturan whitelist</highlight> dan <error>aturan blacklist</error> tidak boleh memiliki nilai prioritas yang sama<br>
+        <br>
+        Aturan yang bertentangan:
+        ]]>
+    </string>
+    <string name="checking_template_new">%s Memeriksa: %s</string>
 </resources>

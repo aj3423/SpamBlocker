@@ -85,7 +85,6 @@
         &ensp; <highlight><b>.*</b></highlight>
         ]]>
     </string>
-    <string name="checking_template">Kontrol ediliyor: %s, öncelik: %s</string>
     <string name="skip_for_testing">Test için atla.</string>
     <string name="allowed_by">İzin verildi: %s</string>
     <string name="blocked_by">Engellendi: %s</string>

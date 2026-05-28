@@ -48,4 +48,12 @@
     <string name="include_settings">Configurações de inclusão</string>
     <string name="exclude_settings">Configurações de exclusão</string>
     <string name="backup_missing_category">Esta configuração está ausente no arquivo de backup e não pode ser restaurada.</string>
+    <string name="warning_priority_conflict">
+        <![CDATA[
+        <highlight>As regras da lista branca</highlight> e da <error>lista negra</error> não devem ter o mesmo valor de prioridade<br>
+        <br>
+        Regras em conflito:
+        ]]>
+    </string>
+    <string name="checking_template_new">%s Verificando: %s</string>
 </resources>

@@ -95,7 +95,6 @@
         &ensp; <highlight><b>.*</b></highlight>
         ]]>
     </string>
-    <string name="checking_template">Проверка: %s, приоритет: %s</string>
     <string name="skip_for_testing">Пропустить для тестирования.</string>
     <string name="allowed_by">Разрешено: %s</string>
     <string name="blocked_by">Заблокировано: %s</string>

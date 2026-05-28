@@ -48,4 +48,12 @@
     <string name="include_settings">包含設定</string>
     <string name="exclude_settings">排除設定</string>
     <string name="backup_missing_category">此設定在備份檔案中缺失，無法還原。</string>
+    <string name="warning_priority_conflict">
+        <![CDATA[
+        <highlight>白名單</highlight>和<error>黑名單</error>規則不應具有相同的優先權值<br>
+        <br>
+        衝突的規則：
+        ]]>
+    </string>
+    <string name="checking_template_new">%s 正在檢查：%s</string>
 </resources>

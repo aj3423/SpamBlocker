@@ -2,7 +2,9 @@ package spam.blocker.ui
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.text.InlineTextContent
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -19,10 +21,31 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.text.PlaceholderVerticalAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import spam.blocker.G
+import spam.blocker.R
+import spam.blocker.ui.widgets.ResIcon
+import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.util.Lambda
 
 typealias M = Modifier
+
+
+fun priorityInlineMap() = mapOf(
+    "priority" to InlineTextContent(
+         placeholder = androidx.compose.ui.text.Placeholder(
+            (16+2).sp, // add 4.sp as the icon's paddingEnd
+            16.sp,
+            PlaceholderVerticalAlign.TextCenter
+        )
+    ) {
+        RowVCenter {
+            ResIcon(R.drawable.ic_priority, color = G.palette.priority, modifier = M.padding(end = 2.dp))
+        }
+    }
+)
 
 
 fun String.parseColorString(): Pair<Int, Int>? {

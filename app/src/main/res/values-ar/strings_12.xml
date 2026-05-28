@@ -95,7 +95,6 @@
         &ensp; <highlight><b>.*</b></highlight>
         ]]>
     </string>
-    <string name="checking_template"><translate>التحقق: %s، الأولوية: %s</translate></string>
     <string name="skip_for_testing"><translate>تخطى للاختبار.</translate></string>
     <string name="allowed_by"><translate>مسموح به من قبل: %s</translate></string>
     <string name="blocked_by"><translate>محظور من قبل: %s</translate></string>

@@ -48,4 +48,12 @@
     <string name="include_settings">إعدادات التضمين</string>
     <string name="exclude_settings">إعدادات الاستبعاد</string>
     <string name="backup_missing_category">هذا الإعداد مفقود من ملف النسخ الاحتياطي ولا يمكن استعادته.</string>
+    <string name="warning_priority_conflict">
+        <![CDATA[
+        <highlight>قواعد القائمة البيضاء</highlight> و<error>قواعد القائمة السوداء</error> يجب ألا تكون لها نفس قيمة الأولوية<br>
+        <br>
+        القواعد المتعارضة:
+        ]]>
+    </string>
+    <string name="checking_template_new">%s جارٍ التحقق: %s</string>
 </resources>

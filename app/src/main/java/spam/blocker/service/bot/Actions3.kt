@@ -79,7 +79,7 @@ class EnableWorkflow(
 
         // null when Testing, do nothing
         if (workTag == null) {
-            aCtx.logger?.debug(ctx.getString(R.string.skip_for_testing))
+            aCtx.logger?.debug(ctx.getString(R.string.skip_for_testing).A(G.palette.disabled))
             return true
         }
 

@@ -230,7 +230,7 @@ class ByEmergencySituation(
 
 // allowed by contact, or blocked by non-contact
 class ByContact(
-    override val type: Int,
+    override val type: Int = RESULT_ALLOWED_BY_CONTACT,
     private val contactName: String? = null,
 ) : ICheckResult {
     override fun reasonToDb(): String {
@@ -238,10 +238,15 @@ class ByContact(
     }
 
     override fun resultReasonStr(ctx: Context): String {
-        return if (type == RESULT_ALLOWED_BY_CONTACT)
-            ctx.getString(R.string.contact)
-        else
-            ctx.getString(R.string.non_contact)
+        return ctx.getString(R.string.contact)
+    }
+}
+
+class ByNonContact(
+    override val type: Int = RESULT_BLOCKED_BY_NON_CONTACT,
+) : ICheckResult {
+    override fun resultReasonStr(ctx: Context): String {
+        return ctx.getString(R.string.non_contact)
     }
 }
 
@@ -619,9 +624,10 @@ fun parseCheckResultFromDb(ctx: Context, result: Int, reason: String): ICheckRes
         RESULT_ALLOWED_BY_EMERGENCY_CALL -> ByEmergencyCall()
         RESULT_ALLOWED_BY_EMERGENCY_SITUATION -> ByEmergencySituation()
 
-        RESULT_ALLOWED_BY_CONTACT, RESULT_BLOCKED_BY_NON_CONTACT -> ByContact(
-            result, reason
+        RESULT_ALLOWED_BY_CONTACT -> ByContact(
+            contactName = reason
         )
+        RESULT_BLOCKED_BY_NON_CONTACT -> ByNonContact()
 
         RESULT_ALLOWED_BY_STIR, RESULT_BLOCKED_BY_STIR -> BySTIR(result, reason.toInt())
         RESULT_ALLOWED_BY_RECENT_APP -> ByRecentApp(reason)
