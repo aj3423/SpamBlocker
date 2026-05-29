@@ -56,4 +56,13 @@
         ]]>
     </string>
     <string name="checking_template_new">%s Memeriksa: %s</string>
+    <string name="textbox_limit">Batas Kotak Teks</string>
+    <string name="help_rule_textbox_limit">
+        <![CDATA[
+        Jumlah maksimum karakter yang diizinkan di kotak input. Melebihi batas ini akan menonaktifkan pengeditan,
+          karena teks yang terlalu panjang akan membekukan UI. <br>
+          <br>
+        Default: <b>1000</b> karakter
+        ]]>
+    </string>
 </resources>

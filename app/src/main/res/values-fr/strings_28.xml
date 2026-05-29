@@ -56,4 +56,13 @@
         ]]>
     </string>
     <string name="checking_template_new">%s Vérification : %s</string>
+    <string name="textbox_limit">Limite de la zone de texte</string>
+    <string name="help_rule_textbox_limit">
+        <![CDATA[
+        Le nombre maximal de caractères autorisés dans la zone de saisie. Dépasser cette limite désactive l'édition,
+          car un texte excessivement long figera l'interface utilisateur. <br>
+          <br>
+        Par défaut : <b>1000</b> caractères
+        ]]>
+    </string>
 </resources>

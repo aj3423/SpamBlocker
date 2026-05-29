@@ -56,4 +56,13 @@
         ]]>
     </string>
     <string name="checking_template_new">%s Comprobando: %s</string>
+    <string name="textbox_limit">Límite del cuadro de texto</string>
+    <string name="help_rule_textbox_limit">
+        <![CDATA[
+        El máximo de caracteres permitidos en el cuadro de entrada. Superar este límite desactiva la edición,
+          ya que un texto excesivamente largo congelará la interfaz de usuario. <br>
+          <br>
+        Predeterminado: <b>1000</b> caracteres
+        ]]>
+    </string>
 </resources>

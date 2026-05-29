@@ -51,6 +51,7 @@ import spam.blocker.ui.widgets.WeekdayPicker1
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionWrapper
 import spam.blocker.util.TimeUtils.timeRangeStr
+import spam.blocker.util.spf
 
 // To add a new regex mode:
 //  1. implement the class
@@ -169,6 +170,7 @@ object RegexMode {
                 label = { Text(Str(labelId)) },
                 regexStr = state.pattern.value,
                 regexFlags = state.patternFlags,
+                maxTextLength = spf.RegexOptions(ctx).textboxLimit,
                 onRegexStrChange = { newVal, hasErr ->
                     state.pattern.value = newVal
                     state.patternError.value = hasErr
@@ -207,6 +209,7 @@ object RegexMode {
                         label = { Text(Str(regexModeByType(state.patternModeType.intValue).labelId)) },
                         regexStr = state.patternExtra.value,
                         regexFlags = state.patternExtraFlags,
+                        maxTextLength = spf.RegexOptions(ctx).textboxLimit,
                         onRegexStrChange = { newVal, hasErr ->
                             state.patternExtra.value = newVal
                             state.patternExtraError.value = hasErr

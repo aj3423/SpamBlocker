@@ -39,7 +39,6 @@ import spam.blocker.db.ruleTableForType
 import spam.blocker.ui.M
 import spam.blocker.ui.maxScreenHeight
 import spam.blocker.ui.screenHeightDp
-import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.widgets.DividerItem
 import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.GreyIcon20
@@ -80,92 +79,91 @@ fun RegexSettingsPopup(
     vm: RegexViewModel,
 ) {
     val ctx = LocalContext.current
-    var dirty by rememberSaveable { mutableStateOf(false) }
+    var anythingChanged by rememberSaveable { mutableStateOf(false) }
 
     PopupDialog(
         trigger = trigger,
         onDismiss = {
-            if (dirty)
+            if (anythingChanged)
                 vm.reloadDb(ctx)
         }
     ) {
         val spf = spf.RegexOptions(ctx)
 
         // max none scroll items: []
-        LabeledRow(
-            labelId = null,
-            helpTooltip = Str(R.string.help_max_none_scroll_items)
-        ) {
-            var max by remember { mutableIntStateOf(spf.maxNoneScrollRows) }
-            NumberInputBox(
-                intValue = max,
-                label = { Text(Str(R.string.label_max_none_scroll_items)) },
-                onValueChange = { newVal, hasError ->
-                    if (!hasError) {
-                        max = newVal!!
-                        spf.maxNoneScrollRows = max
-                        dirty = true
-                    }
+        var max by remember { mutableIntStateOf(spf.maxNoneScrollRows) }
+        NumberInputBox(
+            intValue = max,
+            labelId = R.string.label_max_none_scroll_items,
+            helpTooltipId = R.string.help_max_none_scroll_items,
+            onValueChange = { newVal, hasError ->
+                if (!hasError) {
+                    max = newVal!!
+                    spf.maxNoneScrollRows = max
+                    anythingChanged = true
                 }
-            )
-        }
+            }
+        )
 
         // max scroll height: []
-        LabeledRow(
-            labelId = null,
-            helpTooltip = Str(R.string.help_max_scroll_height)
-        ) {
-            var height by remember { mutableIntStateOf(spf.ruleListHeightPercentage) }
-            NumberInputBox(
-                intValue = height,
-                label = { Text(Str(R.string.label_max_scroll_height)) },
-                onValueChange = { newVal, hasError ->
-                    if (!hasError) {
-                        height = newVal!!
-                        spf.ruleListHeightPercentage = height
-                        dirty = true
-                    }
+        var height by remember { mutableIntStateOf(spf.ruleListHeightPercentage) }
+        NumberInputBox(
+            intValue = height,
+            labelId = R.string.label_max_scroll_height,
+            helpTooltipId = R.string.help_max_scroll_height,
+            onValueChange = { newVal, hasError ->
+                if (!hasError) {
+                    height = newVal!!
+                    spf.ruleListHeightPercentage = height
+                    anythingChanged = true
                 }
-            )
-        }
+            }
+        )
 
         // max regex lines: []
-        LabeledRow(
-            labelId = null,
-            helpTooltip = Str(R.string.help_max_regex_lines)
-        ) {
-            var rows by remember { mutableIntStateOf(spf.maxRegexRows) }
-            NumberInputBox(
-                intValue = rows,
-                label = { Text(Str(R.string.label_max_regex_lines)) },
-                onValueChange = { newVal, hasError ->
-                    if (!hasError) {
-                        rows = newVal!!
-                        spf.maxRegexRows = rows
-                        dirty = true
-                    }
+        var maxRegexRows by remember { mutableIntStateOf(spf.maxRegexRows) }
+        NumberInputBox(
+            intValue = maxRegexRows,
+            labelId = R.string.label_max_regex_lines,
+            helpTooltipId = R.string.help_max_regex_lines,
+            onValueChange = { newVal, hasError ->
+                if (!hasError) {
+                    maxRegexRows = newVal!!
+                    spf.maxRegexRows = maxRegexRows
+                    anythingChanged = true
                 }
-            )
-        }
+            }
+        )
 
         // max description lines: []
-        LabeledRow(
-            labelId = null,
-            helpTooltip = Str(R.string.help_max_desc_lines)
-        ) {
-            var rows by remember { mutableIntStateOf(spf.maxDescRows) }
-            NumberInputBox(
-                intValue = rows,
-                label = { Text(Str(R.string.label_max_desc_lines)) },
-                onValueChange = { newVal, hasError ->
-                    if (!hasError) {
-                        rows = newVal!!
-                        spf.maxDescRows = rows
-                        dirty = true
-                    }
+        var maxDescRows by remember { mutableIntStateOf(spf.maxDescRows) }
+        NumberInputBox(
+            intValue = maxDescRows,
+            labelId = R.string.label_max_desc_lines,
+            helpTooltipId = R.string.help_max_desc_lines,
+            onValueChange = { newVal, hasError ->
+                if (!hasError) {
+                    maxDescRows = newVal!!
+                    spf.maxDescRows = maxDescRows
+                    anythingChanged = true
                 }
-            )
-        }
+            }
+        )
+
+        // max text box limit
+        var textboxLimit by remember { mutableIntStateOf(spf.textboxLimit)}
+        NumberInputBox(
+            intValue = textboxLimit,
+            labelId = R.string.textbox_limit,
+            helpTooltipId = R.string.help_rule_textbox_limit,
+            onValueChange = { newVal, hasError ->
+                if (!hasError) {
+                    textboxLimit = newVal!!
+                    spf.textboxLimit = newVal
+                    anythingChanged = true
+                }
+            }
+        )
     }
 }
 

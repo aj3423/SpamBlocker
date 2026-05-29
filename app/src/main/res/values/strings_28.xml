@@ -56,4 +56,13 @@
         ]]>
     </string>
     <string name="checking_template_new">%s Checking: %s</string>
+    <string name="textbox_limit">Text Box Limit</string>
+    <string name="help_rule_textbox_limit">
+        <![CDATA[
+        The maximum characters allowed in the input box. Exceeding this limit disables editing,
+          as excessively long text will freeze the UI. <br>
+          <br>
+        Default: <b>1000</b> characters
+        ]]>
+    </string>
 </resources>

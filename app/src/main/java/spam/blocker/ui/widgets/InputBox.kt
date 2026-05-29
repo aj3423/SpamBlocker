@@ -68,8 +68,6 @@ import spam.blocker.util.setFlag
 //  - reduce the content padding-top:
 //      contentPadding = PaddingValues( 16.dp, 12.dp ),
 
-const val MAX_STR_LEN = 1000
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun InputBox(
@@ -83,7 +81,7 @@ private fun InputBox(
         color = G.palette.textGrey,
         fontWeight = FontWeight.SemiBold,
     ),
-    limitTextLength: Boolean = false,
+    maxTextLength: Int? = null,
     label: @Composable (() -> Unit)? = null,
     placeholder: @Composable (() -> Unit)? = null,
     leadingIcon: @Composable (() -> Unit)? = null, // size should be 18.dp by default
@@ -127,7 +125,7 @@ private fun InputBox(
     // The input box will freeze for super long text, to solve this, if the input text exceeds
     // this length, the text will be truncated to this length, and the edit will be disabled.
     // There is no point to edit such long text, it has to be a imported rule.
-    val exceedsMaxLen = limitTextLength && (value.text.length > MAX_STR_LEN)
+    val exceedsMaxLen = (maxTextLength != null) && (value.text.length > maxTextLength)
 
     Column(
         modifier = if (label != null) {
@@ -142,7 +140,7 @@ private fun InputBox(
     ) {
         BasicTextField(
             value = if (exceedsMaxLen)
-                value.copy(text = value.text.substring(0, MAX_STR_LEN))
+                value.copy(text = value.text.substring(0, maxTextLength))
             else
                 value,
             modifier = M
@@ -525,6 +523,7 @@ fun RegexInputBox(
     leadingIcon: @Composable (() -> Unit)? = null, // it can be a clickable icon
     enableNumberFlags: Boolean = false, // enable 2 more flags
     helpTooltipId: Int? = null,
+    maxTextLength: Int? = null,
     testable: Boolean = false,
     showFlagsIcon: Boolean = true,
 ) {
@@ -596,7 +595,7 @@ fun RegexInputBox(
         label = label,
         placeholder = placeholder,
         leadingIcon = leadingIcon,
-        limitTextLength = true,
+        maxTextLength = maxTextLength,
         warnings = warnings,
         supportingTextStr = errorStr,
         singleLine = false,

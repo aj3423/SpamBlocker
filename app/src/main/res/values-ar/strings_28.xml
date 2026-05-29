@@ -56,4 +56,13 @@
         ]]>
     </string>
     <string name="checking_template_new">%s جارٍ التحقق: %s</string>
+    <string name="textbox_limit">حد مربع النص</string>
+    <string name="help_rule_textbox_limit">
+        <![CDATA[
+        الحد الأقصى لعدد الأحرف المسموح بها في مربع الإدخال. يؤدي تجاوز هذا الحد إلى تعطيل التحرير،
+          لأن النص الطويل جدًا سيؤدي إلى تجميد واجهة المستخدم. <br>
+          <br>
+        القيمة الافتراضية: <b>1000</b> حرف
+        ]]>
+    </string>
 </resources>

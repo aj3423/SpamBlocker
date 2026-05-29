@@ -56,4 +56,13 @@
         ]]>
     </string>
     <string name="checking_template_new">%s チェック中：%s</string>
+    <string name="textbox_limit">テキストボックスの文字数上限</string>
+    <string name="help_rule_textbox_limit">
+        <![CDATA[
+        入力ボックスで許可される最大文字数です。この上限を超えると編集が無効になります。
+          長すぎるテキストは UI をフリーズさせるためです。 <br>
+          <br>
+        既定値: <b>1000</b> 文字
+        ]]>
+    </string>
 </resources>

@@ -56,4 +56,13 @@
         ]]>
     </string>
     <string name="checking_template_new">%s Controllo: %s</string>
+    <string name="textbox_limit">Limite casella di testo</string>
+    <string name="help_rule_textbox_limit">
+        <![CDATA[
+        Il numero massimo di caratteri consentiti nella casella di input. Superare questo limite disabilita la modifica,
+          perché un testo eccessivamente lungo bloccherà l'interfaccia utente. <br>
+          <br>
+        Predefinito: <b>1000</b> caratteri
+        ]]>
+    </string>
 </resources>

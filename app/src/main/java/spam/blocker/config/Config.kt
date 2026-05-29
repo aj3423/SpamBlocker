@@ -150,6 +150,7 @@ class RegexOptions : IConfig {
     var maxRegexRows = 3
     var maxDescRows = 2
     var listHeightPercentage = 60
+    var textboxLimit = 1000
 
     override fun load(ctx: Context) {
         val spf = spf.RegexOptions(ctx)
@@ -160,6 +161,7 @@ class RegexOptions : IConfig {
         maxRegexRows = spf.maxRegexRows
         maxDescRows = spf.maxDescRows
         listHeightPercentage = spf.ruleListHeightPercentage
+        textboxLimit = spf.textboxLimit
     }
 
     override fun apply(ctx: Context) {
@@ -172,6 +174,7 @@ class RegexOptions : IConfig {
             maxRegexRows = me.maxRegexRows
             maxDescRows = me.maxDescRows
             ruleListHeightPercentage = me.listHeightPercentage
+            textboxLimit = me.textboxLimit
         }
     }
 }

@@ -56,4 +56,13 @@
         ]]>
     </string>
     <string name="checking_template_new">%s Перевірка: %s</string>
+    <string name="textbox_limit">Ліміт текстового поля</string>
+    <string name="help_rule_textbox_limit">
+        <![CDATA[
+        Максимальна кількість символів, дозволена у полі введення. Перевищення цього ліміту вимикає редагування,
+          оскільки надто довгий текст призведе до зависання інтерфейсу. <br>
+          <br>
+        Типово: <b>1000</b> символів
+        ]]>
+    </string>
 </resources>

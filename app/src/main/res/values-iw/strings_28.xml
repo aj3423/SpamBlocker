@@ -56,4 +56,13 @@
         ]]>
     </string>
     <string name="checking_template_new">%s בודק: %s</string>
+    <string name="textbox_limit">מגבלת תיבת הטקסט</string>
+    <string name="help_rule_textbox_limit">
+        <![CDATA[
+        מספר התווים המרבי המותר בתיבת הקלט. חריגה מהמגבלה הזו תשבית את העריכה,
+          משום שטקסט ארוך מדי יקפיא את ממשק המשתמש. <br>
+          <br>
+        ברירת מחדל: <b>1000</b> תווים
+        ]]>
+    </string>
 </resources>

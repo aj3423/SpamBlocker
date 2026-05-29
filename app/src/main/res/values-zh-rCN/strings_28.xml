@@ -56,4 +56,13 @@
         ]]>
     </string>
     <string name="checking_template_new">%s 正在检查：%s</string>
+    <string name="textbox_limit">文本框限制</string>
+    <string name="help_rule_textbox_limit">
+        <![CDATA[
+        输入框允许的最大字符数。超过此限制将禁用编辑，
+          因为过长的文本会导致界面卡死。 <br>
+          <br>
+        默认值：<b>1000</b> 个字符
+        ]]>
+    </string>
 </resources>

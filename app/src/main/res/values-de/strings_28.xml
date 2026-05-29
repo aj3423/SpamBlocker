@@ -56,4 +56,13 @@
         ]]>
     </string>
     <string name="checking_template_new">%s Prüfe: %s</string>
+    <string name="textbox_limit">Textfeldlimit</string>
+    <string name="help_rule_textbox_limit">
+        <![CDATA[
+        Die maximal zulässige Zeichenanzahl im Eingabefeld. Wird dieses Limit überschritten, wird die Bearbeitung deaktiviert,
+          da übermäßig langer Text die Benutzeroberfläche einfrieren lässt. <br>
+          <br>
+        Standard: <b>1000</b> Zeichen
+        ]]>
+    </string>
 </resources>
