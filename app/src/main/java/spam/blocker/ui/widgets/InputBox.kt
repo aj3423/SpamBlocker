@@ -301,7 +301,19 @@ fun NumberInputBox(
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         singleLine = true,
         trailingIcon = {
-            RowVCenter {
+            // Trailing icons
+            // Material 3 expects trailingIcon to be a single slot, it's basically a centered 48dp box,
+            //   so paddingEnd disappears when there are multiple icons.
+            // Here's an ugly workaround, this adds 10.dp paddingEnd to the last icon when there are multiple icons.
+            var iconCount = 0
+
+            if ((lastText.isNotEmpty() && enabled)) iconCount++
+            if (helpTooltip != null) iconCount++
+
+            val paddingEnd = if (iconCount > 1) 10 else 0
+
+            RowVCenterSpaced(6, modifier = M.padding(end = paddingEnd.dp)) {
+
                 if (lastText.isNotEmpty() && enabled) {
                     GreyIcon16(
                         R.drawable.ic_clear,
@@ -416,9 +428,9 @@ fun StrInputBox(
         supportingTextColor = supportingTextColor,
         trailingIcon = {
             // Trailing icons
-            // This is an ugly workaround for adding 10.dp paddingEnd to the last icon
-            //  when there are more than 1 icons. Because when there are more than 1 icons,
-            //  the paddingEnd becomes 0, no idea why.
+            // Material 3 expects trailingIcon to be a single slot, it's basically a centered 48dp box,
+            //   so paddingEnd disappears when there are multiple icons.
+            // Here's an ugly workaround, this adds x.dp paddingEnd to the last icon when there are multiple icons.
             var iconCount = 0
 
             if (alwaysShowClear || (lastText.isNotEmpty() && enabled)) iconCount++
@@ -676,9 +688,9 @@ fun RegexInputBox(
             }
 
             // Trailing icons
-            // This is an ugly workaround for adding 10.dp paddingEnd to the last icon
-            //  when there are more than 1 icons. Because when there are more than 1 icons,
-            //  the paddingEnd becomes 0, no idea why.
+            // Material 3 expects trailingIcon to be a single slot, it's basically a centered 48dp box,
+            //   so paddingEnd disappears when there are multiple icons.
+            // Here's an ugly workaround, this adds x.dp paddingEnd to the last icon when there are multiple icons.
             var iconCount = 0
 
             if (showFlagsIcon) iconCount++
