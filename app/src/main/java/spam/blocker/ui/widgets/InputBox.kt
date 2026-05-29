@@ -57,6 +57,7 @@ import spam.blocker.util.Util
 import spam.blocker.util.Util.regexWildcardNotSupported
 import spam.blocker.util.enabledRegexFlagsStr
 import spam.blocker.util.hasFlag
+import spam.blocker.util.logi
 import spam.blocker.util.regexMatchesNumber
 import spam.blocker.util.setFlag
 
@@ -559,8 +560,13 @@ fun RegexInputBox(
         return ret
     }
 
-    var errorStr by remember(lastText) {
+    var errorStr by remember(lastText, regexFlags.intValue) {
         mutableStateOf(validateError())
+    }
+
+    // When enabling `Raw Number`, error "regex mustn't start with 0" disappears, call the callback with `null` error
+    LaunchedEffect(errorStr) {
+        onRegexStrChange(lastText, errorStr != null)
     }
 
     val warnings = remember(lastText) {
