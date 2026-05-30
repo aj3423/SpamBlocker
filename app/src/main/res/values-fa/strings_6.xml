@@ -19,7 +19,11 @@
 
 
 
-    <string name="confirm_delete_all_records">آیا از حذف همه سوابق مطمئن هستید؟</string>
+    <string name="confirm_delete_all_records">
+        <![CDATA[
+        آیا از حذف <error>همه</error> سوابق مطمئن هستید؟
+        ]]>
+    </string>
     <string name="expiry">انقضا</string>
     <string name="days">روز</string>
     <string name="help_log_sms_content">
@@ -66,8 +70,9 @@
         <item>وارد کردن .csv به عنوان قوانین چندگانه</item>
     </string-array>
     <string name="open_settings">باز کردن تنظیمات</string>
-    <string name="remove_db_number">حذف شماره از پایگاه داده اسپم</string>
+    <string name="remove_from_db">حذف از پایگاه داده</string>
     <string name="copy_number">کپی شماره</string>
-    <string name="add_num_to_regex_rule">افزودن شماره به قانون Regex</string>
-    <string name="add_num_to_db">افزودن شماره به پایگاه داده اسپم</string>
+    <string name="add_to_regex_rule">افزودن به قانون Regex</string>
+    <string name="edit_regex_rule">ویرایش قانون Regex</string>
+    <string name="add_to_db">افزودن به پایگاه داده</string>
 </resources>

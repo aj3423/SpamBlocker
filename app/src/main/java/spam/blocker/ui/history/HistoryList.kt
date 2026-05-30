@@ -1,5 +1,6 @@
 package spam.blocker.ui.history
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
@@ -31,6 +32,7 @@ import spam.blocker.util.Launcher
 import spam.blocker.util.SimUtils
 
 
+@SuppressLint("LocalContextGetResourceValueCall")
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun HistoryList(
@@ -62,19 +64,23 @@ fun HistoryList(
 
                     LaunchedEffect(record.id, showIndicator, forceRefreshIndicators) {
                         indicators.value = if (showIndicator)
-                            indicatorChecker(record.peer, record.cnap, record.extraInfo, record.simSlot)
+                            indicatorChecker(
+                                record.peer,
+                                record.cnap,
+                                record.extraInfo,
+                                record.simSlot
+                            )
                         else
                             listOf()
                     }
-
-                    HistoryContextMenuWrapper(vm, index) { contextMenuExpanded ->
+                    HistoryContextMenuWrapper(vm, record) { contextMenuExpanded ->
                         // Swipe <---->
                         LeftDeleteSwipeWrapper(
                             right = SwipeInfo(
                                 veto = true,
                                 background = { BgLaunchApp(StartToEnd) },
                                 onSwipe = {
-                                    val index = vm.records.indexOfFirst { it.id == record.id  }
+                                    val index = vm.records.indexOfFirst { it.id == record.id }
                                     val record = vm.records[index]
 
                                     // Navigate to the default app, open the conversation to this number.
@@ -85,14 +91,18 @@ fun HistoryList(
                                         vm.records[index] = vm.records[index].copy(read = true)
                                     }
                                     when (vm.forType) {
-                                        Def.ForNumber -> Launcher.openCallConversation(ctx, record.peer)
+                                        Def.ForNumber -> Launcher.openCallConversation(
+                                            ctx,
+                                            record.peer
+                                        )
+
                                         Def.ForSms -> Launcher.openSMSConversation(ctx, record.peer)
                                     }
                                 }
                             ),
                             left = SwipeInfo(
                                 onSwipe = {
-                                    val index = vm.records.indexOfFirst { it.id == record.id  }
+                                    val index = vm.records.indexOfFirst { it.id == record.id }
                                     val rec = vm.records[index]
 
                                     // 1. delete from db
@@ -118,7 +128,7 @@ fun HistoryList(
                                 record = record,
                                 indicators = indicators.value,
                                 simCount = simCount,
-                                timeColors = if(showHistoryTimeColor.value) historyTimeColors else null,
+                                timeColors = if (showHistoryTimeColor.value) historyTimeColors else null,
                                 modifier = M.combinedClickable(
                                     onClick = {
                                         if (!record.read) {

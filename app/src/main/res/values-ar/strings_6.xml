@@ -19,7 +19,11 @@
 
 
 
-    <string name="confirm_delete_all_records">هل أنت متأكد من حذف جميع السجلات؟</string>
+    <string name="confirm_delete_all_records">
+        <![CDATA[
+        هل أنت متأكد من حذف <error>جميع</error> السجلات؟
+        ]]>
+    </string>
     <string name="expiry">انتهاء الصلاحية</string>
     <string name="days">أيام</string>
     <string name="help_log_sms_content">
@@ -28,9 +32,10 @@
         ]]>
     </string>
     <string name="copy_number">نسخ الرقم</string>
-    <string name="add_num_to_regex_rule">إضافة الرقم إلى قاعدة التعبير النمطي</string>
-    <string name="add_num_to_db">إضافة الرقم إلى قاعدة بيانات الرسائل المزعجة</string>
-    <string name="remove_db_number">حذف الرقم من قاعدة بيانات الرسائل المزعجة</string>
+    <string name="add_to_regex_rule">إضافة إلى قاعدة regex</string>
+    <string name="edit_regex_rule">تحرير قاعدة regex</string>
+    <string name="add_to_db">إضافة إلى قاعدة البيانات</string>
+    <string name="remove_from_db">حذف من قاعدة البيانات</string>
 
     <string name="language">اللغة</string>
     <string name="help_language">

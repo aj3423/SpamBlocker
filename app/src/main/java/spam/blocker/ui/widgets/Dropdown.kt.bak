@@ -1,0 +1,229 @@
+package spam.blocker.ui.widgets
+
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.combinedClickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import spam.blocker.G
+import spam.blocker.ui.M
+import spam.blocker.ui.slightDiff
+import spam.blocker.util.Lambda1
+
+// The built-in DropdownMenuItem is twice height as it should be.
+
+
+interface DropdownMenuItemScope {
+    @Composable
+    fun label(
+        id: String = "",
+        label: String,
+        leadingIcon: (@Composable () -> Unit)? = null,
+        trailingIcon: (@Composable () -> Unit)? = null,
+        tooltip: String? = null,
+        selected: Boolean = false,
+        dismissOnClick: Boolean = true,
+        onLongClick: Lambda1<MutableState<Boolean>>? = null,
+        onClick: Lambda1<MutableState<Boolean>>? = null,
+    )
+
+    @Composable
+    fun divider(thickness: Int = 1)
+
+    @Composable
+    fun check(
+        state: MutableState<Boolean>,
+        label: String,
+        trailingIcon: (@Composable () -> Unit)? = null,
+        enabled: Boolean = true,
+        onCheckChange: Lambda1<Boolean>,
+    )
+
+    @Composable
+    fun custom(
+        content: @Composable (MutableState<Boolean>) -> Unit,
+    )
+}
+
+private class DropdownMenuItemScopeImpl(
+    private val menuExpandedState: MutableState<Boolean>,
+) : DropdownMenuItemScope {
+
+    @Composable
+    private fun itemContainer(
+        content: @Composable () -> Unit,
+    ) {
+        RowVCenter(
+            modifier = M
+                .fillMaxWidth()
+                .padding(horizontal = 8.dp)
+        ) {
+            content()
+        }
+    }
+
+    @Composable
+    override fun label(
+        id: String,
+        label: String,
+        leadingIcon: (@Composable () -> Unit)?,
+        trailingIcon: (@Composable () -> Unit)?,
+        tooltip: String?,
+        selected: Boolean,
+        dismissOnClick: Boolean,
+        onLongClick: Lambda1<MutableState<Boolean>>?,
+        onClick: Lambda1<MutableState<Boolean>>?,
+    ) {
+        itemContainer {
+            RowVCenterSpaced(
+                space = 10,
+                modifier = M
+                    .combinedClickable(
+                        onClick = {
+                            onClick?.let {
+                                it(menuExpandedState)
+                            }
+                            if (dismissOnClick) {
+                                menuExpandedState.value = false
+                            }
+                        },
+                        onLongClick = {
+
+                            onLongClick?.let {
+                                it(menuExpandedState)
+                            }
+                        }
+                    )
+            ) {
+                leadingIcon?.let {
+                    it()
+                }
+
+                RowVCenterSpaced(10, modifier = M.weight(1f)) {
+                    GreyLabel(
+                        text = label,
+                        modifier = M.weight(1f),
+                        fontWeight = if (selected) FontWeight.Bold else null,
+                    )
+                    trailingIcon?.let { it() }
+                }
+
+                tooltip?.let {
+                    BalloonQuestionMark(tooltip = tooltip)
+                }
+            }
+        }
+    }
+
+
+    @Composable
+    override fun divider(thickness: Int) {
+        itemContainer {
+            HorizontalDivider(thickness = thickness.dp, color = G.palette.disabled)
+        }
+    }
+
+    @Composable
+    override fun check(
+        state: MutableState<Boolean>,
+        label: String,
+        trailingIcon: (@Composable () -> Unit)?,
+        enabled: Boolean,
+        onCheckChange: Lambda1<Boolean>,
+    ) {
+        itemContainer {
+            val C = G.palette
+            CheckBox(
+                label = {
+                    RowVCenterSpaced(2) {
+                        Text(
+                            label,
+                            color = if (enabled) C.textGrey else C.disabled
+                        )
+                        trailingIcon?.let {
+                            it()
+                        }
+                    }
+                },
+                enabled = enabled,
+                checked = state.value,
+                onCheckChange = onCheckChange,
+            )
+        }
+    }
+
+    @Composable
+    override fun custom(
+        content: @Composable (MutableState<Boolean>) -> Unit,
+    ) {
+        itemContainer {
+            content(menuExpandedState)
+        }
+    }
+}
+
+@Composable
+fun DropdownMenuItems(
+    expanded: MutableState<Boolean>,
+    content: @Composable DropdownMenuItemScope.() -> Unit,
+) {
+    val scrollState = rememberScrollState()
+
+    Column(
+        modifier = M
+            .heightIn(max = 500.dp)
+            .verticalScroll(scrollState)
+            .simpleVerticalScrollbar(
+                scrollState,
+                offsetX = -8,
+                persistent = true
+            ),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        DropdownMenuItemScopeImpl(expanded).content()
+    }
+}
+
+@Composable
+fun DropdownWrapper(
+    modifier: Modifier = Modifier,
+    content: @Composable (MutableState<Boolean>) -> Unit,
+    menuContent: @Composable DropdownMenuItemScope.(MutableState<Boolean>) -> Unit,
+) {
+    val C = G.palette
+    val expanded = remember { mutableStateOf(false) }
+
+    Box {
+        content(expanded)
+
+        DropdownMenu(
+            modifier = modifier,
+            expanded = expanded.value,
+            onDismissRequest = { expanded.value = false },
+            containerColor = C.dialogBg,
+            border = BorderStroke(1.dp, C.dialogBg.slightDiff())
+        ) {
+            if (expanded.value) {
+                DropdownMenuItems(expanded) {
+                    menuContent(expanded)
+                }
+            }
+        }
+    }
+}

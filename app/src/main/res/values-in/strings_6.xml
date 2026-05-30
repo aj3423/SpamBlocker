@@ -19,7 +19,11 @@
 
 
 
-    <string name="confirm_delete_all_records">Konfirmasi untuk menghapus semua Rekaman?</string>
+    <string name="confirm_delete_all_records">
+        <![CDATA[
+        Konfirmasi untuk menghapus <error>semua</error> Rekaman?
+        ]]>
+    </string>
     <string name="expiry">Kadaluwarsa</string>
     <string name="days">Hari</string>
     <string name="help_log_sms_content">
@@ -28,9 +32,10 @@
         ]]>
     </string>
     <string name="copy_number">Salin nomor</string>
-    <string name="add_num_to_regex_rule">Tambahkan nomor ke aturan regex</string>
-    <string name="add_num_to_db">Tambahkan nomor ke basis data spam</string>
-    <string name="remove_db_number">Hapus nomor dari basis data spam</string>
+    <string name="add_to_regex_rule">Tambahkan ke aturan regex</string>
+    <string name="edit_regex_rule">Edit aturan regex</string>
+    <string name="add_to_db">Tambahkan ke basis data</string>
+    <string name="remove_from_db">Hapus dari basis data</string>
 
     <string name="language">Bahasa</string>
     <string name="help_language">

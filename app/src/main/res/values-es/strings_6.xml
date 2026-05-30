@@ -19,7 +19,11 @@
 
 
 
-    <string name="confirm_delete_all_records">¿Confirmar para eliminar todos los registros?</string>
+    <string name="confirm_delete_all_records">
+        <![CDATA[
+        ¿Confirmar para eliminar <error>todos</error> los registros?
+        ]]>
+    </string>
     <string name="expiry">Caducidad</string>
     <string name="days">Días</string>
     <string name="help_log_sms_content">
@@ -66,8 +70,9 @@
         <item>Importar .csv como múltiples reglas</item>
     </string-array>
     <string name="open_settings">Abrir configuración</string>
-    <string name="remove_db_number">Eliminar número de la base de datos de spam</string>
+    <string name="remove_from_db">Quitar de la base</string>
     <string name="copy_number">Copiar número</string>
-    <string name="add_num_to_regex_rule">Añadir número a regla regex</string>
-    <string name="add_num_to_db">Añadir número a base de datos de spam</string>
+    <string name="add_to_regex_rule">Añadir a regla regex</string>
+    <string name="edit_regex_rule">Editar regla regex</string>
+    <string name="add_to_db">Añadir a la base</string>
 </resources>

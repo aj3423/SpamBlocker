@@ -38,7 +38,6 @@ import spam.blocker.def.Def.isBlocked
 import spam.blocker.service.checker.ByRegexRule
 import spam.blocker.service.checker.Checker
 import spam.blocker.service.checker.Checker.PassedByDefault
-import spam.blocker.service.checker.ICheckResult
 import spam.blocker.service.checker.IChecker
 import spam.blocker.service.checker.numberRuleToChecker
 import spam.blocker.ui.M
@@ -117,16 +116,11 @@ fun IndicatorsWrapper(
 ) {
     val ctx = LocalContext.current
 
-    // Just a short alias, that G.xxx it too long
-    var showIndicator by remember(showHistoryIndicator.value) {
-        mutableStateOf(showHistoryIndicator.value)
-    }
-
     var onRefresh by remember { mutableStateOf(false) }
 
     // load from tables and generate ICheckers
     fun loadNumberCheckers(): List<IChecker> {
-        val ret = if (showIndicator) {
+        val ret = if (showHistoryIndicator.value) {
             NumberRegexTable().listAll(ctx).map {
                 it.numberRuleToChecker(ctx)
             }
@@ -136,7 +130,7 @@ fun IndicatorsWrapper(
     }
 
     fun loadContentCheckers(): List<IChecker> {
-        val ret = if (showIndicator && vm.forType == Def.ForSms) {
+        val ret = if (showHistoryIndicator.value && vm.forType == Def.ForSms) {
             ContentRegexTable().listAll(ctx).map {
                 Checker.Content(ctx, it)
             }
@@ -144,8 +138,13 @@ fun IndicatorsWrapper(
         return ret + PassedByDefault(ctx)
     }
 
-    var numberCheckers = remember(showIndicator) { loadNumberCheckers() }
-    var contentCheckers = remember(showIndicator) { loadContentCheckers() }
+    var numberCheckers by remember(showHistoryIndicator.value) {
+        mutableStateOf(loadNumberCheckers())
+    }
+    var contentCheckers by remember(showHistoryIndicator.value) {
+        mutableStateOf(loadContentCheckers())
+    }
+
 
     // Refresh the list on regex change or spam db change
     Events.regexRuleUpdated.Listen {
@@ -167,8 +166,6 @@ fun IndicatorsWrapper(
                     )
                 }
             }
-
-            var checkResult : ICheckResult
 
             if (vm.forType == Def.ForNumber) { // in Call Tab
                 // 2. Check if the call number matches any Number Rule?

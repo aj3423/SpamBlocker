@@ -322,23 +322,15 @@ abstract class RegexTable {
         }
     }
 
-    @SuppressLint("Range")
     fun findRuleById(ctx: Context, id: Long): RegexRule? {
-        val db = Db.getInstance(ctx).readableDatabase
-        val sql = "SELECT * FROM ${tableName()} WHERE ${Db.COLUMN_ID} = $id"
-
-        val cursor = db.rawQuery(sql, null)
-
-        cursor.use {
-            return if (it.moveToFirst()) {
-                ruleFromCursor(it)
-            } else {
-                null
-            }
-        }
+        val filter = "WHERE ${Db.COLUMN_ID} = $id LIMIT 1"
+        return findByFilter(ctx, filter).firstOrNull()
+    }
+    fun findRuleByPattern(ctx: Context, pattern: String): RegexRule? {
+        val filter = "WHERE ${Db.COLUMN_PATTERN} = '$pattern' LIMIT 1" // sql inject issue!! fix when necessary
+        return findByFilter(ctx, filter).firstOrNull()
     }
 
-    @SuppressLint("Range")
     fun findRuleByDesc(
         ctx: Context,
         descPattern: String,

@@ -19,7 +19,11 @@
 
 
 
-    <string name="confirm_delete_all_records">すべてのレコードを削除してもよろしいですか？</string>
+    <string name="confirm_delete_all_records">
+        <![CDATA[
+        <error>すべての</error>レコードを削除してもよろしいですか？
+        ]]>
+    </string>
     <string name="expiry">有効期限</string>
     <string name="days">日</string>
     <string name="help_log_sms_content">
@@ -67,8 +71,9 @@
         <item>.csvを複数のルールとしてインポート</item>
     </string-array>
     <string name="open_settings">設定を開く</string>
-    <string name="remove_db_number">迷惑電話データベースから番号を削除</string>
+    <string name="remove_from_db">DBから削除</string>
     <string name="copy_number">番号をコピー</string>
-    <string name="add_num_to_regex_rule">正規表現ルールに番号を追加</string>
-    <string name="add_num_to_db">迷惑電話データベースに番号を追加</string>
+    <string name="add_to_regex_rule">Regexルールに追加</string>
+    <string name="edit_regex_rule">Regexルールを編集</string>
+    <string name="add_to_db">DBに追加</string>
 </resources>

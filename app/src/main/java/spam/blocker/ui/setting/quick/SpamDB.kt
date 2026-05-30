@@ -39,7 +39,7 @@ import spam.blocker.ui.widgets.Button
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyIcon18
 import spam.blocker.ui.widgets.GreyLabel
-import spam.blocker.ui.widgets.GreyText
+import spam.blocker.ui.widgets.HtmlText
 import spam.blocker.ui.widgets.LeftDeleteSwipeWrapper
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.OutlineCard
@@ -147,7 +147,7 @@ fun SpamDB() {
             }
         }
     ) {
-        GreyText(Str(R.string.confirm_delete_all_records))
+        HtmlText(Str(R.string.confirm_delete_all_records))
     }
 
     // Configuration Dialog

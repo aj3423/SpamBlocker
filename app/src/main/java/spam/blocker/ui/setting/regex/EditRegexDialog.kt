@@ -37,6 +37,7 @@ import spam.blocker.ui.widgets.IMenuItem
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.PopupSize
+import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.Lambda1
@@ -118,12 +119,14 @@ fun EditRegexDialog(
     trigger: MutableState<Boolean>,
     forType: Int,
     onSave: Lambda1<RegexRule>,
+    showDeleteButton: Boolean = false,
     initRule: RegexRule = RegexRule(), // use default when "Add" new rule
 ) {
     if (!trigger.value) {
         return
     }
 
+    val ctx = LocalContext.current
     val C = G.palette
 
     val state = retain { initRule.toState() }
@@ -139,20 +142,39 @@ fun EditRegexDialog(
         trigger = trigger,
         popupSize = PopupSize(maxWidthPercentage = 0.9f, minWidthDp = 340, maxWidthDp = 600),
         buttons = {
-            StrokeButton(
-                label = Str(R.string.save),
-                color = if (anyError) C.disabled else C.teal200,
-                enabled = !anyError,
-                onClick = {
-                    trigger.value = false
+            RowVCenterSpaced(12) {
+                // Delete
+                if (showDeleteButton) {
+                    StrokeButton(
+                        label = Str(R.string.delete),
+                        color = C.error
+                    ) {
+                        trigger.value = false
 
-                    val newRule = state.toRule()
-                    onSave(newRule)
+                        // This is only for deleting number
+                        G.NumberRuleVM.table.deleteById(ctx, initRule.id)
 
-                    // fire event to update the UI
-                    Events.regexRuleUpdated.fire()
+                        // fire event to update the UI
+                        Events.regexRuleUpdated.fire()
+                    }
                 }
-            )
+
+                // Save
+                StrokeButton(
+                    label = Str(R.string.save),
+                    color = if (anyError) C.disabled else C.teal200,
+                    enabled = !anyError,
+                    onClick = {
+                        trigger.value = false
+
+                        val newRule = state.toRule()
+                        onSave(newRule)
+
+                        // fire event to update the UI
+                        Events.regexRuleUpdated.fire()
+                    }
+                )
+            }
         },
         content = {
 

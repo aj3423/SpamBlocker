@@ -1,6 +1,9 @@
 package spam.blocker.ui.history
 
+import android.annotation.SuppressLint
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -8,42 +11,76 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 import spam.blocker.Events
 import spam.blocker.G
 import spam.blocker.R
-import spam.blocker.db.NumberRegexTable
+import spam.blocker.db.HistoryRecord
+import spam.blocker.db.RegexRule
 import spam.blocker.db.SpamTable
 import spam.blocker.db.defaultRegexRuleByType
 import spam.blocker.def.Def
+import spam.blocker.ui.M
 import spam.blocker.ui.setting.TestDialog
 import spam.blocker.ui.setting.regex.EditRegexDialog
 import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.GreyIcon20
+import spam.blocker.ui.widgets.IMenuItem
 import spam.blocker.ui.widgets.LabelItem
+import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.util.Clipboard
 import spam.blocker.util.Util
 
 
+@SuppressLint("LocalContextGetResourceValueCall")
 @Composable
 fun HistoryContextMenuWrapper(
     vm: HistoryViewModel,
-    index: Int,
+    record: HistoryRecord,
     content: @Composable (MutableState<Boolean>) -> Unit,
 ) {
     val ctx = LocalContext.current
-    val record = vm.records[index]
+    val C = G.palette
+
+    var menuExpanded by remember { mutableStateOf(false) }
+
+    // Whether the number exists in spam database
+    var numberInDb by remember { mutableStateOf(false) }
+    LaunchedEffect(menuExpanded) {
+        if (menuExpanded) { // don't do anything when not expanded, for better performance
+            numberInDb = SpamTable.findByNumber(ctx, record.peer) != null
+        }
+    }
+
+    // The regex rule that matches this number
+    var existingRule by remember { mutableStateOf<RegexRule?>(null) }
+    LaunchedEffect(menuExpanded) {
+        if (menuExpanded) { // don't do anything when not expanded, for better performance
+            existingRule = G.NumberRuleVM.table.findRuleByPattern(ctx, record.peer)
+        }
+    }
 
     // Add number to rule
-    val addToNumberRuleTrigger = rememberSaveable { mutableStateOf(false) }
-    if (addToNumberRuleTrigger.value) {
+    val editRuleTrigger = rememberSaveable { mutableStateOf(false) }
+    if (editRuleTrigger.value) {
         EditRegexDialog(
-            trigger = addToNumberRuleTrigger,
-            initRule = defaultRegexRuleByType(Def.ForNumber).apply {
+            trigger = editRuleTrigger,
+            initRule = existingRule ?: defaultRegexRuleByType(Def.ForNumber).apply {
                 pattern = Util.clearNumber(record.peer)
+                patternFlags = Def.FLAG_REGEX_RAW_NUMBER
             },
             forType = Def.ForNumber,
+            showDeleteButton = existingRule != null,
             onSave = { newRule ->
-                NumberRegexTable().addNewRule(ctx, newRule)
+                if (existingRule == null) {
+                    // 1. add to db
+                    G.NumberRuleVM.table.addNewRule(ctx, newRule)
+                } else {
+                    // 1. update in db
+                    G.NumberRuleVM.table.updateRuleById(ctx, existingRule!!.id, newRule)
+                }
+
+                // rule update event is handled by the dialog
             }
         )
     }
@@ -52,80 +89,91 @@ fun HistoryContextMenuWrapper(
     val testTrigger = rememberSaveable { mutableStateOf(false) }
     TestDialog(testTrigger)
 
-    var numberInDb by remember { mutableStateOf(SpamTable.findByNumber(ctx, record.peer) != null) }
-
-    // Menu items
-    val icons = remember(numberInDb) {
-        listOf(
-            R.drawable.ic_tube,
-            R.drawable.ic_copy,
-            R.drawable.ic_regex,
-            if (numberInDb) R.drawable.ic_db_delete else R.drawable.ic_db_add,
-            R.drawable.ic_filter,
-        )
-    }
-    val labelIds = remember(numberInDb) {
-        listOf(
-            R.string.test,
-            R.string.copy_number,
-            R.string.add_num_to_regex_rule,
-            if (numberInDb) R.string.remove_db_number else R.string.add_num_to_db,
-            R.string.filter,
-        )
-    }
-
-
-    val contextMenuItems = remember(numberInDb) {
-        labelIds.mapIndexed { menuIndex, labelId ->
-            LabelItem(
-                label = ctx.getString(labelId),
-                leadingIcon = {
-                    GreyIcon20(
-                        icons[menuIndex]
-                    )
+    var menuItems by remember { mutableStateOf(listOf<IMenuItem>())}
+    LaunchedEffect(menuExpanded) {
+        if (menuExpanded) { // don't do anything when not expanded, for better performance
+            menuItems = listOf(
+                // Test
+                LabelItem(
+                    label = ctx.getString(R.string.test),
+                    leadingIcon = {
+                        ResIcon(
+                            R.drawable.ic_tube,
+                            modifier = M.size(20.dp),
+                            color = C.teal200
+                        )
+                    }
+                ) {
+                    G.testingVM.apply {
+                        selectedType.intValue = if (vm.forType == Def.ForNumber) 0 else 1
+                        phone.value = record.peer
+                        sms.value = record.extraInfo ?: ""
+                    }
+                    testTrigger.value = true
                 },
-            ) {
-                when (menuIndex) {
-                    0 -> { // Test
-                        G.testingVM.apply {
-                            selectedType.intValue = if(vm.forType == Def.ForNumber) 0 else 1
-                            phone.value = record.peer
-                            sms.value = record.extraInfo ?: ""
-                        }
-                        testTrigger.value = true
-                    }
-                    1 -> { // copy as raw number
-                        Clipboard.copy(ctx, record.peer)
-                    }
 
-                    2 -> { // add number to new rule
-                        addToNumberRuleTrigger.value = true
-                    }
+                // Copy
+                LabelItem(
+                    label = ctx.getString(R.string.copy_number),
+                    leadingIcon = { GreyIcon20(R.drawable.ic_copy) }
+                ) {
+                    Clipboard.copy(ctx, record.peer)
+                },
 
-                    3 -> { // add/delete number to spam database
-                        if (numberInDb) {
-                            val spamRecord = SpamTable.findByNumber(ctx, record.peer)
-                            if (spamRecord != null)
-                                SpamTable.deleteById(ctx, spamRecord.id)
-                        } else {
-                            SpamTable.add(ctx, record.peer)
-                        }
-                        Events.spamDbUpdated.fire()
-                        // No need to toggle the Indicators,
-                        //   because this event will force a list refresh
-
-                        numberInDb = !numberInDb
+                // Add/Edit regex rule
+                LabelItem(
+                    label = ctx.getString(if (existingRule != null) R.string.edit_regex_rule else R.string.add_to_regex_rule),
+                    leadingIcon = {
+                        ResIcon(
+                            R.drawable.ic_regex,
+                            modifier = M.size(20.dp),
+                            color = if (existingRule != null) C.infoBlue else C.textGrey
+                        )
                     }
+                ) {
+                    editRuleTrigger.value = true
+                },
 
-                    4 -> { // filter records
-                        vm.searchEnabled.value = true
+                // Add/Delete in spam database
+                LabelItem(
+                    label = ctx.getString(if (numberInDb) R.string.remove_from_db else R.string.add_to_db),
+                    leadingIcon = {
+                        ResIcon(
+                            if (numberInDb) R.drawable.ic_db_delete else R.drawable.ic_db_add,
+                            modifier = M.size(20.dp),
+                            color = if (numberInDb) C.error else C.textGrey
+                        )
                     }
+                ) {
+                    if (numberInDb) {
+                        val spamRecord = SpamTable.findByNumber(ctx, record.peer)
+                        if (spamRecord != null)
+                            SpamTable.deleteById(ctx, spamRecord.id)
+                    } else {
+                        SpamTable.add(ctx, record.peer)
+                    }
+                    Events.spamDbUpdated.fire()
+                },
+
+                // Filter
+                LabelItem(
+                    label = ctx.getString(R.string.filter),
+                    leadingIcon = { GreyIcon20(R.drawable.ic_filter) }
+                ) {
+                    vm.searchEnabled.value = true
                 }
-            }
+            )
         }
     }
 
-    DropdownWrapper(items = contextMenuItems) { contextMenuExpanded ->
-        content(contextMenuExpanded)
-    }
+    DropdownWrapper(
+        items = menuItems,
+        content = { contextMenuExpanded ->
+            // Refresh all menu items on expanding
+            LaunchedEffect(contextMenuExpanded.value) {
+                menuExpanded = contextMenuExpanded.value
+            }
+            content(contextMenuExpanded)
+        }
+    )
 }

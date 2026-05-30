@@ -19,7 +19,11 @@
 
 
 
-    <string name="confirm_delete_all_records">האם לאשר מחיקת כל הרשומות?</string>
+    <string name="confirm_delete_all_records">
+        <![CDATA[
+        האם לאשר מחיקת <error>כל</error> הרשומות?
+        ]]>
+    </string>
     <string name="expiry">תפוגה</string>
     <string name="days">ימים</string>
     <string name="help_log_sms_content">
@@ -28,9 +32,10 @@
         ]]>
     </string>
     <string name="copy_number">העתק מספר</string>
-    <string name="add_num_to_regex_rule">הוסף מספר לחוק Regex</string>
-    <string name="add_num_to_db">הוסף מספר למאגר נתוני ספאם</string>
-    <string name="remove_db_number">מחק מספר ממאגר נתוני ספאם</string>
+    <string name="add_to_regex_rule">הוסף לחוק Regex</string>
+    <string name="edit_regex_rule">ערוך כלל Regex</string>
+    <string name="add_to_db">הוסף למסד הנתונים</string>
+    <string name="remove_from_db">הסר ממסד הנתונים</string>
 
     <string name="language">שפה</string>
     <string name="help_language">

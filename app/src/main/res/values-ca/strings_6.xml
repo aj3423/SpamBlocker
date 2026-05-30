@@ -19,7 +19,11 @@
 
 
 
-    <string name="confirm_delete_all_records"><translate>Confirma que vols suprimir tots els registres?</translate></string>
+    <string name="confirm_delete_all_records">
+        <![CDATA[
+        <translate>Confirma que vols suprimir <error>tots</error> els registres?</translate>
+        ]]>
+    </string>
     <string name="expiry"><translate>Caducitat</translate></string>
     <string name="days"><translate>Dies</translate></string>
     <string name="help_log_sms_content">
@@ -28,9 +32,10 @@
         ]]>
     </string>
     <string name="copy_number"><translate>Copia el número</translate></string>
-    <string name="add_num_to_regex_rule"><translate>Afegeix el número a la regla regex</translate></string>
-    <string name="add_num_to_db"><translate>Afegeix el número a la base de dades de correu brossa</translate></string>
-    <string name="remove_db_number"><translate>Suprimeix el número de la base de dades de correu brossa</translate></string>
+    <string name="add_to_regex_rule"><translate>Afegeix a regla regex</translate></string>
+    <string name="edit_regex_rule"><translate>Edita regla regex</translate></string>
+    <string name="add_to_db"><translate>Afegeix a la base</translate></string>
+    <string name="remove_from_db"><translate>Suprimeix de la base</translate></string>
 
     <string name="language"><translate>Idioma</translate></string>
     <string name="help_language">

@@ -19,7 +19,11 @@
 
 
 
-    <string name="confirm_delete_all_records">Confirmar eliminar todos os rexistros?</string>
+    <string name="confirm_delete_all_records">
+        <![CDATA[
+        Confirmar eliminar <error>todos</error> os rexistros?
+        ]]>
+    </string>
     <string name="expiry">Caducidade</string>
     <string name="days">Días</string>
     <string name="help_log_sms_content">
@@ -66,8 +70,9 @@
         <item>Importar .csv como varias regras</item>
     </string-array>
     <string name="open_settings">Abrir configuración</string>
-    <string name="remove_db_number">Eliminar número da base de datos de chamadas non desexadas</string>
+    <string name="remove_from_db">Eliminar da base</string>
     <string name="copy_number">Copiar número</string>
-    <string name="add_num_to_regex_rule">Engadir número á regra regex</string>
-    <string name="add_num_to_db">Engadir número á base de datos de chamadas non desexadas</string>
+    <string name="add_to_regex_rule">Engadir á regra regex</string>
+    <string name="edit_regex_rule">Editar regra regex</string>
+    <string name="add_to_db">Engadir á base</string>
 </resources>

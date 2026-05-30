@@ -18,7 +18,11 @@
 
 
 
-    <string name="confirm_delete_all_records">确认要删除所有记录吗？</string>
+    <string name="confirm_delete_all_records">
+        <![CDATA[
+        确认要删除<error>所有</error>记录吗？
+        ]]>
+    </string>
     <string name="expiry">过期</string>
     <string name="days">天</string>
     <string name="help_log_sms_content">
@@ -65,8 +69,9 @@
         <item>将 .csv 导入为多个规则</item>
     </string-array>
     <string name="open_settings">打开设置</string>
-    <string name="remove_db_number">从垃圾电话数据库中删除号码</string>
+    <string name="remove_from_db">从数据库移除</string>
     <string name="copy_number">复制号码</string>
-    <string name="add_num_to_regex_rule">将号码添加到正则表达式规则</string>
-    <string name="add_num_to_db">将号码添加到垃圾电话数据库</string>
+    <string name="add_to_regex_rule">添加到正则规则</string>
+    <string name="edit_regex_rule">编辑正则规则</string>
+    <string name="add_to_db">添加到数据库</string>
 </resources>

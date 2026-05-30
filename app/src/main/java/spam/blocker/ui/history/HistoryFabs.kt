@@ -1,5 +1,6 @@
 package spam.blocker.ui.history
 
+import android.annotation.SuppressLint
 import android.content.Context
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
@@ -39,7 +40,7 @@ import spam.blocker.ui.widgets.Fab
 import spam.blocker.ui.widgets.FlowRowSpaced
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyLabel
-import spam.blocker.ui.widgets.GreyText
+import spam.blocker.ui.widgets.HtmlText
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.MultiColorButton
 import spam.blocker.ui.widgets.NumberInputBox
@@ -212,6 +213,7 @@ fun EditTimeColorsDialog(
     }
 }
 
+@SuppressLint("LocalContextGetResourceValueCall")
 @Composable
 fun HistoryFabs(
     modifier: Modifier,
@@ -464,7 +466,7 @@ fun HistoryFabs(
                 }
             }
         ) {
-            GreyText(Str(R.string.confirm_delete_all_records))
+            HtmlText(Str(R.string.confirm_delete_all_records))
         }
         Fab(
             visible = visible,

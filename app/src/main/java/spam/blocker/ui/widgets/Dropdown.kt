@@ -158,10 +158,12 @@ fun DropdownWrapper(
             containerColor = C.dialogBg,
             border = BorderStroke(1.dp, C.dialogBg.slightDiff())
         ) {
-            DropdownMenuItems(
-                items = items,
-                expanded = expanded,
-            )
+            if (expanded.value) {
+                DropdownMenuItems(
+                    items = items,
+                    expanded = expanded,
+                )
+            }
         }
     }
 }

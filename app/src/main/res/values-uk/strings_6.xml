@@ -19,7 +19,11 @@
 
 
 
-    <string name="confirm_delete_all_records">Підтвердити видалення всіх записів?</string>
+    <string name="confirm_delete_all_records">
+        <![CDATA[
+        Підтвердити видалення <error>всіх</error> записів?
+        ]]>
+    </string>
     <string name="expiry">Термін дії</string>
     <string name="days">Дні</string>
     <string name="help_log_sms_content">
@@ -66,8 +70,9 @@
         <item>Імпорт .csv як кілька правил</item>
     </string-array>
     <string name="open_settings">Відкрити налаштування</string>
-    <string name="remove_db_number">Видалити номер з бази даних спаму</string>
+    <string name="remove_from_db">Видалити з бази</string>
     <string name="copy_number">Скопіювати номер</string>
-    <string name="add_num_to_regex_rule">Додати номер до правила регулярного виразу</string>
-    <string name="add_num_to_db">Додати номер до бази даних спаму</string>
+    <string name="add_to_regex_rule">Додати до правила виразу</string>
+    <string name="edit_regex_rule">Змінити regex</string>
+    <string name="add_to_db">Додати в базу</string>
 </resources>

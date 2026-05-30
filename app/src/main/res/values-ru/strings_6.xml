@@ -19,7 +19,11 @@
 
 
 
-    <string name="confirm_delete_all_records">Подтвердить удаление всех записей?</string>
+    <string name="confirm_delete_all_records">
+        <![CDATA[
+        Подтвердить удаление <error>всех</error> записей?
+        ]]>
+    </string>
     <string name="expiry">Срок действия</string>
     <string name="days">Дней</string>
     <string name="help_log_sms_content">
@@ -28,9 +32,10 @@
         ]]>
     </string>
     <string name="copy_number">Скопировать номер</string>
-    <string name="add_num_to_regex_rule">Добавить номер в рег. выражение</string>
-    <string name="add_num_to_db">Добавить номер в базу спама</string>
-    <string name="remove_db_number">Удалить номер из базы спама</string>
+    <string name="add_to_regex_rule">Добавить в рег. выражение</string>
+    <string name="edit_regex_rule">Изменить рег. выражение</string>
+    <string name="add_to_db">Добавить в базу</string>
+    <string name="remove_from_db">Удалить из базы</string>
 
     <string name="language">Язык</string>
     <string name="help_language">

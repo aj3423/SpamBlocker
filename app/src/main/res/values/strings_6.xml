@@ -17,7 +17,11 @@
         <item>Sat</item>
     </string-array>
 
-    <string name="confirm_delete_all_records">Confirm to delete all Records?</string>
+    <string name="confirm_delete_all_records">
+        <![CDATA[
+        Confirm to delete <error>all</error> records?
+        ]]>
+    </string>
     <string name="expiry">Expiry</string>
     <string name="days">Days</string>
     <string name="help_log_sms_content">
@@ -26,9 +30,10 @@
         ]]>
     </string>
     <string name="copy_number">Copy number</string>
-    <string name="add_num_to_regex_rule">Add number to regex rule</string>
-    <string name="add_num_to_db">Add number to spam database</string>
-    <string name="remove_db_number">Delete number from spam database</string>
+    <string name="add_to_regex_rule">Add to regex rule</string>
+    <string name="edit_regex_rule">Edit regex rule</string>
+    <string name="add_to_db">Add to database</string>
+    <string name="remove_from_db">Remove from database</string>
 
     <string name="language">Language</string>
     <string name="help_language">
