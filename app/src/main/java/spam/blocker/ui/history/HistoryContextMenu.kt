@@ -46,27 +46,19 @@ fun HistoryContextMenuWrapper(
 
     // Whether the number exists in spam database
     var numberInDb by remember { mutableStateOf(false) }
-    LaunchedEffect(menuExpanded) {
-        if (menuExpanded) { // don't do anything when not expanded, for better performance
-            numberInDb = SpamTable.findByNumber(ctx, record.peer) != null
-        }
-    }
-
     // The regex rule that matches this number
     var existingRule by remember { mutableStateOf<RegexRule?>(null) }
-    LaunchedEffect(menuExpanded) {
-        if (menuExpanded) { // don't do anything when not expanded, for better performance
-            existingRule = G.NumberRuleVM.table.findRuleByPattern(ctx, record.peer)
-        }
-    }
+    // Context menu items
+    var menuItems by remember { mutableStateOf(listOf<IMenuItem>())}
 
-    // Add number to rule
+    // trigger of "Add regex rule"/"Edit regex rule"
     val editRuleTrigger = rememberSaveable { mutableStateOf(false) }
+
     if (editRuleTrigger.value) {
         EditRegexDialog(
             trigger = editRuleTrigger,
-            initRule = existingRule ?: defaultRegexRuleByType(Def.ForNumber).apply {
-                pattern = Util.clearNumber(record.peer)
+            initRule = existingRule ?: RegexRule().apply {
+                pattern = record.peer
                 patternFlags = Def.FLAG_REGEX_RAW_NUMBER
             },
             forType = Def.ForNumber,
@@ -89,9 +81,16 @@ fun HistoryContextMenuWrapper(
     val testTrigger = rememberSaveable { mutableStateOf(false) }
     TestDialog(testTrigger)
 
-    var menuItems by remember { mutableStateOf(listOf<IMenuItem>())}
+    // Refresh context menu items when it's being expanded
     LaunchedEffect(menuExpanded) {
         if (menuExpanded) { // don't do anything when not expanded, for better performance
+            // 1.
+            numberInDb = SpamTable.findByNumber(ctx, record.peer) != null
+
+            // 2.
+            existingRule = G.NumberRuleVM.table.findRuleByPattern(ctx, record.peer)
+
+            // 3. build context menu
             menuItems = listOf(
                 // Test
                 LabelItem(
