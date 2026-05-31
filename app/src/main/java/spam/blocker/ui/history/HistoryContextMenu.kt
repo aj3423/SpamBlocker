@@ -126,7 +126,10 @@ fun HistoryContextMenuWrapper(
                         ResIcon(
                             R.drawable.ic_regex,
                             modifier = M.size(20.dp),
-                            color = if (existingRule != null) C.infoBlue else C.textGrey
+                            color = if (existingRule != null)
+                                if (existingRule!!.isBlacklist) C.error else C.success
+                            else
+                                C.textGrey
                         )
                     }
                 ) {
