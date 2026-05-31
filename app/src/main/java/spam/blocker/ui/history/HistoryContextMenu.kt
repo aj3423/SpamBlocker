@@ -60,6 +60,10 @@ fun HistoryContextMenuWrapper(
             initRule = existingRule ?: RegexRule().apply {
                 pattern = record.peer
                 patternFlags = Def.FLAG_REGEX_RAW_NUMBER
+                // Whitelist rule with priority 1 by default, because this feature is intended for allowing numbers.
+                // For blocking numbers, "add to database" would be more efficient.
+                isBlacklist = false
+                priority = 1
             },
             forType = Def.ForNumber,
             showDeleteButton = existingRule != null,
