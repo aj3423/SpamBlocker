@@ -13,25 +13,25 @@
         &ensp; 阻止: <priority><b>0</b></priority>
         ]]>
     </string>
-    <string name="stir_attestation">STIR</string>
-    <string name="stir_include_unverified">包含未验证来电</string>
-    <string name="unverified">未验证</string>
+    <string name="stir_attestation">安全电话身份认证（STIR）</string>
+    <string name="stir_include_unverified">包含未认证来电</string>
+    <string name="unverified">未认证来电</string>
     <string name="valid">可信来电</string>
     <string name="spoof">伪造来电</string>
     <string name="help_stir">
         <![CDATA[
-        阻止未通过 STIR/SHAKEN 验证的来电，因为它们很可能是伪造的。 <br>
+        阻止未通过 STIR/SHAKEN 认证的来电，因为它们很可能是伪造的。 <br>
         <br>
         需要 <b>Android 11+</b> 和 <b>运营商支持</b>。 <br>
         <br>
         <b>选项：</b> <br>
         <br>
-        <title><b>包括未验证的来电</b></title> <br>
-        同时拦截未验证来电，即该来电无法被验证，或运营商/设备不支持 STIR 验证。 <br>
+        <title><b>包括未认证的来电</b></title> <br>
+        同时拦截未认证来电，即该来电无法被认证，或运营商/设备不支持 STIR 认证。 <br>
         <br>
         <b>使用场景</b>： <br>
         <sample>
-          &ensp; 对于强制执行 STIR 验证的国家，未验证的号码很可能是垃圾电话。 <br>
+          &ensp; 对于强制执行 STIR 认证的国家，未认证的号码很可能是垃圾电话。 <br>
         </sample>
         <br>
         <priority><b>默认优先级：0</b></priority> <br>
@@ -40,7 +40,7 @@
         <br>
         1. 始终允许联系人。 <br>
           &emsp; - 联系人，优先级 <priority>12</priority> <br>
-        2. 阻止未通过 STIR 的来电，即使它们重复。 <br>
+        2. 阻止未通过 STIR 认证的来电，即使它们重复。 <br>
           &emsp; - STIR，优先级 <priority>11</priority> <br>
         3. 允许重复来电。 <br>
           &emsp; - 重复来电，优先级 <priority>10</priority> <br>
