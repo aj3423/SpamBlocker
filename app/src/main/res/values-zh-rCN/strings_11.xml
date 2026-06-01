@@ -13,7 +13,7 @@
     </string>
     <string name="in_meeting">会议模式</string>
     <string name="search_number"><translate>搜索号码</translate></string>
-    <string name="http_header">Http Header</string>
+    <string name="http_header">Http 协议头部标签</string>
     <string name="help_http_header">
         <![CDATA[
         每行一个属性。
@@ -29,32 +29,32 @@
     </plurals>
 
     <string name="label_max_none_scroll_items">滚动条阈值</string>
-    <string name="help_max_none_scroll_items">
+    <string name="help_max_none_scroll_items">滚动条阈值说明</string>
         <![CDATA[
         列表中显示的项目数目超过此值后，将出现滚动条。
         ]]>
     </string>
     <string name="label_max_scroll_height">滚动高度</string>
-    <string name="help_max_scroll_height">
+    <string name="help_max_scroll_height">滚动高度说明</string>
         <![CDATA[
         出现滚动条后，此值表示列表高度占屏幕的百分比。
         ]]>
     </string>
     <string name="label_max_regex_lines">最大正则表达式行数</string>
-    <string name="help_max_regex_lines">
+    <string name="help_max_regex_lines">最大正则表达式行数说明</string>
         <![CDATA[
         正则表达式文本的最大显示行数，剩余文本将被截断并在后面添加省略号。
         ]]>
     </string>
     <string name="label_max_desc_lines">最大描述行数</string>
-    <string name="help_max_desc_lines">
+    <string name="help_max_desc_lines">最大描述行数说明</string>
         <![CDATA[
         描述文本的最大显示行数，剩余文本将被截断并在后面添加省略号。
         ]]>
     </string>
 
     <string name="for_example">例如：</string>
-    <string name="tags_supported">
+    <string name="tags_supported">支持的标签</string>
         <![CDATA[
         支持的标签：<br><br>
         ]]>
