@@ -34,8 +34,8 @@
         ]]>
     </string>
     <string name="number_not_match_filter">号码 %s 与过滤器 %s 不匹配，跳过。</string>
-    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
-    <string name="help_api_preset_phoneblock">
+    <string name="api_preset_phoneblock">在线电话拦截 🇩🇪 🌐</string>
+    <string name="help_api_preset_phoneblock">电话拦截说明</string>
         <![CDATA[
         主要为德国 FRITZ!Box 设计，也适用于其他国家/地区的电话号码。<br>
         <br>
@@ -50,14 +50,14 @@
     </string>
     <string name="not_enough_time_left">来电筛选时间限制为 5 秒，考虑时间函数精度误差的 %s 毫秒缓冲区，实际总时间限制为 %s 毫秒。之前的步骤耗时 %s 毫秒，剩余时间不足，跳过。</string>
     <string name="action_filter_query_result">过滤垃圾电话</string>
-    <string name="help_action_filter_query_result">
+    <string name="help_action_filter_query_result">过滤垃圾电话说明</string>
         <![CDATA[
         生成一个包含从上一步识别的垃圾电话号码的<u>号码列表</u>，并准备导入数据库。
         ]]>
     </string>
     <string name="canceling_thread">正在取消线程。</string>
     <string name="auto_detect_cc_permission">检测国家代码需要 READ_PHONE_STATE 权限。</string>
-    <string name="suggest_to_swipe">
+    <string name="suggest_to_swipe">滑动操作提示</string>
         <![CDATA[
         <highlight><b>向左滑动</b></highlight> 删除它。<br>
         <br>
@@ -65,7 +65,7 @@
         ]]>
     </string>
     <string name="bug_number">如果这是一个有效号码，请在GitHub上报告。</string>
-    <string name="number_tags">
+    <string name="number_tags">号码标签</string>
         <![CDATA[
         - <title><b><no_translate>{cc}</no_translate></b></title><br>
         &ensp; 国家/地区代码。<br>
@@ -77,7 +77,7 @@
         &ensp; 原始号码，可以包含前导 + 或 0。<br>
         ]]>
     </string>
-    <string name="time_tags">
+    <string name="time_tags">日期标签</string>
         <![CDATA[
         <title><b><no_translate>
           {year}<br>
@@ -118,13 +118,13 @@
           <title><b><no_translate>{hour+2}</no_translate></b></title>。
         ]]>
     </string>
-    <string name="sms_tags">
+    <string name="sms_tags">短信标签</string>
         <![CDATA[
         - <title><b>{sms}</b></title><br>
         &ensp; 短信内容。<br>
         ]]>
     </string>
-    <string name="escape_tags">
+    <string name="escape_tags">转义标签</string>
         <![CDATA[
         - <title><b><no_translate>{escape(…)}</no_translate></b></title><br>
         &ensp; 转义括号中的内容，用于引号内的内容。 <br>
