@@ -29,7 +29,7 @@
     <string name="workflow">工作流程</string>
     <string name="workflows">工作流程</string>
     <string name="automation">自动化</string>
-    <string name="help_workflows">
+    <string name="help_workflows">帮助</string>
         <![CDATA[
         工作流可用于自动运行任务，可通过计划或事件触发。 <br>
         <br>
