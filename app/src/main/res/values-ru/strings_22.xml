@@ -149,8 +149,8 @@
         ]]>
     </string>
     <string name="action_replace_number">Заменить номер</string>
-    <string name="action_import_as_regex_rule">Импорт как одно правило Regex</string>
-    <string name="action_import_as_multiple_regex_rules">Импорт как несколько правил Regex</string>
+    <string name="action_import_as_regex_rule">Импорт как одно правило рег. выражения</string>
+    <string name="action_import_as_multiple_regex_rules">Импорт как несколько правил рег. выражения</string>
     <string name="duration_in_minutes">Продолжительность (минуты)</string>
     <string name="help_trigger_manual">
         <![CDATA[

@@ -17,7 +17,7 @@
         1. <minor><b>Читать файл</b></minor> / <minor><b>HTTP-запрос</b></minor> <br>
           &ensp; Получить содержимое файла. <br>
           <br>
-        2. <minor><b>Парсить CSV</b></minor> / <minor><b>Парсить XML</b></minor> / <minor><b>Извлечь Regex</b></minor> <br>
+        2. <minor><b>Парсить CSV</b></minor> / <minor><b>Парсить XML</b></minor> / <minor><b>Извлечь рег. выражение</b></minor> <br>
           &ensp; Обработать и получить список номеров. <br>
           <br>
         3. <minor><b>Заменить номер</b></minor> (опционально) <br>
@@ -27,7 +27,7 @@
             &emsp; При переносе номеров из других приложений конвертируйте форматы вроде <b>123#####</b> в регулярное выражение <b>123.....</b> или <b>123.*</b> <br>
           </sample>
           <br>
-        4. <minor><b>Импорт в базу спама</b></minor> / <minor><b>Импорт в правило Regex</b></minor> <br>
+        4. <minor><b>Импорт в базу спама</b></minor> / <minor><b>Импорт в правило рег. выражения</b></minor> <br>
         <br>
         <br>
         <title><b>Примеры</b></title>: <br>
@@ -37,7 +37,7 @@
           - <a href=\"%s\">Простой текст</a> <br>
           - <a href=\"%s\">CSV</a> <br>
           - <a href=\"%s\">XML</a> <br>
-              - <a href=\"%s\">JSON</a> - JsonPath пока не поддерживается, используйте вместо этого <minor><b>Извлечь Regex</b></minor>.
+              - <a href=\"%s\">JSON</a> - JsonPath пока не поддерживается, используйте вместо этого <minor><b>Извлечь рег. выражение</b></minor>.
     ]]>
     </string>
     <string name="faq_regex">

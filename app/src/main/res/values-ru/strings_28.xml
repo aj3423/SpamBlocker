@@ -15,7 +15,7 @@
         <title><b>Префикс базы данных</b></title>:<br>
         &ensp; Блокировка диапазонов для телефонных номеров из базы данных.<br>
         <br>
-        <warn>Это регулярное выражение должно заканчиваться точками</warn>, в этом режиме regex такие завершающие точки обозначают изменяемые цифры. <br>
+        <warn>Это регулярное выражение должно заканчиваться точками</warn>, в этом режиме регулярного выражения такие завершающие точки обозначают изменяемые цифры. <br>
         <br>
         <b>Например:</b> <br>
         &ensp; <sample><b>.{5,}..</b></sample> требует, чтобы префикс был длиной не менее 5 цифр, допуская изменение 2 цифр в конце.
@@ -45,8 +45,8 @@
     <string name="get_a_new_token">Получить новый токен</string>
     <string name="others">Другое</string>
     <string name="api_settings">Настройки API</string>
-    <string name="include_settings">Включить в резервную копию</string>
-    <string name="exclude_settings">Исключить из резервной копии</string>
+    <string name="include_settings">Включены в резервную копию</string>
+    <string name="exclude_settings">Исключены из резервной копии</string>
     <string name="backup_missing_category">Этот параметр отсутствует в файле резервной копии и не может быть восстановлен.</string>
     <string name="warning_priority_conflict">
         <![CDATA[
