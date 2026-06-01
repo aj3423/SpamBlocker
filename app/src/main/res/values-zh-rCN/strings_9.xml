@@ -62,7 +62,7 @@
         &ensp;- 如果不存在，将创建一个新规则，与<b>创建</b>相同。<br>
         ]]>
     </string>
-    <string name="help_regex_action_add_mode_multiple">
+    <string name="help_regex_action_add_mode_multiple">正则表达式添加多个模式操作说明</string>
         <![CDATA[
         每条规则遵循以下逻辑：<br>
         <br>
@@ -71,14 +71,14 @@
     </string>
 
     <string name="action_enable_workflow">启用工作流程</string>
-    <string name="help_action_enable_workflow">
+    <string name="help_action_enable_workflow">启用工作流程操作说明</string>
         <![CDATA[
         启用或禁用此工作流程。一个用例是将定期工作流程变为一次性工作流程。
         ]]>
     </string>
     <string name="action_enable_app">启用应用</string>
-    <string name="help_action_enable_app">
-        <![CDATA[
+    <string name="help_action_enable_app">启用应用操作说明</string>
+    <![CDATA[
         启用或禁用应用。一个用例是暂时禁用它并在几个小时后自动重新启用它。
         ]]>
     </string>
