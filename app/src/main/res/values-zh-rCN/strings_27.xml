@@ -6,7 +6,7 @@
     <string name="disable">禁用</string>
     <string name="dialog_bg">对话框背景</string>
     <string name="app_bg">应用背景</string>
-    <string name="should_import_as_instant_query">
+    <string name="should_import_as_instant_query">应该作为即时查询导入</string>
         <![CDATA[
         这似乎是一个“API 查询”工作流，应该导入到上面的“即时查询”部分。
         ]]>
@@ -14,7 +14,7 @@
     <string name="at_time">定时</string>
     <string name="interval">间隔</string>
     <string name="contact_prefix">联系人前缀</string>
-    <string name="help_regex_mode_contact_prefix">
+    <string name="help_regex_mode_contact_prefix">正则模式联系人前缀说明</string>
         <![CDATA[
         <title><b>联系人前缀</b></title>:<br>
         &ensp; 根据联系人前缀匹配来允许来电，适合使用
@@ -47,7 +47,7 @@
         ]]>
     </string>
     <string name="caller_id">来电显示</string>
-    <string name="help_caller_id">
+    <string name="help_caller_id">来电显示说明</string>
         <![CDATA[
         在悬浮窗中显示来电信息。 <br>
         <br>
@@ -63,7 +63,7 @@
     <string name="perm_show_overlay">显示悬浮窗</string>
     <string name="preview">预览</string>
     <string name="content_template">内容模板</string>
-    <string name="help_caller_id_template">
+    <string name="help_caller_id_template">来电显示模版说明</string>
         <![CDATA[
         来电显示窗口中显示的内容，采用 HTML 格式。 <br>
         <br>
@@ -83,7 +83,7 @@
     </string>
     <string name="background_color">背景颜色</string>
     <string name="wait">等待</string>
-    <string name="help_action_wait">
+    <string name="help_action_wait">操作等待说明</string>
         <![CDATA[
         延迟 N 秒。 <br>
         <br>
@@ -95,7 +95,7 @@
         ]]>
     </string>
     <string name="comment_identifier">备注标识符</string>
-    <string name="hint_comment_identifier">
+    <string name="hint_comment_identifier">备注标识符说明</string>
         例如：\"comment\":\"(.+?)\"
     </string>
     <string name="help_comment_identifier">
@@ -117,7 +117,7 @@
     </string>
     <string name="carrier">运营商</string>
     <string name="carrier_rule">运营商规则</string>
-    <string name="help_regex_mode_carrier">
+    <string name="help_regex_mode_carrier">正则模式运营商匹配说明</string>
         <![CDATA[
         <title><b>运营商</b></title>:<br>
         &ensp; 正则表达式将匹配号码的运营商名称。 <br>
