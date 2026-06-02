@@ -1,7 +1,7 @@
 <resources>
     <string name="http_method">方法</string>
-    <string name="http_post_body">POST正文</string>
-    <string name="help_http_post_body">
+    <string name="http_post_body">HTTP POST 主体</string>
+    <string name="help_http_post_body">HTTP POST 主体说明</string>
         <![CDATA[
         支持的标签：<br>
         <br>
@@ -13,7 +13,7 @@
         为防止重复呼叫或回拨号码被误报，举报号码需要通话记录权限。
     </string>
     <string name="exclude_services">排除服务</string>
-    <string name="help_exclude_bg_service">
+    <string name="help_exclude_bg_service">排除服务说明</string>
         <![CDATA[
         有些应用会运行额外的前台服务，在此处添加服务名称以排除它们。<br>
         <br>
@@ -27,7 +27,7 @@
     </string>
     <string name="running_services">正在运行的服务</string>
     <string name="report_number">举报号码</string>
-    <string-array name="spam_categories">
+    <string-array name="spam_categories">垃圾来电类别</string>
         <item>有效号码</item>
         <item>诈骗</item>
         <item>营销</item>
@@ -36,7 +36,7 @@
         <item>其他垃圾来电</item>
     </string-array>
     <string name="action_category_config">类别配置</string>
-    <string name="help_action_category_config">
+    <string name="help_action_category_config">类别配置说明</string>
         <![CDATA[
                 仅支持以下类别：<br>
                 <br>
@@ -67,7 +67,7 @@
     <string name="target_text">目标文本</string>
     <string name="match_found">匹配成功</string>
     <string name="match_not_found">匹配失败</string>
-    <string name="help_test_regex">
+    <string name="help_test_regex">正则测试说明</string>
         <![CDATA[
         这仅用于测试此正则表达式是否与文本匹配，不包括其他规则。<br>
         要针对所有规则进行测试，请改用右下角的浮动测试按钮。
@@ -78,7 +78,7 @@
     <string name="seconds_short">秒</string>
     <string name="within_seconds">在…秒内</string>
     <string name="sms_alert"><short>短信提醒</short></string>
-    <string name="help_sms_alert">
+    <string name="help_sms_alert">短信提醒说明</string>
         <![CDATA[
         有些服务会先发短信通知您即将有来电，通常在一分钟内。<br>
         <br>
