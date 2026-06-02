@@ -82,8 +82,8 @@
         ]]>
     </string>
     <string name="background_color">背景颜色</string>
-    <string name="wait">等待</string>
-    <string name="help_action_wait">操作等待说明</string>
+    <string name="wait">呼叫等待</string>
+    <string name="help_action_wait">呼叫等待说明</string>
         <![CDATA[
         延迟 N 秒。 <br>
         <br>
