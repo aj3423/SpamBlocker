@@ -4,7 +4,7 @@
     <string name="calendar_event">日历事件</string>
     <string name="event_title">事件标题</string>
     <string name="rule_updated_temporarily">正则表达式规则 %s 已临时修改为：%s</string>
-    <string name="help_calendar_event">
+    <string name="help_calendar_event">日历事件说明</string>
         <![CDATA[
         根据日历事件临时修改正则表达式规则，更改将临时应用，不修改配置。<br>
         <br>
@@ -12,7 +12,7 @@
         ]]>
     </string>
     <string name="sms_event">短信事件</string>
-    <string name="help_sms_event">
+    <string name="help_sms_event">短信事件说明</string>
         <![CDATA[
         这将在收到的短信被筛选之前自动触发。<br>
         <br>
@@ -45,7 +45,7 @@
     <string name="include_sms">包括短信</string>
     <string name="minimal_duration">最短持续时间</string>
     <string name="answered_number"><short>已接号码</short></string>
-    <string name="help_answered">
+    <string name="help_answered">已接号码说明</string>
         <![CDATA[
         允许接听之前已接听的号码来电。<br>
         <br>
@@ -63,12 +63,12 @@
         <priority><b>优先级：10</b></priority>
         ]]>
     </string>
-    <string name="answered_warning">请勿为老年人或任何不善于识别诈骗电话的人启用此功能，因为这可能使他们遭受重复的诈骗电话。</string>
+    <string name="answered_warning">请勿为老年人或任何不善于识别诈骗电话的人启用此功能，因为这可能使他们遭受多次同一号码的诈骗电话。</string>
     <string name="acknowledged">已知晓</string>
     <string name="warning">警告</string>
     <string name="calendar_event_is_triggered">日历事件 %s 已触发。</string>
     <string name="rule_updated">正则规则 %s 已修改为：%s</string>
-    <string name="help_calendar_event_template">
+    <string name="help_calendar_event_template">日历事件模板说明</string>
         <![CDATA[
         根据日历事件临时修改正则表达式规则。<br>
         <br>
@@ -81,5 +81,5 @@
         ]]>
     </string>
     <string name="help_calendar_event_title">这应与日历事件匹配，该事件可在日历应用中创建。</string>
-    <string name="working">工作</string>
+    <string name="working">正在运行</string>
 </resources>
