@@ -1,7 +1,7 @@
 <resources>
     <string name="perm_write_settings">写入设置</string>
     <string name="set_to">设置为</string>
-    <string name="help_set_ringtone_to">
+    <string name="help_set_ringtone_to">设置铃声说明</string>
     <![CDATA[
         为特定功能设置铃声，或将其静音。<br>
         <br>
@@ -15,7 +15,7 @@
     </string>
     <string name="ringtone">铃声</string>
     <string name="call_to_test_ringtone">拨打实际电话以测试铃声。</string>
-    <string name="help_ringtone">
+    <string name="help_ringtone">铃声说明</string>
     <![CDATA[
         为特定功能自定义铃声，该功能允许的呼叫将播放指定的铃声。
     ]]>
@@ -31,7 +31,7 @@
     <string name="invalid_config">无效配置</string>
     <string name="custom">自定义</string>
     <string name="quick_tile">快捷磁贴</string>
-    <string name="help_quick_tile">
+    <string name="help_quick_tile">快速磁贴说明</string>
     <![CDATA[
         将工作流绑定到快速设置磁贴。有来电时，如果磁贴处于活动状态，工作流将被执行。 <br>
         <br>
@@ -45,7 +45,7 @@
     ]]>
     </string>
     <string name="quick_tile_is_active">自定义快捷磁贴已激活。</string>
-    <string name="help_preset_ringtone">
+    <string name="help_preset_ringtone">预设铃声说明</string>
     <![CDATA[
         自定义正则表达式规则的铃声，当呼叫被此规则允许时，将播放指定的铃声。 <br>
         <br>
@@ -56,7 +56,7 @@
     ]]>
     </string>
     <string name="remote_setup">远程设置</string>
-    <string name="help_remote_setup">
+    <string name="help_remote_setup">远程设置说明</string>
     <![CDATA[
         为老年人远程配置应用。<br>
         <br>
@@ -73,7 +73,7 @@
     <string name="parse_type">解析类型</string>
     <string name="failed_to_parse_tag">解析标签失败。</string>
     <string name="tag_generated">自定义标签已生成：%s = %s</string>
-    <string name="invalid_tag_name">
+    <string name="invalid_tag_name">无效标签名</string>
     <![CDATA[
         标签名称不应以 { 开头，无需添加大括号。
     ]]>
