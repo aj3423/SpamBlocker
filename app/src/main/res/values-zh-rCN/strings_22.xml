@@ -1,6 +1,6 @@
 <resources>
     <string name="auto_report">自动举报</string>
-    <string name="help_auto_report_type">
+    <string name="help_auto_report_type">自动举报说明</string>
     <![CDATA[
     如果号码因以下原因被阻止，则自动举报该号码： <br>
     <br>
@@ -12,7 +12,7 @@
     ]]>
     </string>
     <string name="action_parse_csv">解析CSV</string>
-    <string name="help_action_parse_csv">
+    <string name="help_action_parse_csv">解析CSV说明</string>
         <![CDATA[
         将CSV数据字节解析为号码列表。 <br>
         <br>
@@ -37,7 +37,7 @@
     </string>
     <string name="action_parse_xml">解析XML</string>
     <string name="action_regex_extract">正则表达式提取</string>
-    <string name="help_action_regex_extract">
+    <string name="help_action_regex_extract">正则表达式提取说明</string>
         <![CDATA[
         在文本中搜索正则表达式模式，查找所有匹配项并生成号码列表。 <br>
         <br>
@@ -79,7 +79,7 @@
         ]]>
     </string>
     <string name="action_find_rules">查找规则</string>
-    <string name="help_action_find_rules">
+    <string name="help_action_find_rules">查找规则说明</string>
         <![CDATA[
         查找一个或多个匹配特定描述的正则表达式规则。
         ]]>
@@ -111,7 +111,7 @@
         ]]>
     </string>
     <string name="action_modify_rules">修改规则</string>
-    <string name="help_action_import_to_spam_db">
+    <string name="help_action_import_to_spam_db">导入垃圾来电数据库操作说明</string>
         <![CDATA[
         将号码列表添加到骚扰电话数据库。
         ]]>
@@ -152,7 +152,7 @@
     <string name="action_import_as_regex_rule">导入为单条正则规则</string>
     <string name="action_import_as_multiple_regex_rules">导入为多条正则规则</string>
     <string name="duration_in_minutes">持续时间（分钟）</string>
-    <string name="help_trigger_manual">
+    <string name="help_trigger_manual">手动触发说明</string>
         <![CDATA[
         轻触<highlight>测试</highlight>按钮以手动运行此工作流程。
         ]]>
@@ -169,7 +169,7 @@
     </string>
     <string name="trigger">触发器</string>
     <string name="delay_in_seconds">延迟（秒）</string>
-    <string name="help_ringtone_delay">
+    <string name="help_ringtone_delay">铃声延迟说明</string>
         <![CDATA[
         此功能在铃声响起前暂时更改系统默认铃声，并在 <highlight>%d 秒</highlight> 后恢复，届时铃声预计已响起。 <br>
         <br>
