@@ -2,10 +2,10 @@
     <string name="workflow_actions">操作</string>
     <string name="work_state_template">状态：%s</string>
     <string name="stop_reason_template">停止原因：%s</string>
-    <string name="any">任意</string>
+    <string name="any">任意号码</string>
     <string name="sim_card">SIM 卡</string>
     <string name="sim_slot_template">SIM %s</string>
-    <string name="help_sim_card">
+    <string name="help_sim_card">SIM 卡说明</string>
         <![CDATA[
         将此规则应用于所有 SIM 卡或仅应用于选定的 SIM 卡。<br>
         <br>
@@ -27,7 +27,7 @@
     <string name="missing_permission">%s 权限是必需的，但尚未授予。</string>
     <string name="copy_verification_code_regex">码.*?(\\d+)</string>
     <string name="foreign_number">国际号码</string>
-    <string name="help_allow_verification_code">
+    <string name="help_allow_verification_code">允许验证码说明</string>
         <![CDATA[
         允许包含“验证码”或“确认码”的短信。
         ]]>
@@ -39,7 +39,7 @@
         由于消息已通过短信规则过滤，此正则表达式不需要非常严格。
         ]]>
     </string>
-    <string name="help_foreign_number">
+    <string name="help_foreign_number">国际号码说明</string>
         <![CDATA[
         使用正则表达式 <error><b>\\+(?!39).*</b></error> 阻止所有来自您本国以外的国际电话。通过此规则的电话不会立即被放行，它们将由其他规则检查。<br>
         <br>
@@ -62,10 +62,10 @@
     </string>
     <string name="verification_code">验证码</string>
     <string name="verification_code_regex">.*(验证|确认|校验).*码.*</string>
-    <string name="private_number">私人号码</string>
+    <string name="private_number">私人或隐藏号码</string>
     <string name="always">始终</string>
     <string name="sim_icon">SIM 图标</string>
-    <string name="help_show_sim_icon">
+    <string name="help_show_sim_icon">SIM 图标说明</string>
         <![CDATA[
         需要“电话状态”权限。 <br>
         <br>
@@ -90,7 +90,7 @@
     <string name="screening">筛选</string>
     <string name="toggled_by_tile">通过快捷开关切换</string>
     <string name="custom_tile">自定义快捷开关</string>
-    <string name="help_custom_tile">
+    <string name="help_custom_tile">自定义快捷开关说明</string>
         <![CDATA[
         使用快速设置快捷开关快速切换规则。全局快捷开关切换整个应用程序，而此自定义快捷开关仅影响特定规则。<br>
         <br>
@@ -106,7 +106,7 @@
     </string>
     <string name="detected_sim_count">仅检测到 %s 张 SIM 卡。</string>
     <string name="requires_min_android_ver">需要安卓 %s 或更高版本。</string>
-    <string name="help_sim_2_contacts">
+    <string name="help_sim_2_contacts">SIM 2 联系人说明</string>
         <![CDATA[
         允许 SIM 2 上的联系人，并阻止其他所有内容。 <br>
         <br>
