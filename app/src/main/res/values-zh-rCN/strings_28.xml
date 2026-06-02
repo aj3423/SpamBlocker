@@ -2,7 +2,7 @@
     <string name="perm_access_dir">访问文件夹</string>
     <string name="dir_not_specified">未指定文件夹。</string>
     <string name="no_access_to_dir">无法访问文件夹：%s。</string>
-    <string name="grant_access_to_dir">
+    <string name="grant_access_to_dir">授予文件夹访问权限</string>
         <![CDATA[
         授予文件夹访问权限：<br>
         <highlight>%s</highlight>
@@ -10,7 +10,7 @@
     </string>
     <string name="comment">备注</string>
     <string name="database_prefix">数据库前缀</string>
-    <string name="help_regex_mode_database_prefix">
+    <string name="help_regex_mode_database_prefix">正则模式数据库前缀说明</string>
         <![CDATA[
         <title><b>数据库前缀</b></title>:<br>
         &ensp; 对数据库中的电话号码进行范围屏蔽。<br>
@@ -30,7 +30,7 @@
         ]]>
     </string>
     <string name="api_preset_remote_llm">远程 LLM</string>
-    <string name="help_api_preset_remote_llm">
+    <string name="help_api_preset_remote_llm">远程 LLM说明</string>
         <![CDATA[
             使用远程大语言模型检查短信内容。 <br>
             <br>
@@ -48,7 +48,7 @@
     <string name="include_settings">包含设置</string>
     <string name="exclude_settings">排除设置</string>
     <string name="backup_missing_category">此设置在备份文件中缺失，无法恢复。</string>
-    <string name="warning_priority_conflict">
+    <string name="warning_priority_conflict">优先级冲突警告</string>
         <![CDATA[
         <highlight>白名单</highlight>和<error>黑名单</error>规则不应具有相同的优先级值<br>
         <br>
@@ -57,7 +57,7 @@
     </string>
     <string name="checking_template_new">%s 正在检查：%s</string>
     <string name="textbox_limit">文本框限制</string>
-    <string name="help_rule_textbox_limit">
+    <string name="help_rule_textbox_limit">规则文本框限制说明</string>
         <![CDATA[
         输入框允许的最大字符数。超过此限制将禁用编辑，
           因为过长的文本会导致界面卡死。 <br>
