@@ -1,5 +1,5 @@
 <resources>
-    <string name="emergency">紧急</string>
+    <string name="emergency">紧急电话</string>
     <string name="emergency_situation">紧急情况</string>
     <string name="help_emergency_situation">
         <![CDATA[
@@ -36,7 +36,7 @@
     <string name="call_to_number">呼叫号码</string>
     <string name="call_to">呼叫至</string>
     <string name="push_alert">推送提醒</string>
-    <string name="help_push_alert">
+    <string name="help_push_alert">推送提醒说明</string>
         <![CDATA[
         收到特定通知后，在设定的时间内允许所有来电。<br>
         <br>
