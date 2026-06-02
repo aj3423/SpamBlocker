@@ -1,8 +1,8 @@
 <resources>
     <string name="report_bug">报告</string>
     <string name="generate_tag">生成标签</string>
-    <string name="bot_preset_phoneblock"><no_translate>🇩🇪 🌐 PhoneBlock</no_translate></string>
-    <string name="help_bot_preset_phoneblock">
+    <string name="bot_preset_phoneblock">🇩🇪 🌐 在线号码拦截</string>
+    <string name="help_bot_preset_phoneblock">在线号码拦截说明</string>
     <![CDATA[
         从 %s 下载垃圾号码并导入本地数据库。 <br>
         <br>
@@ -12,7 +12,7 @@
     <string name="workflow_not_saved">工作流未保存，请先保存。</string>
     <string name="default_value">默认值</string>
     <string name="save_tag">保存标签</string>
-    <string name="help_save_tag">
+    <string name="help_save_tag">保存标签说明</string>
     <![CDATA[
         保存标签值，以便在未来的工作流运行中重复使用。 <br>
         <br>
@@ -25,7 +25,7 @@
     ]]>
     </string>
     <string name="load_tag">加载标签</string>
-    <string name="help_load_tag">
+    <string name="help_load_tag">加载标签说明</string>
     <![CDATA[
         加载之前保存的标签。
     ]]>
@@ -33,13 +33,13 @@
     <string name="tag_is_set_to">标签 %s 已设置为 %s</string>
     <string name="tag_is_saved_as">标签 %s 已保存为 %s</string>
     <string name="set_tag">设置标签</string>
-    <string name="help_set_tag">
+    <string name="help_set_tag">设置标签说明</string>
     <![CDATA[
         手动设置标签值。
     ]]>
     </string>
     <string name="tag_value">标签值</string>
-    <string name="help_generate_tag">
+    <string name="help_generate_tag">生成标签说明</string>
     <![CDATA[
         从上一步中提取内容并将其存储在自定义标签中，以便在后续步骤中重复使用。<br>
         <br>
@@ -54,13 +54,13 @@
     ]]>
     </string>
     <string name="max"><short>最大</short></string>
-    <string name="exporting_database">
+    <string name="exporting_database">导出数据库</string>
     <![CDATA[
         正在从数据库导出 %s 条号码，这可能需要大约 %s 秒。
     ]]>
     </string>
     <string name="time_color">时间颜色</string>
-    <string name="help_time_color">
+    <string name="help_time_color">时间颜色说明</string>
     <![CDATA[
         突出显示时间戳的颜色，以反映记录的最近程度。 <br>
         <br>
