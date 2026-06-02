@@ -62,7 +62,7 @@
         &ensp;- 如果不存在，将创建一个新规则，与<b>创建</b>相同。<br>
         ]]>
     </string>
-    <string name="help_regex_action_add_mode_multiple">正则表达式添加多个模式操作说明</string>
+    <string name="help_regex_action_add_mode_multiple">添加多个正则模式操作说明</string>
         <![CDATA[
         每条规则遵循以下逻辑：<br>
         <br>
