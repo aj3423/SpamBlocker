@@ -2,7 +2,7 @@
     <string name="call_screening_not_enabled">未启用来电筛选。</string>
     <string name="sms_screening_not_enabled">未启用短信筛选。</string>
     <string name="category_mapping">类别映射</string>
-    <string name="help_category_mapping">
+    <string name="help_category_mapping">类别映射说明</string>
     <![CDATA[
         某些API返回数字作为结果，例如<b>1</b>代表<b>广告</b>，<b>2</b>代表<b>诈骗</b>。它们可以映射到人类可读的文本。
     ]]>
