@@ -1,7 +1,7 @@
 <resources>
     <string name="call_event">来电事件</string>
     <string name="call_event_is_triggered">来电事件 %s 已触发。</string>
-    <string name="help_call_event">
+    <string name="help_call_event">来电事件说明</string>
         <![CDATA[
         在来电号码被规则检查之前进行预处理，使其能够即时修改规则。<br>
         <br>
@@ -20,7 +20,7 @@
     </string>
     <string name="action_modify_number">修改号码</string>
     <string name="modify_number_template">来电号码 %s 已修改为 %s。</string>
-    <string name="help_action_modify_number">
+    <string name="help_action_modify_number">修改号码说明</string>
         <![CDATA[
         在来电号码被规则检查之前对其进行修改。<br>
         <br>
@@ -38,7 +38,7 @@
     </string>
     <string name="blocked">已阻止</string>
     <string name="allowed">已允许</string>
-    <string name="help_notification">
+    <string name="help_notification">通知说明</string>
         <![CDATA[
         内置通知渠道： <br>
         <br>
@@ -67,7 +67,7 @@
     <string name="call_channel">呼叫渠道</string>
     <string name="sms_channel">短信渠道</string>
     <string name="channel_id">渠道ID</string>
-    <string name="help_channel_id">
+    <string name="help_channel_id">渠道ID说明</string>
         <![CDATA[
         此ID将在系统设置中显示为通知渠道。<br>
         <br>
@@ -76,7 +76,7 @@
     </string>
     <string name="channel_importance">重要性</string>
     <string name="channel_group">渠道分组</string>
-    <string name="help_channel_group">
+    <string name="help_channel_group">渠道分组说明</string>
         <![CDATA[
         留空时，通知将自动分为三类：<br>
         <br>
@@ -88,13 +88,13 @@
         ]]>
     </string>
     <string name="mute">静音</string>
-    <string name="sound">声音</string>
-    <string name="help_sound">
+    <string name="sound">铃声</string>
+    <string name="help_sound">铃声说明</string>
         <![CDATA[
-        声音只能在新渠道创建时设置，
+        铃声只能在新渠道创建时设置，
          一旦创建，只能在系统设置中修改。<br>
         <br>
-        <b>自定义声音</b><br>
+        <b>自定义铃声</b><br>
         部分手机允许通过应用直接导入自定义铃声。
         对于其他手机，请通过系统设置导入，然后在应用中选择。<br>
         ]]>
@@ -104,7 +104,7 @@
     <string name="unknown">未知</string>
     <string name="icon_color">图标颜色</string>
     <string name="confirm_to_delete">确认删除？</string>
-    <string name="help_create_notification_channel">
+    <string name="help_create_notification_channel">创建通知渠道说明</string>
         <![CDATA[
         创建新的通知渠道。<br>
         <br>
@@ -127,7 +127,7 @@
     </string>
     <string name="led">LED</string>
     <string name="led_color">LED颜色</string>
-    <string name="help_led_color">
+    <string name="help_led_color">LED颜色说明</string>
         <![CDATA[
         灯光颜色只能在新渠道创建时设置，
          一旦创建，只能在系统设置中修改。<br>
@@ -137,7 +137,7 @@
     <string name="automatic">自动</string>
     <string name="medium">中</string>
     <string name="high_muted">高（静音）</string>
-    <string name="help_channel_importance">
+    <string name="help_channel_importance">频道的重要性说明</string>
         <![CDATA[
         重要性只能在新渠道创建时设置，
          一旦创建，只能在系统设置中修改。<br>
