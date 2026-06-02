@@ -8,7 +8,7 @@
     ]]>
     </string>
     <string name="import_numbers">导入号码</string>
-    <string name="faq_import_numbers">
+    <string name="faq_import_numbers">导入号码说明</string>
     <![CDATA[
         使用工作流从本地或远程文件导入号码。<br>
         <br>
@@ -40,7 +40,7 @@
           - <a href=\"%s\">JSON</a> - 暂不支持 JsonPath，请改用 <minor><b>正则提取</b></minor>。
     ]]>
     </string>
-    <string name="faq_regex">
+    <string name="faq_regex">正则表达式说明</string>
     <![CDATA[
         面向非程序员的正则表达式教程。<br>
         <br>
@@ -63,7 +63,7 @@
           &ensp; 2. <a href=\"try_it\"><big>点击此处</big></a> 启动在线 AI <br>
     ]]>
     </string>
-    <string name="ai_regex_prompt">
+    <string name="ai_regex_prompt">AI正则表达式提示</string>
     <![CDATA[
         给我一个匹配短信内容的 Kotlin 正则表达式，要求：<br>
         - 包含 \"verification\" 或 \"validation\" <br>
