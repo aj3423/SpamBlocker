@@ -2,7 +2,7 @@
     <string name="last_log">最近日志</string>
     <string name="executed_at">执行于：</string>
     <string name="not_executed_yet">尚未执行</string>
-    <string name="help_show_rule_indicator">
+    <string name="help_show_rule_indicator">显示规则指示器说明</string>
         <![CDATA[
         在电话号码前显示图标，以指示它是否存在于垃圾号码数据库中，或者是否有任何正则表达式规则与之匹配。<br>
         <br>
@@ -34,7 +34,7 @@
         ]]>
     </string>
     <string name="rule_indicator">规则指示器</string>
-    <string name="help_enable_for_mms">
+    <string name="help_enable_for_mms">启用彩信说明</string>
         <![CDATA[
         彩信通常是垃圾信息，除非您实际使用它们，否则没有必要启用。<br>
         <br>
@@ -47,8 +47,8 @@
         需要两个权限：RECEIVE_MMS 和 READ_SMS
         ]]>
     </string>
-    <string name="sms_bomb">短信炸弹</string>
-    <string name="help_sms_bomb">
+    <string name="sms_bomb">短信轰炸</string>
+    <string name="help_sms_bomb">短信轰炸说明</string>
         <![CDATA[
         反短信轰炸。<br>
         <br>
@@ -87,7 +87,7 @@
     </string>
     <string name="enable_history_logging">记录</string>
     <string name="never_expire"><short>永不过期</short></string>
-    <string name="help_rcs_message">
+    <string name="help_rcs_message">RCS短信说明</string>
         <![CDATA[
             不支持 RCS。<br>
             <br>
@@ -96,7 +96,7 @@
             一种解决方法是切换到短信。
         ]]>
     </string>
-    <string name="help_history_expiry">
+    <string name="help_history_expiry">历史记录过期说明</string>
         <![CDATA[
                 启用后，历史记录会在 N 天后自动删除。 <br>
                 清理任务每天 00:00 执行。
