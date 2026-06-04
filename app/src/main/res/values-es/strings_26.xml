@@ -58,29 +58,25 @@
         </sample>
         <br>
         <br>
-        <br>
         <highlight><b>Probar en línea</b></highlight> <br>
-          &ensp; 1. <a href=\"copy\"><big>Toca aquí</big></a> para copiar el prompt de arriba <br>
-          &ensp; 2. <a href=\"try_it\"><big>Toca aquí</big></a> para lanzar la IA en línea <br>
+          &ensp; 1. <a href=\"copy\"><big>Copia el prompt de arriba</big></a> <br>
+          &ensp; 2. <a href=\"try_it\"><big>Inicia la IA en línea</big></a> <br>
     ]]>
     </string>
     <string name="ai_regex_prompt">
     <![CDATA[
-        Muéstrame una regex de Kotlin que coincida con el contenido de SMS que <br>
-        - contenga \"verificación\" o \"validación\" <br>
-        - seguido de la palabra \"código\" <br>
-        - seguido de un número de 5 o 6 dígitos <br>
-        - otras palabras pueden variar, usa .* para coincidir con todas <br>
-        - debe ser una coincidencia completa (no parcial/búsqueda) <br>
-        - no es necesario agregar el ^ inicial y el $ final <br>
-        - mantenla lo más simple posible, evita usar funciones avanzadas de regex <br>
-        - usa solo barras invertidas simples, la versión que pueda copiar y pegar directamente en otras apps. NO uses barras invertidas dobles. <br>
+        Proporciona una regex simple de coincidencia completa para Kotlin para capturar códigos de verificación por SMS. <br>
         <br>
-        Debe coincidir con todos estos mensajes: <br>
-        - Tu código de verificación es 123456, expira en 5 minutos. <br>
-        - Tu código de validación: [12345] … <br>
+        Requisitos: <br>
+        - Debe contener la palabra \"verification\" o \"validation\", seguida de \"code\" y luego un número de 5 o 6 dígitos. <br>
+        - Usa .* para manejar cualquier texto variable antes, entre o después de estos elementos, de modo que coincida con todo el mensaje. <br>
+        - No hace falta ocuparse de mayúsculas/minúsculas, saltos de línea ni de los anclajes ^ o $. <br>
+        - Evita las funciones avanzadas de regex. <br>
+        - Envuelve la regex final entre backticks (``) y devuelve solo la regex. <br>
         <br>
-        Muéstrame la regex y explícala.
+        Debe coincidir con: <br>
+        - "Your verification code is 123456, expires after 5 minutes." <br>
+        - "Your validation code: [12345]"
     ]]>
     </string>
     <string name="copied_to_clipboard">Copiado al portapapeles</string>

@@ -57,29 +57,25 @@
         </sample>
         <br>
         <br>
-        <br>
         <highlight><b>נסה זאת באינטרנט</b></highlight> <br>
-          &ensp; 1. <a href=\"copy\"><big>הקש כאן</big></a> כדי להעתיק את ההנחיה למעלה <br>
-          &ensp; 2. <a href=\"try_it\"><big>הקש כאן</big></a> כדי להפעיל את הבינה המלאכותית המקוונת <br>
+          &ensp; 1. <a href=\"copy\"><big>העתק את ההנחיה למעלה</big></a> <br>
+          &ensp; 2. <a href=\"try_it\"><big>הפעל את הבינה המלאכותית המקוונת</big></a> <br>
     ]]>
     </string>
     <string name="ai_regex_prompt">
     <![CDATA[
-        הראה לי Kotlin regex שתואם לתוכן SMS ש <br>
-        - מכיל \"verification\" או \"validation\" <br>
-        - ואז מופיע המילה \"code\" <br>
-        - ואז מופיע מספר בן 5 או 6 ספרות <br>
-        - מילים אחרות יכולות להשתנות, השתמש ב-.* כדי להתאים לכולן <br>
-        - זה צריך להיות התאמה מלאה (לא חלקית/חיפוש) <br>
-        - אין צורך להוסיף את ^ בהתחלה ואת $ בסוף <br>
-        - שמור את זה פשוט ככל האפשר, הימנע משימוש בתכונות Regex מתקדמות <br>
-        - שימוש בקו נטוי אחורי בודד בלבד, הגרסה שאני יכול להעתיק ולהדביק ישירות לאפליקציות אחרות. אל תשתמש בקווים נטויים אחוריים כפולים. <br>
+        ספק regex פשוט עם התאמה מלאה עבור Kotlin כדי ללכוד קודי אימות ב-SMS. <br>
         <br>
-        זה אמור להתאים לכל ההודעות האלה: <br>
-        - Your verification code is 123456, expires after 5 minutes. <br>
-        - Your validation code: [12345] … <br>
+        דרישות: <br>
+        - הוא חייב להכיל את המילה \"verification\" או \"validation\", אחריה \"code\", ואחר כך מספר בן 5 או 6 ספרות. <br>
+        - השתמש ב-.* כדי לטפל בכל טקסט משתנה לפני, בין או אחרי הרכיבים האלה כך שכל ההודעה תותאם. <br>
+        - אין צורך להתחשב ברישיות, במעברי שורה או בעוגנים ^ ו-$. <br>
+        - הימנע מתכונות regex מתקדמות. <br>
+        - עטוף את ה-regex הסופי ב-backticks (``) והחזר רק את ה-regex עצמו. <br>
         <br>
-        הראה לי את ה-regex והסבר אותו.
+        הוא חייב להתאים ל: <br>
+        - "Your verification code is 123456, expires after 5 minutes." <br>
+        - "Your validation code: [12345]"
     ]]>
     </string>
     <string name="copied_to_clipboard">הועתק ללוח</string>

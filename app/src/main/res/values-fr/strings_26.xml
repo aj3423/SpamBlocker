@@ -58,29 +58,25 @@
         </sample>
         <br>
         <br>
-        <br>
         <highlight><b>Essayer en ligne</b></highlight> <br>
-          &ensp; 1. <a href=\"copy\"><big>Appuyez ici</big></a> pour copier l\'invite ci-dessus <br>
-          &ensp; 2. <a href=\"try_it\"><big>Appuyez ici</big></a> pour lancer l\'IA en ligne <br>
+          &ensp; 1. <a href=\"copy\"><big>Copier l\'invite ci-dessus</big></a> <br>
+          &ensp; 2. <a href=\"try_it\"><big>Lancer l\'IA en ligne</big></a> <br>
     ]]>
     </string>
     <string name="ai_regex_prompt">
     <![CDATA[
-        Montrez-moi une regex Kotlin qui correspond au contenu SMS qui <br>
-        - contient \"verification\" ou \"validation\" <br>
-        - suivi du mot \"code\" <br>
-        - suivi d\'un nombre à 5 ou 6 chiffres <br>
-        - les autres mots peuvent varier, utilisez .* pour les correspondre tous <br>
-        - ce doit être une correspondance complète (pas partielle/recherche) <br>
-        - pas besoin d\'ajouter le ^ au début et le $ à la fin <br>
-        - gardez-la aussi simple que possible, évitez d\'utiliser des fonctionnalités regex avancées <br>
-        - utilisez uniquement des antislashes simples, la version que je peux copier-coller directement dans d\'autres applications. N\'UTILISEZ PAS de doubles antislashes. <br>
+        Fournissez une regex simple à correspondance complète pour Kotlin afin de capturer les codes de vérification SMS. <br>
         <br>
-        Elle doit correspondre à tous ces messages : <br>
-        - Your verification code is 123456, expires after 5 minutes. <br>
-        - Your validation code: [12345] … <br>
+        Exigences : <br>
+        - Elle doit contenir le mot \"verification\" ou \"validation\", suivi de \"code\", puis d\'un nombre à 5 ou 6 chiffres. <br>
+        - Utilisez .* pour gérer tout texte variable avant, entre ou après ces éléments afin que l\'ensemble du message corresponde. <br>
+        - Pas besoin de gérer la casse, les sauts de ligne ni les ancres ^ ou $. <br>
+        - Évitez les fonctionnalités regex avancées. <br>
+        - Entourez la regex finale de backticks (``) et ne retournez que la regex. <br>
         <br>
-        Montrez-moi la regex et expliquez-la.
+        Elle doit correspondre à : <br>
+        - "Your verification code is 123456, expires after 5 minutes." <br>
+        - "Your validation code: [12345]"
     ]]>
     </string>
     <string name="copied_to_clipboard">Copié dans le presse‑papier</string>

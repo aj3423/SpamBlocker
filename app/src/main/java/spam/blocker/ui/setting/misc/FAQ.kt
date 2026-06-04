@@ -72,10 +72,10 @@ fun FAQ() {
                                         Clipboard.copy(ctx, plainPrompt)
                                         Toast.makeText(ctx, ctx.getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
                                     }
-                                    // Launch browser: https://chat.cerebras.ai/
+                                    // Launch browser:
                                     "try_it" -> {
                                         ctx.startActivity(Intent(Intent.ACTION_VIEW,
-                                            "https://chat.cerebras.ai".toUri()))
+                                            "https://chat.mistral.ai/chat".toUri()))
                                     }
                                 }
                             }

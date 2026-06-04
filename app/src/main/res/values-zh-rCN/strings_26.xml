@@ -57,29 +57,25 @@
         </sample>
         <br>
         <br>
-        <br>
         <highlight><b>在线试用</b></highlight> <br>
-          &ensp; 1. <a href=\"copy\"><big>点击此处</big></a> 复制上述提示词 <br>
-          &ensp; 2. <a href=\"try_it\"><big>点击此处</big></a> 启动在线 AI <br>
+          &ensp; 1. <a href=\"copy\"><big>复制上方提示词</big></a> <br>
+          &ensp; 2. <a href=\"try_it\"><big>启动在线 AI</big></a> <br>
     ]]>
     </string>
     <string name="ai_regex_prompt">
     <![CDATA[
-        给我一个匹配短信内容的 Kotlin 正则表达式，要求：<br>
-        - 包含 \"verification\" 或 \"validation\" <br>
-        - 接着是单词 \"code\" <br>
-        - 接着是一个 5 或 6 位数字 <br>
-        - 其他单词可以变化，使用 .* 匹配所有内容 <br>
-        - 应该是全匹配（不是部分/搜索匹配） <br>
-        - 不需要添加开头的 ^ 和结尾的 $ <br>
-        - 尽可能简单，避免使用高级正则功能 <br>
-        - 仅使用单反斜杠，即我可以直接复制粘贴到其他应用程序的版本。不要使用双反斜杠。<br>
+        提供一个用于 Kotlin 的简单全匹配 regex 来捕获短信验证码。<br>
         <br>
-        它应该匹配以下所有消息：<br>
-        - Your verification code is 123456, expires after 5 minutes. <br>
-        - Your validation code: [12345] … <br>
+        要求：<br>
+        - 必须包含单词 \"verification\" 或 \"validation\"，接着是 \"code\"，然后是一个 5 或 6 位数字。<br>
+        - 对这些元素前面、之间或后面的任意变化文本使用 .*，使其匹配整条消息。<br>
+        - 不需要考虑大小写、换行以及 ^ 或 $ 锚点。<br>
+        - 避免使用高级 regex 功能。<br>
+        - 用反引号 (``) 包裹最终 regex，并且只输出 regex 本身。<br>
         <br>
-        给我展示正则表达式并解释它。
+        它必须匹配：<br>
+        - "Your verification code is 123456, expires after 5 minutes." <br>
+        - "Your validation code: [12345]"
     ]]>
     </string>
     <string name="copied_to_clipboard">已复制到剪贴板</string>

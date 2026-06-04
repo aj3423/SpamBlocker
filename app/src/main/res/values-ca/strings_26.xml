@@ -57,29 +57,25 @@
         </sample>
         <br>
         <br>
-        <br>
         <highlight><b>Prova-ho en línia</b></highlight> <br>
-          &ensp; 1. <a href=\"copy\"><big>Toca aquí</big></a> per copiar el prompt anterior <br>
-          &ensp; 2. <a href=\"try_it\"><big>Toca aquí</big></a> per iniciar la IA en línia <br>
+          &ensp; 1. <a href=\"copy\"><big>Copia el prompt anterior</big></a> <br>
+          &ensp; 2. <a href=\"try_it\"><big>Inicia la IA en línia</big></a> <br>
     ]]>
     </string>
     <string name="ai_regex_prompt">
     <![CDATA[
-        Mostra\'m una expressió regular de Kotlin que coincideixi amb el contingut SMS que <br>
-        - contingui \"verification\" o \"validation\" <br>
-        - seguit de la paraula \"code\" <br>
-        - seguit d\'un número de 5 o 6 dígits <br>
-        - altres paraules poden variar, utilitza .* per coincidir amb totes <br>
-        - ha de ser una coincidència total (no parcial/cerca) <br>
-        - no cal afegir el ^ inicial ni el $ final <br>
-        - mantingues-ho tan simple com sigui possible, evita utilitzar funcions avançades d\'expressions regulars <br>
-        - utilitzant només barres invertides simples, la versió que puc copiar i enganxar directament a altres aplicacions. NO utilitzis barres invertides dobles. <br>
+        Proporciona una expressió regular simple de coincidència completa per a Kotlin per capturar codis de verificació SMS. <br>
         <br>
-        Ha de coincidir amb tots aquests missatges: <br>
-        - Your verification code is 123456, expires after 5 minutes. <br>
-        - Your validation code: [12345] … <br>
+        Requisits: <br>
+        - Ha de contenir la paraula \"verification\" o \"validation\", seguida de \"code\" i després d\'un número de 5 o 6 dígits. <br>
+        - Fes servir .* per gestionar qualsevol text variable abans, entre o després d\'aquests elements perquè coincideixi amb tot el missatge. <br>
+        - No cal tenir en compte la sensibilitat entre majúscules i minúscules, els salts de línia ni els ancoratges ^ o $. <br>
+        - Evita les funcions avançades d\'expressions regulars. <br>
+        - Envolta la regex final amb backticks (``) i mostra només la regex. <br>
         <br>
-        Mostra\'m l\'expressió regular i explica-la.
+        Ha de coincidir amb: <br>
+        - "Your verification code is 123456, expires after 5 minutes." <br>
+        - "Your validation code: [12345]"
     ]]>
     </string>
     <string name="copied_to_clipboard">Copiat al porta-retalls</string>
