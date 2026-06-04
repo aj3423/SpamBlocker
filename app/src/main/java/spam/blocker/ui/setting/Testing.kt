@@ -39,6 +39,7 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
+import spam.blocker.util.Clipboard
 import spam.blocker.util.JetpackTextLogger
 import spam.blocker.util.MultiLogger
 import spam.blocker.util.SaveableLogger
@@ -80,6 +81,15 @@ fun TestDialog(
     PopupDialog(
         trigger = logTrigger,
         popupSize = PopupSize(maxWidthPercentage = 0.9f, minWidthDp = 320, maxWidthDp = 1200),
+        buttons = if (logStr.value.text.length > 3000){
+            {
+                StrokeButton(Str(R.string.copy), color = C.teal200) {
+                    Clipboard.copy(ctx, logStr.value.text)
+                }
+            }
+        } else {
+            null
+        }
     ) {
         Text(
             text = logStr.value,
