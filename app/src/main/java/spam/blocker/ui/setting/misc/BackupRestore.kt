@@ -282,7 +282,7 @@ fun ImportButton() {
                             PermissionWrapper(it)
                         }.toMutableList()
 
-                    // 2. Workflow file permissions
+                    // 2. Workflow dir permissions
                     missingBotSafUris
                         .filter { !it.hasFolderAccess(ctx)  }
                         .forEach {

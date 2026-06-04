@@ -38,6 +38,7 @@ import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
+import spam.blocker.util.Clipboard
 import spam.blocker.util.JetpackTextLogger
 import spam.blocker.util.Lambda
 
@@ -58,6 +59,15 @@ fun TestActionButton(
     val logTrigger = remember { mutableStateOf(false) }
     PopupDialog(
         trigger = logTrigger,
+        buttons = if (logStr.value.text.length > 3000){
+            {
+                StrokeButton(Str(R.string.copy), color = C.teal200) {
+                    Clipboard.copy(ctx, logStr.value.text)
+                }
+            }
+        } else {
+            null
+        }
     ) {
         Text(text = logStr.value)
     }

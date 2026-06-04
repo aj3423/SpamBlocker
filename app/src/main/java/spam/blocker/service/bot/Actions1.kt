@@ -266,7 +266,9 @@ open class HttpRequest(
 
                 aCtx.lastOutput = result?.echo
 
-                val echo = Util.truncate(String(result?.echo ?: byteArrayOf()), limit = 1000)
+//                val echo = Util.truncate(String(result?.echo ?: byteArrayOf()), limit = 1000)
+                val echo = String(result?.echo ?: byteArrayOf())
+
                 if (result?.statusCode in 200..299) {
                     aCtx.logger?.success("HTTP: <${result?.statusCode}>")
                     aCtx.logger?.debug("%s".formatAnnotated(echo.A(C.textGrey.darken())))
