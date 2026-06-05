@@ -74,6 +74,7 @@ android {
 
 dependencies {
     implementation(libs.androidx.browser)
+    implementation(libs.androidx.runtime)
     // third-party
     implementation(libs.lazycolumnscrollbar) // for scroll bar
     implementation(libs.reorderable) // for reordering Action items with drag & drop

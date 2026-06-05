@@ -20,6 +20,7 @@ lazycolumnscrollbar = "2.2.0"
 workRuntimeKtx = "2.11.2"
 junitJupiter = "6.1.0"
 browser = "1.10.0"
+runtime = "1.11.2"
 
 [libraries]
 androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCore" }
@@ -38,6 +39,7 @@ compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 lazycolumnscrollbar = { module = "com.github.nanihadesuka:LazyColumnScrollbar", version.ref = "lazycolumnscrollbar" }
 junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "junitJupiter" }
 androidx-browser = { group = "androidx.browser", name = "browser", version.ref = "browser" }
+androidx-runtime = { group = "androidx.compose.runtime", name = "runtime", version.ref = "runtime" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

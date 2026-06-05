@@ -13,17 +13,20 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -92,8 +95,8 @@ import spam.blocker.util.A
 import spam.blocker.util.Lambda
 import spam.blocker.util.Util.isFreshInstall
 import spam.blocker.util.hasFlag
-import spam.blocker.util.logi
 import spam.blocker.util.spf
+import android.view.ViewTreeObserver
 
 const val SettingRowMinHeight = 40
 
@@ -130,8 +133,34 @@ fun SettingScreen() {
             addAll((callCheckers + smsCheckers).distinctBy { it.desc() })
         }
     }
-    // Detect conflicts when composed
-    LaunchedEffect(Unit) { checkPriorityConflict() }
+    // Detect priority conflicts when recomposed
+    LaunchedEffect(Unit) {
+        checkPriorityConflict()
+    }
+
+    // Detect priority conflicts when this screen regains focus, e.g., after closing a popup
+    val view = LocalView.current
+    // This means "call the latest version of this `checkPriorityConflict`"
+    //   as it captures `ctx` and `priorityConflicts`, it's the Compose-correct pattern
+    val currentCheckPriorityConflict by rememberUpdatedState {
+        checkPriorityConflict()
+    }
+    DisposableEffect(view) {
+        val listener = ViewTreeObserver.OnWindowFocusChangeListener { hasFocus ->
+            if (hasFocus) {
+                currentCheckPriorityConflict()
+            }
+        }
+
+        val observer = view.viewTreeObserver
+        observer.addOnWindowFocusChangeListener(listener)
+
+        onDispose {
+            if (observer.isAlive) {
+                observer.removeOnWindowFocusChangeListener(listener)
+            }
+        }
+    }
 
     // Detect conflicts when clicking the "Test" button, show a popup warning if there are conflicts.
     val priorityConflictTrigger = remember { mutableStateOf(false) }
