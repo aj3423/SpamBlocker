@@ -50,7 +50,7 @@
     <string name="backup_missing_category">این تنظیم در فایل پشتیبان وجود ندارد و قابل بازیابی نیست.</string>
     <string name="warning_priority_conflict">
         <![CDATA[
-        <highlight>قواعد فهرست سفید</highlight> و <error>قواعد فهرست سیاه</error> نباید مقدار اولویت یکسانی داشته باشند<br>
+        <highlight>قواعد فهرست سفید</highlight> و <error>قواعد فهرست سیاه</error> نباید اولویت یکسانی داشته باشند<br>
         <br>
         قواعد متعارض:
         ]]>

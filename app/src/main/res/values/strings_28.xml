@@ -50,7 +50,7 @@
     <string name="backup_missing_category">This setting is missing from the backup file and cannot be restored.</string>
     <string name="warning_priority_conflict">
         <![CDATA[
-        <highlight>Whitelist</highlight> and <error>blacklist</error> rules shouldn\'t have the same priority value<br>
+        <highlight>Whitelist</highlight> and <error>blacklist</error> rules shouldn\'t have the same priority<br>
         <br>
         Conflicting rules:
         ]]>

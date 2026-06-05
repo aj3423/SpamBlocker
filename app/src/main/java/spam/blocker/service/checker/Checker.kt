@@ -79,13 +79,12 @@ class CheckContext(
 interface IChecker {
     fun priority(): Int
     fun check(cCtx: CheckContext): ICheckResult?
-    // For detecting if there are priority conflicts in the current setup.
-    // Return value:
-    //  - true: whitelist
-    //  - false: blacklist
-    //  - null: unknown, e.g. API query
-    fun listType(): Boolean? = true
     fun desc(): AnnotatedString
+
+    // These functions are only for detecting priority conflicts in the current setup.
+    fun listType(): Boolean? = true // true: whitelist, false: blacklist, null: unknown(e.g. API query)
+    fun isConfigEnabledForCall(): Boolean
+    fun isConfigEnabledForSms(): Boolean
 
     fun logChecking(ctx: Context, logger: ILogger?) {
         logger?.debug(
@@ -214,6 +213,9 @@ class Checker { // for namespace only
     class PassedByDefault(
         private val ctx: Context,
     ) : IChecker {
+        override fun isConfigEnabledForCall() = true
+        override fun isConfigEnabledForSms() = true
+
         override fun desc() =
             ctx.getString(R.string.passed_by_default).A(G.palette.infoBlue)
 
@@ -232,6 +234,9 @@ class Checker { // for namespace only
     private class EmergencyCall(
         private val ctx: Context,
     ) : IChecker {
+        override fun isConfigEnabledForCall() = true
+        override fun isConfigEnabledForSms() = false
+
         override fun desc() =
             ctx.getString(R.string.emergency_call).A(G.palette.infoBlue)
 
@@ -271,6 +276,9 @@ class Checker { // for namespace only
     private class EmergencySituation(
         private val ctx: Context,
     ) : IChecker {
+        override fun isConfigEnabledForCall() = spf.EmergencySituation(ctx).isEnabled
+        override fun isConfigEnabledForSms() = false
+
         override fun desc() =
             ctx.getString(R.string.emergency_situation).A(G.palette.infoBlue)
 
@@ -279,7 +287,6 @@ class Checker { // for namespace only
         }
 
         override fun check(cCtx: CheckContext): ICheckResult? {
-            val C = G.palette
             val spf = spf.EmergencySituation(ctx)
             if (!spf.isEnabled)
                 return null
@@ -306,6 +313,8 @@ class Checker { // for namespace only
     private class STIR(
         private val ctx: Context,
     ) : IChecker {
+        override fun isConfigEnabledForCall() = spf.Stir(ctx).isEnabled
+        override fun isConfigEnabledForSms() = false
         override fun listType() = false
 
         override fun desc() =
@@ -363,6 +372,8 @@ class Checker { // for namespace only
     private class SpamDB(
         private val ctx: Context,
     ) : IChecker {
+        override fun isConfigEnabledForCall() = spf.SpamDB(ctx).isEnabled
+        override fun isConfigEnabledForSms() = isConfigEnabledForCall()
         override fun listType() = false
 
         override fun desc() =
@@ -373,13 +384,10 @@ class Checker { // for namespace only
         }
 
         override fun check(cCtx: CheckContext): ICheckResult? {
-            val C = G.palette
-
             val rawNumber = cCtx.rawNumber
             val logger = cCtx.logger
 
-            val enabled = spf.SpamDB(ctx).isEnabled
-            if (!enabled)
+            if (!isConfigEnabledForCall())
                 return null
 
             logChecking(ctx, logger)
@@ -420,6 +428,8 @@ class Checker { // for namespace only
     private class Contact(
         private val ctx: Context,
     ) : IChecker {
+        override fun isConfigEnabledForCall() = spf.Contact(ctx).isEnabled
+        override fun isConfigEnabledForSms() = isConfigEnabledForCall()
         override fun priority(): Int {
             return spf.Contact(ctx).lenientPriority
         }
@@ -428,14 +438,10 @@ class Checker { // for namespace only
             ctx.getString(R.string.contact).A(G.palette.infoBlue)
 
         override fun check(cCtx: CheckContext): ICheckResult? {
-            val C = G.palette
-
             val rawNumber = cCtx.rawNumber
             val logger = cCtx.logger
 
-            val spf = spf.Contact(ctx)
-
-            if (!spf.isEnabled or !Permission.contacts.isGranted) {
+            if (!isConfigEnabledForCall() || !Permission.contacts.isGranted) {
                 return null
             }
 
@@ -457,6 +463,11 @@ class Checker { // for namespace only
     private class NonContact(
         private val ctx: Context,
     ) : IChecker {
+        override fun isConfigEnabledForCall(): Boolean {
+            val spf = spf.Contact(ctx)
+            return spf.isEnabled && spf.isStrict
+        }
+        override fun isConfigEnabledForSms() = isConfigEnabledForCall()
         override fun listType() = false
 
         override fun desc() =
@@ -467,17 +478,13 @@ class Checker { // for namespace only
         }
 
         override fun check(cCtx: CheckContext): ICheckResult? {
-            val C = G.palette
-
             val rawNumber = cCtx.rawNumber
             val logger = cCtx.logger
 
-            val spf = spf.Contact(ctx)
-
-            if (!spf.isEnabled or !Permission.contacts.isGranted) {
+            if (!Permission.contacts.isGranted) {
                 return null
             }
-            if (!spf.isStrict) {
+            if (!isConfigEnabledForCall()) {
                 return null
             }
 
@@ -498,6 +505,9 @@ class Checker { // for namespace only
     private class RepeatedCall(
         private val ctx: Context,
     ) : IChecker {
+        override fun isConfigEnabledForCall() = spf.RepeatedCall(ctx).isEnabled
+        override fun isConfigEnabledForSms() = false
+
         override fun priority(): Int {
             return 10
         }
@@ -588,6 +598,9 @@ class Checker { // for namespace only
     private class Dialed(
         private val ctx: Context,
     ) : IChecker {
+        override fun isConfigEnabledForCall() = spf.Dialed(ctx).isEnabled
+        override fun isConfigEnabledForSms() = false
+
         override fun priority(): Int {
             return 10
         }
@@ -648,6 +661,9 @@ class Checker { // for namespace only
     private class Answered(
         private val ctx: Context,
     ) : IChecker {
+        override fun isConfigEnabledForCall() = spf.Answered(ctx).isEnabled
+        override fun isConfigEnabledForSms() = false
+
         override fun priority(): Int {
             return 10
         }
@@ -698,6 +714,9 @@ class Checker { // for namespace only
     private class OffTime(
         private val ctx: Context,
     ) : IChecker {
+        override fun isConfigEnabledForCall() = spf.OffTime(ctx).isEnabled
+        override fun isConfigEnabledForSms() = isConfigEnabledForCall()
+
         override fun priority(): Int {
             return 10
         }
@@ -706,7 +725,6 @@ class Checker { // for namespace only
             ctx.getString(R.string.off_time).A(G.palette.infoBlue)
 
         override fun check(cCtx: CheckContext): ICheckResult? {
-            val C = G.palette
 
             val logger = cCtx.logger
 
@@ -745,6 +763,10 @@ class Checker { // for namespace only
     private class RecentApp(
         private val ctx: Context,
     ) : IChecker {
+        private val enabledApps by lazy { spf.RecentApps(ctx).getList() }
+        override fun isConfigEnabledForCall() = enabledApps.isNotEmpty()
+        override fun isConfigEnabledForSms() = false
+
         override fun priority(): Int {
             return 10
         }
@@ -753,18 +775,15 @@ class Checker { // for namespace only
             ctx.getString(R.string.recent_apps).A(G.palette.infoBlue)
 
         override fun check(cCtx: CheckContext): ICheckResult? {
-            val C = G.palette
-
             val logger = cCtx.logger
 
-            val spf = spf.RecentApps(ctx)
-            val enabledApps = spf.getList()
             if (enabledApps.isEmpty()) {
                 return null
             }
 
             logChecking(ctx, logger)
 
+            val spf = spf.RecentApps(ctx)
             val duration = spf.inXMin // in minutes
 
             // To avoid querying db for each app, aggregate them by duration, like:
@@ -801,6 +820,10 @@ class Checker { // for namespace only
     private class MeetingMode(
         private val ctx: Context,
     ) : IChecker {
+        private val appList by lazy { spf.MeetingMode(ctx).getList() }
+        override fun isConfigEnabledForCall() = appList.isNotEmpty()
+        override fun isConfigEnabledForSms() = appList.isNotEmpty()
+
         override fun listType() = false
 
         override fun desc() =
@@ -812,22 +835,17 @@ class Checker { // for namespace only
         }
 
         override fun check(cCtx: CheckContext): ICheckResult? {
-            val C = G.palette
-
             val logger = cCtx.logger
 
-            val spf = spf.MeetingMode(ctx)
-
-            val appInfos = spf.getList()
-            if (appInfos.isEmpty())
+            if (appList.isEmpty())
                 return null
 
             logChecking(ctx, logger)
 
-            val eventsMap = getAppsEvents(ctx, appInfos.map { it.pkgName }.toSet())
+            val eventsMap = getAppsEvents(ctx, appList.map { it.pkgName }.toSet())
 
             // Check if any app is running a foreground service
-            val appInMeeting = appInfos.firstOrNull {
+            val appInMeeting = appList.firstOrNull {
                 val runningServiceNames = listRunningForegroundServiceNames(
                     appEvents = eventsMap[it.pkgName],
                 )
@@ -853,6 +871,18 @@ class Checker { // for namespace only
         private val ctx: Context,
         private val forType: Int, // for call or sms
     ) : IChecker {
+        override fun isConfigEnabledForCall() = callApis.isNotEmpty()
+        override fun isConfigEnabledForSms() = smsApis.isNotEmpty()
+        private val allApis by lazy {
+            G.apiQueryVM.table.listAll(ctx).filter { it.enabled }
+        }
+        private val callApis by lazy {
+            allApis.filter { it.actions.firstOrNull() is InterceptCall }
+        }
+        private val smsApis by lazy {
+            allApis.filter { it.actions.firstOrNull() is InterceptSms }
+        }
+
         override fun listType() = null
 
         override fun desc() =
@@ -863,21 +893,13 @@ class Checker { // for namespace only
         }
 
         override fun check(cCtx: CheckContext): ICheckResult? {
-            val C = G.palette
-
             val rawNumber = cCtx.rawNumber
             val logger = cCtx.logger
 
-            val apis = G.apiQueryVM.table.listAll(ctx)
-                .filter { it.enabled }
-                .filter { // check if the first action is InterceptCall/InterceptSms
-                    0 == it.actions.indexOfFirst { act ->
-                        if (forType == Def.ForNumber)
-                            act is InterceptCall
-                        else
-                            act is InterceptSms
-                    }
-                }
+            val apis = if (forType == Def.ForNumber)
+                callApis
+            else
+                smsApis
 
             if (apis.isEmpty())
                 return null
@@ -969,6 +991,8 @@ class Checker { // for namespace only
         var rule: RegexRule,
         val labelId: Int
     ) : IChecker {
+        override fun isConfigEnabledForCall() = rule.flags.hasFlag(Def.FLAG_FOR_CALL)
+        override fun isConfigEnabledForSms() = rule.flags.hasFlag(Def.FLAG_FOR_SMS)
         override fun listType() = rule.isWhitelist()
         override fun priority(): Int {
             return rule.priority
@@ -983,11 +1007,14 @@ class Checker { // for namespace only
         }
 
         open fun isEnabled(cCtx: CheckContext): Boolean {
-            // 0. check if the rule is enabled (has FLAG_FOR_CALL for call, or FLAG_FOR_SMS for sms)
+            // 0. check if the rule is enabled for call/sms
             val isForSMS = cCtx.smsContent != null
-            if (!rule.flags.hasFlag(if (isForSMS) Def.FLAG_FOR_SMS else Def.FLAG_FOR_CALL)) {
+            if (isForSMS && !isConfigEnabledForSms()) // for sms
                 return false
-            }
+
+            if (!isForSMS && !isConfigEnabledForCall()) // for call
+                return false
+
             // 1. check time schedule
             if (TimeSchedule.dissatisfyNow(rule.schedule)) {
 //                cCtx.logger?.debug(ctx.getString(R.string.outside_time_schedule))
@@ -1015,7 +1042,6 @@ class Checker { // for namespace only
         rule: RegexRule,
     ) : RegexRuleChecker(ctx, rule, R.string.number_rule) {
         override fun check(cCtx: CheckContext): ICheckResult? {
-            val C = G.palette
 
             val rawNumber = cCtx.rawNumber
             val logger = cCtx.logger
@@ -1058,7 +1084,6 @@ class Checker { // for namespace only
         rule: RegexRule,
     ) : RegexRuleChecker(ctx, rule, R.string.caller_name_rule) {
         override fun check(cCtx: CheckContext): ICheckResult? {
-            val C = G.palette
 
             val logger = cCtx.logger
 
@@ -1103,7 +1128,6 @@ class Checker { // for namespace only
         rule: RegexRule,
     ) : RegexRuleChecker(ctx, rule, R.string.geolocation_rule) {
         override fun check(cCtx: CheckContext): ICheckResult? {
-            val C = G.palette
 
             if (!Permission.phoneState.isGranted) {
                 return null
@@ -1150,7 +1174,6 @@ class Checker { // for namespace only
         rule: RegexRule,
     ) : RegexRuleChecker(ctx, rule, R.string.carrier_rule) {
         override fun check(cCtx: CheckContext): ICheckResult? {
-            val C = G.palette
 
             if (!isEnabled(cCtx)) {
                 return null
@@ -1195,7 +1218,6 @@ class Checker { // for namespace only
         rule: RegexRule
     ) : RegexRuleChecker(ctx, rule, R.string.contact_rule) {
         override fun check(cCtx: CheckContext): ICheckResult? {
-            val C = G.palette
 
             val rawNumber = cCtx.rawNumber
             val logger = cCtx.logger
@@ -1243,7 +1265,6 @@ class Checker { // for namespace only
         rule: RegexRule
     ) : RegexRuleChecker(ctx, rule, R.string.contact_group) {
         override fun check(cCtx: CheckContext): ICheckResult? {
-            val C = G.palette
 
             val rawNumber = cCtx.rawNumber
             val logger = cCtx.logger
@@ -1292,7 +1313,6 @@ class Checker { // for namespace only
         rule: RegexRule
     ) : RegexRuleChecker(ctx, rule, R.string.contact_prefix) {
         override fun check(cCtx: CheckContext): ICheckResult? {
-            val C = G.palette
 
             val rawNumber = cCtx.rawNumber
             val logger = cCtx.logger
@@ -1347,7 +1367,6 @@ class Checker { // for namespace only
         rule: RegexRule
     ) : RegexRuleChecker(ctx, rule, R.string.database_prefix) {
         override fun check(cCtx: CheckContext): ICheckResult? {
-            val C = G.palette
 
             val rawNumber = cCtx.rawNumber
             val logger = cCtx.logger
@@ -1410,7 +1429,6 @@ class Checker { // for namespace only
         }
 
         override fun check(cCtx: CheckContext): ICheckResult? {
-            val C = G.palette
 
             val rawNumber = cCtx.rawNumber
             val smsContent = cCtx.smsContent!!
@@ -1473,6 +1491,11 @@ class Checker { // for namespace only
     private class PushAlert(
         private val ctx: Context,
     ) : IChecker {
+        override fun isConfigEnabledForCall() = PushAlertTable.listAll(ctx).any {
+            it.enabled && it.isValid()
+        }
+        override fun isConfigEnabledForSms() = false
+
         override fun priority(): Int {
             return 10
         }
@@ -1480,7 +1503,6 @@ class Checker { // for namespace only
         override fun desc() = ctx.getString(R.string.push_alert).A(G.palette.infoBlue)
 
         override fun check(cCtx: CheckContext): ICheckResult? {
-            val C = G.palette
 
             if (!Permission.notificationAccess.isGranted) {
                 return null
@@ -1530,6 +1552,9 @@ class Checker { // for namespace only
     private class SmsAlert(
         private val ctx: Context,
     ) : IChecker {
+        override fun isConfigEnabledForCall() = spf.SmsAlert(ctx).isEnabled
+        override fun isConfigEnabledForSms() = false
+
         override fun priority(): Int {
             return 10
         }
@@ -1537,8 +1562,6 @@ class Checker { // for namespace only
         override fun desc() = ctx.getString(R.string.sms_alert).A()
 
         override fun check(cCtx: CheckContext): ICheckResult? {
-            val C = G.palette
-
             val logger = cCtx.logger
 
             val spf = spf.SmsAlert(ctx)
@@ -1568,6 +1591,8 @@ class Checker { // for namespace only
     private class SmsBomb(
         private val ctx: Context,
     ) : IChecker {
+        override fun isConfigEnabledForCall() = spf.SmsBomb(ctx).isEnabled
+        override fun isConfigEnabledForSms() = false
         override fun listType() = false
         override fun desc() = ctx.getString(R.string.sms_bomb).A(G.palette.infoBlue)
 
@@ -1576,7 +1601,6 @@ class Checker { // for namespace only
         }
 
         override fun check(cCtx: CheckContext): ICheckResult? {
-            val C = G.palette
 
             val logger = cCtx.logger
 

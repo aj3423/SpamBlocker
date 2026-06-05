@@ -50,7 +50,7 @@
     <string name="backup_missing_category">Bu ayar yedekleme dosyasında eksik ve geri yüklenemez.</string>
     <string name="warning_priority_conflict">
         <![CDATA[
-        <highlight>Whitelist</highlight> ve <error>blacklist</error> kuralları aynı öncelik değerine sahip olmamalıdır<br>
+        <highlight>Whitelist</highlight> ve <error>blacklist</error> kuralları aynı önceliğe sahip olmamalıdır<br>
         <br>
         Çakışan kurallar:
         ]]>

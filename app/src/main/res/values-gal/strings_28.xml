@@ -50,7 +50,7 @@
     <string name="backup_missing_category">Esta configuración falta no ficheiro de copia de seguridade e non se pode restaurar.</string>
     <string name="warning_priority_conflict">
         <![CDATA[
-        <highlight>As regras da lista branca</highlight> e as da <error>lista negra</error> non deben ter o mesmo valor de prioridade<br>
+        <highlight>As regras da lista branca</highlight> e as da <error>lista negra</error> non deben ter a mesma prioridade<br>
         <br>
         Regras en conflito:
         ]]>

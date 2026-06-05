@@ -50,7 +50,7 @@
     <string name="backup_missing_category">Diese Einstellung fehlt in der Sicherungsdatei und kann nicht wiederhergestellt werden.</string>
     <string name="warning_priority_conflict">
         <![CDATA[
-        <highlight>Whitelist</highlight>- und <error>Blacklist-Regeln</error> sollten nicht denselben Prioritätswert haben<br>
+        <highlight>Whitelist</highlight>- und <error>Blacklist-Regeln</error> sollten nicht dieselbe Priorität haben<br>
         <br>
         Konfliktierende Regeln:
         ]]>

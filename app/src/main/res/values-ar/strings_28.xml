@@ -50,7 +50,7 @@
     <string name="backup_missing_category">هذا الإعداد مفقود من ملف النسخ الاحتياطي ولا يمكن استعادته.</string>
     <string name="warning_priority_conflict">
         <![CDATA[
-        <highlight>قواعد القائمة البيضاء</highlight> و<error>قواعد القائمة السوداء</error> يجب ألا تكون لها نفس قيمة الأولوية<br>
+        <highlight>قواعد القائمة البيضاء</highlight> و<error>قواعد القائمة السوداء</error> يجب ألا تكون لها نفس الأولوية<br>
         <br>
         القواعد المتعارضة:
         ]]>

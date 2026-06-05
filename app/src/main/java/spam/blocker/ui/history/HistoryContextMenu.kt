@@ -18,7 +18,6 @@ import spam.blocker.R
 import spam.blocker.db.HistoryRecord
 import spam.blocker.db.RegexRule
 import spam.blocker.db.SpamTable
-import spam.blocker.db.defaultRegexRuleByType
 import spam.blocker.def.Def
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.TestDialog
@@ -29,7 +28,6 @@ import spam.blocker.ui.widgets.IMenuItem
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.util.Clipboard
-import spam.blocker.util.Util
 
 
 @SuppressLint("LocalContextGetResourceValueCall")

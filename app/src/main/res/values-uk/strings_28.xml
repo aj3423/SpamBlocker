@@ -50,7 +50,7 @@
     <string name="backup_missing_category">Цей параметр відсутній у файлі резервної копії і не може бути відновлений.</string>
     <string name="warning_priority_conflict">
         <![CDATA[
-        <highlight>Правила білого списку</highlight> і <error>правила чорного списку</error> не повинні мати однакове значення пріоритету<br>
+        <highlight>Правила білого списку</highlight> і <error>правила чорного списку</error> не повинні мати однаковий пріоритет<br>
         <br>
         Конфліктні правила:
         ]]>

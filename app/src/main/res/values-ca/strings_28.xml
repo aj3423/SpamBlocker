@@ -50,7 +50,7 @@
     <string name="backup_missing_category">Aquesta configuració falta al fitxer de còpia de seguretat i no es pot restaurar.</string>
     <string name="warning_priority_conflict">
         <![CDATA[
-        <highlight>Les regles de la llista blanca</highlight> i les <error>regles de la llista negra</error> no han de tenir el mateix valor de prioritat<br>
+        <highlight>Les regles de la llista blanca</highlight> i les <error>regles de la llista negra</error> no han de tenir la mateixa prioritat<br>
         <br>
         Regles en conflicte:
         ]]>

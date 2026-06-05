@@ -50,7 +50,7 @@
     <string name="backup_missing_category">Ce paramètre est absent du fichier de sauvegarde et ne peut pas être restauré.</string>
     <string name="warning_priority_conflict">
         <![CDATA[
-        <highlight>Les règles de liste blanche</highlight> et de <error>liste noire</error> ne doivent pas avoir la même valeur de priorité<br>
+        <highlight>Les règles de liste blanche</highlight> et de <error>liste noire</error> ne doivent pas avoir la même priorité<br>
         <br>
         Règles en conflit :
         ]]>

@@ -1,5 +1,6 @@
 package spam.blocker.ui.setting
 
+import android.view.ViewTreeObserver
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -8,7 +9,6 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.text.appendInlineContent
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
@@ -20,7 +20,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -28,21 +27,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import spam.blocker.G
 import spam.blocker.R
-import spam.blocker.def.Def.FLAG_FOR_CALL
-import spam.blocker.def.Def.FLAG_FOR_SMS
-import spam.blocker.service.checker.Checker
-import spam.blocker.service.checker.Checker.Companion.defaultCallCheckers
-import spam.blocker.service.checker.Checker.Companion.defaultSmsCheckers
 import spam.blocker.service.checker.IChecker
-import spam.blocker.service.checker.findConflicts
 import spam.blocker.ui.M
-import spam.blocker.ui.priorityInlineMap
 import spam.blocker.ui.setting.api.ApiHeader
 import spam.blocker.ui.setting.api.ApiList
 import spam.blocker.ui.setting.api.ApiQueryPresets
@@ -82,21 +73,15 @@ import spam.blocker.ui.widgets.BalloonQuestionMark
 import spam.blocker.ui.widgets.Fab
 import spam.blocker.ui.widgets.FabWrapper
 import spam.blocker.ui.widgets.GreyIcon16
-import spam.blocker.ui.widgets.HtmlText
 import spam.blocker.ui.widgets.NormalColumnScrollbar
-import spam.blocker.ui.widgets.PopupDialog
-import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.SearchBox
 import spam.blocker.ui.widgets.Section
 import spam.blocker.ui.widgets.Str
-import spam.blocker.util.A
 import spam.blocker.util.Lambda
 import spam.blocker.util.Util.isFreshInstall
-import spam.blocker.util.hasFlag
 import spam.blocker.util.spf
-import android.view.ViewTreeObserver
 
 const val SettingRowMinHeight = 40
 
@@ -117,38 +102,24 @@ fun SettingScreen() {
     }
 
     val priorityConflicts = remember { mutableStateListOf<IChecker>() }
-    fun checkPriorityConflict() {
-        val callCheckers = defaultCallCheckers(ctx)
-            // ugly workaround, remove regex rules that are not enabled for call
-            .filter { if(it is Checker.RegexRuleChecker) it.rule.flags.hasFlag(FLAG_FOR_CALL) else true }
-            .findConflicts()
 
-        val smsCheckers = defaultSmsCheckers(ctx)
-            .filter { if(it is Checker.RegexRuleChecker) it.rule.flags.hasFlag(FLAG_FOR_SMS) else true }
-            .findConflicts()
-
+    fun checkConflicts() {
         priorityConflicts.apply {
             clear()
-
-            addAll((callCheckers + smsCheckers).distinctBy { it.desc() })
+            addAll(detectConflictCheckers(ctx))
         }
     }
-    // Detect priority conflicts when recomposed
+    // Detect priority conflicts when recomposed (e.g. on tab switching)
     LaunchedEffect(Unit) {
-        checkPriorityConflict()
+        checkConflicts()
     }
 
-    // Detect priority conflicts when this screen regains focus, e.g., after closing a popup
+    // Detect priority conflicts when this screen regains focus (e.g., after closing a popup)
     val view = LocalView.current
-    // This means "call the latest version of this `checkPriorityConflict`"
-    //   as it captures `ctx` and `priorityConflicts`, it's the Compose-correct pattern
-    val currentCheckPriorityConflict by rememberUpdatedState {
-        checkPriorityConflict()
-    }
     DisposableEffect(view) {
         val listener = ViewTreeObserver.OnWindowFocusChangeListener { hasFocus ->
             if (hasFocus) {
-                currentCheckPriorityConflict()
+                checkConflicts()
             }
         }
 
@@ -163,40 +134,8 @@ fun SettingScreen() {
     }
 
     // Detect conflicts when clicking the "Test" button, show a popup warning if there are conflicts.
-    val priorityConflictTrigger = remember { mutableStateOf(false) }
-    if (priorityConflictTrigger.value) {
-        PopupDialog(
-            trigger = priorityConflictTrigger,
-            icon = { ResIcon(R.drawable.ic_warning, color = Color.Unspecified) },
-        ) {
-            Column {
-                HtmlText(Str(R.string.warning_priority_conflict), modifier = M.padding(bottom = 8.dp))
-                priorityConflicts.toList().sortedBy { it.priority() }.forEach {
-                    Text(
-                        text = buildAnnotatedString {
-                            appendInlineContent(id = "priority")
-
-                            append(if(it.priority() == Int.MAX_VALUE) {
-                                Str(R.string.max).A(G.palette.priority)
-                            } else {
-                                it.priority().toString().A(G.palette.priority)
-                            })
-
-                            append(" ")
-
-                            append(
-                                if (it.listType() == true)
-                                    it.desc().text.A(C.teal200) // whitelist
-                                else //
-                                    it.desc().text.A(C.error) // blacklist
-                            )
-                        },
-                        inlineContent = priorityInlineMap()
-                    )
-                }
-            }
-        }
-    }
+    val conflictTrigger = remember { mutableStateOf(false) }
+    PriorityConflictDialog(trigger = conflictTrigger, conflicts = priorityConflicts)
 
     // Show text "Testing" on the testing tube icon, and hide this text once it's clicked.
     val spf = spf.Global(ctx)
@@ -215,14 +154,14 @@ fun SettingScreen() {
                 bgColor = if (priorityConflicts.isEmpty()) C.teal200 else C.warning,
                 modifier = positionModifier
             ) {
-                checkPriorityConflict()
+                checkConflicts()
                 if (priorityConflicts.isEmpty()) {
                     testingTrigger.value = true
 
                     spf.isTestIconClicked = true
                     alsoShowTestButtonLabel = false
                 } else {
-                    priorityConflictTrigger.value = true
+                    conflictTrigger.value = true
                 }
             }
         }
