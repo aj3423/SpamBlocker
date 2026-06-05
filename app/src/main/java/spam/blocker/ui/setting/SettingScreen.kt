@@ -31,6 +31,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import spam.blocker.G
 import spam.blocker.R
+import spam.blocker.def.Def.FLAG_FOR_CALL
+import spam.blocker.def.Def.FLAG_FOR_SMS
+import spam.blocker.service.checker.Checker
 import spam.blocker.service.checker.Checker.Companion.defaultCallCheckers
 import spam.blocker.service.checker.Checker.Companion.defaultSmsCheckers
 import spam.blocker.service.checker.IChecker
@@ -88,6 +91,8 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.util.A
 import spam.blocker.util.Lambda
 import spam.blocker.util.Util.isFreshInstall
+import spam.blocker.util.hasFlag
+import spam.blocker.util.logi
 import spam.blocker.util.spf
 
 const val SettingRowMinHeight = 40
@@ -110,11 +115,19 @@ fun SettingScreen() {
 
     val priorityConflicts = remember { mutableStateListOf<IChecker>() }
     fun checkPriorityConflict() {
-        val checkers = defaultCallCheckers(ctx).findConflicts() + defaultSmsCheckers(ctx).findConflicts()
+        val callCheckers = defaultCallCheckers(ctx)
+            // ugly workaround, remove regex rules that are not enabled for call
+            .filter { if(it is Checker.RegexRuleChecker) it.rule.flags.hasFlag(FLAG_FOR_CALL) else true }
+            .findConflicts()
+
+        val smsCheckers = defaultSmsCheckers(ctx)
+            .filter { if(it is Checker.RegexRuleChecker) it.rule.flags.hasFlag(FLAG_FOR_SMS) else true }
+            .findConflicts()
+
         priorityConflicts.apply {
             clear()
 
-            addAll(checkers.distinctBy { it.desc() })
+            addAll((callCheckers + smsCheckers).distinctBy { it.desc() })
         }
     }
     // Detect conflicts when composed
@@ -142,7 +155,12 @@ fun SettingScreen() {
 
                             append(" ")
 
-                            append(it.desc())
+                            append(
+                                if (it.listType() == true)
+                                    it.desc().text.A(C.teal200) // whitelist
+                                else //
+                                    it.desc().text.A(C.error) // blacklist
+                            )
                         },
                         inlineContent = priorityInlineMap()
                     )

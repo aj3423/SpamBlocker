@@ -25,7 +25,6 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.Clipboard
 import spam.blocker.util.Lambda1
-import spam.blocker.util.logi
 
 
 data class FaqBox(
@@ -61,7 +60,6 @@ fun FAQ() {
                                 ctx.getString(R.string.ai_regex_prompt)
                             ),
                             onCustomLinkClick = { tagClicked ->
-                                logi("clicked : $tagClicked")
                                 when (tagClicked) {
                                     // Copy prompt to clipboard
                                     "copy" -> {
