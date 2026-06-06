@@ -1,0 +1,12 @@
+Breaking Change:
+- Emergency
+  The "STIR" option is removed, replaced by a "priority" box. To always block calls that fail STIR, just increase the STIR priority.
+  This change allows any kind of rule to override Emergency, not just STIR.
+
+Improvements:
+- Rule priority conflict detection
+  The floating tube(test) button turns orange when conflicts are detected
+- Configurable regex length limit, default: 1000 characters
+  Increase it to bypass the warning "Text too long, editing is disabled"
+  (Long-press a regex rule -> context menu -> settings)
+- History context menu item "Add to regex rule" becomes "Edit regex rule" when it already exists
