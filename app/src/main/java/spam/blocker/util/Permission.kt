@@ -213,42 +213,7 @@ object PermissionType {
             return Settings.System.canWrite(ctx)
         }
     }
-//    class ExactAlarm: LaunchByIntent() {
-//        override fun launcherIntent(ctx: Context): Intent {
-//            return if (Build.VERSION.SDK_INT >= Def.ANDROID_12) {
-//                Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM)
-//            } else {
-//                return Intent()
-//            }
-//        }
-//
-//        override fun check(ctx: Context): Boolean {
-//            val alarmManager = ctx.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-//
-//            // Check if the app can schedule exact alarms (Android 12+)
-//            return if (Build.VERSION.SDK_INT >= Def.ANDROID_12) {
-//                alarmManager.canScheduleExactAlarms()
-//            } else {
-//                true // Permission not required on Android 11 or below
-//            }
-//        }
-//    }
-//    class Accessibility: LaunchByIntent() {
-//        override fun launcherIntent(ctx: Context): Intent {
-//            return Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)
-//        }
-//        override fun check(ctx: Context): Boolean {
-//            return try {
-//                val enabled = Secure.getInt(
-//                    ctx.contentResolver,
-//                    Secure.ACCESSIBILITY_ENABLED
-//                )
-//                enabled != 0
-//            } catch (_: SettingNotFoundException) {
-//                false
-//            }
-//        }
-//    }
+
     // This permission should always be optional because "Optimized" also works, not necessarily to be "Unrestricted".
     class BatteryUnRestricted(
         override var descId: Int = R.string.perm_battery_unrestricted
@@ -323,8 +288,6 @@ object PermissionLauncher {
 
 object Permission {
     val callScreening = CallScreening()
-//    val fileRead = FileRead()
-//    val fileWrite = FileWrite()
     val contacts = Contacts()
     val receiveSMS = ReceiveSMS()
     val receiveMMS = ReceiveMMS()
@@ -342,8 +305,6 @@ object Permission {
     fun all(): List<Basic> {
         return listOf(
             callScreening,
-//            fileRead,
-//            fileWrite,
             contacts,
             receiveSMS,
             receiveMMS,

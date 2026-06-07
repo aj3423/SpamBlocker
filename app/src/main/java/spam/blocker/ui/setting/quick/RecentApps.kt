@@ -346,7 +346,7 @@ fun RecentApps() {
                 }
             }
 
-            if (enabledAppInfos.isEmpty()) {
+            if (!Permission.usageStats.isGranted || enabledAppInfos.isEmpty()) {
                 AppChooserIcon { granted ->
                     Permission.usageStats.isGranted = granted
                     if (granted)
