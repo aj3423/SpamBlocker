@@ -730,7 +730,7 @@ object Util {
     }
 
     fun isAppInForeground(ctx: Context, targetPackageName: String): Boolean {
-        val usageStatsManager = ctx.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager?
+        val usageStatsManager = ctx.getSystemService(Context.USAGE_STATS_SERVICE) as? UsageStatsManager?
             ?: return false // Usage stats service not available
 
         val now = System.currentTimeMillis()
@@ -757,8 +757,12 @@ object Util {
     }
 
     fun isSmsAppInForeground(ctx: Context) : Boolean {
-        val defaultSmsApp = Telephony.Sms.getDefaultSmsPackage(ctx)
-        return isAppInForeground(ctx, defaultSmsApp)
+        return try {
+            val defaultSmsApp = Telephony.Sms.getDefaultSmsPackage(ctx)
+            isAppInForeground(ctx, defaultSmsApp)
+        } catch (_: Exception) {
+            false
+        }
     }
 
     // List all foreground service names that have started but not stopped yet.
