@@ -275,6 +275,18 @@ object BotTable {
         cv.put(COLUMN_LAST_LOG_TIME, System.currentTimeMillis())
         db.update(Db.TABLE_BOT, cv, "$COLUMN_ID = $id", null)
     }
+    
+    fun clearAllLastLogs(ctx: Context): Int {
+        val db = Db.getInstance(ctx).writableDatabase
+
+        val cv = ContentValues().apply {
+            put(COLUMN_LAST_LOG, "")
+            put(COLUMN_LAST_LOG_TIME, 0L)
+        }
+
+        // Passing null for whereClause and whereArgs applies the update to ALL rows
+        return db.update(Db.TABLE_BOT, cv, null, null)
+    }
 
     fun deleteById(ctx: Context, id: Long): Boolean {
         val sql = "DELETE FROM ${Db.TABLE_BOT} WHERE $COLUMN_ID = $id"

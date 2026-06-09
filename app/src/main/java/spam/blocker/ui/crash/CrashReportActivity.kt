@@ -150,11 +150,7 @@ class CrashReportActivity : ComponentActivity() {
                                         SmsTable().clearAll(ctx)
 
                                         // Clear workflow lastLog
-                                        val bots = BotTable.listAll(ctx)
-                                        BotTable.clearAll(ctx)
-                                        bots.forEach { bot ->
-                                            BotTable.addRecordWithId(ctx, bot.copy(lastLog = "", lastLogTime = 0))
-                                        }
+                                        BotTable.clearAllLastLogs(ctx)
 
                                         clearTrigger.value = false
                                     }
