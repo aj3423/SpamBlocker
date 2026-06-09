@@ -266,8 +266,9 @@ open class HttpRequest(
 
                 aCtx.lastOutput = result?.echo
 
-//                val echo = Util.truncate(String(result?.echo ?: byteArrayOf()), limit = 1000)
-                val echo = String(result?.echo ?: byteArrayOf())
+                // The limit=1000 is necessary, otherwise the log can exceed 2Mb and crash sqlite,
+                //   and it slows down the api query, see: https://github.com/aj3423/SpamBlocker/issues/588
+                val echo = Util.truncate(String(result?.echo ?: byteArrayOf()), limit = 1000)
 
                 if (result?.statusCode in 200..299) {
                     aCtx.logger?.success("HTTP: <${result?.statusCode}>")
