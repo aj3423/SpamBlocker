@@ -67,4 +67,41 @@
     </string>
     <string name="clear_history">Очистить историю</string>
     <string name="tip_clear_history">Если приложение вылетает при запуске и не открывается, попробуйте очистить записи истории с помощью кнопки ниже.</string>
+    <string name="direct_verdict">Прямой вердикт</string>
+    <string name="rating_counts">Количество оценок</string>
+    <string name="strategy">Стратегия</string>
+    <string name="help_api_result_strategy">
+        <![CDATA[
+        <title>Прямой вердикт</title> <br>
+        Сервер возвращает явную категорию спама, что часто встречается в API-сервисах. Например: <br>
+        &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
+        <br>
+        <title>Количество оценок</title> <br>
+        Сервер возвращает количество положительных/отрицательных оценок, побеждает большее число.
+        ]]>
+    </string>
+    <string name="hint_positive_identifier_strategy_rating_score">Например: (\\d+) положительно</string>
+    <string name="hint_negative_identifier_strategy_rating_score">Например: (\\d+) отрицательно</string>
+    <string name="help_positive_identifier_strategy_rating_score">
+        <![CDATA[
+        Этот regex используется для извлечения количества положительных оценок, требуется захватывающая группа, то есть он должен содержать
+         <sample>(</sample> и <sample>)</sample> <br>
+        <br>
+        Например: <br>
+        &ensp; <sample>(\\d+) положительно</sample>
+        ]]>
+    </string>
+    <string name="help_negative_identifier_strategy_rating_score">
+        <![CDATA[
+        Этот regex используется для извлечения количества отрицательных оценок, требуется захватывающая группа, то есть он должен содержать
+         <sample>(</sample> и <sample>)</sample> <br>
+        <br>
+        Например: <br>
+        &ensp; <sample>(\\d+) отрицательно</sample>
+        ]]>
+    </string>
+    <string name="missing_brackets">В regex отсутствует захватывающая группа (), подробности см. во всплывающей подсказке.</string>
+    <string name="negative_identifier_matches">Совпадения отрицательного идентификатора</string>
+    <string name="positive_identifier_matches">Совпадения положительного идентификатора</string>
+    <string name="rating_count_template">Положительные оценки: %s, отрицательные оценки: %s</string>
 </resources>

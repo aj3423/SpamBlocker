@@ -67,4 +67,41 @@
     </string>
     <string name="clear_history">Verlauf löschen</string>
     <string name="tip_clear_history">Wenn die App beim Start abstürzt und sich nicht öffnen lässt, versuche, die Verlaufsprotokolle mit der Schaltfläche unten zu löschen.</string>
+    <string name="direct_verdict">Direkte Einstufung</string>
+    <string name="rating_counts">Anzahl der Bewertungen</string>
+    <string name="strategy">Strategie</string>
+    <string name="help_api_result_strategy">
+        <![CDATA[
+        <title>Direkte Einstufung</title> <br>
+        Der Server gibt eine explizite Spam-Kategorie zurück, was bei API-Diensten üblich ist. Zum Beispiel: <br>
+        &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
+        <br>
+        <title>Anzahl der Bewertungen</title> <br>
+        Der Server gibt die Anzahl positiver/negativer Bewertungen zurück; die höhere Anzahl gewinnt.
+        ]]>
+    </string>
+    <string name="hint_positive_identifier_strategy_rating_score">Z.B.: (\\d+) positiv</string>
+    <string name="hint_negative_identifier_strategy_rating_score">Z.B.: (\\d+) negativ</string>
+    <string name="help_positive_identifier_strategy_rating_score">
+        <![CDATA[
+        Dieses Regex dient zum Extrahieren der Anzahl positiver Bewertungen; eine Capture-Gruppe ist erforderlich, das heißt, es muss
+         <sample>(</sample> und <sample>)</sample> enthalten <br>
+        <br>
+        Zum Beispiel: <br>
+        &ensp; <sample>(\\d+) positiv</sample>
+        ]]>
+    </string>
+    <string name="help_negative_identifier_strategy_rating_score">
+        <![CDATA[
+        Dieses Regex dient zum Extrahieren der Anzahl negativer Bewertungen; eine Capture-Gruppe ist erforderlich, das heißt, es muss
+         <sample>(</sample> und <sample>)</sample> enthalten <br>
+        <br>
+        Zum Beispiel: <br>
+        &ensp; <sample>(\\d+) negativ</sample>
+        ]]>
+    </string>
+    <string name="missing_brackets">Im Regex fehlt eine Capture-Gruppe (), siehe Tooltip für Details.</string>
+    <string name="negative_identifier_matches">Treffer des negativen Identifiers</string>
+    <string name="positive_identifier_matches">Treffer des positiven Identifiers</string>
+    <string name="rating_count_template">Positive Bewertungen: %s, negative Bewertungen: %s</string>
 </resources>

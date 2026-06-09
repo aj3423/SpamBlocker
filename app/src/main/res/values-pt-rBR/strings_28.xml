@@ -67,4 +67,41 @@
     </string>
     <string name="clear_history">Limpar histórico</string>
     <string name="tip_clear_history">Se o app travar na inicialização e não abrir, tente limpar os registros do histórico usando o botão abaixo.</string>
+    <string name="direct_verdict">Veredito direto</string>
+    <string name="rating_counts">Contagem de avaliações</string>
+    <string name="strategy">Estratégia</string>
+    <string name="help_api_result_strategy">
+        <![CDATA[
+        <title>Veredito direto</title> <br>
+        O servidor retorna uma categoria de spam explícita, comum em serviços de API. Por exemplo: <br>
+        &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
+        <br>
+        <title>Contagem de avaliações</title> <br>
+        O servidor retorna a contagem de avaliações positivas/negativas; a contagem mais alta vence.
+        ]]>
+    </string>
+    <string name="hint_positive_identifier_strategy_rating_score">Ex.: (\\d+) positivo</string>
+    <string name="hint_negative_identifier_strategy_rating_score">Ex.: (\\d+) negativo</string>
+    <string name="help_positive_identifier_strategy_rating_score">
+        <![CDATA[
+        Esta regex serve para extrair a contagem de avaliações positivas; um grupo de captura é necessário, ou seja, deve conter
+         <sample>(</sample> e <sample>)</sample> <br>
+        <br>
+        Por exemplo: <br>
+        &ensp; <sample>(\\d+) positivo</sample>
+        ]]>
+    </string>
+    <string name="help_negative_identifier_strategy_rating_score">
+        <![CDATA[
+        Esta regex serve para extrair a contagem de avaliações negativas; um grupo de captura é necessário, ou seja, deve conter
+         <sample>(</sample> e <sample>)</sample> <br>
+        <br>
+        Por exemplo: <br>
+        &ensp; <sample>(\\d+) negativo</sample>
+        ]]>
+    </string>
+    <string name="missing_brackets">A regex não tem um grupo de captura (), veja a dica para detalhes.</string>
+    <string name="negative_identifier_matches">Correspondências do identificador negativo</string>
+    <string name="positive_identifier_matches">Correspondências do identificador positivo</string>
+    <string name="rating_count_template">Avaliações positivas: %s, avaliações negativas: %s</string>
 </resources>

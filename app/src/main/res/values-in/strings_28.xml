@@ -67,4 +67,41 @@
     </string>
     <string name="clear_history">Hapus Riwayat</string>
     <string name="tip_clear_history">Jika aplikasi crash saat startup dan tidak bisa dibuka, coba hapus log riwayat dengan tombol di bawah.</string>
+    <string name="direct_verdict">Putusan langsung</string>
+    <string name="rating_counts">Jumlah penilaian</string>
+    <string name="strategy">Strategi</string>
+    <string name="help_api_result_strategy">
+        <![CDATA[
+        <title>Putusan langsung</title> <br>
+        Server mengembalikan kategori spam yang eksplisit, umum pada layanan API. Contohnya: <br>
+        &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
+        <br>
+        <title>Jumlah penilaian</title> <br>
+        Server mengembalikan jumlah penilaian positif/negatif; jumlah yang lebih tinggi menang.
+        ]]>
+    </string>
+    <string name="hint_positive_identifier_strategy_rating_score">Contoh: (\\d+) positif</string>
+    <string name="hint_negative_identifier_strategy_rating_score">Contoh: (\\d+) negatif</string>
+    <string name="help_positive_identifier_strategy_rating_score">
+        <![CDATA[
+        Regex ini digunakan untuk mengekstrak jumlah penilaian positif; grup tangkapan diperlukan, artinya harus berisi
+         <sample>(</sample> dan <sample>)</sample> <br>
+        <br>
+        Contohnya: <br>
+        &ensp; <sample>(\\d+) positif</sample>
+        ]]>
+    </string>
+    <string name="help_negative_identifier_strategy_rating_score">
+        <![CDATA[
+        Regex ini digunakan untuk mengekstrak jumlah penilaian negatif; grup tangkapan diperlukan, artinya harus berisi
+         <sample>(</sample> dan <sample>)</sample> <br>
+        <br>
+        Contohnya: <br>
+        &ensp; <sample>(\\d+) negatif</sample>
+        ]]>
+    </string>
+    <string name="missing_brackets">Regex tidak memiliki grup tangkapan (), lihat tooltip untuk detailnya.</string>
+    <string name="negative_identifier_matches">Kecocokan pengenal negatif</string>
+    <string name="positive_identifier_matches">Kecocokan pengenal positif</string>
+    <string name="rating_count_template">Penilaian positif: %s, penilaian negatif: %s</string>
 </resources>

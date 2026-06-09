@@ -67,4 +67,41 @@
     </string>
     <string name="clear_history">נקה היסטוריה</string>
     <string name="tip_clear_history">אם האפליקציה קורסת בהפעלה ולא נפתחת, נסה לנקות את יומני ההיסטוריה באמצעות הכפתור למטה.</string>
+    <string name="direct_verdict">הכרעה ישירה</string>
+    <string name="rating_counts">ספירת דירוגים</string>
+    <string name="strategy">אסטרטגיה</string>
+    <string name="help_api_result_strategy">
+        <![CDATA[
+        <title>הכרעה ישירה</title> <br>
+        השרת מחזיר קטגוריית ספאם מפורשת, דבר נפוץ בשירותי API. לדוגמה: <br>
+        &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
+        <br>
+        <title>ספירת דירוגים</title> <br>
+        השרת מחזיר את ספירת הדירוגים החיוביים/השליליים, והספירה הגבוהה יותר מנצחת.
+        ]]>
+    </string>
+    <string name="hint_positive_identifier_strategy_rating_score">לדוגמה: (\\d+) חיובי</string>
+    <string name="hint_negative_identifier_strategy_rating_score">לדוגמה: (\\d+) שלילי</string>
+    <string name="help_positive_identifier_strategy_rating_score">
+        <![CDATA[
+        Regex זה מיועד לחילוץ ספירת הדירוגים החיוביים, נדרשת קבוצת לכידה, כלומר הוא צריך להכיל
+         <sample>(</sample> ו-<sample>)</sample> <br>
+        <br>
+        לדוגמה: <br>
+        &ensp; <sample>(\\d+) חיובי</sample>
+        ]]>
+    </string>
+    <string name="help_negative_identifier_strategy_rating_score">
+        <![CDATA[
+        Regex זה מיועד לחילוץ ספירת הדירוגים השליליים, נדרשת קבוצת לכידה, כלומר הוא צריך להכיל
+         <sample>(</sample> ו-<sample>)</sample> <br>
+        <br>
+        לדוגמה: <br>
+        &ensp; <sample>(\\d+) שלילי</sample>
+        ]]>
+    </string>
+    <string name="missing_brackets">ב-Regex חסרה קבוצת לכידה (), בדוק את ההסבר הקופץ לפרטים.</string>
+    <string name="negative_identifier_matches">התאמות מזהה שלילי</string>
+    <string name="positive_identifier_matches">התאמות מזהה חיובי</string>
+    <string name="rating_count_template">דירוגים חיוביים: %s, דירוגים שליליים: %s</string>
 </resources>

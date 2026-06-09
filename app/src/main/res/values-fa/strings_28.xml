@@ -67,4 +67,41 @@
     </string>
     <string name="clear_history">پاک کردن تاریخچه</string>
     <string name="tip_clear_history">اگر برنامه هنگام راه‌اندازی کرش می‌کند و باز نمی‌شود، با دکمه زیر گزارش‌های تاریخچه را پاک کنید.</string>
+    <string name="direct_verdict">نتیجه مستقیم</string>
+    <string name="rating_counts">تعداد امتیازها</string>
+    <string name="strategy">راهبرد</string>
+    <string name="help_api_result_strategy">
+        <![CDATA[
+        <title>نتیجه مستقیم</title> <br>
+        سرور یک دسته‌بندی صریح برای تماس مزاحم برمی‌گرداند که در سرویس‌های API رایج است. برای مثال: <br>
+        &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
+        <br>
+        <title>تعداد امتیازها</title> <br>
+        سرور تعداد امتیازهای مثبت/منفی را برمی‌گرداند و تعداد بیشتر برنده است.
+        ]]>
+    </string>
+    <string name="hint_positive_identifier_strategy_rating_score">مثال: (\\d+) مثبت</string>
+    <string name="hint_negative_identifier_strategy_rating_score">مثال: (\\d+) منفی</string>
+    <string name="help_positive_identifier_strategy_rating_score">
+        <![CDATA[
+        این regex برای استخراج تعداد امتیازهای مثبت است؛ وجود یک گروه ضبط لازم است، یعنی باید شامل
+         <sample>(</sample> و <sample>)</sample> باشد <br>
+        <br>
+        برای مثال: <br>
+        &ensp; <sample>(\\d+) مثبت</sample>
+        ]]>
+    </string>
+    <string name="help_negative_identifier_strategy_rating_score">
+        <![CDATA[
+        این regex برای استخراج تعداد امتیازهای منفی است؛ وجود یک گروه ضبط لازم است، یعنی باید شامل
+         <sample>(</sample> و <sample>)</sample> باشد <br>
+        <br>
+        برای مثال: <br>
+        &ensp; <sample>(\\d+) منفی</sample>
+        ]]>
+    </string>
+    <string name="missing_brackets">regex گروه ضبط () ندارد، برای جزئیات راهنما را بررسی کنید.</string>
+    <string name="negative_identifier_matches">تطابق‌های شناسه منفی</string>
+    <string name="positive_identifier_matches">تطابق‌های شناسه مثبت</string>
+    <string name="rating_count_template">امتیازهای مثبت: %s، امتیازهای منفی: %s</string>
 </resources>

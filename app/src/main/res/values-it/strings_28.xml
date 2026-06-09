@@ -67,4 +67,41 @@
     </string>
     <string name="clear_history">Cancella cronologia</string>
     <string name="tip_clear_history">Se l\'app va in crash all\'avvio e non si apre, prova a cancellare i log della cronologia usando il pulsante qui sotto.</string>
+    <string name="direct_verdict">Verdetto diretto</string>
+    <string name="rating_counts">Conteggio valutazioni</string>
+    <string name="strategy">Strategia</string>
+    <string name="help_api_result_strategy">
+        <![CDATA[
+        <title>Verdetto diretto</title> <br>
+        Il server restituisce una categoria spam esplicita, comune nei servizi API. Ad esempio: <br>
+        &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
+        <br>
+        <title>Conteggio valutazioni</title> <br>
+        Il server restituisce il conteggio delle valutazioni positive/negative; vince il conteggio più alto.
+        ]]>
+    </string>
+    <string name="hint_positive_identifier_strategy_rating_score">Es.: (\\d+) positivo</string>
+    <string name="hint_negative_identifier_strategy_rating_score">Es.: (\\d+) negativo</string>
+    <string name="help_positive_identifier_strategy_rating_score">
+        <![CDATA[
+        Questa regex serve a estrarre il conteggio delle valutazioni positive; è richiesto un gruppo di cattura, cioè deve contenere
+         <sample>(</sample> e <sample>)</sample> <br>
+        <br>
+        Ad esempio: <br>
+        &ensp; <sample>(\\d+) positivo</sample>
+        ]]>
+    </string>
+    <string name="help_negative_identifier_strategy_rating_score">
+        <![CDATA[
+        Questa regex serve a estrarre il conteggio delle valutazioni negative; è richiesto un gruppo di cattura, cioè deve contenere
+         <sample>(</sample> e <sample>)</sample> <br>
+        <br>
+        Ad esempio: <br>
+        &ensp; <sample>(\\d+) negativo</sample>
+        ]]>
+    </string>
+    <string name="missing_brackets">Alla regex manca un gruppo di cattura (), controlla il suggerimento per i dettagli.</string>
+    <string name="negative_identifier_matches">Corrispondenze identificatore negativo</string>
+    <string name="positive_identifier_matches">Corrispondenze identificatore positivo</string>
+    <string name="rating_count_template">Valutazioni positive: %s, valutazioni negative: %s</string>
 </resources>

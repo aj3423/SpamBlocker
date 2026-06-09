@@ -10,6 +10,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.sp
 import com.google.i18n.phonenumbers.PhoneNumberUtil
 import com.google.i18n.phonenumbers.Phonenumber
 import kotlinx.coroutines.CoroutineScope
@@ -47,6 +48,7 @@ import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.A
 import spam.blocker.util.AdbLogger
 import spam.blocker.util.CountryCode
+import spam.blocker.util.ILogger
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionWrapper
 import spam.blocker.util.PermissiveJson
@@ -454,11 +456,19 @@ data class ApiQueryResult(
 )
 
 @Serializable
+@SerialName("ParseQueryStrategy")
+enum class ApiResultStrategy {
+    DirectVerdict,
+    RatingScore
+}
+
+@Serializable
 @SerialName("ParseQueryResult")
 class ParseQueryResult(
-    var negativeSig: String = "", // positive signature
-    var negativeFlags: Int = Def.DefaultRegexFlags,
+    var strategy: ApiResultStrategy = ApiResultStrategy.DirectVerdict,
 
+    var negativeSig: String = "",
+    var negativeFlags: Int = Def.DefaultRegexFlags,
     var positiveSig: String = "",
     var positiveFlags: Int = Def.DefaultRegexFlags,
 
@@ -471,6 +481,66 @@ class ParseQueryResult(
     var categoryMapping: String = "",
 ) : IPermissiveAction {
 
+    // The server returns an explicit result that indicates whether it should be blocked or not.
+    //  E.g.
+    //    { "type": "ads", ...}
+    private fun makeDecisionDirectVerdict(ctx: Context, logger: ILogger?, html: String): Boolean? {
+        // 1. negative
+        val negativeOpts = Util.flagsToRegexOptions(negativeFlags)
+        if (!negativeSig.isEmpty()) {
+            if(negativeSig.toRegex(negativeOpts).containsMatchIn(html)) {
+                logger?.info(ctx.getString(R.string.negative_identifier_matches))
+                return false
+            }
+        }
+
+        // 2. positive
+        val positiveOpts = Util.flagsToRegexOptions(positiveFlags)
+        if (!positiveSig.isEmpty()) {
+            if(positiveSig.toRegex(positiveOpts).containsMatchIn(html)) {
+                logger?.info(ctx.getString(R.string.positive_identifier_matches))
+                return true
+            }
+        }
+        // undetermined
+        return null
+    }
+    // The server only returns two rating numbers, compare these numbers to decide whether to block it or not.
+    //  E.g.
+    //    12 positive, 24 negative
+    private fun makeDecisionRatingScore(ctx: Context, logger: ILogger?, html: String): Boolean? {
+        if (negativeSig.isEmpty() || positiveSig.isEmpty())
+            return null
+
+        val C = G.palette
+
+        // 1. negative
+        val negativeOpts = Util.flagsToRegexOptions(negativeFlags)
+        val m1 = negativeSig.toRegex(negativeOpts).find(html) ?: return null
+        val negativeRating = m1.groupValues[1].toIntOrNull() ?: return null
+
+        // 2. positive
+        val positiveOpts = Util.flagsToRegexOptions(positiveFlags)
+        val m2 = positiveSig.toRegex(positiveOpts).find(html) ?: return null
+        val positiveRating = m2.groupValues[1].toIntOrNull() ?: return null
+
+        logger?.info(ctx.getString(R.string.rating_count_template).formatAnnotated(
+            positiveRating.toString().A(C.disabled),
+            negativeRating.toString().A(C.disabled)
+        ))
+
+        return positiveRating > negativeRating
+    }
+    // return:
+    //  true: positive
+    //  false: negative
+    //  null: undetermined
+    private fun makeDecision(ctx: Context, logger: ILogger?, html: String): Boolean? {
+        return when(strategy) {
+            ApiResultStrategy.DirectVerdict -> makeDecisionDirectVerdict(ctx, logger, html)
+            ApiResultStrategy.RatingScore -> makeDecisionRatingScore(ctx, logger, html)
+        }
+    }
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val input = if (aCtx.lastOutput is ByteArray) {
             aCtx.lastOutput as ByteArray
@@ -483,24 +553,16 @@ class ParseQueryResult(
 
         aCtx.logger?.debug(label(ctx))
 
-        // 1. negative
-        val negativeOpts = Util.flagsToRegexOptions(negativeFlags)
-        val isNegative = if (negativeSig.isEmpty())
-            null
-        else
-            negativeSig.toRegex(negativeOpts).containsMatchIn(html)
 
-        // 2. positive
-        val positiveOpts = Util.flagsToRegexOptions(positiveFlags)
-        val isPositive = if (positiveSig.isEmpty())
-            null
-        else
-            positiveSig.toRegex(positiveOpts).containsMatchIn(html)
+        val decision = makeDecision(ctx, aCtx.logger, html)
+
+        val isPositive = decision == true
+        val isNegative = decision == false
+        val determined = decision != null
 
         var category: String? = null
         var comment: String? = null
 
-        val determined = isNegative == true || isPositive == true
 
         // 3. extract category
         if (determined) {
@@ -537,12 +599,12 @@ class ParseQueryResult(
         }
 
         // show log
-        if (isNegative == true) {
+        if (isNegative) {
             aCtx.logger?.error(
                 ctx.getString(R.string.identified_as_spam)
                     .format(category ?: "", comment ?: "")
             )
-        } else if (isPositive == true) {
+        } else if (isPositive) {
             aCtx.logger?.success(
                 ctx.getString(R.string.identified_as_valid)
                     .format(category ?: "", comment ?: "")
@@ -555,7 +617,7 @@ class ParseQueryResult(
         if (determined || aCtx.racingResult == null) {
             val result = ApiQueryResult(
                 determined = determined,
-                isSpam = isNegative == true,
+                isSpam = isNegative,
                 category = category,
                 comment = comment,
                 serverEcho = html,
@@ -616,17 +678,51 @@ class ParseQueryResult(
 
     @Composable
     override fun Options() {
+        val C = G.palette
+
+        // Strategy
+        var selectedStrategy by remember {
+            mutableIntStateOf(
+                when(strategy) {
+                    ApiResultStrategy.DirectVerdict -> 0
+                    ApiResultStrategy.RatingScore -> 1
+                }
+            )
+        }
+        LabeledRow(
+            R.string.strategy,
+            helpTooltip = Str(R.string.help_api_result_strategy)
+        ) {
+            ComboBox(
+                items = listOf(
+                    LabelItem(label = Str(R.string.direct_verdict)) {
+                        selectedStrategy = 0
+                        strategy = ApiResultStrategy.DirectVerdict
+                    },
+                    LabelItem(label = Str(R.string.rating_counts)) {
+                        selectedStrategy = 1
+                        strategy = ApiResultStrategy.RatingScore
+                    }
+                ),
+                selected = selectedStrategy,
+            )
+        }
+
         val negativeFlagsCopy = remember { mutableIntStateOf(negativeFlags) }
+        var negativeSigState by remember { mutableStateOf(negativeSig) }
         RegexInputBox(
-            regexStr = negativeSig,
+            regexStr = negativeSigState,
             label = { Text(Str(R.string.negative_identifier)) },
             leadingIcon = { GreyIcon18(R.drawable.ic_no) },
-            helpTooltipId = R.string.help_negative_identifier,
-            placeholder = { Placeholder(Str(R.string.hint_negative_identifier)) },
+            helpTooltipId = if(selectedStrategy == 0) R.string.help_negative_identifier else R.string.help_negative_identifier_strategy_rating_score,
+            placeholder = { Placeholder(Str(
+                if(selectedStrategy == 0) R.string.hint_negative_identifier else R.string.hint_negative_identifier_strategy_rating_score
+            )) },
             regexFlags = negativeFlagsCopy,
             onRegexStrChange = { newVal, hasError ->
                 if (!hasError) {
                     negativeSig = newVal
+                    negativeSigState = newVal
                 }
             },
             onFlagsChange = {
@@ -634,17 +730,24 @@ class ParseQueryResult(
                 negativeFlags = it
             }
         )
+        if (selectedStrategy == 1 && negativeSigState.isNotEmpty() && (!negativeSigState.contains("(") || !negativeSigState.contains(")"))) {
+            Text(Str(R.string.missing_brackets), color = C.error, fontSize = 14.sp)
+        }
         val positiveFlagsCopy = remember { mutableIntStateOf(positiveFlags) }
+        var positiveSigState by remember { mutableStateOf(positiveSig) }
         RegexInputBox(
-            regexStr = positiveSig,
+            regexStr = positiveSigState,
             label = { Text(Str(R.string.positive_identifier)) },
             leadingIcon = { GreyIcon18(R.drawable.ic_yes) },
-            helpTooltipId = R.string.help_positive_identifier,
-            placeholder = { Placeholder(Str(R.string.hint_positive_identifier)) },
+            helpTooltipId = if(selectedStrategy == 0) R.string.help_positive_identifier else R.string.help_positive_identifier_strategy_rating_score,
+            placeholder = { Placeholder(Str(
+                if(selectedStrategy == 0) R.string.hint_positive_identifier else R.string.help_positive_identifier_strategy_rating_score
+            )) },
             regexFlags = positiveFlagsCopy,
             onRegexStrChange = { newVal, hasError ->
                 if (!hasError) {
                     positiveSig = newVal
+                    positiveSigState = newVal
                 }
             },
             onFlagsChange = {
@@ -652,6 +755,9 @@ class ParseQueryResult(
                 positiveFlags = it
             }
         )
+        if (selectedStrategy == 1 && positiveSigState.isNotEmpty() && (!positiveSigState.contains("(") || !positiveSigState.contains(")"))) {
+            Text(Str(R.string.missing_brackets), color = C.error, fontSize = 14.sp)
+        }
         val reasonFlagsCopy = remember { mutableIntStateOf(categoryFlags) }
         RegexInputBox(
             regexStr = categorySig,

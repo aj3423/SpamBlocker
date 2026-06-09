@@ -127,7 +127,7 @@ val ApiQueryPresets by lazy {
             leadingIconId = R.drawable.ic_sms,
 
             onClick = { ctx ->
-                Launcher.openUrl(ctx, "https://github.com/aj3423/SpamBlocker/wiki/Check-SMS-using-remote-LLM")
+                Launcher.openUrl(ctx, "https://github.com/aj3423/SpamBlocker/wiki/Regex-Workflow-Templates#check-sms-using-google-gemini")
             }
         ),
     )

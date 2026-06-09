@@ -67,4 +67,41 @@
     </string>
     <string name="clear_history">مسح السجل</string>
     <string name="tip_clear_history">إذا تعطّل التطبيق عند التشغيل ولم يفتح، فجرّب مسح سجلات السجل باستخدام الزر أدناه.</string>
+    <string name="direct_verdict">الحكم المباشر</string>
+    <string name="rating_counts">عدد التقييمات</string>
+    <string name="strategy">الاستراتيجية</string>
+    <string name="help_api_result_strategy">
+        <![CDATA[
+        <title>الحكم المباشر</title> <br>
+        يعيد الخادم فئة مكالمات مزعجة صريحة، وهذا شائع في خدمات API. على سبيل المثال: <br>
+        &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
+        <br>
+        <title>عدد التقييمات</title> <br>
+        يعيد الخادم عدد التقييمات الإيجابية/السلبية، ويفوز العدد الأعلى.
+        ]]>
+    </string>
+    <string name="hint_positive_identifier_strategy_rating_score">مثال: (\\d+) إيجابي</string>
+    <string name="hint_negative_identifier_strategy_rating_score">مثال: (\\d+) سلبي</string>
+    <string name="help_positive_identifier_strategy_rating_score">
+        <![CDATA[
+        هذا regex مخصص لاستخراج عدد التقييمات الإيجابية، ويتطلب مجموعة التقاط، أي يجب أن يحتوي على
+         <sample>(</sample> و <sample>)</sample> <br>
+        <br>
+        على سبيل المثال: <br>
+        &ensp; <sample>(\\d+) إيجابي</sample>
+        ]]>
+    </string>
+    <string name="help_negative_identifier_strategy_rating_score">
+        <![CDATA[
+        هذا regex مخصص لاستخراج عدد التقييمات السلبية، ويتطلب مجموعة التقاط، أي يجب أن يحتوي على
+         <sample>(</sample> و <sample>)</sample> <br>
+        <br>
+        على سبيل المثال: <br>
+        &ensp; <sample>(\\d+) سلبي</sample>
+        ]]>
+    </string>
+    <string name="missing_brackets">regex يفتقد مجموعة التقاط ()، راجع التلميح لمعرفة التفاصيل.</string>
+    <string name="negative_identifier_matches">مطابقات المعرف السلبي</string>
+    <string name="positive_identifier_matches">مطابقات المعرف الإيجابي</string>
+    <string name="rating_count_template">التقييمات الإيجابية: %s، التقييمات السلبية: %s</string>
 </resources>

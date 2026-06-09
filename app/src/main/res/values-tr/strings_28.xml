@@ -67,4 +67,41 @@
     </string>
     <string name="clear_history">Geçmişi temizle</string>
     <string name="tip_clear_history">Uygulama başlangıçta çöküyor ve açılmıyorsa, aşağıdaki düğmeyi kullanarak geçmiş kayıtlarını temizlemeyi deneyin.</string>
+    <string name="direct_verdict">Doğrudan karar</string>
+    <string name="rating_counts">Değerlendirme sayıları</string>
+    <string name="strategy">Strateji</string>
+    <string name="help_api_result_strategy">
+        <![CDATA[
+        <title>Doğrudan karar</title> <br>
+        Sunucu açık bir spam kategorisi döndürür; bu, API hizmetlerinde yaygındır. Örneğin: <br>
+        &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
+        <br>
+        <title>Değerlendirme sayıları</title> <br>
+        Sunucu pozitif/negatif değerlendirme sayılarını döndürür; yüksek olan sayı kazanır.
+        ]]>
+    </string>
+    <string name="hint_positive_identifier_strategy_rating_score">Örn.: (\\d+) pozitif</string>
+    <string name="hint_negative_identifier_strategy_rating_score">Örn.: (\\d+) negatif</string>
+    <string name="help_positive_identifier_strategy_rating_score">
+        <![CDATA[
+        Bu regex, pozitif değerlendirme sayısını çıkarmak içindir; bir yakalama grubu gerekir, yani şunu içermelidir:
+         <sample>(</sample> ve <sample>)</sample> <br>
+        <br>
+        Örneğin: <br>
+        &ensp; <sample>(\\d+) pozitif</sample>
+        ]]>
+    </string>
+    <string name="help_negative_identifier_strategy_rating_score">
+        <![CDATA[
+        Bu regex, negatif değerlendirme sayısını çıkarmak içindir; bir yakalama grubu gerekir, yani şunu içermelidir:
+         <sample>(</sample> ve <sample>)</sample> <br>
+        <br>
+        Örneğin: <br>
+        &ensp; <sample>(\\d+) negatif</sample>
+        ]]>
+    </string>
+    <string name="missing_brackets">Regex\'te yakalama grubu () eksik, ayrıntılar için araç ipucuna bakın.</string>
+    <string name="negative_identifier_matches">Negatif tanımlayıcı eşleşmeleri</string>
+    <string name="positive_identifier_matches">Pozitif tanımlayıcı eşleşmeleri</string>
+    <string name="rating_count_template">Pozitif değerlendirmeler: %s, negatif değerlendirmeler: %s</string>
 </resources>

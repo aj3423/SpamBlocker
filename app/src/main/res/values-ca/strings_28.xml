@@ -67,4 +67,41 @@
     </string>
     <string name="clear_history">Esborra l\'historial</string>
     <string name="tip_clear_history">Si l\'aplicació falla en iniciar-se i no s\'obre, prova d\'esborrar els registres de l\'historial amb el botó de sota.</string>
+    <string name="direct_verdict">Veredicte directe</string>
+    <string name="rating_counts">Recompte de valoracions</string>
+    <string name="strategy">Estratègia</string>
+    <string name="help_api_result_strategy">
+        <![CDATA[
+        <title>Veredicte directe</title> <br>
+        El servidor retorna una categoria de spam explícita, habitual als serveis API. Per exemple: <br>
+        &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
+        <br>
+        <title>Recompte de valoracions</title> <br>
+        El servidor retorna el recompte de valoracions positives/negatives; guanya el recompte més alt.
+        ]]>
+    </string>
+    <string name="hint_positive_identifier_strategy_rating_score">Ex.: (\\d+) positiu</string>
+    <string name="hint_negative_identifier_strategy_rating_score">Ex.: (\\d+) negatiu</string>
+    <string name="help_positive_identifier_strategy_rating_score">
+        <![CDATA[
+        Aquesta regex serveix per extreure el recompte de valoracions positives; cal un grup de captura, és a dir, ha de contenir
+         <sample>(</sample> i <sample>)</sample> <br>
+        <br>
+        Per exemple: <br>
+        &ensp; <sample>(\\d+) positiu</sample>
+        ]]>
+    </string>
+    <string name="help_negative_identifier_strategy_rating_score">
+        <![CDATA[
+        Aquesta regex serveix per extreure el recompte de valoracions negatives; cal un grup de captura, és a dir, ha de contenir
+         <sample>(</sample> i <sample>)</sample> <br>
+        <br>
+        Per exemple: <br>
+        &ensp; <sample>(\\d+) negatiu</sample>
+        ]]>
+    </string>
+    <string name="missing_brackets">A la regex li falta un grup de captura (), consulta la informació emergent per a més detalls.</string>
+    <string name="negative_identifier_matches">Coincidències de l\'identificador negatiu</string>
+    <string name="positive_identifier_matches">Coincidències de l\'identificador positiu</string>
+    <string name="rating_count_template">Valoracions positives: %s, valoracions negatives: %s</string>
 </resources>
