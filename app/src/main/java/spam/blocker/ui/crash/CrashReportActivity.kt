@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import spam.blocker.BuildConfig
 import spam.blocker.G
 import spam.blocker.R
+import spam.blocker.db.BotTable
 import spam.blocker.db.CallTable
 import spam.blocker.db.HistoryTable
 import spam.blocker.db.SmsTable
@@ -143,8 +144,18 @@ class CrashReportActivity : ComponentActivity() {
                                 clearTrigger,
                                 buttons = {
                                     StrokeButton(Str(R.string.delete), color = C.error) {
+
+                                        // Clear Call/SMS history
                                         CallTable().clearAll(ctx)
                                         SmsTable().clearAll(ctx)
+
+                                        // Clear workflow lastLog
+                                        val bots = BotTable.listAll(ctx)
+                                        BotTable.clearAll(ctx)
+                                        bots.forEach { bot ->
+                                            BotTable.addRecordWithId(ctx, bot.copy(lastLog = "", lastLogTime = 0))
+                                        }
+
                                         clearTrigger.value = false
                                     }
                                 }
