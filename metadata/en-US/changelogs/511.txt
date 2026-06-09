@@ -1,0 +1,2 @@
+Fix:
+- A regression crash caused by large API query responses, e.g. callfilter
