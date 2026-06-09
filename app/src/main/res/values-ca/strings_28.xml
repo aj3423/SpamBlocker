@@ -65,4 +65,6 @@
         Per defecte: <b>1000</b> caràcters
         ]]>
     </string>
+    <string name="clear_history">Esborra l\'historial</string>
+    <string name="tip_clear_history">Si l\'aplicació falla en iniciar-se i no s\'obre, prova d\'esborrar els registres de l\'historial amb el botó de sota.</string>
 </resources>

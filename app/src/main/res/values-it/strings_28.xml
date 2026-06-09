@@ -65,4 +65,6 @@
         Predefinito: <b>1000</b> caratteri
         ]]>
     </string>
+    <string name="clear_history">Cancella cronologia</string>
+    <string name="tip_clear_history">Se l\'app va in crash all\'avvio e non si apre, prova a cancellare i log della cronologia usando il pulsante qui sotto.</string>
 </resources>

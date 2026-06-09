@@ -65,4 +65,6 @@
         Default: <b>1000</b> characters
         ]]>
     </string>
+    <string name="clear_history">Clear History</string>
+    <string name="tip_clear_history">If the app crashes on startup and won\'t open, try clearing the history logs using the button below.</string>
 </resources>

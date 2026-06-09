@@ -65,4 +65,6 @@
         Varsayılan: <b>1000</b> karakter
         ]]>
     </string>
+    <string name="clear_history">Geçmişi temizle</string>
+    <string name="tip_clear_history">Uygulama başlangıçta çöküyor ve açılmıyorsa, aşağıdaki düğmeyi kullanarak geçmiş kayıtlarını temizlemeyi deneyin.</string>
 </resources>

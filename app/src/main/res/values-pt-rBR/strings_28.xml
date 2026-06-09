@@ -65,4 +65,6 @@
         Padrão: <b>1000</b> caracteres
         ]]>
     </string>
+    <string name="clear_history">Limpar histórico</string>
+    <string name="tip_clear_history">Se o app travar na inicialização e não abrir, tente limpar os registros do histórico usando o botão abaixo.</string>
 </resources>

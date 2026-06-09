@@ -65,4 +65,6 @@
         既定値: <b>1000</b> 文字
         ]]>
     </string>
+    <string name="clear_history">履歴を消去</string>
+    <string name="tip_clear_history">アプリが起動時にクラッシュして開けない場合は、下のボタンで履歴ログを消去してみてください。</string>
 </resources>

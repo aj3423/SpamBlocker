@@ -65,4 +65,6 @@
         Predeterminado: <b>1000</b> caracteres
         ]]>
     </string>
+    <string name="clear_history">Borrar o historial</string>
+    <string name="tip_clear_history">Se a aplicación falla ao iniciarse e non se abre, proba a borrar os rexistros do historial co botón de abaixo.</string>
 </resources>

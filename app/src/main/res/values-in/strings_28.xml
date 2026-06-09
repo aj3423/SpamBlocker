@@ -65,4 +65,6 @@
         Default: <b>1000</b> karakter
         ]]>
     </string>
+    <string name="clear_history">Hapus Riwayat</string>
+    <string name="tip_clear_history">Jika aplikasi crash saat startup dan tidak bisa dibuka, coba hapus log riwayat dengan tombol di bawah.</string>
 </resources>

@@ -65,4 +65,6 @@
         預設值：<b>1000</b> 個字元
         ]]>
     </string>
+    <string name="clear_history">清除歷史記錄</string>
+    <string name="tip_clear_history">如果應用程式在啟動時閃退且無法開啟，請嘗試使用下方按鈕清除歷史記錄日誌。</string>
 </resources>

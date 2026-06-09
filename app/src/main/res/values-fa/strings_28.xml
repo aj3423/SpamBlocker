@@ -65,4 +65,6 @@
         پیش‌فرض: <b>1000</b> نویسه
         ]]>
     </string>
+    <string name="clear_history">پاک کردن تاریخچه</string>
+    <string name="tip_clear_history">اگر برنامه هنگام راه‌اندازی کرش می‌کند و باز نمی‌شود، با دکمه زیر گزارش‌های تاریخچه را پاک کنید.</string>
 </resources>

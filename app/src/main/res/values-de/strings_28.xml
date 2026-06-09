@@ -65,4 +65,6 @@
         Standard: <b>1000</b> Zeichen
         ]]>
     </string>
+    <string name="clear_history">Verlauf löschen</string>
+    <string name="tip_clear_history">Wenn die App beim Start abstürzt und sich nicht öffnen lässt, versuche, die Verlaufsprotokolle mit der Schaltfläche unten zu löschen.</string>
 </resources>

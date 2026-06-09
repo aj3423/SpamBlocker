@@ -65,4 +65,6 @@
         Par défaut : <b>1000</b> caractères
         ]]>
     </string>
+    <string name="clear_history">Effacer l\'historique</string>
+    <string name="tip_clear_history">Si l\'application plante au démarrage et ne s\'ouvre pas, essayez d\'effacer les journaux d\'historique avec le bouton ci-dessous.</string>
 </resources>

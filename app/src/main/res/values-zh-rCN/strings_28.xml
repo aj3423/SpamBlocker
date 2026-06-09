@@ -65,4 +65,6 @@
         默认值：<b>1000</b> 个字符
         ]]>
     </string>
+    <string name="clear_history">清空历史记录</string>
+    <string name="tip_clear_history">如果应用在启动时崩溃且无法打开，请尝试使用下方按钮清空历史日志。</string>
 </resources>

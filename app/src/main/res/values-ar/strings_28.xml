@@ -65,4 +65,6 @@
         القيمة الافتراضية: <b>1000</b> حرف
         ]]>
     </string>
+    <string name="clear_history">مسح السجل</string>
+    <string name="tip_clear_history">إذا تعطّل التطبيق عند التشغيل ولم يفتح، فجرّب مسح سجلات السجل باستخدام الزر أدناه.</string>
 </resources>

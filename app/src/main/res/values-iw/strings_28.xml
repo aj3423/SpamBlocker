@@ -65,4 +65,6 @@
         ברירת מחדל: <b>1000</b> תווים
         ]]>
     </string>
+    <string name="clear_history">נקה היסטוריה</string>
+    <string name="tip_clear_history">אם האפליקציה קורסת בהפעלה ולא נפתחת, נסה לנקות את יומני ההיסטוריה באמצעות הכפתור למטה.</string>
 </resources>
