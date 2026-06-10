@@ -99,7 +99,7 @@
         <![CDATA[
         Aynı bölgeden gelen yerel aramaları izin ver ve diğerlerini engelle. <br>
         <br>
-        <sample>Milan</sample>'ı gerçek bölgenizle değiştirin. <br>
+        <sample>Milan</sample>\'ı gerçek bölgenizle değiştirin. <br>
         <br>
         Sözdizimi <error>(?!Milan$).*</error> şu anlama gelir: <br>
         &ensp; <error>Milan</error> olmayan herhangi bir metni eşleştir.
