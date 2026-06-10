@@ -104,10 +104,10 @@
         <![CDATA[
         允许同一地区的本地来电，阻止其他来电。 <br>
         <br>
-        用您实际的地区替换 ___ 占位符。 <br>
+        将 <sample>Milan</sample> 替换为您实际的地区。 <br>
         <br>
-        语法 <error>(?!___$).*</error> 表示: <br>
-        &ensp; 匹配任何不是 <error>___</error> 的文本。
+        语法 <error>(?!Milan$).*</error> 表示: <br>
+        &ensp; 匹配任何不是 <error>Milan</error> 的文本。
         ]]>
     </string>
 </resources>

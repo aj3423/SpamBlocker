@@ -21,7 +21,7 @@
     <string name="phone_number_abbrev">Numero</string>
     <string name="sms_content">Contenuto SMS</string>
     <string name="regex_flags">Flags Regex</string>
-    <string name="off_time"><short>tempo di pausa</short></string>
+    <string name="off_time"><short>Tempo di pausa</short></string>
     <string name="schedule">Programmazione</string>
     <string name="workday">Giorno lavorativo</string>
     <string name="weekend">Weekend</string>

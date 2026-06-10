@@ -102,10 +102,10 @@
         <![CDATA[
         السماح بالمكالمات المحلية من نفس المنطقة وحظر الأخرى. <br>
         <br>
-        استبدل العنصر النائب ___ بمنطقتك الفعلية. <br>
+        استبدل <sample>Milan</sample> بمنطقتك الفعلية. <br>
         <br>
-        الصيغة <error>(?!___$).*</error> تعني: <br>
-        &ensp; مطابقة أي نص ليس <error>___</error>.
+        الصيغة <error>(?!Milan$).*</error> تعني: <br>
+        &ensp; مطابقة أي نص ليس <error>Milan</error>.
         ]]>
     </string>
 </resources>

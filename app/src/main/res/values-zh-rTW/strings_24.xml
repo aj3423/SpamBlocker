@@ -102,10 +102,10 @@
         <![CDATA[
         允許同一區域的本機號碼，並阻止其他號碼。 <br>
         <br>
-        將 ___ 佔位符替換為您實際的區域。 <br>
+        將 <sample>Milan</sample> 替換為您實際的區域。 <br>
         <br>
-        語法 <error>(?!___$).*</error> 表示： <br>
-        &ensp; 匹配任何不是 <error>___</error> 的文字。
+        語法 <error>(?!Milan$).*</error> 表示： <br>
+        &ensp; 匹配任何不是 <error>Milan</error> 的文字。
         ]]>
     </string>
 </resources>

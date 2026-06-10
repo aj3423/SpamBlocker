@@ -78,7 +78,7 @@ val RegexPresets = mapOf(
         ) { ctx ->
             listOf(
                 RegexRule(
-                    pattern = "(?!___$).*",
+                    pattern = "(?!Milan$).*",
                     description = ctx.getString(R.string.non_local_number),
                     priority = 0,
                     isBlacklist = true,

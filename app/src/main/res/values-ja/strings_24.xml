@@ -95,10 +95,10 @@
         <![CDATA[
         同じ地域からのローカル電話を許可し、その他をブロックします。 <br>
         <br>
-        ___ プレースホルダーを実際の地域に置き換えてください。 <br>
+        <sample>Milan</sample> を実際の地域に置き換えてください。 <br>
         <br>
-        構文 <error>(?!___$).*</error> は次を意味します: <br>
-        &ensp; <error>___</error> ではない任意のテキストにマッチします。
+        構文 <error>(?!Milan$).*</error> は次を意味します: <br>
+        &ensp; <error>Milan</error> ではない任意のテキストにマッチします。
         ]]>
     </string>
 </resources>

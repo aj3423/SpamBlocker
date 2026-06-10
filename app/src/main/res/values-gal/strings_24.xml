@@ -103,10 +103,10 @@
         <![CDATA[
         Permite chamadas locais dende a mesma zona e bloquea as demais. <br>
         <br>
-        Substitúe o marcador ___ pola túa zona real. <br>
+        Substitúe <sample>Milan</sample> pola túa zona real. <br>
         <br>
-        A sintaxe <error>(?!___$).*</error> significa: <br>
-        &ensp; Coincide con calquera texto que non sexa <error>___</error>.
+        A sintaxe <error>(?!Milan$).*</error> significa: <br>
+        &ensp; Coincide con calquera texto que non sexa <error>Milan</error>.
         ]]>
     </string>
 </resources>

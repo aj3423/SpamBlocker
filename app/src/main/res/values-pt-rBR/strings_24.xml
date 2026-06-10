@@ -104,10 +104,10 @@
         <![CDATA[
         Permitir chamadas locais da mesma região e bloquear as demais. <br>
         <br>
-        Substitua o placeholder ___ pela sua região real. <br>
+        Substitua <sample>Milan</sample> pela sua região real. <br>
         <br>
-        A sintaxe <error>(?!___$).*</error> significa: <br>
-        &ensp; Correspondência a qualquer texto que não seja <error>___</error>.
+        A sintaxe <error>(?!Milan$).*</error> significa: <br>
+        &ensp; Correspondência a qualquer texto que não seja <error>Milan</error>.
         ]]>
     </string>
 </resources>

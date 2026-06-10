@@ -104,10 +104,10 @@
         <![CDATA[
         Permet trucades locals de la mateixa regió i bloqueja les altres. <br>
         <br>
-        Substitueix el marcador ___ amb la teva regió real. <br>
+        Substitueix <sample>Milan</sample> amb la teva regió real. <br>
         <br>
-        La sintaxi <error>(?!___$).*</error> significa: <br>
-        &ensp; Coincideix qualsevol text que no sigui <error>___</error>.
+        La sintaxi <error>(?!Milan$).*</error> significa: <br>
+        &ensp; Coincideix qualsevol text que no sigui <error>Milan</error>.
         ]]>
     </string>
 </resources>

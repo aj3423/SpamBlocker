@@ -104,10 +104,10 @@
         <![CDATA[
         Autoriser les appels locaux de la même région et bloquer les autres. <br>
         <br>
-        Remplacez le texte ___ par votre région réelle. <br>
+        Remplacez <sample>Milan</sample> par votre région réelle. <br>
         <br>
-        La syntaxe <error>(?!___$).*</error> signifie : <br>
-        &ensp; Correspond à tout texte qui n\'est pas <error>___</error>.
+        La syntaxe <error>(?!Milan$).*</error> signifie : <br>
+        &ensp; Correspond à tout texte qui n\'est pas <error>Milan</error>.
         ]]>
     </string>
 </resources>

@@ -105,10 +105,10 @@
         <![CDATA[
         Permitir llamadas locales de la misma región y bloquear las demás. <br>
         <br>
-        Reemplaza el marcador ___ con tu región real. <br>
+        Reemplaza <sample>Milan</sample> con tu región real. <br>
         <br>
-        La sintaxis <error>(?!___$).*</error> significa: <br>
-        &ensp; Coincidir cualquier texto que no sea <error>___</error>.
+        La sintaxis <error>(?!Milan$).*</error> significa: <br>
+        &ensp; Coincidir cualquier texto que no sea <error>Milan</error>.
         ]]>
     </string>
 </resources>

@@ -104,10 +104,10 @@
         <![CDATA[
         אפשר שיחות מקומיות מאותה האזור וחסום אחרות. <br>
         <br>
-        החלף את ממלא המקום ___ באיזורך האמיתי. <br>
+        החלף את <sample>Milan</sample> באיזורך האמיתי. <br>
         <br>
-        התחביר <error>(?!___$).*</error> אומר: <br>
-        &ensp; התאם כל טקסט שאינו <error>___</error>.
+        התחביר <error>(?!Milan$).*</error> אומר: <br>
+        &ensp; התאם כל טקסט שאינו <error>Milan</error>.
         ]]>
     </string>
 </resources>

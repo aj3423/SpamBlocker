@@ -105,10 +105,10 @@
         <![CDATA[
         Allow local calls from the same region and block others. <br>
         <br>
-        Replace the ___ placeholder with your actual region. <br>
+        Replace <sample>Milan</sample> with your actual region. <br>
         <br>
-        The syntax <error>(?!___$).*</error> means: <br>
-        &ensp; Match any text that is not <error>___</error>.
+        The syntax <error>(?!Milan$).*</error> means: <br>
+        &ensp; Match any text that is not <error>Milan</error>.
         ]]>
     </string>
 </resources>

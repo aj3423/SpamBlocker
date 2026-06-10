@@ -105,10 +105,10 @@
         <![CDATA[
         Consenti le chiamate locali dalla stessa regione e blocca le altre. <br>
         <br>
-        Sostituisci il segnaposto ___ con la tua regione effettiva. <br>
+        Sostituisci <sample>Milan</sample> con la tua regione effettiva. <br>
         <br>
-        La sintassi <error>(?!___$).*</error> significa: <br>
-        &ensp; Trova qualsiasi testo che non sia <error>___</error>.
+        La sintassi <error>(?!Milan$).*</error> significa: <br>
+        &ensp; Trova qualsiasi testo che non sia <error>Milan</error>.
         ]]>
     </string>
 </resources>

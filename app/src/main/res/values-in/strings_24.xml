@@ -103,10 +103,10 @@
         <![CDATA[
         Izinkan panggilan lokal dari wilayah yang sama dan blokir yang lain. <br>
         <br>
-        Ganti placeholder ___ dengan wilayah Anda yang sebenarnya. <br>
+        Ganti <sample>Milan</sample> dengan wilayah Anda yang sebenarnya. <br>
         <br>
-        Sintaks <error>(?!___$).*</error> berarti: <br>
-        &ensp; Cocokkan teks apa pun yang bukan <error>___</error>.
+        Sintaks <error>(?!Milan$).*</error> berarti: <br>
+        &ensp; Cocokkan teks apa pun yang bukan <error>Milan</error>.
         ]]>
     </string>
 </resources>

@@ -105,10 +105,10 @@
         <![CDATA[
         Erlaube lokale Anrufe aus derselben Region und blockiere andere. <br>
         <br>
-        Ersetze den ___-Platzhalter durch deine tatsächliche Region. <br>
+        Ersetze <sample>Milan</sample> durch deine tatsächliche Region. <br>
         <br>
-        Die Syntax <error>(?!___$).*</error> bedeutet: <br>
-        &ensp; Jeden Text, der nicht <error>___</error> ist, finden.
+        Die Syntax <error>(?!Milan$).*</error> bedeutet: <br>
+        &ensp; Jeden Text, der nicht <error>Milan</error> ist, finden.
         ]]>
     </string>
 </resources>
