@@ -460,7 +460,7 @@ data class ApiQueryResult(
 @SerialName("ParseQueryStrategy")
 enum class ApiResultStrategy {
     DirectVerdict,
-    RatingScore
+    RatingCount
 }
 
 @Serializable
@@ -539,7 +539,7 @@ class ParseQueryResult(
     private fun makeDecision(ctx: Context, logger: ILogger?, html: String): Boolean? {
         return when(strategy) {
             ApiResultStrategy.DirectVerdict -> makeDecisionDirectVerdict(ctx, logger, html)
-            ApiResultStrategy.RatingScore -> makeDecisionRatingScore(ctx, logger, html)
+            ApiResultStrategy.RatingCount -> makeDecisionRatingScore(ctx, logger, html)
         }
     }
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
@@ -686,7 +686,7 @@ class ParseQueryResult(
             mutableIntStateOf(
                 when(strategy) {
                     ApiResultStrategy.DirectVerdict -> 0
-                    ApiResultStrategy.RatingScore -> 1
+                    ApiResultStrategy.RatingCount -> 1
                 }
             )
         }
@@ -702,7 +702,7 @@ class ParseQueryResult(
                     },
                     LabelItem(label = Str(R.string.rating_count)) {
                         selectedStrategy = 1
-                        strategy = ApiResultStrategy.RatingScore
+                        strategy = ApiResultStrategy.RatingCount
                     }
                 ),
                 selected = selectedStrategy,
