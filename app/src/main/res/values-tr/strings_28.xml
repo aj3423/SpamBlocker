@@ -68,7 +68,7 @@
     <string name="clear_history">Geçmişi temizle</string>
     <string name="tip_clear_history">Uygulama başlangıçta çöküyor ve açılmıyorsa, aşağıdaki düğmeyi kullanarak geçmiş kayıtlarını temizlemeyi deneyin.</string>
     <string name="direct_verdict">Doğrudan karar</string>
-    <string name="rating_counts">Değerlendirme sayıları</string>
+    <string name="rating_count">Puan sayısı</string>
     <string name="strategy">Strateji</string>
     <string name="help_api_result_strategy">
         <![CDATA[
@@ -76,13 +76,13 @@
         Sunucu açık bir spam kategorisi döndürür; bu, API hizmetlerinde yaygındır. Örneğin: <br>
         &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
         <br>
-        <title>Değerlendirme sayıları</title> <br>
+        <title>Puan sayısı</title> <br>
         Sunucu pozitif/negatif değerlendirme sayılarını döndürür; yüksek olan sayı kazanır.
         ]]>
     </string>
-    <string name="hint_positive_identifier_strategy_rating_score">Örn.: (\\d+) pozitif</string>
-    <string name="hint_negative_identifier_strategy_rating_score">Örn.: (\\d+) negatif</string>
-    <string name="help_positive_identifier_strategy_rating_score">
+    <string name="hint_positive_identifier_strategy_rating_count">Örn.: (\\d+) pozitif</string>
+    <string name="hint_negative_identifier_strategy_rating_count">Örn.: (\\d+) negatif</string>
+    <string name="help_positive_identifier_strategy_rating_count">
         <![CDATA[
         Bu regex, pozitif değerlendirme sayısını çıkarmak içindir; bir yakalama grubu gerekir, yani şunu içermelidir:
          <sample>(</sample> ve <sample>)</sample> <br>
@@ -91,7 +91,7 @@
         &ensp; <sample>(\\d+) pozitif</sample>
         ]]>
     </string>
-    <string name="help_negative_identifier_strategy_rating_score">
+    <string name="help_negative_identifier_strategy_rating_count">
         <![CDATA[
         Bu regex, negatif değerlendirme sayısını çıkarmak içindir; bir yakalama grubu gerekir, yani şunu içermelidir:
          <sample>(</sample> ve <sample>)</sample> <br>

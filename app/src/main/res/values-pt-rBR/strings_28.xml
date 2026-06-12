@@ -68,7 +68,7 @@
     <string name="clear_history">Limpar histórico</string>
     <string name="tip_clear_history">Se o app travar na inicialização e não abrir, tente limpar os registros do histórico usando o botão abaixo.</string>
     <string name="direct_verdict">Veredito direto</string>
-    <string name="rating_counts">Contagem de avaliações</string>
+    <string name="rating_count">N.º de avaliações</string>
     <string name="strategy">Estratégia</string>
     <string name="help_api_result_strategy">
         <![CDATA[
@@ -76,13 +76,13 @@
         O servidor retorna uma categoria de spam explícita, comum em serviços de API. Por exemplo: <br>
         &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
         <br>
-        <title>Contagem de avaliações</title> <br>
+        <title>N.º de avaliações</title> <br>
         O servidor retorna a contagem de avaliações positivas/negativas; a contagem mais alta vence.
         ]]>
     </string>
-    <string name="hint_positive_identifier_strategy_rating_score">Ex.: (\\d+) positivo</string>
-    <string name="hint_negative_identifier_strategy_rating_score">Ex.: (\\d+) negativo</string>
-    <string name="help_positive_identifier_strategy_rating_score">
+    <string name="hint_positive_identifier_strategy_rating_count">Ex.: (\\d+) positivo</string>
+    <string name="hint_negative_identifier_strategy_rating_count">Ex.: (\\d+) negativo</string>
+    <string name="help_positive_identifier_strategy_rating_count">
         <![CDATA[
         Esta regex serve para extrair a contagem de avaliações positivas; um grupo de captura é necessário, ou seja, deve conter
          <sample>(</sample> e <sample>)</sample> <br>
@@ -91,7 +91,7 @@
         &ensp; <sample>(\\d+) positivo</sample>
         ]]>
     </string>
-    <string name="help_negative_identifier_strategy_rating_score">
+    <string name="help_negative_identifier_strategy_rating_count">
         <![CDATA[
         Esta regex serve para extrair a contagem de avaliações negativas; um grupo de captura é necessário, ou seja, deve conter
          <sample>(</sample> e <sample>)</sample> <br>

@@ -68,7 +68,7 @@
     <string name="clear_history">پاک کردن تاریخچه</string>
     <string name="tip_clear_history">اگر برنامه هنگام راه‌اندازی کرش می‌کند و باز نمی‌شود، با دکمه زیر گزارش‌های تاریخچه را پاک کنید.</string>
     <string name="direct_verdict">نتیجه مستقیم</string>
-    <string name="rating_counts">تعداد امتیازها</string>
+    <string name="rating_count">تعداد امتیازها</string>
     <string name="strategy">راهبرد</string>
     <string name="help_api_result_strategy">
         <![CDATA[
@@ -80,9 +80,9 @@
         سرور تعداد امتیازهای مثبت/منفی را برمی‌گرداند و تعداد بیشتر برنده است.
         ]]>
     </string>
-    <string name="hint_positive_identifier_strategy_rating_score">مثال: (\\d+) مثبت</string>
-    <string name="hint_negative_identifier_strategy_rating_score">مثال: (\\d+) منفی</string>
-    <string name="help_positive_identifier_strategy_rating_score">
+    <string name="hint_positive_identifier_strategy_rating_count">مثال: (\\d+) مثبت</string>
+    <string name="hint_negative_identifier_strategy_rating_count">مثال: (\\d+) منفی</string>
+    <string name="help_positive_identifier_strategy_rating_count">
         <![CDATA[
         این regex برای استخراج تعداد امتیازهای مثبت است؛ وجود یک گروه ضبط لازم است، یعنی باید شامل
          <sample>(</sample> و <sample>)</sample> باشد <br>
@@ -91,7 +91,7 @@
         &ensp; <sample>(\\d+) مثبت</sample>
         ]]>
     </string>
-    <string name="help_negative_identifier_strategy_rating_score">
+    <string name="help_negative_identifier_strategy_rating_count">
         <![CDATA[
         این regex برای استخراج تعداد امتیازهای منفی است؛ وجود یک گروه ضبط لازم است، یعنی باید شامل
          <sample>(</sample> و <sample>)</sample> باشد <br>

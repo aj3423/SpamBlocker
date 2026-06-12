@@ -68,7 +68,7 @@
     <string name="clear_history">נקה היסטוריה</string>
     <string name="tip_clear_history">אם האפליקציה קורסת בהפעלה ולא נפתחת, נסה לנקות את יומני ההיסטוריה באמצעות הכפתור למטה.</string>
     <string name="direct_verdict">הכרעה ישירה</string>
-    <string name="rating_counts">ספירת דירוגים</string>
+    <string name="rating_count">מספר דירוגים</string>
     <string name="strategy">אסטרטגיה</string>
     <string name="help_api_result_strategy">
         <![CDATA[
@@ -76,13 +76,13 @@
         השרת מחזיר קטגוריית ספאם מפורשת, דבר נפוץ בשירותי API. לדוגמה: <br>
         &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
         <br>
-        <title>ספירת דירוגים</title> <br>
+        <title>מספר דירוגים</title> <br>
         השרת מחזיר את ספירת הדירוגים החיוביים/השליליים, והספירה הגבוהה יותר מנצחת.
         ]]>
     </string>
-    <string name="hint_positive_identifier_strategy_rating_score">לדוגמה: (\\d+) חיובי</string>
-    <string name="hint_negative_identifier_strategy_rating_score">לדוגמה: (\\d+) שלילי</string>
-    <string name="help_positive_identifier_strategy_rating_score">
+    <string name="hint_positive_identifier_strategy_rating_count">לדוגמה: (\\d+) חיובי</string>
+    <string name="hint_negative_identifier_strategy_rating_count">לדוגמה: (\\d+) שלילי</string>
+    <string name="help_positive_identifier_strategy_rating_count">
         <![CDATA[
         Regex זה מיועד לחילוץ ספירת הדירוגים החיוביים, נדרשת קבוצת לכידה, כלומר הוא צריך להכיל
          <sample>(</sample> ו-<sample>)</sample> <br>
@@ -91,7 +91,7 @@
         &ensp; <sample>(\\d+) חיובי</sample>
         ]]>
     </string>
-    <string name="help_negative_identifier_strategy_rating_score">
+    <string name="help_negative_identifier_strategy_rating_count">
         <![CDATA[
         Regex זה מיועד לחילוץ ספירת הדירוגים השליליים, נדרשת קבוצת לכידה, כלומר הוא צריך להכיל
          <sample>(</sample> ו-<sample>)</sample> <br>

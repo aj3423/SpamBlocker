@@ -68,7 +68,7 @@
     <string name="clear_history">Effacer l\'historique</string>
     <string name="tip_clear_history">Si l\'application plante au démarrage et ne s\'ouvre pas, essayez d\'effacer les journaux d\'historique avec le bouton ci-dessous.</string>
     <string name="direct_verdict">Verdict direct</string>
-    <string name="rating_counts">Nombre d\'évaluations</string>
+    <string name="rating_count">Nb d\'évaluations</string>
     <string name="strategy">Stratégie</string>
     <string name="help_api_result_strategy">
         <![CDATA[
@@ -76,13 +76,13 @@
         Le serveur renvoie une catégorie d\'appel indésirable explicite, ce qui est courant dans les services API. Par exemple : <br>
         &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
         <br>
-        <title>Nombre d\'évaluations</title> <br>
+        <title>Nb d\'évaluations</title> <br>
         Le serveur renvoie le nombre d\'évaluations positives/négatives ; le nombre le plus élevé l\'emporte.
         ]]>
     </string>
-    <string name="hint_positive_identifier_strategy_rating_score">Ex. : (\\d+) positif</string>
-    <string name="hint_negative_identifier_strategy_rating_score">Ex. : (\\d+) négatif</string>
-    <string name="help_positive_identifier_strategy_rating_score">
+    <string name="hint_positive_identifier_strategy_rating_count">Ex. : (\\d+) positif</string>
+    <string name="hint_negative_identifier_strategy_rating_count">Ex. : (\\d+) négatif</string>
+    <string name="help_positive_identifier_strategy_rating_count">
         <![CDATA[
         Cette regex sert à extraire le nombre d\'évaluations positives ; un groupe de capture est requis, ce qui signifie qu\'elle doit contenir
          <sample>(</sample> et <sample>)</sample> <br>
@@ -91,7 +91,7 @@
         &ensp; <sample>(\\d+) positif</sample>
         ]]>
     </string>
-    <string name="help_negative_identifier_strategy_rating_score">
+    <string name="help_negative_identifier_strategy_rating_count">
         <![CDATA[
         Cette regex sert à extraire le nombre d\'évaluations négatives ; un groupe de capture est requis, ce qui signifie qu\'elle doit contenir
          <sample>(</sample> et <sample>)</sample> <br>

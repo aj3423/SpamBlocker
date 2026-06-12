@@ -68,7 +68,7 @@
     <string name="clear_history">مسح السجل</string>
     <string name="tip_clear_history">إذا تعطّل التطبيق عند التشغيل ولم يفتح، فجرّب مسح سجلات السجل باستخدام الزر أدناه.</string>
     <string name="direct_verdict">الحكم المباشر</string>
-    <string name="rating_counts">عدد التقييمات</string>
+    <string name="rating_count">عدد التقييمات</string>
     <string name="strategy">الاستراتيجية</string>
     <string name="help_api_result_strategy">
         <![CDATA[
@@ -80,9 +80,9 @@
         يعيد الخادم عدد التقييمات الإيجابية/السلبية، ويفوز العدد الأعلى.
         ]]>
     </string>
-    <string name="hint_positive_identifier_strategy_rating_score">مثال: (\\d+) إيجابي</string>
-    <string name="hint_negative_identifier_strategy_rating_score">مثال: (\\d+) سلبي</string>
-    <string name="help_positive_identifier_strategy_rating_score">
+    <string name="hint_positive_identifier_strategy_rating_count">مثال: (\\d+) إيجابي</string>
+    <string name="hint_negative_identifier_strategy_rating_count">مثال: (\\d+) سلبي</string>
+    <string name="help_positive_identifier_strategy_rating_count">
         <![CDATA[
         هذا regex مخصص لاستخراج عدد التقييمات الإيجابية، ويتطلب مجموعة التقاط، أي يجب أن يحتوي على
          <sample>(</sample> و <sample>)</sample> <br>
@@ -91,7 +91,7 @@
         &ensp; <sample>(\\d+) إيجابي</sample>
         ]]>
     </string>
-    <string name="help_negative_identifier_strategy_rating_score">
+    <string name="help_negative_identifier_strategy_rating_count">
         <![CDATA[
         هذا regex مخصص لاستخراج عدد التقييمات السلبية، ويتطلب مجموعة التقاط، أي يجب أن يحتوي على
          <sample>(</sample> و <sample>)</sample> <br>

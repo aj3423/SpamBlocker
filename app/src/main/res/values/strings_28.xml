@@ -68,7 +68,7 @@
     <string name="clear_history">Clear History</string>
     <string name="tip_clear_history">If the app crashes on startup and won\'t open, try clearing the history logs using the button below.</string>
     <string name="direct_verdict">Direct Verdict</string>
-    <string name="rating_counts">Rating Counts</string>
+    <string name="rating_count">Rating Count</string>
     <string name="strategy">Strategy</string>
     <string name="help_api_result_strategy">
         <![CDATA[
@@ -76,13 +76,13 @@
         The server returns an explicit spam category, common in API services. For example: <br>
         &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
         <br>
-        <title>Rating Counts</title> <br>
+        <title>Rating Count</title> <br>
         The server returns the positive/negative rating counts, the higher count wins.
         ]]>
     </string>
-    <string name="hint_positive_identifier_strategy_rating_score">E.g.: (\\d+) positive</string>
-    <string name="hint_negative_identifier_strategy_rating_score">E.g.: (\\d+) negative</string>
-    <string name="help_positive_identifier_strategy_rating_score">
+    <string name="hint_positive_identifier_strategy_rating_count">E.g.: (\\d+) positive</string>
+    <string name="hint_negative_identifier_strategy_rating_count">E.g.: (\\d+) negative</string>
+    <string name="help_positive_identifier_strategy_rating_count">
         <![CDATA[
         This regex is for extracting the positive rating count, a capturing group is required, meaning it should contain
          <sample>(</sample> and <sample>)</sample> <br>
@@ -91,7 +91,7 @@
         &ensp; <sample>(\\d+) positive</sample>
         ]]>
     </string>
-    <string name="help_negative_identifier_strategy_rating_score">
+    <string name="help_negative_identifier_strategy_rating_count">
         <![CDATA[
         This regex is for extracting the negative rating count, a capturing group is required, meaning it should contain
          <sample>(</sample> and <sample>)</sample> <br>

@@ -68,7 +68,7 @@
     <string name="clear_history">清除歷史記錄</string>
     <string name="tip_clear_history">如果應用程式在啟動時閃退且無法開啟，請嘗試使用下方按鈕清除歷史記錄日誌。</string>
     <string name="direct_verdict">直接判定</string>
-    <string name="rating_counts">評分數量</string>
+    <string name="rating_count">評分數</string>
     <string name="strategy">策略</string>
     <string name="help_api_result_strategy">
         <![CDATA[
@@ -76,13 +76,13 @@
         伺服器會回傳明確的騷擾電話類別，這在 API 服務中很常見。例如：<br>
         &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
         <br>
-        <title>評分數量</title> <br>
+        <title>評分數</title> <br>
         伺服器會回傳正面/負面評分數量，數量較高的一方勝出。
         ]]>
     </string>
-    <string name="hint_positive_identifier_strategy_rating_score">例如：(\\d+) 正面</string>
-    <string name="hint_negative_identifier_strategy_rating_score">例如：(\\d+) 負面</string>
-    <string name="help_positive_identifier_strategy_rating_score">
+    <string name="hint_positive_identifier_strategy_rating_count">例如：(\\d+) 正面</string>
+    <string name="hint_negative_identifier_strategy_rating_count">例如：(\\d+) 負面</string>
+    <string name="help_positive_identifier_strategy_rating_count">
         <![CDATA[
         此正規表示式用於提取正面評分數量，必須包含一個擷取群組，也就是它應包含
          <sample>(</sample> 和 <sample>)</sample> <br>
@@ -91,7 +91,7 @@
         &ensp; <sample>(\\d+) 正面</sample>
         ]]>
     </string>
-    <string name="help_negative_identifier_strategy_rating_score">
+    <string name="help_negative_identifier_strategy_rating_count">
         <![CDATA[
         此正規表示式用於提取負面評分數量，必須包含一個擷取群組，也就是它應包含
          <sample>(</sample> 和 <sample>)</sample> <br>

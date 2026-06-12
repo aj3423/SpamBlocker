@@ -68,7 +68,7 @@
     <string name="clear_history">Очистити історію</string>
     <string name="tip_clear_history">Якщо програма аварійно завершується під час запуску й не відкривається, спробуйте очистити записи історії за допомогою кнопки нижче.</string>
     <string name="direct_verdict">Прямий вердикт</string>
-    <string name="rating_counts">Кількість оцінок</string>
+    <string name="rating_count">Число оцінок</string>
     <string name="strategy">Стратегія</string>
     <string name="help_api_result_strategy">
         <![CDATA[
@@ -76,13 +76,13 @@
         Сервер повертає явну категорію спаму, що часто трапляється в API-сервісах. Наприклад: <br>
         &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
         <br>
-        <title>Кількість оцінок</title> <br>
+        <title>Число оцінок</title> <br>
         Сервер повертає кількість позитивних/негативних оцінок, перемагає більше число.
         ]]>
     </string>
-    <string name="hint_positive_identifier_strategy_rating_score">Наприклад: (\\d+) позитивно</string>
-    <string name="hint_negative_identifier_strategy_rating_score">Наприклад: (\\d+) негативно</string>
-    <string name="help_positive_identifier_strategy_rating_score">
+    <string name="hint_positive_identifier_strategy_rating_count">Наприклад: (\\d+) позитивно</string>
+    <string name="hint_negative_identifier_strategy_rating_count">Наприклад: (\\d+) негативно</string>
+    <string name="help_positive_identifier_strategy_rating_count">
         <![CDATA[
         Цей regex використовується для вилучення кількості позитивних оцінок, потрібна група захоплення, тобто він має містити
          <sample>(</sample> і <sample>)</sample> <br>
@@ -91,7 +91,7 @@
         &ensp; <sample>(\\d+) позитивно</sample>
         ]]>
     </string>
-    <string name="help_negative_identifier_strategy_rating_score">
+    <string name="help_negative_identifier_strategy_rating_count">
         <![CDATA[
         Цей regex використовується для вилучення кількості негативних оцінок, потрібна група захоплення, тобто він має містити
          <sample>(</sample> і <sample>)</sample> <br>

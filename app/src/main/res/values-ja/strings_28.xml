@@ -68,7 +68,7 @@
     <string name="clear_history">履歴を消去</string>
     <string name="tip_clear_history">アプリが起動時にクラッシュして開けない場合は、下のボタンで履歴ログを消去してみてください。</string>
     <string name="direct_verdict">直接判定</string>
-    <string name="rating_counts">評価数</string>
+    <string name="rating_count">評価数</string>
     <string name="strategy">戦略</string>
     <string name="help_api_result_strategy">
         <![CDATA[
@@ -80,9 +80,9 @@
         サーバーがポジティブ/ネガティブの評価数を返し、多い方が採用されます。
         ]]>
     </string>
-    <string name="hint_positive_identifier_strategy_rating_score">例: (\\d+) ポジティブ</string>
-    <string name="hint_negative_identifier_strategy_rating_score">例: (\\d+) ネガティブ</string>
-    <string name="help_positive_identifier_strategy_rating_score">
+    <string name="hint_positive_identifier_strategy_rating_count">例: (\\d+) ポジティブ</string>
+    <string name="hint_negative_identifier_strategy_rating_count">例: (\\d+) ネガティブ</string>
+    <string name="help_positive_identifier_strategy_rating_count">
         <![CDATA[
         このregexはポジティブ評価数を抽出するためのものです。キャプチャリンググループが必須で、つまり
          <sample>(</sample> と <sample>)</sample> を含める必要があります <br>
@@ -91,7 +91,7 @@
         &ensp; <sample>(\\d+) ポジティブ</sample>
         ]]>
     </string>
-    <string name="help_negative_identifier_strategy_rating_score">
+    <string name="help_negative_identifier_strategy_rating_count">
         <![CDATA[
         このregexはネガティブ評価数を抽出するためのものです。キャプチャリンググループが必須で、つまり
          <sample>(</sample> と <sample>)</sample> を含める必要があります <br>

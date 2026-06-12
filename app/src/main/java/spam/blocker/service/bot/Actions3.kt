@@ -700,7 +700,7 @@ class ParseQueryResult(
                         selectedStrategy = 0
                         strategy = ApiResultStrategy.DirectVerdict
                     },
-                    LabelItem(label = Str(R.string.rating_counts)) {
+                    LabelItem(label = Str(R.string.rating_count)) {
                         selectedStrategy = 1
                         strategy = ApiResultStrategy.RatingScore
                     }
@@ -715,9 +715,9 @@ class ParseQueryResult(
             regexStr = negativeSigState,
             label = { Text(Str(R.string.negative_identifier)) },
             leadingIcon = { ResIcon16(R.drawable.ic_no, color = C.error) },
-            helpTooltipId = if(selectedStrategy == 0) R.string.help_negative_identifier else R.string.help_negative_identifier_strategy_rating_score,
+            helpTooltipId = if(selectedStrategy == 0) R.string.help_negative_identifier else R.string.help_negative_identifier_strategy_rating_count,
             placeholder = { Placeholder(Str(
-                if(selectedStrategy == 0) R.string.hint_negative_identifier else R.string.hint_negative_identifier_strategy_rating_score
+                if(selectedStrategy == 0) R.string.hint_negative_identifier else R.string.hint_negative_identifier_strategy_rating_count
             )) },
             regexFlags = negativeFlagsCopy,
             onRegexStrChange = { newVal, hasError ->
@@ -740,9 +740,9 @@ class ParseQueryResult(
             regexStr = positiveSigState,
             label = { Text(Str(R.string.positive_identifier)) },
             leadingIcon = { ResIcon16(R.drawable.ic_yes, color = C.success) },
-            helpTooltipId = if(selectedStrategy == 0) R.string.help_positive_identifier else R.string.help_positive_identifier_strategy_rating_score,
+            helpTooltipId = if(selectedStrategy == 0) R.string.help_positive_identifier else R.string.help_positive_identifier_strategy_rating_count,
             placeholder = { Placeholder(Str(
-                if(selectedStrategy == 0) R.string.hint_positive_identifier else R.string.hint_positive_identifier_strategy_rating_score
+                if(selectedStrategy == 0) R.string.hint_positive_identifier else R.string.hint_positive_identifier_strategy_rating_count
             )) },
             regexFlags = positiveFlagsCopy,
             onRegexStrChange = { newVal, hasError ->

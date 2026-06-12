@@ -68,7 +68,7 @@
     <string name="clear_history">Очистить историю</string>
     <string name="tip_clear_history">Если приложение вылетает при запуске и не открывается, попробуйте очистить записи истории с помощью кнопки ниже.</string>
     <string name="direct_verdict">Прямой вердикт</string>
-    <string name="rating_counts">Количество оценок</string>
+    <string name="rating_count">Число оценок</string>
     <string name="strategy">Стратегия</string>
     <string name="help_api_result_strategy">
         <![CDATA[
@@ -76,13 +76,13 @@
         Сервер возвращает явную категорию спама, что часто встречается в API-сервисах. Например: <br>
         &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
         <br>
-        <title>Количество оценок</title> <br>
+        <title>Число оценок</title> <br>
         Сервер возвращает количество положительных/отрицательных оценок, побеждает большее число.
         ]]>
     </string>
-    <string name="hint_positive_identifier_strategy_rating_score">Например: (\\d+) положительно</string>
-    <string name="hint_negative_identifier_strategy_rating_score">Например: (\\d+) отрицательно</string>
-    <string name="help_positive_identifier_strategy_rating_score">
+    <string name="hint_positive_identifier_strategy_rating_count">Например: (\\d+) положительно</string>
+    <string name="hint_negative_identifier_strategy_rating_count">Например: (\\d+) отрицательно</string>
+    <string name="help_positive_identifier_strategy_rating_count">
         <![CDATA[
         Этот regex используется для извлечения количества положительных оценок, требуется захватывающая группа, то есть он должен содержать
          <sample>(</sample> и <sample>)</sample> <br>
@@ -91,7 +91,7 @@
         &ensp; <sample>(\\d+) положительно</sample>
         ]]>
     </string>
-    <string name="help_negative_identifier_strategy_rating_score">
+    <string name="help_negative_identifier_strategy_rating_count">
         <![CDATA[
         Этот regex используется для извлечения количества отрицательных оценок, требуется захватывающая группа, то есть он должен содержать
          <sample>(</sample> и <sample>)</sample> <br>

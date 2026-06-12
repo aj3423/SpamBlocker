@@ -68,7 +68,7 @@
     <string name="clear_history">清空历史记录</string>
     <string name="tip_clear_history">如果应用在启动时崩溃且无法打开，请尝试使用下方按钮清空历史日志。</string>
     <string name="direct_verdict">直接判定</string>
-    <string name="rating_counts">评分数量</string>
+    <string name="rating_count">评分数</string>
     <string name="strategy">策略</string>
     <string name="help_api_result_strategy">
         <![CDATA[
@@ -76,13 +76,13 @@
         服务器返回明确的骚扰类别，这在 API 服务中很常见。例如：<br>
         &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
         <br>
-        <title>评分数量</title> <br>
+        <title>评分数</title> <br>
         服务器返回正向/负向评分数量，数量更高的一方胜出。
         ]]>
     </string>
-    <string name="hint_positive_identifier_strategy_rating_score">例如：(\\d+) 正向</string>
-    <string name="hint_negative_identifier_strategy_rating_score">例如：(\\d+) 负向</string>
-    <string name="help_positive_identifier_strategy_rating_score">
+    <string name="hint_positive_identifier_strategy_rating_count">例如：(\\d+) 正向</string>
+    <string name="hint_negative_identifier_strategy_rating_count">例如：(\\d+) 负向</string>
+    <string name="help_positive_identifier_strategy_rating_count">
         <![CDATA[
         此正则表达式用于提取正向评分数量，必须包含一个捕获组，也就是它应包含
          <sample>(</sample> 和 <sample>)</sample> <br>
@@ -91,7 +91,7 @@
         &ensp; <sample>(\\d+) 正向</sample>
         ]]>
     </string>
-    <string name="help_negative_identifier_strategy_rating_score">
+    <string name="help_negative_identifier_strategy_rating_count">
         <![CDATA[
         此正则表达式用于提取负向评分数量，必须包含一个捕获组，也就是它应包含
          <sample>(</sample> 和 <sample>)</sample> <br>
