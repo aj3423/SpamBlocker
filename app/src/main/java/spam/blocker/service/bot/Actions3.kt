@@ -39,6 +39,7 @@ import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.Placeholder
 import spam.blocker.ui.widgets.RegexInputBox
+import spam.blocker.ui.widgets.ResIcon16
 import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
@@ -713,7 +714,7 @@ class ParseQueryResult(
         RegexInputBox(
             regexStr = negativeSigState,
             label = { Text(Str(R.string.negative_identifier)) },
-            leadingIcon = { GreyIcon18(R.drawable.ic_no) },
+            leadingIcon = { ResIcon16(R.drawable.ic_no, color = C.error) },
             helpTooltipId = if(selectedStrategy == 0) R.string.help_negative_identifier else R.string.help_negative_identifier_strategy_rating_score,
             placeholder = { Placeholder(Str(
                 if(selectedStrategy == 0) R.string.hint_negative_identifier else R.string.hint_negative_identifier_strategy_rating_score
@@ -738,10 +739,10 @@ class ParseQueryResult(
         RegexInputBox(
             regexStr = positiveSigState,
             label = { Text(Str(R.string.positive_identifier)) },
-            leadingIcon = { GreyIcon18(R.drawable.ic_yes) },
+            leadingIcon = { ResIcon16(R.drawable.ic_yes, color = C.success) },
             helpTooltipId = if(selectedStrategy == 0) R.string.help_positive_identifier else R.string.help_positive_identifier_strategy_rating_score,
             placeholder = { Placeholder(Str(
-                if(selectedStrategy == 0) R.string.hint_positive_identifier else R.string.help_positive_identifier_strategy_rating_score
+                if(selectedStrategy == 0) R.string.hint_positive_identifier else R.string.hint_positive_identifier_strategy_rating_score
             )) },
             regexFlags = positiveFlagsCopy,
             onRegexStrChange = { newVal, hasError ->
