@@ -50,6 +50,12 @@ android {
 
             signingConfig = signingConfigs.getByName("release")
         }
+        create("releaseNoR8") {
+            initWith(getByName("release"))
+            isMinifyEnabled = false
+            isShrinkResources = false
+            matchingFallbacks += listOf("release")
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -69,6 +75,12 @@ android {
                 useLegacyPackaging = true
             }
         }
+    }
+}
+
+tasks.configureEach {
+    if (name.contains("ReleaseNoR8") && name.contains("lintVital", ignoreCase = true)) {
+        enabled = false
     }
 }
 
