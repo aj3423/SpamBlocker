@@ -22,6 +22,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import spam.blocker.Events
@@ -341,19 +342,21 @@ fun ImportButton() {
         okLabelId = R.string.import_
     ) { selectedCategories ->
 
-        newCfg.apply(ctx, selectedCategories)
+        CoroutineScope(IO).launch { // don't freeze the main UI, it can cause ANR and get killed
+            newCfg.apply(ctx, selectedCategories)
 
-        missingGlobalPermissions = newCfg.permissions?.allEnabledNames ?: ""
-        missingBotSafUris.apply {
-            clear()
-            addAll(missingBotSafUris(newCfg.bots?.bots ?: emptyList()))
+            missingGlobalPermissions = newCfg.permissions?.allEnabledNames ?: ""
+            missingBotSafUris.apply {
+                clear()
+                addAll(missingBotSafUris(newCfg.bots?.bots ?: emptyList()))
+            }
+            succeeded = true
+            resultTrigger.value = true
+
+            // Fire an event to notify the configuration has changed,
+            // for example, the history cleanup schedule should restart
+            Events.configImported.fire()
         }
-        succeeded = true
-        resultTrigger.value = true
-
-        // Fire an event to notify the configuration has changed,
-        // for example, the history cleanup schedule should restart
-        Events.configImported.fire()
     }
 
 
