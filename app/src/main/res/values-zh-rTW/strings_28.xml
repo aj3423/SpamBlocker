@@ -68,7 +68,7 @@
     <string name="clear_history">清除歷史記錄</string>
     <string name="tip_clear_history">如果應用程式在啟動時閃退且無法開啟，請嘗試使用下方按鈕清除歷史記錄日誌。</string>
     <string name="direct_verdict">直接判定</string>
-    <string name="rating_count">評分數</string>
+    <string name="formula">公式</string>
     <string name="strategy">策略</string>
     <string name="help_api_result_strategy">
         <![CDATA[
@@ -76,28 +76,62 @@
         伺服器會回傳明確的騷擾電話類別，這在 API 服務中很常見。例如：<br>
         &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
         <br>
-        <title>評分數</title> <br>
-        伺服器會回傳正面/負面評分數量，數量較高的一方勝出。
+        <title>公式</title> <br>
+        伺服器會回傳正面/負面評分數量，你可以基於它們自訂判斷邏輯。
         ]]>
     </string>
-    <string name="hint_positive_identifier_strategy_rating_count">例如：(\\d+) 正面</string>
-    <string name="hint_negative_identifier_strategy_rating_count">例如：(\\d+) 負面</string>
-    <string name="help_positive_identifier_strategy_rating_count">
+    <string name="hint_positive_identifier_strategy_formula">例如：(\\d+) 正面</string>
+    <string name="hint_negative_identifier_strategy_formula">例如：(\\d+) 負面</string>
+    <string name="help_positive_identifier_strategy_formula">
         <![CDATA[
         此正規表示式用於提取正面評分數量，必須包含一個擷取群組，也就是它應包含
-         <sample>(</sample> 和 <sample>)</sample> <br>
+         <sample>(</sample> 和 <sample>)</sample>，如果找不到符合項則預設為 0。 <br>
         <br>
         例如：<br>
         &ensp; <sample>(\\d+) 正面</sample>
         ]]>
     </string>
-    <string name="help_negative_identifier_strategy_rating_count">
+    <string name="help_negative_identifier_strategy_formula">
         <![CDATA[
         此正規表示式用於提取負面評分數量，必須包含一個擷取群組，也就是它應包含
-         <sample>(</sample> 和 <sample>)</sample> <br>
+         <sample>(</sample> 和 <sample>)</sample>，如果找不到符合項則預設為 0。 <br>
         <br>
         例如：<br>
         &ensp; <sample>(\\d+) 負面</sample>
+        ]]>
+    </string>
+    <string name="positive_condition">正面條件</string>
+    <string name="negative_condition">負面條件</string>
+    <string name="help_positive_condition">
+        <![CDATA[
+        如果符合此條件，號碼將被<highlight>允許</highlight>。
+        ]]>
+    </string>
+    <string name="help_negative_condition">
+        <![CDATA[
+        如果符合此條件，號碼將被<error>封鎖</error>。
+        ]]>
+    </string>
+    <string name="supported_formula_syntax" formatted="false">
+        <![CDATA[
+        <title>支援的語法</title> <br>
+        <minor>positive &ensp; p &ensp; negative &ensp; n</minor> <br>
+        &ensp; 佔位符，會被替換為實際評分數量。 <br>
+        <minor>+ &ensp; - &ensp; * &ensp; /</minor> <br>
+        &ensp; 基礎數學運算 <br>
+        <minor>%</minor> <br>
+        &ensp; 百分比 <br>
+        <minor>&lt; &ensp; &gt; &ensp; &lt;= &ensp; &gt;=</minor> <br>
+        &ensp; 比較 <br>
+        <minor>& &ensp; |</minor> <br>
+        &ensp; 邏輯 AND/OR <br>
+        <minor>( &ensp; )</minor> <br>
+        &ensp; 括號 <br>
+        <br>
+        <b>範例</b> <br>
+        &ensp; <sample>negative &gt; positive</sample> <br>
+        &ensp; <sample>P - N &gt; 5</sample>（不區分大小寫）<br>
+        &ensp; <sample>p &gt; 3 & n &gt; 2 & (n / p &gt;= 120%)</sample> <br>
         ]]>
     </string>
     <string name="missing_brackets">正規表示式缺少擷取群組 ()，詳情請查看提示。</string>

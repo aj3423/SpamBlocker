@@ -68,7 +68,7 @@
     <string name="clear_history">Очистить историю</string>
     <string name="tip_clear_history">Если приложение вылетает при запуске и не открывается, попробуйте очистить записи истории с помощью кнопки ниже.</string>
     <string name="direct_verdict">Прямой вердикт</string>
-    <string name="rating_count">Число оценок</string>
+    <string name="formula">Формула</string>
     <string name="strategy">Стратегия</string>
     <string name="help_api_result_strategy">
         <![CDATA[
@@ -76,28 +76,62 @@
         Сервер возвращает явную категорию спама, что часто встречается в API-сервисах. Например: <br>
         &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
         <br>
-        <title>Число оценок</title> <br>
-        Сервер возвращает количество положительных/отрицательных оценок, побеждает большее число.
+        <title>Формула</title> <br>
+        Сервер возвращает количество положительных/отрицательных оценок; настройте собственную логику на их основе.
         ]]>
     </string>
-    <string name="hint_positive_identifier_strategy_rating_count">Например: (\\d+) положительно</string>
-    <string name="hint_negative_identifier_strategy_rating_count">Например: (\\d+) отрицательно</string>
-    <string name="help_positive_identifier_strategy_rating_count">
+    <string name="hint_positive_identifier_strategy_formula">Например: (\\d+) положительно</string>
+    <string name="hint_negative_identifier_strategy_formula">Например: (\\d+) отрицательно</string>
+    <string name="help_positive_identifier_strategy_formula">
         <![CDATA[
         Этот regex используется для извлечения количества положительных оценок, требуется захватывающая группа, то есть он должен содержать
-         <sample>(</sample> и <sample>)</sample> <br>
+         <sample>(</sample> и <sample>)</sample>, по умолчанию используется 0, если совпадение не найдено. <br>
         <br>
         Например: <br>
         &ensp; <sample>(\\d+) положительно</sample>
         ]]>
     </string>
-    <string name="help_negative_identifier_strategy_rating_count">
+    <string name="help_negative_identifier_strategy_formula">
         <![CDATA[
         Этот regex используется для извлечения количества отрицательных оценок, требуется захватывающая группа, то есть он должен содержать
-         <sample>(</sample> и <sample>)</sample> <br>
+         <sample>(</sample> и <sample>)</sample>, по умолчанию используется 0, если совпадение не найдено. <br>
         <br>
         Например: <br>
         &ensp; <sample>(\\d+) отрицательно</sample>
+        ]]>
+    </string>
+    <string name="positive_condition">Положительное условие</string>
+    <string name="negative_condition">Отрицательное условие</string>
+    <string name="help_positive_condition">
+        <![CDATA[
+        Номер будет <highlight>разрешен</highlight>, если это условие выполнено.
+        ]]>
+    </string>
+    <string name="help_negative_condition">
+        <![CDATA[
+        Номер будет <error>заблокирован</error>, если это условие выполнено.
+        ]]>
+    </string>
+    <string name="supported_formula_syntax" formatted="false">
+        <![CDATA[
+        <title>Поддерживаемый синтаксис</title> <br>
+        <minor>positive &ensp; p &ensp; negative &ensp; n</minor> <br>
+        &ensp; Заполнители, которые будут заменены фактическими числами оценок. <br>
+        <minor>+ &ensp; - &ensp; * &ensp; /</minor> <br>
+        &ensp; Основные математические операции <br>
+        <minor>%</minor> <br>
+        &ensp; Процент <br>
+        <minor>&lt; &ensp; &gt; &ensp; &lt;= &ensp; &gt;=</minor> <br>
+        &ensp; Сравнения <br>
+        <minor>& &ensp; |</minor> <br>
+        &ensp; Логическое AND/OR <br>
+        <minor>( &ensp; )</minor> <br>
+        &ensp; Скобки <br>
+        <br>
+        <b>Примеры</b> <br>
+        &ensp; <sample>negative &gt; positive</sample> <br>
+        &ensp; <sample>P - N &gt; 5</sample> (без учета регистра) <br>
+        &ensp; <sample>p &gt; 3 & n &gt; 2 & (n / p &gt;= 120%)</sample> <br>
         ]]>
     </string>
     <string name="missing_brackets">В regex отсутствует захватывающая группа (), подробности см. во всплывающей подсказке.</string>

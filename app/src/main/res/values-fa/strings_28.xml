@@ -68,7 +68,7 @@
     <string name="clear_history">پاک کردن تاریخچه</string>
     <string name="tip_clear_history">اگر برنامه هنگام راه‌اندازی کرش می‌کند و باز نمی‌شود، با دکمه زیر گزارش‌های تاریخچه را پاک کنید.</string>
     <string name="direct_verdict">نتیجه مستقیم</string>
-    <string name="rating_count">تعداد امتیازها</string>
+    <string name="formula">فرمول</string>
     <string name="strategy">راهبرد</string>
     <string name="help_api_result_strategy">
         <![CDATA[
@@ -76,28 +76,62 @@
         سرور یک دسته‌بندی صریح برای تماس مزاحم برمی‌گرداند که در سرویس‌های API رایج است. برای مثال: <br>
         &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
         <br>
-        <title>تعداد امتیازها</title> <br>
-        سرور تعداد امتیازهای مثبت/منفی را برمی‌گرداند و تعداد بیشتر برنده است.
+        <title>فرمول</title> <br>
+        سرور تعداد امتیازهای مثبت/منفی را برمی‌گرداند؛ منطق دلخواه خود را بر اساس آنها تنظیم کنید.
         ]]>
     </string>
-    <string name="hint_positive_identifier_strategy_rating_count">مثال: (\\d+) مثبت</string>
-    <string name="hint_negative_identifier_strategy_rating_count">مثال: (\\d+) منفی</string>
-    <string name="help_positive_identifier_strategy_rating_count">
+    <string name="hint_positive_identifier_strategy_formula">مثال: (\\d+) مثبت</string>
+    <string name="hint_negative_identifier_strategy_formula">مثال: (\\d+) منفی</string>
+    <string name="help_positive_identifier_strategy_formula">
         <![CDATA[
         این regex برای استخراج تعداد امتیازهای مثبت است؛ وجود یک گروه ضبط لازم است، یعنی باید شامل
-         <sample>(</sample> و <sample>)</sample> باشد <br>
+         <sample>(</sample> و <sample>)</sample> باشد، و اگر تطابقی پیدا نشود مقدار پیش‌فرض 0 است. <br>
         <br>
         برای مثال: <br>
         &ensp; <sample>(\\d+) مثبت</sample>
         ]]>
     </string>
-    <string name="help_negative_identifier_strategy_rating_count">
+    <string name="help_negative_identifier_strategy_formula">
         <![CDATA[
         این regex برای استخراج تعداد امتیازهای منفی است؛ وجود یک گروه ضبط لازم است، یعنی باید شامل
-         <sample>(</sample> و <sample>)</sample> باشد <br>
+         <sample>(</sample> و <sample>)</sample> باشد، و اگر تطابقی پیدا نشود مقدار پیش‌فرض 0 است. <br>
         <br>
         برای مثال: <br>
         &ensp; <sample>(\\d+) منفی</sample>
+        ]]>
+    </string>
+    <string name="positive_condition">شرط مثبت</string>
+    <string name="negative_condition">شرط منفی</string>
+    <string name="help_positive_condition">
+        <![CDATA[
+        اگر این شرط برقرار باشد، شماره <highlight>مجاز</highlight> می‌شود.
+        ]]>
+    </string>
+    <string name="help_negative_condition">
+        <![CDATA[
+        اگر این شرط برقرار باشد، شماره <error>مسدود</error> می‌شود.
+        ]]>
+    </string>
+    <string name="supported_formula_syntax" formatted="false">
+        <![CDATA[
+        <title>نحو پشتیبانی‌شده</title> <br>
+        <minor>positive &ensp; p &ensp; negative &ensp; n</minor> <br>
+        &ensp; جای‌نگهدارهایی که با تعداد واقعی امتیازها جایگزین می‌شوند. <br>
+        <minor>+ &ensp; - &ensp; * &ensp; /</minor> <br>
+        &ensp; عملیات پایه ریاضی <br>
+        <minor>%</minor> <br>
+        &ensp; درصد <br>
+        <minor>&lt; &ensp; &gt; &ensp; &lt;= &ensp; &gt;=</minor> <br>
+        &ensp; مقایسه‌ها <br>
+        <minor>& &ensp; |</minor> <br>
+        &ensp; AND/OR منطقی <br>
+        <minor>( &ensp; )</minor> <br>
+        &ensp; پرانتزها <br>
+        <br>
+        <b>مثال‌ها</b> <br>
+        &ensp; <sample>negative &gt; positive</sample> <br>
+        &ensp; <sample>P - N &gt; 5</sample> (به بزرگی و کوچکی حروف حساس نیست) <br>
+        &ensp; <sample>p &gt; 3 & n &gt; 2 & (n / p &gt;= 120%)</sample> <br>
         ]]>
     </string>
     <string name="missing_brackets">regex گروه ضبط () ندارد، برای جزئیات راهنما را بررسی کنید.</string>

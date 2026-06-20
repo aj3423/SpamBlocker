@@ -68,7 +68,7 @@
     <string name="clear_history">Cancella cronologia</string>
     <string name="tip_clear_history">Se l\'app va in crash all\'avvio e non si apre, prova a cancellare i log della cronologia usando il pulsante qui sotto.</string>
     <string name="direct_verdict">Verdetto diretto</string>
-    <string name="rating_count">N. valutazioni</string>
+    <string name="formula">Formula</string>
     <string name="strategy">Strategia</string>
     <string name="help_api_result_strategy">
         <![CDATA[
@@ -76,28 +76,62 @@
         Il server restituisce una categoria spam esplicita, comune nei servizi API. Ad esempio: <br>
         &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
         <br>
-        <title>N. valutazioni</title> <br>
-        Il server restituisce il conteggio delle valutazioni positive/negative; vince il conteggio più alto.
+        <title>Formula</title> <br>
+        Il server restituisce il conteggio delle valutazioni positive/negative; personalizza la tua logica in base a questi valori.
         ]]>
     </string>
-    <string name="hint_positive_identifier_strategy_rating_count">Es.: (\\d+) positivo</string>
-    <string name="hint_negative_identifier_strategy_rating_count">Es.: (\\d+) negativo</string>
-    <string name="help_positive_identifier_strategy_rating_count">
+    <string name="hint_positive_identifier_strategy_formula">Es.: (\\d+) positivo</string>
+    <string name="hint_negative_identifier_strategy_formula">Es.: (\\d+) negativo</string>
+    <string name="help_positive_identifier_strategy_formula">
         <![CDATA[
         Questa regex serve a estrarre il conteggio delle valutazioni positive; è richiesto un gruppo di cattura, cioè deve contenere
-         <sample>(</sample> e <sample>)</sample> <br>
+         <sample>(</sample> e <sample>)</sample>, con valore predefinito 0 se non viene trovata alcuna corrispondenza. <br>
         <br>
         Ad esempio: <br>
         &ensp; <sample>(\\d+) positivo</sample>
         ]]>
     </string>
-    <string name="help_negative_identifier_strategy_rating_count">
+    <string name="help_negative_identifier_strategy_formula">
         <![CDATA[
         Questa regex serve a estrarre il conteggio delle valutazioni negative; è richiesto un gruppo di cattura, cioè deve contenere
-         <sample>(</sample> e <sample>)</sample> <br>
+         <sample>(</sample> e <sample>)</sample>, con valore predefinito 0 se non viene trovata alcuna corrispondenza. <br>
         <br>
         Ad esempio: <br>
         &ensp; <sample>(\\d+) negativo</sample>
+        ]]>
+    </string>
+    <string name="positive_condition">Condizione positiva</string>
+    <string name="negative_condition">Condizione negativa</string>
+    <string name="help_positive_condition">
+        <![CDATA[
+        Il numero sarà <highlight>consentito</highlight> se questa condizione è soddisfatta.
+        ]]>
+    </string>
+    <string name="help_negative_condition">
+        <![CDATA[
+        Il numero sarà <error>bloccato</error> se questa condizione è soddisfatta.
+        ]]>
+    </string>
+    <string name="supported_formula_syntax" formatted="false">
+        <![CDATA[
+        <title>Sintassi supportata</title> <br>
+        <minor>positive &ensp; p &ensp; negative &ensp; n</minor> <br>
+        &ensp; Segnaposto che verranno sostituiti dai conteggi reali delle valutazioni. <br>
+        <minor>+ &ensp; - &ensp; * &ensp; /</minor> <br>
+        &ensp; Operazioni matematiche di base <br>
+        <minor>%</minor> <br>
+        &ensp; Percentuale <br>
+        <minor>&lt; &ensp; &gt; &ensp; &lt;= &ensp; &gt;=</minor> <br>
+        &ensp; Confronti <br>
+        <minor>& &ensp; |</minor> <br>
+        &ensp; AND/OR logico <br>
+        <minor>( &ensp; )</minor> <br>
+        &ensp; Parentesi <br>
+        <br>
+        <b>Esempi</b> <br>
+        &ensp; <sample>negative &gt; positive</sample> <br>
+        &ensp; <sample>P - N &gt; 5</sample> (senza distinzione tra maiuscole e minuscole) <br>
+        &ensp; <sample>p &gt; 3 & n &gt; 2 & (n / p &gt;= 120%)</sample> <br>
         ]]>
     </string>
     <string name="missing_brackets">Alla regex manca un gruppo di cattura (), controlla il suggerimento per i dettagli.</string>

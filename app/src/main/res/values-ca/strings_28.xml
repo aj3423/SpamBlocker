@@ -68,7 +68,7 @@
     <string name="clear_history">Esborra l\'historial</string>
     <string name="tip_clear_history">Si l\'aplicació falla en iniciar-se i no s\'obre, prova d\'esborrar els registres de l\'historial amb el botó de sota.</string>
     <string name="direct_verdict">Veredicte directe</string>
-    <string name="rating_count">Núm. de valoracions</string>
+    <string name="formula">Fórmula</string>
     <string name="strategy">Estratègia</string>
     <string name="help_api_result_strategy">
         <![CDATA[
@@ -76,28 +76,62 @@
         El servidor retorna una categoria de spam explícita, habitual als serveis API. Per exemple: <br>
         &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
         <br>
-        <title>Núm. de valoracions</title> <br>
-        El servidor retorna el recompte de valoracions positives/negatives; guanya el recompte més alt.
+        <title>Fórmula</title> <br>
+        El servidor retorna el recompte de valoracions positives/negatives; personalitza la teva lògica a partir d\'aquests valors.
         ]]>
     </string>
-    <string name="hint_positive_identifier_strategy_rating_count">Ex.: (\\d+) positiu</string>
-    <string name="hint_negative_identifier_strategy_rating_count">Ex.: (\\d+) negatiu</string>
-    <string name="help_positive_identifier_strategy_rating_count">
+    <string name="hint_positive_identifier_strategy_formula">Ex.: (\\d+) positiu</string>
+    <string name="hint_negative_identifier_strategy_formula">Ex.: (\\d+) negatiu</string>
+    <string name="help_positive_identifier_strategy_formula">
         <![CDATA[
         Aquesta regex serveix per extreure el recompte de valoracions positives; cal un grup de captura, és a dir, ha de contenir
-         <sample>(</sample> i <sample>)</sample> <br>
+         <sample>(</sample> i <sample>)</sample>, i el valor per defecte és 0 si no es troba cap coincidència. <br>
         <br>
         Per exemple: <br>
         &ensp; <sample>(\\d+) positiu</sample>
         ]]>
     </string>
-    <string name="help_negative_identifier_strategy_rating_count">
+    <string name="help_negative_identifier_strategy_formula">
         <![CDATA[
         Aquesta regex serveix per extreure el recompte de valoracions negatives; cal un grup de captura, és a dir, ha de contenir
-         <sample>(</sample> i <sample>)</sample> <br>
+         <sample>(</sample> i <sample>)</sample>, i el valor per defecte és 0 si no es troba cap coincidència. <br>
         <br>
         Per exemple: <br>
         &ensp; <sample>(\\d+) negatiu</sample>
+        ]]>
+    </string>
+    <string name="positive_condition">Condició positiva</string>
+    <string name="negative_condition">Condició negativa</string>
+    <string name="help_positive_condition">
+        <![CDATA[
+        El número serà <highlight>permès</highlight> si es compleix aquesta condició.
+        ]]>
+    </string>
+    <string name="help_negative_condition">
+        <![CDATA[
+        El número serà <error>bloquejat</error> si es compleix aquesta condició.
+        ]]>
+    </string>
+    <string name="supported_formula_syntax" formatted="false">
+        <![CDATA[
+        <title>Sintaxi admesa</title> <br>
+        <minor>positive &ensp; p &ensp; negative &ensp; n</minor> <br>
+        &ensp; Marcadors que se substituiran pels recomptes reals de valoracions. <br>
+        <minor>+ &ensp; - &ensp; * &ensp; /</minor> <br>
+        &ensp; Operacions matemàtiques bàsiques <br>
+        <minor>%</minor> <br>
+        &ensp; Percentatge <br>
+        <minor>&lt; &ensp; &gt; &ensp; &lt;= &ensp; &gt;=</minor> <br>
+        &ensp; Comparacions <br>
+        <minor>& &ensp; |</minor> <br>
+        &ensp; AND/OR lògic <br>
+        <minor>( &ensp; )</minor> <br>
+        &ensp; Parèntesis <br>
+        <br>
+        <b>Exemples</b> <br>
+        &ensp; <sample>negative &gt; positive</sample> <br>
+        &ensp; <sample>P - N &gt; 5</sample> (no distingeix majúscules i minúscules) <br>
+        &ensp; <sample>p &gt; 3 & n &gt; 2 & (n / p &gt;= 120%)</sample> <br>
         ]]>
     </string>
     <string name="missing_brackets">A la regex li falta un grup de captura (), consulta la informació emergent per a més detalls.</string>

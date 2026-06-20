@@ -68,7 +68,7 @@
     <string name="clear_history">مسح السجل</string>
     <string name="tip_clear_history">إذا تعطّل التطبيق عند التشغيل ولم يفتح، فجرّب مسح سجلات السجل باستخدام الزر أدناه.</string>
     <string name="direct_verdict">الحكم المباشر</string>
-    <string name="rating_count">عدد التقييمات</string>
+    <string name="formula">الصيغة</string>
     <string name="strategy">الاستراتيجية</string>
     <string name="help_api_result_strategy">
         <![CDATA[
@@ -76,28 +76,62 @@
         يعيد الخادم فئة مكالمات مزعجة صريحة، وهذا شائع في خدمات API. على سبيل المثال: <br>
         &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
         <br>
-        <title>عدد التقييمات</title> <br>
-        يعيد الخادم عدد التقييمات الإيجابية/السلبية، ويفوز العدد الأعلى.
+        <title>الصيغة</title> <br>
+        يعيد الخادم عدد التقييمات الإيجابية/السلبية؛ خصص منطقك بناء عليها.
         ]]>
     </string>
-    <string name="hint_positive_identifier_strategy_rating_count">مثال: (\\d+) إيجابي</string>
-    <string name="hint_negative_identifier_strategy_rating_count">مثال: (\\d+) سلبي</string>
-    <string name="help_positive_identifier_strategy_rating_count">
+    <string name="hint_positive_identifier_strategy_formula">مثال: (\\d+) إيجابي</string>
+    <string name="hint_negative_identifier_strategy_formula">مثال: (\\d+) سلبي</string>
+    <string name="help_positive_identifier_strategy_formula">
         <![CDATA[
         هذا regex مخصص لاستخراج عدد التقييمات الإيجابية، ويتطلب مجموعة التقاط، أي يجب أن يحتوي على
-         <sample>(</sample> و <sample>)</sample> <br>
+         <sample>(</sample> و <sample>)</sample>، وتكون القيمة الافتراضية 0 إذا لم يتم العثور على تطابق. <br>
         <br>
         على سبيل المثال: <br>
         &ensp; <sample>(\\d+) إيجابي</sample>
         ]]>
     </string>
-    <string name="help_negative_identifier_strategy_rating_count">
+    <string name="help_negative_identifier_strategy_formula">
         <![CDATA[
         هذا regex مخصص لاستخراج عدد التقييمات السلبية، ويتطلب مجموعة التقاط، أي يجب أن يحتوي على
-         <sample>(</sample> و <sample>)</sample> <br>
+         <sample>(</sample> و <sample>)</sample>، وتكون القيمة الافتراضية 0 إذا لم يتم العثور على تطابق. <br>
         <br>
         على سبيل المثال: <br>
         &ensp; <sample>(\\d+) سلبي</sample>
+        ]]>
+    </string>
+    <string name="positive_condition">الشرط الإيجابي</string>
+    <string name="negative_condition">الشرط السلبي</string>
+    <string name="help_positive_condition">
+        <![CDATA[
+        سيتم <highlight>السماح</highlight> بالرقم إذا تحقق هذا الشرط.
+        ]]>
+    </string>
+    <string name="help_negative_condition">
+        <![CDATA[
+        سيتم <error>حظر</error> الرقم إذا تحقق هذا الشرط.
+        ]]>
+    </string>
+    <string name="supported_formula_syntax" formatted="false">
+        <![CDATA[
+        <title>الصياغة المدعومة</title> <br>
+        <minor>positive &ensp; p &ensp; negative &ensp; n</minor> <br>
+        &ensp; عناصر نائبة سيتم استبدالها بأعداد التقييمات الفعلية. <br>
+        <minor>+ &ensp; - &ensp; * &ensp; /</minor> <br>
+        &ensp; العمليات الحسابية الأساسية <br>
+        <minor>%</minor> <br>
+        &ensp; النسبة المئوية <br>
+        <minor>&lt; &ensp; &gt; &ensp; &lt;= &ensp; &gt;=</minor> <br>
+        &ensp; المقارنات <br>
+        <minor>& &ensp; |</minor> <br>
+        &ensp; AND/OR المنطقية <br>
+        <minor>( &ensp; )</minor> <br>
+        &ensp; الأقواس <br>
+        <br>
+        <b>أمثلة</b> <br>
+        &ensp; <sample>negative &gt; positive</sample> <br>
+        &ensp; <sample>P - N &gt; 5</sample> (غير حساس لحالة الأحرف) <br>
+        &ensp; <sample>p &gt; 3 & n &gt; 2 & (n / p &gt;= 120%)</sample> <br>
         ]]>
     </string>
     <string name="missing_brackets">regex يفتقد مجموعة التقاط ()، راجع التلميح لمعرفة التفاصيل.</string>

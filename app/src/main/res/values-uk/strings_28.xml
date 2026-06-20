@@ -68,7 +68,7 @@
     <string name="clear_history">Очистити історію</string>
     <string name="tip_clear_history">Якщо програма аварійно завершується під час запуску й не відкривається, спробуйте очистити записи історії за допомогою кнопки нижче.</string>
     <string name="direct_verdict">Прямий вердикт</string>
-    <string name="rating_count">Число оцінок</string>
+    <string name="formula">Формула</string>
     <string name="strategy">Стратегія</string>
     <string name="help_api_result_strategy">
         <![CDATA[
@@ -76,28 +76,62 @@
         Сервер повертає явну категорію спаму, що часто трапляється в API-сервісах. Наприклад: <br>
         &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
         <br>
-        <title>Число оцінок</title> <br>
-        Сервер повертає кількість позитивних/негативних оцінок, перемагає більше число.
+        <title>Формула</title> <br>
+        Сервер повертає кількість позитивних/негативних оцінок; налаштуйте власну логіку на їх основі.
         ]]>
     </string>
-    <string name="hint_positive_identifier_strategy_rating_count">Наприклад: (\\d+) позитивно</string>
-    <string name="hint_negative_identifier_strategy_rating_count">Наприклад: (\\d+) негативно</string>
-    <string name="help_positive_identifier_strategy_rating_count">
+    <string name="hint_positive_identifier_strategy_formula">Наприклад: (\\d+) позитивно</string>
+    <string name="hint_negative_identifier_strategy_formula">Наприклад: (\\d+) негативно</string>
+    <string name="help_positive_identifier_strategy_formula">
         <![CDATA[
         Цей regex використовується для вилучення кількості позитивних оцінок, потрібна група захоплення, тобто він має містити
-         <sample>(</sample> і <sample>)</sample> <br>
+         <sample>(</sample> і <sample>)</sample>, за замовчуванням використовується 0, якщо збіг не знайдено. <br>
         <br>
         Наприклад: <br>
         &ensp; <sample>(\\d+) позитивно</sample>
         ]]>
     </string>
-    <string name="help_negative_identifier_strategy_rating_count">
+    <string name="help_negative_identifier_strategy_formula">
         <![CDATA[
         Цей regex використовується для вилучення кількості негативних оцінок, потрібна група захоплення, тобто він має містити
-         <sample>(</sample> і <sample>)</sample> <br>
+         <sample>(</sample> і <sample>)</sample>, за замовчуванням використовується 0, якщо збіг не знайдено. <br>
         <br>
         Наприклад: <br>
         &ensp; <sample>(\\d+) негативно</sample>
+        ]]>
+    </string>
+    <string name="positive_condition">Позитивна умова</string>
+    <string name="negative_condition">Негативна умова</string>
+    <string name="help_positive_condition">
+        <![CDATA[
+        Номер буде <highlight>дозволено</highlight>, якщо цю умову виконано.
+        ]]>
+    </string>
+    <string name="help_negative_condition">
+        <![CDATA[
+        Номер буде <error>заблоковано</error>, якщо цю умову виконано.
+        ]]>
+    </string>
+    <string name="supported_formula_syntax" formatted="false">
+        <![CDATA[
+        <title>Підтримуваний синтаксис</title> <br>
+        <minor>positive &ensp; p &ensp; negative &ensp; n</minor> <br>
+        &ensp; Заповнювачі, які буде замінено фактичними числами оцінок. <br>
+        <minor>+ &ensp; - &ensp; * &ensp; /</minor> <br>
+        &ensp; Основні математичні операції <br>
+        <minor>%</minor> <br>
+        &ensp; Відсоток <br>
+        <minor>&lt; &ensp; &gt; &ensp; &lt;= &ensp; &gt;=</minor> <br>
+        &ensp; Порівняння <br>
+        <minor>& &ensp; |</minor> <br>
+        &ensp; Логічне AND/OR <br>
+        <minor>( &ensp; )</minor> <br>
+        &ensp; Дужки <br>
+        <br>
+        <b>Приклади</b> <br>
+        &ensp; <sample>negative &gt; positive</sample> <br>
+        &ensp; <sample>P - N &gt; 5</sample> (без урахування регістру) <br>
+        &ensp; <sample>p &gt; 3 & n &gt; 2 & (n / p &gt;= 120%)</sample> <br>
         ]]>
     </string>
     <string name="missing_brackets">У regex відсутня група захоплення (), подробиці див. у підказці.</string>

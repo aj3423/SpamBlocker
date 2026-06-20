@@ -68,7 +68,7 @@
     <string name="clear_history">Clear History</string>
     <string name="tip_clear_history">If the app crashes on startup and won\'t open, try clearing the history logs using the button below.</string>
     <string name="direct_verdict">Direct Verdict</string>
-    <string name="rating_count">Rating Count</string>
+    <string name="formula">Formula</string>
     <string name="strategy">Strategy</string>
     <string name="help_api_result_strategy">
         <![CDATA[
@@ -76,28 +76,62 @@
         The server returns an explicit spam category, common in API services. For example: <br>
         &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
         <br>
-        <title>Rating Count</title> <br>
-        The server returns the positive/negative rating counts, the higher count wins.
+        <title>Formula</title> <br>
+        The server returns the positive/negative rating counts, customize your own logic based on them.
         ]]>
     </string>
-    <string name="hint_positive_identifier_strategy_rating_count">E.g.: (\\d+) positive</string>
-    <string name="hint_negative_identifier_strategy_rating_count">E.g.: (\\d+) negative</string>
-    <string name="help_positive_identifier_strategy_rating_count">
+    <string name="hint_positive_identifier_strategy_formula">E.g.: (\\d+) positive</string>
+    <string name="hint_negative_identifier_strategy_formula">E.g.: (\\d+) negative</string>
+    <string name="help_positive_identifier_strategy_formula">
         <![CDATA[
         This regex is for extracting the positive rating count, a capturing group is required, meaning it should contain
-         <sample>(</sample> and <sample>)</sample> <br>
+         <sample>(</sample> and <sample>)</sample>, defaults to 0 if no match is found. <br>
         <br>
         For example: <br>
         &ensp; <sample>(\\d+) positive</sample>
         ]]>
     </string>
-    <string name="help_negative_identifier_strategy_rating_count">
+    <string name="help_negative_identifier_strategy_formula">
         <![CDATA[
         This regex is for extracting the negative rating count, a capturing group is required, meaning it should contain
-         <sample>(</sample> and <sample>)</sample> <br>
+         <sample>(</sample> and <sample>)</sample>, defaults to 0 if no match is found. <br>
         <br>
         For example: <br>
         &ensp; <sample>(\\d+) negative</sample>
+        ]]>
+    </string>
+    <string name="positive_condition">Positive Condition</string>
+    <string name="negative_condition">Negative Condition</string>
+    <string name="help_positive_condition">
+        <![CDATA[
+        The number will be <highlight>allowed</highlight> if this condition is met.
+        ]]>
+    </string>
+    <string name="help_negative_condition">
+        <![CDATA[
+        The number will be <error>blocked</error> if this condition is met.
+        ]]>
+    </string>
+    <string name="supported_formula_syntax" formatted="false">
+        <![CDATA[
+        <title>Supported Syntax</title> <br>
+        <minor>positive &ensp; p &ensp; negative &ensp; n</minor> <br>
+        &ensp; Placeholders that will be replaced by the actual rating counts. <br>
+        <minor>+ &ensp; - &ensp; * &ensp; /</minor> <br>
+        &ensp; Math basics <br>
+        <minor>%</minor> <br>
+        &ensp; Percentage <br>
+        <minor>&lt; &ensp; &gt; &ensp; &lt;= &ensp; &gt;=</minor> <br>
+        &ensp; Comparisons <br>
+        <minor>& &ensp; |</minor> <br>
+        &ensp; Logical AND/OR <br>
+        <minor>( &ensp; )</minor> <br>
+        &ensp; Parentheses <br>
+        <br>
+        <b>Examples</b> <br>
+        &ensp; <sample>negative &gt; positive</sample> <br>
+        &ensp; <sample>P - N &gt; 5</sample> (case insensitive) <br>
+        &ensp; <sample>p &gt; 3 & n &gt; 2 & (n / p &gt;= 120%)</sample> <br>
         ]]>
     </string>
     <string name="missing_brackets">Regex missing capturing group (), check the tooltip for details.</string>

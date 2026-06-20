@@ -68,7 +68,7 @@
     <string name="clear_history">Limpar histórico</string>
     <string name="tip_clear_history">Se o app travar na inicialização e não abrir, tente limpar os registros do histórico usando o botão abaixo.</string>
     <string name="direct_verdict">Veredito direto</string>
-    <string name="rating_count">N.º de avaliações</string>
+    <string name="formula">Fórmula</string>
     <string name="strategy">Estratégia</string>
     <string name="help_api_result_strategy">
         <![CDATA[
@@ -76,28 +76,62 @@
         O servidor retorna uma categoria de spam explícita, comum em serviços de API. Por exemplo: <br>
         &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
         <br>
-        <title>N.º de avaliações</title> <br>
-        O servidor retorna a contagem de avaliações positivas/negativas; a contagem mais alta vence.
+        <title>Fórmula</title> <br>
+        O servidor retorna a contagem de avaliações positivas/negativas; personalize sua própria lógica com base nesses valores.
         ]]>
     </string>
-    <string name="hint_positive_identifier_strategy_rating_count">Ex.: (\\d+) positivo</string>
-    <string name="hint_negative_identifier_strategy_rating_count">Ex.: (\\d+) negativo</string>
-    <string name="help_positive_identifier_strategy_rating_count">
+    <string name="hint_positive_identifier_strategy_formula">Ex.: (\\d+) positivo</string>
+    <string name="hint_negative_identifier_strategy_formula">Ex.: (\\d+) negativo</string>
+    <string name="help_positive_identifier_strategy_formula">
         <![CDATA[
         Esta regex serve para extrair a contagem de avaliações positivas; um grupo de captura é necessário, ou seja, deve conter
-         <sample>(</sample> e <sample>)</sample> <br>
+         <sample>(</sample> e <sample>)</sample>, com valor padrão 0 se nenhuma correspondência for encontrada. <br>
         <br>
         Por exemplo: <br>
         &ensp; <sample>(\\d+) positivo</sample>
         ]]>
     </string>
-    <string name="help_negative_identifier_strategy_rating_count">
+    <string name="help_negative_identifier_strategy_formula">
         <![CDATA[
         Esta regex serve para extrair a contagem de avaliações negativas; um grupo de captura é necessário, ou seja, deve conter
-         <sample>(</sample> e <sample>)</sample> <br>
+         <sample>(</sample> e <sample>)</sample>, com valor padrão 0 se nenhuma correspondência for encontrada. <br>
         <br>
         Por exemplo: <br>
         &ensp; <sample>(\\d+) negativo</sample>
+        ]]>
+    </string>
+    <string name="positive_condition">Condição positiva</string>
+    <string name="negative_condition">Condição negativa</string>
+    <string name="help_positive_condition">
+        <![CDATA[
+        O número será <highlight>permitido</highlight> se esta condição for atendida.
+        ]]>
+    </string>
+    <string name="help_negative_condition">
+        <![CDATA[
+        O número será <error>bloqueado</error> se esta condição for atendida.
+        ]]>
+    </string>
+    <string name="supported_formula_syntax" formatted="false">
+        <![CDATA[
+        <title>Sintaxe compatível</title> <br>
+        <minor>positive &ensp; p &ensp; negative &ensp; n</minor> <br>
+        &ensp; Marcadores que serão substituídos pelas contagens reais de avaliações. <br>
+        <minor>+ &ensp; - &ensp; * &ensp; /</minor> <br>
+        &ensp; Operações matemáticas básicas <br>
+        <minor>%</minor> <br>
+        &ensp; Porcentagem <br>
+        <minor>&lt; &ensp; &gt; &ensp; &lt;= &ensp; &gt;=</minor> <br>
+        &ensp; Comparações <br>
+        <minor>& &ensp; |</minor> <br>
+        &ensp; AND/OR lógico <br>
+        <minor>( &ensp; )</minor> <br>
+        &ensp; Parênteses <br>
+        <br>
+        <b>Exemplos</b> <br>
+        &ensp; <sample>negative &gt; positive</sample> <br>
+        &ensp; <sample>P - N &gt; 5</sample> (não diferencia maiúsculas de minúsculas) <br>
+        &ensp; <sample>p &gt; 3 & n &gt; 2 & (n / p &gt;= 120%)</sample> <br>
         ]]>
     </string>
     <string name="missing_brackets">A regex não tem um grupo de captura (), veja a dica para detalhes.</string>

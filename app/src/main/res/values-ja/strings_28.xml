@@ -68,7 +68,7 @@
     <string name="clear_history">履歴を消去</string>
     <string name="tip_clear_history">アプリが起動時にクラッシュして開けない場合は、下のボタンで履歴ログを消去してみてください。</string>
     <string name="direct_verdict">直接判定</string>
-    <string name="rating_count">評価数</string>
+    <string name="formula">数式</string>
     <string name="strategy">戦略</string>
     <string name="help_api_result_strategy">
         <![CDATA[
@@ -76,28 +76,62 @@
         サーバーが明示的な迷惑電話カテゴリを返す方式で、APIサービスでは一般的です。例えば: <br>
         &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
         <br>
-        <title>評価数</title> <br>
-        サーバーがポジティブ/ネガティブの評価数を返し、多い方が採用されます。
+        <title>数式</title> <br>
+        サーバーがポジティブ/ネガティブの評価数を返します。それらを基に独自のロジックを設定できます。
         ]]>
     </string>
-    <string name="hint_positive_identifier_strategy_rating_count">例: (\\d+) ポジティブ</string>
-    <string name="hint_negative_identifier_strategy_rating_count">例: (\\d+) ネガティブ</string>
-    <string name="help_positive_identifier_strategy_rating_count">
+    <string name="hint_positive_identifier_strategy_formula">例: (\\d+) ポジティブ</string>
+    <string name="hint_negative_identifier_strategy_formula">例: (\\d+) ネガティブ</string>
+    <string name="help_positive_identifier_strategy_formula">
         <![CDATA[
         このregexはポジティブ評価数を抽出するためのものです。キャプチャリンググループが必須で、つまり
-         <sample>(</sample> と <sample>)</sample> を含める必要があります <br>
+         <sample>(</sample> と <sample>)</sample> を含める必要があります。一致が見つからない場合はデフォルトで0になります。 <br>
         <br>
         例えば: <br>
         &ensp; <sample>(\\d+) ポジティブ</sample>
         ]]>
     </string>
-    <string name="help_negative_identifier_strategy_rating_count">
+    <string name="help_negative_identifier_strategy_formula">
         <![CDATA[
         このregexはネガティブ評価数を抽出するためのものです。キャプチャリンググループが必須で、つまり
-         <sample>(</sample> と <sample>)</sample> を含める必要があります <br>
+         <sample>(</sample> と <sample>)</sample> を含める必要があります。一致が見つからない場合はデフォルトで0になります。 <br>
         <br>
         例えば: <br>
         &ensp; <sample>(\\d+) ネガティブ</sample>
+        ]]>
+    </string>
+    <string name="positive_condition">ポジティブ条件</string>
+    <string name="negative_condition">ネガティブ条件</string>
+    <string name="help_positive_condition">
+        <![CDATA[
+        この条件を満たす場合、番号は<highlight>許可</highlight>されます。
+        ]]>
+    </string>
+    <string name="help_negative_condition">
+        <![CDATA[
+        この条件を満たす場合、番号は<error>ブロック</error>されます。
+        ]]>
+    </string>
+    <string name="supported_formula_syntax" formatted="false">
+        <![CDATA[
+        <title>対応している構文</title> <br>
+        <minor>positive &ensp; p &ensp; negative &ensp; n</minor> <br>
+        &ensp; 実際の評価数に置き換えられるプレースホルダーです。 <br>
+        <minor>+ &ensp; - &ensp; * &ensp; /</minor> <br>
+        &ensp; 基本的な算術演算 <br>
+        <minor>%</minor> <br>
+        &ensp; パーセント <br>
+        <minor>&lt; &ensp; &gt; &ensp; &lt;= &ensp; &gt;=</minor> <br>
+        &ensp; 比較 <br>
+        <minor>& &ensp; |</minor> <br>
+        &ensp; 論理AND/OR <br>
+        <minor>( &ensp; )</minor> <br>
+        &ensp; かっこ <br>
+        <br>
+        <b>例</b> <br>
+        &ensp; <sample>negative &gt; positive</sample> <br>
+        &ensp; <sample>P - N &gt; 5</sample> (大文字小文字を区別しません) <br>
+        &ensp; <sample>p &gt; 3 & n &gt; 2 & (n / p &gt;= 120%)</sample> <br>
         ]]>
     </string>
     <string name="missing_brackets">Regex にキャプチャリンググループ () がありません。詳細はツールチップを確認してください。</string>

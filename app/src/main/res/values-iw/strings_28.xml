@@ -68,7 +68,7 @@
     <string name="clear_history">נקה היסטוריה</string>
     <string name="tip_clear_history">אם האפליקציה קורסת בהפעלה ולא נפתחת, נסה לנקות את יומני ההיסטוריה באמצעות הכפתור למטה.</string>
     <string name="direct_verdict">הכרעה ישירה</string>
-    <string name="rating_count">מספר דירוגים</string>
+    <string name="formula">נוסחה</string>
     <string name="strategy">אסטרטגיה</string>
     <string name="help_api_result_strategy">
         <![CDATA[
@@ -76,28 +76,62 @@
         השרת מחזיר קטגוריית ספאם מפורשת, דבר נפוץ בשירותי API. לדוגמה: <br>
         &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
         <br>
-        <title>מספר דירוגים</title> <br>
-        השרת מחזיר את ספירת הדירוגים החיוביים/השליליים, והספירה הגבוהה יותר מנצחת.
+        <title>נוסחה</title> <br>
+        השרת מחזיר את ספירת הדירוגים החיוביים/השליליים; אפשר להתאים לוגיקה משלך על בסיסם.
         ]]>
     </string>
-    <string name="hint_positive_identifier_strategy_rating_count">לדוגמה: (\\d+) חיובי</string>
-    <string name="hint_negative_identifier_strategy_rating_count">לדוגמה: (\\d+) שלילי</string>
-    <string name="help_positive_identifier_strategy_rating_count">
+    <string name="hint_positive_identifier_strategy_formula">לדוגמה: (\\d+) חיובי</string>
+    <string name="hint_negative_identifier_strategy_formula">לדוגמה: (\\d+) שלילי</string>
+    <string name="help_positive_identifier_strategy_formula">
         <![CDATA[
         Regex זה מיועד לחילוץ ספירת הדירוגים החיוביים, נדרשת קבוצת לכידה, כלומר הוא צריך להכיל
-         <sample>(</sample> ו-<sample>)</sample> <br>
+         <sample>(</sample> ו-<sample>)</sample>, וברירת המחדל היא 0 אם לא נמצאה התאמה. <br>
         <br>
         לדוגמה: <br>
         &ensp; <sample>(\\d+) חיובי</sample>
         ]]>
     </string>
-    <string name="help_negative_identifier_strategy_rating_count">
+    <string name="help_negative_identifier_strategy_formula">
         <![CDATA[
         Regex זה מיועד לחילוץ ספירת הדירוגים השליליים, נדרשת קבוצת לכידה, כלומר הוא צריך להכיל
-         <sample>(</sample> ו-<sample>)</sample> <br>
+         <sample>(</sample> ו-<sample>)</sample>, וברירת המחדל היא 0 אם לא נמצאה התאמה. <br>
         <br>
         לדוגמה: <br>
         &ensp; <sample>(\\d+) שלילי</sample>
+        ]]>
+    </string>
+    <string name="positive_condition">תנאי חיובי</string>
+    <string name="negative_condition">תנאי שלילי</string>
+    <string name="help_positive_condition">
+        <![CDATA[
+        המספר <highlight>יורשה</highlight> אם התנאי הזה מתקיים.
+        ]]>
+    </string>
+    <string name="help_negative_condition">
+        <![CDATA[
+        המספר <error>ייחסם</error> אם התנאי הזה מתקיים.
+        ]]>
+    </string>
+    <string name="supported_formula_syntax" formatted="false">
+        <![CDATA[
+        <title>תחביר נתמך</title> <br>
+        <minor>positive &ensp; p &ensp; negative &ensp; n</minor> <br>
+        &ensp; מצייני מקום שיוחלפו בספירות הדירוגים בפועל. <br>
+        <minor>+ &ensp; - &ensp; * &ensp; /</minor> <br>
+        &ensp; פעולות מתמטיות בסיסיות <br>
+        <minor>%</minor> <br>
+        &ensp; אחוז <br>
+        <minor>&lt; &ensp; &gt; &ensp; &lt;= &ensp; &gt;=</minor> <br>
+        &ensp; השוואות <br>
+        <minor>& &ensp; |</minor> <br>
+        &ensp; AND/OR לוגי <br>
+        <minor>( &ensp; )</minor> <br>
+        &ensp; סוגריים <br>
+        <br>
+        <b>דוגמאות</b> <br>
+        &ensp; <sample>negative &gt; positive</sample> <br>
+        &ensp; <sample>P - N &gt; 5</sample> (לא תלוי רישיות) <br>
+        &ensp; <sample>p &gt; 3 & n &gt; 2 & (n / p &gt;= 120%)</sample> <br>
         ]]>
     </string>
     <string name="missing_brackets">ב-Regex חסרה קבוצת לכידה (), בדוק את ההסבר הקופץ לפרטים.</string>

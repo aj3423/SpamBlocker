@@ -1,5 +1,6 @@
 package spam.blocker.service.bot
 
+import android.annotation.SuppressLint
 import android.content.Context
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
@@ -30,6 +31,7 @@ import spam.blocker.def.Def
 import spam.blocker.ui.darken
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.api.tagValid
+import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.GreyIcon16
@@ -49,6 +51,7 @@ import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.A
 import spam.blocker.util.AdbLogger
 import spam.blocker.util.CountryCode
+import spam.blocker.util.Formula
 import spam.blocker.util.ILogger
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionWrapper
@@ -354,6 +357,7 @@ class InterceptCall(
         GreyIcon20(iconId = R.drawable.ic_call)
     }
 
+    @SuppressLint("LocalContextGetResourceValueCall")
     @Composable
     override fun Options() {
         val ctx = LocalContext.current
@@ -460,7 +464,7 @@ data class ApiQueryResult(
 @SerialName("ParseQueryStrategy")
 enum class ApiResultStrategy {
     DirectVerdict,
-    RatingCount
+    Formula
 }
 
 @Serializable
@@ -473,6 +477,9 @@ class ParseQueryResult(
     var positiveSig: String = "",
     var positiveFlags: Int = Def.DefaultRegexFlags,
 
+    var negativeFormula: String? = null,
+    var positiveFormula: String? = null,
+
     var categorySig: String = "",
     var categoryFlags: Int = Def.DefaultRegexFlags,
 
@@ -481,6 +488,11 @@ class ParseQueryResult(
 
     var categoryMapping: String = "",
 ) : IPermissiveAction {
+
+    companion object {
+        private val defaultPositiveFormula = "positive > negative"
+        private val defaultNegativeFormula = "negative > positive"
+    }
 
     // The server returns an explicit result that indicates whether it should be blocked or not.
     //  E.g.
@@ -508,8 +520,8 @@ class ParseQueryResult(
     }
     // The server only returns two rating numbers, compare these numbers to decide whether to block it or not.
     //  E.g.
-    //    12 positive, 24 negative
-    private fun makeDecisionRatingScore(ctx: Context, logger: ILogger?, html: String): Boolean? {
+    //    "12x positive", "24x negative" from SIA
+    private fun makeDecisionFormula(ctx: Context, logger: ILogger?, html: String): Boolean? {
         if (negativeSig.isEmpty() || positiveSig.isEmpty())
             return null
 
@@ -517,21 +529,35 @@ class ParseQueryResult(
 
         // 1. negative
         val negativeOpts = Util.flagsToRegexOptions(negativeFlags)
-        val m1 = negativeSig.toRegex(negativeOpts).find(html) ?: return null
-        val negativeRating = m1.groupValues[1].toIntOrNull() ?: return null
+        val m1 = negativeSig.toRegex(negativeOpts).find(html)
+        val negativeRating = m1?.groupValues[1] ?: "0"
 
         // 2. positive
         val positiveOpts = Util.flagsToRegexOptions(positiveFlags)
-        val m2 = positiveSig.toRegex(positiveOpts).find(html) ?: return null
-        val positiveRating = m2.groupValues[1].toIntOrNull() ?: return null
+        val m2 = positiveSig.toRegex(positiveOpts).find(html)
+        val positiveRating = m2?.groupValues[1] ?: "0"
 
         logger?.info(ctx.getString(R.string.rating_count_template).formatAnnotated(
-            positiveRating.toString().A(C.disabled),
-            negativeRating.toString().A(C.disabled)
+            positiveRating.A(C.disabled),
+            negativeRating.A(C.disabled)
         ))
 
-        return positiveRating > negativeRating
+        fun replaceNumber(s: String) =
+            s.lowercase()
+                .replace("negative", negativeRating).replace("positive", positiveRating)
+                .replace("n", negativeRating).replace("p", positiveRating)
+
+        val neg = replaceNumber(negativeFormula ?: defaultNegativeFormula)
+        val pos = replaceNumber(positiveFormula ?: defaultPositiveFormula)
+
+        if (Formula.evaluate(neg))
+            return false
+        if (Formula.evaluate(pos))
+            return true
+
+        return null
     }
+
     // return:
     //  true: positive
     //  false: negative
@@ -539,7 +565,7 @@ class ParseQueryResult(
     private fun makeDecision(ctx: Context, logger: ILogger?, html: String): Boolean? {
         return when(strategy) {
             ApiResultStrategy.DirectVerdict -> makeDecisionDirectVerdict(ctx, logger, html)
-            ApiResultStrategy.RatingCount -> makeDecisionRatingScore(ctx, logger, html)
+            ApiResultStrategy.Formula -> makeDecisionFormula(ctx, logger, html)
         }
     }
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
@@ -636,28 +662,10 @@ class ParseQueryResult(
 
     @Composable
     override fun Summary(showIcon: Boolean) {
-        RowVCenterSpaced(4) {
-            if (negativeSig.isNotEmpty()) {
-                RowVCenter {
-                    GreyIcon16(R.drawable.ic_no)
-                    SummaryLabel(negativeSig)
-                }
-            }
-
-            if (positiveSig.isNotEmpty()) {
-                RowVCenter {
-                    GreyIcon16(R.drawable.ic_yes)
-                    SummaryLabel(positiveSig)
-                }
-            }
-
-            if (categorySig.isNotEmpty()) {
-                RowVCenter {
-                    GreyIcon16(R.drawable.ic_category)
-                    SummaryLabel(categorySig)
-                }
-            }
-        }
+        SummaryLabel(when(strategy) {
+            ApiResultStrategy.DirectVerdict -> Str(R.string.direct_verdict)
+            ApiResultStrategy.Formula -> Str(R.string.formula)
+        })
     }
 
     override fun tooltip(ctx: Context): String {
@@ -686,7 +694,7 @@ class ParseQueryResult(
             mutableIntStateOf(
                 when(strategy) {
                     ApiResultStrategy.DirectVerdict -> 0
-                    ApiResultStrategy.RatingCount -> 1
+                    ApiResultStrategy.Formula -> 1
                 }
             )
         }
@@ -700,24 +708,25 @@ class ParseQueryResult(
                         selectedStrategy = 0
                         strategy = ApiResultStrategy.DirectVerdict
                     },
-                    LabelItem(label = Str(R.string.rating_count)) {
+                    LabelItem(label = Str(R.string.formula)) {
                         selectedStrategy = 1
-                        strategy = ApiResultStrategy.RatingCount
+                        strategy = ApiResultStrategy.Formula
                     }
                 ),
                 selected = selectedStrategy,
             )
         }
 
+        // Identifiers
         val negativeFlagsCopy = remember { mutableIntStateOf(negativeFlags) }
         var negativeSigState by remember { mutableStateOf(negativeSig) }
         RegexInputBox(
             regexStr = negativeSigState,
             label = { Text(Str(R.string.negative_identifier)) },
             leadingIcon = { ResIcon16(R.drawable.ic_no, color = C.error) },
-            helpTooltipId = if(selectedStrategy == 0) R.string.help_negative_identifier else R.string.help_negative_identifier_strategy_rating_count,
+            helpTooltipId = if(selectedStrategy == 0) R.string.help_negative_identifier else R.string.help_negative_identifier_strategy_formula,
             placeholder = { Placeholder(Str(
-                if(selectedStrategy == 0) R.string.hint_negative_identifier else R.string.hint_negative_identifier_strategy_rating_count
+                if(selectedStrategy == 0) R.string.hint_negative_identifier else R.string.hint_negative_identifier_strategy_formula
             )) },
             regexFlags = negativeFlagsCopy,
             onRegexStrChange = { newVal, hasError ->
@@ -740,9 +749,9 @@ class ParseQueryResult(
             regexStr = positiveSigState,
             label = { Text(Str(R.string.positive_identifier)) },
             leadingIcon = { ResIcon16(R.drawable.ic_yes, color = C.success) },
-            helpTooltipId = if(selectedStrategy == 0) R.string.help_positive_identifier else R.string.help_positive_identifier_strategy_rating_count,
+            helpTooltipId = if(selectedStrategy == 0) R.string.help_positive_identifier else R.string.help_positive_identifier_strategy_formula,
             placeholder = { Placeholder(Str(
-                if(selectedStrategy == 0) R.string.hint_positive_identifier else R.string.hint_positive_identifier_strategy_rating_count
+                if(selectedStrategy == 0) R.string.hint_positive_identifier else R.string.hint_positive_identifier_strategy_formula
             )) },
             regexFlags = positiveFlagsCopy,
             onRegexStrChange = { newVal, hasError ->
@@ -759,6 +768,38 @@ class ParseQueryResult(
         if (selectedStrategy == 1 && positiveSigState.isNotEmpty() && (!positiveSigState.contains("(") || !positiveSigState.contains(")"))) {
             Text(Str(R.string.missing_brackets), color = C.error, fontSize = 14.sp)
         }
+
+        // Formula fields
+        AnimatedVisibleV(selectedStrategy == 1) {
+            var neg by remember { mutableStateOf(negativeFormula ?: defaultNegativeFormula) }
+            StrInputBox(
+                text = neg,
+                label = { Text(Str(R.string.negative_condition)) },
+                leadingIcon = { ResIcon16(R.drawable.ic_formula, color = C.error) },
+                placeholder = { Placeholder(defaultNegativeFormula) },
+                helpTooltip = Str(R.string.help_negative_condition) + "<br><br>" + Str(R.string.supported_formula_syntax),
+                onValueChange = { newVal ->
+                    negativeFormula = newVal
+                    neg = newVal
+                }
+            )
+        }
+        AnimatedVisibleV(selectedStrategy == 1) {
+            var pos by remember { mutableStateOf(positiveFormula ?: defaultPositiveFormula) }
+            StrInputBox(
+                text = pos,
+                label = { Text(Str(R.string.positive_condition)) },
+                leadingIcon = { ResIcon16(R.drawable.ic_formula, color = C.success) },
+                placeholder = { Placeholder(defaultPositiveFormula) },
+                helpTooltip = Str(R.string.help_positive_condition) + "<br><br>" + Str(R.string.supported_formula_syntax),
+                onValueChange = { newVal ->
+                    positiveFormula = newVal
+                    pos = newVal
+                }
+            )
+        }
+
+        // Category
         val reasonFlagsCopy = remember { mutableIntStateOf(categoryFlags) }
         RegexInputBox(
             regexStr = categorySig,

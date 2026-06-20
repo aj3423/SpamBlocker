@@ -373,6 +373,7 @@ fun StrInputBox(
     label: @Composable (() -> Unit)? = null,
     placeholder: @Composable (() -> Unit)? = null,
     leadingIconId: Int? = null,
+    leadingIcon: @Composable (() -> Unit)? = null,
     trailingIcon: @Composable (() -> Unit)? = null,
     helpTooltip: String? = null,
     enabled: Boolean = true,
@@ -420,7 +421,7 @@ fun StrInputBox(
         singleLine = singleLine,
         maxLines = maxLines,
         placeholder = placeholder,
-        leadingIcon = leadingIconId?.let {
+        leadingIcon = leadingIcon ?: leadingIconId?.let {
             { GreyIcon18(it) }
         },
         keyboardOptions = KeyboardOptions(),
