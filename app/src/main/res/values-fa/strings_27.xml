@@ -124,7 +124,11 @@
         <br>
         <warn>توجه</warn> <br>
         &ensp; اطلاعات اپراتور بر پایه ثبت اولیه است و اگر شماره به اپراتور دیگری
-        منتقل شده باشد ممکن است نادقیق باشد.
+        منتقل شده باشد ممکن است نادقیق باشد. <br>
+        <br>
+        برای مثال: <br>
+        &ensp; شماره‌های مربوط به <no_translate><sample>Verizon Wireless</sample></no_translate> را
+        با regex <no_translate><error>verizon.*</error></no_translate> مسدود کن <br>
         ]]>
     </string>
 </resources>

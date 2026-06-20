@@ -124,7 +124,11 @@
         <br>
         <warn>注意</warn> <br>
         &ensp; 运营商信息基于初始登记，如果号码已携号转网到其他运营商，
-        可能不准确。
+        可能不准确。 <br>
+        <br>
+        例如： <br>
+        &ensp; 使用正则表达式 <no_translate><error>verizon.*</error></no_translate>
+        屏蔽来自 <no_translate><sample>Verizon Wireless</sample></no_translate> 的号码 <br>
         ]]>
     </string>
 </resources>

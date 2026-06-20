@@ -18,6 +18,7 @@ import spam.blocker.service.bot.HttpRequest
 import spam.blocker.service.bot.IAction
 import spam.blocker.service.bot.parseActions
 import spam.blocker.service.bot.serialize
+import spam.blocker.util.Contacts
 import spam.blocker.util.Permission
 import spam.blocker.util.PhoneNumber
 import spam.blocker.util.Util.domainFromUrl
@@ -130,6 +131,12 @@ fun listReportableAPIs(
 
         if (isNumberAllowedLater(ctx, rawNumber)) {
             logi("skip reporting repeated/dialed number: $rawNumber")
+            return listOf()
+        }
+
+        // 2. check if the number has been added to contact
+        if (Contacts.findContactByRawNumber(ctx, rawNumber) != null) {
+            logi("skip reporting contact number: $rawNumber")
             return listOf()
         }
     }

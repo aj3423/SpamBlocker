@@ -87,12 +87,10 @@
         &ensp; Der reguläre Ausdruck stimmt mit dem Geo-Standort der Nummer überein. <br>
         <br>
         &ensp; Dies beruht auf Googles Bibliothek <a href="https://github.com/google/libphonenumber">libphonenumber</a>,
-         einer Offline‑Bibliothek, die geografische Informationen für Telefonnummern bereitstellt. <br>
+         einer Offline-Datenbank, die geografische Informationen für Telefonnummern bereitstellt. <br>
         <br>
-        &ensp; Wenn Ihnen Ungenauigkeiten in der Datenbank auffallen, können Sie
-        <a href="https://groups.google.com/g/libphonenumber-discuss">eine Diskussion öffnen</a>
-        oder
-        <a href="https://issuetracker.google.com/issues/new?component=192347">ein Problem melden</a>. <br>
+        Zum Beispiel: <br>
+        &ensp; Blockieren Sie Nummern aus <no_translate><sample>San Francisco, CA</sample></no_translate> mit dem Regex <no_translate><error>san fr.*</error></no_translate> <br>
         ]]>
     </string>
     <string name="label_value_pair">%s: %s</string>

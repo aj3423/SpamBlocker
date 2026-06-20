@@ -124,7 +124,11 @@
         <br>
         <warn>注</warn> <br>
         &ensp; 通信事業者情報は最初の登録時点に基づくため、番号が他社へ移転されている
-        場合は不正確なことがあります。
+        場合は不正確なことがあります。 <br>
+        <br>
+        例: <br>
+        &ensp; <no_translate><sample>Verizon Wireless</sample></no_translate> の番号を
+        正規表現 <no_translate><error>verizon.*</error></no_translate> でブロック <br>
         ]]>
     </string>
 </resources>

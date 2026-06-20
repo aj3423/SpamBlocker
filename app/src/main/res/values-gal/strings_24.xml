@@ -85,12 +85,10 @@
         &ensp; O regex coincidirá coa localización xeográfica do number. <br>
         <br>
         &ensp; Isto basease na biblioteca de Google <a href="https://github.com/google/libphonenumber">libphonenumber</a>,
-         unha biblioteca offline que fornece información xeográfica para phone numbers. <br>
+         unha base de datos offline que fornece información xeográfica para phone numbers. <br>
         <br>
-        &ensp; Se detectas algún problema coa precisión da base de datos, podes
-        <a href="https://groups.google.com/g/libphonenumber-discuss">abrir unha discusión</a>
-        ou
-        <a href="https://issuetracker.google.com/issues/new?component=192347">informar dun problema</a>. <br>
+        Por exemplo: <br>
+        &ensp; Bloquea números de <no_translate><sample>San Francisco, CA</sample></no_translate> coa regex <no_translate><error>san fr.*</error></no_translate> <br>
         ]]>
     </string>
     <string name="label_value_pair">%s: %s</string>

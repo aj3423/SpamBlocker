@@ -20,8 +20,8 @@
         <h6><title>- Signalement automatique</title></h6>
 		<minor><b>Délai de signalement</b></minor><br>
         Lorsqu\'un appel est bloqué, il y aura un délai d\'une heure avant qu\'il ne soit signalé.
-        Si le numéro de téléphone est autorisé plus tard en raison de répétitions ou d\'un rappel dans ce délai,
-        il est considéré comme un numéro de téléphone non-spam et le signalement sera annulé.<br>
+        Si le numéro de téléphone est autorisé plus tard en raison de répétitions, d\'un rappel ou d\'un ajout aux contacts
+        dans ce délai, il est considéré comme non-spam et le signalement sera annulé.<br>
         <br>
 		<minor><b>Type de signalement</b></minor><br>
 		1. Il <error><b>ne signalera pas</b></error> :<br>

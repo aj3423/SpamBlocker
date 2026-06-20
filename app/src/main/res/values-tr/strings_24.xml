@@ -81,12 +81,10 @@
         &ensp; Regex, numaranın coğrafi konumuyla eşleşecektir. <br>
         <br>
         &ensp; Bu, Google\'ın <a href="https://github.com/google/libphonenumber">libphonenumber</a> kütüphanesine dayanır,
-         telefon numaraları için coğrafi bilgi sağlayan çevrim dışı bir kütüphane. <br>
+         telefon numaraları için coğrafi bilgi sağlayan çevrim dışı bir veritabanı. <br>
         <br>
-        &ensp; Veritabanı doğruluğunda herhangi bir sorun fark ederseniz,
-        <a href="https://groups.google.com/g/libphonenumber-discuss">bir tartışma açabilir</a>
-        ya da
-        <a href="https://issuetracker.google.com/issues/new?component=192347">bir sorun bildirebilirsiniz</a>. <br>
+        Örneğin: <br>
+        &ensp; <no_translate><sample>San Francisco, CA</sample></no_translate> bölgesinden gelen numaraları <no_translate><error>san fr.*</error></no_translate> regex\'i ile engelleyin <br>
         ]]>
     </string>
     <string name="label_value_pair">%s: %s</string>

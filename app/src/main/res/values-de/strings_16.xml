@@ -20,8 +20,8 @@
         <h6><title>- Automatische Meldung</title></h6>
 		<minor><b>Meldeverzögerung</b></minor><br>
         Wenn ein Anruf blockiert wird, gibt es einen einstündigen Zeitpuffer, bevor er gemeldet wird.
-        Wenn die Rufnummer später aufgrund von Wiederholungen oder Rückrufen innerhalb dieses Zeitpuffers zugelassen wird,
-        wird sie als Nicht-Spam-Rufnummer betrachtet und die Meldung wird abgebrochen.<br>
+        Wenn die Rufnummer später aufgrund von Wiederholungen, Rückrufen oder dem Hinzufügen zu den Kontakten
+        innerhalb dieses Zeitpuffers zugelassen wird, wird sie als Nicht-Spam betrachtet und die Meldung wird abgebrochen.<br>
         <br>
 		<minor><b>Meldungsart</b></minor><br>
 		1. Es <error><b>wird nicht</b></error> gemeldet:<br>

@@ -20,8 +20,8 @@
         <h6><title>- Reporte automático</title></h6>
 		<minor><b>Retraso del reporte</b></minor><br>
         Cuando se bloquea una llamada, habrá un período de una hora antes de que se reporte.
-        Si el número telefónico es permitido posteriormente debido a repeticiones o si se vuelve a marcar dentro de este período,
-        se considerará un número telefónico no spam y el reporte será cancelado.<br>
+        Si el número telefónico es permitido posteriormente, ya sea por repeticiones, por volverse a marcar o por agregarse a los contactos
+        dentro de este período, se considerará no spam y el reporte será cancelado.<br>
         <br>
 		<minor><b>Tipo de reporte</b></minor><br>
 		1. <error><b>No</b></error> reportará:<br>

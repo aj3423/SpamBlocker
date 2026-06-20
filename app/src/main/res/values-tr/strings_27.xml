@@ -123,7 +123,11 @@
         <br>
         <warn>Not</warn> <br>
         &ensp; Operatör bilgisi ilk kayda dayanır ve numara başka bir operatöre
-        taşındıysa hatalı olabilir.
+        taşındıysa hatalı olabilir. <br>
+        <br>
+        Örneğin: <br>
+        &ensp; <no_translate><sample>Verizon Wireless</sample></no_translate> numaralarını
+        <no_translate><error>verizon.*</error></no_translate> regex ile engelle <br>
         ]]>
     </string>
 </resources>

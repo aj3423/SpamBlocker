@@ -20,8 +20,8 @@
         <h6><title>- Informe automático</title></h6>
 		<minor><b>Atraso do informe</b></minor><br>
         Cando unha chamada é bloqueada, haberá un tempo de espera dunha hora antes de que se informe.
-        Se o número de teléfono se permite máis tarde debido a repeticións ou se volve chamar dentro deste tempo de espera,
-        considérase un número de teléfono non-spam e o informe será cancelado.<br>
+        Se o número de teléfono se permite máis tarde debido a repeticións, por volver chamar ou por engadirse aos contactos
+        dentro deste tempo de espera, considérase non-spam e o informe será cancelado.<br>
         <br>
 		<minor><b>Tipo de informe</b></minor><br>
 		1. <error><b>Non</b></error> informará de:<br>

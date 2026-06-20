@@ -20,8 +20,8 @@
         <h6><title>- Relatórios automáticos</title></h6>
 		<minor><b>Atraso no relatório</b></minor><br>
         Quando uma chamada é bloqueada, haverá um período de uma hora antes de ser relatada.
-        Se o número de telefone for permitido posteriormente devido a repetições ou se for discado novamente dentro desse período,
-        ele será considerado um número de telefone não-spam e o relatório será cancelado.<br>
+        Se o número de telefone for permitido posteriormente devido a repetições, por ser discado novamente ou por ser adicionado aos contatos
+        dentro desse período, ele será considerado não-spam e o relatório será cancelado.<br>
         <br>
 		<minor><b>Tipo de relatório</b></minor><br>
 		1. Ele <error><b>não</b></error> irá relatar:<br>

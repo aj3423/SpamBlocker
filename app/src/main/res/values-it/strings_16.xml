@@ -20,8 +20,8 @@
         <h6><title>- Segnalazione automatica</title></h6>
 		<minor><b>Ritardo nella segnalazione</b></minor><br>
         Quando una chiamata viene bloccata, ci sarà un buffer di tempo di un\'ora prima che venga segnalata.
-        Se il numero viene successivamente consentito a causa di chiamate ripetute o richiamate entro questo periodo di tempo,
-        verrà considerato un numero non spam e la segnalazione verrà annullata.<br>
+        Se il numero viene successivamente consentito a causa di chiamate ripetute, richiamate o dell\'aggiunta ai contatti
+        entro questo periodo di tempo, verrà considerato non spam e la segnalazione verrà annullata.<br>
         <br>
 		<minor><b>Tipo di segnalazione</b></minor><br>
 		1. <error><b>Non</b></error> segnalerà:<br>

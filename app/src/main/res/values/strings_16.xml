@@ -20,8 +20,8 @@
         <h6><title>- Auto reporting</title></h6>
 		<minor><b>Report delay</b></minor><br>
         When a call is blocked, there will be a one-hour time buffer before it\'s reported.
-        If the number is allowed later due to repeats or dialed back within this time buffer,
-        it\'s considered a non-spam number and the reporting will be canceled.<br>
+        If the number is allowed later, either due to repeats, dialed back, or being added to contacts
+         within this time buffer, it\'s considered a non-spam and the reporting will be canceled.<br>
         <br>
 		<minor><b>Report type</b></minor><br>
 		1. It <error><b>will not</b></error> report:<br>

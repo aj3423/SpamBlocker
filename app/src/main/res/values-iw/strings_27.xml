@@ -124,7 +124,11 @@
         <br>
         <warn>הערה</warn> <br>
         &ensp; פרטי המפעיל מבוססים על הרישום הראשוני ועשויים להיות לא מדויקים אם
-        מספר הטלפון נויד למפעיל אחר.
+        מספר הטלפון נויד למפעיל אחר. <br>
+        <br>
+        לדוגמה: <br>
+        &ensp; חסימת מספרים של <no_translate><sample>Verizon Wireless</sample></no_translate>
+        באמצעות regex <no_translate><error>verizon.*</error></no_translate> <br>
         ]]>
     </string>
 </resources>

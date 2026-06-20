@@ -85,12 +85,10 @@
         &ensp; Regex akan mencocokkan lokasi geo nomor. <br>
         <br>
         &ensp; Ini bergantung pada pustaka Google <a href="https://github.com/google/libphonenumber">libphonenumber</a>,
-         sebuah pustaka offline yang menyediakan informasi geografis untuk nomor telepon. <br>
+         sebuah basis data offline yang menyediakan informasi geografis untuk nomor telepon. <br>
         <br>
-        &ensp; Jika Anda menemukan masalah dengan akurasi basis data, Anda dapat
-        <a href="https://groups.google.com/g/libphonenumber-discuss">membuka diskusi</a>
-        atau
-        <a href="https://issuetracker.google.com/issues/new?component=192347">melaporkan masalah</a>. <br>
+        Contohnya: <br>
+        &ensp; Blokir nomor dari <no_translate><sample>San Francisco, CA</sample></no_translate> dengan regex <no_translate><error>san fr.*</error></no_translate> <br>
         ]]>
     </string>
     <string name="label_value_pair">%s: %s</string>

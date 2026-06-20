@@ -124,7 +124,11 @@
         <br>
         <warn>ملاحظة</warn> <br>
         &ensp; تعتمد معلومات المشغّل على التسجيل الأولي وقد تكون غير دقيقة إذا نُقل
-        الرقم إلى مشغّل آخر.
+        الرقم إلى مشغّل آخر. <br>
+        <br>
+        على سبيل المثال: <br>
+        &ensp; حظر الأرقام من <no_translate><sample>Verizon Wireless</sample></no_translate>
+        باستخدام regex <no_translate><error>verizon.*</error></no_translate> <br>
         ]]>
     </string>
 </resources>

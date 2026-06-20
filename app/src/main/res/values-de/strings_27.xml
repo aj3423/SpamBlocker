@@ -124,7 +124,11 @@
         <br>
         <warn>Hinweis</warn> <br>
         &ensp; Die Angaben zum Netzbetreiber basieren auf der ursprünglichen Registrierung
-        und können ungenau sein, wenn die Nummer zu einem anderen Anbieter portiert wurde.
+        und können ungenau sein, wenn die Nummer zu einem anderen Anbieter portiert wurde. <br>
+        <br>
+        Zum Beispiel: <br>
+        &ensp; Nummern von <no_translate><sample>Verizon Wireless</sample></no_translate>
+        mit dem regulären Ausdruck <no_translate><error>verizon.*</error></no_translate> blockieren <br>
         ]]>
     </string>
 </resources>

@@ -84,12 +84,10 @@
         &ensp; سيطابق regex الموقع الجغرافي للـ number. <br>
         <br>
         &ensp; يعتمد هذا على مكتبة Google <a href="https://github.com/google/libphonenumber">libphonenumber</a>,
-         مكتبة غير متصلة بالإنترنت توفر معلومات جغرافية للـ أرقام الهواتف. <br>
+         قاعدة بيانات غير متصلة بالإنترنت توفر معلومات جغرافية للـ أرقام الهواتف. <br>
         <br>
-        &ensp; إذا لاحظت أي مشاكل في دقة قاعدة البيانات، يمكنك
-        <a href="https://groups.google.com/g/libphonenumber-discuss">فتح نقاش</a>
-        أو
-        <a href="https://issuetracker.google.com/issues/new?component=192347">الإبلاغ عن مشكلة</a>. <br>
+        على سبيل المثال: <br>
+        &ensp; احظر الأرقام من <no_translate><sample>San Francisco, CA</sample></no_translate> باستخدام regex <no_translate><error>san fr.*</error></no_translate> <br>
         ]]>
     </string>
     <string name="label_value_pair">%s: %s</string>

@@ -124,7 +124,11 @@
         <br>
         <warn>注意</warn> <br>
         &ensp; 運營商資訊基於初始登記，如果號碼已攜碼轉移到其他運營商，
-        可能不準確。
+        可能不準確。 <br>
+        <br>
+        例如： <br>
+        &ensp; 使用正規表達式 <no_translate><error>verizon.*</error></no_translate>
+        封鎖來自 <no_translate><sample>Verizon Wireless</sample></no_translate> 的號碼 <br>
         ]]>
     </string>
 </resources>

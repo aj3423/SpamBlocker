@@ -85,12 +85,10 @@
         <title><b>موقعیت جغرافیایی</b></title>:<br>
         &ensp; عبارت منظم با موقعیت جغرافیایی شماره مطابقت می‌کند. <br>
         <br>
-        &ensp; این بر کتابخانهٔ گوگل <a href="https://github.com/google/libphonenumber">libphonenumber</a> وابسته است، کتابخانه‌ای آفلاین که اطلاعات جغرافیایی شماره‌های تلفن را فراهم می‌کند. <br>
+        &ensp; این بر کتابخانهٔ گوگل <a href="https://github.com/google/libphonenumber">libphonenumber</a> وابسته است، پایگاه‌داده‌ای آفلاین که اطلاعات جغرافیایی شماره‌های تلفن را فراهم می‌کند. <br>
         <br>
-        &ensp; اگر مشکلی در دقت پایگاه داده مشاهده کردید، می‌توانید
-        <a href="https://groups.google.com/g/libphonenumber-discuss">یک بحث باز کنید</a>
-        یا
-        <a href="https://issuetracker.google.com/issues/new?component=192347">یک مشکل گزارش دهید</a>. <br>
+        برای مثال: <br>
+        &ensp; شماره‌های مربوط به <no_translate><sample>San Francisco, CA</sample></no_translate> را با regex <no_translate><error>san fr.*</error></no_translate> مسدود کنید. <br>
         ]]>
     </string>
     <string name="label_value_pair">%s: %s</string>

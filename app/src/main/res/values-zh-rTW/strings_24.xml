@@ -84,12 +84,10 @@
         &ensp; 此正則表達式將對電話號碼的地理位置進行匹配。 <br>
         <br>
         &ensp; 這依賴於 Google 的函式庫 <a href="https://github.com/google/libphonenumber">libphonenumber</a>,
-         一個離線函式庫，可提供電話號碼的地理資訊。 <br>
+         一個離線資料庫，可提供電話號碼的地理資訊。 <br>
         <br>
-        &ensp; 如果您發現資料庫的準確性有任何問題，您可以
-        <a href="https://groups.google.com/g/libphonenumber-discuss">開啟討論</a>
-        或
-        <a href="https://issuetracker.google.com/issues/new?component=192347">回報問題</a>。 <br>
+        例如：<br>
+        &ensp; 使用正則 <no_translate><error>san fr.*</error></no_translate> 封鎖來自 <no_translate><sample>San Francisco, CA</sample></no_translate> 的號碼。 <br>
         ]]>
     </string>
     <string name="label_value_pair">%s: %s</string>

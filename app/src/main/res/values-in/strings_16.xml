@@ -20,8 +20,8 @@
         <h6><title>- Pelaporan otomatis</title></h6>
 		<minor><b>Penundaan laporan</b></minor><br>
         Ketika panggilan diblokir, akan ada jeda waktu satu jam sebelum dilaporkan.
-        Jika nomor tersebut diizinkan nanti karena pengulangan atau dihubungi kembali dalam jeda waktu ini,
-        itu dianggap bukan nomor spam dan pelaporan akan dibatalkan.<br>
+        Jika nomor tersebut diizinkan nanti karena pengulangan, dihubungi kembali, atau ditambahkan ke kontak
+        dalam jeda waktu ini, itu dianggap bukan spam dan pelaporan akan dibatalkan.<br>
         <br>
 		<minor><b>Jenis laporan</b></minor><br>
 		1. Itu <error><b>tidak akan</b></error> melaporkan:<br>

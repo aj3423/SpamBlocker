@@ -20,8 +20,8 @@
         <h6><title>- Informe automàtic</title></h6>
 		<minor><b>Retard de l\'informe</b></minor><br>
         Quan es bloqueja una trucada, hi haurà un període d\'una hora abans que s\'informi.
-        Si el número es permet més tard a causa de repeticions o si es torna a marcar dins d\'aquest període,
-        es considera un número no spam i l\'informe es cancel·larà.<br>
+        Si el número es permet més tard a causa de repeticions, si es torna a marcar o si s\'afegeix als contactes
+        dins d\'aquest període, es considera no spam i l\'informe es cancel·larà.<br>
         <br>
 		<minor><b>Tipus d\'informe</b></minor><br>
 		1. <error><b>No</b></error> s\'informarà de:<br>

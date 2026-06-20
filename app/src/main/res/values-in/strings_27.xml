@@ -124,7 +124,11 @@
         <br>
         <warn>Catatan</warn> <br>
         &ensp; Informasi operator didasarkan pada pendaftaran awal dan mungkin tidak
-        akurat jika nomor telah dipindahkan ke operator lain.
+        akurat jika nomor telah dipindahkan ke operator lain. <br>
+        <br>
+        Misalnya: <br>
+        &ensp; Blokir nomor dari <no_translate><sample>Verizon Wireless</sample></no_translate>
+        dengan regex <no_translate><error>verizon.*</error></no_translate> <br>
         ]]>
     </string>
 </resources>

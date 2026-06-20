@@ -87,12 +87,10 @@
         &ensp; Регулярний вираз буде порівнювати гео‑локацію номера. <br>
         <br>
         &ensp; Це спирається на бібліотеку Google <a href="https://github.com/google/libphonenumber">libphonenumber</a>,
-         офлайн‑бібліотеку, яка надає географічну інформацію про телефонні номери. <br>
+         офлайн-базу даних, яка надає географічну інформацію про телефонні номери. <br>
         <br>
-        &ensp; Якщо ви помітили проблеми з точністю бази даних, ви можете
-        <a href="https://groups.google.com/g/libphonenumber-discuss">відкрити обговорення</a>
-        або
-        <a href="https://issuetracker.google.com/issues/new?component=192347">повідомити про проблему</a>. <br>
+        Наприклад: <br>
+        &ensp; Блокуйте номери з <no_translate><sample>San Francisco, CA</sample></no_translate> за допомогою regex <no_translate><error>san fr.*</error></no_translate> <br>
         ]]>
     </string>
     <string name="label_value_pair">%s: %s</string>

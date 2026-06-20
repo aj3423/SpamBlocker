@@ -20,8 +20,8 @@
         <h6><title>- Otomatik raporlama</title></h6>
 		<minor><b>Raporlama gecikmesi</b></minor><br>
         Bir çağrı engellendiğinde, raporlanmadan önce bir saatlik bir zaman aralığı olacaktır.
-        Bu zaman aralığında numara tekrarlamalar nedeniyle daha sonra izin verilirse veya geri aranırsa,
-        istenmeyen çağrı numarası olarak kabul edilmez ve raporlama iptal edilir.<br>
+        Bu zaman aralığında numaraya tekrarlamalar, geri aranması veya kişilere eklenmesi nedeniyle daha sonra izin verilirse,
+        spam dışı kabul edilir ve raporlama iptal edilir.<br>
         <br>
 		<minor><b>Rapor türü</b></minor><br>
 		1. Şunları <error><b>raporlamaz</b></error>:<br>

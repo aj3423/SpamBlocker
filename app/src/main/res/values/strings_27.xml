@@ -124,7 +124,11 @@
         <br>
         <warn>Note</warn> <br>
         &ensp; Carrier information is based on the initial registration and may
-        be inaccurate if the number has been transferred (ported).
+         be inaccurate if the number has been transferred (ported). <br>
+        <br>
+        For example: <br>
+        &ensp; Block numbers from <no_translate><sample>Verizon Wireless</sample></no_translate>
+         with regex <no_translate><error>verizon.*</error></no_translate> <br>
         ]]>
     </string>
 </resources>

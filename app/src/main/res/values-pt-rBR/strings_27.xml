@@ -124,7 +124,11 @@
         <br>
         <warn>Nota</warn> <br>
         &ensp; As informações da operadora se baseiam no registro inicial e podem estar
-        incorretas se o número tiver sido transferido para outra operadora.
+        incorretas se o número tiver sido transferido para outra operadora. <br>
+        <br>
+        Por exemplo: <br>
+        &ensp; Bloquear números da <no_translate><sample>Verizon Wireless</sample></no_translate>
+        com a expressão regular <no_translate><error>verizon.*</error></no_translate> <br>
         ]]>
     </string>
 </resources>

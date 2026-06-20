@@ -1006,7 +1006,6 @@ class ScheduledAutoReportNumber(
                 val success = api.actions.executeAll(ctx, aCtx)
                 logi("report number $rawNumber to ${api.summary()}, success: $success")
             }
-            true
         }
 
         return true

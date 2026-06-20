@@ -87,12 +87,10 @@
         &ensp; La expresión regular coincidirá con la ubicación geográfica del número. <br>
         <br>
         &ensp; Esto se basa en la biblioteca de Google <a href="https://github.com/google/libphonenumber">libphonenumber</a>,
-         una biblioteca offline que brinda información geográfica para números de teléfono. <br>
+         una base de datos offline que brinda información geográfica para números de teléfono. <br>
         <br>
-        &ensp; Si observas algún problema con la precisión de la base de datos, puedes
-        <a href="https://groups.google.com/g/libphonenumber-discuss">abrir una discusión</a>
-        o
-        <a href="https://issuetracker.google.com/issues/new?component=192347">informar un problema</a>. <br>
+        Por ejemplo: <br>
+        &ensp; Bloquea números de <no_translate><sample>San Francisco, CA</sample></no_translate> con la regex <no_translate><error>san fr.*</error></no_translate> <br>
         ]]>
     </string>
     <string name="label_value_pair">%s: %s</string>

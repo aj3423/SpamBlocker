@@ -87,12 +87,10 @@
         &ensp; Регулярное выражение будет сопоставлять геолокацию номера. <br>
         <br>
         &ensp; Это использует библиотеку Google <a href="https://github.com/google/libphonenumber">libphonenumber</a>,
-         автономную библиотеку, предоставляющую географическую информацию о номерах телефонов. <br>
+         автономную базу данных, предоставляющую географическую информацию о номерах телефонов. <br>
         <br>
-        &ensp; Если вы заметили проблемы с точностью базы данных, вы можете
-        <a href="https://groups.google.com/g/libphonenumber-discuss">открыть обсуждение</a>
-        или
-        <a href="https://issuetracker.google.com/issues/new?component=192347">сообщить о проблеме</a>. <br>
+        Например: <br>
+        &ensp; Блокируйте номера из <no_translate><sample>San Francisco, CA</sample></no_translate> с помощью regex <no_translate><error>san fr.*</error></no_translate> <br>
         ]]>
     </string>
     <string name="label_value_pair">%s: %s</string>
