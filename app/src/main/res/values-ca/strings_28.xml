@@ -118,7 +118,7 @@
         <minor>positive &ensp; p &ensp; negative &ensp; n</minor> <br>
         &ensp; Marcadors que se substituiran pels recomptes reals de valoracions. <br>
         <minor>+ &ensp; - &ensp; * &ensp; /</minor> <br>
-        &ensp; Operacions matemàtiques bàsiques <br>
+        &ensp; Operacions matemàtiques bàsiques (N/0=N) <br>
         <minor>%</minor> <br>
         &ensp; Percentatge <br>
         <minor>&lt; &ensp; &gt; &ensp; &lt;= &ensp; &gt;=</minor> <br>

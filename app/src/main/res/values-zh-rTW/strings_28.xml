@@ -118,7 +118,7 @@
         <minor>positive &ensp; p &ensp; negative &ensp; n</minor> <br>
         &ensp; 佔位符，會被替換為實際評分數量。 <br>
         <minor>+ &ensp; - &ensp; * &ensp; /</minor> <br>
-        &ensp; 基礎數學運算 <br>
+        &ensp; 基礎數學運算 (N/0=N) <br>
         <minor>%</minor> <br>
         &ensp; 百分比 <br>
         <minor>&lt; &ensp; &gt; &ensp; &lt;= &ensp; &gt;=</minor> <br>

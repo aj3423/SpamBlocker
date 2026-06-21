@@ -118,7 +118,7 @@
         <minor>positive &ensp; p &ensp; negative &ensp; n</minor> <br>
         &ensp; מצייני מקום שיוחלפו בספירות הדירוגים בפועל. <br>
         <minor>+ &ensp; - &ensp; * &ensp; /</minor> <br>
-        &ensp; פעולות מתמטיות בסיסיות <br>
+        &ensp; פעולות מתמטיות בסיסיות (N/0=N) <br>
         <minor>%</minor> <br>
         &ensp; אחוז <br>
         <minor>&lt; &ensp; &gt; &ensp; &lt;= &ensp; &gt;=</minor> <br>

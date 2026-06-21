@@ -76,7 +76,10 @@ object Formula {
                 skipSpaces()
                 left = when {
                     match('*') -> left * parseUnary()
-                    match('/') -> left / parseUnary()
+                    match('/') -> { // make sure N/0 -> N
+                        val right = parseUnary()
+                        if (right == 0.0) left else left / right
+                    }
                     else -> return left
                 }
             }

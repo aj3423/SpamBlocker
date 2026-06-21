@@ -54,7 +54,7 @@ class FormulaTest {
             TestCase("1.5 * 2 > 2.9", true),
 
             // Exception
-            TestCase("1/0", true), // as long as it doesn't crash
+            TestCase("7/0 = 7", true), // N / 0 -> N, it simply returns the dividend when the divisor is 0
         )
 
         for (test in tests) {

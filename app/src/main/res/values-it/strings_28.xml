@@ -118,7 +118,7 @@
         <minor>positive &ensp; p &ensp; negative &ensp; n</minor> <br>
         &ensp; Segnaposto che verranno sostituiti dai conteggi reali delle valutazioni. <br>
         <minor>+ &ensp; - &ensp; * &ensp; /</minor> <br>
-        &ensp; Operazioni matematiche di base <br>
+        &ensp; Operazioni matematiche di base (N/0=N) <br>
         <minor>%</minor> <br>
         &ensp; Percentuale <br>
         <minor>&lt; &ensp; &gt; &ensp; &lt;= &ensp; &gt;=</minor> <br>

@@ -118,7 +118,7 @@
         <minor>positive &ensp; p &ensp; negative &ensp; n</minor> <br>
         &ensp; Gerçek değerlendirme sayılarıyla değiştirilecek yer tutucular. <br>
         <minor>+ &ensp; - &ensp; * &ensp; /</minor> <br>
-        &ensp; Temel matematik işlemleri <br>
+        &ensp; Temel matematik işlemleri (N/0=N) <br>
         <minor>%</minor> <br>
         &ensp; Yüzde <br>
         <minor>&lt; &ensp; &gt; &ensp; &lt;= &ensp; &gt;=</minor> <br>

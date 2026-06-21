@@ -118,7 +118,7 @@
         <minor>positive &ensp; p &ensp; negative &ensp; n</minor> <br>
         &ensp; Заполнители, которые будут заменены фактическими числами оценок. <br>
         <minor>+ &ensp; - &ensp; * &ensp; /</minor> <br>
-        &ensp; Основные математические операции <br>
+        &ensp; Основные математические операции (N/0=N) <br>
         <minor>%</minor> <br>
         &ensp; Процент <br>
         <minor>&lt; &ensp; &gt; &ensp; &lt;= &ensp; &gt;=</minor> <br>

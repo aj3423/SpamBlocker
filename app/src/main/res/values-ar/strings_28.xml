@@ -118,7 +118,7 @@
         <minor>positive &ensp; p &ensp; negative &ensp; n</minor> <br>
         &ensp; عناصر نائبة سيتم استبدالها بأعداد التقييمات الفعلية. <br>
         <minor>+ &ensp; - &ensp; * &ensp; /</minor> <br>
-        &ensp; العمليات الحسابية الأساسية <br>
+        &ensp; العمليات الحسابية الأساسية (N/0=N) <br>
         <minor>%</minor> <br>
         &ensp; النسبة المئوية <br>
         <minor>&lt; &ensp; &gt; &ensp; &lt;= &ensp; &gt;=</minor> <br>

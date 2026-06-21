@@ -118,7 +118,7 @@
         <minor>positive &ensp; p &ensp; negative &ensp; n</minor> <br>
         &ensp; Espaces réservés qui seront remplacés par les nombres réels d\'évaluations. <br>
         <minor>+ &ensp; - &ensp; * &ensp; /</minor> <br>
-        &ensp; Bases mathématiques <br>
+        &ensp; Bases mathématiques (N/0=N) <br>
         <minor>%</minor> <br>
         &ensp; Pourcentage <br>
         <minor>&lt; &ensp; &gt; &ensp; &lt;= &ensp; &gt;=</minor> <br>

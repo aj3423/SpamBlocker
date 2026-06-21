@@ -118,7 +118,7 @@
         <minor>positive &ensp; p &ensp; negative &ensp; n</minor> <br>
         &ensp; Placeholder yang akan diganti dengan jumlah penilaian sebenarnya. <br>
         <minor>+ &ensp; - &ensp; * &ensp; /</minor> <br>
-        &ensp; Dasar matematika <br>
+        &ensp; Dasar matematika (N/0=N) <br>
         <minor>%</minor> <br>
         &ensp; Persentase <br>
         <minor>&lt; &ensp; &gt; &ensp; &lt;= &ensp; &gt;=</minor> <br>

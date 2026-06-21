@@ -118,7 +118,7 @@
         <minor>positive &ensp; p &ensp; negative &ensp; n</minor> <br>
         &ensp; Placeholders that will be replaced by the actual rating counts. <br>
         <minor>+ &ensp; - &ensp; * &ensp; /</minor> <br>
-        &ensp; Math basics <br>
+        &ensp; Math basics (N/0=N) <br>
         <minor>%</minor> <br>
         &ensp; Percentage <br>
         <minor>&lt; &ensp; &gt; &ensp; &lt;= &ensp; &gt;=</minor> <br>

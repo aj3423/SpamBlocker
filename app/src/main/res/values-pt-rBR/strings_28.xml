@@ -118,7 +118,7 @@
         <minor>positive &ensp; p &ensp; negative &ensp; n</minor> <br>
         &ensp; Marcadores que serão substituídos pelas contagens reais de avaliações. <br>
         <minor>+ &ensp; - &ensp; * &ensp; /</minor> <br>
-        &ensp; Operações matemáticas básicas <br>
+        &ensp; Operações matemáticas básicas (N/0=N) <br>
         <minor>%</minor> <br>
         &ensp; Porcentagem <br>
         <minor>&lt; &ensp; &gt; &ensp; &lt;= &ensp; &gt;=</minor> <br>

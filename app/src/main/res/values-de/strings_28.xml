@@ -118,7 +118,7 @@
         <minor>positive &ensp; p &ensp; negative &ensp; n</minor> <br>
         &ensp; Platzhalter, die durch die tatsächlichen Bewertungszahlen ersetzt werden. <br>
         <minor>+ &ensp; - &ensp; * &ensp; /</minor> <br>
-        &ensp; Mathematische Grundlagen <br>
+        &ensp; Mathematische Grundlagen (N/0=N) <br>
         <minor>%</minor> <br>
         &ensp; Prozentwert <br>
         <minor>&lt; &ensp; &gt; &ensp; &lt;= &ensp; &gt;=</minor> <br>

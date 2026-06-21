@@ -118,7 +118,7 @@
         <minor>positive &ensp; p &ensp; negative &ensp; n</minor> <br>
         &ensp; جای‌نگهدارهایی که با تعداد واقعی امتیازها جایگزین می‌شوند. <br>
         <minor>+ &ensp; - &ensp; * &ensp; /</minor> <br>
-        &ensp; عملیات پایه ریاضی <br>
+        &ensp; عملیات پایه ریاضی (N/0=N) <br>
         <minor>%</minor> <br>
         &ensp; درصد <br>
         <minor>&lt; &ensp; &gt; &ensp; &lt;= &ensp; &gt;=</minor> <br>
