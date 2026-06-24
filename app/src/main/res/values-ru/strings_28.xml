@@ -73,11 +73,18 @@
     <string name="help_api_result_strategy">
         <![CDATA[
         <title>Прямой вердикт</title> <br>
-        Сервер возвращает явную категорию спама, что часто встречается в API-сервисах. Например: <br>
-        &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
+        Сервер возвращает явную категорию спама, что часто встречается в API-сервисах. <br>
+        <br>
+        Например, сервер возвращает: <br>
+        &ensp; <sample><no_translate>{ …, \"type\": \"fraud\", … }</no_translate></sample> <br>
+        Сопоставьте его с regex: <br>
+        &ensp; <sample><no_translate>\"type\": \"(fraud|scam|political)\"</no_translate></sample> <br>
         <br>
         <title>Формула</title> <br>
-        Сервер возвращает количество положительных/отрицательных оценок; настройте собственную логику на их основе.
+        Настройте собственную логику блокировки на основе количества положительных/отрицательных оценок, возвращаемых сервером. <br>
+        <br>
+        Например, блокировать, когда: <br>
+        &ensp; <sample><no_translate>(negative &gt; 5) &amp; (negative / positive &gt; 120%)</no_translate></sample> <br>
         ]]>
     </string>
     <string name="hint_positive_identifier_strategy_formula">Например: (\\d+) положительно</string>

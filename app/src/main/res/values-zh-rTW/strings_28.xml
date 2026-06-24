@@ -73,11 +73,18 @@
     <string name="help_api_result_strategy">
         <![CDATA[
         <title>直接判定</title> <br>
-        伺服器會回傳明確的騷擾電話類別，這在 API 服務中很常見。例如：<br>
-        &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
+        伺服器會回傳明確的騷擾電話類別，這在 API 服務中很常見。 <br>
+        <br>
+        例如，伺服器回傳： <br>
+        &ensp; <sample><no_translate>{ …, \"type\": \"fraud\", … }</no_translate></sample> <br>
+        使用正規表示式比對： <br>
+        &ensp; <sample><no_translate>\"type\": \"(fraud|scam|political)\"</no_translate></sample> <br>
         <br>
         <title>公式</title> <br>
-        伺服器會回傳正面/負面評分數量，你可以基於它們自訂判斷邏輯。
+        你可以基於伺服器回傳的正面/負面評分數量，來自訂攔截邏輯。 <br>
+        <br>
+        例如，當滿足以下條件時攔截： <br>
+        &ensp; <sample><no_translate>(negative &gt; 5) &amp; (negative / positive &gt; 120%)</no_translate></sample> <br>
         ]]>
     </string>
     <string name="hint_positive_identifier_strategy_formula">例如：(\\d+) 正面</string>

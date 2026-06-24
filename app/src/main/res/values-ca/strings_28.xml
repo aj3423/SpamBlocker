@@ -73,11 +73,18 @@
     <string name="help_api_result_strategy">
         <![CDATA[
         <title>Veredicte directe</title> <br>
-        El servidor retorna una categoria de spam explícita, habitual als serveis API. Per exemple: <br>
-        &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
+        El servidor retorna una categoria de spam explícita, habitual als serveis API. <br>
+        <br>
+        Per exemple, el servidor retorna: <br>
+        &ensp; <sample><no_translate>{ …, \"type\": \"fraud\", … }</no_translate></sample> <br>
+        Fes-lo coincidir amb regex: <br>
+        &ensp; <sample><no_translate>\"type\": \"(fraud|scam|political)\"</no_translate></sample> <br>
         <br>
         <title>Fórmula</title> <br>
-        El servidor retorna el recompte de valoracions positives/negatives; personalitza la teva lògica a partir d\'aquests valors.
+        Personalitza la teva pròpia lògica de bloqueig basant-te en el recompte de valoracions positives/negatives retornades pel servidor. <br>
+        <br>
+        Per exemple, bloqueja quan: <br>
+        &ensp; <sample><no_translate>(negative &gt; 5) &amp; (negative / positive &gt; 120%)</no_translate></sample> <br>
         ]]>
     </string>
     <string name="hint_positive_identifier_strategy_formula">Ex.: (\\d+) positiu</string>

@@ -73,11 +73,18 @@
     <string name="help_api_result_strategy">
         <![CDATA[
         <title>直接判定</title> <br>
-        服务器返回明确的骚扰类别，这在 API 服务中很常见。例如：<br>
-        &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
+        服务器返回明确的骚扰类别，这在 API 服务中很常见。 <br>
+        <br>
+        例如，服务器返回： <br>
+        &ensp; <sample><no_translate>{ …, \"type\": \"fraud\", … }</no_translate></sample> <br>
+        使用正则匹配： <br>
+        &ensp; <sample><no_translate>\"type\": \"(fraud|scam|political)\"</no_translate></sample> <br>
         <br>
         <title>公式</title> <br>
-        服务器返回正向/负向评分数量，你可以基于它们自定义判断逻辑。
+        你可以基于服务器返回的正向/负向评分数量，来自定义拦截逻辑。 <br>
+        <br>
+        例如，当满足以下条件时拦截： <br>
+        &ensp; <sample><no_translate>(negative &gt; 5) &amp; (negative / positive &gt; 120%)</no_translate></sample> <br>
         ]]>
     </string>
     <string name="hint_positive_identifier_strategy_formula">例如：(\\d+) 正向</string>

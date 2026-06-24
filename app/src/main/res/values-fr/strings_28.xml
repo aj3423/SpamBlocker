@@ -73,11 +73,18 @@
     <string name="help_api_result_strategy">
         <![CDATA[
         <title>Verdict direct</title> <br>
-        Le serveur renvoie une catégorie d\'appel indésirable explicite, ce qui est courant dans les services API. Par exemple : <br>
-        &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
+        Le serveur renvoie une catégorie d\'appel indésirable explicite, ce qui est courant dans les services API. <br>
+        <br>
+        Par exemple, le serveur renvoie : <br>
+        &ensp; <sample><no_translate>{ …, \"type\": \"fraud\", … }</no_translate></sample> <br>
+        Fais-le correspondre avec l\'expression régulière : <br>
+        &ensp; <sample><no_translate>\"type\": \"(fraud|scam|political)\"</no_translate></sample> <br>
         <br>
         <title>Formule</title> <br>
-        Le serveur renvoie le nombre d\'évaluations positives/négatives ; personnalise ta propre logique à partir de ces valeurs.
+        Personnalise ta propre logique de blocage en fonction du nombre d\'évaluations positives/négatives renvoyées par le serveur. <br>
+        <br>
+        Par exemple, bloque lorsque : <br>
+        &ensp; <sample><no_translate>(negative &gt; 5) &amp; (negative / positive &gt; 120%)</no_translate></sample> <br>
         ]]>
     </string>
     <string name="hint_positive_identifier_strategy_formula">Ex. : (\\d+) positif</string>

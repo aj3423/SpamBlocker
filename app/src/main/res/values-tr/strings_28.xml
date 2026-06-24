@@ -73,11 +73,18 @@
     <string name="help_api_result_strategy">
         <![CDATA[
         <title>Doğrudan karar</title> <br>
-        Sunucu açık bir spam kategorisi döndürür; bu, API hizmetlerinde yaygındır. Örneğin: <br>
-        &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
+        Sunucu açık bir spam kategorisi döndürür; bu, API hizmetlerinde yaygındır. <br>
+        <br>
+        Örneğin, sunucu şunu döndürür: <br>
+        &ensp; <sample><no_translate>{ …, \"type\": \"fraud\", … }</no_translate></sample> <br>
+        Bunu regex ile eşleştirin: <br>
+        &ensp; <sample><no_translate>\"type\": \"(fraud|scam|political)\"</no_translate></sample> <br>
         <br>
         <title>Formül</title> <br>
-        Sunucu pozitif/negatif değerlendirme sayılarını döndürür; bunlara göre kendi mantığını özelleştir.
+        Sunucu tarafından döndürülen pozitif/negatif değerlendirme sayılarına göre kendi engelleme mantığınızı özelleştirin. <br>
+        <br>
+        Örneğin, şu durumlarda engelleyin: <br>
+        &ensp; <sample><no_translate>(negative &gt; 5) &amp; (negative / positive &gt; 120%)</no_translate></sample> <br>
         ]]>
     </string>
     <string name="hint_positive_identifier_strategy_formula">Örn.: (\\d+) pozitif</string>

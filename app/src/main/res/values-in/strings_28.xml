@@ -73,11 +73,18 @@
     <string name="help_api_result_strategy">
         <![CDATA[
         <title>Putusan langsung</title> <br>
-        Server mengembalikan kategori spam yang eksplisit, umum pada layanan API. Contohnya: <br>
-        &emsp; <sample><no_translate>{ "type": "fraud", … }</no_translate></sample> <br>
+        Server mengembalikan kategori spam yang eksplisit, umum pada layanan API. <br>
+        <br>
+        Contohnya, server mengembalikan: <br>
+        &ensp; <sample><no_translate>{ …, \"type\": \"fraud\", … }</no_translate></sample> <br>
+        Cocokkan dengan regex: <br>
+        &ensp; <sample><no_translate>\"type\": \"(fraud|scam|political)\"</no_translate></sample> <br>
         <br>
         <title>Rumus</title> <br>
-        Server mengembalikan jumlah penilaian positif/negatif; sesuaikan logika Anda sendiri berdasarkan nilai tersebut.
+        Sesuaikan logika pemblokiran Anda sendiri berdasarkan jumlah penilaian positif/negatif yang dikembalikan oleh server. <br>
+        <br>
+        Contohnya, blokir saat: <br>
+        &ensp; <sample><no_translate>(negative &gt; 5) &amp; (negative / positive &gt; 120%)</no_translate></sample> <br>
         ]]>
     </string>
     <string name="hint_positive_identifier_strategy_formula">Contoh: (\\d+) positif</string>

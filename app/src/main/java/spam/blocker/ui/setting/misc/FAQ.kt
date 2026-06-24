@@ -82,10 +82,11 @@ fun FAQ() {
                             label = ctx.getString(R.string.import_numbers),
                             color = C.infoBlue,
                             helpTooltip = ctx.getString(R.string.faq_import_numbers).format(
-                                "$REPO/issues?q=label:import_plain_text",
-                                "$REPO/issues?q=label:import_csv",
-                                "$REPO/issues?q=label:import_xml",
-                                "$REPO/issues?q=label:import_json",
+                                // Github app by default only shows "Open" issues, add the `is:closed` to force it to show closed ones.
+                                "$REPO/issues?q=label:import_plain_text+is:closed",
+                                "$REPO/issues?q=label:import_csv+is:closed",
+                                "$REPO/issues?q=label:import_xml+is:closed",
+                                "$REPO/issues?q=label:import_json+is:closed",
                             )
                         ),
                     )
