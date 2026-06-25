@@ -3,6 +3,7 @@ package spam.blocker.service.bot
 import android.content.Context
 import android.os.Build
 import android.telephony.SmsManager
+import android.telephony.SubscriptionManager
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -29,6 +30,7 @@ import sh.calvin.reorderable.ReorderableColumn
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.def.Def
+import spam.blocker.def.Def.ANDROID_12
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.regex.DisableNestedScrolling
@@ -306,25 +308,36 @@ class SendSms: IAction {
         PermissionWrapper(Permission.sendSMS)
     )
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        val logger = aCtx.logger
+
+        if (!Permission.sendSMS.isGranted) {
+            logger?.error(ctx.getString(R.string.missing_permission).format(Permission.sendSMS.desc(ctx)))
+            return false
+        }
         val toSend = (aCtx.lastOutput as? String) ?: return false
 
         val rawNumber = aCtx.rawNumber ?: return false
 
-        val smsManager = if (Build.VERSION.SDK_INT >= Def.ANDROID_12) {
-            // For Android 12 (API 31) and above
-            ctx.getSystemService(SmsManager::class.java)
-        } else {
-            // For Android 10 and below (Deprecated in API 31, but necessary fallback)
-            @Suppress("DEPRECATION")
-            SmsManager.getDefault()
+        val smsManager = if (Build.VERSION.SDK_INT >= ANDROID_12) { // Android 12+
+            ctx.getSystemService(SmsManager::class.java) ?: SmsManager.getDefault()
+        } else { // Android 10 & 11
+            val defaultSubId = SubscriptionManager.getDefaultSmsSubscriptionId()
+
+            if (defaultSubId != SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+                @Suppress("DEPRECATION")
+                SmsManager.getSmsManagerForSubscriptionId(defaultSubId)
+            } else {
+                @Suppress("DEPRECATION")
+                SmsManager.getDefault()
+            }
         }
 
         return try {
             smsManager.sendTextMessage(rawNumber, null, toSend, null, null)
-            aCtx.logger?.warn(ctx.getString(R.string.sms_sent_successfully))
+            logger?.warn(ctx.getString(R.string.sms_sent_successfully))
             true
         } catch (e: Exception) {
-            aCtx.logger?.error(ctx.getString(R.string.failed_to_send_sms).format("$e"))
+            logger?.error(ctx.getString(R.string.failed_to_send_sms).format("$e"))
             false
         }
     }
