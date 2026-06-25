@@ -1,0 +1,45 @@
+<resources>
+    <string name="call_screened">تم فحص المكالمة</string>
+    <string name="help_call_screened">
+        <![CDATA[
+        يتم تفعيله بعد فحص المكالمة.
+        ]]>
+    </string>
+    <string name="text_reply">الرد النصي</string>
+    <string name="text_to_reply">النص للرد</string>
+    <string name="cant_talk_in_meeting">أنا في اجتماع الآن، سأتواصل معك لاحقًا.</string>
+    <string name="busy_right_now">لا يمكنني التحدث الآن، سأتصل بك لاحقًا.</string>
+    <string name="help_action_text_reply">
+        <![CDATA[
+        ينشئ نص الرد التلقائي بناءً على نتيجة فحص المكالمة.
+        ]]>
+    </string>
+    <string name="send_sms">إرسال رسالة SMS</string>
+    <string name="result">النتيجة</string>
+    <string name="is_contact">جهة اتصال</string>
+    <string name="blocked_by">محظور بواسطة</string>
+    <string name="sms_sent_successfully">تم إرسال رسالة SMS بنجاح</string>
+    <string name="failed_to_send_sms">فشل إرسال رسالة SMS: %s</string>
+    <string name="replying_text">نص الرد: %s</string>
+    <string name="help_action_send_sms">
+        <![CDATA[
+        إرسال رسالة SMS.
+        ]]>
+    </string>
+    <string name="help_call_screening_number_filter">
+        <![CDATA[
+        استخدم هذا التعبير النمطي لاستبعاد أرقام معينة، مثل الخطوط الأرضية أو الأرقام الدولية. <br>
+        <br>
+        على سبيل المثال <br>
+        &ensp; <sample>\\d{10,11}</sample> <br>
+        &ensp; أرقام مكونة من 10 إلى 11 رقمًا.
+        ]]>
+    </string>
+    <string name="sms_reply">رد SMS</string>
+    <string name="help_bot_preset_sms_reply">
+        <![CDATA[
+        إرسال رسالة SMS تلقائيًا إلى جهات الاتصال عند حظر مكالماتهم. <br>
+        يمكن تعيين رسائل مختلفة لوضع الاجتماع وميزات الحظر الأخرى.
+        ]]>
+    </string>
+</resources>

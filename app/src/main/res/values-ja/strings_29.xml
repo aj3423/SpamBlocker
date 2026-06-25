@@ -1,0 +1,45 @@
+<resources>
+    <string name="call_screened">着信フィルタリング済み</string>
+    <string name="help_call_screened">
+        <![CDATA[
+        着信フィルタリング後にトリガーされます。
+        ]]>
+    </string>
+    <string name="text_reply">テキスト返信</string>
+    <string name="text_to_reply">返信テキスト</string>
+    <string name="cant_talk_in_meeting">現在会議中のため、後ほどご連絡します。</string>
+    <string name="busy_right_now">今は話せません。後で連絡します。</string>
+    <string name="help_action_text_reply">
+        <![CDATA[
+        着信フィルタリングの結果に基づいて自動返信テキストを生成します。
+        ]]>
+    </string>
+    <string name="send_sms">SMSを送信</string>
+    <string name="result">結果</string>
+    <string name="is_contact">連絡先である</string>
+    <string name="blocked_by">ブロック元</string>
+    <string name="sms_sent_successfully">SMSを正常に送信しました</string>
+    <string name="failed_to_send_sms">SMSの送信に失敗しました: %s</string>
+    <string name="replying_text">返信テキスト: %s</string>
+    <string name="help_action_send_sms">
+        <![CDATA[
+        SMSメッセージを送信します。
+        ]]>
+    </string>
+    <string name="help_call_screening_number_filter">
+        <![CDATA[
+        この正規表現を使用して、固定電話や国際電話などの特定の番号を除外します。<br>
+        <br>
+        例:<br>
+        &ensp; <sample>\\d{10,11}</sample><br>
+        &ensp; 10〜11桁の番号。
+        ]]>
+    </string>
+    <string name="sms_reply">SMS返信</string>
+    <string name="help_bot_preset_sms_reply">
+        <![CDATA[
+        着信がブロックされたときに、連絡先に自動的にSMSを送信します。<br>
+        会議モードやその他のブロック機能に応じて、異なるメッセージを設定できます。
+        ]]>
+    </string>
+</resources>

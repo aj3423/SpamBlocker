@@ -1,0 +1,45 @@
+<resources>
+    <string name="call_screened">Arama Filtrelendi</string>
+    <string name="help_call_screened">
+        <![CDATA[
+        Arama filtrelendikten sonra tetiklenir.
+        ]]>
+    </string>
+    <string name="text_reply">Metin Yanıtı</string>
+    <string name="text_to_reply">Yanıtlanacak Metin</string>
+    <string name="cant_talk_in_meeting">Şu an toplantıdayım, size daha sonra döneceğim.</string>
+    <string name="busy_right_now">Şu an konuşamıyorum, size daha sonra ulaşacağım.</string>
+    <string name="help_action_text_reply">
+        <![CDATA[
+        Arama filtreleme sonucuna göre otomatik yanıt metni oluşturur.
+        ]]>
+    </string>
+    <string name="send_sms">SMS Gönder</string>
+    <string name="result">Sonuç</string>
+    <string name="is_contact">Kişi mi</string>
+    <string name="blocked_by">Engellendi</string>
+    <string name="sms_sent_successfully">SMS başarıyla gönderildi</string>
+    <string name="failed_to_send_sms">SMS gönderilemedi: %s</string>
+    <string name="replying_text">Yanıt metni: %s</string>
+    <string name="help_action_send_sms">
+        <![CDATA[
+        Bir SMS mesajı gönderir.
+        ]]>
+    </string>
+    <string name="help_call_screening_number_filter">
+        <![CDATA[
+        Sabit hatlar veya uluslararası numaralar gibi belirli numaraları hariç tutmak için bu regex\'i kullanın. <br>
+        <br>
+        Örneğin <br>
+        &ensp; <sample>\\d{10,11}</sample> <br>
+        &ensp; 10 ila 11 haneli numaralar.
+        ]]>
+    </string>
+    <string name="sms_reply">SMS Yanıtı</string>
+    <string name="help_bot_preset_sms_reply">
+        <![CDATA[
+        Aramaları engellendiğinde kişilere otomatik olarak bir SMS gönderir. <br>
+        Toplantı Modu ve diğer engelleme özellikleri için farklı mesajlar ayarlanabilir.
+        ]]>
+    </string>
+</resources>

@@ -1,0 +1,45 @@
+<resources>
+    <string name="call_screened">Дзвінок відфільтровано</string>
+    <string name="help_call_screened">
+        <![CDATA[
+        Спрацьовує після фільтрації дзвінка.
+        ]]>
+    </string>
+    <string name="text_reply">Текстова відповідь</string>
+    <string name="text_to_reply">Текст відповіді</string>
+    <string name="cant_talk_in_meeting">Я зараз на зустрічі, зв\'яжуся з вами пізніше.</string>
+    <string name="busy_right_now">Не можу зараз говорити, напишу пізніше.</string>
+    <string name="help_action_text_reply">
+        <![CDATA[
+        Генерує текст автовідповіді на основі результату фільтрації дзвінка.
+        ]]>
+    </string>
+    <string name="send_sms">Надіслати SMS</string>
+    <string name="result">Результат</string>
+    <string name="is_contact">У контактах</string>
+    <string name="blocked_by">Заблоковано</string>
+    <string name="sms_sent_successfully">SMS успішно надіслано</string>
+    <string name="failed_to_send_sms">Помилка надсилання SMS: %s</string>
+    <string name="replying_text">Текст відповіді: %s</string>
+    <string name="help_action_send_sms">
+        <![CDATA[
+        Надіслати SMS-повідомлення.
+        ]]>
+    </string>
+    <string name="help_call_screening_number_filter">
+        <![CDATA[
+        Використовуйте цей регулярний вираз, щоб виключити певні номери, такі як стаціонарні або міжнародні. <br>
+        <br>
+        Наприклад <br>
+        &ensp; <sample>\\d{10,11}</sample> <br>
+        &ensp; номери з 10-11 цифр.
+        ]]>
+    </string>
+    <string name="sms_reply">SMS-відповідь</string>
+    <string name="help_bot_preset_sms_reply">
+        <![CDATA[
+        Автоматично надсилає SMS контактам, коли їхні дзвінки блокуються. <br>
+        Для режиму зустрічі та інших функцій блокування можна налаштувати різні повідомлення.
+        ]]>
+    </string>
+</resources>

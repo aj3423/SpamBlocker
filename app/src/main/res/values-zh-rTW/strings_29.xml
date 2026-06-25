@@ -1,0 +1,45 @@
+<resources>
+    <string name="call_screened">電話已篩選</string>
+    <string name="help_call_screened">
+        <![CDATA[
+        在電話篩選後觸發。
+        ]]>
+    </string>
+    <string name="text_reply">文字回覆</string>
+    <string name="text_to_reply">回覆文字</string>
+    <string name="cant_talk_in_meeting">現在在開會，稍後聯繫。</string>
+    <string name="busy_right_now">現在不方便接電話，稍後聯繫。</string>
+    <string name="help_action_text_reply">
+        <![CDATA[
+        根據電話篩選結果生成自動回覆文字。
+        ]]>
+    </string>
+    <string name="send_sms">發送簡訊</string>
+    <string name="result">結果</string>
+    <string name="is_contact">是否為聯絡人</string>
+    <string name="blocked_by">被攔截者</string>
+    <string name="sms_sent_successfully">簡訊發送成功</string>
+    <string name="failed_to_send_sms">簡訊發送失敗: %s</string>
+    <string name="replying_text">正在回覆的文字: %s</string>
+    <string name="help_action_send_sms">
+        <![CDATA[
+        發送一條簡訊。
+        ]]>
+    </string>
+    <string name="help_call_screening_number_filter">
+        <![CDATA[
+        使用此正規表達式排除特定號碼，例如市話或國際號碼。<br>
+        <br>
+        例如<br>
+        &ensp; <sample>\\d{10,11}</sample><br>
+        &ensp; 10 到 11 位數字。
+        ]]>
+    </string>
+    <string name="sms_reply">簡訊回覆</string>
+    <string name="help_bot_preset_sms_reply">
+        <![CDATA[
+        當聯絡人的電話被攔截時，自動向其發送簡訊。<br>
+        可以為會議模式和其他攔截功能設定不同的訊息。
+        ]]>
+    </string>
+</resources>

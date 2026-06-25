@@ -1,0 +1,45 @@
+<resources>
+    <string name="call_screened">Panggilan Disaring</string>
+    <string name="help_call_screened">
+        <![CDATA[
+        Dipicu setelah panggilan disaring.
+        ]]>
+    </string>
+    <string name="text_reply">Balasan Teks</string>
+    <string name="text_to_reply">Teks untuk Membalas</string>
+    <string name="cant_talk_in_meeting">Sedang rapat sekarang, nanti saya hubungi lagi.</string>
+    <string name="busy_right_now">Tidak bisa bicara sekarang, nanti saya hubungi lagi.</string>
+    <string name="help_action_text_reply">
+        <![CDATA[
+        Menghasilkan teks balasan otomatis berdasarkan hasil penyaringan panggilan.
+        ]]>
+    </string>
+    <string name="send_sms">Kirim SMS</string>
+    <string name="result">Hasil</string>
+    <string name="is_contact">Adalah Kontak</string>
+    <string name="blocked_by">Diblokir Oleh</string>
+    <string name="sms_sent_successfully">SMS berhasil dikirim</string>
+    <string name="failed_to_send_sms">Gagal mengirim SMS: %s</string>
+    <string name="replying_text">Teks balasan: %s</string>
+    <string name="help_action_send_sms">
+        <![CDATA[
+        Kirim pesan SMS.
+        ]]>
+    </string>
+    <string name="help_call_screening_number_filter">
+        <![CDATA[
+        Gunakan regex ini untuk mengecualikan nomor tertentu, seperti telepon rumah atau nomor internasional. <br>
+        <br>
+        Contoh <br>
+        &ensp; <sample>\\d{10,11}</sample> <br>
+        &ensp; nomor dengan 10 hingga 11 digit.
+        ]]>
+    </string>
+    <string name="sms_reply">Balasan SMS</string>
+    <string name="help_bot_preset_sms_reply">
+        <![CDATA[
+        Kirim SMS secara otomatis kepada kontak saat panggilan mereka diblokir. <br>
+        Pesan yang berbeda dapat diatur untuk Mode Rapat dan fitur pemblokiran lainnya.
+        ]]>
+    </string>
+</resources>

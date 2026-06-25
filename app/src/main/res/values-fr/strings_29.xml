@@ -1,0 +1,45 @@
+<resources>
+    <string name="call_screened">Appel filtré</string>
+    <string name="help_call_screened">
+        <![CDATA[
+        Déclenché après le filtrage de l\'appel.
+        ]]>
+    </string>
+    <string name="text_reply">Réponse texte</string>
+    <string name="text_to_reply">Texte de réponse</string>
+    <string name="cant_talk_in_meeting">Je suis en réunion pour le moment, je vous recontacterai plus tard.</string>
+    <string name="busy_right_now">Je ne peux pas parler pour le moment, je vous recontacte plus tard.</string>
+    <string name="help_action_text_reply">
+        <![CDATA[
+        Génère le texte de réponse automatique en fonction du résultat du filtrage de l\'appel.
+        ]]>
+    </string>
+    <string name="send_sms">Envoyer SMS</string>
+    <string name="result">Résultat</string>
+    <string name="is_contact">Est un contact</string>
+    <string name="blocked_by">Bloqué par</string>
+    <string name="sms_sent_successfully">SMS envoyé avec succès</string>
+    <string name="failed_to_send_sms">Échec de l\'envoi du SMS : %s</string>
+    <string name="replying_text">Texte de réponse : %s</string>
+    <string name="help_action_send_sms">
+        <![CDATA[
+        Envoyer un message SMS.
+        ]]>
+    </string>
+    <string name="help_call_screening_number_filter">
+        <![CDATA[
+        Utilisez ce regex pour exclure des numéros spécifiques, tels que les lignes fixes ou les numéros internationaux. <br>
+        <br>
+        Par exemple <br>
+        &ensp; <sample>\\d{10,11}</sample> <br>
+        &ensp; numéros de 10 à 11 chiffres.
+        ]]>
+    </string>
+    <string name="sms_reply">Réponse SMS</string>
+    <string name="help_bot_preset_sms_reply">
+        <![CDATA[
+        Envoyez automatiquement un SMS aux contacts lorsque leurs appels sont bloqués. <br>
+        Différents messages peuvent être définis pour le Mode Réunion et d\'autres fonctionnalités de blocage.
+        ]]>
+    </string>
+</resources>

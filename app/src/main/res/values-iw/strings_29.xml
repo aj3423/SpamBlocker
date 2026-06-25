@@ -1,0 +1,45 @@
+<resources>
+    <string name="call_screened">שיחה מסוננת</string>
+    <string name="help_call_screened">
+        <![CDATA[
+        מופעל לאחר סינון השיחה.
+        ]]>
+    </string>
+    <string name="text_reply">תשובה טקסטואלית</string>
+    <string name="text_to_reply">טקסט למענה</string>
+    <string name="cant_talk_in_meeting">אני בפגישה כרגע, אחזור אליך מאוחר יותר.</string>
+    <string name="busy_right_now">אני לא יכול לדבר עכשיו, אצור קשר מאוחר יותר.</string>
+    <string name="help_action_text_reply">
+        <![CDATA[
+        מייצר את טקסט המענה האוטומטי בהתבסס על תוצאת סינון השיחה.
+        ]]>
+    </string>
+    <string name="send_sms">שלח SMS</string>
+    <string name="result">תוצאה</string>
+    <string name="is_contact">האם איש קשר</string>
+    <string name="blocked_by">נחסם על ידי</string>
+    <string name="sms_sent_successfully">ה-SMS נשלח בהצלחה</string>
+    <string name="failed_to_send_sms">שליחת ה-SMS נכשלה: %s</string>
+    <string name="replying_text">טקסט מענה: %s</string>
+    <string name="help_action_send_sms">
+        <![CDATA[
+        שליחת הודעת SMS.
+        ]]>
+    </string>
+    <string name="help_call_screening_number_filter">
+        <![CDATA[
+        השתמש ב-regex זה כדי להחריג מספרים ספציפיים, כגון טלפונים קוויים או מספרים בינלאומיים. <br>
+        <br>
+        לדוגמה <br>
+        &ensp; <sample>\\d{10,11}</sample> <br>
+        &ensp; מספרים בני 10 עד 11 ספרות.
+        ]]>
+    </string>
+    <string name="sms_reply">מענה SMS</string>
+    <string name="help_bot_preset_sms_reply">
+        <![CDATA[
+        שולח באופן אוטומטי SMS לאנשי קשר כאשר שיחותיהם נחסמות. <br>
+        ניתן להגדיר הודעות שונות עבור מצב פגישה ותכונות חסימה אחרות.
+        ]]>
+    </string>
+</resources>

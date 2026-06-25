@@ -1,0 +1,45 @@
+<resources>
+    <string name="call_screened">电话已筛选</string>
+    <string name="help_call_screened">
+        <![CDATA[
+        在电话筛选后触发。
+        ]]>
+    </string>
+    <string name="text_reply">文本回复</string>
+    <string name="text_to_reply">回复文本</string>
+    <string name="cant_talk_in_meeting">现在在开会，稍后联系。 </string>
+    <string name="busy_right_now">现在不方便接电话，稍后联系。</string>
+    <string name="help_action_text_reply">
+        <![CDATA[
+        根据电话筛选结果生成自动回复文本。
+        ]]>
+    </string>
+    <string name="send_sms">发送短信</string>
+    <string name="result">结果</string>
+    <string name="is_contact">是否为联系人</string>
+    <string name="blocked_by">被拦截者</string>
+    <string name="sms_sent_successfully">短信发送成功</string>
+    <string name="failed_to_send_sms">短信发送失败: %s</string>
+    <string name="replying_text">正在回复的文本: %s</string>
+    <string name="help_action_send_sms">
+        <![CDATA[
+        发送一条短信。
+        ]]>
+    </string>
+    <string name="help_call_screening_number_filter">
+        <![CDATA[
+        使用此正则表达式排除特定号码，例如座机或国际号码。<br>
+        <br>
+        例如<br>
+        &ensp; <sample>\\d{10,11}</sample><br>
+        &ensp; 10 到 11 位数字。
+        ]]>
+    </string>
+    <string name="sms_reply">短信回复</string>
+    <string name="help_bot_preset_sms_reply">
+        <![CDATA[
+        当联系人的电话被拦截时，自动向其发送短信。<br>
+        可以为会议模式和其他拦截功能设置不同的消息。
+        ]]>
+    </string>
+</resources>

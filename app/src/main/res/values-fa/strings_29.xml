@@ -1,0 +1,45 @@
+<resources>
+    <string name="call_screened">تماس غربال شده</string>
+    <string name="help_call_screened">
+        <![CDATA[
+        بعد از غربال شدن تماس فعال می‌شود.
+        ]]>
+    </string>
+    <string name="text_reply">پاسخ متنی</string>
+    <string name="text_to_reply">متن برای پاسخ</string>
+    <string name="cant_talk_in_meeting">در حال حاضر در جلسه هستم، بعداً با شما تماس می‌گیرم.</string>
+    <string name="busy_right_now">الان نمی‌توانم صحبت کنم، بعداً خبر می‌دهم.</string>
+    <string name="help_action_text_reply">
+        <![CDATA[
+        متن پاسخ خودکار را بر اساس نتیجه غربال تماس ایجاد می‌کند.
+        ]]>
+    </string>
+    <string name="send_sms">ارسال پیامک</string>
+    <string name="result">نتیجه</string>
+    <string name="is_contact">مخاطب است</string>
+    <string name="blocked_by">مسدود شده توسط</string>
+    <string name="sms_sent_successfully">پیامک با موفقیت ارسال شد</string>
+    <string name="failed_to_send_sms">خطا در ارسال پیامک: %s</string>
+    <string name="replying_text">متن پاسخ: %s</string>
+    <string name="help_action_send_sms">
+        <![CDATA[
+        ارسال یک پیامک.
+        ]]>
+    </string>
+    <string name="help_call_screening_number_filter">
+        <![CDATA[
+        از این عبارت منظم (regex) برای حذف شماره‌های خاص، مانند تلفن‌های ثابت یا شماره‌های بین‌المللی استفاده کنید. <br>
+        <br>
+        به عنوان مثال <br>
+        &ensp; <sample>\\d{10,11}</sample> <br>
+        &ensp; شماره‌های ۱۰ تا ۱۱ رقمی.
+        ]]>
+    </string>
+    <string name="sms_reply">پاسخ پیامکی</string>
+    <string name="help_bot_preset_sms_reply">
+        <![CDATA[
+        به طور خودکار به مخاطبان پیامک ارسال می‌کند وقتی تماس‌هایشان مسدود شده است. <br>
+        پیام‌های متفاوتی را می‌توان برای حالت جلسه و سایر ویژگی‌های مسدودسازی تنظیم کرد.
+        ]]>
+    </string>
+</resources>

@@ -1,0 +1,45 @@
+<resources>
+    <string name="call_screened">Trucada filtrada</string>
+    <string name="help_call_screened">
+        <![CDATA[
+        S\'activar després de filtrar la trucada.
+        ]]>
+    </string>
+    <string name="text_reply">Resposta de text</string>
+    <string name="text_to_reply">Text per respondre</string>
+    <string name="cant_talk_in_meeting">Sóc en una reunió ara mateix, ja et contactaré més tard.</string>
+    <string name="busy_right_now">No puc parlar ara, ja et trucaré més tard.</string>
+    <string name="help_action_text_reply">
+        <![CDATA[
+        Genera el text de la resposta automàtica basant-se en el resultat del filtratge de la trucada.
+        ]]>
+    </string>
+    <string name="send_sms">Enviar SMS</string>
+    <string name="result">Resultat</string>
+    <string name="is_contact">És contacte</string>
+    <string name="blocked_by">Blocat per</string>
+    <string name="sms_sent_successfully">SMS enviat correctament</string>
+    <string name="failed_to_send_sms">Error en l\'enviament de l\'SMS: %s</string>
+    <string name="replying_text">Text de resposta: %s</string>
+    <string name="help_action_send_sms">
+        <![CDATA[
+        Envia un missatge SMS.
+        ]]>
+    </string>
+    <string name="help_call_screening_number_filter">
+        <![CDATA[
+        Utilitza aquest regex per excloure números específics, com ara telèfons fixos o números internacionals. <br>
+        <br>
+        Per exemple <br>
+        &ensp; <sample>\\d{10,11}</sample> <br>
+        &ensp; números de 10 a 11 dígits.
+        ]]>
+    </string>
+    <string name="sms_reply">Resposta SMS</string>
+    <string name="help_bot_preset_sms_reply">
+        <![CDATA[
+        Envia automàticament un SMS als contactes quan les seves trucades són bloquejades. <br>
+        Es poden configurar missatges diferents per al Mode Reunió i altres funcions de bloqueig.
+        ]]>
+    </string>
+</resources>

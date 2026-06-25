@@ -1,0 +1,45 @@
+<resources>
+    <string name="call_screened">Вызов отфильтрован</string>
+    <string name="help_call_screened">
+        <![CDATA[
+        Срабатывает после фильтрации вызова.
+        ]]>
+    </string>
+    <string name="text_reply">Текстовый ответ</string>
+    <string name="text_to_reply">Текст ответа</string>
+    <string name="cant_talk_in_meeting">Я сейчас на собрании, свяжусь с вами позже.</string>
+    <string name="busy_right_now">Не могу сейчас говорить, напишу позже.</string>
+    <string name="help_action_text_reply">
+        <![CDATA[
+        Генерирует текст автоответа на основе результата фильтрации вызова.
+        ]]>
+    </string>
+    <string name="send_sms">Отправить SMS</string>
+    <string name="result">Результат</string>
+    <string name="is_contact">В контактах</string>
+    <string name="blocked_by">Заблокировано</string>
+    <string name="sms_sent_successfully">SMS успешно отправлено</string>
+    <string name="failed_to_send_sms">Ошибка отправки SMS: %s</string>
+    <string name="replying_text">Текст ответа: %s</string>
+    <string name="help_action_send_sms">
+        <![CDATA[
+        Отправить SMS-сообщение.
+        ]]>
+    </string>
+    <string name="help_call_screening_number_filter">
+        <![CDATA[
+        Используйте это регулярное выражение, чтобы исключить определенные номера, такие как стационарные или международные. <br>
+        <br>
+        Например <br>
+        &ensp; <sample>\\d{10,11}</sample> <br>
+        &ensp; номера из 10-11 цифр.
+        ]]>
+    </string>
+    <string name="sms_reply">SMS-ответ</string>
+    <string name="help_bot_preset_sms_reply">
+        <![CDATA[
+        Автоматически отправляет SMS контактам, когда их вызовы блокируются. <br>
+        Для режима собрания и других функций блокировки можно настроить разные сообщения.
+        ]]>
+    </string>
+</resources>
