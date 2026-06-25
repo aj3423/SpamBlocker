@@ -1,6 +1,7 @@
 package spam.blocker.service.bot
 
 import android.content.Context
+import android.os.Build
 import android.telephony.SmsManager
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -309,7 +310,14 @@ class SendSms: IAction {
 
         val rawNumber = aCtx.rawNumber ?: return false
 
-        val smsManager = ctx.getSystemService(SmsManager::class.java)
+        val smsManager = if (Build.VERSION.SDK_INT >= Def.ANDROID_12) {
+            // For Android 12 (API 31) and above
+            ctx.getSystemService(SmsManager::class.java)
+        } else {
+            // For Android 10 and below (Deprecated in API 31, but necessary fallback)
+            @Suppress("DEPRECATION")
+            SmsManager.getDefault()
+        }
 
         return try {
             smsManager.sendTextMessage(rawNumber, null, toSend, null, null)
