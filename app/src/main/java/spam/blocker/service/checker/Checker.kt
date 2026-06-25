@@ -357,7 +357,7 @@ class Checker { // for namespace only
             if (fail || (includeUnverified && unverified)) {
                 val ret = BySTIR(Def.RESULT_BLOCKED_BY_STIR, stir)
                 logger?.error(
-                    ctx.getString(R.string.blocked_by).formatAnnotated(desc())
+                    ctx.getString(R.string.blocked_by_template).formatAnnotated(desc())
                             + ret.resultReasonStr(ctx).A()
                 )
                 return ret
@@ -415,7 +415,7 @@ class Checker { // for namespace only
 
             if (record != null) {
                 logger?.error(
-                    ctx.getString(R.string.blocked_by).formatAnnotated(desc())
+                    ctx.getString(R.string.blocked_by_template).formatAnnotated(desc())
                 )
                 return BySpamDb(matchedNumber = record.peer)
             }
@@ -493,7 +493,7 @@ class Checker { // for namespace only
             val contact = Contacts.findContactByRawNumber(ctx, rawNumber)
             if (contact == null) { // not from contacts
                 logger?.error(
-                    ctx.getString(R.string.blocked_by).formatAnnotated(
+                    ctx.getString(R.string.blocked_by_template).formatAnnotated(
                         desc()
                     )
                 )
@@ -858,7 +858,7 @@ class Checker { // for namespace only
 
             if (appInMeeting != null) {
                 logger?.error(
-                    ctx.getString(R.string.blocked_by)
+                    ctx.getString(R.string.blocked_by_template)
                         .formatAnnotated(desc()) + ": $appInMeeting".A()
                 )
                 return ByMeetingMode(pkgName = appInMeeting.pkgName)
@@ -958,7 +958,7 @@ class Checker { // for namespace only
 
                 if (result.isSpam)
                     logger?.error(
-                        ctx.getString(R.string.blocked_by)
+                        ctx.getString(R.string.blocked_by_template)
                             .formatAnnotated(desc()) + " <${winnerApi.summary()}>".A()
                     )
                 else
@@ -1058,7 +1058,7 @@ class Checker { // for namespace only
 
                 if (block)
                     logger?.error(
-                        ctx.getString(R.string.blocked_by).formatAnnotated(desc())
+                        ctx.getString(R.string.blocked_by_template).formatAnnotated(desc())
                     )
                 else
                     logger?.success(
@@ -1099,7 +1099,7 @@ class Checker { // for namespace only
 
                 if (block)
                     logger?.error(
-                        ctx.getString(R.string.blocked_by).formatAnnotated(desc())
+                        ctx.getString(R.string.blocked_by_template).formatAnnotated(desc())
                     )
                 else
                     logger?.success(
@@ -1145,7 +1145,7 @@ class Checker { // for namespace only
 
                 if (block)
                     logger?.error(
-                        ctx.getString(R.string.blocked_by).formatAnnotated(desc())
+                        ctx.getString(R.string.blocked_by_template).formatAnnotated(desc())
                     )
                 else
                     logger?.success(
@@ -1189,7 +1189,7 @@ class Checker { // for namespace only
 
                 if (block)
                     logger?.error(
-                        ctx.getString(R.string.blocked_by).formatAnnotated(desc())
+                        ctx.getString(R.string.blocked_by_template).formatAnnotated(desc())
                     )
                 else
                     logger?.success(
@@ -1238,7 +1238,7 @@ class Checker { // for namespace only
 
                 if (block)
                     logger?.error(
-                        ctx.getString(R.string.blocked_by).formatAnnotated(desc())
+                        ctx.getString(R.string.blocked_by_template).formatAnnotated(desc())
                     )
                 else
                     logger?.success(
@@ -1285,7 +1285,7 @@ class Checker { // for namespace only
 
                 if (block)
                     logger?.error(
-                        ctx.getString(R.string.blocked_by).formatAnnotated(desc())
+                        ctx.getString(R.string.blocked_by_template).formatAnnotated(desc())
                     )
                 else
                     logger?.success(
@@ -1334,7 +1334,7 @@ class Checker { // for namespace only
 
                 if (block)
                     logger?.error(
-                        ctx.getString(R.string.blocked_by)
+                        ctx.getString(R.string.blocked_by_template)
                             .formatAnnotated(desc()) + " - ${contactInfo.name}".A()
                     )
                 else
@@ -1387,7 +1387,7 @@ class Checker { // for namespace only
 
                 if (block)
                     logger?.error(
-                        ctx.getString(R.string.blocked_by)
+                        ctx.getString(R.string.blocked_by_template)
                             .formatAnnotated(desc()) + " - ${firstNumber.peer}".A()
                     )
                 else
@@ -1472,7 +1472,7 @@ class Checker { // for namespace only
 
                 if (block)
                     logger?.error(
-                        ctx.getString(R.string.blocked_by).formatAnnotated(desc())
+                        ctx.getString(R.string.blocked_by_template).formatAnnotated(desc())
                     )
                 else
                     logger?.success(
@@ -1639,7 +1639,7 @@ class Checker { // for namespace only
 
             if (blockIt) {
                 logger?.error(
-                    ctx.getString(R.string.blocked_by).formatAnnotated(desc())
+                    ctx.getString(R.string.blocked_by_template).formatAnnotated(desc())
                 )
                 return BySmsBomb()
             }

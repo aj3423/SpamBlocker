@@ -18,6 +18,7 @@ import spam.blocker.db.CallTable
 import spam.blocker.db.HistoryRecord
 import spam.blocker.def.Def
 import spam.blocker.service.bot.ActionContext
+import spam.blocker.service.bot.CallScreened
 import spam.blocker.service.bot.Ringtone
 import spam.blocker.service.bot.executeAll
 import spam.blocker.service.checker.Checker
@@ -308,6 +309,18 @@ class CallScreeningService : CallScreeningService() {
                         withContext(Main) {
                             showCallerId(ctx, r, rawNumber)
                         }
+                    }
+                }
+
+                // 5. Run post screening workflows
+                run {
+                    val bots = BotTable.listAll(ctx).filter {
+                        it.trigger is CallScreened && it.trigger.isActivated()
+                    }
+
+                    bots.forEach { bot ->
+                        val aCtx = ActionContext(rawNumber = rawNumber, checkResult = r, logger = logger)
+                        bot.triggerAndActions().executeAll(ctx, aCtx)
                     }
                 }
             }

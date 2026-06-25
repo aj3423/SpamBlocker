@@ -41,6 +41,7 @@ import spam.blocker.util.PermissionType.PhoneState
 import spam.blocker.util.PermissionType.ReadSMS
 import spam.blocker.util.PermissionType.ReceiveMMS
 import spam.blocker.util.PermissionType.ReceiveSMS
+import spam.blocker.util.PermissionType.SendSMS
 import spam.blocker.util.PermissionType.ShowOverlay
 import spam.blocker.util.PermissionType.UsageStats
 import spam.blocker.util.PermissionType.WriteSettings
@@ -82,6 +83,7 @@ object PermissionType {
     // All Regular permissions
     class Contacts: Regular(Manifest.permission.READ_CONTACTS, R.string.perm_contacts)
     class ReceiveSMS: Regular(Manifest.permission.RECEIVE_SMS, R.string.perm_receive_sms)
+    class SendSMS: Regular(Manifest.permission.SEND_SMS, R.string.send_sms)
     class ReceiveMMS: Regular(Manifest.permission.RECEIVE_MMS, R.string.perm_receive_mms)
     class AnswerCalls: Regular(Manifest.permission.ANSWER_PHONE_CALLS, R.string.perm_answer_calls)
     class CallLog: Regular(Manifest.permission.READ_CALL_LOG, R.string.perm_call_logs)
@@ -290,6 +292,7 @@ object Permission {
     val callScreening = CallScreening()
     val contacts = Contacts()
     val receiveSMS = ReceiveSMS()
+    val sendSMS = SendSMS()
     val receiveMMS = ReceiveMMS()
     val answerCalls = AnswerCalls()
     val callLog = CallLog()
@@ -307,6 +310,7 @@ object Permission {
             callScreening,
             contacts,
             receiveSMS,
+            sendSMS,
             receiveMMS,
             answerCalls,
             callLog,

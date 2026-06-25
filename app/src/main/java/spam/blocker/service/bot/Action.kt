@@ -8,7 +8,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.snapshots.SnapshotStateList
-import androidx.compose.ui.Modifier
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.async
@@ -17,12 +16,13 @@ import kotlinx.coroutines.yield
 import kotlinx.serialization.PolymorphicSerializer
 import kotlinx.serialization.builtins.ListSerializer
 import spam.blocker.service.checker.CheckContext
+import spam.blocker.service.checker.ICheckResult
 import spam.blocker.util.BotJson
 import spam.blocker.util.ILogger
 import spam.blocker.util.PermissionWrapper
 
 // When adding a new IAction type, follow all the steps:
-//  - implement it in ActionsX.kt
+//  - implement it in ActionsX.kt or Triggers.kt
 //  - add to  `botTriggers` / `botActions` / `apiActions` below
 //  - add to  `botModule` in SerializersModule.kt
 
@@ -36,6 +36,7 @@ val botTriggers = listOf(
     CalendarEvent(),
     Ringtone(),
     QuickTile(),
+    CallScreened()
 )
 val botActions = listOf(
     HttpRequest(),
@@ -62,6 +63,8 @@ val botActions = listOf(
     LoadBotTag(),
     SetTag(),
     Wait(),
+    TextReply(),
+    SendSms(),
 )
 
 val apiActions = listOf(
@@ -139,6 +142,9 @@ data class ActionContext(
 
     // for action `Generate Tag`
     var customTags: MutableMap<String, String> = mutableMapOf(),
+
+    // for trigger `AfterCallScreening`
+    var checkResult: ICheckResult? = null,
 )
 
 interface IAction {
@@ -147,7 +153,7 @@ interface IAction {
     // When it fails, it returns: <false, errorReasonString>
     fun execute(ctx: Context, aCtx: ActionContext): Boolean
 
-    // It returns a list of missing permissions.
+    // Returns a list of missing permissions.
     fun requiredPermissions(ctx: Context): List<PermissionWrapper>
 
     // The display name of this action
@@ -176,8 +182,6 @@ interface IAction {
 
 // Trigger types: OnCall/OnSMS/OnCalendarEvents/
 interface ITriggerAction : IAction {
-    @Composable
-    fun TriggerType(modifier: Modifier)
     fun isActivated(): Boolean
 }
 

@@ -22,7 +22,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.unit.dp
 import spam.blocker.BuildConfig
@@ -30,12 +29,10 @@ import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.BotTable
 import spam.blocker.db.CallTable
-import spam.blocker.db.HistoryTable
 import spam.blocker.db.SmsTable
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.misc.REPO
 import spam.blocker.ui.theme.AppTheme
-import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.GreyText
 import spam.blocker.ui.widgets.HtmlText
 import spam.blocker.ui.widgets.NormalColumnScrollbar

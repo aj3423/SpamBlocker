@@ -87,7 +87,7 @@
     </string>
     <string name="skip_for_testing">Zum Testen überspringen.</string>
     <string name="allowed_by">Zulässig durch: %s</string>
-    <string name="blocked_by">Blockiert durch: %s</string>
+    <string name="blocked_by_template">Blockiert durch: %s</string>
     <string name="android_ver_lower_than_11">Android-Version ist niedriger als 11, überspringen.</string>
     <string name="query">Abfrage</string>
     <string name="report_api">Melde-API</string>

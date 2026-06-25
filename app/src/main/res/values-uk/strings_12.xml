@@ -88,7 +88,7 @@
     </string>
     <string name="skip_for_testing">Пропустити для тестування.</string>
     <string name="allowed_by">Дозволено: %s</string>
-    <string name="blocked_by">Заблоковано: %s</string>
+    <string name="blocked_by_template">Заблоковано: %s</string>
     <string name="android_ver_lower_than_11">Версія Android нижче 11, пропущено.</string>
     <string name="query">Запит</string>
     <string name="report_api">API звітування</string>

@@ -97,6 +97,6 @@
     </string>
     <string name="skip_for_testing">דלג לבדיקה.</string>
     <string name="allowed_by">מותר על ידי: %s</string>
-    <string name="blocked_by">נחסם על ידי: %s</string>
+    <string name="blocked_by_template">נחסם על ידי: %s</string>
     <string name="android_ver_lower_than_11">גרסת אנדרואיד נמוכה מ-11, דלג.</string>
 </resources>

@@ -3,7 +3,6 @@ package spam.blocker.service.bot
 import android.annotation.SuppressLint
 import android.content.Context
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -14,9 +13,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
@@ -32,12 +29,12 @@ import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
 import spam.blocker.service.checker.ByRegexRule
 import spam.blocker.service.checker.ICheckResult
-import spam.blocker.ui.M
 import spam.blocker.ui.SizedBox
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.regex.RegexMode.ModeType
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.BalloonQuestionMark
+import spam.blocker.ui.widgets.CheckBox
 import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.ui.widgets.GreenDot
 import spam.blocker.ui.widgets.GreyButton
@@ -79,10 +76,6 @@ class Manual() : ITriggerAction {
     override fun isActivated(): Boolean {
         return false
     }
-    @Composable
-    override fun TriggerType(modifier: Modifier) {
-        GreyLabel(Str(R.string.manual))
-    }
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         return true // do nothing
     }
@@ -95,7 +88,7 @@ class Manual() : ITriggerAction {
     override fun Summary(showIcon: Boolean) {
         RowVCenterSpaced(2) {
             if (showIcon) {
-                Icon()
+                SizedBox(18) { Icon() }
             }
             SummaryLabel(Str(R.string.manual))
         }
@@ -138,10 +131,6 @@ data class Schedule(
     override fun isActivated(): Boolean {
         return enabled && schedule.isValid()
     }
-    @Composable
-    override fun TriggerType(modifier: Modifier) {
-        GreyLabel(Str(R.string.schedule))
-    }
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         return true // do nothing
     }
@@ -159,9 +148,7 @@ data class Schedule(
             }
             RowVCenterSpaced(4) {
                 if (showIcon) {
-                    SizedBox(18) {
-                        Icon()
-                    }
+                    SizedBox(18) { Icon() }
                 }
                 schedule.Summary()
             }
@@ -267,17 +254,6 @@ class CalendarEvent(
     }
     override fun isActivated(): Boolean {
         return enabled && Permission.calendar.isGranted
-    }
-    @Composable
-    override fun TriggerType(modifier: Modifier) {
-        RowVCenterSpaced(2, modifier = modifier) {
-            GreyIcon18(R.drawable.ic_incoming)
-            GreyIcon18(R.drawable.ic_calendar)
-            GreyLabel(
-                text = eventTitle,
-                modifier = M.padding(start = 4.dp)
-            )
-        }
     }
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         if (!isActivated())
@@ -386,16 +362,6 @@ class SmsEvent(
         )
     }
 
-    @Composable
-    override fun TriggerType(modifier: Modifier) {
-        RowVCenterSpaced(2, modifier = modifier) {
-            GreyIcon18(R.drawable.ic_sms)
-            GreyLabel(
-                text = "$content <- $number",
-                modifier = M.padding(start = 4.dp)
-            )
-        }
-    }
     override fun isActivated(): Boolean {
         return enabled && Permission.receiveSMS.isGranted
     }
@@ -528,16 +494,6 @@ class CallEvent(
             PermissionWrapper(Permission.callScreening),
         )
     }
-    @Composable
-    override fun TriggerType(modifier: Modifier) {
-        RowVCenterSpaced(2, modifier = modifier) {
-            GreyIcon18(R.drawable.ic_incoming)
-            GreyLabel(
-                text = number,
-                modifier = M.padding(start = 4.dp)
-            )
-        }
-    }
     override fun isActivated(): Boolean {
         return enabled && Permission.callScreening.isGranted
     }
@@ -651,22 +607,6 @@ class CallThrottling(
     }
     override fun isActivated(): Boolean {
         return enabled && Permission.callLog.isGranted
-    }
-    @Composable
-    override fun TriggerType(modifier: Modifier) {
-        RowVCenterSpaced(6, modifier = modifier) {
-            GreyIcon18(R.drawable.ic_multi_call)
-
-            RowVCenterSpaced(2) {
-                if (includingAnswered) {
-                    GreyIcon16(R.drawable.ic_call)
-                }
-                if (includingBlocked) {
-                    GreyIcon16(R.drawable.ic_call_blocked)
-                }
-            }
-            GreyLabel(Str(R.string.seconds_template).format(durationSec))
-        }
     }
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         if (aCtx.cCtx?.rawNumber == null) {
@@ -823,17 +763,6 @@ class SmsThrottling(
     }
     override fun isActivated(): Boolean {
         return enabled && Permission.readSMS.isGranted
-    }
-    @Composable
-    override fun TriggerType(modifier: Modifier) {
-        RowVCenterSpaced(6, modifier = modifier) {
-            GreyIcon18(R.drawable.ic_multi_sms)
-
-            RowVCenterSpaced(4) {
-                GreyLabel("$countLimit/$durationSec")
-                GreyLabel(targetRuleDesc)
-            }
-        }
     }
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         if (aCtx.cCtx?.rawNumber == null || aCtx.cCtx?.smsContent == null) {
@@ -1032,22 +961,6 @@ class Ringtone(
         } catch (_: Exception) {
         }
         return ""
-    }
-    @Composable
-    override fun TriggerType(modifier: Modifier) {
-        val ctx = LocalContext.current
-
-        RowVCenterSpaced(6, modifier = modifier) {
-            GreyIcon18(R.drawable.ic_music)
-            GreyLabel(labelBindTo())
-
-            if (mute) {
-                GreyIcon18(R.drawable.ic_bell_mute)
-            } else {
-                val uri = ringtoneUri?.toUri() ?: RingtoneUtil.getCurrent(ctx)
-                GreyLabel(RingtoneUtil.getName(ctx, uri))
-            }
-        }
     }
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         if (!isActivated())
@@ -1269,16 +1182,6 @@ class QuickTile(
             else -> G.dynamicTile0Enabled
         }
     }
-    @Composable
-    override fun TriggerType(modifier: Modifier) {
-        RowVCenterSpaced(6, modifier = modifier) {
-            // Green dot
-            GreyIcon18(R.drawable.ic_tile_custom)
-            if (tileIndex > 0) {
-                GreyLabel("[$tileIndex]")
-            }
-        }
-    }
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val active = isActivated()
         if (active) {
@@ -1330,5 +1233,155 @@ class QuickTile(
     @Composable
     override fun Options() {
         NoOptionNeeded()
+    }
+}
+
+
+@Serializable
+@SerialName("CallScreened")
+class CallScreened(
+    var enabled: Boolean = true,
+    var numberFilter: String = ".*",
+    var forAllowed: Boolean = false,
+    var forBlocked: Boolean = true,
+) : ITriggerAction {
+    override fun requiredPermissions(ctx: Context) = listOf(
+        PermissionWrapper(Permission.callScreening)
+    )
+
+    override fun isActivated(): Boolean {
+        return enabled && Permission.callScreening.isGranted
+    }
+
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        if (!isActivated())
+            return false
+
+        val rawNumber = aCtx.rawNumber!!
+
+        // Check number filter
+        val matchesFilter = numberFilter.toRegex().matches(rawNumber)
+        if (!matchesFilter) {
+            aCtx.logger?.debug(
+                ctx.getString(R.string.number_not_match_filter)
+                    .format(rawNumber, numberFilter)
+            )
+            return false
+        }
+
+        aCtx.logger?.debug("${label(ctx)} triggered: $rawNumber")
+
+        val r = aCtx.checkResult ?: return false
+
+        if (r.shouldBlock()) { // blocked
+            if (forBlocked) return true
+        } else { // allowed
+            if (forAllowed) return true
+        }
+
+        return false
+    }
+
+    override fun label(ctx: Context): String {
+        return ctx.getString(R.string.call_screened)
+    }
+
+    @Composable
+    override fun Summary(showIcon: Boolean) {
+        RowVCenterSpaced(6) {
+            // Green dot
+            if (isActivated()) {
+                GreenDot()
+            }
+            RowVCenterSpaced(4) {
+                if (showIcon) {
+                    SizedBox(18) { Icon() }
+                }
+                if (forAllowed) {
+                    GreyLabel(Str(R.string.allowed))
+                }
+                if (forBlocked) {
+                    GreyLabel(Str(R.string.blocked))
+                }
+                if (!forAllowed && !forBlocked) {
+                    GreyLabel(Str(R.string.none))
+                }
+            }
+        }
+    }
+
+    override fun tooltip(ctx: Context): String {
+        return ctx.getString(R.string.help_call_screened)
+    }
+
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    @Composable
+    override fun Icon() {
+        GreyIcon(R.drawable.ic_filter)
+    }
+
+    @Composable
+    override fun Options() {
+        // Must use a state, otherwise the switch doesn't change on click
+        var enabledState by remember { mutableStateOf(enabled) }
+
+        LabeledRow(labelId = R.string.enable) {
+            SwitchBox(enabledState) { on ->
+                enabled = on
+                enabledState = on
+            }
+        }
+
+        // Number Filter
+        val dummyFlags = remember { mutableIntStateOf(Def.FLAG_REGEX_RAW_NUMBER) }
+        RegexInputBox(
+            regexStr = numberFilter,
+            label = { Text(Str(R.string.number_filter)) },
+            leadingIcon = { GreyIcon18(R.drawable.ic_filter) },
+            helpTooltipId = R.string.help_call_screening_number_filter,
+            placeholder = { Placeholder(".*") },
+            regexFlags = dummyFlags,
+            showFlagsIcon = false,
+            onRegexStrChange = { newVal, hasError ->
+                if (!hasError) {
+                    numberFilter = newVal
+                }
+            },
+            onFlagsChange = { }
+        )
+
+        // Allow / Block
+        LabeledRow(
+            labelId = R.string.result,
+        ) {
+            var forAllowedState by remember { mutableStateOf(forAllowed) }
+            var forBlockedState by remember { mutableStateOf(forBlocked) }
+
+            RowVCenterSpaced(10) {
+                CheckBox(
+                    checked = forAllowedState,
+                    label = { GreyLabel(Str(R.string.allowed)) },
+                    onCheckChange = {
+                        forAllowedState = it
+                        forAllowed = it
+                    }
+                )
+                CheckBox(
+                    checked = forBlockedState,
+                    label = { GreyLabel(Str(R.string.blocked)) },
+                    onCheckChange = {
+                        forBlockedState = it
+                        forBlocked = it
+                    }
+                )
+            }
+        }
     }
 }

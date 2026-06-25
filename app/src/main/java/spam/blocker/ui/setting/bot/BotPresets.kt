@@ -11,6 +11,7 @@ import spam.blocker.db.RegexRule
 import spam.blocker.service.bot.BackupExport
 import spam.blocker.service.bot.BackupImport
 import spam.blocker.service.bot.CalendarEvent
+import spam.blocker.service.bot.CallScreened
 import spam.blocker.service.bot.CallThrottling
 import spam.blocker.service.bot.Daily
 import spam.blocker.service.bot.FindRules
@@ -23,11 +24,15 @@ import spam.blocker.service.bot.ParseCSV
 import spam.blocker.service.bot.ParseXML
 import spam.blocker.service.bot.Periodically
 import spam.blocker.service.bot.QuickTile
+import spam.blocker.service.bot.ReplyRuleType
 import spam.blocker.service.bot.Ringtone
 import spam.blocker.service.bot.SaveBotTag
 import spam.blocker.service.bot.Schedule
+import spam.blocker.service.bot.SendSms
 import spam.blocker.service.bot.SetTag
 import spam.blocker.service.bot.SmsThrottling
+import spam.blocker.service.bot.TextReply
+import spam.blocker.service.bot.TextReplyRule
 import spam.blocker.service.bot.Time
 import spam.blocker.service.bot.Weekly
 import spam.blocker.service.bot.WriteFile
@@ -115,6 +120,35 @@ val BotPresets = listOf(
                     ImportToSpamDB(),
                     SetTag(tagName = "csv_name", tagValue = "daily"),
                     SaveBotTag(tagName = "csv_name"),
+                )
+            )
+            addBotToDB(ctx, newBot)
+        }
+    ),
+
+    // Auto SMS Reply
+    BotPreset(
+        descId = R.string.sms_reply,
+        tooltip = { it.getString(R.string.help_bot_preset_sms_reply) },
+        requiredPermissions = listOf(
+            PermissionWrapper(Permission.contacts),
+            PermissionWrapper(Permission.sendSMS)
+        ),
+        doAdd = { ctx ->
+            val newBot = Bot(
+                desc = ctx.getString(R.string.sms_reply),
+                trigger = CallScreened(),
+                actions = listOf(
+                    TextReply(rules = listOf(
+                        TextReplyRule(
+                            replyText = ctx.getString(R.string.cant_talk_in_meeting),
+                            type = ReplyRuleType.MeetingMode
+                        ),
+                        TextReplyRule(
+                            replyText = ctx.getString(R.string.busy_right_now),
+                        )
+                    )),
+                    SendSms()
                 )
             )
             addBotToDB(ctx, newBot)

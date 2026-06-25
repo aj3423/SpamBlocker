@@ -87,7 +87,7 @@
     </string>
     <string name="skip_for_testing">跳过测试。</string>
     <string name="allowed_by">允许于：%s</string>
-    <string name="blocked_by">阻止于：%s</string>
+    <string name="blocked_by_template">阻止于：%s</string>
     <string name="android_ver_lower_than_11">Android版本低于11，跳过。</string>
     <string name="query">查询</string>
     <string name="report_api">举报API</string>

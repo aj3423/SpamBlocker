@@ -97,6 +97,6 @@
     </string>
     <string name="skip_for_testing">Lewati untuk pengujian.</string>
     <string name="allowed_by">Diizinkan oleh: %s</string>
-    <string name="blocked_by">Diblokir oleh: %s</string>
+    <string name="blocked_by_template">Diblokir oleh: %s</string>
     <string name="android_ver_lower_than_11">Versi Android lebih rendah dari 11, lewati.</string>
 </resources>

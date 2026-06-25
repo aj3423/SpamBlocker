@@ -11,6 +11,7 @@ import spam.blocker.service.bot.BackupExport
 import spam.blocker.service.bot.BackupImport
 import spam.blocker.service.bot.CalendarEvent
 import spam.blocker.service.bot.CallEvent
+import spam.blocker.service.bot.CallScreened
 import spam.blocker.service.bot.CallThrottling
 import spam.blocker.service.bot.CategoryConfig
 import spam.blocker.service.bot.ConvertNumber
@@ -47,9 +48,11 @@ import spam.blocker.service.bot.Ringtone
 import spam.blocker.service.bot.SaveBotTag
 import spam.blocker.service.bot.Schedule
 import spam.blocker.service.bot.ScheduledAutoReportNumber
+import spam.blocker.service.bot.SendSms
 import spam.blocker.service.bot.SetTag
 import spam.blocker.service.bot.SmsEvent
 import spam.blocker.service.bot.SmsThrottling
+import spam.blocker.service.bot.TextReply
 import spam.blocker.service.bot.Wait
 import spam.blocker.service.bot.Weekly
 import spam.blocker.service.bot.WriteFile
@@ -66,6 +69,7 @@ val botModule = SerializersModule {
         subclass(SmsThrottling::class)
         subclass(Ringtone::class)
         subclass(QuickTile::class)
+        subclass(CallScreened::class)
     }
     polymorphic(ISchedule::class) {
         subclass(Daily::class)
@@ -85,7 +89,9 @@ val botModule = SerializersModule {
         subclass(SmsThrottling::class)
         subclass(Ringtone::class)
         subclass(QuickTile::class)
+        subclass(CallScreened::class)
 
+        // Actions
         subclass(PruneHistory::class)
         subclass(HttpRequest::class)
         subclass(PruneDatabase::class)
@@ -116,6 +122,8 @@ val botModule = SerializersModule {
         subclass(LoadBotTag::class)
         subclass(SetTag::class)
         subclass(Wait::class)
+        subclass(TextReply::class)
+        subclass(SendSms::class)
     }
     polymorphic(IApi::class) {
         // the second param is only for being compatible with old serialized data `spam.blocker.db.QueryApi`

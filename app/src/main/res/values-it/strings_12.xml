@@ -90,7 +90,7 @@
     </string>
     <string name="skip_for_testing">Salta per test.</string>
     <string name="allowed_by">Permesso da: %s</string>
-    <string name="blocked_by">Bloccato da: %s</string>
+    <string name="blocked_by_template">Bloccato da: %s</string>
     <string name="android_ver_lower_than_11">Versione Android inferiore all\'11, salta.</string>
     <string name="action_parse_incoming_sms">Analizza SMS</string>
     <string name="help_action_parse_incoming_sms">

@@ -88,7 +88,7 @@
     </string>
     <string name="skip_for_testing">Omitir para pruebas.</string>
     <string name="allowed_by">Permitido por: %s</string>
-    <string name="blocked_by">Bloqueado por: %s</string>
+    <string name="blocked_by_template">Bloqueado por: %s</string>
     <string name="android_ver_lower_than_11">La versión de Android es inferior a la 11, omitir.</string>
     <string name="query">Consulta</string>
     <string name="report_api">API de reporte</string>

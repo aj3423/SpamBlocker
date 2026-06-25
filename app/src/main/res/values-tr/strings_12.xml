@@ -87,7 +87,7 @@
     </string>
     <string name="skip_for_testing">Test için atla.</string>
     <string name="allowed_by">İzin verildi: %s</string>
-    <string name="blocked_by">Engellendi: %s</string>
+    <string name="blocked_by_template">Engellendi: %s</string>
     <string name="android_ver_lower_than_11">Android sürümü 11\'den düşük, atla.</string>
     <string name="query">Sorgu</string>
     <string name="report_api">Rapor API\'sı</string>

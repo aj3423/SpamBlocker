@@ -34,7 +34,6 @@ import spam.blocker.ui.setting.api.tagValid
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.ui.widgets.GreyIcon
-import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.GreyIcon18
 import spam.blocker.ui.widgets.GreyIcon20
 import spam.blocker.ui.widgets.LabelItem
@@ -42,7 +41,6 @@ import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.Placeholder
 import spam.blocker.ui.widgets.RegexInputBox
 import spam.blocker.ui.widgets.ResIcon16
-import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox

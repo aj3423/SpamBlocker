@@ -97,7 +97,7 @@
     </string>
     <string name="skip_for_testing">Пропустить для тестирования.</string>
     <string name="allowed_by">Разрешено: %s</string>
-    <string name="blocked_by">Заблокировано: %s</string>
+    <string name="blocked_by_template">Заблокировано: %s</string>
     <string name="android_ver_lower_than_11">Версия Android ниже 11, пропуск.</string>
 
 

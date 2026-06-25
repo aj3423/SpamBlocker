@@ -19,6 +19,9 @@
     <uses-permission android:name="android.permission.RECEIVE_SMS"/>
     <uses-permission android:name="android.permission.RECEIVE_MMS"/>
 
+    <!-- for auto replying to blocked contacts -->
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
     <!-- for notification -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 

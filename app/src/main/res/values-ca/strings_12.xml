@@ -97,6 +97,6 @@
     </string>
     <string name="skip_for_testing"><translate>Omet per a la prova.</translate></string>
     <string name="allowed_by"><translate>Permès per: %s</translate></string>
-    <string name="blocked_by"><translate>Bloquejat per: %s</translate></string>
+    <string name="blocked_by_template"><translate>Bloquejat per: %s</translate></string>
     <string name="android_ver_lower_than_11"><translate>La versió d\'Android és inferior a 11, omet.</translate></string>
 </resources>

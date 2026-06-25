@@ -115,6 +115,7 @@ It works without replacing your call/SMS app.
 | POST_NOTIFICATIONS                   | Show notifications                                                     |
 | READ_CONTACTS                        | Match contacts                                                         |
 | RECEIVE_SMS / RECEIVE_MMS            | For SMS notification screening                                         |
+| SEND_SMS                             | For auto replying to blocked contacts                                  |
 | READ_CALL_LOG / READ_SMS             | For allowing repeated calls                                            |
 | PACKAGE_USAGE_STATS                  | For feature: Recent Apps (check whether an app has been used recently) |
 | READ_PHONE_STATE                     | For BlockMode: Answer+Hang-up (monitor ringing state)                  |
