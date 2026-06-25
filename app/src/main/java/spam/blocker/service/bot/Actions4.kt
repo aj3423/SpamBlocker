@@ -314,6 +314,12 @@ class SendSms: IAction {
             logger?.error(ctx.getString(R.string.missing_permission).format(Permission.sendSMS.desc(ctx)))
             return false
         }
+        // Android 10/11 requires READ_PHONE_STATE
+        if (Build.VERSION.SDK_INT < ANDROID_12 && !Permission.phoneState.isGranted) {
+            logger?.error(ctx.getString(R.string.missing_permission).format(Permission.phoneState.desc(ctx)))
+            return false
+        }
+
         val toSend = (aCtx.lastOutput as? String) ?: return false
 
         val rawNumber = aCtx.rawNumber ?: return false

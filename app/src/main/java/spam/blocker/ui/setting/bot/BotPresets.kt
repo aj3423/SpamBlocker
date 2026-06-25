@@ -1,6 +1,7 @@
 package spam.blocker.ui.setting.bot
 
 import android.content.Context
+import android.os.Build
 import spam.blocker.BuildConfig
 import spam.blocker.G
 import spam.blocker.R
@@ -8,6 +9,7 @@ import spam.blocker.db.Bot
 import spam.blocker.db.ImportDbReason
 import spam.blocker.db.NumberRegexTable
 import spam.blocker.db.RegexRule
+import spam.blocker.def.Def.ANDROID_12
 import spam.blocker.service.bot.BackupExport
 import spam.blocker.service.bot.BackupImport
 import spam.blocker.service.bot.CalendarEvent
@@ -130,10 +132,13 @@ val BotPresets = listOf(
     BotPreset(
         descId = R.string.sms_reply,
         tooltip = { it.getString(R.string.help_bot_preset_sms_reply) },
-        requiredPermissions = listOf(
-            PermissionWrapper(Permission.contacts),
-            PermissionWrapper(Permission.sendSMS)
-        ),
+        requiredPermissions = buildList {
+            add(PermissionWrapper(Permission.contacts))
+            add(PermissionWrapper(Permission.sendSMS))
+            if (Build.VERSION.SDK_INT < ANDROID_12) {
+                add(PermissionWrapper((Permission.phoneState)))
+            }
+        },
         doAdd = { ctx ->
             val newBot = Bot(
                 desc = ctx.getString(R.string.sms_reply),
