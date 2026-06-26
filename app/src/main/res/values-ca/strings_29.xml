@@ -23,7 +23,17 @@
     <string name="replying_text">Text de resposta: %s</string>
     <string name="help_action_send_sms">
         <![CDATA[
-        Envia un missatge SMS.
+        Enviar un missatge SMS. <br>
+        <br>
+        <title>Número</title> <br>
+        Comprova diverses fonts per ordre i adopta la primera coincidència trobada: <br>
+        &ensp; Etiqueta <sample><no_translate>send_sms_to</no_translate></sample> (es pot crear utilitzant <b>Establir etiqueta</b>) <br>
+        &ensp; El número entrant <br>
+        <br>
+        <title>Contingut del SMS</title> <br>
+        Comprova diverses fonts per ordre: <br>
+        &ensp; Etiqueta <sample><no_translate>send_sms_content</no_translate></sample> <br>
+        &ensp; Sortida de text del pas anterior <br>
         ]]>
     </string>
     <string name="help_call_screening_number_filter">

@@ -23,7 +23,17 @@
     <string name="replying_text">Teks balasan: %s</string>
     <string name="help_action_send_sms">
         <![CDATA[
-        Kirim pesan SMS.
+        Kirim pesan SMS. <br>
+        <br>
+        <title>Nomor</title> <br>
+        Memeriksa beberapa sumber secara berurutan, mengadopsi kecocokan pertama yang ditemukan: <br>
+        &ensp; Tag <sample><no_translate>send_sms_to</no_translate></sample> (dapat dibuat menggunakan <b>Set Tag</b>) <br>
+        &ensp; Nomor yang masuk <br>
+        <br>
+        <title>Konten SMS</title> <br>
+        Memeriksa beberapa sumber secara berurutan: <br>
+        &ensp; Tag <sample><no_translate>send_sms_content</no_translate></sample> <br>
+        &ensp; Output teks dari langkah sebelumnya <br>
         ]]>
     </string>
     <string name="help_call_screening_number_filter">

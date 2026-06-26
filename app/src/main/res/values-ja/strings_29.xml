@@ -23,7 +23,17 @@
     <string name="replying_text">返信テキスト: %s</string>
     <string name="help_action_send_sms">
         <![CDATA[
-        SMSメッセージを送信します。
+        SMSメッセージを送信します。<br>
+        <br>
+        <title>電話番号</title><br>
+        複数のソースを順番にチェックし、最初に見つかった一致を採用します：<br>
+        &ensp; タグ <sample><no_translate>send_sms_to</no_translate></sample> (<b>タグ設定</b>で作成できます)<br>
+        &ensp; 受信電話番号<br>
+        <br>
+        <title>SMS内容</title><br>
+        複数のソースを順番にチェックします：<br>
+        &ensp; タグ <sample><no_translate>send_sms_content</no_translate></sample><br>
+        &ensp; 前のステップのテキスト出力<br>
         ]]>
     </string>
     <string name="help_call_screening_number_filter">

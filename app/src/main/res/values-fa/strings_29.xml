@@ -23,7 +23,17 @@
     <string name="replying_text">متن پاسخ: %s</string>
     <string name="help_action_send_sms">
         <![CDATA[
-        ارسال یک پیامک.
+        ارسال یک پیامک. <br>
+        <br>
+        <title>شماره</title> <br>
+        چندین منبع را به ترتیب بررسی می‌کند و اولین مورد یافت شده را می‌پذیرد: <br>
+        &ensp; تگ <sample><no_translate>send_sms_to</no_translate></sample> (می‌تواند با استفاده از <b>تنظیم تگ</b> ایجاد شود) <br>
+        &ensp; شماره ورودی <br>
+        <br>
+        <title>محتوای پیامک</title> <br>
+        چندین منبع را به ترتیب بررسی می‌کند: <br>
+        &ensp; تگ <sample><no_translate>send_sms_content</no_translate></sample> <br>
+        &ensp; خروجی متنی مرحله قبلی <br>
         ]]>
     </string>
     <string name="help_call_screening_number_filter">

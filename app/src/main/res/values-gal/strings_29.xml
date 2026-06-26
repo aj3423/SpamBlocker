@@ -23,7 +23,17 @@
     <string name="replying_text">Texto de resposta: %s</string>
     <string name="help_action_send_sms">
         <![CDATA[
-        Envia unha mensaxe SMS.
+        Enviar unha mensaxe SMS. <br>
+        <br>
+        <title>Número</title> <br>
+        Comprobe varias fontes por orde e adopta a primeira coincidencia encontrada: <br>
+        &ensp; Etiqueta <sample><no_translate>send_sms_to</no_translate></sample> (pode crearse usando <b>Establecer etiqueta</b>) <br>
+        &ensp; O número entrante <br>
+        <br>
+        <title>Contido do SMS</title> <br>
+        Comprobe varias fontes por orde: <br>
+        &ensp; Etiqueta <sample><no_translate>send_sms_content</no_translate></sample> <br>
+        &ensp; Saída de texto do paso anterior <br>
         ]]>
     </string>
     <string name="help_call_screening_number_filter">

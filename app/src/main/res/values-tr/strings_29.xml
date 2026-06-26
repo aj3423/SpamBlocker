@@ -23,7 +23,17 @@
     <string name="replying_text">Yanıt metni: %s</string>
     <string name="help_action_send_sms">
         <![CDATA[
-        Bir SMS mesajı gönderir.
+        Bir SMS mesajı gönder. <br>
+        <br>
+        <title>Numara</title> <br>
+        Birden fazla kaynağı sırayla kontrol eder, bulunan ilk eşleşmeyi benimser: <br>
+        &ensp; Etiket <sample><no_translate>send_sms_to</no_translate></sample> (<b>Etiket Ayarla</b> kullanılarak oluşturulabilir) <br>
+        &ensp; Gelen numara <br>
+        <br>
+        <title>SMS İçeriği</title> <br>
+        Birden fazla kaynağı sırayla kontrol eder: <br>
+        &ensp; Etiket <sample><no_translate>send_sms_content</no_translate></sample> <br>
+        &ensp; Önceki adımdan gelen metin çıktısı <br>
         ]]>
     </string>
     <string name="help_call_screening_number_filter">

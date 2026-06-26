@@ -23,7 +23,17 @@
     <string name="replying_text">正在回复的文本: %s</string>
     <string name="help_action_send_sms">
         <![CDATA[
-        发送一条短信。
+        发送一条短信。<br>
+        <br>
+        <title>号码</title><br>
+        按顺序检查多个来源，采用找到的第一个匹配项：<br>
+        &ensp; 标签 <sample><no_translate>send_sms_to</no_translate></sample> (可以使用 <b>设置标签</b> 创建)<br>
+        &ensp; 来电号码<br>
+        <br>
+        <title>短信内容</title><br>
+        按顺序检查多个来源：<br>
+        &ensp; 标签 <sample><no_translate>send_sms_content</no_translate></sample><br>
+        &ensp; 上一步的文本输出<br>
         ]]>
     </string>
     <string name="help_call_screening_number_filter">

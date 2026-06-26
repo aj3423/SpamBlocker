@@ -23,7 +23,17 @@
     <string name="replying_text">Replying text: %s</string>
     <string name="help_action_send_sms">
         <![CDATA[
-        Send an SMS message.
+        Send an SMS message. <br>
+        <br>
+        <title>Number</title> <br>
+        Checks multiple sources in order, adopts the first match found: <br>
+        &ensp; Tag <sample><no_translate>send_sms_to</no_translate></sample> (can be created using <b>Set Tag</b>) <br>
+        &ensp; The incoming number <br>
+        <br>
+        <title>SMS Content</title> <br>
+        Checks in order: <br>
+        &ensp; Tag <sample><no_translate>send_sms_content</no_translate></sample> <br>
+        &ensp; Text output from the previous step <br>
         ]]>
     </string>
     <string name="help_call_screening_number_filter">

@@ -23,7 +23,17 @@
     <string name="replying_text">טקסט מענה: %s</string>
     <string name="help_action_send_sms">
         <![CDATA[
-        שליחת הודעת SMS.
+        שלח הודעת SMS. <br>
+        <br>
+        <title>מספר</title> <br>
+        בודק מספר מקורות לפי הסדר, ומאמץ את ההתאמה הראשונה שנמצאה: <br>
+        &ensp; תגית <sample><no_translate>send_sms_to</no_translate></sample> (ניתן ליצור באמצעות <b>הגדר תגית</b>) <br>
+        &ensp; המספר הנכנס <br>
+        <br>
+        <title>תוכן ה-SMS</title> <br>
+        בודק מספר מקורות לפי הסדר: <br>
+        &ensp; תגית <sample><no_translate>send_sms_content</no_translate></sample> <br>
+        &ensp; פלט טקסט מהשלב הקודם <br>
         ]]>
     </string>
     <string name="help_call_screening_number_filter">

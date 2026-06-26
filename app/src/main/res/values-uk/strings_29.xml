@@ -23,7 +23,17 @@
     <string name="replying_text">Текст відповіді: %s</string>
     <string name="help_action_send_sms">
         <![CDATA[
-        Надіслати SMS-повідомлення.
+        Надіслати SMS-повідомлення. <br>
+        <br>
+        <title>Номер</title> <br>
+        Перевіряє кілька джерел по порядку та використовує перше знайдене співпадіння: <br>
+        &ensp; Тег <sample><no_translate>send_sms_to</no_translate></sample> (можна створити за допомогою <b>Встановити тег</b>) <br>
+        &ensp; Вхідний номер <br>
+        <br>
+        <title>Вміст SMS</title> <br>
+        Перевіряє кілька джерел по порядку: <br>
+        &ensp; Тег <sample><no_translate>send_sms_content</no_translate></sample> <br>
+        &ensp; Текстовий вивід попереднього кроку <br>
         ]]>
     </string>
     <string name="help_call_screening_number_filter">

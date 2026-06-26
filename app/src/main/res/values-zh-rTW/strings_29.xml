@@ -23,7 +23,17 @@
     <string name="replying_text">正在回覆的文字: %s</string>
     <string name="help_action_send_sms">
         <![CDATA[
-        發送一條簡訊。
+        發送一條簡訊。<br>
+        <br>
+        <title>號碼</title><br>
+        按順序檢查多個來源，採用找到的第一個匹配項：<br>
+        &ensp; 標記 <sample><no_translate>send_sms_to</no_translate></sample> (可以使用 <b>設定標記</b> 建立)<br>
+        &ensp; 撥入號碼<br>
+        <br>
+        <title>簡訊內容</title><br>
+        按順序檢查多個來源：<br>
+        &ensp; 標記 <sample><no_translate>send_sms_content</no_translate></sample><br>
+        &ensp; 上一步的文字輸出<br>
         ]]>
     </string>
     <string name="help_call_screening_number_filter">

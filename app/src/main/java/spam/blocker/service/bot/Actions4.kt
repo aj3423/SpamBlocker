@@ -320,12 +320,16 @@ class SendSms: IAction {
             return false
         }
 
-        val toSend = (aCtx.lastOutput as? String) ?: return false
+        val rawNumber = aCtx.customTags["send_sms_to"]
+            ?: aCtx.rawNumber
+            ?: return false
 
-        val rawNumber = aCtx.rawNumber ?: return false
+        val toSend = aCtx.customTags["send_sms_content"]
+            ?: aCtx.lastOutput as? String
+            ?: return false
 
         val smsManager = if (Build.VERSION.SDK_INT >= ANDROID_12) { // Android 12+
-            ctx.getSystemService(SmsManager::class.java) ?: SmsManager.getDefault()
+            ctx.getSystemService(SmsManager::class.java)
         } else { // Android 10 & 11
             val defaultSubId = SubscriptionManager.getDefaultSmsSubscriptionId()
 
@@ -333,10 +337,9 @@ class SendSms: IAction {
                 @Suppress("DEPRECATION")
                 SmsManager.getSmsManagerForSubscriptionId(defaultSubId)
             } else {
-                @Suppress("DEPRECATION")
-                SmsManager.getDefault()
+                null
             }
-        }
+        } ?: SmsManager.getDefault()
 
         return try {
             smsManager.sendTextMessage(rawNumber, null, toSend, null, null)
