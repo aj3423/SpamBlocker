@@ -48,8 +48,20 @@
     <string name="sms_reply">Resposta SMS</string>
     <string name="help_bot_preset_sms_reply">
         <![CDATA[
-        Envia automaticamente um SMS para os contatos quando suas chamadas são bloqueadas. <br>
-        Mensagens diferentes podem ser definidas para o Modo Reunião e outros recursos de bloqueio.
+        Envie automaticamente um SMS para os contatos quando as chamadas deles forem bloqueadas. <br>
+        Mensagens diferentes podem ser definidas para o Modo Reunião e outros recursos de bloqueio. <br>
+        <br>
+        <warn>Nota</warn> <br>
+        A primeira vez que o aplicativo enviar um SMS, um pop-up do sistema avisará sobre possíveis cobranças.
+        Toque em <sample>Lembrar minha escolha</sample> para evitar este aviso no futuro.
         ]]>
     </string>
+    <string name="find_regex_rule_by_description">
+        <![CDATA[
+        Insira uma descrição para corresponder à regra de regex correspondente.
+        ]]>
+    </string>
+    <string name="rules">Regras</string>
+    <string name="rule_description">Descrição da regra</string>
+    <string name="priority_in_order">A prioridade é determinada pela sequência desta lista.</string>
 </resources>

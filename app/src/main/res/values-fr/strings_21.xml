@@ -17,7 +17,7 @@
     <string name="call_to_test_ringtone">Effectuez un véritable appel pour tester la sonnerie.</string>
     <string name="help_ringtone">
     <![CDATA[
-        Personnalisez la sonnerie pour une fonctionnalité particulière, les appels autorisés par cette fonctionnalité joueront la sonnerie spécifiée.
+        Configurez différentes sonneries pour les appels autorisés par différentes fonctionnalités.
     ]]>
     </string>
     <string name="help_target_rule_desc">

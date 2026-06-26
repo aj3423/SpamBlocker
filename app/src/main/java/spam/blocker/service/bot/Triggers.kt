@@ -2,18 +2,28 @@ package spam.blocker.service.bot
 
 import android.annotation.SuppressLint
 import android.content.Context
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.retain.retain
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
@@ -21,16 +31,20 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import sh.calvin.reorderable.ReorderableColumn
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.CallTable
 import spam.blocker.db.NumberRegexTable
 import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
+import spam.blocker.service.checker.ByContact
 import spam.blocker.service.checker.ByRegexRule
-import spam.blocker.service.checker.ICheckResult
+import spam.blocker.service.checker.ByRepeatedCall
+import spam.blocker.ui.M
 import spam.blocker.ui.SizedBox
 import spam.blocker.ui.setting.LabeledRow
+import spam.blocker.ui.setting.regex.DisableNestedScrolling
 import spam.blocker.ui.setting.regex.RegexMode.ModeType
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.BalloonQuestionMark
@@ -44,21 +58,25 @@ import spam.blocker.ui.widgets.GreyIcon18
 import spam.blocker.ui.widgets.GreyIcon20
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.LabelItem
+import spam.blocker.ui.widgets.LeftDeleteSwipeWrapper
 import spam.blocker.ui.widgets.NumberInputBox
+import spam.blocker.ui.widgets.OutlineCard
 import spam.blocker.ui.widgets.Placeholder
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.RegexInputBox
 import spam.blocker.ui.widgets.RingtonePicker
 import spam.blocker.ui.widgets.RowVCenterSpaced
+import spam.blocker.ui.widgets.Section
 import spam.blocker.ui.widgets.Str
-import spam.blocker.ui.widgets.StrInputBox
+import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SummaryLabel
+import spam.blocker.ui.widgets.SwipeInfo
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.A
 import spam.blocker.util.Contacts
+import spam.blocker.util.Lambda1
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionWrapper
-import spam.blocker.util.PermissiveJson
 import spam.blocker.util.RingtoneUtil
 import spam.blocker.util.Util
 import spam.blocker.util.formatAnnotated
@@ -924,95 +942,311 @@ class SmsThrottling(
 
 
 @Serializable
-class Features(
-    var regex: String?,
-    // var repeatedCall: Boolean?,
-    // ...
-)
+enum class RingtoneRuleType {
+    NumberRule,
+    RepeatedCall,
+    Contacts,
+}
 
 @Serializable
-@SerialName("Ringtone")
-class Ringtone(
-    var enabled: Boolean = true, // always enabled, can't be disabled
+@SerialName("RingtoneRule")
+data class RingtoneRule(
+    val type: RingtoneRuleType = RingtoneRuleType.NumberRule,
+    val extraRegex: String? = null, // a regex string
+
+    // ringtone settings
     var mute: Boolean = false,
     var ringtoneUri: String? = null,
-    var bindTo: String = "{ \"regex\": \"\" }",
-    var delaySec: Int = 5
-) : ITriggerAction {
-    override fun requiredPermissions(ctx: Context): List<PermissionWrapper> {
+    var delaySec: Int = 5,
+) {
+    fun matches(ctx: Context, aCtx: ActionContext): Boolean {
+        return when(type) {
+            RingtoneRuleType.NumberRule -> {
+                (aCtx.checkResult as? ByRegexRule)?.let {
+                    (this.extraRegex ?: "").regexMatches(it.rule!!.description)
+                } ?: false
+            }
+            RingtoneRuleType.RepeatedCall -> {
+                aCtx.checkResult is ByRepeatedCall
+            }
+            RingtoneRuleType.Contacts -> {
+                aCtx.checkResult is ByContact
+            }
+        }
+    }
+
+    @Composable
+    fun TriggerSummary() {
+        RowVCenterSpaced(4) {
+            when (type) {
+                RingtoneRuleType.NumberRule -> {
+                    GreyIcon18(iconId = R.drawable.ic_regex)
+                    GreyLabel(extraRegex ?: "")
+                }
+                RingtoneRuleType.RepeatedCall -> {
+                    GreyIcon18(iconId = R.drawable.ic_repeat)
+                    GreyLabel(Str(R.string.repeated_call))
+                }
+                RingtoneRuleType.Contacts -> {
+                    GreyIcon18(iconId = R.drawable.ic_contact_circle)
+                    GreyLabel(Str(R.string.contacts))
+                }
+            }
+        }
+    }
+
+    @Composable
+    fun RingtoneSummary() {
+        val ctx = LocalContext.current
+
+        if (mute) {
+            GreyIcon18(R.drawable.ic_bell_mute)
+        } else {
+            val uri = ringtoneUri?.toUri() ?: RingtoneUtil.getCurrent(ctx)
+            GreyLabel(RingtoneUtil.getName(ctx, uri))
+        }
+    }
+
+    fun requiredPermissions(): List<PermissionWrapper> {
         return if (mute) // mute doesn't write to system settings
             listOf()
         else
             listOf(PermissionWrapper(Permission.writeSettings))
     }
-    override fun isActivated(): Boolean {
-        return enabled &&
-                if (mute) true else Permission.writeSettings.isGranted
-    }
-    private fun labelBindTo(): String {
-        try {
-            val j = PermissiveJson.decodeFromString<Features>(bindTo)
-            if (j.regex != null) {
-                return j.regex!!
+}
+
+@SuppressLint("LocalContextGetResourceValueCall")
+@Composable
+fun ReplyRuleEditDialog(
+    trigger: MutableState<Boolean>,
+    rule: RingtoneRule,
+    onUpdate: Lambda1<RingtoneRule>
+) {
+    if (trigger.value) {
+        var typeIndex by retain { mutableIntStateOf(RingtoneRuleType.entries.indexOf(rule.type)) }
+        var extraRegex by retain { mutableStateOf(rule.extraRegex) }
+        var mute by retain { mutableStateOf(rule.mute) }
+        var ringtoneUri by retain { mutableStateOf(rule.ringtoneUri) }
+        var delaySec by retain { mutableStateOf(rule.delaySec) }
+
+        PopupDialog(
+            trigger,
+            onDismiss = {
+                val newRule = RingtoneRule(
+                    type = RingtoneRuleType.entries[typeIndex],
+                    extraRegex = extraRegex,
+                    mute = mute,
+                    ringtoneUri = ringtoneUri,
+                    delaySec = delaySec,
+                )
+                if(newRule != rule) {
+                    onUpdate(newRule)
+                }
             }
-//        if (j.repeatedCall != null) {
-//            return ctx.getString("repeated call")
-//        }
-        } catch (_: Exception) {
+        ) {
+            val ctx = LocalContext.current
+            val C = G.palette
+
+            Section(
+                Str(R.string.trigger),
+                bgColor = C.dialogBg
+            ) {
+                Column {
+                    LabeledRow(R.string.trigger) {
+                        val items = listOf(
+                            Str(R.string.number_rule),
+                            Str(R.string.repeated_call),
+                            Str(R.string.contacts),
+                        )
+                        val iconIds = listOf(
+                            R.drawable.ic_regex,
+                            R.drawable.ic_repeat,
+                            R.drawable.ic_contact_circle,
+                        )
+                        ComboBox(
+                            items = items.mapIndexed { index, label ->
+                                LabelItem(
+                                    label = label,
+                                    leadingIcon = { GreyIcon18(iconIds[index]) }
+                                ) {
+                                    typeIndex = index
+                                }
+                            },
+                            selected = typeIndex,
+                        )
+                    }
+                    AnimatedVisibleV(typeIndex == 0) { // Number Rule
+                        val dummyFlags = retain { mutableIntStateOf(Def.DefaultRegexFlags) }
+                        RegexInputBox(
+                            regexStr = extraRegex ?: "",
+                            onRegexStrChange = { newVal, hasErr ->
+                                if (!hasErr) {
+                                    extraRegex = newVal
+                                }
+                            },
+                            label = {
+                                Text(Str(R.string.rule_description))
+                            },
+                            helpTooltipId = R.string.find_regex_rule_by_description,
+
+                            regexFlags = dummyFlags,
+                            onFlagsChange = {},
+                            showFlagsIcon = false,
+                        )
+                    }
+                }
+            }
+
+
+            Section(
+                Str(R.string.ringtone),
+                bgColor = C.dialogBg
+            ) {
+                Column {
+// Mute + Sound
+                    var sound by remember { mutableStateOf(
+                        ringtoneUri?.toUri() ?: RingtoneUtil.getCurrent(ctx)
+                    ) }
+                    var soundName by remember(sound) {
+                        mutableStateOf(RingtoneUtil.getName(ctx, sound))
+                    }
+
+                    val soundTrigger = remember { mutableStateOf(false) }
+                    RingtonePicker(soundTrigger) { uri, name ->
+                        uri?.let {
+                            sound = uri.toUri()
+                            ringtoneUri = uri
+                        }
+                    }
+                    // Mute
+                    var muteState by remember { mutableStateOf(mute) }
+                    LabeledRow(R.string.mute) {
+                        SwitchBox(muteState) { on ->
+                            mute = on
+                            muteState = on
+                        }
+                    }
+
+                    // Ringtone
+                    AnimatedVisibleV(!muteState) {
+                        LabeledRow(
+                            labelId = R.string.ringtone,
+                        ) {
+                            RowVCenterSpaced(6) {
+                                GreyButton(soundName) {
+                                    soundTrigger.value = true
+                                }
+                            }
+                        }
+                    }
+
+                    // Delay
+                    // Balloon text
+                    val tooltipText by remember {
+                        derivedStateOf {
+                            ctx.getString(R.string.help_ringtone_delay)
+                                .format(delaySec)
+                        }
+                    }
+                    NumberInputBox(
+                        intValue = delaySec,
+                        label = { Text(Str(R.string.delay_in_seconds)) },
+                        helpTooltip = { BalloonQuestionMark(tooltipText) },
+                        onValueChange = { newVal, hasError ->
+                            if (!hasError) {
+                                delaySec = newVal!!
+                            }
+                        }
+                    )
+                }
+            }
         }
-        return ""
     }
+}
+
+@Composable
+fun RingtoneRuleCard(
+    rule: RingtoneRule,
+    modifier: Modifier
+) {
+    OutlineCard(containerBg = G.palette.dialogBg, modifier = modifier) {
+        RowVCenterSpaced(
+            4,
+            modifier = M.fillMaxSize().padding(horizontal = 10.dp, vertical = 8.dp)
+        ) {
+            Column(modifier = M.weight(1f)) {
+                // Row 1, Trigger Type
+                rule.TriggerSummary()
+
+                // Row 2, Ringtone Summary
+                RowVCenterSpaced(4) {
+                    GreyIcon18(R.drawable.ic_music)
+                    rule.RingtoneSummary()
+                }
+            }
+
+            // Reorder icon
+            GreyIcon16(iconId = R.drawable.ic_reorder)
+        }
+    }
+}
+
+@Serializable
+@SerialName("Ringtone")
+class Ringtone(
+    var enabled: Boolean = true, // always enabled, can't be disabled
+    var rules: List<RingtoneRule> = listOf(),
+) : ITriggerAction {
+    override fun requiredPermissions(ctx: Context): List<PermissionWrapper> {
+        return rules.flatMap { it.requiredPermissions() }.distinct()
+    }
+    override fun isActivated(): Boolean {
+        if (!enabled)
+            return false
+
+        val anyNonMute = rules.any { !it.mute }
+
+        return if (anyNonMute)
+            Permission.writeSettings.isGranted
+        else
+            true
+    }
+
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         if (!isActivated())
             return false
 
-        val isTesting = aCtx.lastOutput == null
+        val r = aCtx.checkResult
 
-        if (isTesting) {
+        if (r == null) {
             aCtx.logger?.error(ctx.getString(R.string.call_to_test_ringtone))
             return false
         }
 
-        var j: Features
-        try {
-            j = PermissiveJson.decodeFromString<Features>(bindTo)
-        } catch (_: Exception) {
-            return false
+        val rule = rules.firstOrNull {
+            it.matches(ctx, aCtx)
         }
 
-        val r = aCtx.lastOutput as? ICheckResult
-
-        var anyFeatureMatches = false
-
-        if (j.regex != null && r is ByRegexRule) {
-            // If the call was allowed by this regex
-            anyFeatureMatches = j.regex!!.regexMatches(r.rule!!.description, Def.DefaultRegexFlags)
-        }
-//        if (j.repeatedCall != null) { // change ringtone for other features
-//            anyFeatureMatches = ...
-//        }
-
-        // No feature matches, nothing to do.
-        if (!anyFeatureMatches)
+        if (rule == null) {
             return false
+        } else {
+            if (!rule.mute) {
+                RingtoneUtil.setDefaultUri(ctx, (rule.ringtoneUri ?: "").toUri())
 
-        // Apply the ringtone if any feature matches
-        if (!mute) {
-            RingtoneUtil.setDefaultUri(ctx, (ringtoneUri ?: "").toUri())
-
-            // Reset the ringtone after N seconds, the ringing should've already started.
-            CoroutineScope(IO).launch {
-                delay(delaySec.toLong() * 1000)
-                resetRingtone(ctx)
+                // Reset the ringtone after N seconds, the ringing should've already started.
+                CoroutineScope(IO).launch {
+                    delay(rule.delaySec.toLong() * 1000)
+                    resetToPreviousRingtone(ctx)
+                }
             }
+
+            // this will be used in CallScreeningService, ugly workaround..
+            aCtx.shouldMute = rule.mute
+
+            return true
         }
-
-        // this will be used in CallScreeningService, ugly workaround..
-        aCtx.shouldMute = mute
-
-        return true
     }
-    private fun resetRingtone(ctx: Context) {
+    private fun resetToPreviousRingtone(ctx: Context) {
         // 1. check if it was set in CallScreeningService
         val spf = spf.Temporary(ctx)
         val previousRingtone = spf.ringtone
@@ -1035,8 +1269,6 @@ class Ringtone(
 
     @Composable
     override fun Summary(showIcon: Boolean) {
-        val ctx = LocalContext.current
-
         RowVCenterSpaced(6) {
             // Green dot
             if (enabled) {
@@ -1046,14 +1278,18 @@ class Ringtone(
                 if (showIcon) {
                     SizedBox(18) { Icon() }
                 }
-
-                GreyLabel(labelBindTo())
-
-                if (mute) {
-                    GreyIcon18(R.drawable.ic_bell_mute)
+                if (rules.size == 1) {
+                    rules.first().RingtoneSummary()
                 } else {
-                    val uri = ringtoneUri?.toUri() ?: RingtoneUtil.getCurrent(ctx)
-                    GreyLabel(RingtoneUtil.getName(ctx, uri))
+                    GreyLabel(
+                        rules.take(5).map {
+                            when (it.type) {
+                                RingtoneRuleType.NumberRule -> it.extraRegex ?: ""
+                                RingtoneRuleType.RepeatedCall -> Str(R.string.repeated_call)
+                                RingtoneRuleType.Contacts -> Str(R.string.contacts)
+                            }
+                        }.joinToString(", ")
+                    )
                 }
             }
         }
@@ -1079,88 +1315,56 @@ class Ringtone(
     @SuppressLint("LocalContextGetResourceValueCall")
     @Composable
     override fun Options() {
-        val ctx = LocalContext.current
+        val C = G.palette
 
-        var bindToState by remember { mutableStateOf(bindTo) }
-        var error by remember(bindToState) {
-            val label = labelBindTo()
+        val rulesState = retain { mutableStateListOf(*rules.toTypedArray()) }
 
-            mutableStateOf<String?>(
-                if (label.isEmpty())
-                    ctx.getString(R.string.invalid_config)
-                else
-                    null
-            )
-        }
-        // Target features
-        StrInputBox(
-            text = bindToState,
-            label = { Text(Str(R.string.set_to)) },
-            leadingIconId = R.drawable.ic_link,
-            placeholder = { Placeholder("{\"regex\": \"rule_desc\"}") },
-            helpTooltip = Str(R.string.help_set_ringtone_to),
-            supportingTextStr = error,
-            onValueChange = {
-                bindTo = it
-                bindToState = it
-            }
-        )
-
-        // Mute + Sound
-        var sound by remember { mutableStateOf(
-            ringtoneUri?.toUri() ?: RingtoneUtil.getCurrent(ctx)
-        ) }
-        var soundName by remember(sound) {
-            mutableStateOf(RingtoneUtil.getName(ctx, sound))
-        }
-
-        val soundTrigger = remember { mutableStateOf(false) }
-        RingtonePicker(soundTrigger) { uri, name ->
-            uri?.let {
-                sound = uri.toUri()
-                ringtoneUri = uri
-            }
-        }
-        // Mute
-        var muteState by remember { mutableStateOf(mute) }
-        LabeledRow(R.string.mute) {
-            SwitchBox(muteState) { on ->
-                mute = on
-                muteState = on
+        LabeledRow(R.string.rules, helpTooltip = Str(R.string.priority_in_order)) {
+            StrokeButton(Str(R.string.new_), C.infoBlue) {
+                rulesState += RingtoneRule()
+                rules = rulesState
             }
         }
 
-        // Ringtone
-        AnimatedVisibleV(!muteState) {
-            LabeledRow(
-                labelId = R.string.ringtone,
-            ) {
-                RowVCenterSpaced(6) {
-                    GreyButton(soundName) {
-                        soundTrigger.value = true
+        ReorderableColumn(
+            list = rulesState.toList(),
+            modifier = M.nestedScroll(DisableNestedScrolling()),
+            onSettle = { fromIndex, toIndex ->
+                rulesState.apply {
+                    add(toIndex, removeAt(fromIndex))
+                }
+                rules = rulesState
+            },
+            onMove = {},
+            verticalArrangement = Arrangement.spacedBy(4.dp)
+        ) { index, rule, isDragging ->
+            key(rule.hashCode()) {
+                // Swipe <----
+                LeftDeleteSwipeWrapper(
+                    left = SwipeInfo(
+                        onSwipe = {
+                            rulesState -= rule
+                            rules = rulesState
+                        }
+                    )
+                ) {
+                    val editTrigger = retain { mutableStateOf(false) }
+                    ReplyRuleEditDialog(editTrigger, rule) { updatedRule ->
+                        rulesState[index] = updatedRule
+                        rules = rulesState
                     }
-                }
-            }
-        }
 
-        // Delay
-        // Balloon text
-        val tooltipText by remember {
-            derivedStateOf {
-                ctx.getString(R.string.help_ringtone_delay)
-                    .format(delaySec)
-            }
-        }
-        NumberInputBox(
-            intValue = delaySec,
-            label = { Text(Str(R.string.delay_in_seconds)) },
-            helpTooltip = { BalloonQuestionMark(tooltipText) },
-            onValueChange = { newVal, hasError ->
-                if (!hasError) {
-                    delaySec = newVal!!
+                    RingtoneRuleCard(
+                        rule = rule,
+                        modifier = M
+                            .clickable {
+                                editTrigger.value = true
+                            }
+                            .draggableHandle() // make it reorderable
+                    )
                 }
             }
-        )
+        }
     }
 }
 

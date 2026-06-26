@@ -17,7 +17,7 @@
     <string name="call_to_test_ringtone">Zil sesini test etmek için gerçek bir arama yapın.</string>
     <string name="help_ringtone">
     <![CDATA[
-        Belirli bir özellik için zil sesini özelleştirin, bu özelliğin izin verdiği aramalar belirtilen zil sesini çalacaktır.
+        Farklı özellikler tarafından izin verilen aramalar için farklı zil sesleri ayarlayın.
     ]]>
     </string>
     <string name="help_target_rule_desc">

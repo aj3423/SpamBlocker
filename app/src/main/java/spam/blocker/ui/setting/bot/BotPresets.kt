@@ -28,6 +28,8 @@ import spam.blocker.service.bot.Periodically
 import spam.blocker.service.bot.QuickTile
 import spam.blocker.service.bot.ReplyRuleType
 import spam.blocker.service.bot.Ringtone
+import spam.blocker.service.bot.RingtoneRule
+import spam.blocker.service.bot.RingtoneRuleType
 import spam.blocker.service.bot.SaveBotTag
 import spam.blocker.service.bot.Schedule
 import spam.blocker.service.bot.SendSms
@@ -168,7 +170,17 @@ val BotPresets = listOf(
         doAdd = { ctx ->
             val newBot = Bot(
                 desc = ctx.getString(R.string.ringtone),
-                trigger = Ringtone(bindTo = "{ \"regex\": \"${ctx.getString(R.string.replace_this)}\" }"),
+                trigger = Ringtone(
+                    rules = listOf(
+                        RingtoneRule(
+                            type = RingtoneRuleType.NumberRule,
+                            extraRegex = ctx.getString(R.string.replace_this)
+                        ),
+                        RingtoneRule(
+                            type = RingtoneRuleType.RepeatedCall,
+                        ),
+                    )
+                ),
             )
             addBotToDB(ctx, newBot)
         }

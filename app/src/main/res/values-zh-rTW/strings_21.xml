@@ -17,7 +17,7 @@
     <string name="call_to_test_ringtone">請實際撥打一通電話測試鈴聲。</string>
     <string name="help_ringtone">
     <![CDATA[
-        為特定功能自訂鈴聲，被允許的來電會播放指定鈴聲。
+        為不同功能允許的來電設定不同的鈴聲。
     ]]>
     </string>
     <string name="help_preset_ringtone">

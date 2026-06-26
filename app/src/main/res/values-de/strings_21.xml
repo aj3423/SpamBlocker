@@ -17,7 +17,7 @@
     <string name="call_to_test_ringtone">Führen Sie einen tatsächlichen Anruf durch, um den Klingelton zu testen.</string>
     <string name="help_ringtone">
     <![CDATA[
-        Passen Sie den Klingelton für eine bestimmte Funktion an. Anrufe, die durch diese Funktion zugelassen werden, spielen den angegebenen Klingelton ab.
+        Legen Sie unterschiedliche Klingeltöne für Anrufe fest, die durch verschiedene Funktionen zugelassen werden.
     ]]>
     </string>
     <string name="help_target_rule_desc">

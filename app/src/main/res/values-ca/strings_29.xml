@@ -48,8 +48,20 @@
     <string name="sms_reply">Resposta SMS</string>
     <string name="help_bot_preset_sms_reply">
         <![CDATA[
-        Envia automàticament un SMS als contactes quan les seves trucades són bloquejades. <br>
-        Es poden configurar missatges diferents per al Mode Reunió i altres funcions de bloqueig.
+        Envia automàticament un SMS als contactes quan les seves trucades siguin bloquejades. <br>
+        Es poden configurar missatges diferents per al Mode Reunió i altres funcions de bloqueig. <br>
+        <br>
+        <warn>Nota</warn> <br>
+        La primera vegada que l\'aplicació enviï un SMS, apareixerà un avis del sistema sobre els possibles costos.
+        Toca <sample>Recorda la meva elecció</sample> per evitar aquest avis en el futur.
         ]]>
     </string>
+    <string name="find_regex_rule_by_description">
+        <![CDATA[
+        Introduïu una descripció per fer coincidir la regla d\'expressió regular corresponent.
+        ]]>
+    </string>
+    <string name="rules">Regles</string>
+    <string name="rule_description">Descripció de la regla</string>
+    <string name="priority_in_order">La prioritat es determina per la seqüència d\'aquesta llista.</string>
 </resources>

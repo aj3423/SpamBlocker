@@ -17,7 +17,7 @@
     <string name="call_to_test_ringtone">拨打实际电话以测试铃声。</string>
     <string name="help_ringtone">
     <![CDATA[
-        为特定功能自定义铃声，该功能允许的呼叫将播放指定的铃声。
+        为不同功能允许的呼叫设置不同的铃声。
     ]]>
     </string>
     <string name="help_target_rule_desc">

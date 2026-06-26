@@ -1191,9 +1191,10 @@ class GenerateTag(
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val C = G.palette
 
-        val input = aCtx.lastOutput as ByteArray
-
-        val text = input.toString(Charsets.UTF_8)
+        val text = if(aCtx.lastOutput is ByteArray)
+            (aCtx.lastOutput as ByteArray).toString(Charsets.UTF_8)
+        else
+            aCtx.lastOutput as String
 
         var tagValue: String? = null
         try {
@@ -1204,7 +1205,7 @@ class GenerateTag(
                     tagValue = Util.extractString(reg, text)
                 }
                 1 -> { // xpath
-                    tagValue = Xml.parseString(input, xpath)
+                    tagValue = Xml.parseString(text.toByteArray(), xpath)
                 }
             }
 
@@ -1245,7 +1246,7 @@ class GenerateTag(
     }
 
     override fun inputParamType(): List<ParamType> {
-        return listOf(ParamType.ByteArray)
+        return listOf(ParamType.ByteArray, ParamType.String)
     }
 
     override fun outputParamType(): List<ParamType> {

@@ -17,7 +17,7 @@
     <string name="call_to_test_ringtone">Faça uma chamada real para testar o toque.</string>
     <string name="help_ringtone">
     <![CDATA[
-        Personalize o toque para um recurso específico; as chamadas permitidas por esse recurso tocarão o toque especificado.
+        Defina toques diferentes para as chamadas permitidas por diferentes recursos.
     ]]>
     </string>
     <string name="help_target_rule_desc">

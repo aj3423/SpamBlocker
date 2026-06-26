@@ -48,8 +48,20 @@
     <string name="sms_reply">SMS返信</string>
     <string name="help_bot_preset_sms_reply">
         <![CDATA[
-        着信がブロックされたときに、連絡先に自動的にSMSを送信します。<br>
-        会議モードやその他のブロック機能に応じて、異なるメッセージを設定できます。
+        着信がブロックされたときに、連絡先にSMSを自動的に送信します。<br>
+        会議モードやその他のブロック機能ごとに異なるメッセージを設定できます。<br>
+        <br>
+        <warn>注意</warn> <br>
+        アプリが初めてSMSを送信するとき、システムポップアップで料金が発生する可能性があることが警告されます。<br>
+        今後はこの警告を表示させないようにするには、<sample>選択を記憶する</sample>をタップしてください。
         ]]>
     </string>
+    <string name="find_regex_rule_by_description">
+        <![CDATA[
+        対応する正規表現ルールに一致する説明を入力してください。
+        ]]>
+    </string>
+    <string name="rules">ルール</string>
+    <string name="rule_description">ルールの説明</string>
+    <string name="priority_in_order">優先順位はこのリストの順序によって決定されます。</string>
 </resources>

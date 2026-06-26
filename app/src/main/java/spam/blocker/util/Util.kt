@@ -132,7 +132,7 @@ fun String.regexMatchesNumber(rawNumber: String, regexFlags: Int): Boolean {
     }
 }
 // For matching anything other than phone number, it won't raise exception.
-fun String.regexMatches(targetStr: String, regexFlags: Int): Boolean {
+fun String.regexMatches(targetStr: String, regexFlags: Int = Def.DefaultRegexFlags): Boolean {
     val opts = Util.flagsToRegexOptions(regexFlags)
     return this.toRegex(opts).matches(targetStr)
 }

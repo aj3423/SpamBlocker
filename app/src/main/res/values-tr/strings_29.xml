@@ -48,8 +48,20 @@
     <string name="sms_reply">SMS Yanıtı</string>
     <string name="help_bot_preset_sms_reply">
         <![CDATA[
-        Aramaları engellendiğinde kişilere otomatik olarak bir SMS gönderir. <br>
-        Toplantı Modu ve diğer engelleme özellikleri için farklı mesajlar ayarlanabilir.
+        Aramaları engellendiğinde kişilere otomatik olarak SMS gönder. <br>
+        Toplantı Modu ve diğer engelleme özellikleri için farklı mesajlar ayarlanabilir. <br>
+        <br>
+        <warn>Not</warn> <br>
+        Uygulama ilk kez bir SMS gönderdiğinde, sistem bir açılır pencere ile sizi olası ücretler konusunda uyaracaktır.
+        Gelecekte bu uyarıyı görmemek için <sample>Seçimimi hatırla</sample> seçeneğine dokunun.
         ]]>
     </string>
+    <string name="find_regex_rule_by_description">
+        <![CDATA[
+        Karşılık gelen regex kuralıyla eşleşmesi için bir açıklama girin.
+        ]]>
+    </string>
+    <string name="rules">Kurallar</string>
+    <string name="rule_description">Kural Açıklaması</string>
+    <string name="priority_in_order">Öncelik, bu listenin sırasına göre belirlenir.</string>
 </resources>

@@ -49,7 +49,19 @@
     <string name="help_bot_preset_sms_reply">
         <![CDATA[
         Kirim SMS secara otomatis kepada kontak saat panggilan mereka diblokir. <br>
-        Pesan yang berbeda dapat diatur untuk Mode Rapat dan fitur pemblokiran lainnya.
+        Pesan yang berbeda dapat diatur untuk Mode Rapat dan fitur pemblokiran lainnya. <br>
+        <br>
+        <warn>Catatan</warn> <br>
+        Pertama kali aplikasi mengirim SMS, pop-up sistem akan memperingatkan Anda tentang kemungkinan biaya.
+        Ketuk <sample>Ingat pilihan saya</sample> untuk menghindari peringatan ini di masa mendatang.
         ]]>
     </string>
+    <string name="find_regex_rule_by_description">
+        <![CDATA[
+        Masukkan deskripsi untuk mencocokkan aturan regex yang sesuai.
+        ]]>
+    </string>
+    <string name="rules">Aturan</string>
+    <string name="rule_description">Deskripsi Aturan</string>
+    <string name="priority_in_order">Prioritas ditentukan oleh urutan daftar ini.</string>
 </resources>

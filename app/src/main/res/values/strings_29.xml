@@ -49,7 +49,19 @@
     <string name="help_bot_preset_sms_reply">
         <![CDATA[
         Automatically send an SMS to contacts when their calls are blocked. <br>
-        Different messages can be set for Meeting Mode and other blocking features.
+        Different messages can be set for Meeting Mode and other blocking features. <br>
+        <br>
+        <warn>Note</warn> <br>
+        The first time the app sends an SMS, a system popup will warn you of potential charges.
+        Tap <sample>Remember my choice</sample> to avoid this warning in the future.
         ]]>
     </string>
+    <string name="find_regex_rule_by_description">
+        <![CDATA[
+        Input a description to match the corresponding regex rule.
+        ]]>
+    </string>
+    <string name="rules">Rules</string>
+    <string name="rule_description">Rule Description</string>
+    <string name="priority_in_order">Priority is determined by the sequence of this list.</string>
 </resources>

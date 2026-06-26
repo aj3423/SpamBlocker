@@ -8,8 +8,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -31,19 +31,22 @@ import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.def.Def
 import spam.blocker.def.Def.ANDROID_12
+import spam.blocker.service.checker.ByRegexRule
 import spam.blocker.ui.M
+import spam.blocker.ui.SizedBox
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.regex.DisableNestedScrolling
+import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.ComboBox
-import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.GreyIcon18
+import spam.blocker.ui.widgets.GreyIcon20
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.LeftDeleteSwipeWrapper
 import spam.blocker.ui.widgets.OutlineCard
 import spam.blocker.ui.widgets.PopupDialog
-import spam.blocker.ui.widgets.ResIcon
+import spam.blocker.ui.widgets.RegexInputBox
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
@@ -54,12 +57,13 @@ import spam.blocker.util.Contacts
 import spam.blocker.util.Lambda1
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionWrapper
+import spam.blocker.util.regexMatches
 
 @Serializable
 enum class ReplyRuleType {
     Any,
     MeetingMode,
-//    NumberRule,
+    NumberRule,
 }
 
 @Serializable
@@ -70,32 +74,36 @@ data class TextReplyRule(
     val contactsOnly: Boolean = true,
 
     val type: ReplyRuleType = ReplyRuleType.Any,
+    val extraRegex: String? = null,
 ) {
     fun matches(ctx: Context, aCtx: ActionContext): Boolean {
         if (contactsOnly) {
             Contacts.findContactByRawNumber(ctx, aCtx.rawNumber!!) ?: return false
         }
         return when(type) {
-            ReplyRuleType.MeetingMode -> aCtx.checkResult!!.type == Def.RESULT_BLOCKED_BY_MEETING_MODE
             ReplyRuleType.Any -> true
+            ReplyRuleType.MeetingMode -> aCtx.checkResult!!.type == Def.RESULT_BLOCKED_BY_MEETING_MODE
+            ReplyRuleType.NumberRule -> {
+                (aCtx.checkResult as? ByRegexRule)?.let {
+                    (this.extraRegex ?: "").regexMatches(it.rule!!.description)
+                } ?: false
+            }
         }
     }
     @Composable
-    fun Summary(maxLines: Int = 1) {
+    fun TriggerSummary() {
         RowVCenterSpaced(4) {
             if (contactsOnly) {
                 GreyIcon18(R.drawable.ic_contact_square)
             }
-            ResIcon(
-                iconId = when (type) {
-                    ReplyRuleType.Any -> R.drawable.ic_asterisk
-                    ReplyRuleType.MeetingMode -> R.drawable.ic_video_call
-                },
-                modifier = M.size(18.dp),
-                color = G.palette.error,
-            )
+            if (type == ReplyRuleType.NumberRule)
+                GreyIcon18(R.drawable.ic_regex)
 
-            GreyLabel(replyText, maxLines = maxLines)
+            GreyLabel(when(type) {
+                ReplyRuleType.Any -> Str(R.string.any)
+                ReplyRuleType.MeetingMode -> Str(R.string.in_meeting)
+                ReplyRuleType.NumberRule -> extraRegex ?: ""
+            })
         }
     }
 }
@@ -110,6 +118,7 @@ fun ReplyRuleEditDialog(
         var replyText by retain { mutableStateOf(rule.replyText) }
         var typeIndex by retain { mutableIntStateOf(ReplyRuleType.entries.indexOf(rule.type)) }
         var contactsOnly by retain { mutableStateOf(rule.contactsOnly) }
+        var extraRegex by retain { mutableStateOf(rule.extraRegex) }
 
         PopupDialog(
             trigger,
@@ -118,6 +127,7 @@ fun ReplyRuleEditDialog(
                     replyText = replyText,
                     contactsOnly = contactsOnly,
                     type = ReplyRuleType.entries[typeIndex],
+                    extraRegex = extraRegex,
                 )
                 if(newRule != rule) {
                     onUpdate(newRule)
@@ -134,7 +144,7 @@ fun ReplyRuleEditDialog(
                     )
                 },
                 onValueChange = { replyText = it },
-                leadingIconId = R.drawable.ic_note,
+                leadingIconId = R.drawable.ic_reply,
                 maxLines = 10,
             )
 
@@ -148,16 +158,42 @@ fun ReplyRuleEditDialog(
                 val items = listOf(
                     Str(R.string.any),
                     Str(R.string.in_meeting),
+                    Str(R.string.regex_pattern),
+                )
+                val iconIds = listOf(
+                    R.drawable.ic_asterisk,
+                    R.drawable.ic_video_call,
+                    R.drawable.ic_regex,
                 )
                 ComboBox(
                     items = items.mapIndexed { index, label ->
                         LabelItem(
                             label = label,
+                            leadingIcon = { GreyIcon18(iconIds[index]) }
                         ) {
                             typeIndex = index
                         }
                     },
                     selected = typeIndex,
+                )
+            }
+            AnimatedVisibleV(typeIndex == 2) { // Number Rule
+                val dummyFlags = retain { mutableIntStateOf(Def.DefaultRegexFlags) }
+                RegexInputBox(
+                    regexStr = extraRegex ?: "",
+                    onRegexStrChange = { newVal, hasErr ->
+                        if (!hasErr) {
+                            extraRegex = newVal
+                        }
+                    },
+                    label = {
+                        Text(Str(R.string.rule_description))
+                    },
+                    helpTooltipId = R.string.find_regex_rule_by_description,
+
+                    regexFlags = dummyFlags,
+                    onFlagsChange = {},
+                    showFlagsIcon = false,
                 )
             }
         }
@@ -170,21 +206,22 @@ fun ReplyRuleCard(
     modifier: Modifier
 ) {
     OutlineCard(containerBg = G.palette.dialogBg, modifier = modifier) {
-        Row(
-            modifier = M.padding(horizontal = 10.dp, vertical = 8.dp),
+        RowVCenterSpaced(
+            4,
+            modifier = M.fillMaxSize().padding(horizontal = 10.dp, vertical = 8.dp),
         ) {
-            // Features and replyText (Row 1 and row 2)
-            Column(
-                M.weight(1f).padding(end = 4.dp),
-                verticalArrangement = Arrangement.Center
-            ) {
+            Column(M.weight(1f)) {
+                // Row 1, Trigger Type
+                rule.TriggerSummary()
+
+                // Row 2, Ringtone Summary
                 RowVCenterSpaced(2) {
-                    Row(modifier = M.weight(1f)) {
-                        rule.Summary(maxLines = 2)
-                    }
-                    GreyIcon16(iconId = R.drawable.ic_reorder)
+                    GreyIcon18(R.drawable.ic_reply)
+                    GreyLabel(rule.replyText, maxLines = 2, modifier = M.padding(start = 6.dp))
                 }
             }
+            // Reorder icon
+            GreyIcon16(iconId = R.drawable.ic_reorder)
         }
     }
 }
@@ -227,7 +264,26 @@ class TextReply(
 
     @Composable
     override fun Summary(showIcon: Boolean) {
-        rules.firstOrNull()?.Summary()
+        RowVCenterSpaced(4) {
+            if (showIcon) {
+                SizedBox(18) { Icon() }
+            }
+            if (rules.size == 1) {
+                val first = rules.first()
+                RowVCenterSpaced(4) {
+                    first.TriggerSummary()
+                    GreyLabel("- " + first.replyText)
+                }
+            } else {
+                rules.take(5).forEach {
+                    when (it.type) {
+                        ReplyRuleType.Any -> { GreyIcon18(R.drawable.ic_asterisk) }
+                        ReplyRuleType.MeetingMode -> { GreyIcon18(R.drawable.ic_video_call) }
+                        ReplyRuleType.NumberRule -> { GreyLabel(it.extraRegex ?: "") }
+                    }
+                }
+            }
+        }
     }
 
     override fun tooltip(ctx: Context): String {
@@ -244,7 +300,7 @@ class TextReply(
 
     @Composable
     override fun Icon() {
-        GreyIcon(R.drawable.ic_note)
+        GreyIcon20(R.drawable.ic_reply)
     }
 
     @Composable
@@ -252,6 +308,14 @@ class TextReply(
         val C = G.palette
 
         val rulesState = retain { mutableStateListOf(*rules.toTypedArray()) }
+
+        LabeledRow(R.string.rules, helpTooltip = Str(R.string.priority_in_order)) {
+            StrokeButton(Str(R.string.new_), C.infoBlue) {
+                rulesState += TextReplyRule()
+                rules = rulesState
+            }
+        }
+
         ReorderableColumn(
             list = rulesState.toList(),
             modifier = M.nestedScroll(DisableNestedScrolling()),
@@ -289,13 +353,6 @@ class TextReply(
                             .draggableHandle() // make it reorderable
                     )
                 }
-            }
-        }
-
-        LabeledRow(null) {
-            StrokeButton(Str(R.string.new_), C.teal200) {
-                rulesState += TextReplyRule()
-                rules = rulesState
             }
         }
     }
@@ -373,7 +430,7 @@ class SendSms: IAction {
 
     @Composable
     override fun Icon() {
-        GreyIcon(R.drawable.ic_sms)
+        GreyIcon20(R.drawable.ic_sms)
     }
 
     @Composable

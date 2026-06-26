@@ -49,7 +49,19 @@
     <string name="help_bot_preset_sms_reply">
         <![CDATA[
         Envoyez automatiquement un SMS aux contacts lorsque leurs appels sont bloqués. <br>
-        Différents messages peuvent être définis pour le Mode Réunion et d\'autres fonctionnalités de blocage.
+        Des messages différents peuvent être définis pour le Mode Réunion et d\'autres fonctionnalités de blocage. <br>
+        <br>
+        <warn>Note</warn> <br>
+        La première fois que l\'application envoie un SMS, une fenêtre contextuelle du système vous avertira des frais potentiels.
+        Appuyez sur <sample>Mémoriser mon choix</sample> pour éviter cet avertissement à l\'avenir.
         ]]>
     </string>
+    <string name="find_regex_rule_by_description">
+        <![CDATA[
+        Saisissez une description pour faire correspondre la règle regex correspondante.
+        ]]>
+    </string>
+    <string name="rules">Règles</string>
+    <string name="rule_description">Description de la règle</string>
+    <string name="priority_in_order">La priorité est déterminée par la séquence de cette liste.</string>
 </resources>

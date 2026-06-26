@@ -48,8 +48,20 @@
     <string name="sms_reply">簡訊回覆</string>
     <string name="help_bot_preset_sms_reply">
         <![CDATA[
-        當聯絡人的電話被攔截時，自動向其發送簡訊。<br>
-        可以為會議模式和其他攔截功能設定不同的訊息。
+        當聯絡人的通話被攔截時，自動向其發送簡訊。<br>
+        可以為會議模式和其他攔截功能設定不同的訊息。<br>
+        <br>
+        <warn>注意</warn> <br>
+        應用程式首次發送簡訊時，系統彈出視窗會提醒您可能會產生費用。<br>
+        點擊<sample>記住我的選擇</sample>以在今後避免此提醒。
         ]]>
     </string>
+    <string name="find_regex_rule_by_description">
+        <![CDATA[
+        輸入描述以匹配相應的正則表達式規則。
+        ]]>
+    </string>
+    <string name="rules">規則</string>
+    <string name="rule_description">規則描述</string>
+    <string name="priority_in_order">優先級由該列表的順序決定。</string>
 </resources>

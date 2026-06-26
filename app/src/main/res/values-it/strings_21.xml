@@ -17,7 +17,7 @@
     <string name="call_to_test_ringtone">Effettua una chiamata reale per testare la suoneria.</string>
     <string name="help_ringtone">
     <![CDATA[
-        Personalizza la suoneria per una particolare funzione; le chiamate consentite da tale funzione riprodurranno la suoneria specificata.
+        Imposta suonerie diverse per le chiamate consentite da diverse funzioni.
     ]]>
     </string>
     <string name="help_target_rule_desc">

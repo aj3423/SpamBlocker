@@ -17,7 +17,7 @@
     <string name="call_to_test_ringtone">Lakukan panggilan sungguhan untuk menguji nada dering.</string>
     <string name="help_ringtone">
     <![CDATA[
-        Sesuaikan nada dering untuk fitur tertentu, panggilan yang diizinkan oleh fitur tersebut akan memutar nada dering yang ditentukan.
+        Atur nada dering yang berbeda untuk panggilan yang diizinkan oleh fitur yang berbeda.
     ]]>
     </string>
     <string name="help_target_rule_desc">

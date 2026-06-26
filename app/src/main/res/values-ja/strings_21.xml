@@ -17,7 +17,7 @@
     <string name="call_to_test_ringtone">着信音をテストするために実際に通話を行います。</string>
     <string name="help_ringtone">
     <![CDATA[
-        特定の機能の着信音をカスタマイズします。その機能で許可された通話には、指定された着信音が鳴ります。
+        異なる機能で許可された通話に対して、異なる着信音を設定します。
     ]]>
     </string>
     <string name="help_target_rule_desc">

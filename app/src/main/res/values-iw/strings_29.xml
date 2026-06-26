@@ -48,8 +48,20 @@
     <string name="sms_reply">מענה SMS</string>
     <string name="help_bot_preset_sms_reply">
         <![CDATA[
-        שולח באופן אוטומטי SMS לאנשי קשר כאשר שיחותיהם נחסמות. <br>
-        ניתן להגדיר הודעות שונות עבור מצב פגישה ותכונות חסימה אחרות.
+        שליחה אוטומטית של SMS לאנשי קשר כאשר שיחותיהם נחסמות. <br>
+        ניתן להגדיר הודעות שונות עבור מצב פגישה ותכונות חסימה אחרות. <br>
+        <br>
+        <warn>הערה</warn> <br>
+        בפעם הראשונה שהאפליקציה שולחת SMS, תופיע הודעת מערכת המזהירה מפני חיובים פוטנציאליים.
+        הקש על <sample>זכור את בחירתי</sample> כדי למנוע אזהרה זו בעתיד.
         ]]>
     </string>
+    <string name="find_regex_rule_by_description">
+        <![CDATA[
+        הזן תיאור כדי להתאים לכלל הרגקס המתאים.
+        ]]>
+    </string>
+    <string name="rules">כללים</string>
+    <string name="rule_description">תיאור כלל</string>
+    <string name="priority_in_order">העדיפות נקבעת לפי סדר הרשימה הזו.</string>
 </resources>

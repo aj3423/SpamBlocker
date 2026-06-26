@@ -17,7 +17,7 @@
     <string name="call_to_test_ringtone">Realitza una trucada real per provar el to de trucada.</string>
     <string name="help_ringtone">
     <![CDATA[
-        Personalitza el to de trucada per a una característica particular; les trucades permeses per aquesta característica reproduiran el to de trucada especificat.
+        Configureu tons de trucada diferents per a les trucades permeses per a diferents funcions.
     ]]>
     </string>
     <string name="help_target_rule_desc">

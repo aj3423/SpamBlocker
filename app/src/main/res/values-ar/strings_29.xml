@@ -49,7 +49,19 @@
     <string name="help_bot_preset_sms_reply">
         <![CDATA[
         إرسال رسالة SMS تلقائيًا إلى جهات الاتصال عند حظر مكالماتهم. <br>
-        يمكن تعيين رسائل مختلفة لوضع الاجتماع وميزات الحظر الأخرى.
+        يمكن تعيين رسائل مختلفة لوضع الاجتماع وميزات الحظر الأخرى. <br>
+        <br>
+        <warn>ملاحظة</warn> <br>
+        في المرة الأولى التي يرسل فيها التطبيق رسالة SMS، سيقوم نظام التشغيل بتحذيرك من الرسوم المحتملة.
+        اضغط على <sample>تذكر خياري</sample> لتجنب هذا التحذير في المستقبل.
         ]]>
     </string>
+    <string name="find_regex_rule_by_description">
+        <![CDATA[
+        أدخل وصفاً لمطابقة قاعدة التعبير النمطي المقابلة.
+        ]]>
+    </string>
+    <string name="rules">قواعد</string>
+    <string name="rule_description">وصف القاعدة</string>
+    <string name="priority_in_order">الأولوية يتم تحديدها حسب تسلسل هذه القائمة.</string>
 </resources>

@@ -17,7 +17,7 @@
     <string name="call_to_test_ringtone">Realiza unha chamada real para probar o ton de chamada.</string>
     <string name="help_ringtone">
     <![CDATA[
-        Personaliza o ton de chamada para unha función específica; as chamadas permitidas por esa función reproducirán o ton de chamada especificado.
+        Configure diferentes tons de chamada para as chamadas permitidas por diferentes funcións.
     ]]>
     </string>
     <string name="help_target_rule_desc">

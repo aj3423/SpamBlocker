@@ -17,7 +17,7 @@
     <string name="call_to_test_ringtone">בצע שיחה בפועל כדי לבדוק את הצלצול.</string>
     <string name="help_ringtone">
     <![CDATA[
-        התאם אישית את הצלצול עבור תכונה מסוימת, שיחות המותרות על ידי תכונה זו ינגנו את הצלצול שצוין.
+        הגדר צלצולים שונים לשיחות המותרות על ידי תכונות שונות.
     ]]>
     </string>
     <string name="help_target_rule_desc">

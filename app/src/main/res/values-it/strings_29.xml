@@ -49,7 +49,19 @@
     <string name="help_bot_preset_sms_reply">
         <![CDATA[
         Invia automaticamente un SMS ai contatti quando le loro chiamate vengono bloccate. <br>
-        È possibile impostare messaggi diversi per la Modalità Riunione e altre funzioni di blocco.
+        È possibile impostare messaggi diversi per la Modalità Riunione e altre funzioni di blocco. <br>
+        <br>
+        <warn>Nota</warn> <br>
+        La prima volta che l\'app invia un SMS, un popup di sistema ti avviserà dei potenziali costi.
+        Tocca <sample>Ricorda la mia scelta</sample> per evitare questo avviso in futuro.
         ]]>
     </string>
+    <string name="find_regex_rule_by_description">
+        <![CDATA[
+        Inserisci una descrizione per far corrispondere la regola regex corrispondente.
+        ]]>
+    </string>
+    <string name="rules">Regole</string>
+    <string name="rule_description">Descrizione regola</string>
+    <string name="priority_in_order">La priorità è determinata dalla sequenza di questo elenco.</string>
 </resources>

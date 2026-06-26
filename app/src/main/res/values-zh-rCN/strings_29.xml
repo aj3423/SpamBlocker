@@ -48,8 +48,20 @@
     <string name="sms_reply">短信回复</string>
     <string name="help_bot_preset_sms_reply">
         <![CDATA[
-        当联系人的电话被拦截时，自动向其发送短信。<br>
-        可以为会议模式和其他拦截功能设置不同的消息。
+        当联系人的通话被拦截时，自动向其发送短信。<br>
+        可以为会议模式和其他拦截功能设置不同的消息。<br>
+        <br>
+        <warn>注意</warn> <br>
+        应用首次发送短信时，系统弹窗会提醒您可能会产生费用。<br>
+        点击<sample>记住我的选择</sample>以在今后避免此提醒。
         ]]>
     </string>
+    <string name="find_regex_rule_by_description">
+        <![CDATA[
+        输入描述以匹配相应的正则表达式规则。
+        ]]>
+    </string>
+    <string name="rules">规则</string>
+    <string name="rule_description">规则描述</string>
+    <string name="priority_in_order">优先级由该列表的顺序决定。</string>
 </resources>

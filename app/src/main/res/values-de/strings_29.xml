@@ -49,7 +49,19 @@
     <string name="help_bot_preset_sms_reply">
         <![CDATA[
         Sendet automatisch eine SMS an Kontakte, wenn deren Anrufe blockiert werden. <br>
-        Für den Meeting-Modus und andere Blockierungsfunktionen können unterschiedliche Nachrichten festgelegt werden.
+        Für den Meeting-Modus und andere Blockierfunktionen können unterschiedliche Nachrichten festgelegt werden. <br>
+        <br>
+        <warn>Hinweis</warn> <br>
+        Wenn die App zum ersten Mal eine SMS sendet, wird ein System-Popup vor möglichen Gebühren warnen.
+        Tippen Sie auf <sample>Meine Auswahl merken</sample>, um diese Warnung in Zukunft zu vermeiden.
         ]]>
     </string>
+    <string name="find_regex_rule_by_description">
+        <![CDATA[
+        Geben Sie eine Beschreibung ein, um die entsprechende Regex-Regel zu finden.
+        ]]>
+    </string>
+    <string name="rules">Regeln</string>
+    <string name="rule_description">Regelbeschreibung</string>
+    <string name="priority_in_order">Die Priorität wird durch die Reihenfolge dieser Liste bestimmt.</string>
 </resources>

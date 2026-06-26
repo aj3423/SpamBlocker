@@ -17,7 +17,7 @@
     <string name="call_to_test_ringtone">Perform an actual call to test the ringtone.</string>
     <string name="help_ringtone">
     <![CDATA[
-        Customize the ringtone for a particular feature, calls permitted by that feature will play the specified ringtone.
+        Set different ringtones for calls that allowed by different features.
     ]]>
     </string>
     <string name="help_preset_ringtone">
