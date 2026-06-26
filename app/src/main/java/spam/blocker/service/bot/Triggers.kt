@@ -988,7 +988,7 @@ data class RingtoneRule(
                     GreyLabel(Str(R.string.repeated_call))
                 }
                 RingtoneRuleType.Contacts -> {
-                    GreyIcon18(iconId = R.drawable.ic_contact_circle)
+                    GreyIcon18(iconId = R.drawable.ic_contact_square)
                     GreyLabel(Str(R.string.contacts))
                 }
             }
@@ -1052,7 +1052,7 @@ fun ReplyRuleEditDialog(
                 bgColor = C.dialogBg
             ) {
                 Column {
-                    LabeledRow(R.string.trigger) {
+                    LabeledRow(R.string.trigger, helpTooltip = Str(R.string.help_ringtone_trigger)) {
                         val items = listOf(
                             Str(R.string.number_rule),
                             Str(R.string.repeated_call),
@@ -1061,7 +1061,7 @@ fun ReplyRuleEditDialog(
                         val iconIds = listOf(
                             R.drawable.ic_regex,
                             R.drawable.ic_repeat,
-                            R.drawable.ic_contact_circle,
+                            R.drawable.ic_contact_square,
                         )
                         ComboBox(
                             items = items.mapIndexed { index, label ->

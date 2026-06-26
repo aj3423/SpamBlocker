@@ -64,4 +64,11 @@
     <string name="rules">规则</string>
     <string name="rule_description">规则描述</string>
     <string name="priority_in_order">优先级由该列表的顺序决定。</string>
+    <string name="help_ringtone_trigger">
+        <![CDATA[
+        通话被允许的原因。<br>
+        <br>
+        例如，“重复来电”表示当通话被“重复来电”允许时，将播放指定的铃声。
+        ]]>
+    </string>
 </resources>

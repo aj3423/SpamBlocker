@@ -64,4 +64,11 @@
     <string name="rules">Rules</string>
     <string name="rule_description">Rule Description</string>
     <string name="priority_in_order">Priority is determined by the sequence of this list.</string>
+    <string name="help_ringtone_trigger">
+        <![CDATA[
+        The reason why the call is allowed. <br>
+        <br>
+        For example, <b>Repeated Call</b> means the specified ringtone will play when the call is allowed by <b>Repeated Call</b>.
+        ]]>
+    </string>
 </resources>

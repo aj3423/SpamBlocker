@@ -64,4 +64,11 @@
     <string name="rules">כללים</string>
     <string name="rule_description">תיאור כלל</string>
     <string name="priority_in_order">העדיפות נקבעת לפי סדר הרשימה הזו.</string>
+    <string name="help_ringtone_trigger">
+        <![CDATA[
+        הסיבה לכך שהשיחה מאושרת. <br>
+        <br>
+        לדוגמה, <b>שיחה חוזרת</b> פירושה שצלצול המכשיר המוגדר יופעל כאשר השיחה מאושרת על ידי <b>שיחה חוזרת</b>.
+        ]]>
+    </string>
 </resources>

@@ -64,4 +64,11 @@
     <string name="rules">Kurallar</string>
     <string name="rule_description">Kural Açıklaması</string>
     <string name="priority_in_order">Öncelik, bu listenin sırasına göre belirlenir.</string>
+    <string name="help_ringtone_trigger">
+        <![CDATA[
+        Aramanın izin verilme nedeni. <br>
+        <br>
+        Örneğin, <b>Tekrarlanan Arama</b>, arama <b>Tekrarlanan Arama</b> tarafından izin verildiğinde belirtilen zil sesinin çalacağı anlamına gelir.
+        ]]>
+    </string>
 </resources>

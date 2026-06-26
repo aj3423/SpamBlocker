@@ -64,4 +64,11 @@
     <string name="rules">Aturan</string>
     <string name="rule_description">Deskripsi Aturan</string>
     <string name="priority_in_order">Prioritas ditentukan oleh urutan daftar ini.</string>
+    <string name="help_ringtone_trigger">
+        <![CDATA[
+        Alasan mengapa panggilan diizinkan. <br>
+        <br>
+        Sebagai contoh, <b>Panggilan Berulang</b> berarti nada dering yang ditentukan akan berbunyi ketika panggilan diizinkan oleh <b>Panggilan Berulang</b>.
+        ]]>
+    </string>
 </resources>

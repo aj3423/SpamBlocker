@@ -64,4 +64,11 @@
     <string name="rules">ルール</string>
     <string name="rule_description">ルールの説明</string>
     <string name="priority_in_order">優先順位はこのリストの順序によって決定されます。</string>
+    <string name="help_ringtone_trigger">
+        <![CDATA[
+        通話が許可される理由です。<br>
+        <br>
+        例えば、「繰り返し通話」は、通話が「繰り返し通話」によって許可されたときに指定した着信音が鳴ることを意味します。
+        ]]>
+    </string>
 </resources>

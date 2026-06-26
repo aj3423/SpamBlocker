@@ -64,4 +64,11 @@
     <string name="rules">قوانین</string>
     <string name="rule_description">توضیحات قانون</string>
     <string name="priority_in_order">اولویت بر اساس ترتیب این لیست تعیین می‌شود.</string>
+    <string name="help_ringtone_trigger">
+        <![CDATA[
+        دلیل مجاز بودن تماس. <br>
+        <br>
+        به عنوان مثال، <b>تماس مکرر</b> به این معنی است که وقتی تماس توسط <b>تماس مکرر</b> مجاز شود، زنگ تعیین شده پخش خواهد شد.
+        ]]>
+    </string>
 </resources>

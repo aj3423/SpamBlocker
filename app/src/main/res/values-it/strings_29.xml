@@ -64,4 +64,11 @@
     <string name="rules">Regole</string>
     <string name="rule_description">Descrizione regola</string>
     <string name="priority_in_order">La priorità è determinata dalla sequenza di questo elenco.</string>
+    <string name="help_ringtone_trigger">
+        <![CDATA[
+        Il motivo per cui la chiamata è consentita. <br>
+        <br>
+        Ad esempio, <b>Chiamata ripetuta</b> significa che suonerà la suoneria specificata quando la chiamata è consentita da <b>Chiamata ripetuta</b>.
+        ]]>
+    </string>
 </resources>

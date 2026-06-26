@@ -64,4 +64,11 @@
     <string name="rules">Правила</string>
     <string name="rule_description">Опис правила</string>
     <string name="priority_in_order">Пріоритет визначається послідовністю цього списку.</string>
+    <string name="help_ringtone_trigger">
+        <![CDATA[
+        Причина, чому дзвінок дозволено. <br>
+        <br>
+        Наприклад, <b>Повторний дзвінок</b> означає, що визначена мелодія відтворить, коли дзвінок буде дозволено через <b>Повторний дзвінок</b>.
+        ]]>
+    </string>
 </resources>

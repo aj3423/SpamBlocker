@@ -64,4 +64,11 @@
     <string name="rules">قواعد</string>
     <string name="rule_description">وصف القاعدة</string>
     <string name="priority_in_order">الأولوية يتم تحديدها حسب تسلسل هذه القائمة.</string>
+    <string name="help_ringtone_trigger">
+        <![CDATA[
+        السبب الذي يجعل المكالمة مسموحاً بها. <br>
+        <br>
+        على سبيل المثال، تعني <b>مكالمة متكررة</b> أن نغمة الرنين المحددة ستعمل عندما تكون المكالمة مسموحاً بها من خلال <b>مكالمة متكررة</b>.
+        ]]>
+    </string>
 </resources>

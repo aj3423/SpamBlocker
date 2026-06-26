@@ -64,4 +64,11 @@
     <string name="rules">Regras</string>
     <string name="rule_description">Descrición da regra</string>
     <string name="priority_in_order">A prioridade determínase pola secuencia desta lista.</string>
+    <string name="help_ringtone_trigger">
+        <![CDATA[
+        O motivo polo cal se permite a chamada. <br>
+        <br>
+        Por exemplo, <b>Chamada repetida</b> significa que soará o ton especificado cando a chamada sexa permitida por <b>Chamada repetida</b>.
+        ]]>
+    </string>
 </resources>

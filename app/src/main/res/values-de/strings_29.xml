@@ -64,4 +64,11 @@
     <string name="rules">Regeln</string>
     <string name="rule_description">Regelbeschreibung</string>
     <string name="priority_in_order">Die Priorität wird durch die Reihenfolge dieser Liste bestimmt.</string>
+    <string name="help_ringtone_trigger">
+        <![CDATA[
+        Der Grund, warum der Anruf zugelassen wird. <br>
+        <br>
+        Zum Beispiel bedeutet <b>Wiederholter Anruf</b>, dass der festgelegte Klingelton abgespielt wird, wenn der Anruf durch <b>Wiederholter Anruf</b> zugelassen wird.
+        ]]>
+    </string>
 </resources>
