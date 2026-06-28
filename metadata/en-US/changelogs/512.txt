@@ -1,0 +1,14 @@
+Breaking Change
+- "Ringtone" workflow updated, incompatible with old ringtone settings, please re-configure.
+  It now supports binding to RepeatedCall, Contacts, and RegexRules.
+
+New:
+- "SMS Reply" workflow
+  Automatically send an SMS to contacts when their calls are blocked (e.g. by Meeting Mode).
+
+Fix:
+- Backup restore from a large database causes crash
+
+Improvements:
+- API query now supports customizing blocking logic based on positive/negative rating counts
+  e.g.: `(negative > 5) & (negative / positive > 120%)`

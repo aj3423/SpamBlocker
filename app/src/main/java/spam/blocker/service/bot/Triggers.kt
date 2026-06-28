@@ -1528,7 +1528,7 @@ class CallScreened(
 
     @Composable
     override fun Icon() {
-        GreyIcon(R.drawable.ic_filter)
+        GreyIcon(R.drawable.ic_call_filter)
     }
 
     @Composable
@@ -1548,7 +1548,7 @@ class CallScreened(
         RegexInputBox(
             regexStr = numberFilter,
             label = { Text(Str(R.string.number_filter)) },
-            leadingIcon = { GreyIcon18(R.drawable.ic_filter) },
+            leadingIcon = { GreyIcon18(R.drawable.ic_call_filter) },
             helpTooltipId = R.string.help_call_screening_number_filter,
             placeholder = { Placeholder(".*") },
             regexFlags = dummyFlags,
