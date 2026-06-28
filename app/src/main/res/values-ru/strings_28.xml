@@ -77,7 +77,7 @@
         <br>
         Например, сервер возвращает: <br>
         &ensp; <sample><no_translate>{ …, \"type\": \"fraud\", … }</no_translate></sample> <br>
-        Сопоставьте его с regex: <br>
+        Сопоставьте его с регулярным выражением: <br>
         &ensp; <sample><no_translate>\"type\": \"(fraud|scam|political)\"</no_translate></sample> <br>
         <br>
         <title>Формула</title> <br>
@@ -91,7 +91,7 @@
     <string name="hint_negative_identifier_strategy_formula">Например: (\\d+) отрицательно</string>
     <string name="help_positive_identifier_strategy_formula">
         <![CDATA[
-        Этот regex используется для извлечения количества положительных оценок, требуется захватывающая группа, то есть он должен содержать
+        Это регулярное выражение используется для извлечения количества положительных оценок, требуется захватывающая группа, то есть он должен содержать
          <sample>(</sample> и <sample>)</sample>, по умолчанию используется 0, если совпадение не найдено. <br>
         <br>
         Например: <br>
@@ -100,7 +100,7 @@
     </string>
     <string name="help_negative_identifier_strategy_formula">
         <![CDATA[
-        Этот regex используется для извлечения количества отрицательных оценок, требуется захватывающая группа, то есть он должен содержать
+        Это регулярное выражение используется для извлечения количества отрицательных оценок, требуется захватывающая группа, то есть он должен содержать
          <sample>(</sample> и <sample>)</sample>, по умолчанию используется 0, если совпадение не найдено. <br>
         <br>
         Например: <br>
@@ -141,7 +141,7 @@
         &ensp; <sample>p &gt; 3 & n &gt; 2 & (n / p &gt;= 120%)</sample> <br>
         ]]>
     </string>
-    <string name="missing_brackets">В regex отсутствует захватывающая группа (), подробности см. во всплывающей подсказке.</string>
+    <string name="missing_brackets">В регулярном выражении отсутствует захватывающая группа (), подробности см. во всплывающей подсказке.</string>
     <string name="negative_identifier_matches">Совпадения отрицательного идентификатора</string>
     <string name="positive_identifier_matches">Совпадения положительного идентификатора</string>
     <string name="rating_count_template">Положительные оценки: %s, отрицательные оценки: %s</string>
