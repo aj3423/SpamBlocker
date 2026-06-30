@@ -78,6 +78,7 @@
     <string name="to_tag">Hedef Etiket</string>
     <string name="help_bot_preset_7726">
         <![CDATA[
-        <error>7726</error>'ye (evrensel kısa kod ile <error>SPAM</error> yazan) spam metinlerini iletir, birçok mobil operatör tarafından geniş ölçüde desteklenen bir özelliktir.
-        ]]>    </string>
+        <error>7726</error>\'ye (evrensel kısa kod ile <error>SPAM</error> yazan) spam metinlerini iletir, birçok mobil operatör tarafından geniş ölçüde desteklenen bir özelliktir.
+        ]]>
+    </string>
 </resources>
