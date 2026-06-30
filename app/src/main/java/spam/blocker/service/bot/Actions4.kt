@@ -7,7 +7,6 @@ import android.telephony.SubscriptionManager
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
@@ -57,6 +56,7 @@ import spam.blocker.util.Contacts
 import spam.blocker.util.Lambda1
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionWrapper
+import spam.blocker.util.logi
 import spam.blocker.util.regexMatches
 
 @Serializable
@@ -148,7 +148,7 @@ fun ReplyRuleEditDialog(
                 maxLines = 10,
             )
 
-            LabeledRow(R.string.is_contact) {
+            LabeledRow(R.string.contacts_only) {
                 SwitchBox(checked = contactsOnly, onCheckedChange = { isOn ->
                     contactsOnly = isOn
                 })
@@ -421,7 +421,7 @@ class SendSms: IAction {
     }
 
     override fun inputParamType(): List<ParamType> {
-        return listOf(ParamType.String)
+        return listOf(ParamType.String, ParamType.None)
     }
 
     override fun outputParamType(): List<ParamType> {

@@ -69,11 +69,21 @@
         Aquestes etiquetes es poden utilitzar en les sol·licituds HTTP posteriors.<br>
         ]]>
     </string>
+    <string name="content_filter"><translate>Filtre de contingut</translate></string>
+    <string name="help_content_filter">
+        <translate><![CDATA[
+        Encara que les regles de SMS ja han filtrat aquest contingut, pots utilitzar aquest filtre addicional per reduir-lo encara més.
+        ]]></translate>  
+    </string>
     <string name="action_parse_incoming_sms"><translate>Analitzar SMS</translate></string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
-        El contingut de l\'SMS entrant s\'analitzarà a l\'etiqueta <b>{sms}</b>,
-        que es pot utilitzar en les sol·licituds HTTP posteriors.
+        S\'analitzarà el contingut del SMS entrant en les etiquetes següents per a ús en passos posteriors: <br>
+        <br>
+        <title><b>{raw_number}</b></title> <br>
+        &ensp; El número entrant <br>
+        <title><b>{sms_content}</b></title> <br>
+        &ensp; El contingut del SMS
         ]]>
     </string>
     <string name="query_api"><translate>API de consulta</translate></string>

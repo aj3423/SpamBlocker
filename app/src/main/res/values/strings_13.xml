@@ -21,6 +21,7 @@
     <string name="find_rule_with_desc">Found %s rules with description %s.</string>
     <string name="modify_n_rules">Modifying %s rules.</string>
     <string name="number_not_match_filter">The number %s doesn\'t match the filter %s, skip.</string>
+    <string name="content_not_match_filter">The content doesn\'t match the filter, skip.</string>
     <string name="fail_detect_cc">Failed to detect country code.</string>
     <string name="identified_as_spam">Identified as spam number, category: %s, comment: %s.</string>
     <string name="identified_as_valid">Identified as valid number, category: %s, comment: %s.</string>

@@ -21,6 +21,7 @@
     <string name="find_rule_with_desc">נמצאו %s כללים עם התיאור %s.</string>
     <string name="modify_n_rules">משנה %s כללים.</string>
     <string name="number_not_match_filter">המספר %s אינו תואם את המסנן %s, מדלג.</string>
+    <string name="content_not_match_filter">התוכן אינו תואם למסנן, מדלג.</string>
     <string name="fail_detect_cc">נכשלה זיהוי קידומת מדינה.</string>
     <string name="identified_as_spam">זוהה כמספר ספאם, קטגוריה: %s, הערה: %s.</string>
     <string name="identified_as_valid">זוהה כמספר תקין, קטגוריה: %s, הערה: %s.</string>

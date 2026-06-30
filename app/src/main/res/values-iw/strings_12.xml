@@ -69,11 +69,21 @@
         תגיות אלה יכולות לשמש בבקשות HTTP הבאות.<br>
         ]]>
     </string>
+    <string name="content_filter">מסנן תוכן</string>
+    <string name="help_content_filter">
+        <![CDATA[
+        למרות שכבר סננו תוכן זה באמצעות כללי SMS, אתה יכול להשתמש במסנן נוסף זה לצמצום נוסף.
+        ]]>  
+    </string>
     <string name="action_parse_incoming_sms">פענוח SMS</string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
-        תוכן ה-SMS הנכנס יפורק לתגית <b>{sms}</b>,
-        שניתן להשתמש בה בבקשות HTTP הבאות.
+        תוכן ה-SMS הנכנס יפורק לתגיות הבאות לשימוש בשלבים הבאים: <br>
+        <br>
+        <title><b>{raw_number}</b></title> <br>
+        &ensp; המספר הנכנס <br>
+        <title><b>{sms_content}</b></title> <br>
+        &ensp; תוכן ה-SMS
         ]]>
     </string>
     <string name="query_api">API לשאילתה</string>

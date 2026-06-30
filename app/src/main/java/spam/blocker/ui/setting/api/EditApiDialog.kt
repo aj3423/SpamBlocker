@@ -47,7 +47,7 @@ import spam.blocker.util.setFlag
 private val autoReportFlags = listOf(
     AutoReportTypes.NonContact,
     AutoReportTypes.STIR,
-    AutoReportTypes.NumberRegex
+    AutoReportTypes.Regex
 )
 private val autoReportIcons = listOf(
     R.drawable.ic_contact_square,
@@ -94,7 +94,7 @@ fun AutoReportIcons(
             val hasFlag = autoReportTypes.hasFlag(autoReportFlags[i]) == true
             ResImage(
                 autoReportIcons[i],
-                if(hasFlag) C.teal200 else C.disabled,
+                if(hasFlag) C.error else C.disabled,
                 M.size(18.dp)
             )
         }

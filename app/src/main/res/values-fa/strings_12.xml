@@ -85,7 +85,13 @@
         <br>
         - بررسی <b>هر شماره</b>:<br>
         &ensp; <highlight><b>.*</b></highlight>
-        ]]>
+        ]]>  
+    </string>
+    <string name="content_filter">فیلتر محتوا</string>
+    <string name="help_content_filter">
+        <![CDATA[
+        اگرچه قوانین پیامک قبلاً این محتوا را فیلتر کرده‌اند، می‌توانید برای تنگ‌تر کردن آن از این فیلتر اضافی استفاده کنید.
+        ]]>  
     </string>
     <string name="skip_for_testing">برای تست رد می‌شود.</string>
     <string name="allowed_by">مجاز توسط: %s</string>
@@ -94,8 +100,12 @@
     <string name="action_parse_incoming_sms">تجزیه پیامک</string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
-        محتوای پیامک ورودی به برچسب <b>{sms}</b> تجزیه می‌شود
-        که می‌توان از آن در درخواست‌های HTTP بعدی استفاده کرد.
+        پیامک ورودی به برچسب‌های زیر تجزیه می‌شود تا در مراحل بعدی استفاده شود: <br>
+        <br>
+        <title><b>{raw_number}</b></title> <br>
+        &ensp; شماره ورودی <br>
+        <title><b>{sms_content}</b></title> <br>
+        &ensp; محتوای پیامک
         ]]>
     </string>
 </resources>

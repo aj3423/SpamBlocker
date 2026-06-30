@@ -16,7 +16,7 @@
     </string>
     <string name="send_sms">Kirim SMS</string>
     <string name="result">Hasil</string>
-    <string name="is_contact">Adalah Kontak</string>
+    <string name="contacts_only">Adalah Kontak</string>
     <string name="blocked_by">Diblokir Oleh</string>
     <string name="sms_sent_successfully">SMS berhasil dikirim</string>
     <string name="failed_to_send_sms">Gagal mengirim SMS: %s</string>

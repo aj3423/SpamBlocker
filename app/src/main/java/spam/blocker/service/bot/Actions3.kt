@@ -25,9 +25,9 @@ import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.BotTable
 import spam.blocker.db.RegexRule
-import spam.blocker.db.listReportableAPIs
 import spam.blocker.db.reScheduleBot
 import spam.blocker.def.Def
+import spam.blocker.service.reporting.listReportableAPIs
 import spam.blocker.ui.darken
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.api.tagValid
@@ -406,11 +406,28 @@ class InterceptCall(
 @Serializable
 @SerialName("InterceptSms")
 class InterceptSms(
+    var contentFilter: String = ".*",
 ) : IPermissiveAction {
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-        // Nothing to do
-        // It just needs to be there, as the first action in the workflow.
-        // Because new SMS will only be checked by such workflows.
+
+        // The `rawNumber` is set by the workflow caller before it's executed.
+        val rawNumber = aCtx.rawNumber!!
+        val smsContent = aCtx.smsContent!!
+        aCtx.logger?.debug("${label(ctx)}: $rawNumber")
+
+        val matchesFilter = contentFilter.toRegex().matches(smsContent)
+        if (!matchesFilter) {
+            aCtx.logger?.debug(ctx.getString(R.string.content_not_match_filter))
+            return false
+        }
+
+        // Legacy style, use `aCtx.xxx`
+        aCtx.rawNumber = rawNumber
+        aCtx.smsContent = smsContent
+        // Modern way, put tags in `customTags`
+        aCtx.customTags["raw_number"] = rawNumber
+        aCtx.customTags["sms_content"] = smsContent
+
         return true
     }
 
@@ -441,7 +458,23 @@ class InterceptSms(
 
     @Composable
     override fun Options() {
-        NoOptionNeeded()
+        val dummyFlags = remember { mutableIntStateOf(Def.FLAG_REGEX_RAW_NUMBER) }
+        RegexInputBox(
+            regexStr = contentFilter,
+            label = { Text(Str(R.string.content_filter)) },
+            leadingIcon = { GreyIcon18(R.drawable.ic_filter) },
+            helpTooltipId = R.string.help_content_filter,
+            placeholder = { Placeholder(".*") },
+            regexFlags = dummyFlags,
+            showFlagsIcon = false,
+            onRegexStrChange = { newVal, hasError ->
+                if (!hasError) {
+                    contentFilter = newVal
+                }
+            },
+            onFlagsChange = { }
+        )
+
     }
 }
 
@@ -1213,7 +1246,7 @@ class GenerateTag(
 
             aCtx.logger?.info(ctx.getString(R.string.tag_generated)
                 .formatAnnotated(
-                    tagName.A(C.textGrey.darken()),
+                    "{$tagName}".A(C.textGrey.darken()),
                     (tagValue ?: "").A(C.teal200),
                 )
             )
@@ -1347,7 +1380,7 @@ class LoadBotTag(
         aCtx.customTags[tagName] = value
 
         logger?.debug(ctx.getString(R.string.tag_is_set_to).formatAnnotated(
-            tagName.A(C.textGrey.darken()), value.A(C.teal200)
+            "{$tagName}".A(C.textGrey.darken()), value.A(C.teal200)
         ))
 
         return true
@@ -1437,7 +1470,7 @@ class SaveBotTag(
         BotTable.updateById(ctx, botId, customTags = tags)
 
         logger?.debug(ctx.getString(R.string.tag_is_saved_as).formatAnnotated(
-            tagName.A(C.textGrey.darken()), value.A(C.teal200)
+            "{$tagName}".A(C.textGrey.darken()), value.A(C.teal200)
         ))
 
         return true
@@ -1502,7 +1535,7 @@ class SetTag(
         aCtx.customTags[tagName] = tagValue
 
         aCtx.logger?.debug(ctx.getString(R.string.tag_is_set_to).formatAnnotated(
-            tagName.A(C.textGrey.darken()), tagValue.A(C.teal200)
+            "{$tagName}".A(C.textGrey.darken()), tagValue.A(C.teal200)
         ))
 
         return true
@@ -1561,6 +1594,84 @@ class SetTag(
                 onValueChange = {
                     tagValue = it
                     valueState = it
+                },
+            )
+        }
+    }
+}
+
+
+@Serializable
+@SerialName("CopyTag")
+class CopyTag(
+    var tagFrom: String = "",
+    var tagTo: String = "",
+) : IPermissiveAction {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        val C = G.palette
+
+        aCtx.customTags[tagTo] = aCtx.customTags[tagFrom] ?: ""
+
+        aCtx.logger?.debug(ctx.getString(R.string.tag_is_copied_to).formatAnnotated(
+            "{$tagFrom}".A(C.textGrey.darken()), "{$tagTo}".A(C.teal200)
+        ))
+
+        return true
+    }
+
+    override fun label(ctx: Context): String {
+        return ctx.getString(R.string.copy_tag)
+    }
+
+    @Composable
+    override fun Summary(showIcon: Boolean) {
+        SummaryLabel("{$tagTo} = {$tagFrom}")
+    }
+
+    override fun tooltip(ctx: Context): String {
+        return ctx.getString(R.string.help_copy_tag)
+    }
+
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    @Composable
+    override fun Icon() {
+        GreyIcon(R.drawable.ic_tag_copy)
+    }
+
+    @Composable
+    override fun Options() {
+        Column {
+            // Tag Name
+            var fromState by remember { mutableStateOf(tagFrom) }
+            StrInputBox(
+                text = fromState,
+                label = { Text(Str(R.string.from_tag)) },
+                leadingIconId = R.drawable.ic_tag,
+                onValueChange = {
+                    fromState = it
+                    tagFrom = it
+                },
+                supportingTextStr = if (fromState.trim().startsWith("{")) {
+                    Str(R.string.invalid_tag_name)
+                } else null
+            )
+
+            // Tag Value
+            var toState by remember { mutableStateOf(tagTo) }
+            StrInputBox(
+                text = toState,
+                label = { Text(Str(R.string.to_tag)) },
+                leadingIconId = R.drawable.ic_tag,
+                onValueChange = {
+                    tagTo = it
+                    toState = it
                 },
             )
         }

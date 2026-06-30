@@ -84,7 +84,13 @@
         <br>
         - Перевіряти <b>будь-який номер</b>:<br>
         &ensp; <highlight><b>.*</b></highlight>
-        ]]>
+        ]]>  
+    </string>
+    <string name="content_filter">Фільтр вмісту</string>
+    <string name="help_content_filter">
+        <![CDATA[
+        Хоча правила SMS вже відфільтрували цей вміст, ви можете використовувати цей додатковий фільтр, щоб ще більше звузити.
+        ]]>  
     </string>
     <string name="skip_for_testing">Пропустити для тестування.</string>
     <string name="allowed_by">Дозволено: %s</string>
@@ -95,8 +101,12 @@
     <string name="action_parse_incoming_sms">Розібрати SMS</string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
-        Вміст вхідного SMS буде розібрано в тег <b>{sms}</b>,<br>
-        який можна використовувати в наступних HTTP-запитах.
+        Вміст вхідного SMS буде розібрано на наступні теги для використання в наступних кроках: <br>
+        <br>
+        <title><b>{raw_number}</b></title> <br>
+        &ensp; Вхідний номер <br>
+        <title><b>{sms_content}</b></title> <br>
+        &ensp; Вміст SMS
         ]]>
     </string>
 </resources>

@@ -34,6 +34,7 @@
         ]]>
     </string>
     <string name="number_not_match_filter">号码 %s 与过滤器 %s 不匹配，跳过。</string>
+    <string name="content_not_match_filter">内容不符合过滤器，跳过。</string>
     <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[

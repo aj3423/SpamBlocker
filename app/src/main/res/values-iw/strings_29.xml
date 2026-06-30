@@ -16,7 +16,7 @@
     </string>
     <string name="send_sms">שלח SMS</string>
     <string name="result">תוצאה</string>
-    <string name="is_contact">האם איש קשר</string>
+    <string name="contacts_only">האם איש קשר</string>
     <string name="blocked_by">נחסם על ידי</string>
     <string name="sms_sent_successfully">ה-SMS נשלח בהצלחה</string>
     <string name="failed_to_send_sms">שליחת ה-SMS נכשלה: %s</string>

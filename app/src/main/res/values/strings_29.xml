@@ -16,7 +16,7 @@
     </string>
     <string name="send_sms">Send SMS</string>
     <string name="result">Result</string>
-    <string name="is_contact">Is Contact</string>
+    <string name="contacts_only">Contacts Only</string>
     <string name="blocked_by">Blocked By</string>
     <string name="sms_sent_successfully">SMS sent successfully</string>
     <string name="failed_to_send_sms">Failed to send SMS: %s</string>
@@ -71,4 +71,9 @@
         For example, <b>Repeated Call</b> means the specified ringtone will play when the call is allowed by <b>Repeated Call</b>.
         ]]>
     </string>
+    <string name="copy_tag">Copy Tag</string>
+    <string name="tag_is_copied_to">Tag %s is copied to %s</string>
+    <string name="help_copy_tag">Create a new tag with the same value but a different name.</string>
+    <string name="from_tag">From Tag</string>
+    <string name="to_tag">To Tag</string>
 </resources>

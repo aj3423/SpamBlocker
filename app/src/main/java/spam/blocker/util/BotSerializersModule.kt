@@ -15,6 +15,7 @@ import spam.blocker.service.bot.CallScreened
 import spam.blocker.service.bot.CallThrottling
 import spam.blocker.service.bot.CategoryConfig
 import spam.blocker.service.bot.ConvertNumber
+import spam.blocker.service.bot.CopyTag
 import spam.blocker.service.bot.Daily
 import spam.blocker.service.bot.Delay
 import spam.blocker.service.bot.EnableApp
@@ -121,6 +122,7 @@ val botModule = SerializersModule {
         subclass(SaveBotTag::class)
         subclass(LoadBotTag::class)
         subclass(SetTag::class)
+        subclass(CopyTag::class)
         subclass(Wait::class)
         subclass(TextReply::class)
         subclass(SendSms::class)

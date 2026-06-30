@@ -21,6 +21,7 @@
     <string name="find_rule_with_desc">تم العثور على %s قواعد بالوصف %s.</string>
     <string name="modify_n_rules">تعديل %s قواعد.</string>
     <string name="number_not_match_filter">الرقم %s لا يتطابق مع الفلتر %s، تخطي.</string>
+    <string name="content_not_match_filter">المحتوى لا يتطابق مع الفلتر، تخطي.</string>
     <string name="fail_detect_cc">فشل اكتشاف رمز البلد.</string>
     <string name="identified_as_spam">تم تحديده كرقم مزعج، الفئة: %s، التعليق: %s.</string>
     <string name="identified_as_valid">تم تحديده كرقم صالح، الفئة: %s، التعليق: %s.</string>

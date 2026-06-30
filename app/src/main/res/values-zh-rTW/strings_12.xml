@@ -69,11 +69,21 @@
         這些標籤可用於後續的 HTTP 請求。<br>
         ]]>
     </string>
+    <string name="content_filter">內容過濾器</string>
+    <string name="help_content_filter">
+        <![CDATA[
+        雖然簡訊規則已經過濾了此內容，您可以使用此附加過濾器來進一步縮小範圍。
+        ]]>  
+    </string>
     <string name="action_parse_incoming_sms">解析簡訊</string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
-        收到的簡訊內容將被解析為標籤 <b>{sms}</b>，
-        可用於後續的 HTTP 請求。
+        收到的簡訊內容將被解析為以下標籤，用於後續步驟： <br>
+        <br>
+        <title><b>{raw_number}</b></title> <br>
+        &ensp; 來電號碼 <br>
+        <title><b>{sms_content}</b></title> <br>
+        &ensp; 簡訊內容
         ]]>
     </string>
     <string name="query_api">查詢 API</string>

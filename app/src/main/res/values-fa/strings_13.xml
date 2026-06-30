@@ -21,6 +21,7 @@
     <string name="find_rule_with_desc">%s قانون با توضیحات %s یافت شد.</string>
     <string name="modify_n_rules">اصلاح %s قانون.</string>
     <string name="number_not_match_filter">شماره %s با فیلتر %s مطابقت ندارد، رد شد.</string>
+    <string name="content_not_match_filter">محتوا با فیلتر مطابقت ندارد، رد شد.</string>
     <string name="fail_detect_cc">شناسایی کد کشور ناموفق بود.</string>
     <string name="identified_as_spam">به عنوان شماره مزاحم شناسایی شد، دسته بندی: %s، نظر: %s.</string>
     <string name="identified_as_valid">به عنوان شماره معتبر شناسایی شد، دسته بندی: %s، نظر: %s.</string>

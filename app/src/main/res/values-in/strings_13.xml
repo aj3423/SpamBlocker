@@ -21,6 +21,7 @@
     <string name="find_rule_with_desc">Ditemukan %s aturan dengan deskripsi %s.</string>
     <string name="modify_n_rules">Memodifikasi %s aturan.</string>
     <string name="number_not_match_filter">Nomor %s tidak cocok dengan filter %s, lewati.</string>
+    <string name="content_not_match_filter">Konten tidak cocok dengan filter, lewati.</string>
     <string name="fail_detect_cc">Gagal mendeteksi kode negara.</string>
     <string name="identified_as_spam">Diidentifikasi sebagai nomor spam, kategori: %s, komentar: %s.</string>
     <string name="identified_as_valid">Diidentifikasi sebagai nomor yang sah, kategori: %s, komentar: %s.</string>

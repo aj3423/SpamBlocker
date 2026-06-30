@@ -69,11 +69,21 @@
         <translate>يمكن استخدام هذه العلامات في طلبات HTTP اللاحقة.</translate><br>
         ]]>
     </string>
+    <string name="content_filter"><translate>تصفية المحتوى</translate></string>
+    <string name="help_content_filter">
+        <translate><![CDATA[
+        على الرغم من أن قواعد الرسائل القصيرة قد صفت هذا المحتوى بالفعل، يمكنك استخدام هذا المصفية الإضافية لتضييقه أكثر.
+        ]]></translate>  
+    </string>
     <string name="action_parse_incoming_sms"><translate>تحليل الرسائل القصيرة</translate></string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
-        <translate>سيتم تحليل محتوى الرسائل القصيرة الواردة إلى العلامة <b>{sms}</b>،</translate>
-        <translate>والتي يمكن استخدامها في طلبات HTTP اللاحقة.</translate>
+        سيتم تحليل الرسالة القصيرة الواردة إلى العلامات التالية للاستخدام في الخطوات اللاحقة: <br>
+        <br>
+        <title><b>{raw_number}</b></title> <br>
+        &ensp; الرقم الوارد <br>
+        <title><b>{sms_content}</b></title> <br>
+        &ensp; محتوى الرسالة القصيرة
         ]]>
     </string>
     <string name="query_api"><translate>واجهة برمجة تطبيقات الاستعلام</translate></string>

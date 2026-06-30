@@ -72,8 +72,12 @@
     <string name="action_parse_incoming_sms">Parse SMS</string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
-        The incoming SMS content will be parsed into tag <b>{sms}</b>,
-        which can be used in subsequent HTTP requests.
+        The incoming SMS message will be parsed into the following tags for use in subsequent steps: <br>
+        <br>
+        <title><b>{raw_number}</b></title> <br>
+        &ensp; The incoming number <br>
+        <title><b>{sms_content}</b></title> <br>
+        &ensp; The SMS content
         ]]>
     </string>
     <string name="query_api">Query API</string>
@@ -93,6 +97,12 @@
         <br>
         - Check <b>any number</b>:<br>
         &ensp; <highlight><b>.*</b></highlight>
+        ]]>
+    </string>
+    <string name="content_filter">Content Filter</string>
+    <string name="help_content_filter">
+        <![CDATA[
+        While the SMS rules have already filtered this content, you can use this additional filter to narrow it down further.
         ]]>
     </string>
     <string name="skip_for_testing">Skip for testing.</string>

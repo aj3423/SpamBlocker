@@ -69,11 +69,21 @@
         Tag-tag ini dapat digunakan dalam permintaan HTTP berikutnya.<br>
         ]]>
     </string>
+    <string name="content_filter">Penyaring Konten</string>
+    <string name="help_content_filter">
+        <![CDATA[
+        Meskipun aturan SMS sudah menyaring konten ini, Anda dapat menggunakan filter tambahan ini untuk mempersempitnya lebih lanjut.
+        ]]>  
+    </string>
     <string name="action_parse_incoming_sms">Uraikan SMS</string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
-        Isi SMS masuk akan diuraikan menjadi tag <b>{sms}</b>,
-        yang dapat digunakan dalam permintaan HTTP berikutnya.
+        Pesan SMS masuk akan diuraikan ke tag berikut untuk digunakan dalam langkah-langkah selanjutnya: <br>
+        <br>
+        <title><b>{raw_number}</b></title> <br>
+        &ensp; Nomor masuk <br>
+        <title><b>{sms_content}</b></title> <br>
+        &ensp; Isi SMS
         ]]>
     </string>
     <string name="query_api">Permintaan API</string>

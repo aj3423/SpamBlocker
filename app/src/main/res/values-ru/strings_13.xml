@@ -21,6 +21,7 @@
     <string name="find_rule_with_desc">Найдено %s правил с описанием %s.</string>
     <string name="modify_n_rules">Изменение %s правил.</string>
     <string name="number_not_match_filter">Номер %s не соответствует фильтру %s, пропуск.</string>
+    <string name="content_not_match_filter">Содержимое не соответствует фильтру, пропуск.</string>
     <string name="fail_detect_cc">Не удалось определить код страны.</string>
     <string name="identified_as_spam">Определено как спам-номер, категория: %s, комментарий: %s.</string>
     <string name="identified_as_valid">Определено как действительный номер, категория: %s, комментарий: %s.</string>

@@ -16,7 +16,7 @@
     </string>
     <string name="send_sms">ارسال پیامک</string>
     <string name="result">نتیجه</string>
-    <string name="is_contact">مخاطب است</string>
+    <string name="contacts_only">مخاطب است</string>
     <string name="blocked_by">مسدود شده توسط</string>
     <string name="sms_sent_successfully">پیامک با موفقیت ارسال شد</string>
     <string name="failed_to_send_sms">خطا در ارسال پیامک: %s</string>

@@ -85,6 +85,12 @@
         &ensp; <highlight><b>.*</b></highlight>
         ]]>
     </string>
+    <string name="content_filter">コンテンツフィルター</string>
+    <string name="help_content_filter">
+        <![CDATA[
+        SMSルールで既にこのコンテンツをフィルターした上で、さらに絞り込むための追加フィルターを使用することができます。
+        ]]>  
+    </string>
     <string name="skip_for_testing">テストのためスキップ。</string>
     <string name="allowed_by">許可: %s</string>
     <string name="blocked_by_template">ブロック: %s</string>
@@ -94,8 +100,12 @@
     <string name="action_parse_incoming_sms">SMSを解析</string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
-        受信したSMSの内容はタグ <b>{sms}</b> に解析され、
-        後続のHTTPリクエストで使用できます。
+        受信したSMSの内容は、次のタグに解析され、後続のステップで使用されます: <br>
+        <br>
+        <title><b>{raw_number}</b></title> <br>
+        &ensp; 着信番号 <br>
+        <title><b>{sms_content}</b></title> <br>
+        &ensp; SMSの内容
         ]]>
     </string>
 </resources>

@@ -16,7 +16,7 @@
     </string>
     <string name="send_sms">إرسال رسالة SMS</string>
     <string name="result">النتيجة</string>
-    <string name="is_contact">جهة اتصال</string>
+    <string name="contacts_only">جهة اتصال</string>
     <string name="blocked_by">محظور بواسطة</string>
     <string name="sms_sent_successfully">تم إرسال رسالة SMS بنجاح</string>
     <string name="failed_to_send_sms">فشل إرسال رسالة SMS: %s</string>

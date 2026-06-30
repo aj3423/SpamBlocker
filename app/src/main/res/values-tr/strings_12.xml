@@ -85,6 +85,12 @@
         &ensp; <highlight><b>.*</b></highlight>
         ]]>
     </string>
+    <string name="content_filter">İçerik Filtresi</string>
+    <string name="help_content_filter">
+        <![CDATA[
+        SMS kuralları zaten bu içeriği süzdü, daha da daraltmak için bu ek filtreyi kullanabilirsiniz.
+        ]]>  
+    </string>
     <string name="skip_for_testing">Test için atla.</string>
     <string name="allowed_by">İzin verildi: %s</string>
     <string name="blocked_by_template">Engellendi: %s</string>
@@ -94,8 +100,12 @@
     <string name="action_parse_incoming_sms">SMS\'i Ayrıştır</string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
-        Gelen SMS içeriği <b>{sms}</b> etiketine ayrıştırılacaktır,<br>
-        bu etiket sonraki HTTP isteklerinde kullanılabilir.
+        Gelen SMS içeriği sonraki adımlar için kullanılmak üzere aşağıdaki etiketlere ayrıştırılacaktır: <br>
+        <br>
+        <title><b>{raw_number}</b></title> <br>
+        &ensp; Gelen numara <br>
+        <title><b>{sms_content}</b></title> <br>
+        &ensp; SMS içeriği
         ]]>
     </string>
 </resources>

@@ -4,13 +4,10 @@ import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
-import android.provider.CallLog.Calls
 import androidx.core.database.getIntOrNull
 import androidx.core.database.getStringOrNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import spam.blocker.G
-import spam.blocker.def.Def
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NON_CONTACT
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NUMBER_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_STIR
@@ -18,20 +15,15 @@ import spam.blocker.service.bot.HttpRequest
 import spam.blocker.service.bot.IAction
 import spam.blocker.service.bot.parseActions
 import spam.blocker.service.bot.serialize
-import spam.blocker.util.Contacts
-import spam.blocker.util.Permission
-import spam.blocker.util.PhoneNumber
 import spam.blocker.util.Util.domainFromUrl
-import spam.blocker.util.Util.getHistoryCallsByNumber
 import spam.blocker.util.hasFlag
-import spam.blocker.util.logi
 
 object AutoReportTypes {
     const val NonContact = 1 shl 0
     const val STIR = 1 shl 1
-    const val NumberRegex = 1 shl 2
+    const val Regex = 1 shl 2
 
-    const val DefaultTypes = NonContact or STIR or NumberRegex
+    const val DefaultTypes = NonContact or STIR or Regex
 }
 
 @Serializable
@@ -83,103 +75,11 @@ data class ReportApi(
         return when (blockReason) {
             RESULT_BLOCKED_BY_NON_CONTACT -> autoReportTypes.hasFlag(AutoReportTypes.NonContact) // Contacts(Strict)
             RESULT_BLOCKED_BY_STIR -> autoReportTypes.hasFlag(AutoReportTypes.STIR) // STIR
-            RESULT_BLOCKED_BY_NUMBER_REGEX -> autoReportTypes.hasFlag(AutoReportTypes.NumberRegex) // Number regex
+            RESULT_BLOCKED_BY_NUMBER_REGEX -> autoReportTypes.hasFlag(AutoReportTypes.Regex) // Number regex
             else -> false
         }
     }
 }
-
-
-private fun isNumberAllowedLater(ctx: Context, rawNumber: String) : Boolean {
-    val phoneNumber = PhoneNumber(ctx, rawNumber)
-    val incoming = getHistoryCallsByNumber(
-        ctx, phoneNumber, Def.DIRECTION_INCOMING, Def.NUMBER_REPORTING_BUFFER_HOURS * 3600 * 1000
-    )
-    val outgoing = getHistoryCallsByNumber(
-        ctx, phoneNumber, Def.DIRECTION_OUTGOING, Def.NUMBER_REPORTING_BUFFER_HOURS * 3600 * 1000
-    )
-    val isAllowedLater = (incoming + outgoing).any {
-        listOf(
-            Calls.INCOMING_TYPE,
-            Calls.OUTGOING_TYPE,
-            Calls.MISSED_TYPE,
-        ).contains(it.type)
-    }
-    return isAllowedLater
-}
-
-// TODO move this function to some better place
-// It checks:
-// 0. if the number has repeated later
-// 1. if the api is enabled
-// 2. remove duplicated apis
-// 3. filter by domain(for reporting to a specific api after query or blocked by SpamDB)
-fun listReportableAPIs(
-    ctx: Context,
-    rawNumber: String,
-    domainFilter: List<String>?,
-    blockReason: Int?, // null for
-    isManualReport: Boolean = false,
-    isDbApi: Boolean = false, // if the number is blocked by DB and was auto added by API query
-): List<IApi> {
-    if (!isManualReport) {
-        // 1. check if the number is repeated or dialed
-        //  (DO NOT put this to any other places, it must be checked HERE before further execution)
-        val canReadCallLog = Permission.callLog.isGranted
-        if (!canReadCallLog)
-            return listOf()
-
-        if (isNumberAllowedLater(ctx, rawNumber)) {
-            logi("skip reporting repeated/dialed number: $rawNumber")
-            return listOf()
-        }
-
-        // 2. check if the number has been added to contact
-        if (Contacts.findContactByRawNumber(ctx, rawNumber) != null) {
-            logi("skip reporting contact number: $rawNumber")
-            return listOf()
-        }
-    }
-
-    // 2. List all enabled APIs
-    var apis = G.apiReportVM.table.listAll(ctx)
-        .filter { it.enabled }
-        .filter { // it must contain at least 1 HttpRequest
-            val https = it.actions.filter { it is HttpRequest }
-            https.isNotEmpty()
-        }
-
-    // 3. When auto-reporting, remove APIs that disabled this blockReason.
-    if (!isManualReport) {
-        if (!isDbApi) { // if isDbApi, no need to filter by blockReason
-            apis = apis.filter {
-                (it as ReportApi).enabledForBlockReason(blockReason!!)
-            }
-        }
-    }
-
-    // 4. Remove duplicated APIs that have same domain name
-    //  (user might have added multiple instances)
-    apis = apis.distinctBy {
-        val http = it.actions.find { it is HttpRequest }
-        val url = (http as HttpRequest).url
-        val domain = domainFromUrl(url)
-        domain
-    }
-
-    // 5. Remove api that doesn't match the domain filter
-    if (domainFilter != null) {
-        apis = apis.filter {
-            val http = it.actions.find { it is HttpRequest }
-            val url = (http as HttpRequest).url
-            val domain = domainFromUrl(url)
-            domainFilter.contains(domain)
-        }
-    }
-
-    return apis
-}
-
 
 abstract class ApiTable(
     val tableName: String

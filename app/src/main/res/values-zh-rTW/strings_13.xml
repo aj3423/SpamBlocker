@@ -21,6 +21,7 @@
     <string name="find_rule_with_desc">找到 %s 條描述為 %s 的規則。</string>
     <string name="modify_n_rules">正在修改 %s 條規則。</string>
     <string name="number_not_match_filter">號碼 %s 不符合過濾規則 %s，略過。</string>
+    <string name="content_not_match_filter">內容不符合過濾規則，略過。</string>
     <string name="fail_detect_cc">無法偵測國碼。</string>
     <string name="identified_as_spam">已識別為騷擾電話號碼，類別：%s，備註：%s。</string>
     <string name="identified_as_valid">已識別為有效電話號碼，類別：%s，備註：%s。</string>

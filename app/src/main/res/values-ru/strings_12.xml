@@ -69,11 +69,21 @@
         Эти теги можно использовать в последующих HTTP-запросах.<br>
         ]]>
     </string>
+    <string name="content_filter">Фильтр содержимого</string>
+    <string name="help_content_filter">
+        <![CDATA[
+        Хотя правила SMS уже отфильтровали этот контент, вы можете использовать этот дополнительный фильтр для дальнейшего сужения.
+        ]]>  
+    </string>
     <string name="action_parse_incoming_sms">Разобрать SMS</string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
-        Содержимое входящего SMS будет разобрано в тег <b>{sms}</b>,
-        который можно использовать в последующих HTTP-запросах.
+        Содержимое входящего SMS будет разобрано в следующие теги для использования в последующих шагах: <br>
+        <br>
+        <title><b>{raw_number}</b></title> <br>
+        &ensp; Входящий номер <br>
+        <title><b>{sms_content}</b></title> <br>
+        &ensp; Содержимое SMS
         ]]>
     </string>
     <string name="query_api">API запроса</string>

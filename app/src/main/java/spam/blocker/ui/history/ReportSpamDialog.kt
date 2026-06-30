@@ -31,9 +31,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import spam.blocker.G
 import spam.blocker.R
-import spam.blocker.db.listReportableAPIs
 import spam.blocker.service.bot.ActionContext
 import spam.blocker.service.bot.executeAll
+import spam.blocker.service.reporting.listReportableAPIs
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.api.spamCategoryNamesMap
 import spam.blocker.ui.setting.api.tagValid

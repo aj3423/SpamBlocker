@@ -62,6 +62,7 @@ val botActions = listOf(
     SaveBotTag(),
     LoadBotTag(),
     SetTag(),
+    CopyTag(),
     Wait(),
     TextReply(),
     SendSms(),
@@ -77,6 +78,9 @@ val apiActions = listOf(
     ImportToSpamDB(),
     CategoryConfig(),
     GenerateTag(),
+    SetTag(),
+    CopyTag(),
+    SendSms(),
 )
 
 

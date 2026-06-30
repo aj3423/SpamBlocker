@@ -83,7 +83,13 @@
         <br>
         - 检查<b>任何号码</b>：<br>
         &ensp; <highlight><b>.*</b></highlight>
-        ]]>
+        ]]>  
+    </string>
+    <string name="content_filter">内容过滤器</string>
+    <string name="help_content_filter">
+        <![CDATA[
+        虽然短信规则已经过滤了该内容，您可以使用此附加过滤器进一步缩小范围。
+        ]]>  
     </string>
     <string name="skip_for_testing">跳过测试。</string>
     <string name="allowed_by">允许于：%s</string>
@@ -94,8 +100,12 @@
     <string name="action_parse_incoming_sms">解析短信</string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
-        收到的短信内容将被解析为标签 <b>{sms}</b>，
-        可用于后续的 HTTP 请求。
+        收到的短信内容将被解析为以下标签，用于后续步骤： <br>
+        <br>
+        <title><b>{raw_number}</b></title> <br>
+        &ensp; 来电号码 <br>
+        <title><b>{sms_content}</b></title> <br>
+        &ensp; 短信内容
         ]]>
     </string>
 </resources>

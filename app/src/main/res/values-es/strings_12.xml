@@ -86,6 +86,12 @@
         &ensp; <highlight><b>.*</b></highlight>
         ]]>
     </string>
+    <string name="content_filter">Filtro de Contenido</string>
+    <string name="help_content_filter">
+        <![CDATA[
+        Aunque las reglas de SMS ya han filtrado este contenido, puede usar este filtro adicional para reducirlo aún más.
+        ]]>  
+    </string>
     <string name="skip_for_testing">Omitir para pruebas.</string>
     <string name="allowed_by">Permitido por: %s</string>
     <string name="blocked_by_template">Bloqueado por: %s</string>
@@ -95,8 +101,12 @@
     <string name="action_parse_incoming_sms">Analizar SMS</string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
-        El contenido del SMS entrante se analizará en la etiqueta <b>{sms}</b>,
-        que puede usarse en las solicitudes HTTP posteriores.
+        El mensaje de SMS entrante se analizará en las siguientes etiquetas para su uso en pasos posteriores: <br>
+        <br>
+        <title><b>{raw_number}</b></title> <br>
+        &ensp; El número entrante <br>
+        <title><b>{sms_content}</b></title> <br>
+        &ensp; El contenido del SMS
         ]]>
     </string>
 </resources>

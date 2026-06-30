@@ -86,7 +86,13 @@
         <br>
         - Controlla <b>qualsiasi numero</b>:<br>
         &ensp; <highlight><b>.*</b></highlight>
-        ]]>
+        ]]>  
+    </string>
+    <string name="content_filter">Filtro Contenuto</string>
+    <string name="help_content_filter">
+        <![CDATA[
+        Sebbene le regole SMS abbiano già filtrato questo contenuto, puoi usare questo filtro aggiuntivo per restringerlo ulteriormente.
+        ]]>  
     </string>
     <string name="skip_for_testing">Salta per test.</string>
     <string name="allowed_by">Permesso da: %s</string>
@@ -95,8 +101,12 @@
     <string name="action_parse_incoming_sms">Analizza SMS</string>
     <string name="help_action_parse_incoming_sms">
         <![CDATA[
-        Il contenuto dell\'SMS in arrivo verrà analizzato nel tag <b>{sms}</b>,<br>
-        che può essere usato nelle richieste HTTP successive.
+        Il contenuto dell\'SMS in arrivo verrà analizzato nelle seguenti tag per un utilizzo nei passaggi successivi: <br>
+        <br>
+        <title><b>{raw_number}</b></title> <br>
+        &ensp; Il numero in arrivo <br>
+        <title><b>{sms_content}</b></title> <br>
+        &ensp; Il contenuto dell\'SMS
         ]]>
     </string>
 </resources>

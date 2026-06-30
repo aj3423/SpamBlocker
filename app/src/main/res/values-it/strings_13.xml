@@ -21,6 +21,7 @@
     <string name="find_rule_with_desc">Trovati %s regole con descrizione %s.</string>
     <string name="modify_n_rules">Modifica di %s regole.</string>
     <string name="number_not_match_filter">Il numero %s non corrisponde al filtro %s, salta.</string>
+    <string name="content_not_match_filter">Il contenuto non corrisponde al filtro, salta.</string>
     <string name="fail_detect_cc">Impossibile rilevare il codice paese.</string>
     <string name="identified_as_spam">Identificato come numero di telefono spam, categoria: %s, commento: %s.</string>
     <string name="identified_as_valid">Identificato come numero di telefono valido, categoria: %s, commento: %s.</string>

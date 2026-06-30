@@ -34,6 +34,7 @@
         ]]>
     </string>
     <string name="number_not_match_filter">Die Nummer %s passt nicht zum Filter %s, übersprungen.</string>
+    <string name="content_not_match_filter">Der Inhalt passt nicht zum Filter, übersprungen.</string>
     <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[

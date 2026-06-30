@@ -1,5 +1,6 @@
 package spam.blocker.service
 
+import android.R
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -10,6 +11,7 @@ import spam.blocker.db.Notification.ChannelTable
 import spam.blocker.db.SmsTable
 import spam.blocker.service.checker.Checker
 import spam.blocker.service.checker.ICheckResult
+import spam.blocker.service.reporting.reportSMS
 import spam.blocker.ui.NotificationTrampolineActivity
 import spam.blocker.util.Contacts
 import spam.blocker.util.ILogger
@@ -198,6 +200,11 @@ open class SmsReceiver : BroadcastReceiver() {
                         toCopy = toCopy,
                     )
                 }
+            }
+
+            // 5. Report SMS
+            if (r.shouldBlock()) {
+                reportSMS(ctx, r = r, rawNumber = rawNumber, smsContent = messageBody)
             }
 
             return r
