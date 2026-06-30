@@ -16,7 +16,7 @@
     </string>
     <string name="send_sms">SMSを送信</string>
     <string name="result">結果</string>
-    <string name="contacts_only">連絡先である</string>
+    <string name="contacts_only">連絡先のみ</string>
     <string name="blocked_by">ブロック元</string>
     <string name="sms_sent_successfully">SMSを正常に送信しました</string>
     <string name="failed_to_send_sms">SMSの送信に失敗しました: %s</string>

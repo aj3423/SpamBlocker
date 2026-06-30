@@ -16,7 +16,7 @@
     </string>
     <string name="send_sms">Надіслати SMS</string>
     <string name="result">Результат</string>
-    <string name="contacts_only">У контактах</string>
+    <string name="contacts_only">Тільки контакти</string>
     <string name="blocked_by">Заблоковано</string>
     <string name="sms_sent_successfully">SMS успішно надіслано</string>
     <string name="failed_to_send_sms">Помилка надсилання SMS: %s</string>

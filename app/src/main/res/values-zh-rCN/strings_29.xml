@@ -16,7 +16,7 @@
     </string>
     <string name="send_sms">发送短信</string>
     <string name="result">结果</string>
-    <string name="contacts_only">是否为联系人</string>
+    <string name="contacts_only">仅联系人</string>
     <string name="blocked_by">被拦截者</string>
     <string name="sms_sent_successfully">短信发送成功</string>
     <string name="failed_to_send_sms">短信发送失败: %s</string>

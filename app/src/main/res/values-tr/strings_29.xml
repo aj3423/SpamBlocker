@@ -16,7 +16,7 @@
     </string>
     <string name="send_sms">SMS Gönder</string>
     <string name="result">Sonuç</string>
-    <string name="contacts_only">Kişi mi</string>
+    <string name="contacts_only">Sadece Kişiler</string>
     <string name="blocked_by">Engellendi</string>
     <string name="sms_sent_successfully">SMS başarıyla gönderildi</string>
     <string name="failed_to_send_sms">SMS gönderilemedi: %s</string>

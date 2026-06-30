@@ -16,7 +16,7 @@
     </string>
     <string name="send_sms">發送簡訊</string>
     <string name="result">結果</string>
-    <string name="contacts_only">是否為聯絡人</string>
+    <string name="contacts_only">僅聯絡人</string>
     <string name="blocked_by">被攔截者</string>
     <string name="sms_sent_successfully">簡訊發送成功</string>
     <string name="failed_to_send_sms">簡訊發送失敗: %s</string>

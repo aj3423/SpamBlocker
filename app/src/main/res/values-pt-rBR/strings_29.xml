@@ -16,7 +16,7 @@
     </string>
     <string name="send_sms">Enviar SMS</string>
     <string name="result">Resultado</string>
-    <string name="contacts_only">É contato</string>
+    <string name="contacts_only">Apenas contatos</string>
     <string name="blocked_by">Bloqueado por</string>
     <string name="sms_sent_successfully">SMS enviado com sucesso</string>
     <string name="failed_to_send_sms">Falha ao enviar SMS: %s</string>
