@@ -71,4 +71,13 @@
         على سبيل المثال، تعني <b>مكالمة متكررة</b> أن نغمة الرنين المحددة ستعمل عندما تكون المكالمة مسموحاً بها من خلال <b>مكالمة متكررة</b>.
         ]]>
     </string>
+    <string name="copy_tag">نسخ العلامة</string>
+    <string name="tag_is_copied_to">تم نسخ العلامة %s إلى %s</string>
+    <string name="help_copy_tag">أنشئ علامة جديدة بنفس القيمة ولكن باسم مختلف.</string>
+    <string name="from_tag">من العلامة</string>
+    <string name="to_tag">إلى العلامة</string>
+    <string name="help_bot_preset_7726">
+        <![CDATA[
+        يُحوّل رسائل البريد المزعج إلى <error>7726</error> (رمز الاختصار العالمي لـ <error>SPAM</error>)، ميزة مدعومة على نطاق واسع من قبل العديد من شركات الاتصالات.
+        ]]>    </string>
 </resources>

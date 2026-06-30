@@ -71,4 +71,13 @@
         Например, <b>Повторный вызов</b> означает, что при разрешении вызова через <b>Повторный вызов</b> будет воспроизводиться указанный рингтон.
         ]]>
     </string>
+    <string name="copy_tag">Копировать тег</string>
+    <string name="tag_is_copied_to">Тег %s скопирован в %s</string>
+    <string name="help_copy_tag">Создать новый тег с тем же значением, но другим именем.</string>
+    <string name="from_tag">От тега</string>
+    <string name="to_tag">К тегу</string>
+    <string name="help_bot_preset_7726">
+        <![CDATA[
+        Перенаправляет спам-тексты в <error>7726</error> (универсальный короткий код для <error>SPAM</error>), функция, широко поддерживаемая многими мобильными операторами.
+        ]]>    </string>
 </resources>

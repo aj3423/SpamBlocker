@@ -71,4 +71,13 @@
         Por exemplo, <b>Chamada Repetida</b> significa que o toque especificado tocará quando a chamada for permitida por <b>Chamada Repetida</b>.
         ]]>
     </string>
+    <string name="copy_tag">Copiar Tag</string>
+    <string name="tag_is_copied_to">Tag %s foi copiado para %s</string>
+    <string name="help_copy_tag">Crie uma nova tag com o mesmo valor mas um nome diferente.</string>
+    <string name="from_tag">Tag de origem</string>
+    <string name="to_tag">Tag de destino</string>
+    <string name="help_bot_preset_7726">
+        <![CDATA[
+        Encaminha textos de spam para <error>7726</error> (o código curto universal para escrever <error>SPAM</error>), um recurso amplamente suportado por muitas operadoras de telefonia móvel.
+        ]]>    </string>
 </resources>

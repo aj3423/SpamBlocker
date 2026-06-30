@@ -128,7 +128,7 @@ fun ApiHeader(
         // Api Presets: PhoneBlock, Groq, ...
         ret += presets.map { preset ->
             LabelItem(
-                label = ctx.getString(preset.descId),
+                label = preset.desc(ctx),
                 tooltip = ctx.getString(preset.tooltipId),
                 leadingIcon = preset.leadingIconId?.let{ iconId-> { GreyIcon16(iconId) } }
             ) {

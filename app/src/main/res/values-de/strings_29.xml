@@ -71,4 +71,13 @@
         Zum Beispiel bedeutet <b>Wiederholter Anruf</b>, dass der festgelegte Klingelton abgespielt wird, wenn der Anruf durch <b>Wiederholter Anruf</b> zugelassen wird.
         ]]>
     </string>
+    <string name="copy_tag">Tag kopieren</string>
+    <string name="tag_is_copied_to">Tag %s wird kopiert nach %s</string>
+    <string name="help_copy_tag">Erstellen Sie ein neues Tag mit demselben Wert, aber einem anderen Namen.</string>
+    <string name="from_tag">Von Tag</string>
+    <string name="to_tag">Zu Tag</string>
+    <string name="help_bot_preset_7726">
+        <![CDATA[
+        Leitet Spam-Nachrichten an <error>7726</error> weiter (der universelle Kurzcode für <error>SPAM</error>), eine Funktion, die von vielen Mobilfunkanbietern unterstützt wird.
+        ]]>    </string>
 </resources>

@@ -71,4 +71,13 @@
         לדוגמה, <b>שיחה חוזרת</b> פירושה שצלצול המכשיר המוגדר יופעל כאשר השיחה מאושרת על ידי <b>שיחה חוזרת</b>.
         ]]>
     </string>
+    <string name="copy_tag">עותק תגית</string>
+    <string name="tag_is_copied_to">התגית %s נעותקת ל-%s</string>
+    <string name="help_copy_tag">יצירת תגית חדשה עם אותה ערך אך בשם שונה.</string>
+    <string name="from_tag">מתגית</string>
+    <string name="to_tag">לתגית</string>
+    <string name="help_bot_preset_7726">
+        <![CDATA[
+        מעביר טקסטי SPAM ל-<error>7726</error> (קידוד קצר אוניברסלי לכתוב <error>SPAM</error>), תכונה המומלכת על ידי ספקיות תקשורת ניידות רבות.
+        ]]>    </string>
 </resources>

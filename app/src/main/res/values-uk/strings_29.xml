@@ -71,4 +71,13 @@
         Наприклад, <b>Повторний дзвінок</b> означає, що визначена мелодія відтворить, коли дзвінок буде дозволено через <b>Повторний дзвінок</b>.
         ]]>
     </string>
+    <string name="copy_tag">Копіювати тег</string>
+    <string name="tag_is_copied_to">Тег %s скопійовано до %s</string>
+    <string name="help_copy_tag">Створіть новий тег з тим самим значенням, але іншою назвою.</string>
+    <string name="from_tag">Від тега</string>
+    <string name="to_tag">До тега</string>
+    <string name="help_bot_preset_7726">
+        <![CDATA[
+        Перенаправляє спам-тексти в <error>7726</error> (універсальний короткий код для <error>SPAM</error>), функція, широко підтримується багатьма мобільними операторами.
+        ]]>    </string>
 </resources>

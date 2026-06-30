@@ -8,6 +8,7 @@ import androidx.core.database.getIntOrNull
 import androidx.core.database.getStringOrNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTENT_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NON_CONTACT
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NUMBER_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_STIR
@@ -75,7 +76,7 @@ data class ReportApi(
         return when (blockReason) {
             RESULT_BLOCKED_BY_NON_CONTACT -> autoReportTypes.hasFlag(AutoReportTypes.NonContact) // Contacts(Strict)
             RESULT_BLOCKED_BY_STIR -> autoReportTypes.hasFlag(AutoReportTypes.STIR) // STIR
-            RESULT_BLOCKED_BY_NUMBER_REGEX -> autoReportTypes.hasFlag(AutoReportTypes.Regex) // Number regex
+            RESULT_BLOCKED_BY_NUMBER_REGEX, RESULT_BLOCKED_BY_CONTENT_REGEX -> autoReportTypes.hasFlag(AutoReportTypes.Regex) // regex
             else -> false
         }
     }

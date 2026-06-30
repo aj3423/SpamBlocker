@@ -71,4 +71,13 @@
         Por exemplo, <b>Chamada repetida</b> significa que soará o ton especificado cando a chamada sexa permitida por <b>Chamada repetida</b>.
         ]]>
     </string>
+    <string name="copy_tag">Copiar etiqueta</string>
+    <string name="tag_is_copied_to">A etiqueta %s cópiase a %s</string>
+    <string name="help_copy_tag">Crea unha nova etiqueta co mesmo valor pero un nome diferente.</string>
+    <string name="from_tag">Da etiqueta</string>
+    <string name="to_tag">A etiqueta</string>
+    <string name="help_bot_preset_7726">
+        <![CDATA[
+        Envia textos de spam a <error>7726</error> (o código curto universal que escribe <error>SPAM</error>), unha función moi utilizada por moitos operadores de mobilidade.
+        ]]>    </string>
 </resources>

@@ -29,7 +29,7 @@ import spam.blocker.def.Def.RESULT_BLOCKED_BY_CNAP_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTACT_GROUP_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTACT_PREFIX_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTACT_REGEX
-import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTENT_RULE
+import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTENT_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_DATABASE_PREFIX_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_GEO_LOCATION_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NUMBER_REGEX
@@ -93,7 +93,7 @@ fun IndicatorIcons(indicators: Indicators) {
                 RESULT_ALLOWED_BY_CONTENT_RULE -> {
                     ResIcon(R.drawable.ic_sms_pass, modifier = M.size(14.dp), color = C.success)
                 }
-                RESULT_BLOCKED_BY_CONTENT_RULE -> {
+                RESULT_BLOCKED_BY_CONTENT_REGEX -> {
                     ResIcon(R.drawable.ic_sms_blocked, modifier = M.size(14.dp), color = C.error)
                 }
             }
@@ -250,7 +250,7 @@ fun IndicatorsWrapper(
                     val resultType = checkResult.type
 
                     when (checkResult.type) {
-                        RESULT_ALLOWED_BY_CONTENT_RULE, RESULT_BLOCKED_BY_CONTENT_RULE -> {
+                        RESULT_ALLOWED_BY_CONTENT_RULE, RESULT_BLOCKED_BY_CONTENT_REGEX -> {
                             add(
                                 Indicator(
                                     type = resultType,

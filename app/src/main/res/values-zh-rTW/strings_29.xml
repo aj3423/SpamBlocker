@@ -71,4 +71,13 @@
         例如，「重複來電」表示當通話被「重複來電」允許時，將播放指定的鈴聲。
         ]]>
     </string>
+    <string name="copy_tag">複製標籤</string>
+    <string name="tag_is_copied_to">標籤 %s 已複製至 %s</string>
+    <string name="help_copy_tag">建立具有相同值但不同名稱的新標籤。</string>
+    <string name="from_tag">來源標籤</string>
+    <string name="to_tag">目標標籤</string>
+    <string name="help_bot_preset_7726">
+        <![CDATA[
+        將垃圾短訊轉發至 <error>7726</error>（用於拼寫 <error>SPAM</error> 的通用短代碼），這是許多行動電信業者廣泛支援的功能。
+        ]]>    </string>
 </resources>

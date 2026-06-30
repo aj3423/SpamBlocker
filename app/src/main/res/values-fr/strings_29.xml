@@ -71,4 +71,13 @@
         Par exemple, <b>Appel répété</b> signifie que la sonnerie spécifiée retentira lorsque l\'appel sera autorisé par <b>Appel répété</b>.
         ]]>
     </string>
+    <string name="copy_tag">Copier la balise</string>
+    <string name="tag_is_copied_to">La balise %s est copiée dans %s</string>
+    <string name="help_copy_tag">Créez une nouvelle balise avec la même valeur mais un nom différent.</string>
+    <string name="from_tag">Balise d\'origine</string>
+    <string name="to_tag">Balise de destination</string>
+    <string name="help_bot_preset_7726">
+        <![CDATA[
+        Transfère les messages SPAM vers <error>7726</error> (le code court universel pour écrire <error>SPAM</error>), une fonctionnalité largement prise en charge par de nombreux opérateurs mobiles.
+        ]]>    </string>
 </resources>

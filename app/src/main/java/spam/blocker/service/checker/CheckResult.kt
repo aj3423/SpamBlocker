@@ -57,7 +57,7 @@ import spam.blocker.def.Def.RESULT_BLOCKED_BY_CNAP_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTACT_GROUP_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTACT_PREFIX_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTACT_REGEX
-import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTENT_RULE
+import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTENT_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_DATABASE_PREFIX_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_GEO_LOCATION_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_MEETING_MODE
@@ -499,7 +499,7 @@ class ByRegexRule(
                 val smsContent = record.extraInfo
                 val isBySmsRule = type in listOf(
                     RESULT_ALLOWED_BY_CONTENT_RULE,
-                    RESULT_BLOCKED_BY_CONTENT_RULE
+                    RESULT_BLOCKED_BY_CONTENT_REGEX
                 )
 
                 if (smsContent != null && isBySmsRule && rule != null) {
@@ -534,7 +534,7 @@ class ByRegexRule(
                 ctx.getString(R.string.contact_rule) + ": $summary"
             }
 
-            RESULT_ALLOWED_BY_CONTENT_RULE, RESULT_BLOCKED_BY_CONTENT_RULE -> {
+            RESULT_ALLOWED_BY_CONTENT_RULE, RESULT_BLOCKED_BY_CONTENT_REGEX -> {
                 ctx.getString(R.string.content) + ": $summary"
             }
 
@@ -665,7 +665,7 @@ fun parseCheckResultFromDb(ctx: Context, result: Int, reason: String): ICheckRes
             }
         }
 
-        RESULT_ALLOWED_BY_CONTENT_RULE, RESULT_BLOCKED_BY_CONTENT_RULE -> {
+        RESULT_ALLOWED_BY_CONTENT_RULE, RESULT_BLOCKED_BY_CONTENT_REGEX -> {
             try {
                 // try new format, `reason` is a json string like: {"ruleId": 123, "details": "..."}
                 val data = Json.decodeFromString<ByRegexRule.DbData>(reason)

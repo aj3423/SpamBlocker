@@ -1480,7 +1480,7 @@ class Checker { // for namespace only
                     )
 
                 return ByRegexRule(
-                    type = if (block) Def.RESULT_BLOCKED_BY_CONTENT_RULE else Def.RESULT_ALLOWED_BY_CONTENT_RULE,
+                    type = if (block) Def.RESULT_BLOCKED_BY_CONTENT_REGEX else Def.RESULT_ALLOWED_BY_CONTENT_RULE,
                     rule = rule,
                 )
             }

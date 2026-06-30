@@ -479,7 +479,7 @@ class RuleTest {
 
         //  should block for anyone else
         r = Checker.checkSms(ctx, Alice, msg).first
-        assertEquals("should block", Def.RESULT_BLOCKED_BY_CONTENT_RULE, r.type)
+        assertEquals("should block", Def.RESULT_BLOCKED_BY_CONTENT_REGEX, r.type)
     }
 
     // test regex flags CaseSensitive
@@ -502,7 +502,7 @@ class RuleTest {
         )
 
         r = Checker.checkSms(ctx, Bob, msg).first
-        assertEquals("should block", Def.RESULT_BLOCKED_BY_CONTENT_RULE, r.type)
+        assertEquals("should block", Def.RESULT_BLOCKED_BY_CONTENT_REGEX, r.type)
     }
 
     // regex flags RawNumber
@@ -602,7 +602,7 @@ class RuleTest {
 
         // sms content "123"(sim 1) should be blocked (by rule 2)
         r = Checker.checkSms(ctx, Bob, content_123, simSlot = 1).first
-        assertEquals("should block 2", Def.RESULT_BLOCKED_BY_CONTENT_RULE, r.type)
+        assertEquals("should block 2", Def.RESULT_BLOCKED_BY_CONTENT_REGEX, r.type)
 
         // sms "123"(null simSlot) should be allowed by rule 1, simSlot==null for people only use 1 sim card
         r = Checker.checkSms(ctx, Alice, content_123).first
@@ -611,7 +611,7 @@ class RuleTest {
         // sms with random content(null simSlot) should be blocked by rule 2, simSlot==null for people only use 1 sim card
         val random_sms = "random_sms"
         r = Checker.checkSms(ctx, Bob, random_sms).first
-        assertEquals("should block 4", Def.RESULT_BLOCKED_BY_CONTENT_RULE, r.type)
+        assertEquals("should block 4", Def.RESULT_BLOCKED_BY_CONTENT_REGEX, r.type)
     }
 
     // CNAP rule (Caller Display Name)

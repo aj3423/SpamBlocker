@@ -71,4 +71,13 @@
         Per exemple, <b>Trucada repetida</b> significa que sonarà el ton especificat quan la trucada sigui permesa per <b>Trucada repetida</b>.
         ]]>
     </string>
+    <string name="copy_tag">Copiar etiqueta</string>
+    <string name="tag_is_copied_to">L\'etiqueta %s s\'ha copiat a %s</string>
+    <string name="help_copy_tag">Crea una nova etiqueta amb el mateix valor però un nom diferent.</string>
+    <string name="from_tag">D\'etiqueta</string>
+    <string name="to_tag">A etiqueta</string>
+    <string name="help_bot_preset_7726">
+        <![CDATA[
+        Envia textos de spam a <error>7726</error> (el codi curt universal que escriu <error>SPAM</error>), una característica ampliament utilitzada per molts operadors mòbils.
+        ]]>    </string>
 </resources>

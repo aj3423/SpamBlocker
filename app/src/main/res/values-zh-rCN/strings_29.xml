@@ -71,4 +71,13 @@
         例如，“重复来电”表示当通话被“重复来电”允许时，将播放指定的铃声。
         ]]>
     </string>
+    <string name="copy_tag">复制标签</string>
+    <string name="tag_is_copied_to">标签 %s 已复制到 %s</string>
+    <string name="help_copy_tag">创建具有相同值但不同名称的新标签。</string>
+    <string name="from_tag">来源标签</string>
+    <string name="to_tag">目标标签</string>
+    <string name="help_bot_preset_7726">
+        <![CDATA[
+        将垃圾短信转发到 <error>7726</error>（用于拼写 <error>SPAM</error> 的通用短代码），这是许多移动运营商广泛支持的功能。
+        ]]>    </string>
 </resources>

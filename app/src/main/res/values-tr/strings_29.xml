@@ -71,4 +71,13 @@
         Örneğin, <b>Tekrarlanan Arama</b>, arama <b>Tekrarlanan Arama</b> tarafından izin verildiğinde belirtilen zil sesinin çalacağı anlamına gelir.
         ]]>
     </string>
+    <string name="copy_tag">Etiket Kopyala</string>
+    <string name="tag_is_copied_to">Etiket %s, %s\'a kopyalandı</string>
+    <string name="help_copy_tag">Aynı değere sahip ancak farklı isimli yeni bir etiket oluşturun.</string>
+    <string name="from_tag">Kaynak Etiket</string>
+    <string name="to_tag">Hedef Etiket</string>
+    <string name="help_bot_preset_7726">
+        <![CDATA[
+        <error>7726</error>'ye (evrensel kısa kod ile <error>SPAM</error> yazan) spam metinlerini iletir, birçok mobil operatör tarafından geniş ölçüde desteklenen bir özelliktir.
+        ]]>    </string>
 </resources>

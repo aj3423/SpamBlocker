@@ -71,4 +71,13 @@
         به عنوان مثال، <b>تماس مکرر</b> به این معنی است که وقتی تماس توسط <b>تماس مکرر</b> مجاز شود، زنگ تعیین شده پخش خواهد شد.
         ]]>
     </string>
+    <string name="copy_tag">کپی تگ</string>
+    <string name="tag_is_copied_to">تگ %s به %s کپی شد</string>
+    <string name="help_copy_tag">یک تگ جدید با همان مقدار اما نام متفاوت ایجاد کنید.</string>
+    <string name="from_tag">از تگ</string>
+    <string name="to_tag">به تگ</string>
+    <string name="help_bot_preset_7726">
+        <![CDATA[
+        متن پیام‌های اسپم را به <error>7726</error> (کد کوتاه جهانی نوشتن <error>SPAM</error>) ارسال می‌کند، قابلیتی که به‌طور گسترده توسط بسیاری از اپراتورهای موبایل پشتیبانی می‌شود.
+        ]]>    </string>
 </resources>

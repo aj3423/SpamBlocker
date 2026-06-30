@@ -80,6 +80,7 @@ val apiActions = listOf(
     GenerateTag(),
     SetTag(),
     CopyTag(),
+    Wait(),
     SendSms(),
 )
 

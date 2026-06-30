@@ -52,7 +52,7 @@ object Def {
 
     // blocked (10~99)
     const val RESULT_BLOCKED_BY_NUMBER_REGEX = 10
-    const val RESULT_BLOCKED_BY_CONTENT_RULE = 11
+    const val RESULT_BLOCKED_BY_CONTENT_REGEX = 11
     const val RESULT_BLOCKED_BY_NON_CONTACT = 12
     const val RESULT_BLOCKED_BY_STIR = 13
     const val RESULT_BLOCKED_BY_CONTACT_GROUP_REGEX = 14

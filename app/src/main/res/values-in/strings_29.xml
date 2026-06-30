@@ -71,4 +71,13 @@
         Sebagai contoh, <b>Panggilan Berulang</b> berarti nada dering yang ditentukan akan berbunyi ketika panggilan diizinkan oleh <b>Panggilan Berulang</b>.
         ]]>
     </string>
+    <string name="copy_tag">Salin Tag</string>
+    <string name="tag_is_copied_to">Tag %s disalin ke %s</string>
+    <string name="help_copy_tag">Buat tag baru dengan nilai yang sama tapi nama yang berbeda.</string>
+    <string name="from_tag">Dari Tag</string>
+    <string name="to_tag">Ke Tag</string>
+    <string name="help_bot_preset_7726">
+        <![CDATA[
+        Menyampaikan pesan spam ke <error>7726</error> (kode singkat universal untuk <error>SPAM</error>), fitur yang didukung luas oleh banyak operator seluler.
+        ]]>    </string>
 </resources>

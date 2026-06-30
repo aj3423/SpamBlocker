@@ -71,4 +71,13 @@
         例えば、「繰り返し通話」は、通話が「繰り返し通話」によって許可されたときに指定した着信音が鳴ることを意味します。
         ]]>
     </string>
+    <string name="copy_tag">タグをコピー</string>
+    <string name="tag_is_copied_to">タグ %s は %s にコピーされます</string>
+    <string name="help_copy_tag">同じ値但有り異なる名前の新しいタグを作成します。</string>
+    <string name="from_tag">元タグ</string>
+    <string name="to_tag">先タグ</string>
+    <string name="help_bot_preset_7726">
+        <![CDATA[
+        スпамテキストを<error>7726</error>に転送します（<error>SPAM</error>を記述する汎用ショートコード）。これは多くの移動体通信事業者で広くサポートされている機能です。
+        ]]>    </string>
 </resources>

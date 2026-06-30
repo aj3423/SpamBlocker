@@ -50,7 +50,8 @@ fun reportSMS(
     val apis = G.apiReportVM.table.listAll(ctx)
         .filter {
             it.enabled &&
-                    it.actions.firstOrNull() is InterceptSms
+                    it.actions.firstOrNull() is InterceptSms &&
+                    (it as ReportApi).enabledForBlockReason(r.type)
         }
 
     apis.forEach { api ->
