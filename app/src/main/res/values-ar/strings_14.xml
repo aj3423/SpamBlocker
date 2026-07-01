@@ -28,21 +28,12 @@
         ]]>
     </string>
     <string name="running_services">الخدمات قيد التشغيل</string>
-    <string-array name="spam_categories">
-        <item>رقم صالح</item>
-        <item>احتيال</item>
-        <item>تسويق</item>
-        <item>استطلاع</item>
-        <item>سياسي</item>
-        <item>رسائل غير مرغوب فيها أخرى</item>
-    </string-array>
     <string name="valid_number">رقم صالح</string>
     <string name="valid_sms">رسالة نصية صالحة</string>
     <string name="fraud">احتيال</string>
     <string name="marketing">تسويق</string>
     <string name="survey">استطلاع</string>
     <string name="political">سياسي</string>
-    <string name="other_spam">رسائل غير مرغوب فيها أخرى</string>
     <string name="action_category_config">تكوين الفئة</string>
     <string name="help_action_category_config">
         <![CDATA[

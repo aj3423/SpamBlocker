@@ -28,21 +28,12 @@
         ]]>
     </string>
     <string name="running_services">執行中的服務</string>
-    <string-array name="spam_categories">
-        <item>有效號碼</item>
-        <item>詐騙</item>
-        <item>行銷</item>
-        <item>問卷調查</item>
-        <item>政治</item>
-        <item>其他騷擾類型</item>
-    </string-array>
     <string name="valid_number">有效號碼</string>
     <string name="valid_sms">有效簡訊</string>
     <string name="fraud">詐騙</string>
     <string name="marketing">行銷</string>
     <string name="survey">問卷調查</string>
     <string name="political">政治</string>
-    <string name="other_spam">其他騷擾類型</string>
     <string name="action_category_config">類別設定</string>
     <string name="help_action_category_config">
         <![CDATA[

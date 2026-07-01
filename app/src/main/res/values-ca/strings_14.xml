@@ -28,21 +28,12 @@
         ]]>
     </string>
     <string name="running_services">Serveis en execució</string>
-    <string-array name="spam_categories">
-        <item>Número vàlid</item>
-        <item>Frau</item>
-        <item>Màrqueting</item>
-        <item>Enquesta</item>
-        <item>Polític</item>
-        <item>Altre Spam</item>
-    </string-array>
     <string name="valid_number">Número vàlid</string>
     <string name="valid_sms">SMS vàlid</string>
     <string name="fraud">Frau</string>
     <string name="marketing">Màrqueting</string>
     <string name="survey">Enquesta</string>
     <string name="political">Polític</string>
-    <string name="other_spam">Altre Spam</string>
     <string name="action_category_config">Configuració de la categoria</string>
     <string name="help_action_category_config">
         <![CDATA[

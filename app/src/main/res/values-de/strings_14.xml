@@ -28,21 +28,12 @@
     </string>
     <string name="running_services">Laufende Dienste</string>
     <string name="report_number">Nummer melden</string>
-    <string-array name="spam_categories">
-        <item>Gültige Nummer</item>
-        <item>Betrug</item>
-        <item>Marketing</item>
-        <item>Umfrage</item>
-        <item>Politik</item>
-        <item>Sonstige Spam-Anrufe</item>
-    </string-array>
     <string name="valid_number">Gültige Nummer</string>
     <string name="valid_sms">Gültige SMS</string>
     <string name="fraud">Betrug</string>
     <string name="marketing">Marketing</string>
     <string name="survey">Umfrage</string>
     <string name="political">Politik</string>
-    <string name="other_spam">Sonstige Spam-Anrufe</string>
     <string name="action_category_config">Kategorie Konfiguration</string>
     <string name="help_action_category_config">
         <![CDATA[

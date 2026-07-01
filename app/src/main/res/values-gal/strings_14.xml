@@ -28,21 +28,12 @@
     </string>
     <string name="running_services">Servizos en execución</string>
     <string name="report_number">Denunciar número</string>
-    <string-array name="spam_categories">
-        <item>Número Válido</item>
-        <item>Fraude</item>
-        <item>Marketing</item>
-        <item>Enquisa</item>
-        <item>Político</item>
-        <item>Outro Spam</item>
-    </string-array>
     <string name="valid_number">Número Válido</string>
     <string name="valid_sms">Mensaxe de texto Válido</string>
     <string name="fraud">Fraude</string>
     <string name="marketing">Marketing</string>
     <string name="survey">Enquisa</string>
     <string name="political">Político</string>
-    <string name="other_spam">Outro Spam</string>
     <string name="action_category_config">Configuración de Categoría</string>
     <string name="help_action_category_config">
         <![CDATA[

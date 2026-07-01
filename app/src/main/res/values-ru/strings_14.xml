@@ -28,21 +28,12 @@
         ]]>
     </string>
     <string name="running_services">Запущенные сервисы</string>
-    <string-array name="spam_categories">
-        <item>Надёжный номер</item>
-        <item>Мошенничество</item>
-        <item>Маркетинг</item>
-        <item>Опрос</item>
-        <item>Политика</item>
-        <item>Другой спам</item>
-    </string-array>
     <string name="valid_number">Надёжный номер</string>
     <string name="valid_sms">Надёжный SMS</string>
     <string name="fraud">Мошенничество</string>
     <string name="marketing">Маркетинг</string>
     <string name="survey">Опрос</string>
     <string name="political">Политика</string>
-    <string name="other_spam">Другой спам</string>
     <string name="action_category_config">Настройка категории</string>
     <string name="help_action_category_config">
         <![CDATA[

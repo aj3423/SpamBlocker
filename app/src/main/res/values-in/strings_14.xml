@@ -28,21 +28,12 @@
         ]]>
     </string>
     <string name="running_services">Layanan yang Berjalan</string>
-    <string-array name="spam_categories">
-        <item>Nomor Sah</item>
-        <item>Penipuan</item>
-        <item>Pemasaran</item>
-        <item>Survei</item>
-        <item>Politik</item>
-        <item>Spam Lain</item>
-    </string-array>
     <string name="valid_number">Nomor Sah</string>
     <string name="valid_sms">Pesan Teks Sah</string>
     <string name="fraud">Penipuan</string>
     <string name="marketing">Pemasaran</string>
     <string name="survey">Survei</string>
     <string name="political">Politik</string>
-    <string name="other_spam">Spam Lain</string>
     <string name="action_category_config">Konfigurasi Kategori</string>
     <string name="help_action_category_config">
         <![CDATA[
