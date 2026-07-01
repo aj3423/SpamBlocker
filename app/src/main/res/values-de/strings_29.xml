@@ -80,4 +80,5 @@
         <![CDATA[
         Leitet Spam-Nachrichten an <error>7726</error> weiter (der universelle Kurzcode für <error>SPAM</error>), eine Funktion, die von vielen Mobilfunkanbietern unterstützt wird.
         ]]>    </string>
+    <string name="report_sms">SMS melden</string>
 </resources>

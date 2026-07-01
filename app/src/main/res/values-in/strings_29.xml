@@ -80,4 +80,5 @@
         <![CDATA[
         Menyampaikan pesan spam ke <error>7726</error> (kode singkat universal untuk <error>SPAM</error>), fitur yang didukung luas oleh banyak operator seluler.
         ]]>    </string>
+    <string name="report_sms">Laporkan SMS</string>
 </resources>

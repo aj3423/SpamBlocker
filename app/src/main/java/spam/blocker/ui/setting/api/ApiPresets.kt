@@ -8,6 +8,7 @@ import spam.blocker.db.AutoReportTypes
 import spam.blocker.db.ImportDbReason
 import spam.blocker.db.QueryApi
 import spam.blocker.db.ReportApi
+import spam.blocker.def.Def
 import spam.blocker.service.bot.CategoryConfig
 import spam.blocker.service.bot.CopyTag
 import spam.blocker.service.bot.FilterSpamResult
@@ -21,34 +22,14 @@ import spam.blocker.service.bot.ParseQueryResult
 import spam.blocker.service.bot.SendSms
 import spam.blocker.service.bot.SetTag
 import spam.blocker.service.bot.Wait
+import spam.blocker.ui.history.tagFraud
+import spam.blocker.ui.history.tagMarketing
+import spam.blocker.ui.history.tagOther
+import spam.blocker.ui.history.tagPolitical
+import spam.blocker.ui.history.tagSurvey
+import spam.blocker.ui.history.tagValid
 import spam.blocker.util.Lambda1
 import spam.blocker.util.Launcher
-
-const val tagCategory = "{category}"
-const val tagComment = "{comment}"
-
-const val tagValid = "{valid}"
-const val tagOther = "{other}"
-const val tagFraud = "{fraud}"
-const val tagMarketing = "{marketing}"
-const val tagSurvey = "{survey}"
-const val tagPolitical = "{political}"
-
-// Only add to this, don't modify existing items
-// When adding items to this map, make sure to add to R.array.spam_categories as well.
-fun spamCategoryNamesMap(ctx: Context): Map<String, String> {
-    val array = ctx.resources.getStringArray(R.array.spam_categories)
-    return mapOf(
-        tagValid to array[0],
-
-        tagFraud to array[1],
-        tagMarketing to array[2],
-        tagSurvey to array[3],
-        tagPolitical to array[4],
-
-        tagOther to array[5], // the last one, it's also ordered on UI
-    )
-}
 
 data class ApiPreset(
     val desc: (Context) -> String,
@@ -138,91 +119,87 @@ val ApiQueryPresets by lazy {
         ),
     )
 }
-val ApiReportPreset_PhoneBlock by lazy {
-    ApiPreset(
-        desc = { ctx -> ctx.getString(R.string.api_preset_phoneblock) },
-        leadingIconId = R.drawable.ic_call,
-        tooltipId = R.string.help_api_preset_phoneblock,
-        setupDialog = OAuthSetupDialog(
-            spfTokenKey = PhoneBlock.spfTokenKey,
-            oauthUrl = if (BuildConfig.DEBUG) PhoneBlock.oauthUrl_Debug else PhoneBlock.oauthUrl,
-            doAdd = { ctx ->
-                val newApi = ReportApi(
-                    desc = ctx.getString(R.string.api_preset_phoneblock),
-                    enabled = true,
-                    actions = listOf(
-                        InterceptCall(
-                            numberFilter = ".*",
-                            forwardType = ForwardType.Original,
-                        ),
-                        CategoryConfig(
-                            map = mapOf(
-                                tagValid to "A_LEGITIMATE",
-                                tagOther to "B_MISSED",
-                                tagSurvey to "D_POLL",
-                                tagMarketing to "E_ADVERTISING",
-                                tagPolitical to "E_ADVERTISING",
-                                tagFraud to "G_FRAUD",
-                            )
-                        ),
-                        HttpRequest(
-                            url = if (BuildConfig.DEBUG)
-                                "https://phoneblock.net/pb-test/api/rate"
-                            else
-                                "https://phoneblock.net/phoneblock/api/rate",
-                            header = "{bearer_auth({shared_pref(${PhoneBlock.spfTokenKey})})}",
-                            method = HTTP_POST,
-                            body = """
+
+val ApiReportPresets by lazy {
+    listOf(
+        // PhoneBlock
+        ApiPreset(
+            desc = { ctx -> ctx.getString(R.string.api_preset_phoneblock) },
+            leadingIconId = R.drawable.ic_call,
+            tooltipId = R.string.help_api_preset_phoneblock,
+            setupDialog = OAuthSetupDialog(
+                spfTokenKey = PhoneBlock.spfTokenKey,
+                oauthUrl = if (BuildConfig.DEBUG) PhoneBlock.oauthUrl_Debug else PhoneBlock.oauthUrl,
+                doAdd = { ctx ->
+                    val newApi = ReportApi(
+                        desc = ctx.getString(R.string.api_preset_phoneblock),
+                        enabled = true,
+                        actions = listOf(
+                            InterceptCall(
+                                numberFilter = ".*",
+                                forwardType = ForwardType.Original,
+                            ),
+                            CategoryConfig(
+                                map = mapOf(
+                                    tagValid to "A_LEGITIMATE",
+                                    tagOther to "B_MISSED",
+                                    tagSurvey to "D_POLL",
+                                    tagMarketing to "E_ADVERTISING",
+                                    tagPolitical to "E_ADVERTISING",
+                                    tagFraud to "G_FRAUD",
+                                )
+                            ),
+                            HttpRequest(
+                                url = if (BuildConfig.DEBUG)
+                                    "https://phoneblock.net/pb-test/api/rate"
+                                else
+                                    "https://phoneblock.net/phoneblock/api/rate",
+                                header = "{bearer_auth({shared_pref(${PhoneBlock.spfTokenKey})})}",
+                                method = HTTP_POST,
+                                body = """
                             {
                                 "phone": "00{cc}{domestic}",
                                 "rating": "{category}",
                                 "comment": "{comment}"
                             }
                         """.trimIndent()
+                            )
                         )
+                    )
+
+                    addApiToDB(ctx, G.apiReportVM, newApi)
+                }
+            )
+        ),
+
+        // 7726
+        ApiPreset(
+            desc = { "7726" },
+            leadingIconId = R.drawable.ic_sms_blocked,
+            tooltipId = R.string.help_bot_preset_7726,
+            onClick = { ctx ->
+                val newApi = ReportApi(
+                    desc = "7726",
+                    enabled = true,
+                    autoReportTypes = AutoReportTypes.Regex,
+                    actions = listOf(
+                        InterceptSms(
+                            contentFilter = ".*",
+                        ),
+                        SetTag(
+                            tagName = "send_sms_to",
+                            tagValue = "7726"
+                        ),
+                        CopyTag(
+                            tagFrom = "sms_content",
+                            tagTo = "send_sms_content"
+                        ),
+                        SendSms()
                     )
                 )
 
                 addApiToDB(ctx, G.apiReportVM, newApi)
             }
-        )
-    )
-}
-
-val ApiReportPreset_7726 by lazy {
-    ApiPreset(
-        desc = { "7726" },
-        leadingIconId = R.drawable.ic_sms_blocked,
-        tooltipId = R.string.help_bot_preset_7726,
-        onClick = { ctx ->
-            val newApi = ReportApi(
-                desc = "7726",
-                enabled = true,
-                autoReportTypes = AutoReportTypes.Regex,
-                actions = listOf(
-                    InterceptSms(
-                        contentFilter = ".*",
-                    ),
-                    SetTag(
-                        tagName = "send_sms_to",
-                        tagValue = "7726"
-                    ),
-                    CopyTag(
-                        tagFrom = "sms_content",
-                        tagTo = "send_sms_content"
-                    ),
-                    SendSms()
-                )
-            )
-
-            addApiToDB(ctx, G.apiReportVM, newApi)
-        }
-    )
-}
-
-val ApiReportPresets by lazy {
-    listOf(
-        ApiReportPreset_PhoneBlock,
-        ApiReportPreset_7726,
+        ),
     )
 }

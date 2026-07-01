@@ -4,12 +4,18 @@ import android.content.Context
 import android.provider.CallLog
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 import spam.blocker.BuildConfig
 import spam.blocker.G
+import spam.blocker.R
+import spam.blocker.db.CallTable
+import spam.blocker.db.HistoryTable
 import spam.blocker.db.IApi
 import spam.blocker.db.ImportDbReason
 import spam.blocker.db.ReportApi
+import spam.blocker.db.SmsTable
 import spam.blocker.db.SpamTable
 import spam.blocker.def.Def
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NON_CONTACT
@@ -28,57 +34,113 @@ import spam.blocker.service.bot.executeAll
 import spam.blocker.service.bot.serialize
 import spam.blocker.service.checker.BySpamDb
 import spam.blocker.service.checker.ICheckResult
-import spam.blocker.ui.setting.api.tagOther
-import spam.blocker.util.AdbLogger
+import spam.blocker.ui.history.HistoryViewModel
+import spam.blocker.ui.history.tagOther
 import spam.blocker.util.Contacts
+import spam.blocker.util.Lambda2
 import spam.blocker.util.Permission
 import spam.blocker.util.PhoneNumber
+import spam.blocker.util.SaveableLogger
+import spam.blocker.util.TimeUtils.formatTime
 import spam.blocker.util.Util.domainFromUrl
 import spam.blocker.util.Util.getHistoryCallsByNumber
 import spam.blocker.util.logi
 import java.util.UUID
 
+fun updateRecordAutoReportLog(
+    ctx: Context,
+    table: HistoryTable,
+    vm: HistoryViewModel,
+    recordId: Long?,
+    log: String,
+    anythingWrong: Boolean
+) {
+    recordId?.let {
+        // 1. Save the log to history record
+        table.setAutoReportLog(
+            ctx, recordId = recordId, log = log, anythingWrong = anythingWrong
+        )
+        // 2. Update records in G to update UI
+        vm.updateRecord(recordId) {
+            copy(
+                autoReportingLog = log,
+                anythingWrongReporting = anythingWrong,
+            )
+        }
+    }
+}
 
 // ------------ For SMS --------------
-fun reportSMS(
+fun autoReportSMS(
     ctx: Context,
     r: ICheckResult,
     rawNumber: String,
     smsContent: String,
+    recordId: Long?,
 ) {
     val scope = CoroutineScope(IO)
-    val apis = G.apiReportVM.table.listAll(ctx)
-        .filter {
-            it.enabled &&
-                    it.actions.firstOrNull() is InterceptSms &&
-                    (it as ReportApi).enabledForBlockReason(r.type)
-        }
+    val apis = listReportableSmsAPIs(ctx, blockReason = r.type)
+    val logger = SaveableLogger()
+    logger.info(ctx.getString(R.string.auto_report))
+    logger.debug("${ctx.getString(R.string.executed_at)} ${formatTime(ctx, System.currentTimeMillis())}\n")
 
-    apis.forEach { api ->
-        scope.launch {
+    val deferredResults = apis.map { api ->
+        scope.async {
             val aCtx = ActionContext(
                 scope = scope,
-                logger = AdbLogger(),
+                logger = logger,
                 rawNumber = rawNumber,
                 smsContent = smsContent,
                 tagCategoryValue = tagOther,
             )
             api.actions.executeAll(ctx, aCtx)
+            aCtx.anythingWrong // returns a boolean
         }
     }
+    scope.launch {
+        val anythingWrong = deferredResults.awaitAll()
+            .contains(true)
+        val log = logger.output.serialize()
+
+        updateRecordAutoReportLog(
+            ctx, table = SmsTable(), vm = G.smsVM, recordId = recordId,
+            log = log, anythingWrong = anythingWrong
+        )
+    }
+}
+
+fun listReportableSmsAPIs(
+    ctx: Context,
+    blockReason: Int?, // null for ManualReport
+    isManualReport: Boolean = false,
+): List<IApi> {
+    return G.apiReportVM.table.listAll(ctx)
+        .filter {
+            it.enabled &&
+                    it.actions.firstOrNull() is InterceptSms
+
+        }
+        .filter {
+            if (isManualReport)
+                true
+            else
+                (it as ReportApi).enabledForBlockReason(blockReason!!)
+        }
 }
 
 // ------------ For Call --------------
 fun autoReportSpamCall(
     ctx: Context,
     r: ICheckResult,
+    recordId: Long?,
     rawNumber: String,
     isTest: Boolean,
 ) {
     if (shouldReportImmediately(r)) {
-        reportImmediately(ctx, r, rawNumber)
+        reportImmediately(ctx, r, recordId, rawNumber)
     } else {
-        scheduleReporting(ctx, r, rawNumber, isTest)
+        scheduleReporting(
+            ctx, r = r, rawNumber = rawNumber, isTesting = isTest, recordId = recordId)
     }
 }
 
@@ -92,6 +154,7 @@ private fun shouldReportImmediately(
 private fun reportImmediately(
     ctx: Context,
     r: ICheckResult,
+    recordId: Long?,
     rawNumber: String,
 ) {
     // 0. if blocked by API or spam db that originally blocked by API
@@ -110,22 +173,38 @@ private fun reportImmediately(
         else -> null
     }
     // Report if `domain` exists
-    if (domain != null) {
-        val scope = CoroutineScope(IO)
-        val apis = listReportableAPIs(
-            ctx, rawNumber = rawNumber, domainFilter = listOf(domain), blockReason = r.type, isDbApi = true
-        )
-        apis.forEach { api ->
-            scope.launch {
-                val aCtx = ActionContext(
-                    scope = scope,
-                    logger = AdbLogger(),
-                    rawNumber = rawNumber,
-                    tagCategoryValue = tagOther,
-                )
-                api.actions.executeAll(ctx, aCtx)
-            }
+    if (domain == null)
+        return
+
+    // Report
+    val scope = CoroutineScope(IO)
+    val apis = listReportableCallAPIs(
+        ctx, rawNumber = rawNumber, domainFilter = listOf(domain), blockReason = r.type, isDbApi = true
+    )
+    val logger = SaveableLogger()
+    logger.info(ctx.getString(R.string.auto_report))
+    logger.debug("${ctx.getString(R.string.executed_at)} ${formatTime(ctx, System.currentTimeMillis())}\n")
+
+    val deferredResults = apis.map { api ->
+        scope.async {
+            val aCtx = ActionContext(
+                scope = scope,
+                logger = logger,
+                rawNumber = rawNumber,
+                tagCategoryValue = tagOther,
+            )
+            api.actions.executeAll(ctx, aCtx)
+            aCtx.anythingWrong // returns a boolean
         }
+    }
+    scope.launch {
+        val anythingWrong = deferredResults.awaitAll()
+            .contains(true)
+        val log = logger.output.serialize()
+
+        updateRecordAutoReportLog(
+            ctx, table = CallTable(), vm = G.callVM, recordId = recordId, log = log, anythingWrong = anythingWrong
+        )
     }
 }
 
@@ -133,6 +212,7 @@ private fun reportImmediately(
 private fun scheduleReporting(
     ctx: Context,
     r: ICheckResult,
+    recordId: Long?,
     rawNumber: String,
     isTesting: Boolean,
 ) {
@@ -172,6 +252,7 @@ private fun scheduleReporting(
                 ScheduledAutoReportNumber(
                     rawNumber = rawNumber,
                     asTagCategory = tagOther,
+                    recordId = recordId,
                     blockReason = r.type
                 )
             ).serialize(),
@@ -204,11 +285,11 @@ private fun isNumberAllowedLater(ctx: Context, rawNumber: String) : Boolean {
 // 1. if the api is enabled
 // 2. remove duplicated apis
 // 3. filter by domain(for reporting to a specific api after query or blocked by SpamDB)
-fun listReportableAPIs(
+fun listReportableCallAPIs(
     ctx: Context,
     rawNumber: String,
     domainFilter: List<String>?,
-    blockReason: Int?, // null for
+    blockReason: Int?, // null for ManualReport
     isManualReport: Boolean = false,
     isDbApi: Boolean = false, // if the number is blocked by DB and was auto added by API query
 ): List<IApi> {

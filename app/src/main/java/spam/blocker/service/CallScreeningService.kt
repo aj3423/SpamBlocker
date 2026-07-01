@@ -218,13 +218,14 @@ class CallScreeningService : CallScreeningService() {
             return shouldMute
         }
 
+        // Returns the new recordId, null if logging is disabled.
         private fun logToHistoryDb(
             ctx: Context, r: ICheckResult, rawNumber: String, cnap: String?, simSlot: Int?, isTest: Boolean,
             fullScreeningLog: String?, anythingWrong: Boolean
-        ) {
+        ) : Long? {
             val isDbLogEnabled = spf.HistoryOptions(ctx).isLoggingEnabled
             if (!isDbLogEnabled)
-                return
+                return null
 
             val recordId = CallTable().addNewRecord(
                 ctx, HistoryRecord(
@@ -236,11 +237,12 @@ class CallScreeningService : CallScreeningService() {
                     simSlot = simSlot,
                     isTest = isTest,
                     fullScreeningLog = fullScreeningLog,
-                    anythingWrong = anythingWrong
+                    anythingWrongScreening = anythingWrong
                 )
             )
             // broadcast the call to add a new item in history page
             Events.onNewCall.fire(recordId)
+            return recordId
         }
 
         private fun showSpamNotification(ctx: Context, r: ICheckResult, rawNumber: String) {
@@ -294,7 +296,7 @@ class CallScreeningService : CallScreeningService() {
                 ctx, rawNumber = rawNumber, cnap = cnap, callDetails = callDetails, simSlot = simSlot, logger = logger)
 
             // 1. log result to history db
-            logToHistoryDb(ctx, r, rawNumber, cnap, simSlot, isTest, fullScreeningLog, anythingWrong)
+            val recordId = logToHistoryDb(ctx, r, rawNumber, cnap, simSlot, isTest, fullScreeningLog, anythingWrong)
 
             CoroutineScope(IO).launch {
                 if (r.shouldBlock()) { // blocked
@@ -302,7 +304,7 @@ class CallScreeningService : CallScreeningService() {
                     showSpamNotification(ctx, r, rawNumber)
 
                     // 3. Report spam number
-                    autoReportSpamCall(ctx, r, rawNumber, isTest)
+                    autoReportSpamCall(ctx, r, recordId, rawNumber, isTest)
                 } else { // allowed
                     // 4. Show CallerID window
                     if (showCallerId && Permission.phoneState.isGranted) {

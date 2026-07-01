@@ -2,9 +2,12 @@ package spam.blocker.ui.history
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
@@ -40,10 +43,13 @@ import spam.blocker.ui.slightDiff
 import spam.blocker.ui.widgets.BUTTON_CORNER_RADIUS
 import spam.blocker.ui.widgets.BUTTON_H_PADDING
 import spam.blocker.ui.widgets.Button
+import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.OutlineCard
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.PopupSize
 import spam.blocker.ui.widgets.ResIcon
+import spam.blocker.ui.widgets.ResIcon16
+import spam.blocker.ui.widgets.ResIcon18
 import spam.blocker.ui.widgets.ResImage
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.SimCardIcon
@@ -54,6 +60,7 @@ import spam.blocker.util.TimeUtils.FreshnessColor
 import spam.blocker.util.TimeUtils.formatTime
 import spam.blocker.util.TimeUtils.timeColor
 import spam.blocker.util.Util
+import spam.blocker.util.logi
 import androidx.compose.foundation.Image as ComposeImage
 
 
@@ -154,16 +161,7 @@ fun HistoryCard(
                     val r = parseCheckResultFromDb(ctx, record.result, record.reason)
 
                     // Row 3: Reason Summary
-                    RowVCenterSpaced(2) {
-                        // Show a yellow "!" if anything went wrong, e.g. ApiQuery timed out
-                        if (record.anythingWrong) {
-                            ResIcon(
-                                R.drawable.ic_exclamation,
-                                color = C.warning,
-                                modifier = M.size(16.dp)
-                            )
-                        }
-
+                    RowVCenterSpaced(4) {
                         // Show a label when not expanded, and a clickable button when expanded
                         if (record.expanded) {
                             val trigger = remember { mutableStateOf(false) }
@@ -199,11 +197,72 @@ fun HistoryCard(
                                     trigger.value = true
                                 },
                                 content = {
-                                    r.ResultReason(true)
+                                    RowVCenterSpaced(2) {
+                                        // Show a yellow "!" if anything went wrong during screening, e.g. ApiQuery timed out
+                                        if (record.anythingWrongScreening) {
+                                            ResIcon16(R.drawable.ic_exclamation, color = C.warning)
+                                        }
+
+                                        r.ResultReason(true)
+                                    }
                                 }
                             )
-                        } else {
-                            r.ResultReason(false)
+                        } else { // record not expanded
+                            RowVCenterSpaced(2) {
+                                // Show a yellow "!" if anything went wrong during screening, e.g. ApiQuery timed out
+                                if (record.anythingWrongScreening) {
+                                    ResIcon16(R.drawable.ic_exclamation, color = C.warning)
+                                }
+                                r.ResultReason(false)
+                            }
+                        }
+
+                        // Auto Report Log
+                        if (record.autoReportingLog != null) {
+                            if (record.expanded) {
+                                val trigger = remember { mutableStateOf(false) }
+
+                                // Show full screening log
+                                PopupDialog(
+                                    trigger = trigger,
+                                    popupSize = PopupSize(maxWidthPercentage = 0.9f, minWidthDp = 320, maxWidthDp = 1200),
+                                ) {
+                                    val annotatedLog = remember {
+                                        try {
+                                            val t = PermissiveJson.decodeFromString<MarkupText>(
+                                                record.autoReportingLog
+                                            )
+                                            t.toAnnotatedString()
+                                        } catch (_: Exception) {
+                                            AnnotatedString("")
+                                        }
+                                    }
+                                    Text(
+                                        text = annotatedLog,
+                                    )
+                                }
+                                Button(
+                                    modifier = M.fillMaxHeight(),
+                                    contentPadding = PaddingValues(BUTTON_H_PADDING.dp, 3.dp),
+                                    borderWidth = 0.5.dp,
+                                    borderColor = if (record.anythingWrongReporting) C.warning else C.textGrey,
+                                    shape = RoundedCornerShape(BUTTON_CORNER_RADIUS.dp),
+                                    onClick = {
+                                        trigger.value = true
+                                    },
+                                    content = {
+                                        ResIcon18(
+                                            iconId = R.drawable.ic_upload_to_cloud,
+                                            color = if (record.anythingWrongReporting) C.warning else C.textGrey,
+                                        )
+                                    }
+                                )
+                            } else {
+                                ResIcon18(
+                                    iconId = R.drawable.ic_upload_to_cloud,
+                                    color = if (record.anythingWrongReporting) C.warning else C.textGrey,
+                                )
+                            }
                         }
                     }
 

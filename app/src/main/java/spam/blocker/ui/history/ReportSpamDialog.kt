@@ -31,12 +31,12 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import spam.blocker.G
 import spam.blocker.R
+import spam.blocker.def.Def
 import spam.blocker.service.bot.ActionContext
 import spam.blocker.service.bot.executeAll
-import spam.blocker.service.reporting.listReportableAPIs
+import spam.blocker.service.reporting.listReportableCallAPIs
+import spam.blocker.service.reporting.listReportableSmsAPIs
 import spam.blocker.ui.M
-import spam.blocker.ui.setting.api.spamCategoryNamesMap
-import spam.blocker.ui.setting.api.tagValid
 import spam.blocker.ui.widgets.FlowRowSpaced
 import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.PopupDialog
@@ -48,11 +48,39 @@ import spam.blocker.util.JetpackTextLogger
 import spam.blocker.util.logi
 
 
+const val tagCategory = "{category}"
+const val tagComment = "{comment}"
+
+const val tagValid = "{valid}"
+const val tagOther = "{other}"
+const val tagFraud = "{fraud}"
+const val tagMarketing = "{marketing}"
+const val tagSurvey = "{survey}"
+const val tagPolitical = "{political}"
+
+fun spamCategoryNamesMap(ctx: Context, forType: Int): Map<String, String> {
+    return mapOf(
+        tagValid to ctx.getString(when (forType) {
+            Def.ForNumber -> R.string.valid_number
+            else -> R.string.valid_sms
+        }),
+
+        tagFraud to ctx.getString(R.string.fraud),
+        tagMarketing to ctx.getString(R.string.marketing),
+        tagSurvey to ctx.getString(R.string.survey),
+        tagPolitical to ctx.getString(R.string.political),
+
+        tagOther to ctx.getString(R.string.others), // the last one
+    )
+}
+
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun ReportSpamDialog(
     trigger: MutableState<Boolean>,
+    forType: Int,
     rawNumber: String,
+    smsContent: String? = null
 ) {
     val ctx = LocalContext.current
     val C = G.palette
@@ -62,7 +90,7 @@ fun ReportSpamDialog(
     PopupDialog(
         trigger = trigger,
     ) {
-        val nameMap = spamCategoryNamesMap(ctx)
+        val nameMap = spamCategoryNamesMap(ctx, forType)
 
         val keyTags = nameMap.keys.toList()
 
@@ -90,7 +118,10 @@ fun ReportSpamDialog(
                     hideKeyboard()
                     reportResult.value = buildAnnotatedString {  } // clear prev result
 
-                    val apis = listReportableAPIs(ctx = ctx, rawNumber = rawNumber, domainFilter = null, isManualReport = true, blockReason = null)
+                    val apis = when (forType) {
+                        Def.ForNumber -> listReportableCallAPIs(ctx = ctx, rawNumber = rawNumber, domainFilter = null, isManualReport = true, blockReason = null)
+                        else -> listReportableSmsAPIs(ctx = ctx, isManualReport = true, blockReason = null)
+                    }
                     apis.forEach { api ->
                         scope.launch {
                             withContext(IO) {
@@ -98,12 +129,13 @@ fun ReportSpamDialog(
                                     scope = scope,
                                     logger = JetpackTextLogger(reportResult),
                                     rawNumber = rawNumber,
+                                    smsContent = smsContent,
                                     tagCategoryValue = keyTag,
                                     tagCommentValue = comment
                                 )
 
                                 val success = api.actions.executeAll(ctx, aCtx)
-                                logi("report number $rawNumber to ${api.summary()}, success: $success")
+                                logi("report to ${api.summary()}, success: $success")
                             }
                         }
                     }

@@ -34,9 +34,9 @@ import spam.blocker.db.SpamTable
 import spam.blocker.def.Def
 import spam.blocker.ui.M
 import spam.blocker.ui.darken
+import spam.blocker.ui.history.tagCategory
+import spam.blocker.ui.history.tagComment
 import spam.blocker.ui.setting.LabeledRow
-import spam.blocker.ui.setting.api.tagCategory
-import spam.blocker.ui.setting.api.tagComment
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.ui.widgets.DirButton
@@ -277,6 +277,7 @@ open class HttpRequest(
                 } else {
                     aCtx.logger?.error("HTTP <${result?.statusCode}>: $echo")
                     aCtx.cCtx?.anythingWrong = true
+                    aCtx.anythingWrong = true
                     return false
                 }
             } catch (_: CancellationException) {
@@ -286,6 +287,7 @@ open class HttpRequest(
             } catch (e: Exception) {
                 aCtx.logger?.error("$e")
                 aCtx.cCtx?.anythingWrong = true
+                aCtx.anythingWrong = true
 
                 // Don't return here for it to retry
             } finally {

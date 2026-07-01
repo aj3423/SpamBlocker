@@ -37,7 +37,7 @@ import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_GROUP_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_PREFIX_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_REGEX
-import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTENT_RULE
+import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTENT_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_DATABASE_PREFIX_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_DEFAULT
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_DIALED
@@ -67,9 +67,12 @@ import spam.blocker.def.Def.RESULT_BLOCKED_BY_SMS_BOMB
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_SPAM_DB
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_STIR
 import spam.blocker.service.bot.ApiQueryResult
+import spam.blocker.service.bot.InterceptCall
+import spam.blocker.service.bot.InterceptSms
 import spam.blocker.ui.M
 import spam.blocker.ui.history.ReportSpamDialog
 import spam.blocker.ui.widgets.GreyText
+import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
@@ -122,37 +125,50 @@ interface ICheckResult {
         )
     }
 
-    // It will be displayed in the history card when expanded.
-    //  - show "Report Number" for call
-    //  - show origin sms content for sms record.
     @Composable
-    fun ExpandedContent(forType: Int, record: HistoryRecord) {
+    fun ReportButtonRow(forType: Int, record: HistoryRecord) {
         val ctx = LocalContext.current
         val C = G.palette
 
-        when(forType) {
-            // "Report Number" button
-            Def.ForNumber -> {
-                if (record.expanded) {
-                    val enabledReportApis = remember {
-                        G.apiReportVM.table.listAll(ctx).filter { it.enabled }
-                    }
-                    if (enabledReportApis.isNotEmpty()) {
-                        Spacer(modifier = M.padding(vertical = 4.dp))
-
-                        val reportTrigger = remember { mutableStateOf(false) }
-                        ReportSpamDialog(trigger = reportTrigger, rawNumber = record.peer)
-                        StrokeButton(
-                            label = Str(R.string.report_number),
-                            color = C.warning,
-                            modifier = M.padding(bottom = 4.dp)
-                        ) {
-                            reportTrigger.value = true
-                        }
+        // Report Number/SMS button
+        if (record.expanded) {
+            val enabledReportApis = remember {
+                G.apiReportVM.table.listAll(ctx).filter {
+                    it.enabled && when(forType) {
+                        Def.ForNumber -> it.actions.firstOrNull() is InterceptCall
+                        else -> it.actions.firstOrNull() is InterceptSms
                     }
                 }
             }
-            Def.ForSms -> {
+            if (enabledReportApis.isNotEmpty()) {
+                Spacer(modifier = M.padding(vertical = 4.dp))
+
+                val reportTrigger = remember { mutableStateOf(false) }
+                ReportSpamDialog(trigger = reportTrigger, forType = forType, rawNumber = record.peer, smsContent = record.extraInfo)
+                StrokeButton(
+                    label = Str(if (forType == Def.ForNumber) R.string.report_number else R.string.report_sms),
+                    icon = { ResIcon(R.drawable.ic_upload_to_cloud, color = C.warning) },
+                    color = C.warning,
+                    modifier = M.padding(bottom = 4.dp)
+                ) {
+                    reportTrigger.value = true
+                }
+            }
+        }
+    }
+    // It will be displayed in the history card when expanded.
+    //  - show "Report Number/SMS" button
+    //  - show origin sms content for sms.
+    @Composable
+    fun ExpandedContent(forType: Int, record: HistoryRecord) {
+        val ctx = LocalContext.current
+
+        Column {
+            // Report Button
+            ReportButtonRow(forType, record)
+
+            // SMS content
+            if (forType == Def.ForSms) {
                 val smsContent = record.extraInfo
                 if (smsContent != null) {
                     ExtraInfoWithDivider(
@@ -498,21 +514,27 @@ class ByRegexRule(
             Def.ForSms -> {
                 val smsContent = record.extraInfo
                 val isBySmsRule = type in listOf(
-                    RESULT_ALLOWED_BY_CONTENT_RULE,
+                    RESULT_ALLOWED_BY_CONTENT_REGEX,
                     RESULT_BLOCKED_BY_CONTENT_REGEX
                 )
 
                 if (smsContent != null && isBySmsRule && rule != null) {
-                    ExtraInfoWithDivider(
-                        text = highlightMatchedText(
-                            text = smsContent,
-                            regexStr = rule.pattern,
-                            regexFlags = rule.patternFlags,
-                            wildcardColor = if(rule.isBlacklist) C.error else C.success,
-                            textColor = C.textGrey
-                        ),
-                        maxLines = if (record.expanded) Int.MAX_VALUE else spf.HistoryOptions(ctx).initialSmsRowCount,
-                    )
+                    Column {
+                        // Report Button
+                        ReportButtonRow(forType, record)
+
+                        // SMS content
+                        ExtraInfoWithDivider(
+                            text = highlightMatchedText(
+                                text = smsContent,
+                                regexStr = rule.pattern,
+                                regexFlags = rule.patternFlags,
+                                wildcardColor = if(rule.isBlacklist) C.error else C.success,
+                                textColor = C.textGrey
+                            ),
+                            maxLines = if (record.expanded) Int.MAX_VALUE else spf.HistoryOptions(ctx).initialSmsRowCount,
+                        )
+                    }
                 } else {
                     super.ExpandedContent(forType, record)
                 }
@@ -534,7 +556,7 @@ class ByRegexRule(
                 ctx.getString(R.string.contact_rule) + ": $summary"
             }
 
-            RESULT_ALLOWED_BY_CONTENT_RULE, RESULT_BLOCKED_BY_CONTENT_REGEX -> {
+            RESULT_ALLOWED_BY_CONTENT_REGEX, RESULT_BLOCKED_BY_CONTENT_REGEX -> {
                 ctx.getString(R.string.content) + ": $summary"
             }
 
@@ -665,7 +687,7 @@ fun parseCheckResultFromDb(ctx: Context, result: Int, reason: String): ICheckRes
             }
         }
 
-        RESULT_ALLOWED_BY_CONTENT_RULE, RESULT_BLOCKED_BY_CONTENT_REGEX -> {
+        RESULT_ALLOWED_BY_CONTENT_REGEX, RESULT_BLOCKED_BY_CONTENT_REGEX -> {
             try {
                 // try new format, `reason` is a json string like: {"ruleId": 123, "details": "..."}
                 val data = Json.decodeFromString<ByRegexRule.DbData>(reason)

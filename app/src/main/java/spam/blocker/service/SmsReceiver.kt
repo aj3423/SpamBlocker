@@ -1,17 +1,18 @@
 package spam.blocker.service
 
-import android.R
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.provider.Telephony
+import spam.blocker.BuildConfig
 import spam.blocker.Events
+import spam.blocker.G
 import spam.blocker.db.HistoryRecord
 import spam.blocker.db.Notification.ChannelTable
 import spam.blocker.db.SmsTable
 import spam.blocker.service.checker.Checker
 import spam.blocker.service.checker.ICheckResult
-import spam.blocker.service.reporting.reportSMS
+import spam.blocker.service.reporting.autoReportSMS
 import spam.blocker.ui.NotificationTrampolineActivity
 import spam.blocker.util.Contacts
 import spam.blocker.util.ILogger
@@ -112,28 +113,30 @@ open class SmsReceiver : BroadcastReceiver() {
             val (r, fullScreeningLog, anythingWrong) = Checker.checkSms(
                 ctx, rawNumber = rawNumber, messageBody = messageBody, simSlot = simSlot, logger = logger)
 
-            run {
-                // 1. log to history db
-                val spf = spf.HistoryOptions(ctx)
-                val isLogEnabled = spf.isLoggingEnabled
-                if (isLogEnabled) {
-                    val recordId = SmsTable().addNewRecord(
-                        ctx, HistoryRecord(
-                            peer = rawNumber,
-                            time = System.currentTimeMillis(),
-                            result = r.type,
-                            reason = r.reasonToDb(),
-                            simSlot = simSlot,
-                            extraInfo = if (spf.isLogSmsContentEnabled) messageBody else null,
-                            isTest = isTest,
-                            fullScreeningLog = fullScreeningLog,
-                            anythingWrong = anythingWrong
-                        )
-                    )
+            // 1. log to history db
+            val spfHistory = spf.HistoryOptions(ctx)
+            val isLogEnabled = spfHistory.isLoggingEnabled
 
-                    // 2. broadcast new sms to add a new item in history page
-                    Events.onNewSMS.fire(recordId)
-                }
+            val recordId = if (isLogEnabled) {
+                SmsTable().addNewRecord(
+                    ctx, HistoryRecord(
+                        peer = rawNumber,
+                        time = System.currentTimeMillis(),
+                        result = r.type,
+                        reason = r.reasonToDb(),
+                        simSlot = simSlot,
+                        extraInfo = if (spfHistory.isLogSmsContentEnabled) messageBody else null,
+                        isTest = isTest,
+                        fullScreeningLog = fullScreeningLog,
+                        anythingWrongScreening = anythingWrong
+                    )
+                )
+            } else {
+                null
+            }
+            if (isLogEnabled) {
+                // 2. broadcast new sms to add a new item in history page
+                Events.onNewSMS.fire(recordId)
             }
 
             // 3. Update SmsAlert timestamp, it's necessary to check it here, so testing would also work.
@@ -202,9 +205,16 @@ open class SmsReceiver : BroadcastReceiver() {
                 }
             }
 
-            // 5. Report SMS
-            if (r.shouldBlock()) {
-                reportSMS(ctx, r = r, rawNumber = rawNumber, smsContent = messageBody)
+            // 5. Report SMS when:
+            //  - Blocked and
+            //    - not testing or
+            //    - developing
+            if (r.shouldBlock() &&
+                (!isTest || BuildConfig.DEBUG)
+            ) {
+                autoReportSMS(
+                    ctx, r = r, rawNumber = rawNumber, smsContent = messageBody, recordId = recordId
+                )
             }
 
             return r

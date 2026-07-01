@@ -16,6 +16,8 @@ import com.google.i18n.phonenumbers.PhoneNumberUtil
 import com.google.i18n.phonenumbers.Phonenumber
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -24,13 +26,15 @@ import spam.blocker.Events
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.BotTable
+import spam.blocker.db.CallTable
 import spam.blocker.db.RegexRule
 import spam.blocker.db.reScheduleBot
 import spam.blocker.def.Def
-import spam.blocker.service.reporting.listReportableAPIs
+import spam.blocker.service.reporting.listReportableCallAPIs
+import spam.blocker.service.reporting.updateRecordAutoReportLog
 import spam.blocker.ui.darken
+import spam.blocker.ui.history.tagValid
 import spam.blocker.ui.setting.LabeledRow
-import spam.blocker.ui.setting.api.tagValid
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.ui.widgets.GreyIcon
@@ -55,6 +59,8 @@ import spam.blocker.util.Permission
 import spam.blocker.util.PermissionWrapper
 import spam.blocker.util.PermissiveJson
 import spam.blocker.util.PermissivePrettyJson
+import spam.blocker.util.SaveableLogger
+import spam.blocker.util.TimeUtils.formatTime
 import spam.blocker.util.Util
 import spam.blocker.util.Xml
 import spam.blocker.util.formatAnnotated
@@ -1041,7 +1047,7 @@ class CategoryConfig(
     }
 }
 
-// Report number to all api endpoints.
+// Report number to all api endpoints. Only for reporting calls.
 // (For internal app usage only.)
 @Serializable
 @SerialName("ReportNumber")
@@ -1049,6 +1055,7 @@ class ScheduledAutoReportNumber(
     val rawNumber: String,
     val asTagCategory: String,
     val blockReason: Int?,
+    val recordId: Long? = null,
     val domainFilter: List<String>? = null // only report to APIs that matches these domains
 ) : IAction {
     override fun requiredPermissions(ctx: Context): List<PermissionWrapper> {
@@ -1061,25 +1068,39 @@ class ScheduledAutoReportNumber(
     }
 
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-        val apis = listReportableAPIs(
-            ctx = ctx, rawNumber = rawNumber, domainFilter = domainFilter, blockReason = blockReason
-        )
 
         // Report
         val scope = CoroutineScope(IO)
-        apis.forEach { api ->
-            scope.launch {
+        val apis = listReportableCallAPIs(
+            ctx = ctx, rawNumber = rawNumber, domainFilter = domainFilter, blockReason = blockReason
+        )
+        val logger = SaveableLogger()
+        logger.info(ctx.getString(R.string.auto_report))
+        logger.debug("${ctx.getString(R.string.executed_at)} ${formatTime(ctx, System.currentTimeMillis())}\n")
+
+        val deferredResults = apis.map { api ->
+            scope.async {
                 val aCtx = ActionContext(
                     scope = scope,
-                    logger = AdbLogger(),
+                    logger = logger,
                     rawNumber = rawNumber,
                     tagCategoryValue = asTagCategory,
                 )
-                val success = api.actions.executeAll(ctx, aCtx)
-                logi("report number $rawNumber to ${api.summary()}, success: $success")
+                api.actions.executeAll(ctx, aCtx)
+                aCtx.anythingWrong // returns a boolean
             }
         }
 
+        scope.launch {
+            val anythingWrong = deferredResults.awaitAll()
+                .contains(true)
+            val log = logger.output.serialize()
+
+            updateRecordAutoReportLog(
+                ctx, table = CallTable(), vm = G.callVM, recordId = recordId,
+                log = log, anythingWrong = anythingWrong
+            )
+        }
         return true
     }
 

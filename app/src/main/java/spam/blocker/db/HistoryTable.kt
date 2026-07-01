@@ -33,8 +33,12 @@ data class HistoryRecord(
 
     val fullScreeningLog: String? = null,
 
+    val autoReportingLog: String? = null,
+
     // if anything went wrong during the screening, e.g. api query timed out
-    val anythingWrong: Boolean = false,
+    val anythingWrongScreening: Boolean = false,
+    // if anything went wrong when reporting, e.g. timed out
+    val anythingWrongReporting: Boolean = false,
 ) {
     fun isBlocked(): Boolean {
         return Def.isBlocked(result)
@@ -78,7 +82,9 @@ abstract class HistoryTable {
                         extraInfo = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_EXTRA_INFO)),
                         expanded = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_EXPANDED)) == 1,
                         fullScreeningLog = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_FULL_SCREENING_LOG)),
-                        anythingWrong = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_ANYTHING_WRONG)) == 1
+                        autoReportingLog = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_AUTO_REPORTING_LOG)),
+                        anythingWrongScreening = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_ANYTHING_WRONG_SCREENING)) == 1,
+                        anythingWrongReporting = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_ANYTHING_WRONG_REPORTING)) == 1
                     )
 
                     ret += rec
@@ -108,7 +114,9 @@ abstract class HistoryTable {
         cv.put(Db.COLUMN_EXTRA_INFO, r.extraInfo)
         cv.put(Db.COLUMN_EXPANDED, if(r.expanded) 1 else 0)
         cv.put(Db.COLUMN_FULL_SCREENING_LOG, r.fullScreeningLog)
-        cv.put(Db.COLUMN_ANYTHING_WRONG, if(r.anythingWrong) 1 else 0)
+        cv.put(Db.COLUMN_AUTO_REPORTING_LOG, r.autoReportingLog)
+        cv.put(Db.COLUMN_ANYTHING_WRONG_SCREENING, if(r.anythingWrongScreening) 1 else 0)
+        cv.put(Db.COLUMN_ANYTHING_WRONG_REPORTING, if(r.anythingWrongReporting) 1 else 0)
 
         return db.insert(tableName(), null, cv)
     }
@@ -128,7 +136,9 @@ abstract class HistoryTable {
         cv.put(Db.COLUMN_EXTRA_INFO, r.extraInfo)
         cv.put(Db.COLUMN_EXPANDED, if(r.expanded) 1 else 0)
         cv.put(Db.COLUMN_FULL_SCREENING_LOG, r.fullScreeningLog)
-        cv.put(Db.COLUMN_ANYTHING_WRONG, if(r.anythingWrong) 1 else 0)
+        cv.put(Db.COLUMN_AUTO_REPORTING_LOG, r.autoReportingLog)
+        cv.put(Db.COLUMN_ANYTHING_WRONG_SCREENING, if(r.anythingWrongScreening) 1 else 0)
+        cv.put(Db.COLUMN_ANYTHING_WRONG_REPORTING, if(r.anythingWrongReporting) 1 else 0)
 
         db.insert(tableName(), null, cv)
     }
@@ -177,7 +187,13 @@ abstract class HistoryTable {
         cv.put(Db.COLUMN_EXPANDED, if(expanded) 1 else 0)
         return Db.getInstance(ctx).writableDatabase.update(tableName(), cv, "${Db.COLUMN_ID} = $id", null) == 1
     }
+    fun setAutoReportLog(ctx: Context, recordId: Long, log: String, anythingWrong: Boolean): Boolean {
+        val cv = ContentValues()
+        cv.put(Db.COLUMN_AUTO_REPORTING_LOG, log)
+        cv.put(Db.COLUMN_ANYTHING_WRONG_REPORTING, if(anythingWrong) 1 else 0)
 
+        return Db.getInstance(ctx).writableDatabase.update(tableName(), cv, "${Db.COLUMN_ID} = $recordId", null) == 1
+    }
     fun hasBlockedRecordsWithinSeconds(ctx: Context, durationSeconds: Int) : Boolean {
         val xSecondsAgo = Now.currentMillis() - durationSeconds*1000
 

@@ -80,4 +80,5 @@
         <![CDATA[
         将垃圾短信转发到 <error>7726</error>（用于拼写 <error>SPAM</error> 的通用短代码），这是许多移动运营商广泛支持的功能。
         ]]>    </string>
+    <string name="report_sms">报告短信</string>
 </resources>

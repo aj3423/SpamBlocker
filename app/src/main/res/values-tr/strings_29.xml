@@ -81,4 +81,5 @@
         <error>7726</error>\'ye (evrensel kısa kod ile <error>SPAM</error> yazan) spam metinlerini iletir, birçok mobil operatör tarafından geniş ölçüde desteklenen bir özelliktir.
         ]]>
     </string>
+    <string name="report_sms">SMS bildirim</string>
 </resources>

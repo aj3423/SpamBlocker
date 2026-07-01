@@ -27,8 +27,8 @@ import spam.blocker.service.bot.botActions
 import spam.blocker.service.bot.clone
 import spam.blocker.service.bot.executeAll
 import spam.blocker.ui.M
+import spam.blocker.ui.history.tagOther
 import spam.blocker.ui.setting.SettingRow
-import spam.blocker.ui.setting.api.tagOther
 import spam.blocker.ui.widgets.BalloonQuestionMark
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.GreyText

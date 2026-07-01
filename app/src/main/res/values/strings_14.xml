@@ -36,6 +36,13 @@
         <item>Political</item>
         <item>Other Spam</item>
     </string-array>
+    <string name="valid_number">Valid Number</string>
+    <string name="valid_sms">Valid SMS</string>
+    <string name="fraud">Fraud</string>
+    <string name="marketing">Marketing</string>
+    <string name="survey">Survey</string>
+    <string name="political">Political</string>
+    <string name="other_spam">Other Spam</string>
     <string name="action_category_config">Category Config</string>
     <string name="help_action_category_config">
         <![CDATA[

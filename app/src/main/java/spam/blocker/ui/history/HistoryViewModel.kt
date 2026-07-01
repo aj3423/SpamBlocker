@@ -12,6 +12,7 @@ import spam.blocker.def.Def
 import spam.blocker.ui.history.HistoryOptions.showHistoryBlocked
 import spam.blocker.ui.history.HistoryOptions.showHistoryPassed
 import spam.blocker.util.Contacts
+import spam.blocker.util.logi
 import spam.blocker.util.regexMatches
 
 /*
@@ -59,6 +60,12 @@ open class HistoryViewModel(
             val contactName = Contacts.cache.findContactByRawNumber(ctx, record.peer)?.name ?: ""
             val allText = record.peer + contactName + (record.extraInfo ?: "") + record.reason
             filterRegex.regexMatches(allText, Def.DefaultRegexFlags)
+        }
+    }
+    fun updateRecord(recordId: Long, changes: HistoryRecord.() -> HistoryRecord) {
+        val index = records.indexOfFirst { it.id == recordId }
+        if (index != -1) {
+            records[index] = records[index].let(changes)
         }
     }
 

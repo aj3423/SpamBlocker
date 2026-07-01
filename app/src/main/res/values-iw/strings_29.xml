@@ -80,4 +80,5 @@
         <![CDATA[
         מעביר טקסטי SPAM ל-<error>7726</error> (קידוד קצר אוניברסלי לכתוב <error>SPAM</error>), תכונה המומלכת על ידי ספקיות תקשורת ניידות רבות.
         ]]>    </string>
+    <string name="report_sms">דווח על SMS</string>
 </resources>

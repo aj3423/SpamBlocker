@@ -475,7 +475,7 @@ class RuleTest {
 
         // should pass for particular number
         var r = Checker.checkSms(ctx, rawNumber = particularNumber, messageBody = msg).first
-        assertEquals("should pass", Def.RESULT_ALLOWED_BY_CONTENT_RULE, r.type)
+        assertEquals("should pass", Def.RESULT_ALLOWED_BY_CONTENT_REGEX, r.type)
 
         //  should block for anyone else
         r = Checker.checkSms(ctx, Alice, msg).first
@@ -598,7 +598,7 @@ class RuleTest {
         val content_123 = "123"
         // sms content "123"(sim 0) should pass (by rule 1)
         var r = Checker.checkSms(ctx, Alice, content_123, simSlot = 0).first
-        assertEquals("should pass 1", Def.RESULT_ALLOWED_BY_CONTENT_RULE, r.type)
+        assertEquals("should pass 1", Def.RESULT_ALLOWED_BY_CONTENT_REGEX, r.type)
 
         // sms content "123"(sim 1) should be blocked (by rule 2)
         r = Checker.checkSms(ctx, Bob, content_123, simSlot = 1).first
@@ -606,7 +606,7 @@ class RuleTest {
 
         // sms "123"(null simSlot) should be allowed by rule 1, simSlot==null for people only use 1 sim card
         r = Checker.checkSms(ctx, Alice, content_123).first
-        assertEquals("should block 3", Def.RESULT_ALLOWED_BY_CONTENT_RULE, r.type)
+        assertEquals("should block 3", Def.RESULT_ALLOWED_BY_CONTENT_REGEX, r.type)
 
         // sms with random content(null simSlot) should be blocked by rule 2, simSlot==null for people only use 1 sim card
         val random_sms = "random_sms"

@@ -31,7 +31,7 @@ class Db private constructor(
 ) : SQLiteOpenHelper(ctx, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 49
+        const val DB_VERSION = 50
         const val DB_NAME = "spam_blocker.db"
 
         // ---- regex rule table ----
@@ -110,7 +110,9 @@ class Db private constructor(
         const val COLUMN_EXTRA_INFO = "extra_info" // text
         const val COLUMN_EXPANDED = "expanded" // Boolean
         const val COLUMN_FULL_SCREENING_LOG = "full_screening_log" // text
-        const val COLUMN_ANYTHING_WRONG = "anything_wrong" // Boolean
+        const val COLUMN_AUTO_REPORTING_LOG = "auto_reporting_log" // text
+        const val COLUMN_ANYTHING_WRONG_SCREENING = "anything_wrong" // Boolean
+        const val COLUMN_ANYTHING_WRONG_REPORTING = "anything_wrong_reporting" // Boolean
 
         @Volatile
         private var instance: Db? = null
@@ -245,7 +247,9 @@ class Db private constructor(
                         "$COLUMN_EXTRA_INFO TEXT, " +
                         "$COLUMN_EXPANDED INTEGER, " +
                         "$COLUMN_FULL_SCREENING_LOG TEXT, " +
-                        "$COLUMN_ANYTHING_WRONG INTEGER " +
+                        "$COLUMN_AUTO_REPORTING_LOG TEXT, " +
+                        "$COLUMN_ANYTHING_WRONG_SCREENING INTEGER " +
+                        "$COLUMN_ANYTHING_WRONG_REPORTING INTEGER " +
                         ")"
             )
         }
@@ -517,9 +521,9 @@ class Db private constructor(
         // v5.5 added History.fullScreeningLog and anythingWrong
         if ((newVersion >= 48) && (oldVersion < 48)) {
             addColumnIfNotExist(db, TABLE_CALL, COLUMN_FULL_SCREENING_LOG, "TEXT")
-            addColumnIfNotExist(db, TABLE_CALL, COLUMN_ANYTHING_WRONG, "INTEGER")
+            addColumnIfNotExist(db, TABLE_CALL, COLUMN_ANYTHING_WRONG_SCREENING, "INTEGER")
             addColumnIfNotExist(db, TABLE_SMS, COLUMN_FULL_SCREENING_LOG, "TEXT")
-            addColumnIfNotExist(db, TABLE_SMS, COLUMN_ANYTHING_WRONG, "INTEGER")
+            addColumnIfNotExist(db, TABLE_SMS, COLUMN_ANYTHING_WRONG_SCREENING, "INTEGER")
         }
 
         // v5.9 refactored RegexMode, previously `regexFlags` contains both mode/flag
@@ -569,6 +573,14 @@ class Db private constructor(
             updateTable(TABLE_NUMBER_RULE)
             updateTable(TABLE_CONTENT_RULE)
             updateTable(TABLE_QUICK_COPY_RULE)
+        }
+
+        // v5.13 added History.autoReportingLog and anythingWrongReporting
+        if ((newVersion >= 50) && (oldVersion < 50)) {
+            addColumnIfNotExist(db, TABLE_CALL, COLUMN_AUTO_REPORTING_LOG, "TEXT")
+            addColumnIfNotExist(db, TABLE_CALL, COLUMN_ANYTHING_WRONG_REPORTING, "INTEGER")
+            addColumnIfNotExist(db, TABLE_SMS, COLUMN_AUTO_REPORTING_LOG, "TEXT")
+            addColumnIfNotExist(db, TABLE_SMS, COLUMN_ANYTHING_WRONG_REPORTING, "INTEGER")
         }
     }
 }
