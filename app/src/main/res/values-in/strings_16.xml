@@ -19,32 +19,30 @@
 		<br>
         <h6><title>- Pelaporan otomatis</title></h6>
 		<minor><b>Penundaan laporan</b></minor><br>
-        Ketika panggilan diblokir, akan ada jeda waktu satu jam sebelum dilaporkan.
+		&ensp; - <b>SMS</b> selalu dilaporkan secara otomatis segera. <br>
+        &ensp; - Ketika <b>panggilan</b> diblokir, akan ada jeda waktu <b>satu jam</b> sebelum dilaporkan.
         Jika nomor tersebut diizinkan nanti karena pengulangan, dihubungi kembali, atau ditambahkan ke kontak
         dalam jeda waktu ini, itu dianggap bukan spam dan pelaporan akan dibatalkan.<br>
         <br>
 		<minor><b>Jenis laporan</b></minor><br>
 		1. Itu <error><b>tidak akan</b></error> melaporkan:<br>
         <br>
-        - <error>Nomor atau konten SMS</error><br>
-        - <error>Nomor yang diizinkan</error><br>
+        - <error>Catatan yang diizinkan</error><br>
         - <error>Pengujian</error><br>
-        Dan jenis yang diblokir berikut:<br>
-        - <error>Regex Kontak</error><br>
-        - <error>Regex Grup Kontak</error><br>
+        Dan catatan yang diblokir oleh:<br>
         - <error>Basis Data</error><br>
         - <error>Mode Rapat</error><br>
         - <error>Kueri Instan</error> (untuk mencegah nomor endpoint API bocor ke pesaing lain)<br>
         <br>
-		2. Itu <highlight><b>akan</b></highlight> melaporkan nomor yang diblokir oleh:<br>
+		2. Itu <highlight><b>akan</b></highlight> melaporkan catatan yang diblokir oleh:<br>
         <br>
         - <highlight>Bukan-Kontak</highlight><br>
         - <highlight>Atestasi STIR</highlight><br>
-        - <highlight>Regex Nomor</highlight><br>
+        - <highlight>Regex</highlight><br>
         <br>
 		3. Satu pengecualian:<br>
 		<br>
-        Ketika diblokir oleh <highlight>Basis Data</highlight> dan nomor tersebut awalnya ditambahkan oleh kueri API,
+        Ketika panggilan diblokir oleh <highlight>Basis Data</highlight> dan nomor tersebut awalnya ditambahkan oleh kueri API,
          nomor tersebut akan dilaporkan kembali ke API tersebut untuk meningkatkan skor peringkat. <br>
         <br>
          Misalnya, jika nomor tersebut ditambahkan oleh

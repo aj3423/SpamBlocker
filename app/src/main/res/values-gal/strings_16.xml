@@ -19,32 +19,30 @@
 		<br>
         <h6><title>- Informe automático</title></h6>
 		<minor><b>Atraso do informe</b></minor><br>
-        Cando unha chamada é bloqueada, haberá un tempo de espera dunha hora antes de que se informe.
+		&ensp; - O <b>SMS</b> sempre se informa automaticamente de inmediato. <br>
+        &ensp; - Cando unha <b>chamada</b> é bloqueada, haberá un tempo de espera de <b>unha hora</b> antes de que se informe.
         Se o número de teléfono se permite máis tarde debido a repeticións, por volver chamar ou por engadirse aos contactos
         dentro deste tempo de espera, considérase non-spam e o informe será cancelado.<br>
         <br>
 		<minor><b>Tipo de informe</b></minor><br>
 		1. <error><b>Non</b></error> informará de:<br>
         <br>
-        - <error>Números de teléfono ou contido de SMS</error><br>
-        - <error>Números de teléfono permitidos</error><br>
+        - <error>Rexistros permitidos</error><br>
         - <error>Probas</error><br>
-        E os seguintes tipos bloqueados:<br>
-        - <error>Regex de contacto</error><br>
-        - <error>Regex de grupo de contactos</error><br>
+        E rexistros bloqueados por:<br>
         - <error>Base de datos</error><br>
         - <error>Modo reunión</error><br>
         - <error>Consulta instantánea</error> (para evitar que o número de teléfono do punto final da API se filtre a outros competidores)<br>
         <br>
-		2. <highlight><b>Si</b></highlight> informará de números de teléfono bloqueados por:<br>
+		2. <highlight><b>Si</b></highlight> informará de rexistros bloqueados por:<br>
         <br>
         - <highlight>Non-Contacto</highlight><br>
         - <highlight>Atestación STIR</highlight><br>
-        - <highlight>Regex de número de teléfono</highlight><br>
+        - <highlight>Regex</highlight><br>
         <br>
 		3. Unha excepción:<br>
 		<br>
-        Cando é bloqueado por <highlight>Base de datos</highlight> e o número de teléfono foi engadido orixinalmente por unha consulta API,
+        Cando unha chamada é bloqueada por <highlight>Base de datos</highlight> e o número de teléfono foi engadido orixinalmente por unha consulta API,
          informarase de volta a esa API para aumentar a puntuación de valoración. <br>
         <br>
          Por exemplo, se o número de teléfono foi engadido por

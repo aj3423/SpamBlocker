@@ -19,32 +19,30 @@
 		<br>
         <h6><title>- Auto reporting</title></h6>
 		<minor><b>Report delay</b></minor><br>
-        When a call is blocked, there will be a one-hour time buffer before it\'s reported.
+		&ensp; - <b>SMS</b> is always auto-reported immediately. <br>
+        &ensp; - When a <b>call</b> is blocked, there will be a <b>one-hour</b> time buffer before it\'s reported.
         If the number is allowed later, either due to repeats, dialed back, or being added to contacts
          within this time buffer, it\'s considered a non-spam and the reporting will be canceled.<br>
         <br>
 		<minor><b>Report type</b></minor><br>
 		1. It <error><b>will not</b></error> report:<br>
         <br>
-        - <error>SMS numbers or content</error><br>
-        - <error>Allowed numbers</error><br>
+        - <error>Allowed records</error><br>
         - <error>Testing</error><br>
-        And the following blocked types:<br>
-        - <error>Contact Regex</error><br>
-        - <error>Contact Group Regex</error><br>
+        And records blocked by:<br>
         - <error>Database</error><br>
         - <error>Meeting Mode</error><br>
         - <error>Instant Query</error> (to prevent the API endpoint\'s number from being leaked to other competitors)<br>
         <br>
-		2. It <highlight><b>will</b></highlight> report numbers blocked by:<br>
+		2. It <highlight><b>will</b></highlight> report records that blocked by:<br>
         <br>
         - <highlight>Non-Contact</highlight><br>
         - <highlight>STIR Attestation</highlight><br>
-        - <highlight>Number Regex</highlight><br>
+        - <highlight>Regex</highlight><br>
         <br>
 		3. One exception:<br>
 		<br>
-        When it\'s blocked by <highlight>Database</highlight> and the number was originally added by API query,
+        When a call is blocked by <highlight>Database</highlight> and the number was originally added by API query,
          it will be reported back to that API to increase the rating score. <br>
         <br>
          For example, if the number was added by

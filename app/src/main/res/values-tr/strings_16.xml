@@ -19,32 +19,30 @@
 		<br>
         <h6><title>- Otomatik raporlama</title></h6>
 		<minor><b>Raporlama gecikmesi</b></minor><br>
-        Bir çağrı engellendiğinde, raporlanmadan önce bir saatlik bir zaman aralığı olacaktır.
+		&ensp; - <b>SMS</b> her zaman hemen otomatik olarak rapor edilir. <br>
+        &ensp; - Bir <b>çağrı</b> engellendiğinde, raporlanmadan önce <b>bir saatlik</b> bir zaman aralığı olacaktır.
         Bu zaman aralığında numaraya tekrarlamalar, geri aranması veya kişilere eklenmesi nedeniyle daha sonra izin verilirse,
         spam dışı kabul edilir ve raporlama iptal edilir.<br>
         <br>
 		<minor><b>Rapor türü</b></minor><br>
 		1. Şunları <error><b>raporlamaz</b></error>:<br>
         <br>
-        - <error>SMS numaraları veya içeriği</error><br>
-        - <error>İzin verilen numaralar</error><br>
+        - <error>İzin verilen kayıtlar</error><br>
         - <error>Test etme</error><br>
-        Ve aşağıdaki engellenen türler:<br>
-        - <error>Kişi Regex</error><br>
-        - <error>Kişi Grubu Regex</error><br>
+        Ve şunlar tarafından engellenen kayıtlar:<br>
         - <error>Veritabanı</error><br>
         - <error>Toplantı Modu</error><br>
         - <error>Anında Sorgulama</error> (API uç noktasının numarasının diğer rakiplere sızmasını önlemek için)<br>
         <br>
-		2. Şunlar tarafından engellenen numaraları <highlight><b>raporlar</b></highlight>:<br>
+		2. Şunlar tarafından engellenen kayıtları <highlight><b>raporlar</b></highlight>:<br>
         <br>
         - <highlight>Kişi Olmayan</highlight><br>
         - <highlight>STIR Onayı</highlight><br>
-        - <highlight>Numara Regex</highlight><br>
+        - <highlight>Regex</highlight><br>
         <br>
 		3. Bir istisna:<br>
 		<br>
-        <highlight>Veritabanı</highlight> tarafından engellendiğinde ve numara orijinal olarak API sorgusuyla eklendiğinde,
+        Bir çağrı <highlight>Veritabanı</highlight> tarafından engellendiğinde ve numara orijinal olarak API sorgusuyla eklendiğinde,
          derecelendirme puanını artırmak için o API\'ye geri rapor edilecektir. <br>
         <br>
          Örneğin, numara

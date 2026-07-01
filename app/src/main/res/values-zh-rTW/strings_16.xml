@@ -19,32 +19,30 @@
 		<br>
         <h6><title>- 自動回報</title></h6>
 		<minor><b>回報延遲</b></minor><br>
-        當一個通話被封鎖時，在回報之前會有一小時的時間緩衝。
+		&ensp; - <b>簡訊</b> 始終會立即自動回報。<br>
+        &ensp; - 當一個 <b>通話</b> 被封鎖時，在回報之前會有 <b>一小時</b> 的時間緩衝。
         如果該號碼在此緩衝時間內因為重複、回撥或被加入聯絡人而被稍後允許，
         它將被視為非垃圾，且回報將會被取消。<br>
         <br>
 		<minor><b>回報類型</b></minor><br>
 		1. 它<error><b>不會</b></error>回報：<br>
         <br>
-        - <error>簡訊號碼或內容</error><br>
-        - <error>允許的號碼</error><br>
+        - <error>允許的記錄</error><br>
         - <error>測試</error><br>
-        以及以下封鎖類型：<br>
-        - <error>聯絡人正規表達式</error><br>
-        - <error>聯絡人群組正規表達式</error><br>
+        以及被以下方式封鎖的記錄：<br>
         - <error>資料庫</error><br>
         - <error>會議模式</error><br>
         - <error>即時查詢</error>（以防止 API 端點的號碼洩漏給其他競爭者）<br>
         <br>
-		2. 它<highlight><b>將會</b></highlight>回報被以下方式封鎖的號碼：<br>
+		2. 它<highlight><b>將會</b></highlight>回報被以下方式封鎖的記錄：<br>
         <br>
         - <highlight>非聯絡人</highlight><br>
         - <highlight>STIR 認證</highlight><br>
-        - <highlight>號碼正規表達式</highlight><br>
+        - <highlight>正規表達式</highlight><br>
         <br>
 		3. 一個例外：<br>
 		<br>
-        當它被<highlight>資料庫</highlight>封鎖，且該號碼最初是由 API 查詢新增時，
+        當通話被<highlight>資料庫</highlight>封鎖，且該號碼最初是由 API 查詢新增時，
          它將會被回報給該 API 以提高評分。<br>
         <br>
          例如，如果該號碼是由來自<u>check.com</u>的 API 查詢新增的，它將只回報給<u>check.com</u>，而不會回報給<u>others.com</u>。<br>

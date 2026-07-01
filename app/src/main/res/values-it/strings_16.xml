@@ -19,32 +19,30 @@
 		<br>
         <h6><title>- Segnalazione automatica</title></h6>
 		<minor><b>Ritardo nella segnalazione</b></minor><br>
-        Quando una chiamata viene bloccata, ci sarà un buffer di tempo di un\'ora prima che venga segnalata.
+		&ensp; - Gli <b>SMS</b> vengono sempre segnalati automaticamente e immediatamente. <br>
+        &ensp; - Quando una <b>chiamata</b> viene bloccata, ci sarà un buffer di tempo di <b>un\'ora</b> prima che venga segnalata.
         Se il numero viene successivamente consentito a causa di chiamate ripetute, richiamate o dell\'aggiunta ai contatti
         entro questo periodo di tempo, verrà considerato non spam e la segnalazione verrà annullata.<br>
         <br>
 		<minor><b>Tipo di segnalazione</b></minor><br>
 		1. <error><b>Non</b></error> segnalerà:<br>
         <br>
-        - <error>Numeri o contenuti SMS</error><br>
-        - <error>Numeri consentiti</error><br>
+        - <error>Record consentiti</error><br>
         - <error>Test</error><br>
-        E i seguenti tipi bloccati:<br>
-        - <error>Regex Contatto</error><br>
-        - <error>Regex Gruppo Contatti</error><br>
+        E i record bloccati da:<br>
         - <error>Database</error><br>
         - <error>Modalità Riunione</error><br>
         - <error>Query Istantanea</error> (per evitare che il numero dell\'endpoint API venga divulgato ad altri concorrenti)<br>
         <br>
-		2. <highlight><b>Segnalerà</b></highlight> i numeri bloccati da:<br>
+		2. <highlight><b>Segnalerà</b></highlight> i record bloccati da:<br>
         <br>
         - <highlight>Non-Contatto</highlight><br>
         - <highlight>Attestazione STIR</highlight><br>
-        - <highlight>Regex Numero</highlight><br>
+        - <highlight>Regex</highlight><br>
         <br>
 		3. Un\'eccezione:<br>
 		<br>
-        Quando viene bloccato da <highlight>Database</highlight> e il numero è stato originariamente aggiunto tramite query API,
+        Quando una chiamata viene bloccata da <highlight>Database</highlight> e il numero è stato originariamente aggiunto tramite query API,
          verrà segnalato nuovamente a quell\'API per aumentare il punteggio di valutazione. <br>
         <br>
          Ad esempio, se il numero è stato aggiunto tramite

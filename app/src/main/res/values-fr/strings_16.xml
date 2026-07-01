@@ -19,32 +19,30 @@
 		<br>
         <h6><title>- Signalement automatique</title></h6>
 		<minor><b>Délai de signalement</b></minor><br>
-        Lorsqu\'un appel est bloqué, il y aura un délai d\'une heure avant qu\'il ne soit signalé.
+		&ensp; - Le <b>SMS</b> est toujours signalé automatiquement immédiatement. <br>
+        &ensp; - Lorsqu\'un <b>appel</b> est bloqué, il y aura un délai d\'<b>une heure</b> avant qu\'il ne soit signalé.
         Si le numéro de téléphone est autorisé plus tard en raison de répétitions, d\'un rappel ou d\'un ajout aux contacts
         dans ce délai, il est considéré comme non-spam et le signalement sera annulé.<br>
         <br>
 		<minor><b>Type de signalement</b></minor><br>
 		1. Il <error><b>ne signalera pas</b></error> :<br>
         <br>
-        - <error>Numéros ou contenu de SMS</error><br>
-        - <error>Numéros de téléphone autorisés</error><br>
+        - <error>Enregistrements autorisés</error><br>
         - <error>Tests</error><br>
-        Et les types de blocage suivants :<br>
-        - <error>Regex de contact</error><br>
-        - <error>Regex de groupe de contacts</error><br>
+        Et les enregistrements bloqués par :<br>
         - <error>Base de données</error><br>
         - <error>Mode réunion</error><br>
         - <error>Requête instantanée</error> (pour éviter que le numéro de téléphone du point d\'accès de l\'API ne soit divulgué à d\'autres concurrents)<br>
         <br>
-		2. Il <highlight><b>signalera</b></highlight> les numéros de téléphone bloqués par :<br>
+		2. Il <highlight><b>signalera</b></highlight> les enregistrements bloqués par :<br>
         <br>
         - <highlight>Non-contact</highlight><br>
         - <highlight>Attestation STIR</highlight><br>
-        - <highlight>Regex de numéro de téléphone</highlight><br>
+        - <highlight>Regex</highlight><br>
         <br>
 		3. Une exception :<br>
 		<br>
-        Lorsqu\'il est bloqué par <highlight>Base de données</highlight> et que le numéro de téléphone a été ajouté initialement par une requête API,
+        Lorsqu\'un appel est bloqué par <highlight>Base de données</highlight> et que le numéro de téléphone a été ajouté initialement par une requête API,
          il sera signalé à cette API pour augmenter son score d\'évaluation. <br>
         <br>
          Par exemple, si le numéro de téléphone a été ajouté par

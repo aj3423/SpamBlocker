@@ -19,32 +19,30 @@
 		<br>
         <h6><title>- 自动举报</title></h6>
 		<minor><b>举报延迟</b></minor><br>
-        当一个电话被阻止时，会有一小时的时间缓冲，然后才会被举报。
+		&ensp; - <b>短信</b> 始终会立即自动举报。<br>
+        &ensp; - 当一个 <b>通话</b> 被阻止时，会有 <b>一小时</b> 的时间缓冲，然后才会被举报。
         如果该电话号码在此时间缓冲期内因重复、回拨或被添加到联系人而被允许，
         则会被视为非骚扰，举报将被取消。<br>
         <br>
 		<minor><b>举报类型</b></minor><br>
 		1. 它<error><b>不会</b></error>举报：<br>
         <br>
-        - <error>短信电话号码或内容</error><br>
-        - <error>允许的电话号码</error><br>
+        - <error>允许的记录</error><br>
         - <error>测试</error><br>
-        以及以下阻止类型：<br>
-        - <error>联系人正则表达式</error><br>
-        - <error>联系人群组正则表达式</error><br>
+        以及由以下方式阻止的记录：<br>
         - <error>数据库</error><br>
         - <error>会议模式</error><br>
         - <error>即时查询</error>（以防止API端点的电话号码泄露给其他竞争对手）<br>
         <br>
-		2. 它<highlight><b>将</b></highlight>举报被以下方式阻止的电话号码：<br>
+		2. 它<highlight><b>将</b></highlight>举报被以下方式阻止的记录：<br>
         <br>
         - <highlight>非联系人</highlight><br>
         - <highlight>STIR认证</highlight><br>
-        - <highlight>电话号码正则表达式</highlight><br>
+        - <highlight>正则表达式</highlight><br>
         <br>
 		3. 一个例外：<br>
 		<br>
-        当电话号码被<highlight>数据库</highlight>阻止，且该电话号码最初是通过API查询添加的，
+        当一个通话被<highlight>数据库</highlight>阻止，且该电话号码最初是通过API查询添加的，
          它将被报告回该API以提高评分。<br>
         <br>
          例如，如果该电话号码是通过

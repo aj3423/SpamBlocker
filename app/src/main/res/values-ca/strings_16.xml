@@ -19,32 +19,30 @@
 		<br>
         <h6><title>- Informe automàtic</title></h6>
 		<minor><b>Retard de l\'informe</b></minor><br>
-        Quan es bloqueja una trucada, hi haurà un període d\'una hora abans que s\'informi.
+		&ensp; - L\'<b>SMS</b> s\'informa sempre automàticament i immediatament. <br>
+        &ensp; - Quan es bloqueja una <b>trucada</b>, hi haurà un període d\'<b>una hora</b> abans que s\'informi.
         Si el número es permet més tard a causa de repeticions, si es torna a marcar o si s\'afegeix als contactes
         dins d\'aquest període, es considera no spam i l\'informe es cancel·larà.<br>
         <br>
 		<minor><b>Tipus d\'informe</b></minor><br>
 		1. <error><b>No</b></error> s\'informarà de:<br>
         <br>
-        - <error>Números o contingut SMS</error><br>
-        - <error>Números permesos</error><br>
+        - <error>Registres permesos</error><br>
         - <error>Proves</error><br>
-        I els següents tipus bloquejats:<br>
-        - <error>Regex de contacte</error><br>
-        - <error>Regex de grup de contactes</error><br>
+        I registres bloquejats per:<br>
         - <error>Base de dades</error><br>
         - <error>Mode reunió</error><br>
         - <error>Consulta instantània</error> (per evitar que el número del punt final de l\'API es filtri a altres competidors)<br>
         <br>
-		2. <highlight><b>Sí</b></highlight> que informarà dels números bloquejats per:<br>
+		2. <highlight><b>Sí</b></highlight> que informarà dels registres bloquejats per:<br>
         <br>
         - <highlight>No-contacte</highlight><br>
         - <highlight>Atestació STIR</highlight><br>
-        - <highlight>Regex de número</highlight><br>
+        - <highlight>Regex</highlight><br>
         <br>
 		3. Una excepció:<br>
 		<br>
-        Quan és bloquejat per <highlight>Base de dades</highlight> i el número va ser afegit originalment per una consulta d\'API,
+        Quan una trucada és bloquejada per <highlight>Base de dades</highlight> i el número va ser afegit originalment per una consulta d\'API,
          s\'informarà de nou a aquesta API per augmentar la puntuació de valoració. <br>
         <br>
          Per exemple, si el número va ser afegit per

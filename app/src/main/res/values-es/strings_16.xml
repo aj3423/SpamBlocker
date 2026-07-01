@@ -19,32 +19,30 @@
 		<br>
         <h6><title>- Reporte automático</title></h6>
 		<minor><b>Retraso del reporte</b></minor><br>
-        Cuando se bloquea una llamada, habrá un período de una hora antes de que se reporte.
+		&ensp; - El <b>SMS</b> siempre se reporta automáticamente de inmediato. <br>
+        &ensp; - Cuando se bloquea una <b>llamada</b>, habrá un período de <b>una hora</b> antes de que se reporte.
         Si el número telefónico es permitido posteriormente, ya sea por repeticiones, por volverse a marcar o por agregarse a los contactos
         dentro de este período, se considerará no spam y el reporte será cancelado.<br>
         <br>
 		<minor><b>Tipo de reporte</b></minor><br>
 		1. <error><b>No</b></error> reportará:<br>
         <br>
-        - <error>Números de SMS o contenido</error><br>
-        - <error>Números telefónicos permitidos</error><br>
+        - <error>Registros permitidos</error><br>
         - <error>Pruebas</error><br>
-        Y los siguientes tipos bloqueados:<br>
-        - <error>Expresión regular de Contacto</error><br>
-        - <error>Expresión regular de Grupo de Contactos</error><br>
+        Y registros bloqueados por:<br>
         - <error>Base de datos</error><br>
         - <error>Modo reunión</error><br>
         - <error>Consulta instantánea</error> (para evitar que el número telefónico del punto final de la API se filtre a otros competidores)<br>
         <br>
-		2. <highlight><b>Sí</b></highlight> reportará los números telefónicos bloqueados por:<br>
+		2. <highlight><b>Sí</b></highlight> reportará los registros bloqueados por:<br>
         <br>
         - <highlight>No-Contacto</highlight><br>
         - <highlight>Atestación STIR</highlight><br>
-        - <highlight>Expresión regular de número telefónico</highlight><br>
+        - <highlight>Expresión regular</highlight><br>
         <br>
 		3. Una excepción:<br>
 		<br>
-        Cuando sea bloqueado por <highlight>Base de datos</highlight> y el número telefónico fue añadido originalmente por una consulta de API,
+        Cuando una llamada sea bloqueada por <highlight>Base de datos</highlight> y el número telefónico fue añadido originalmente por una consulta de API,
          será reportado de vuelta a esa API para aumentar la puntuación de calificación. <br>
         <br>
          Por ejemplo, si el número telefónico fue añadido por

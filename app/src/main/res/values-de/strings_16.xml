@@ -19,32 +19,30 @@
 		<br>
         <h6><title>- Automatische Meldung</title></h6>
 		<minor><b>Meldeverzögerung</b></minor><br>
-        Wenn ein Anruf blockiert wird, gibt es einen einstündigen Zeitpuffer, bevor er gemeldet wird.
+		&ensp; - <b>SMS</b> wird immer sofort automatisch gemeldet. <br>
+        &ensp; - Wenn ein <b>Anruf</b> blockiert wird, gibt es einen <b>einstündigen</b> Zeitpuffer, bevor er gemeldet wird.
         Wenn die Rufnummer später aufgrund von Wiederholungen, Rückrufen oder dem Hinzufügen zu den Kontakten
         innerhalb dieses Zeitpuffers zugelassen wird, wird sie als Nicht-Spam betrachtet und die Meldung wird abgebrochen.<br>
         <br>
 		<minor><b>Meldungsart</b></minor><br>
 		1. Es <error><b>wird nicht</b></error> gemeldet:<br>
         <br>
-        - <error>SMS-Rufnummern oder -Inhalte</error><br>
-        - <error>Erlaubte Rufnummern</error><br>
+        - <error>Erlaubte Einträge</error><br>
         - <error>Testen</error><br>
-        Und folgende blockierte Typen:<br>
-        - <error>Kontakt-Regex</error><br>
-        - <error>Kontaktgruppen-Regex</error><br>
+        Und Einträge blockiert durch:<br>
         - <error>Datenbank</error><br>
         - <error>Besprechungsmodus</error><br>
         - <error>Sofortabfrage</error> (um zu verhindern, dass die Rufnummer des API-Endpunkts an andere Wettbewerber weitergegeben wird)<br>
         <br>
-		2. Es <highlight><b>wird</b></highlight> Rufnummern melden, die blockiert wurden durch:<br>
+		2. Es <highlight><b>wird</b></highlight> Einträge melden, die blockiert wurden durch:<br>
         <br>
         - <highlight>Nicht-Kontakt</highlight><br>
         - <highlight>STIR-Attestierung</highlight><br>
-        - <highlight>Rufnummer-Regex</highlight><br>
+        - <highlight>Regex</highlight><br>
         <br>
 		3. Eine Ausnahme:<br>
 		<br>
-        Wenn sie durch die <highlight>Datenbank</highlight> blockiert wird und die Rufnummer ursprünglich durch eine API-Abfrage hinzugefügt wurde,
+        Wenn ein Anruf durch die <highlight>Datenbank</highlight> blockiert wird und die Rufnummer ursprünglich durch eine API-Abfrage hinzugefügt wurde,
          wird sie an diese API zurückgemeldet, um die Bewertung zu erhöhen. <br>
         <br>
          Wenn die Rufnummer beispielsweise durch
