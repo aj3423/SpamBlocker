@@ -36,6 +36,13 @@
         <item>سیاسی</item>
         <item>تماس‌های مزاحم دیگر</item>
     </string-array>
+    <string name="valid_number">شماره معتبر</string>
+    <string name="valid_sms">پیامک معتبر</string>
+    <string name="fraud">کلاهبرداری</string>
+    <string name="marketing">بازاریابی</string>
+    <string name="survey">نظرسنجی</string>
+    <string name="political">سیاسی</string>
+    <string name="other_spam">تماس‌های مزاحم دیگر</string>
     <string name="action_category_config">تنظیمات دسته</string>
     <string name="help_action_category_config">
         <![CDATA[

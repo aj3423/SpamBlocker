@@ -35,6 +35,13 @@
         <item>政治関連</item>
         <item>その他迷惑電話</item>
     </string-array>
+    <string name="valid_number">有効な番号</string>
+    <string name="valid_sms">有効なSMS</string>
+    <string name="fraud">詐欺</string>
+    <string name="marketing">マーケティング</string>
+    <string name="survey">アンケート</string>
+    <string name="political">政治関連</string>
+    <string name="other_spam">その他迷惑電話</string>
     <string name="action_category_config">カテゴリ設定</string>
     <string name="help_action_category_config">
         <![CDATA[

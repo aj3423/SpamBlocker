@@ -36,6 +36,13 @@
         <item>Politik</item>
         <item>Sonstige Spam-Anrufe</item>
     </string-array>
+    <string name="valid_number">Gültige Nummer</string>
+    <string name="valid_sms">Gültige SMS</string>
+    <string name="fraud">Betrug</string>
+    <string name="marketing">Marketing</string>
+    <string name="survey">Umfrage</string>
+    <string name="political">Politik</string>
+    <string name="other_spam">Sonstige Spam-Anrufe</string>
     <string name="action_category_config">Kategorie Konfiguration</string>
     <string name="help_action_category_config">
         <![CDATA[

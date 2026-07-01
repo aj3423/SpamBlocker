@@ -36,6 +36,13 @@
         <item>פוליטי</item>
         <item>ספאם אחר</item>
     </string-array>
+    <string name="valid_number">מספר תקין</string>
+    <string name="valid_sms">הודעה טקסט תקינה</string>
+    <string name="fraud">הונאה</string>
+    <string name="marketing">שיווק</string>
+    <string name="survey">סקר</string>
+    <string name="political">פוליטי</string>
+    <string name="other_spam">ספאם אחר</string>
     <string name="action_category_config">תצורת קטגוריה</string>
     <string name="help_action_category_config">
         <![CDATA[

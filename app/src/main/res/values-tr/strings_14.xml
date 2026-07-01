@@ -36,6 +36,13 @@
         <item>Siyasi</item>
         <item>Diğer Spam</item>
     </string-array>
+    <string name="valid_number">Geçerli Numara</string>
+    <string name="valid_sms">Geçerli SMS</string>
+    <string name="fraud">Sahtekarlık</string>
+    <string name="marketing">Pazarlama</string>
+    <string name="survey">Anket</string>
+    <string name="political">Siyasi</string>
+    <string name="other_spam">Diğer Spam</string>
     <string name="action_category_config">Kategori Yapılandırması</string>
     <string name="help_action_category_config">
         <![CDATA[

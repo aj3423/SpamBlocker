@@ -36,6 +36,13 @@
         <item>Політика</item>
         <item>Інший спам</item>
     </string-array>
+    <string name="valid_number">Допустимий номер</string>
+    <string name="valid_sms">Надійний SMS</string>
+    <string name="fraud">Шахрайство</string>
+    <string name="marketing">Маркетинг</string>
+    <string name="survey">Опитування</string>
+    <string name="political">Політика</string>
+    <string name="other_spam">Інший спам</string>
     <string name="action_category_config">Налаштування категорій</string>
     <string name="help_action_category_config">
         <![CDATA[

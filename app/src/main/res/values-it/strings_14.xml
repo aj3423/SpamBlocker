@@ -36,6 +36,13 @@
         <item>Politica</item>
         <item>Altro Spam</item>
     </string-array>
+    <string name="valid_number">Numero Valido</string>
+    <string name="valid_sms">SMS Valido</string>
+    <string name="fraud">Frode</string>
+    <string name="marketing">Marketing</string>
+    <string name="survey">Sondaggio</string>
+    <string name="political">Politica</string>
+    <string name="other_spam">Altro Spam</string>
     <string name="action_category_config">Config. Categorie</string>
     <string name="help_action_category_config">
         <![CDATA[

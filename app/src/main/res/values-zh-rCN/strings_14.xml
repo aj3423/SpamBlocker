@@ -35,6 +35,13 @@
         <item>政治</item>
         <item>其他垃圾来电</item>
     </string-array>
+    <string name="valid_number">有效号码</string>
+    <string name="valid_sms">有效短信</string>
+    <string name="fraud">诈骗</string>
+    <string name="marketing">营销</string>
+    <string name="survey">调查</string>
+    <string name="political">政治</string>
+    <string name="other_spam">其他垃圾来电</string>
     <string name="action_category_config">类别配置</string>
     <string name="help_action_category_config">
         <![CDATA[
