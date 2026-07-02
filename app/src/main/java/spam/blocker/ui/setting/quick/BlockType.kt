@@ -58,16 +58,15 @@ fun BlockType() {
     }
 
     val options = remember {
-        val icons = listOf<@Composable () -> Unit>(
-            // list.map{} doesn't support returning @Composable...
-            { GreyIcon20(iconId = R.drawable.ic_call_blocked) },
-            { GreyIcon20(iconId = R.drawable.ic_call_miss) },
-            { GreyIcon20(iconId = R.drawable.ic_hang) },
+        val icons = listOf(
+            R.drawable.ic_call_blocked,
+            R.drawable.ic_call_miss,
+            R.drawable.ic_hang,
         )
         ctx.resources.getStringArray(R.array.block_type_list).mapIndexed { index, label ->
             LabelItem(
                 label = label,
-                leadingIcon = icons[index],
+                leadingIcon = { GreyIcon20(icons[index]) },
                 onClick = {
                     when (index) {
                         0, 1 -> { // Reject, Silence

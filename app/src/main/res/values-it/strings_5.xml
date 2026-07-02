@@ -76,9 +76,9 @@
          Come premere il tasto di rifiuto. Funziona in modo completamente silenzioso, la schermata di blocco non si attiverà.<br>
         <br>
         - <title><b>Silenzia</b></title>: <br>
-         Squillerà silenziosamente in sottofondo, dando l\'impressione al chiamante che eri non disponibile e hai perso la chiamata. <br>
+        La chiamata viene rifiutata istantaneamente dal tuo lato, ma continua a squillare per chi chiama, dando l\'impressione che tu non sia disponibile. <br>
         <br>
-         Potrebbe anche essere utile se stai ricevendo ripetute chiamate spam; prolungherà la durata della chiamata, rendendola meno efficiente per gli spammer, scoraggiandoli potenzialmente dal richiamarti.<br>
+        Questo può anche aiutare a ridurre le chiamate spam ripetute. Prolunga la durata della chiamata, rendendole meno efficienti e potenzialmente scoraggiando gli spammer dal chiamarti di nuovo.<br>
         <br>
         - <title><b>Riaggancia</b></title>: <br>
         Rispondi e riaggancia la chiamata per evitare che vada alla segreteria telefonica. <br>

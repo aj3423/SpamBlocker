@@ -76,9 +76,9 @@
          Same as pressing the decline button. It works completely silently, lockscreen won\'t be turned on.<br>
         <br>
         - <title><b>Silence</b></title>: <br>
-         It will ring silently in the background, giving the impression to the caller that you were unavailable and missed the call. <br>
+        The call is instantly rejected on your side but keeps ringing for the caller, giving the impression that you are unavailable. <br>
         <br>
-         It may also help if you are experiencing repeated spam calls, it will extend the call duration, making it less efficient for spammers, potentially discouraging them from calling you again.<br>
+         This can also help reduce repeated spam calls. It extends the call duration, making them less efficient and potentially discouraging them from calling you again.<br>
         <br>
         - <title><b>Hang Up</b></title>: <br>
         Answer and hang up the call to prevent it from going to voicemail. <br>

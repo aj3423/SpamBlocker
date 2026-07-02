@@ -76,9 +76,9 @@
          Sama seperti menekan tombol tolak. Ini bekerja sepenuhnya secara senyap, layar kunci tidak akan menyala.<br>
         <br>
         - <title><b>Senyap</b></title>: <br>
-         Panggilan akan berdering secara senyap di latar belakang, memberikan kesan kepada penelepon bahwa Anda tidak tersedia dan melewatkan panggilan tersebut. <br>
+        Panggilan langsung ditolak di sisi Anda tetapi tetap berdering bagi penelepon, memberikan kesan bahwa Anda tidak tersedia. <br>
         <br>
-         Ini juga dapat membantu jika Anda mengalami panggilan spam berulang, karena akan memperpanjang durasi panggilan, menjadikannya kurang efisien bagi spammer, dan berpotensi membuat mereka enggan menelepon Anda lagi.<br>
+        Ini juga dapat membantu mengurangi panggilan spam yang berulang. Ini memperpanjang durasi panggilan, membuatnya kurang efisien dan berpotensi membuat spammer enggan menghubungi Anda kembali.<br>
         <br>
         - <title><b>Tutup Panggilan</b></title>: <br>
         Jawab dan tutup panggilan untuk mencegahnya masuk ke pesan suara. <br>

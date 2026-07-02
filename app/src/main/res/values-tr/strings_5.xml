@@ -75,9 +75,9 @@
          Reddetme düğmesine basmakla aynıdır. Tamamen sessiz çalışır, kilit ekranı açılmaz.<br>
         <br>
         - <title><b>Sessize Al</b></title>: <br>
-         Arka planda sessizce çalarak arayana ulaşılamadığınız ve aramayı kaçırdığınız izlenimini verir. <br>
+        Arama sizin tarafınızda anında reddedilir ancak arayan kişi için çalmaya devam eder, böylece müsait olmadığınız izlenimi oluşur. <br>
         <br>
-         Tekrarlayan spam aramalar yaşıyorsanız da yardımcı olabilir; arama süresini uzatarak spam gönderenler için daha az verimli hale getirir ve potansiyel olarak sizi tekrar aramamalarını sağlar.<br>
+        Bu, tekrarlanan spam aramalarını azaltmaya da yardımcı olabilir. Arama süresini uzatarak onları daha az verimli hale getirir ve potansiyel olarak sizi tekrar aramaktan vazgeçirebilir.<br>
         <br>
         - <title><b>Kapat</b></title>: <br>
         Aramanın sesli mesaja gitmesini önlemek için aramayı yanıtlar ve kapatır. <br>

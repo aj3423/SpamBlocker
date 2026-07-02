@@ -76,9 +76,9 @@
          Igual que pulsar el botón de rechazar. Funciona de forma completamente silenciosa, la pantalla de bloqueo no se encenderá.<br>
         <br>
         - <title><b>Silenciar</b></title>: <br>
-         Sonará en silencio en segundo plano, dando la impresión al llamante de que no estaba disponible y perdió la llamada. <br>
+        La llamada se rechaza instantáneamente en tu lado, pero sigue sonando para el llamador, dando la impresión de que no estás disponible. <br>
         <br>
-         También puede ayudar si está experimentando llamadas de spam repetidas, extenderá la duración de la llamada, haciéndola menos eficiente para los spammers, lo que podría desanimarlos a volver a llamarle.<br>
+        Esto también puede ayudar a reducir las llamadas spam repetitivas. Prolonga la duración de la llamada, haciéndolas menos eficientes y potencialmente desanimando a los spammers de volver a llamarte.<br>
         <br>
         - <title><b>Colgar</b></title>: <br>
         Responder y colgar la llamada para evitar que vaya al buzón de voz. <br>

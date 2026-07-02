@@ -76,9 +76,9 @@
          O mesmo que pressionar o botão de recusar. Funciona de forma completamente silenciosa, a tela de bloqueio não será ativada.<br>
         <br>
         - <title><b>Silenciar</b></title>: <br>
-         Tocará silenciosamente em segundo plano, dando a impressão ao chamador de que você estava indisponível e perdeu a chamada. <br>
+        A chamada é instantaneamente rejeitada do seu lado, mas continua tocando para quem liga, dando a impressão de que você está indisponível. <br>
         <br>
-         Também pode ajudar se você estiver recebendo chamadas de spam repetidas; isso estenderá a duração da chamada, tornando-a menos eficiente para os spammers, potencialmente desencorajando-os a ligar novamente.<br>
+        Isso também pode ajudar a reduzir chamadas de spam repetitivas. Prolonga a duração da chamada, tornando-as menos eficientes e potencialmente desencorajando os spammers de ligarem para você novamente.<br>
         <br>
         - <title><b>Desligar</b></title>: <br>
         Atender e desligar a chamada para evitar que vá para o correio de voz. <br>
