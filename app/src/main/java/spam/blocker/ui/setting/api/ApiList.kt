@@ -58,7 +58,8 @@ fun ApiList(vm: ApiViewModel) {
 
                 // 2. reload UI
                 vm.reloadDb(ctx)
-            }
+            },
+            onDismiss = { vm.reloadDb(ctx) }
         )
     }
 

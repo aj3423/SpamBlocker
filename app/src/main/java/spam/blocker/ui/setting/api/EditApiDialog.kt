@@ -40,6 +40,7 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
+import spam.blocker.util.Lambda
 import spam.blocker.util.Lambda1
 import spam.blocker.util.hasFlag
 import spam.blocker.util.setFlag
@@ -120,6 +121,11 @@ fun AutoReportTypesButton(
 fun EditApiDialog(
     trigger: MutableState<Boolean>,
     onSave: Lambda1<IApi>,
+
+    // Reload api list after this dialog is closed, changes seem to persist when modified
+    //  but not saved, don't know why. An ugly workaround.
+    onDismiss: Lambda,
+
     initial: IApi,
 ) {
     if (!trigger.value) {
@@ -147,6 +153,7 @@ fun EditApiDialog(
     PopupDialog(
         trigger = trigger,
         popupSize = PopupSize(maxWidthPercentage = 0.9f, minWidthDp = 340, maxWidthDp = 600),
+        onDismiss = onDismiss,
         buttons = {
             StrokeButton(
                 label = Str(R.string.save),

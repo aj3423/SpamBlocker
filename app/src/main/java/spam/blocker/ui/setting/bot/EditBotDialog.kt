@@ -44,7 +44,11 @@ import spam.blocker.util.Lambda1
 fun EditBotDialog(
     popupTrigger: MutableState<Boolean>,
     onSave: Lambda1<Bot>,
+
+    // Reload bot list after this dialog is closed, changes seem to persist when modified
+    //  but not saved, don't know why. An ugly workaround.
     onDismiss: Lambda,
+
     initialBot: Bot,
 ) {
     if (!popupTrigger.value) {

@@ -71,6 +71,7 @@ fun ApiHeader(
         EditApiDialog(
             trigger = costomizeTrigger,
             initial = initialApi.value!!,
+            onDismiss = { vm.reloadDb(ctx) },
             onSave = { newApi ->
                 addApiToDB(ctx, vm, newApi)
             }
