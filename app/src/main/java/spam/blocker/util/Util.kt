@@ -801,6 +801,7 @@ object Util {
     class CallInfo(
         val rawNumber: String,
         val type: Int, // answered, missed, ...
+        val time: Long,
         val duration: Long, // in seconds
     )
     fun getHistoryCalls(
@@ -837,6 +838,7 @@ object Util {
                 Calls.NUMBER,
                 Calls.TYPE,
                 Calls.DURATION,
+                Calls.DATE,
             ),
             selection.joinToString(" AND "),
             null,
@@ -847,7 +849,8 @@ object Util {
                     ret += CallInfo(
                         rawNumber = it.getStringOrNull(0) ?: "",
                         type = it.getInt(1),
-                        duration = it.getLong(2)
+                        duration = it.getLong(2),
+                        time = it.getLong(3)
                     )
                 } while (it.moveToNext())
             }

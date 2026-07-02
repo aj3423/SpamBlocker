@@ -446,14 +446,14 @@ class RepeatedCall : IConfig {
         val spf = spf.RepeatedCall(ctx)
         enabled = spf.isEnabled
         times = spf.times
-        inXMin = spf.inXMin
+        inXMin = spf.maxInterval
     }
 
     override fun apply(ctx: Context) {
         val spf = spf.RepeatedCall(ctx)
         spf.isEnabled = enabled
         spf.times = times
-        spf.inXMin = inXMin
+        spf.maxInterval = inXMin
     }
 }
 

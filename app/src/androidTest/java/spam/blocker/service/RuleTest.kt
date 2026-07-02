@@ -132,7 +132,7 @@ class RuleTest {
             val withinMillis = lastArg<Long?>()
             val mockNow = Now.currentMillis()
             if (withinMillis == null || (atTimeMillis in mockNow - withinMillis..mockNow)) {
-                List<CallInfo>(repeatedTimes) { CallInfo(rawNumber = rawNumber, type = 0, duration = 20)}
+                List<CallInfo>(repeatedTimes) { CallInfo(rawNumber = rawNumber, type = 0, time = atTimeMillis, duration = 20)}
             } else {
                 listOf()
             }
@@ -209,7 +209,7 @@ class RuleTest {
         spf.RepeatedCall(ctx).apply {
             isEnabled = true
             times = 4
-            inXMin = 5
+            maxInterval = 5
         }
 
         mockkObject(Permission)
@@ -229,26 +229,32 @@ class RuleTest {
         // should always fail when no history records
         for (i in 1..3) {
             val r = Checker.checkCall(ctx, Bob).first
-            assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER_REGEX, r.type)
+            assertEquals("should block (no history records)", Def.RESULT_BLOCKED_BY_NUMBER_REGEX, r.type)
         }
 
         // add two calls
         mock_calls(Bob, Def.DIRECTION_INCOMING, 2, twoMinAgo)
 
-        // should still fail, 2<4
+        // should still fail, repeat times 2<4
         val r2 = Checker.checkCall(ctx, Bob).first
-        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER_REGEX, r2.type)
+        assertEquals("should block (2<4)", Def.RESULT_BLOCKED_BY_NUMBER_REGEX, r2.type)
 
         // add two sms
         mock_sms(Bob, Def.DIRECTION_INCOMING, 2, twoMinAgo)
         // should pass, 2+2>=4
         val r3 = Checker.checkCall(ctx, Bob).first
-        assertEquals("should pass", Def.RESULT_ALLOWED_BY_REPEATED, r3.type)
+        assertEquals("should pass (with two sms)", Def.RESULT_ALLOWED_BY_REPEATED, r3.type)
+
+        // should block if repeated too soon
+        val oneSecondAgo = now - 1 * 1000
+        mock_calls(Bob, Def.DIRECTION_INCOMING, 0, oneSecondAgo)
+        val r4 = Checker.checkCall(ctx, Bob).first
+        assertEquals("should block (repeated too soon)", Def.RESULT_BLOCKED_BY_NUMBER_REGEX, r4.type)
 
         // should block again after 10 minutes
         mock_advance_time_by_minutes(10)
-        val r4 = Checker.checkCall(ctx, Bob).first
-        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER_REGEX, r4.type)
+        val r5 = Checker.checkCall(ctx, Bob).first
+        assertEquals("should block (after 10 minutes)", Def.RESULT_BLOCKED_BY_NUMBER_REGEX, r5.type)
     }
 
     // testing dialed

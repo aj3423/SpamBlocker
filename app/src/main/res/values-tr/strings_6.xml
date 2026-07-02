@@ -43,21 +43,33 @@
     <string name="repeated_call">Tekrarlanan Arama</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Çağrı belirli bir süre içinde tekrarlanırsa izin verin, bu bir spam çağrısından ziyade önemli olabilir. <br>
+        Tekrarlanan aramalara izin verin, çünkü bunların spamdan ziyade acil olma olasılığı daha yüksektir. <br>
+        <br>
+        Varsayılan olarak, <highlight><b>5 dakika</b></highlight> içindeki ikinci aramaya izin verilecektir. <br>
         <br>
         <b>Seçenekler:</b><br>
         <br>
-        <h6><title>- Frekans</title></h6>
-        Varsayılan ayar <highlight><b>1 / 5 Dakika</b></highlight>, 5 dakika içinde ikinci çağrıya izin verileceği anlamına gelir. <br>
+        - <title><b>Maksimum Aralık</b></title> <br>
+        &ensp; Yalnızca bu zaman dilimi içindeki aramalar tekrar olarak kabul edilir. <br>
         <br>
-        <h6><title>- SMS Dahil Et</title></h6>
-        Etkinleştirildiğinde, o numaradan SMS mesajları almak da sayılır.<br>
+        - <title><b>Minimum Aralık</b></title> <br>
+        &ensp; Bir numara bundan daha kısa sürede tekrar ararsa yoksayılır. Spam botları genellikle anında tekrar arar, bu durumda bu değeri artırın. Engelleme modunu \"Sessiz\" olarak ayarlamak da yardımcı olabilir, ayrıntılar için araç ipucuna bakın. <br>
+        <br>
+        - <title><b>Tekrar Sayısı</b></title> <br>
+        &ensp; Minimum tekrar sayısı. <br>
+        <br>
+        - <title><b>SMS Dahil Et</b></title> <br>
+        &ensp; Etkinleştirildiğinde, o numaradan gelen SMS mesajlarını almak da sayılır. <br>
         <br>
         <priority><b>Öncelik: 10</b></priority>
         ]]>
     </string>
 
 
+    <string name="max_interval_min">Maksimum Aralık (Dak)</string>
+    <string name="min_interval_sec">Minimum Aralık (Sn)</string>
+    <string name="repeat_times">Tekrar Sayısı</string>
+    <string name="call_repeated_too_soon">Bu numaradan gelen son aramadan bu yana sadece %s milisaniye geçti, gerekli minimum %s milisaniyedir, yoksay.</string>
     <string name="about">Hakkında</string>
     <string name="version">Sürüm</string>
     <string name="source_code">Kaynak Kodu</string>

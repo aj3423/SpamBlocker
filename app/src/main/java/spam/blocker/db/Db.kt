@@ -248,7 +248,7 @@ class Db private constructor(
                         "$COLUMN_EXPANDED INTEGER, " +
                         "$COLUMN_FULL_SCREENING_LOG TEXT, " +
                         "$COLUMN_AUTO_REPORTING_LOG TEXT, " +
-                        "$COLUMN_ANYTHING_WRONG_SCREENING INTEGER " +
+                        "$COLUMN_ANYTHING_WRONG_SCREENING INTEGER, " +
                         "$COLUMN_ANYTHING_WRONG_REPORTING INTEGER " +
                         ")"
             )

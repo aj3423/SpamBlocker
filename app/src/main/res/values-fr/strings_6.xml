@@ -43,21 +43,33 @@
     <string name="repeated_call">Appel répété</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Autoriser si l\'appel est répété dans un certain laps de temps, il est susceptible d\'être important plutôt qu\'un appel spam. <br>
+        Autoriser les appels répétés, car ils sont plus susceptibles d\'être urgents que du spam. <br>
+        <br>
+        Par défaut, le deuxième appel dans les <highlight><b>5 minutes</b></highlight> sera autorisé. <br>
         <br>
         <b>Options :</b><br>
         <br>
-        <h6><title>- Fréquence</title></h6>
-        Le réglage par défaut <highlight><b>1 / 5 min</b></highlight> signifie que le deuxième appel dans les 5 minutes sera autorisé. <br>
+        - <title><b>Intervalle Max</b></title> <br>
+        &ensp; Seuls les appels dans ce délai sont considérés comme des répétitions. <br>
         <br>
-        <h6><title>- Inclure les SMS</title></h6>
-        Lorsqu\'activé, la réception de messages SMS de ce numéro compte également.<br>
+        - <title><b>Intervalle Min</b></title> <br>
+        &ensp; Si un numéro rappelle avant ce délai, il sera ignoré. Les bots de spam rappellent généralement instantanément, dans ce cas, augmentez cette valeur. Régler le mode de blocage sur \"Silence\" peut également aider, consultez l\'infobulle pour plus de détails. <br>
+        <br>
+        - <title><b>Nombre de Répétitions</b></title> <br>
+        &ensp; Le nombre minimum de répétitions. <br>
+        <br>
+        - <title><b>Inclure les SMS</b></title> <br>
+        &ensp; Lorsqu\'activé, la réception de messages SMS de ce numéro compte également. <br>
         <br>
         <priority><b>Priorité : 10</b></priority>
         ]]>
     </string>
 
 
+    <string name="max_interval_min">Intervalle max (min)</string>
+    <string name="min_interval_sec">Intervalle min (sec)</string>
+    <string name="repeat_times">Nombre de répétitions</string>
+    <string name="call_repeated_too_soon">Seulement %s millisecondes depuis le dernier appel de ce numéro, le minimum requis est de %s millisecondes, ignorer.</string>
     <string name="about">À propos</string>
     <string name="version">Version</string>
     <string name="source_code">Code source</string>

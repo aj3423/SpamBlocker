@@ -46,21 +46,33 @@
     <string name="repeated_call"><translate>Trucada repetida</translate></string>
     <string name="help_repeated_call">
         <![CDATA[
-        Permet si la trucada es repeteix dins d\'un període de temps; és probable que sigui important en lloc d\'una trucada de spam. <br>
+        Permet les trucades repetides, ja que és més probable que siguin urgents que spam. <br>
+        <br>
+        Per defecte, es permetrà la segona trucada dins de <highlight><b>5 minuts</b></highlight>. <br>
         <br>
         <b>Opcions:</b><br>
         <br>
-        <h6><title>- Freqüència</title></h6>
-        La configuració predeterminada <highlight><b>1 / 5 minuts</b></highlight> significa que es permetrà la segona trucada en 5 minuts. <br>
+        - <title><b>Intervalle Màxim</b></title> <br>
+        &ensp; Només les trucades dins d\'aquest termini es consideren repetides. <br>
         <br>
-        <h6><title>- Incloure SMS</title></h6>
-        Quan estigui activat, també es comptabilitzen els SMS rebuts d\'aquest número.<br>
+        - <title><b>Intervalle Mínim</b></title> <br>
+        &ensp; Si un número torna a trucar abans d\'aquest temps, es serà ignorat. Els bots de spam solen redestinar instantàniament; en aquest cas, augmenta aquest valor. Establir el mode de bloqueig en \"Silenci\" també pot ajudar, consulta la descripció emergent per a més detalls. <br>
+        <br>
+        - <title><b>Vegades de Repetició</b></title> <br>
+        &ensp; El nombre mínim de repeticions. <br>
+        <br>
+        - <title><b>Incloure SMS</b></title> <br>
+        &ensp; Quan estigui activat, també es comptabilitzen els SMS rebuts d\'aquest número. <br>
         <br>
         <priority><b>Prioritat: 10</b></priority>
         ]]>
     </string>
 
 
+    <string name="max_interval_min"><translate>Intervalle màxim (min)</translate></string>
+    <string name="min_interval_sec"><translate>Intervalle mínim (seg)</translate></string>
+    <string name="repeat_times"><translate>vegades de repetició</translate></string>
+    <string name="call_repeated_too_soon"><translate>Només %s milisegons des de l\'última trucada d\'aquest número, el mínim requerit són %s milisegons, ignorar.</translate></string>
     <string name="about"><translate>Quant a</translate></string>
     <string name="version"><translate>Versió</translate></string>
     <string name="source_code"><translate>Codi font</translate></string>

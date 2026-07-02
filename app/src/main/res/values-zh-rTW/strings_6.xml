@@ -46,23 +46,33 @@
     <string name="repeated_call">重複來電</string>
     <string name="help_repeated_call">
         <![CDATA[
-        如果在一段時間內重複來電，就會放行該來電，這可能是重要來電而非騷擾電話。<br>
+        允許重複來電，因為這些來電比騷擾電話更有可能是緊急來電。 <br>
+        <br>
+        預設情況下，<highlight><b>5 分鐘</b></highlight>內的第二次來電將被允許。 <br>
         <br>
         <b>選項：</b><br>
         <br>
-        <h6><title>- 次數</title></h6>
-        預設設定 <highlight><b>1 次 / 5 分鐘</b></highlight> 表示在 5 分鐘內的第二通來電將被允許。<br>
+        - <title><b>最大間隔</b></title> <br>
+        &ensp; 僅在此時間範圍內的來電被視為重複來電。 <br>
         <br>
-        <h6><title>- 包含簡訊</title></h6>
-        啟用時，該號碼傳來的簡訊也會計入。<br>
+        - <title><b>最小間隔</b></title> <br>
+        &ensp; 如果號碼在此時間之前再次來電，將被忽略。騷擾電話機器人通常會立即重新撥號，在這種情況下，請增加此值。將攔截模式設置為\"靜默\"也可以有所幫助，詳情請查看其工具提示。 <br>
         <br>
-        僅適用於來電，<b>不適用</b>於簡訊。<br>
+        - <title><b>重複次數</b></title> <br>
+        &ensp; 最小重複次數。 <br>
+        <br>
+        - <title><b>包含簡訊</b></title> <br>
+        &ensp; 啟用時，接收來自該號碼的簡訊也將計入。 <br>
         <br>
         <priority><b>優先順序：10</b></priority>
         ]]>
     </string>
 
 
+    <string name="max_interval_min">最大間隔 (分)</string>
+    <string name="min_interval_sec">最小間隔 (秒)</string>
+    <string name="repeat_times">重複次數</string>
+    <string name="call_repeated_too_soon">距離該號碼上次通話僅過去 %s 毫秒，所需最小值是 %s 毫秒，忽略。</string>
     <string name="about">關於</string>
     <string name="version">版本</string>
     <string name="source_code">原始碼</string>

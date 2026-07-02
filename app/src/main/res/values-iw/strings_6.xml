@@ -46,21 +46,33 @@
     <string name="repeated_call">שיחה חוזרת</string>
     <string name="help_repeated_call">
         <![CDATA[
-        אפשר אם השיחה חוזרת בתוך פרק זמן מסוים, סביר להניח שהיא חשובה ולא שיחת ספאם. <br>
+        אפשר שיחות חוזרות, שכן סביר להניח שהן דחופות יותר מאשר ספאם. <br>
+        <br>
+        כברירת מחדל, השיחה השנייה בתוך <highlight><b>5 דקות</b></highlight> תאושר. <br>
         <br>
         <b>אפשרויות:</b><br>
         <br>
-        <h6><title>- תדירות</title></h6>
-        ההגדרה ברירת המחדל <highlight><b>1 / 5 דקות</b></highlight> פירושה שהשיחה השנייה בתוך 5 דקות תאושר. <br>
+        - <title><b>מרווח מקסימלי</b></title> <br>
+        &ensp; רק שיחות בתוך טווח זמן זה נחשבות לחזרות. <br>
         <br>
-        <h6><title>- כלול SMS</title></h6>
-        כאשר מופעל, קבלת הודעות SMS מאותו מספר נספרת גם כן.<br>
+        - <title><b>מרווח מינימלי</b></title> <br>
+        &ensp; אם מספר חוזר להתקשר לפני זמן זה, הוא יתעלם. בוטים של ספאם בדרך כלל מחייגים שוב באופן מיידי, במקרה זה הגדל את הערך הזה. הגדרת מצב החסימה ל\"שקט\" יכולה גם לעזור, בדוק את הטיפ למתן פרטים. <br>
+        <br>
+        - <title><b>מספר חזרות</b></title> <br>
+        &ensp; מספר החזרות המינימלי. <br>
+        <br>
+        - <title><b>כלול SMS</b></title> <br>
+        &ensp; כאשר מופעל, קבלת הודעות SMS מאותו מספר נספרת גם כן. <br>
         <br>
         <priority><b>עדיפות: 10</b></priority>
         ]]>
     </string>
 
 
+    <string name="max_interval_min">מרווח מקסימלי (דקות)</string>
+    <string name="min_interval_sec">מרווח מינימלי (שניות)</string>
+    <string name="repeat_times">מספר חזרות</string>
+    <string name="call_repeated_too_soon">רק %s מילישניות מאז השיחה האחרונה ממספר זה, המינימום הנדרש הוא %s מילישניות, התעלם.</string>
     <string name="about">אודות</string>
     <string name="version">גרסה</string>
     <string name="source_code">קוד מקור</string>

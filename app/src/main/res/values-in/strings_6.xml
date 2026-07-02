@@ -46,21 +46,33 @@
     <string name="repeated_call">Panggilan Berulang</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Izinkan jika panggilan diulang dalam periode waktu tertentu, kemungkinan itu panggilan penting daripada panggilan spam. <br>
+        Izinkan panggilan berulang, karena kemungkinan besar itu adalah panggilan darurat daripada spam. <br>
+        <br>
+        Secara default, panggilan kedua dalam <highlight><b>5 menit</b></highlight> akan diizinkan. <br>
         <br>
         <b>Opsi:</b><br>
         <br>
-        <h6><title>- Frekuensi</title></h6>
-        Pengaturan default <highlight><b>1 / 5 Menit</b></highlight> berarti panggilan kedua dalam 5 menit akan diizinkan. <br>
+        - <title><b>Interval Maksimum</b></title> <br>
+        &ensp; Hanya panggilan dalam jangka waktu ini yang dianggap sebagai pengulangan. <br>
         <br>
-        <h6><title>- Sertakan SMS</title></h6>
-        Ketika diaktifkan, menerima pesan SMS dari nomor tersebut juga dihitung.<br>
+        - <title><b>Interval Minimum</b></title> <br>
+        &ensp; Jika nomor menelepon kembali lebih cepat dari ini, maka akan diabaikan. Bot spam biasanya menelepon kembali secara instan, dalam hal ini, tingkatkan nilai ini. Mengatur mode pemblokiran ke \"Hening\" juga dapat membantu, lihat tooltip untuk detailnya. <br>
+        <br>
+        - <title><b>Jumlah Pengulangan</b></title> <br>
+        &ensp; Jumlah pengulangan minimum. <br>
+        <br>
+        - <title><b>Sertakan SMS</b></title> <br>
+        &ensp; Ketika diaktifkan, menerima pesan SMS dari nomor tersebut juga dihitung. <br>
         <br>
         <priority><b>Prioritas: 10</b></priority>
         ]]>
     </string>
 
 
+    <string name="max_interval_min">Interval Maks (Menit)</string>
+    <string name="min_interval_sec">Interval Min (Detik)</string>
+    <string name="repeat_times">Jumlah Pengulangan</string>
+    <string name="call_repeated_too_soon">Baru %s milidetik sejak panggilan terakhir dari nomor ini, minimum yang diperlukan adalah %s milidetik, abaikan.</string>
     <string name="about">Tentang</string>
     <string name="version">Versi</string>
     <string name="source_code">Kode Sumber</string>

@@ -301,7 +301,8 @@ class spf { // for namespace only
         var isSmsEnabled by bool("permit_repeated_by_sms", true)
 
         var times by int("repeated_times", 1)
-        var inXMin by int("repeated_in_x_min", 5)
+        var maxInterval by int("repeated_in_x_min", 5)
+        var minInterval by int("repeated_min_interval", 0)
     }
 
     class Dialed(ctx: Context) : SharedPref(ctx) {

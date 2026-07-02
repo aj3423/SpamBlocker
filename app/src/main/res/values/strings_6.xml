@@ -44,21 +44,32 @@
     <string name="repeated_call">Repeated Call</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Allow if the call is repeated within a period of time, it is likely to be important rather than a spam call. <br>
+        Allow repeated calls, they are more likely to be urgent than spam. <br>
+        <br>
+        By default, the second call within <highlight><b>5 minutes</b></highlight> will be allowed. <br>
         <br>
         <b>Options:</b><br>
         <br>
-        <h6><title>- Frequency</title></h6>
-        The default setting <highlight><b>1 / 5 Min</b></highlight> means the second call within 5 minutes will be allowed. <br>
+        - <title><b>Max Interval</b></title> <br>
+        &ensp; Only calls within this timeframe are considered as repeats. <br>
         <br>
-        <h6><title>- Include SMS</title></h6>
-        When enabled, receiving SMS messages from that number also counts.<br>
+        - <title><b>Min Interval</b></title> <br>
+        &ensp; If a number calls again sooner than this, it will be ignored. Spam bots usually redial instantly,
+         in that case, increase this value. Setting the blocking mode to \"Silence\" can also help, check its tooltip for details. <br>
+        <br>
+        - <title><b>Repeat Times</b></title> <br>
+        &ensp; The minimal repeat times. <br>
+        <br>
+        - <title><b>Include SMS</b></title> <br>
+        &ensp; When enabled, receiving SMS messages from that number also counts. <br>
         <br>
         <priority><b>Priority: 10</b></priority>
         ]]>
     </string>
-
-
+    <string name="max_interval_min">Max Interval (Min)</string>
+    <string name="min_interval_sec">Min Interval (Sec)</string>
+    <string name="repeat_times">Repeat Times</string>
+    <string name="call_repeated_too_soon">Only %s milliseconds since last call from this number, required minimum is %s milliseconds, ignore.</string>
     <string name="about">About</string>
     <string name="version">Version</string>
     <string name="source_code">Source Code</string>

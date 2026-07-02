@@ -1,11 +1,11 @@
 package spam.blocker.ui.setting.quick
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -33,40 +33,58 @@ fun RepeatedCall() {
 
     var isEnabled by remember { mutableStateOf(spf.isEnabled && Permission.callLog.isGranted) }
     var smsEnabled by remember(Permission.readSMS.isGranted) { mutableStateOf(spf.isSmsEnabled && Permission.readSMS.isGranted) }
-    var times by remember { mutableStateOf<Int?>(spf.times) }
-    var inXMin by remember { mutableStateOf<Int?>(spf.inXMin) }
+    var times by remember { mutableIntStateOf(spf.times) }
+    var inXMin by remember { mutableIntStateOf(spf.maxInterval) }
+    var minInterval by remember { mutableIntStateOf(spf.minInterval) }
 
     val popupTrigger = rememberSaveable { mutableStateOf(false) }
 
     PopupDialog(
         trigger = popupTrigger,
         content = {
-            Column(modifier = M.widthIn(max = 280.dp)) {
-                NumberInputBox(
-                    intValue = times,
-                    onValueChange = { newValue, hasError ->
-                        if (!hasError) {
-                            times = newValue
-                            spf.times = newValue!!
-                        }
-                    },
-                    labelId = R.string.times,
-                    leadingIconId = R.drawable.ic_repeat,
-                )
-
-                Spacer(modifier = M.height(10.dp))
-
+            Column(
+                modifier = M.widthIn(max = 280.dp),
+                verticalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
+                // Max Interval
                 NumberInputBox(
                     intValue = inXMin,
                     onValueChange = { newValue, hasError ->
                         if (!hasError) {
                             inXMin = newValue!!
-                            spf.inXMin = newValue
+                            spf.maxInterval = newValue
                         }
                     },
-                    labelId = R.string.within_minutes,
+                    labelId = R.string.max_interval_min,
                     leadingIconId = R.drawable.ic_duration,
                 )
+
+                // Min Interval
+                NumberInputBox(
+                    intValue = minInterval,
+                    onValueChange = { newValue, hasError ->
+                        if (!hasError) {
+                            minInterval = newValue!!
+                            spf.minInterval = newValue
+                        }
+                    },
+                    labelId = R.string.min_interval_sec,
+                    leadingIconId = R.drawable.ic_duration,
+                )
+
+                // Repeat Times
+                NumberInputBox(
+                    intValue = times,
+                    onValueChange = { newValue, hasError ->
+                        if (!hasError) {
+                            times = newValue!!
+                            spf.times = newValue
+                        }
+                    },
+                    labelId = R.string.repeat_times,
+                    leadingIconId = R.drawable.ic_repeat,
+                )
+
                 LabeledRow(
                     R.string.include_sms,
                     content = {

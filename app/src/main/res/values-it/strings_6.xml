@@ -43,21 +43,33 @@
     <string name="repeated_call">Chiamata ripetuta</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Consenti se la chiamata viene ripetuta entro un certo periodo di tempo, è probabile che sia importante piuttosto che una chiamata spam. <br>
+        Consenti le chiamate ripetute, poiché è più probabile che siano urgenti piuttosto che spam. <br>
+        <br>
+        Per impostazione predefinita, la seconda chiamata entro <highlight><b>5 minuti</b></highlight> sarà consentita. <br>
         <br>
         <b>Opzioni:</b><br>
         <br>
-        <h6><title>- Frequenza</title></h6>
-        L\'impostazione predefinita <highlight><b>1 / 5 Min</b></highlight> significa che la seconda chiamata entro 5 minuti sarà consentita. <br>
+        - <title><b>Intervallo Massimo</b></title> <br>
+        &ensp; Solo le chiamate entro questo intervallo di tempo sono considerate ripetizioni. <br>
         <br>
-        <h6><title>- Includi SMS</title></h6>
-        Quando abilitato, anche la ricezione di messaggi SMS da quel numero viene conteggiata.<br>
+        - <title><b>Intervallo Minimo</b></title> <br>
+        &ensp; Se un numero richiama prima di questo intervallo, verrà ignorato. I bot di spam solitamente richiamano istantaneamente; in tal caso, aumenta questo valore. Impostare la modalità di blocco su \"Silenzioso\" può anche aiutare, controlla il tooltip per i dettagli. <br>
+        <br>
+        - <title><b>Numero di Ripetizioni</b></title> <br>
+        &ensp; Il numero minimo di ripetizioni. <br>
+        <br>
+        - <title><b>Includi SMS</b></title> <br>
+        &ensp; Quando abilitato, anche la ricezione di messaggi SMS da quel numero viene conteggiata. <br>
         <br>
         <priority><b>Priorità: 10</b></priority>
         ]]>
     </string>
 
 
+    <string name="max_interval_min">Intervallo max (min)</string>
+    <string name="min_interval_sec">Intervallo min (sec)</string>
+    <string name="repeat_times">Numero di ripetizioni</string>
+    <string name="call_repeated_too_soon">Solo %s millisecondi dall\'ultima chiamata di questo numero, il minimo richiesto è di %s millisecondi, ignora.</string>
     <string name="about">Informazioni</string>
     <string name="version">Versione</string>
     <string name="source_code">Codice sorgente</string>

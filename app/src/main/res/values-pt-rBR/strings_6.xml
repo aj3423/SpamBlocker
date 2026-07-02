@@ -43,21 +43,33 @@
     <string name="repeated_call">Chamada Repetida</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Permitir se a chamada for repetida dentro de um período de tempo, é provável que seja importante em vez de uma chamada de spam. <br>
+        Permitir chamadas repetidas, pois é mais provável que sejam urgentes do que spam. <br>
+        <br>
+        Por padrão, a segunda chamada dentro de <highlight><b>5 minutos</b></highlight> será permitida. <br>
         <br>
         <b>Opções:</b><br>
         <br>
-        <h6><title>- Frequência</title></h6>
-        A configuração padrão <highlight><b>1 / 5 Min</b></highlight> significa que a segunda chamada em 5 minutos será permitida. <br>
+        - <title><b>Intervalo Máximo</b></title> <br>
+        &ensp; Apenas chamadas dentro deste intervalo são consideradas repetidas. <br>
         <br>
-        <h6><title>- Incluir SMS</title></h6>
-        Quando ativado, o recebimento de mensagens SMS desse número também conta.<br>
+        - <title><b>Intervalo Mínimo</b></title> <br>
+        &ensp; Se um número ligar novamente antes disso, será ignorado. Bots de spam geralmente discam instantaneamente; nesse caso, aumente este valor. Definir o modo de bloqueio como \"Silêncio\" também pode ajudar, verifique a dica de ferramenta para detalhes. <br>
+        <br>
+        - <title><b>Vezes de Repetição</b></title> <br>
+        &ensp; O número mínimo de repetições. <br>
+        <br>
+        - <title><b>Incluir SMS</b></title> <br>
+        &ensp; Quando habilitado, o recebimento de mensagens SMS desse número também conta. <br>
         <br>
         <priority><b>Prioridade: 10</b></priority>
         ]]>
     </string>
 
 
+    <string name="max_interval_min">Intervalo Máx (Min)</string>
+    <string name="min_interval_sec">Intervalo Mín (Seg)</string>
+    <string name="repeat_times">Vezes de repetição</string>
+    <string name="call_repeated_too_soon">Apenas %s milissegundos desde a última chamada deste número, o mínimo exigido é de %s milissegundos, ignorar.</string>
     <string name="about">Sobre</string>
     <string name="version">Versão</string>
     <string name="source_code">Código-fonte</string>

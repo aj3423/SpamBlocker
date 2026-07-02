@@ -58,6 +58,7 @@ import spam.blocker.util.Util.listUsedAppWithinXSecond
 import spam.blocker.util.formatAnnotated
 import spam.blocker.util.getSaveableOutput
 import spam.blocker.util.hasFlag
+import spam.blocker.util.logi
 import spam.blocker.util.race
 import spam.blocker.util.regexMatches
 import spam.blocker.util.regexMatchesNumber
@@ -533,48 +534,57 @@ class Checker { // for namespace only
             logChecking(ctx, logger)
 
             val times = spf.times
-            val durationMinutes = spf.inXMin
+            val maxInterval = spf.maxInterval
+            val minInterval = spf.minInterval * 1000L
             val smsEnabled = spf.isSmsEnabled
 
-            val durationMillis = durationMinutes.toLong() * 60 * 1000
+            val durationMillis = maxInterval.toLong() * 60 * 1000
 
             val phoneNumber = PhoneNumber(ctx, rawNumber)
 
             // count Calls from real call history
-            var nCalls = getHistoryCallsByNumber(
-                ctx,
-                phoneNumber,
-                Def.DIRECTION_INCOMING,
-                durationMillis
-            ).size
+            val realCalls = getHistoryCallsByNumber(
+                ctx, phoneNumber, Def.DIRECTION_INCOMING, durationMillis
+            )
+            val lastRealCallTime = realCalls.maxByOrNull { it.time }?.time ?: 0L
+            var lastTestCallTime = 0L
+
+            var nCalls = realCalls.size
             // When testing, there is no real call history, try local db instead
             if (isTesting) {
-                val nCallsTesting = CallTable().countRepeatedRecordsWithinSeconds(
-                    ctx,
-                    rawNumber,
-                    durationMinutes * 60
+                val testCalls = CallTable().getRepeatedRecordsWithinSeconds(
+                    ctx, rawNumber, maxInterval * 60
                 )
-                if (nCalls < nCallsTesting) // use the larger one
-                    nCalls = nCallsTesting
+                lastTestCallTime = testCalls.maxByOrNull { it.time }?.time ?: 0L
+                nCalls = maxOf(nCalls, testCalls.size) // use the larger one
+            }
+
+            // Check if the last call interval > minInterval. Only check for call, not for SMS. Spammers
+            //  typically don't send SMS before calling, some important services do so.
+            if (minInterval > 0) { // need to check it
+                val lastCallTime = maxOf(lastRealCallTime, lastTestCallTime)
+                val delta = Now.currentMillis() - lastCallTime
+                if (delta < minInterval) {
+                    logger?.debug(ctx.getString(R.string.call_repeated_too_soon).formatAnnotated(
+                        "$delta".A(C.error),
+                        "$minInterval".A(C.infoBlue)
+                    ))
+                    return null
+                }
             }
 
             // count SMSs from real SMS history
             var nSMSs = if(smsEnabled)
                 countHistorySMSByNumber(
-                    ctx,
-                    phoneNumber,
-                    Def.DIRECTION_INCOMING,
-                    durationMillis
+                    ctx, phoneNumber, Def.DIRECTION_INCOMING, durationMillis
                 )
             else
                 0
             if (isTesting) { // try local db
                 val nSMSsTesting = if (smsEnabled)
-                    SmsTable().countRepeatedRecordsWithinSeconds(
-                        ctx,
-                        rawNumber,
-                        durationMinutes * 60
-                    )
+                    SmsTable().getRepeatedRecordsWithinSeconds(
+                        ctx, rawNumber, maxInterval * 60
+                    ).size
                 else
                     0
                 if (nSMSs < nSMSsTesting)

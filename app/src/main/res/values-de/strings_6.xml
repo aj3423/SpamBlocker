@@ -43,21 +43,33 @@
     <string name="repeated_call">Wiederholter Anruf</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Zulassen, wenn der Anruf innerhalb eines Zeitraums wiederholt wird, da dies eher wichtig als ein Spam-Anruf ist. <br>
+        Wiederholte Anrufe zulassen, da diese eher dringend als Spam sind. <br>
+        <br>
+        Standardmäßig wird der zweite Anruf innerhalb von <highlight><b>5 Minuten</b></highlight> zugelassen. <br>
         <br>
         <b>Optionen:</b><br>
         <br>
-        <h6><title>- Häufigkeit</title></h6>
-        Die Standardeinstellung <highlight><b>1 / 5 Min</b></highlight> bedeutet, dass der zweite Anruf innerhalb von 5 Minuten zugelassen wird. <br>
+        - <title><b>Max. Intervall</b></title> <br>
+        &ensp; Nur Anrufe innerhalb dieses Zeitrahmens werden als Wiederholungen betrachtet. <br>
         <br>
-        <h6><title>- SMS einbeziehen</title></h6>
-        Wenn aktiviert, zählt auch der Empfang von SMS-Nachrichten von dieser Nummer.<br>
+        - <title><b>Min. Intervall</b></title> <br>
+        &ensp; Wenn eine Nummer schneller als dies erneut anruft, wird sie ignoriert. Spam-Bots wählen normalerweise sofort erneut, erhöhen Sie in diesem Fall diesen Wert. Das Einstellen des Blockierungsmodus auf \"Stumm\" kann ebenfalls helfen, prüfen Sie dazu den Tooltip. <br>
+        <br>
+        - <title><b>Wiederholungsanzahl</b></title> <br>
+        &ensp; Die minimale Anzahl an Wiederholungen. <br>
+        <br>
+        - <title><b>SMS einbeziehen</b></title> <br>
+        &ensp; Wenn aktiviert, zählt auch der Empfang von SMS-Nachrichten von dieser Nummer. <br>
         <br>
         <priority><b>Priorität: 10</b></priority>
         ]]>
     </string>
 
 
+    <string name="max_interval_min">Max. Intervall (Min)</string>
+    <string name="min_interval_sec">Min. Intervall (Sek)</string>
+    <string name="repeat_times">Wiederholungsanzahl</string>
+    <string name="call_repeated_too_soon">Nur %s Millisekunden seit dem letzten Anruf von dieser Nummer, das erforderliche Minimum beträgt %s Millisekunden, ignorieren.</string>
     <string name="about">Über</string>
     <string name="version">Version</string>
     <string name="source_code">Quellcode</string>

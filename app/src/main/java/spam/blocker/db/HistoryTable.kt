@@ -7,6 +7,7 @@ import androidx.core.database.getIntOrNull
 import androidx.core.database.getStringOrNull
 import spam.blocker.def.Def
 import spam.blocker.util.Now
+import spam.blocker.util.logi
 
 data class HistoryRecord(
     val id: Long = 0,
@@ -213,21 +214,14 @@ abstract class HistoryTable {
             arrayOf(xSecondsAgo.toString()),
         )
     }
-    fun countRepeatedRecordsWithinSeconds(ctx: Context, phone: String, durationSeconds: Int) : Int {
+    fun getRepeatedRecordsWithinSeconds(ctx: Context, phone: String, durationSeconds: Int) : List<HistoryRecord> {
         val xSecondsAgo = Now.currentMillis() - durationSeconds*1000
 
-        val cursor = Db.getInstance(ctx).readableDatabase.rawQuery(
-            "SELECT COUNT(*) FROM ${tableName()} " +
-                    "WHERE ${Db.COLUMN_TIME} > $xSecondsAgo AND ${Db.COLUMN_PEER} = '$phone'"
-            , null)
-
-        cursor.use {
-            var count = 0
-            if (cursor.moveToFirst()) {
-                count = cursor.getInt(0)
-            }
-            return count
-        }
+        return _listRecordsByFilter(
+            ctx,
+            "WHERE ${Db.COLUMN_TIME} > ? AND ${Db.COLUMN_PEER} = ?",
+            arrayOf(xSecondsAgo.toString(), phone),
+        )
     }
 }
 open class CallTable : HistoryTable() {

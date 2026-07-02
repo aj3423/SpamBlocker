@@ -43,21 +43,33 @@
     <string name="repeated_call">繰り返し通話</string>
     <string name="help_repeated_call">
         <![CDATA[
-        一定期間内に通話が繰り返された場合、迷惑電話ではなく重要な通話である可能性が高いので許可します。 <br>
+        繰り返し通話を許可します。これらはスパムよりも緊急である可能性が高いためです。 <br>
+        <br>
+        デフォルトでは、<highlight><b>5分</b></highlight>以内の2回目の通話が許可されます。 <br>
         <br>
         <b>オプション:</b><br>
         <br>
-        <h6><title>- 頻度</title></h6>
-        デフォルト設定の<highlight><b>1 / 5分</b></highlight>は、5分以内に2回目の通話が許可されることを意味します。 <br>
+        - <title><b>最大間隔</b></title> <br>
+        &ensp; この時間枠内の通話のみが繰り返しとしてみなされます。 <br>
         <br>
-        <h6><title>- SMSを含める</title></h6>
-        有効にすると、その電話番号からのSMSメッセージの受信もカウントされます。<br>
+        - <title><b>最小間隔</b></title> <br>
+        &ensp; 番号がこれより早くに再発信した場合, 無視されます。スパムボットは通常すぐに再発信するため、その場合はこの値を増やしてください。ブロックモードを\"サイレント\"に設定することも有効です。詳細はツールチップを確認してください。 <br>
+        <br>
+        - <title><b>繰り返し回数</b></title> <br>
+        &ensp; 最小の繰り返し回数です。 <br>
+        <br>
+        - <title><b>SMSを含める</b></title> <br>
+        &ensp; 有効にすると、その番号からのSMS受信もカウントされます。 <br>
         <br>
         <priority><b>優先度: 10</b></priority>
         ]]>
     </string>
 
 
+    <string name="max_interval_min">最大間隔 (分)</string>
+    <string name="min_interval_sec">最小間隔 (秒)</string>
+    <string name="repeat_times">繰り返し回数</string>
+    <string name="call_repeated_too_soon">この番号からの前回の電話からわずか %s ミリ秒しか経過しておらず、最小必要時間は %s ミリ秒であるため、無視します。</string>
     <string name="about">このアプリについて</string>
     <string name="version">バージョン</string>
     <string name="source_code">ソースコード</string>

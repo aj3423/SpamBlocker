@@ -43,21 +43,33 @@
     <string name="repeated_call">Chamada repetida</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Permitir se a chamada se repite nun período de tempo; é probable que sexa importante en lugar de ser unha chamada de spam.<br>
+        Permitir chamadas repetidas, xa que é máis probable que sexan urxentes que spam. <br>
+        <br>
+        Por defecto, se permitirá a segunda chamada dentro de <highlight><b>5 minutos</b></highlight>. <br>
         <br>
         <b>Opcións:</b><br>
         <br>
-        <h6><title>- Frecuencia</title></h6>
-        A configuración predeterminada <highlight><b>1 / 5 Min</b></highlight> significa que a segunda chamada dentro de 5 minutos será permitida.<br>
+        - <title><b>Intervalo Máximo</b></title> <br>
+        &ensp; Só as chamadas dentro deste prazo considéranse repetidas. <br>
         <br>
-        <h6><title>- Incluír SMS</title></h6>
-        Cando está activado, tamén conta a recepción de mensaxes SMS dese número.<br>
+        - <title><b>Intervalo Mínimo</b></title> <br>
+        &ensp; Se un número volve chamar antes deste tempo, será ignorado. Os bots de spam adoitan redestinar instantaneamente; nese caso, aumente este valor. Establecer o modo de bloqueo en \"Silencio\" tamén pode axudar, consulte a súa descrición emergente para máis detalles. <br>
+        <br>
+        - <title><b>Veces de Repetición</b></title> <br>
+        &ensp; O número mínimo de repeticións. <br>
+        <br>
+        - <title><b>Incluír SMS</b></title> <br>
+        &ensp; Cando está activado, tamén conta a recepción de mensaxes SMS dese número. <br>
         <br>
         <priority><b>Prioridade: 10</b></priority>
         ]]>
     </string>
 
 
+    <string name="max_interval_min">Intervalo máximo (min)</string>
+    <string name="min_interval_sec">Intervalo mínimo (seg)</string>
+    <string name="repeat_times">Veces de repetición</string>
+    <string name="call_repeated_too_soon">Só %s milisegundos dende a última chamada deste número, o mínimo requirido son %s milisegundos, ignorar.</string>
     <string name="about">Acerca de</string>
     <string name="version">Versión</string>
     <string name="source_code">Código fonte</string>

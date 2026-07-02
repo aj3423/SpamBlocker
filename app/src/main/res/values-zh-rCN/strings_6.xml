@@ -42,21 +42,33 @@
     <string name="repeated_call">重复呼叫</string>
     <string name="help_repeated_call">
         <![CDATA[
-        如果电话在短时间内重复呼入，则允许其通过，这很可能是一个重要的电话而非骚扰电话。 <br>
+        允许重复呼叫，因为这些呼叫比骚扰电话更有可能是紧急呼叫。 <br>
+        <br>
+        默认情况下，<highlight><b>5 分钟</b></highlight>内的第二次呼叫将被允许。 <br>
         <br>
         <b>选项：</b><br>
         <br>
-        <h6><title>- 频率</title></h6>
-        默认设置 <highlight><b>1 次 / 5 分钟</b></highlight> 表示在 5 分钟内的第二次来电将被允许通过。 <br>
+        - <title><b>最大间隔</b></title> <br>
+        &ensp; 仅在此时间范围内的呼叫被视为重复呼叫。 <br>
         <br>
-        <h6><title>- 包含短信</title></h6>
-        启用时，接收来自该电话号码的短信也将计入。<br>
+        - <title><b>最小间隔</b></title> <br>
+        &ensp; 如果号码在此时间之前再次呼叫，将被忽略。骚扰电话机器人通常会立即重新拨号，在这种情况下，请增加此值。将拦截模式设置为\"静默\"也可以有所帮助，详情请查看其工具提示。 <br>
+        <br>
+        - <title><b>重复次数</b></title> <br>
+        &ensp; 最小重复次数。 <br>
+        <br>
+        - <title><b>包含短信</b></title> <br>
+        &ensp; 启用时，接收来自该号码的短信也将计入。 <br>
         <br>
         <priority><b>优先级：10</b></priority>
         ]]>
     </string>
 
 
+    <string name="max_interval_min">最大间隔 (分)</string>
+    <string name="min_interval_sec">最小间隔 (秒)</string>
+    <string name="repeat_times">重复次数</string>
+    <string name="call_repeated_too_soon">距离该号码上次通话仅过去 %s 毫秒，所需最小值是 %s 毫秒，忽略。</string>
     <string name="about">关于</string>
     <string name="version">版本</string>
     <string name="source_code">源代码</string>

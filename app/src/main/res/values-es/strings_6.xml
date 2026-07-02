@@ -43,21 +43,33 @@
     <string name="repeated_call">Llamada repetida</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Permitir si la llamada se repite dentro de un período de tiempo, es probable que sea importante en lugar de una llamada de spam. <br>
+        Permitir llamadas repetidas, ya que es más probable que sean urgentes que spam. <br>
+        <br>
+        Por defecto, se permitirá la segunda llamada dentro de <highlight><b>5 minutos</b></highlight>. <br>
         <br>
         <b>Opciones:</b><br>
         <br>
-        <h6><title>- Frecuencia</title></h6>
-        La configuración predeterminada <highlight><b>1 / 5 Min</b></highlight> significa que la segunda llamada dentro de 5 minutos será permitida. <br>
+        - <title><b>Intervalo Máximo</b></title> <br>
+        &ensp; Solo las llamadas dentro de este plazo se consideran repetidas. <br>
         <br>
-        <h6><title>- Incluir SMS</title></h6>
-        Cuando está habilitado, recibir mensajes SMS de ese número también cuenta.<br>
+        - <title><b>Intervalo Mínimo</b></title> <br>
+        &ensp; Si un número vuelve a llamar antes de este tiempo, se ignorará. Los bots de spam suelen redestinar instantáneamente; en ese caso, aumente este valor. Establecer el modo de bloqueo en \"Silencio\" también puede ayudar, consulte su descripción emergente para obtener más detalles. <br>
+        <br>
+        - <title><b>Veces de Repetición</b></title> <br>
+        &ensp; El número mínimo de repeticiones. <br>
+        <br>
+        - <title><b>Incluir SMS</b></title> <br>
+        &ensp; Cuando está habilitado, recibir mensajes SMS de ese número también cuenta. <br>
         <br>
         <priority><b>Prioridad: 10</b></priority>
         ]]>
     </string>
 
 
+    <string name="max_interval_min">Intervalo máximo (min)</string>
+    <string name="min_interval_sec">Intervalo mínimo (seg)</string>
+    <string name="repeat_times">Veces de repetición</string>
+    <string name="call_repeated_too_soon">Solo han pasado %s milisegundos desde la última llamada de este número, el mínimo requerido es de %s milisegundos, ignorar.</string>
     <string name="about">Acerca de</string>
     <string name="version">Versión</string>
     <string name="source_code">Código fuente</string>
