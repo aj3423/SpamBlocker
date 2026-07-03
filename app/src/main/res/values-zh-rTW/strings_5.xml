@@ -15,7 +15,7 @@
     <string name="phone_number_abbrev">號碼</string>
     <string name="sms_content">簡訊內容</string>
     <string name="regex_flags">正規表示式標記</string>
-    <string name="off_time"><short>勿擾模式</short></string>
+    <string name="off_time"><short>放行時段</short></string>
     <string name="schedule">排程</string>
     <string name="workday">工作日</string>
     <string name="weekend">週末</string>
