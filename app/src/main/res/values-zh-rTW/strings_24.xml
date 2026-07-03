@@ -80,7 +80,7 @@
     <string name="geolocation_rule">發話位置規則</string>
     <string name="help_regex_mode_geolocation">
         <![CDATA[
-        <title><b>地理位置</b></title>:<br>
+        <title><b>發話位置</b></title>:<br>
         &ensp; 此正則表達式將對電話號碼的發話位置進行匹配。 <br>
         <br>
         &ensp; 這依賴於 Google 的函式庫 <a href="https://github.com/google/libphonenumber">libphonenumber</a>,
