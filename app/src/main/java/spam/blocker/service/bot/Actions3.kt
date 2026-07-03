@@ -1325,8 +1325,8 @@ class GenerateTag(
                     tagName = it
                     tagNameState = it
                 },
-                supportingTextStr = if (tagNameState.trim().startsWith("{")) {
-                    Str(R.string.invalid_tag_name)
+                supportingText = if (tagNameState.trim().startsWith("{")) {
+                    Str(R.string.invalid_tag_name).A(G.palette.error)
                 } else null
             )
             // Parse Type
@@ -1446,8 +1446,8 @@ class LoadBotTag(
                     tagName = it
                     tagNameState = it
                 },
-                supportingTextStr = if (tagNameState.trim().startsWith("{")) {
-                    Str(R.string.invalid_tag_name)
+                supportingText = if (tagNameState.trim().startsWith("{")) {
+                    Str(R.string.invalid_tag_name).A(G.palette.error)
                 } else null
             )
 
@@ -1536,8 +1536,8 @@ class SaveBotTag(
                     tagName = it
                     tagNameState = it
                 },
-                supportingTextStr = if (tagNameState.trim().startsWith("{")) {
-                    Str(R.string.invalid_tag_name)
+                supportingText = if (tagNameState.trim().startsWith("{")) {
+                    Str(R.string.invalid_tag_name).A(G.palette.error)
                 } else null
             )
         }
@@ -1601,8 +1601,8 @@ class SetTag(
                     tagName = it
                     tagNameState = it
                 },
-                supportingTextStr = if (tagNameState.trim().startsWith("{")) {
-                    Str(R.string.invalid_tag_name)
+                supportingText = if (tagNameState.trim().startsWith("{")) {
+                    Str(R.string.invalid_tag_name).A(G.palette.error)
                 } else null
             )
 
@@ -1679,8 +1679,8 @@ class CopyTag(
                     fromState = it
                     tagFrom = it
                 },
-                supportingTextStr = if (fromState.trim().startsWith("{")) {
-                    Str(R.string.invalid_tag_name)
+                supportingText = if (fromState.trim().startsWith("{")) {
+                    Str(R.string.invalid_tag_name).A(G.palette.error)
                 } else null
             )
 

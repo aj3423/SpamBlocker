@@ -81,4 +81,5 @@
         Envia textos de spam a <error>7726</error> (el codi curt universal que escriu <error>SPAM</error>), una característica ampliament utilitzada per molts operadors mòbils.
         ]]>    </string>
     <string name="report_sms">Informar SMS</string>
+    <string name="regex_starts_with_plus">%s és un caràcter especial en regex (per exemple, %s), escapa\'l com %s</string>
 </resources>

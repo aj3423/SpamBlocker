@@ -81,4 +81,5 @@
         Invia i messaggi spam a <error>7726</error> (il codice breve universale per <error>SPAM</error>), una funzione ampiamente supportata da molti operatori mobili.
         ]]>    </string>
     <string name="report_sms">Segnala SMS</string>
+    <string name="regex_starts_with_plus">%s è un carattere speciale in regex (ad es. %s), effettua l\'escape come %s</string>
 </resources>

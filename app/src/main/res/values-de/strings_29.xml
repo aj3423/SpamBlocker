@@ -81,4 +81,5 @@
         Leitet Spam-Nachrichten an <error>7726</error> weiter (der universelle Kurzcode für <error>SPAM</error>), eine Funktion, die von vielen Mobilfunkanbietern unterstützt wird.
         ]]>    </string>
     <string name="report_sms">SMS melden</string>
+    <string name="regex_starts_with_plus">%s ist ein Sonderzeichen in Regex (z. B. %s), maskieren Sie es wie %s</string>
 </resources>

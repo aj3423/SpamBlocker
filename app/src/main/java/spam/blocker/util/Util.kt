@@ -151,6 +151,13 @@ fun String.regexReplace(
     return from.toRegex(opts).replace(this, to)
 }
 
+fun String.truncate(limit: Int = 300, showEllipsis: Boolean = true): String {
+    return if (length >= limit)
+        this.substring(0, limit) + if (showEllipsis) "…" else ""
+    else
+        this
+}
+
 fun Uri.toFolderDisplayName(): String? {
     return try {
         val documentId = DocumentsContract.getTreeDocumentId(this)
@@ -272,13 +279,6 @@ object Util {
         }
 
         return null
-    }
-
-    fun truncate(str: String, limit: Int = 300, showEllipsis: Boolean = true): String {
-        return if (str.length >= limit)
-            str.substring(0, limit) + if (showEllipsis) "…" else ""
-        else
-            str
     }
 
     private fun isRegexValid(regex: String): Boolean {

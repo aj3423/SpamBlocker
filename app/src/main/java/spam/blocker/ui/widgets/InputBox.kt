@@ -34,8 +34,10 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
@@ -50,15 +52,18 @@ import spam.blocker.def.Def.FLAG_REGEX_IGNORE_CC
 import spam.blocker.def.Def.FLAG_REGEX_RAW_NUMBER
 import spam.blocker.def.Def.MAP_REGEX_FLAGS
 import spam.blocker.ui.M
+import spam.blocker.util.A
 import spam.blocker.util.Lambda
 import spam.blocker.util.Lambda1
 import spam.blocker.util.Lambda2
 import spam.blocker.util.Util
 import spam.blocker.util.Util.regexWildcardNotSupported
 import spam.blocker.util.enabledRegexFlagsStr
+import spam.blocker.util.formatAnnotated
 import spam.blocker.util.hasFlag
 import spam.blocker.util.regexMatchesNumber
 import spam.blocker.util.setFlag
+import spam.blocker.util.truncate
 
 
 // Code copied from OutlinedInputBox, modifications:
@@ -87,8 +92,7 @@ private fun InputBox(
     trailingIcon: @Composable (() -> Unit)? = null,
     prefix: @Composable (() -> Unit)? = null,
     suffix: @Composable (() -> Unit)? = null,
-    supportingTextStr: String? = null,
-    supportingTextColor: Color = G.palette.error,
+    supportingText: AnnotatedString? = null,
     warnings: SnapshotStateList<String> = mutableStateListOf<String>(),
     visualTransformation: VisualTransformation = VisualTransformation.None,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
@@ -213,10 +217,9 @@ private fun InputBox(
         }
 
         // Errors, red text
-        if (supportingTextStr != null) {
+        if (supportingText != null) {
             Text(
-                text = supportingTextStr,
-                color = supportingTextColor,
+                text = supportingText,
                 fontSize = 14.sp,
                 lineHeight = 14.sp,
                 modifier = M.padding(4.dp),
@@ -297,7 +300,7 @@ fun NumberInputBox(
         placeholder = placeholder,
         leadingIcon = leadingIcon,
         enabled = enabled,
-        supportingTextStr = if (hasError) Str(R.string.invalid_number) else null,
+        supportingText = if (hasError) Str(R.string.invalid_number).A(G.palette.error) else null,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         singleLine = true,
         trailingIcon = {
@@ -377,8 +380,7 @@ fun StrInputBox(
     trailingIcon: @Composable (() -> Unit)? = null,
     helpTooltip: String? = null,
     enabled: Boolean = true,
-    supportingTextStr: String? = null,
-    supportingTextColor: Color = G.palette.error,
+    supportingText: AnnotatedString? = null,
     singleLine: Boolean = false,
     maxLines: Int = if (singleLine) 1 else 10,
     alwaysShowClear: Boolean = false,
@@ -425,8 +427,7 @@ fun StrInputBox(
             { GreyIcon18(it) }
         },
         keyboardOptions = KeyboardOptions(),
-        supportingTextStr = supportingTextStr,
-        supportingTextColor = supportingTextColor,
+        supportingText = supportingText,
         trailingIcon = {
             // Trailing icons
             // Material 3 expects trailingIcon to be a single slot, it's basically a centered 48dp box,
@@ -553,18 +554,29 @@ fun RegexInputBox(
     // CoreTextField's onValueChange is called multiple times without recomposition in between.
     var lastText by remember(regexStr) { mutableStateOf(regexStr) }
 
-    fun validateError(): String? {
+    @SuppressLint("LocalContextGetResourceValueCall")
+    fun validateError(): AnnotatedString? {
+
+        // The input is `+111` instead of `\+111`, leading `+` must be escaped
+        if (lastText.startsWith("+")) {
+            return ctx.getString(R.string.regex_starts_with_plus).formatAnnotated(
+                "+".A(C.error), ".+".A(C.disabled), "\\$lastText".truncate(10).A(C.teal200)
+            ).A(C.error)
+        }
+
         return Util.validateRegex(
             ctx,
             regexStr = lastText,
-            disableNumberOptimization = regexFlags.intValue.hasFlag(Def.FLAG_REGEX_RAW_NUMBER)
-        )
+            disableNumberOptimization = regexFlags.intValue.hasFlag(FLAG_REGEX_RAW_NUMBER)
+        )?.A(C.error)
     }
 
     @SuppressLint("LocalContextGetResourceValueCall")
     fun validateWarning(): List<String> {
 
         val ret = mutableListOf<String>()
+
+        // The user is using wildcard `*` instead of `.*`, it could be a typo
         if (regexWildcardNotSupported(lastText)) {
             ret += ctx.getString(R.string.waning_using_wildcard_as_regex)
         }
@@ -609,7 +621,7 @@ fun RegexInputBox(
         leadingIcon = leadingIcon,
         maxTextLength = maxTextLength,
         warnings = warnings,
-        supportingTextStr = errorStr,
+        supportingText = errorStr,
         singleLine = false,
         maxLines = 10,
         trailingIcon = {

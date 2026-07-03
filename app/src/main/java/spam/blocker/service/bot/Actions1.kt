@@ -74,6 +74,7 @@ import spam.blocker.util.resolveStringTransformTag
 import spam.blocker.util.resolveTimeTags
 import spam.blocker.util.toFolderDisplayName
 import spam.blocker.util.toStringMap
+import spam.blocker.util.truncate
 import java.io.BufferedReader
 import java.io.ByteArrayInputStream
 import java.io.InputStreamReader
@@ -268,7 +269,7 @@ open class HttpRequest(
 
                 // The limit=1000 is necessary, otherwise the log can exceed 2Mb and crash sqlite,
                 //   and it slows down the api query, see: https://github.com/aj3423/SpamBlocker/issues/588
-                val echo = Util.truncate(String(result?.echo ?: byteArrayOf()), limit = 1000)
+                val echo = String(result?.echo ?: byteArrayOf()).truncate(limit = 1000)
 
                 if (result?.statusCode in 200..299) {
                     aCtx.logger?.success("HTTP: <${result?.statusCode}>")

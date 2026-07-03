@@ -53,6 +53,7 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
+import spam.blocker.util.A
 import spam.blocker.util.Lambda2
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionWrapper
@@ -122,7 +123,7 @@ fun EditSingleTimeColorsDialog(
             text = initial.durationMin,
             label = { Text(Str(R.string.duration)) },
             leadingIconId = R.drawable.ic_duration,
-            supportingTextStr = if(!FreshnessColor(dur).isValid()) Str(R.string.invalid_value_see_tooltip) else null,
+            supportingText = if(!FreshnessColor(dur).isValid()) Str(R.string.invalid_value_see_tooltip).A(C.error) else null,
             placeholder = { Placeholder("10min") },
             helpTooltip = Str(R.string.help_time_color_values),
             onValueChange = { dur = it }

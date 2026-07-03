@@ -51,17 +51,24 @@
         <b>Options:</b><br>
         <br>
         - <title><b>Max Interval</b></title> <br>
-        &ensp; Only calls within this timeframe are considered as repeats. <br>
+        Only calls within this timeframe are considered as repeats. <br>
         <br>
         - <title><b>Min Interval</b></title> <br>
-        &ensp; If a number calls again sooner than this, it will be ignored. Spam bots usually redial instantly,
+        If a number calls again sooner than this, it will be ignored. Spam bots usually redial instantly,
          in that case, increase this value. Setting the blocking mode to \"Silence\" can also help, check its tooltip for details. <br>
         <br>
         - <title><b>Repeat Times</b></title> <br>
-        &ensp; The minimal repeat times. <br>
+        The minimal repeat times. <br>
+        For example: <br>
+        <sample>
+        When set to 2, a call must repeat twice. In total, it takes three calls: <br>
+         &ensp; - ignore <br>
+         &ensp; - ignore <br>
+         &ensp; - allow <br>
+        </sample>
         <br>
         - <title><b>Include SMS</b></title> <br>
-        &ensp; When enabled, receiving SMS messages from that number also counts. <br>
+        When enabled, receiving SMS messages from that number also counts. <br>
         <br>
         <priority><b>Priority: 10</b></priority>
         ]]>

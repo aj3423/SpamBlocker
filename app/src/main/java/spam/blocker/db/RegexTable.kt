@@ -42,11 +42,11 @@ import spam.blocker.ui.setting.regex.RegexMode.regexModeByType
 import spam.blocker.util.PermissiveJson
 import spam.blocker.util.TimeSchedule
 import spam.blocker.util.Util
-import spam.blocker.util.Util.truncate
 import spam.blocker.util.enabledRegexFlagsStr
 import spam.blocker.util.hasFlag
 import spam.blocker.util.regexMatches
 import spam.blocker.util.setFlag
+import spam.blocker.util.truncate
 
 
 // v4.15 changed `importance`(Int) to `channel`(String), use this class for history compatibility
@@ -112,7 +112,7 @@ data class RegexRule(
 
     fun descOrPattern(): String {
         return description.ifEmpty {
-            truncate(patternStr(), limit = 40)
+            patternStr().truncate(limit = 40)
         }
     }
 
@@ -142,9 +142,9 @@ data class RegexRule(
 
     fun patternStr(): String {
         return if (patternExtra != "")
-            "${truncate(pattern)}   <-   $patternExtra"
+            "${pattern.truncate()}   <-   $patternExtra"
         else
-            truncate(pattern)
+            pattern.truncate()
     }
 
     fun colorfulRegexStr(
@@ -203,7 +203,7 @@ data class RegexRule(
                     //  rest content when it exceeds 10 lines, but the performance is very low for
                     //  super long string. So manually truncate it first.
                     // For jetpack compose Text, not tested yet ,
-                    truncate(pattern)
+                    pattern.truncate()
                 )
             }
 

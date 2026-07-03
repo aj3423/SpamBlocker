@@ -81,4 +81,5 @@
         متن پیام‌های اسپم را به <error>7726</error> (کد کوتاه جهانی نوشتن <error>SPAM</error>) ارسال می‌کند، قابلیتی که به‌طور گسترده توسط بسیاری از اپراتورهای موبایل پشتیبانی می‌شود.
         ]]>    </string>
     <string name="report_sms">گزارش پیامک</string>
+    <string name="regex_starts_with_plus">%s یک کاراکتر خاص در regex است (مثلاً %s)، آن را به صورت %s اسکیپ کنید</string>
 </resources>

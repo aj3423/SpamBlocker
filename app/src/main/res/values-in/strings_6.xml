@@ -46,23 +46,30 @@
     <string name="repeated_call">Panggilan Berulang</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Izinkan panggilan berulang, karena kemungkinan besar itu adalah panggilan darurat daripada spam. <br>
+        Izinkan panggilan berulang, karena kemungkinan besar lebih mendesak daripada spam. <br>
         <br>
-        Secara default, panggilan kedua dalam <highlight><b>5 menit</b></highlight> akan diizinkan. <br>
+        Secara default, panggilan kedua dalam waktu <highlight><b>5 menit</b></highlight> akan diizinkan. <br>
         <br>
         <b>Opsi:</b><br>
         <br>
-        - <title><b>Interval Maksimum</b></title> <br>
-        &ensp; Hanya panggilan dalam jangka waktu ini yang dianggap sebagai pengulangan. <br>
+        - <title><b>Interval Maks.</b></title> <br>
+        Hanya panggilan dalam jangka waktu ini yang dianggap sebagai pengulangan. <br>
         <br>
-        - <title><b>Interval Minimum</b></title> <br>
-        &ensp; Jika nomor menelepon kembali lebih cepat dari ini, maka akan diabaikan. Bot spam biasanya menelepon kembali secara instan, dalam hal ini, tingkatkan nilai ini. Mengatur mode pemblokiran ke \"Hening\" juga dapat membantu, lihat tooltip untuk detailnya. <br>
+        - <title><b>Interval Min.</b></title> <br>
+        Jika nomor memanggil kembali lebih cepat dari ini, panggilan akan diabaikan. Bot panggilan spam biasanya memanggil ulang secara instan, dalam hal ini, tingkatkan nilai ini. Mengatur mode pemblokiran ke \"Hening\" juga dapat membantu, periksa tooltip-nya untuk detail lebih lanjut. <br>
         <br>
         - <title><b>Jumlah Pengulangan</b></title> <br>
-        &ensp; Jumlah pengulangan minimum. <br>
+        Jumlah pengulangan minimum. <br>
+        Sebagai contoh: <br>
+        <sample>
+        Jika diatur ke 2, sebuah panggilan harus berulang dua kali. Totalnya, dibutuhkan tiga panggilan: <br>
+         &ensp; - abaikan <br>
+         &ensp; - abaikan <br>
+         &ensp; - izinkan <br>
+        </sample>
         <br>
         - <title><b>Sertakan SMS</b></title> <br>
-        &ensp; Ketika diaktifkan, menerima pesan SMS dari nomor tersebut juga dihitung. <br>
+        Jika diaktifkan, menerima pesan SMS dari nomor tersebut juga akan dihitung. <br>
         <br>
         <priority><b>Prioritas: 10</b></priority>
         ]]>

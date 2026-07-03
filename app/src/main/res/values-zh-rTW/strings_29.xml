@@ -81,4 +81,5 @@
         將垃圾短訊轉發至 <error>7726</error>（用於拼寫 <error>SPAM</error> 的通用短代碼），這是許多行動電信業者廣泛支援的功能。
         ]]>    </string>
     <string name="report_sms">報告簡訊</string>
+    <string name="regex_starts_with_plus">%s 是正規表達式中的特殊字元（例如 %s），請像 %s 這樣對其進行轉義</string>
 </resources>

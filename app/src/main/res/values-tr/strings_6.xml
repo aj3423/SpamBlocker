@@ -43,23 +43,30 @@
     <string name="repeated_call">Tekrarlanan Arama</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Tekrarlanan aramalara izin verin, çünkü bunların spamdan ziyade acil olma olasılığı daha yüksektir. <br>
+        Tekrarlanan aramalara izin verin, bunların spamdan ziyade acil olma olasılığı daha yüksektir. <br>
         <br>
-        Varsayılan olarak, <highlight><b>5 dakika</b></highlight> içindeki ikinci aramaya izin verilecektir. <br>
+        Varsayılan olarak, <highlight><b>5 dakika</b></highlight> içindeki ikinci aramaya izin verilir. <br>
         <br>
         <b>Seçenekler:</b><br>
         <br>
-        - <title><b>Maksimum Aralık</b></title> <br>
-        &ensp; Yalnızca bu zaman dilimi içindeki aramalar tekrar olarak kabul edilir. <br>
+        - <title><b>Maks. Aralık</b></title> <br>
+        Yalnızca bu zaman dilimi içindeki aramalar tekrar olarak kabul edilir. <br>
         <br>
-        - <title><b>Minimum Aralık</b></title> <br>
-        &ensp; Bir numara bundan daha kısa sürede tekrar ararsa yoksayılır. Spam botları genellikle anında tekrar arar, bu durumda bu değeri artırın. Engelleme modunu \"Sessiz\" olarak ayarlamak da yardımcı olabilir, ayrıntılar için araç ipucuna bakın. <br>
+        - <title><b>Min. Aralık</b></title> <br>
+        Bir numara bundan daha kısa sürede tekrar ararsa görmezden gelinecektir. Spam arama botları genellikle anında yeniden arar, bu durumda bu değeri artırın. Engelleme modunu \"Sessiz\" olarak ayarlamak da yardımcı olabilir, ayrıntılar için araç ipucuna bakın. <br>
         <br>
         - <title><b>Tekrar Sayısı</b></title> <br>
-        &ensp; Minimum tekrar sayısı. <br>
+        Minimum tekrar sayısı. <br>
+        Örneğin: <br>
+        <sample>
+        2 olarak ayarlandığında, bir arama iki kez tekrarlanmalıdır. Toplamda üç arama gerekir: <br>
+         &ensp; - yoksay <br>
+         &ensp; - yoksay <br>
+         &ensp; - izin ver <br>
+        </sample>
         <br>
-        - <title><b>SMS Dahil Et</b></title> <br>
-        &ensp; Etkinleştirildiğinde, o numaradan gelen SMS mesajlarını almak da sayılır. <br>
+        - <title><b>SMS\'leri Dahil Et</b></title> <br>
+        Etkinleştirildiğinde, o numaradan gelen SMS mesajlarını almak da sayılır. <br>
         <br>
         <priority><b>Öncelik: 10</b></priority>
         ]]>

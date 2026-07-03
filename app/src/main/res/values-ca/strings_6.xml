@@ -46,23 +46,30 @@
     <string name="repeated_call"><translate>Trucada repetida</translate></string>
     <string name="help_repeated_call">
         <![CDATA[
-        Permet les trucades repetides, ja que és més probable que siguin urgents que spam. <br>
+        Permetre trucades repetides, és més probable que siguin urgents que spam. <br>
         <br>
-        Per defecte, es permetrà la segona trucada dins de <highlight><b>5 minuts</b></highlight>. <br>
+        Per defecte, es permetrà la segona trucada en un termini de <highlight><b>5 minuts</b></highlight>. <br>
         <br>
         <b>Opcions:</b><br>
         <br>
-        - <title><b>Intervalle Màxim</b></title> <br>
-        &ensp; Només les trucades dins d\'aquest termini es consideren repetides. <br>
+        - <title><b>Interval Máx.</b></title> <br>
+        Només les trucades dins d\'aquest interval es consideren repeticions. <br>
         <br>
-        - <title><b>Intervalle Mínim</b></title> <br>
-        &ensp; Si un número torna a trucar abans d\'aquest temps, es serà ignorat. Els bots de spam solen redestinar instantàniament; en aquest cas, augmenta aquest valor. Establir el mode de bloqueig en \"Silenci\" també pot ajudar, consulta la descripció emergent per a més detalls. <br>
+        - <title><b>Interval Mín.</b></title> <br>
+        Si un número truca de nou abans d\'aquest temps, s\'ignorarà. Els bots de trucades spam solen tornar a trucar instantàniament; en aquest cas, augmenteu aquest valor. Configurar el mode de bloqueig en \"Silenci\" també pot ajudar, consulteu la seva descripció emergent per a més detalls. <br>
         <br>
         - <title><b>Vegades de Repetició</b></title> <br>
-        &ensp; El nombre mínim de repeticions. <br>
+        El nombre mínim de repeticions. <br>
+        Per exemple: <br>
+        <sample>
+        Quan s\'estableix en 2, una trucada ha de repetir-se dues vegades. En total, calen tres trucades: <br>
+         &ensp; - ignorar <br>
+         &ensp; - ignorar <br>
+         &ensp; - permetre <br>
+        </sample>
         <br>
         - <title><b>Incloure SMS</b></title> <br>
-        &ensp; Quan estigui activat, també es comptabilitzen els SMS rebuts d\'aquest número. <br>
+        Quan està activat, rebre missatges SMS d\'aquest número també compta. <br>
         <br>
         <priority><b>Prioritat: 10</b></priority>
         ]]>

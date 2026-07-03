@@ -81,4 +81,5 @@
         スпамテキストを<error>7726</error>に転送します（<error>SPAM</error>を記述する汎用ショートコード）。これは多くの移動体通信事業者で広くサポートされている機能です。
         ]]>    </string>
     <string name="report_sms">SMSを報告する</string>
+    <string name="regex_starts_with_plus">%sは正規表現の特殊文字です（例：%s）。%sのようにエスケープしてください</string>
 </resources>

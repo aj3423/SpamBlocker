@@ -39,6 +39,7 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
+import spam.blocker.util.A
 import spam.blocker.util.Clipboard
 import spam.blocker.util.JetpackTextLogger
 import spam.blocker.util.MultiLogger
@@ -203,7 +204,7 @@ fun TestDialog(
                         vm.phone.value = it
                         clearPreviousResult()
                     },
-                    supportingTextStr = listOfNotNull(
+                    supportingText = listOfNotNull(
                         // Geolocation
                         geoLocation?.let {
                             Str(R.string.label_value_pair).format(
@@ -216,8 +217,7 @@ fun TestDialog(
                                 Str(R.string.carrier), carrier
                             )
                         }
-                    ).takeIf { it.isNotEmpty() }?.joinToString("\n"),
-                    supportingTextColor = C.textGrey,
+                    ).takeIf { it.isNotEmpty() }?.joinToString("\n")?.A(C.textGrey),
                 )
 
                 // Only show the Caller Name field when there's at least 1 CNAP rule configured

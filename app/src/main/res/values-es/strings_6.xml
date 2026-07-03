@@ -43,23 +43,30 @@
     <string name="repeated_call">Llamada repetida</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Permitir llamadas repetidas, ya que es más probable que sean urgentes que spam. <br>
+        Permitir llamadas repetidas, es más probable que sean urgentes que spam. <br>
         <br>
-        Por defecto, se permitirá la segunda llamada dentro de <highlight><b>5 minutos</b></highlight>. <br>
+        Por defecto, se permitirá la segunda llamada en un plazo de <highlight><b>5 minutos</b></highlight>. <br>
         <br>
         <b>Opciones:</b><br>
         <br>
-        - <title><b>Intervalo Máximo</b></title> <br>
-        &ensp; Solo las llamadas dentro de este plazo se consideran repetidas. <br>
+        - <title><b>Intervalo Máx.</b></title> <br>
+        Solo las llamadas dentro de este intervalo se consideran repeticiones. <br>
         <br>
-        - <title><b>Intervalo Mínimo</b></title> <br>
-        &ensp; Si un número vuelve a llamar antes de este tiempo, se ignorará. Los bots de spam suelen redestinar instantáneamente; en ese caso, aumente este valor. Establecer el modo de bloqueo en \"Silencio\" también puede ayudar, consulte su descripción emergente para obtener más detalles. <br>
+        - <title><b>Intervalo Mín.</b></title> <br>
+        Si un número llama de nuevo antes de este tiempo, se ignorará. Los bots de llamadas spam suelen volver a llamar instantáneamente; en ese caso, aumente este valor. Configurar el modo de bloqueo en \"Silencio\" también puede ayudar, consulte su descripción emergente para más detalles. <br>
         <br>
         - <title><b>Veces de Repetición</b></title> <br>
-        &ensp; El número mínimo de repeticiones. <br>
+        El número mínimo de repeticiones. <br>
+        Por ejemplo: <br>
+        <sample>
+        Cuando se establece en 2, una llamada debe repetirse dos veces. En total, se necesitan tres llamadas: <br>
+         &ensp; - ignorar <br>
+         &ensp; - ignorar <br>
+         &ensp; - permitir <br>
+        </sample>
         <br>
         - <title><b>Incluir SMS</b></title> <br>
-        &ensp; Cuando está habilitado, recibir mensajes SMS de ese número también cuenta. <br>
+        Cuando está activado, recibir mensajes SMS de ese número también cuenta. <br>
         <br>
         <priority><b>Prioridad: 10</b></priority>
         ]]>

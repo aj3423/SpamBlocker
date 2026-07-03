@@ -81,4 +81,5 @@
         Menyampaikan pesan spam ke <error>7726</error> (kode singkat universal untuk <error>SPAM</error>), fitur yang didukung luas oleh banyak operator seluler.
         ]]>    </string>
     <string name="report_sms">Laporkan SMS</string>
+    <string name="regex_starts_with_plus">%s adalah karakter khusus dalam regex (contoh: %s), gunakan escape seperti %s</string>
 </resources>

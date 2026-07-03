@@ -4,9 +4,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.withStyle
 
 fun String.A(color: Color = Color.Unspecified): AnnotatedString =
     AnnotatedString(this, SpanStyle(color = color))
+
+fun AnnotatedString.A(color: Color = Color.Unspecified): AnnotatedString =
+    buildAnnotatedString {
+        withStyle(SpanStyle(color = color)) {
+            append(this@A)
+        }
+    }
 
 fun String.formatAnnotated(vararg args: AnnotatedString): AnnotatedString {
     return buildAnnotatedString {

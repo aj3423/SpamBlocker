@@ -43,23 +43,30 @@
     <string name="repeated_call">Chamada repetida</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Permitir chamadas repetidas, xa que é máis probable que sexan urxentes que spam. <br>
+        Permitir chamadas repetidas, é máis probable que sexan urxentes que spam. <br>
         <br>
-        Por defecto, se permitirá a segunda chamada dentro de <highlight><b>5 minutos</b></highlight>. <br>
+        Por defecto, permírase a segunda chamada nun prazo de <highlight><b>5 minutos</b></highlight>. <br>
         <br>
         <b>Opcións:</b><br>
         <br>
-        - <title><b>Intervalo Máximo</b></title> <br>
-        &ensp; Só as chamadas dentro deste prazo considéranse repetidas. <br>
+        - <title><b>Intervalo Máx.</b></title> <br>
+        Só as chamadas dentro deste intervalo considéranse repeticións. <br>
         <br>
-        - <title><b>Intervalo Mínimo</b></title> <br>
-        &ensp; Se un número volve chamar antes deste tempo, será ignorado. Os bots de spam adoitan redestinar instantaneamente; nese caso, aumente este valor. Establecer o modo de bloqueo en \"Silencio\" tamén pode axudar, consulte a súa descrición emergente para máis detalles. <br>
+        - <title><b>Intervalo Mín.</b></title> <br>
+        Se un número chama de novo antes deste tempo, será ignorado. Os bots de chamadas spam adoitan volver a chamar instantaneamente; nesse caso, aumente este valor. Configurar o modo de bloqueo en \"Silencio\" tamén pode axudar, consulte a súa descrición emergente para máis detalles. <br>
         <br>
         - <title><b>Veces de Repetición</b></title> <br>
-        &ensp; O número mínimo de repeticións. <br>
+        O número mínimo de repeticións. <br>
+        Por exemplo: <br>
+        <sample>
+        Cando se establece en 2, unha chamada debe repetirse dúas veces. En total, fan falta tres chamadas: <br>
+         &ensp; - ignorar <br>
+         &ensp; - ignorar <br>
+         &ensp; - permitir <br>
+        </sample>
         <br>
         - <title><b>Incluír SMS</b></title> <br>
-        &ensp; Cando está activado, tamén conta a recepción de mensaxes SMS dese número. <br>
+        Cando está activado, recibir mensaxes SMS dese número tamén conta. <br>
         <br>
         <priority><b>Prioridade: 10</b></priority>
         ]]>
