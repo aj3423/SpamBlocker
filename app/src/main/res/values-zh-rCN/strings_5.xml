@@ -21,7 +21,7 @@
     <string name="phone_number_abbrev">号码</string>
     <string name="sms_content">短信内容</string>
     <string name="regex_flags">正则表达式标志</string>
-    <string name="off_time">勿扰模式</string>
+    <string name="off_time">放行时段</string>
     <string name="schedule">时间安排</string>
     <string name="workday">工作日</string>
     <string name="weekend">周末</string>
