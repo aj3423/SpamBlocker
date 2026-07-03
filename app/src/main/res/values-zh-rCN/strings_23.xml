@@ -61,7 +61,7 @@
         ]]>
     </string>
     <string name="verification_code">验证码</string>
-    <string name="verification_code_regex">.*(验证|确认|校验).*码.*</string>
+    <string name="verification_code_regex">.*(验证|确认).*码.*</string>
     <string name="private_number">私人号码</string>
     <string name="always">始终</string>
     <string name="sim_icon">SIM 图标</string>
