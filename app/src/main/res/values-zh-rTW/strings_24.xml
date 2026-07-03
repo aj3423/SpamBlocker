@@ -76,12 +76,12 @@
     </string>
     <string name="forwarded_number_modified_to">此轉接號碼已修改為 %s。</string>
     <string name="filter">篩選</string>
-    <string name="geolocation">地理位置</string>
-    <string name="geolocation_rule">地理位置規則</string>
+    <string name="geolocation">發話位置</string>
+    <string name="geolocation_rule">發話位置規則</string>
     <string name="help_regex_mode_geolocation">
         <![CDATA[
-        <title><b>地理位置</b></title>:<br>
-        &ensp; 此正則表達式將對電話號碼的地理位置進行匹配。 <br>
+        <title><b>發話位置</b></title>:<br>
+        &ensp; 此正則表達式將對電話號碼的發話位置進行匹配。 <br>
         <br>
         &ensp; 這依賴於 Google 的函式庫 <a href="https://github.com/google/libphonenumber">libphonenumber</a>,
          一個離線資料庫，可提供電話號碼的地理資訊。 <br>
@@ -94,13 +94,13 @@
     <string name="show_hide">顯示/隱藏</string>
     <string name="allowed_records">允許的記錄</string>
     <string name="blocked_records">已封鎖的記錄</string>
-    <string name="local_number">本地號碼</string>
-    <string name="non_local_number">非本地號碼</string>
+    <string name="local_number">地區號碼</string>
+    <string name="non_local_number">非地區號碼</string>
     <string name="help_regex_preset_local_number">
         <![CDATA[
-        允許同一區域的本機號碼，並阻止其他號碼。 <br>
+        允許同一區域的號碼，並阻止其他號碼。 <br>
         <br>
-        將 <sample>Milan</sample> 替換為您實際的區域。 <br>
+        將 <sample>Milan</sample> 替換為您實際需要設定的發話地點區域。 <br>
         <br>
         語法 <error>(?!Milan$).*</error> 表示： <br>
         &ensp; 匹配任何不是 <error>Milan</error> 的文字。
