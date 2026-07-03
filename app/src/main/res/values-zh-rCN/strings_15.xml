@@ -47,7 +47,7 @@
         需要两个权限：RECEIVE_MMS 和 READ_SMS
         ]]>
     </string>
-    <string name="sms_bomb">短信炸弹</string>
+    <string name="sms_bomb">短信轰炸</string>
     <string name="help_sms_bomb">
         <![CDATA[
         反短信轰炸。<br>
@@ -68,13 +68,13 @@
           是轰炸攻击的一部分，将被阻止。<br>
         （默认：30 秒）<br>
         <br>
-        这将阻止所有后续炸弹，除了第一个。<br>
+        这将阻止所有后续短信轰炸，除了第一个。<br>
         <br>
         <h5><title>- 锁屏保护</title></h5>
-        启用此功能可阻止锁屏模式下的所有炸弹，包括第一个。 <br>
+        启用此功能可阻止锁屏模式下的所有短信轰炸，包括第一个。 <br>
         <br>
         通常，在等待验证码时，您的屏幕应该已解锁。
-        当设备处于锁屏模式时收到此类消息时，它们很可能是炸弹。<br>
+        当设备处于锁屏模式时收到此类消息时，它们很可能是短信轰炸。<br>
         <br>
         <priority><b>优先级：20</b></priority>
         ]]>
