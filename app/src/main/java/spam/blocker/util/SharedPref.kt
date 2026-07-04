@@ -178,6 +178,7 @@ class spf { // for namespace only
         var isCallEnabled by bool("call_enable")
         var isSmsEnabled by bool("sms_enable")
         var isMmsEnabled by bool("mms_enable")
+        var isNotificationScreeningEnabled by bool("notification_screening_enable")
 
         var language by str("language")
 
@@ -407,6 +408,28 @@ class spf { // for namespace only
         }
 
         var inXMin by int("recent_app_in_x_min", 5)
+    }
+    class AppNotifications(ctx: Context) : SharedPref(ctx) {
+        var appList by str("app_notifications_apps")
+
+        fun getList(): List<String> {
+            if (appList == "")
+                return listOf()
+            return appList.split(",")
+        }
+        fun setList(list: List<String>) {
+            appList = list.joinToString(",")
+        }
+        fun addPackage(pkgToAdd: String) {
+            val l = getList().toMutableList()
+            l.add(pkgToAdd)
+            setList(l)
+        }
+        fun removePackage(pkgToRemove: String) {
+            val l = getList().toMutableList()
+            l.remove(pkgToRemove)
+            setList(l)
+        }
     }
 
     /*

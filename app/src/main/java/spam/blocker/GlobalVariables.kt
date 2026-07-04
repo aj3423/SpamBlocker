@@ -32,6 +32,7 @@ object G {
     val globallyEnabled : MutableState<Boolean> = mutableStateOf(false)
     val callEnabled : MutableState<Boolean> = mutableStateOf(false)
     val smsEnabled : MutableState<Boolean> = mutableStateOf(false)
+    val notificationScreeningEnabled : MutableState<Boolean> = mutableStateOf(false)
     val dynamicTile0Enabled : MutableState<Boolean> = mutableStateOf(false)
 
     val notificationChannels : SnapshotStateList<Channel> = mutableStateListOf()
@@ -60,6 +61,7 @@ object G {
             globallyEnabled.value = spf.isGloballyEnabled
             callEnabled.value = spf.isCallEnabled && Permission.callScreening.isGranted
             smsEnabled.value = spf.isSmsEnabled && Permission.receiveSMS.isGranted
+            notificationScreeningEnabled.value = spf.isNotificationScreeningEnabled && Permission.notificationAccess.isGranted
             palette = Palette(ctx)
         }
 

@@ -279,6 +279,25 @@ object RegexMode {
                 }
             }
 
+            // For Notification Title/Body
+            if (!modeType.isForQuickCopyRegexMode()) {
+                LabeledRow(
+                    labelId = R.string.apply_to_notifications,
+                    helpTooltip = Str(R.string.help_apply_to_notification),
+                ) {
+                    FlowRowSpaced(10) {
+                        CheckBox(
+                            checked = state.applyToNotifTitle.value,
+                            label = { GreyLabel(Str(R.string.title_short)) },
+                            onCheckChange = { state.applyToNotifTitle.value = it })
+                        CheckBox(
+                            checked = state.applyToNotifBody.value,
+                            label = { GreyLabel(Str(R.string.body_short)) },
+                            onCheckChange = { state.applyToNotifBody.value = it })
+                    }
+                }
+            }
+
 
             // For Number/Content
             if (modeType.isForQuickCopyRegexMode()) {

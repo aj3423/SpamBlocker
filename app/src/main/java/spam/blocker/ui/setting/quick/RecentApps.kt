@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
@@ -103,6 +104,15 @@ fun <T> PopupChooseApps(
     extra: (@Composable (T?) -> Unit)? = null,
 
     onCheckChange: Lambda2<String, Boolean>,
+
+    // Defaults to apps holding the INTERNET permission (non-system apps).
+    // Pass `Util::listAllApps` to include all installed apps, e.g. system apps
+    //  like the default Phone/SMS app.
+    appListProvider: (Context) -> List<AppInfo> = ::listApps,
+
+    // Packages that should always be sorted to the very top, e.g. the default
+    //  Phone/SMS app, regardless of selection state or label.
+    pinnedPackages: List<String> = emptyList(),
 ) {
     val C = G.palette
     val ctx = LocalContext.current
@@ -116,8 +126,8 @@ fun <T> PopupChooseApps(
             var searchFilter by remember { mutableStateOf("") }
 
             val sortedApps = remember(searchFilter) {
-                // 0. get all installed apps that have INTERNET permission
-                var all = listApps(ctx)
+                // 0. get all installed apps
+                var all = appListProvider(ctx)
 
                 // 1. filter by input
                 if (searchFilter != "") {
@@ -126,8 +136,10 @@ fun <T> PopupChooseApps(
                                 || it.label.lowercase().contains(searchFilter, true)
                     }
                 }
-                // 2. sort by: selected, then by package label
+                // 2. sort by: pinned, then selected, then by package label
                 all.sortedWith(compareBy<AppInfo> { appInfo ->
+                    !pinnedPackages.contains(appInfo.pkgName)
+                }.thenBy { appInfo ->
                     finder(appInfo.pkgName) == null
                 }.thenBy {
                     it.label
@@ -143,7 +155,11 @@ fun <T> PopupChooseApps(
                         searchFilter = it
                     }
                 )
-                LazyColumn(modifier = M.padding(top = 4.dp)) {
+                LazyColumn(
+                    modifier = M
+                        .padding(top = 4.dp)
+                        .heightIn(max = 400.dp)
+                ) {
                     itemsIndexed(sortedApps) { index, appInfo ->
                         val pkgName = appInfo.pkgName
                         val info = finder(pkgName)

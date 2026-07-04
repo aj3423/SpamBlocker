@@ -34,6 +34,7 @@ import spam.blocker.db.Notification.CHANNEL_HIGH
 import spam.blocker.db.Notification.CHANNEL_LOW
 import spam.blocker.db.Notification.CHANNEL_NONE
 import spam.blocker.def.Def
+import spam.blocker.service.resetNotificationScreeningCache
 import spam.blocker.ui.lighten
 import spam.blocker.ui.setting.regex.RegexMode
 import spam.blocker.ui.setting.regex.RegexMode.ModeType
@@ -134,6 +135,14 @@ data class RegexRule(
 
     fun isForSms(): Boolean {
         return flags.hasFlag(Def.FLAG_FOR_SMS)
+    }
+
+    fun isForNotifTitle(): Boolean {
+        return flags.hasFlag(Def.FLAG_FOR_NOTIF_TITLE)
+    }
+
+    fun isForNotifBody(): Boolean {
+        return flags.hasFlag(Def.FLAG_FOR_NOTIF_BODY)
     }
 
     fun isWhitelist(): Boolean {
@@ -416,6 +425,7 @@ abstract class RegexTable {
         cv.put(Db.COLUMN_BLOCK_TYPE_CONFIG, f.blockTypeConfig)
         cv.put(Db.COLUMN_SIM_SLOT, f.simSlot)
 
+        resetNotificationScreeningCache()
         return db.insert(tableName(), null, cv)
     }
 
@@ -439,6 +449,7 @@ abstract class RegexTable {
         cv.put(Db.COLUMN_BLOCK_TYPE_CONFIG, f.blockTypeConfig)
         cv.put(Db.COLUMN_SIM_SLOT, f.simSlot)
 
+        resetNotificationScreeningCache()
         db.insert(tableName(), null, cv)
     }
 
@@ -461,6 +472,7 @@ abstract class RegexTable {
         cv.put(Db.COLUMN_BLOCK_TYPE_CONFIG, f.blockTypeConfig)
         cv.put(Db.COLUMN_SIM_SLOT, f.simSlot)
 
+        resetNotificationScreeningCache()
         return db.update(tableName(), cv, "${Db.COLUMN_ID} = $id", null) >= 0
     }
 
@@ -473,6 +485,7 @@ abstract class RegexTable {
         val sql = "DELETE FROM ${tableName()} WHERE ${Db.COLUMN_ID} IN (${ids.joinToString(",")})"
         val cursor = db.rawQuery(sql, null)
 
+        resetNotificationScreeningCache()
         return cursor.use {
             it.moveToFirst()
         }
@@ -482,6 +495,8 @@ abstract class RegexTable {
         val db = Db.getInstance(ctx).writableDatabase
         val sql = "DELETE FROM ${tableName()}"
         db.execSQL(sql)
+
+        resetNotificationScreeningCache()
     }
 }
 

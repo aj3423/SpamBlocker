@@ -84,6 +84,8 @@ object Def {
     const val FLAG_FOR_PASSED = 1 shl 4
     const val FLAG_FOR_BLOCKED = 1 shl 5
     const val FLAG_AUTO_COPY = 1 shl 6
+    const val FLAG_FOR_NOTIF_TITLE = 1 shl 7
+    const val FLAG_FOR_NOTIF_BODY = 1 shl 8
 
 
     // regexFlags, max: 1 shl 30

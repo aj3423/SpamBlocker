@@ -31,6 +31,7 @@ import spam.blocker.ui.widgets.Section
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
+import spam.blocker.ui.setting.quick.AppNotificationsPicker
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionWrapper
 import spam.blocker.util.Util
@@ -203,6 +204,33 @@ fun GloballyEnabled() {
                             } else {
                                 spf.isSmsEnabled = false
                                 G.smsEnabled.value = false
+                            }
+                        })
+                    }
+
+                    LabeledRow(
+                        labelId = R.string.notifications,
+                        helpTooltip = Str(R.string.help_notification_screening),
+                    ) {
+                        if (G.notificationScreeningEnabled.value) {
+                            AppNotificationsPicker(modifier = M.padding(end = 8.dp))
+                        }
+                        SwitchBox(checked = G.notificationScreeningEnabled.value, onCheckedChange = { isTurningOn ->
+                            if (isTurningOn) {
+                                G.permissionChain.ask(
+                                    ctx,
+                                    listOf(
+                                        PermissionWrapper(Permission.notificationAccess),
+                                    )
+                                ) { granted ->
+                                    if (granted) {
+                                        spf.isNotificationScreeningEnabled = true
+                                        G.notificationScreeningEnabled.value = true
+                                    }
+                                }
+                            } else {
+                                spf.isNotificationScreeningEnabled = false
+                                G.notificationScreeningEnabled.value = false
                             }
                         })
                     }

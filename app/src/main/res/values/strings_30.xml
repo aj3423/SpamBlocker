@@ -1,0 +1,24 @@
+<resources>
+    <string name="notifications">Notifications</string>
+    <string name="help_notification_screening">
+        <![CDATA[
+        Screens notifications from the apps chosen with the icon picker on the right. <br>
+        <br>
+        Number Rules and Message Rules with <b>Title</b> / <b>Body</b> enabled under <b>Apply to Notifications</b> are checked against the notification, the same way as a real incoming SMS. <br>
+        If the result is <b>Block</b>, the notification is dismissed. <br>
+        <br>
+        This works independently of the <b>SMS</b> switch above, and requires <b>Notification Access</b> permission.
+        ]]>
+    </string>
+    <string name="apply_to_notifications">Apply to Notifications</string>
+    <string name="title_short">Title</string>
+    <string name="body_short">Body</string>
+    <string name="help_apply_to_notification">
+        <![CDATA[
+        <title>Title</title> / <title>Body</title> <br>
+        Check this rule against notifications from the apps chosen in <b>Notifications</b> (in Screening). <br>
+        <br>
+        The regex is searched for anywhere within the notification\'s title/body, it doesn\'t need to match the whole text.
+        ]]>
+    </string>
+</resources>

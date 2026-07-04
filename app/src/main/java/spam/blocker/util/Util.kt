@@ -137,6 +137,18 @@ fun String.regexMatches(targetStr: String, regexFlags: Int = Def.DefaultRegexFla
     return this.toRegex(opts).matches(targetStr)
 }
 
+// Unlike `regexMatches`, this doesn't require the whole `targetStr` to match,
+//  it looks for the regex anywhere within it, e.g. for matching a phone number
+//  embedded within a notification's title/body. Returns the matched substring, or null.
+fun String.regexFind(targetStr: String, regexFlags: Int = Def.DefaultRegexFlags): String? {
+    val opts = Util.flagsToRegexOptions(regexFlags)
+    return try {
+        this.toRegex(opts).find(targetStr)?.value
+    } catch (_: Exception) {
+        null
+    }
+}
+
 fun String.regexExtract(html: String, regexFlags: Int): String? {
     val opts = Util.flagsToRegexOptions(regexFlags)
     return Util.extractString(regex = this.toRegex(opts), haystack = html)
@@ -493,6 +505,31 @@ object Util {
         }
 
         return cacheAppList!!
+    }
+
+    private var cacheAllAppList: List<AppInfo>? = null
+    private val lock_2 = Any()
+
+    // All installed apps (including system apps), unlike `listApps` which is
+    //  filtered to non-system apps holding the INTERNET permission.
+    // Used by App Notifications, since the default Phone/SMS apps are system apps.
+    @SuppressLint("UseCompatLoadingForDrawables")
+    fun listAllApps(ctx: Context): List<AppInfo> {
+        synchronized(lock_2) {
+            if (cacheAllAppList == null) {
+                val pm = ctx.packageManager
+
+                cacheAllAppList = pm.getInstalledApplications(0).map { appInfo ->
+                    AppInfo().apply {
+                        pkgName = appInfo.packageName
+                        label = appInfo.loadLabel(pm).toString()
+                        icon = appInfo.loadIcon(pm)
+                    }
+                }
+            }
+        }
+
+        return cacheAllAppList!!
     }
 
     // android<13 will always return `false`

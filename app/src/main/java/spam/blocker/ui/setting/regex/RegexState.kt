@@ -42,6 +42,10 @@ class RegexState(
     val applyToCall: MutableState<Boolean>,
     val applyToSms: MutableState<Boolean>,
 
+    // Apply to Notification Title/Body
+    val applyToNotifTitle: MutableState<Boolean>,
+    val applyToNotifBody: MutableState<Boolean>,
+
     // Apply to Number/Content
     val applyToNumber: MutableState<Boolean>,
     val applyToContent: MutableState<Boolean>,
@@ -79,6 +83,8 @@ class RegexState(
         val flags = 0
             .setFlag(Def.FLAG_FOR_CALL, applyToCall.value)
             .setFlag(Def.FLAG_FOR_SMS, applyToSms.value)
+            .setFlag(Def.FLAG_FOR_NOTIF_TITLE, applyToNotifTitle.value)
+            .setFlag(Def.FLAG_FOR_NOTIF_BODY, applyToNotifBody.value)
             .setFlag(Def.FLAG_FOR_NUMBER, applyToNumber.value)
             .setFlag(Def.FLAG_FOR_CONTENT, applyToContent.value)
             .setFlag(Def.FLAG_FOR_PASSED, applyToPassed.value)
@@ -148,6 +154,10 @@ fun RegexRule.toState(): RegexState {
         // Apply to Call/SMS
         applyToCall = mutableStateOf(initRule.isForCall()),
         applyToSms = mutableStateOf(initRule.isForSms()),
+
+        // Apply to Notification Title/Body
+        applyToNotifTitle = mutableStateOf(initRule.isForNotifTitle()),
+        applyToNotifBody = mutableStateOf(initRule.isForNotifBody()),
 
         // Apply to Number/Content
         applyToNumber = mutableStateOf(initRule.flags.hasFlag(Def.FLAG_FOR_NUMBER)),
