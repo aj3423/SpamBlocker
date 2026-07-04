@@ -57,7 +57,7 @@
     <string name="perm_battery_unrestricted">電池用量不受限制</string>
     <string name="include_sms">包含簡訊</string>
     <string name="minimal_duration">最短持續時間</string>
-    <string name="answered_number"><short>已接來電號碼</short></string>
+    <string name="answered_number"><short>已接號碼</short></string>
     <string name="help_answered">
         <![CDATA[
         允許之前接聽過的來電。<br>

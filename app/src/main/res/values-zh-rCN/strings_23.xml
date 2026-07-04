@@ -2,7 +2,7 @@
     <string name="workflow_actions">操作</string>
     <string name="work_state_template">状态：%s</string>
     <string name="stop_reason_template">停止原因：%s</string>
-    <string name="any">任意</string>
+    <string name="any">任何</string>
     <string name="sim_card">SIM 卡</string>
     <string name="sim_slot_template">SIM %s</string>
     <string name="help_sim_card">
@@ -61,7 +61,7 @@
         ]]>
     </string>
     <string name="verification_code">验证码</string>
-    <string name="verification_code_regex">.*(验证|确认|校验).*码.*</string>
+    <string name="verification_code_regex">.*(验证|确认).*码.*</string>
     <string name="private_number">私人号码</string>
     <string name="always">始终</string>
     <string name="sim_icon">SIM 图标</string>

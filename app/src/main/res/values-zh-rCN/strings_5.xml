@@ -1,5 +1,5 @@
 <resources>
-    <string name="dialed_number"><short>拨号号码</short></string>
+    <string name="dialed_number"><short>已拨号码</short></string>
     <string name="find_apps">查找应用</string>
 
     <string name="confirm_delete_all_rule">确认删除所有规则？</string>
@@ -21,7 +21,7 @@
     <string name="phone_number_abbrev">号码</string>
     <string name="sms_content">短信内容</string>
     <string name="regex_flags">正则表达式标志</string>
-    <string name="off_time">非工作时间</string>
+    <string name="off_time">放行时段</string>
     <string name="schedule">时间安排</string>
     <string name="workday">工作日</string>
     <string name="weekend">周末</string>
