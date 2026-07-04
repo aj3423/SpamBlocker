@@ -2,7 +2,7 @@
     <string name="workflow_actions">動作</string>
     <string name="work_state_template">狀態：%s</string>
     <string name="stop_reason_template">停止原因：%s</string>
-    <string name="any">任何SIM卡</string>
+    <string name="any">任何</string>
     <string name="sim_card">SIM 卡</string>
     <string name="sim_slot_template">SIM %s</string>
     <string name="help_sim_card">
