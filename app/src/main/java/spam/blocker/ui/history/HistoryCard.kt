@@ -188,7 +188,7 @@ fun HistoryCard(
                             }
 
                             Button(
-                                modifier = M.padding(top = 4.dp),
+                                modifier = M.padding(top = 4.dp).weight(1f),
                                 contentPadding = PaddingValues(BUTTON_H_PADDING.dp, 2.dp),
                                 borderWidth = 0.5.dp,
                                 borderColor = C.textGrey,
@@ -208,7 +208,7 @@ fun HistoryCard(
                                 }
                             )
                         } else { // record not expanded
-                            RowVCenterSpaced(2) {
+                            RowVCenterSpaced(2, M.weight(1f)) {
                                 // Show a yellow "!" if anything went wrong during screening, e.g. ApiQuery timed out
                                 if (record.anythingWrongScreening) {
                                     ResIcon16(R.drawable.ic_exclamation, color = C.warning)

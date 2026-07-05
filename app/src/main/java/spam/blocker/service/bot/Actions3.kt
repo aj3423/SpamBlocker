@@ -1633,8 +1633,9 @@ class CopyTag(
 
         aCtx.customTags[tagTo] = aCtx.customTags[tagFrom] ?: ""
 
-        aCtx.logger?.debug(ctx.getString(R.string.tag_is_copied_to).formatAnnotated(
-            "{$tagFrom}".A(C.textGrey.darken()), "{$tagTo}".A(C.teal200)
+        aCtx.logger?.debug(ctx.getString(R.string.tag_is_copied_from).formatAnnotated(
+            "{$tagTo}".A(C.textGrey.darken()),
+            "{$tagFrom}".A(C.teal200),
         ))
 
         return true

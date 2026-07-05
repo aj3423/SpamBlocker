@@ -72,14 +72,18 @@
         ]]>
     </string>
     <string name="copy_tag">Копировать тег</string>
-    <string name="tag_is_copied_to">Тег %s скопирован в %s</string>
+    <string name="tag_is_copied_from">Тег %s скопирован из %s</string>
     <string name="help_copy_tag">Создать новый тег с тем же значением, но другим именем.</string>
     <string name="from_tag">От тега</string>
     <string name="to_tag">К тегу</string>
     <string name="help_bot_preset_7726">
         <![CDATA[
-        Перенаправляет спам-тексты в <error>7726</error> (универсальный короткий код для <error>SPAM</error>), функция, широко поддерживаемая многими мобильными операторами.
-        ]]>    </string>
+        Пересылает спам-сообщения на номер <error>7726</error> (универсальный короткий код для <error>SPAM</error>), эта функция широко поддерживается многими мобильными операторами. <br>
+        <br>
+        <warn>Предупреждение</warn> <br>
+        Включайте эту функцию только в том случае, если ваш оператор поддерживает номер 7726. В противном случае может взиматься стандартная плата за SMS.
+        ]]>
+    </string>
     <string name="report_sms">Отчет о SMS</string>
     <string name="regex_starts_with_plus">%s — специальный символ в регулярных выражениях (например, %s), экранируйте его как %s</string>
 </resources>

@@ -72,14 +72,18 @@
         ]]>
     </string>
     <string name="copy_tag">עותק תגית</string>
-    <string name="tag_is_copied_to">התגית %s נעותקת ל-%s</string>
+    <string name="tag_is_copied_from">התגית %s נעותקת מ-%s</string>
     <string name="help_copy_tag">יצירת תגית חדשה עם אותה ערך אך בשם שונה.</string>
     <string name="from_tag">מתגית</string>
     <string name="to_tag">לתגית</string>
     <string name="help_bot_preset_7726">
         <![CDATA[
-        מעביר טקסטי SPAM ל-<error>7726</error> (קידוד קצר אוניברסלי לכתוב <error>SPAM</error>), תכונה המומלכת על ידי ספקיות תקשורת ניידות רבות.
-        ]]>    </string>
+        מעביר הודעות ספאם ל-<error>7726</error> (הקוד הקצר האוניברסלי עבור <error>SPAM</error>), תכונה הנתמכת באופן נרחב על ידי ספקי תקשורת ניידת רבים. <br>
+        <br>
+        <warn>אזהרה</warn> <br>
+        הפעל זאת רק אם ספק התקשורת שלך תומך ב-7726. אחרת, עשויים לחול דמי SMS סטנדרטיים.
+        ]]>
+    </string>
     <string name="report_sms">דווח על SMS</string>
     <string name="regex_starts_with_plus">%s הוא תו מיוחד ב-regex (למשל %s), בצע לו escape כך: %s</string>
 </resources>

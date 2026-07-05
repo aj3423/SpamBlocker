@@ -72,14 +72,18 @@
         ]]>
     </string>
     <string name="copy_tag">Copier la balise</string>
-    <string name="tag_is_copied_to">La balise %s est copiée dans %s</string>
+    <string name="tag_is_copied_from">La balise %s est copiée depuis %s</string>
     <string name="help_copy_tag">Créez une nouvelle balise avec la même valeur mais un nom différent.</string>
     <string name="from_tag">Balise d\'origine</string>
     <string name="to_tag">Balise de destination</string>
     <string name="help_bot_preset_7726">
         <![CDATA[
-        Transfère les messages SPAM vers <error>7726</error> (le code court universel pour écrire <error>SPAM</error>), une fonctionnalité largement prise en charge par de nombreux opérateurs mobiles.
-        ]]>    </string>
+        Transfère les SMS indésirables au <error>7726</error> (le code court universel pour <error>SPAM</error>), une fonctionnalité largement prise en charge par de nombreux opérateurs mobiles. <br>
+        <br>
+        <warn>Avertissement</warn> <br>
+        N\'activez ceci que si votre opérateur prend en charge le 7726. Sinon, des frais de SMS standard peuvent s\'appliquer.
+        ]]>
+    </string>
     <string name="report_sms">Signaler un SMS</string>
     <string name="regex_starts_with_plus">%s est un caractère spécial dans regex (par ex. %s), échappez-le comme %s</string>
 </resources>

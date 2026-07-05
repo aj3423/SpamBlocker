@@ -72,14 +72,18 @@
         ]]>
     </string>
     <string name="copy_tag">複製標籤</string>
-    <string name="tag_is_copied_to">標籤 %s 已複製至 %s</string>
+    <string name="tag_is_copied_from">標籤 %s 已從 %s 複製</string>
     <string name="help_copy_tag">建立具有相同值但不同名稱的新標籤。</string>
     <string name="from_tag">來源標籤</string>
     <string name="to_tag">目標標籤</string>
     <string name="help_bot_preset_7726">
         <![CDATA[
-        將垃圾短訊轉發至 <error>7726</error>（用於拼寫 <error>SPAM</error> 的通用短代碼），這是許多行動電信業者廣泛支援的功能。
-        ]]>    </string>
+        將垃圾短訊轉發至 <error>7726</error>（<error>SPAM</error> 的通用短代碼），這是許多行動電信業者廣泛支援的功能。<br>
+        <br>
+        <warn>警告</warn> <br>
+        僅在您的電信業者支援 7726 時才啟用此功能。否則，可能會產生標準簡訊費用。
+        ]]>
+    </string>
     <string name="report_sms">報告簡訊</string>
     <string name="regex_starts_with_plus">%s 是正規表達式中的特殊字元（例如 %s），請像 %s 這樣對其進行轉義</string>
 </resources>

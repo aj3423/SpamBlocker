@@ -72,14 +72,17 @@
         ]]>
     </string>
     <string name="copy_tag">Copy Tag</string>
-    <string name="tag_is_copied_to">Tag %s is copied to %s</string>
+    <string name="tag_is_copied_from">Tag %s is copied from %s</string>
     <string name="help_copy_tag">Create a new tag with the same value but a different name.</string>
     <string name="from_tag">From Tag</string>
     <string name="to_tag">To Tag</string>
     <string name="help_bot_preset_7726">
         <![CDATA[
         Forwards spam texts to <error>7726</error> (the universal short code spelling <error>SPAM</error>),
-         a feature widely supported by many mobile carriers.
+         a feature widely supported by many mobile carriers. <br>
+        <br>
+        <warn>Warning</warn> <br>
+        Only enable this if your carrier supports 7726. Otherwise, standard SMS charges may apply.
         ]]>
     </string>
     <string name="report_sms">Report SMS</string>

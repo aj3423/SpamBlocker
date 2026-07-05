@@ -72,14 +72,18 @@
         ]]>
     </string>
     <string name="copy_tag">Salin Tag</string>
-    <string name="tag_is_copied_to">Tag %s disalin ke %s</string>
+    <string name="tag_is_copied_from">Tag %s disalin dari %s</string>
     <string name="help_copy_tag">Buat tag baru dengan nilai yang sama tapi nama yang berbeda.</string>
     <string name="from_tag">Dari Tag</string>
     <string name="to_tag">Ke Tag</string>
     <string name="help_bot_preset_7726">
         <![CDATA[
-        Menyampaikan pesan spam ke <error>7726</error> (kode singkat universal untuk <error>SPAM</error>), fitur yang didukung luas oleh banyak operator seluler.
-        ]]>    </string>
+        Meneruskan pesan spam ke <error>7726</error> (kode singkat universal untuk <error>SPAM</error>), fitur yang didukung luas oleh banyak operator seluler. <br>
+        <br>
+        <warn>Peringatan</warn> <br>
+        Aktifkan ini hanya jika operator Anda mendukung 7726. Jika tidak, biaya SMS standar mungkin berlaku.
+        ]]>
+    </string>
     <string name="report_sms">Laporkan SMS</string>
     <string name="regex_starts_with_plus">%s adalah karakter khusus dalam regex (contoh: %s), gunakan escape seperti %s</string>
 </resources>

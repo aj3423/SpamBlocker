@@ -72,14 +72,18 @@
         ]]>
     </string>
     <string name="copy_tag">کپی تگ</string>
-    <string name="tag_is_copied_to">تگ %s به %s کپی شد</string>
+    <string name="tag_is_copied_from">تگ %s از %s کپی شد</string>
     <string name="help_copy_tag">یک تگ جدید با همان مقدار اما نام متفاوت ایجاد کنید.</string>
     <string name="from_tag">از تگ</string>
     <string name="to_tag">به تگ</string>
     <string name="help_bot_preset_7726">
         <![CDATA[
-        متن پیام‌های اسپم را به <error>7726</error> (کد کوتاه جهانی نوشتن <error>SPAM</error>) ارسال می‌کند، قابلیتی که به‌طور گسترده توسط بسیاری از اپراتورهای موبایل پشتیبانی می‌شود.
-        ]]>    </string>
+        پیام‌های اسپم را به شماره <error>7726</error> (کد کوتاه جهانی برای <error>SPAM</error>) ارسال می‌کند، این قابلیتی است که به‌طور گسترده توسط بسیاری از اپراتورهای موبایل پشتیبانی می‌شود. <br>
+        <br>
+        <warn>هشدار</warn> <br>
+        این گزینه را تنها در صورتی فعال کنید که اپراتور شما از 7726 پشتیبانی کند. در غیر این صورت، ممکن است هزینه‌های استاندارد پیامک اعمال شود.
+        ]]>
+    </string>
     <string name="report_sms">گزارش پیامک</string>
     <string name="regex_starts_with_plus">%s یک کاراکتر خاص در regex است (مثلاً %s)، آن را به صورت %s اسکیپ کنید</string>
 </resources>

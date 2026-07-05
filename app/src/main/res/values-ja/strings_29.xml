@@ -72,14 +72,18 @@
         ]]>
     </string>
     <string name="copy_tag">タグをコピー</string>
-    <string name="tag_is_copied_to">タグ %s は %s にコピーされます</string>
+    <string name="tag_is_copied_from">タグ %s は %s からコピーされます</string>
     <string name="help_copy_tag">同じ値但有り異なる名前の新しいタグを作成します。</string>
     <string name="from_tag">元タグ</string>
     <string name="to_tag">先タグ</string>
     <string name="help_bot_preset_7726">
         <![CDATA[
-        スпамテキストを<error>7726</error>に転送します（<error>SPAM</error>を記述する汎用ショートコード）。これは多くの移動体通信事業者で広くサポートされている機能です。
-        ]]>    </string>
+        スパムメールを <error>7726</error>（<error>SPAM</error> のユニバーサル短縮コード）に転送します。これは多くの携帯電話キャリアで広くサポートされている機能です。<br>
+        <br>
+        <warn>警告</warn> <br>
+        キャリアが 7726 をサポートしている場合のみ有効にしてください。そうでない場合は、標準の SMS 料金が適用される場合があります。
+        ]]>
+    </string>
     <string name="report_sms">SMSを報告する</string>
     <string name="regex_starts_with_plus">%sは正規表現の特殊文字です（例：%s）。%sのようにエスケープしてください</string>
 </resources>

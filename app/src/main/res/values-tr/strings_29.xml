@@ -72,13 +72,16 @@
         ]]>
     </string>
     <string name="copy_tag">Etiket Kopyala</string>
-    <string name="tag_is_copied_to">Etiket %s, %s\'a kopyalandı</string>
+    <string name="tag_is_copied_from">Etiket %s, %s\'den kopyalandı</string>
     <string name="help_copy_tag">Aynı değere sahip ancak farklı isimli yeni bir etiket oluşturun.</string>
     <string name="from_tag">Kaynak Etiket</string>
     <string name="to_tag">Hedef Etiket</string>
     <string name="help_bot_preset_7726">
         <![CDATA[
-        <error>7726</error>\'ye (evrensel kısa kod ile <error>SPAM</error> yazan) spam metinlerini iletir, birçok mobil operatör tarafından geniş ölçüde desteklenen bir özelliktir.
+        Spam metinlerini <error>7726</error> (evrensel kısa kod <error>SPAM</error>) numarasına yönlendirir, bu özellik birçok mobil operatör tarafından yaygın olarak desteklenmektedir. <br>
+        <br>
+        <warn>Uyarı</warn> <br>
+        Bunu yalnızca operatörünüz 7726\'yı destekliyorsa etkinleştirin. Aksi takdirde standart SMS ücretleri uygulanabilir.
         ]]>
     </string>
     <string name="report_sms">SMS bildirim</string>

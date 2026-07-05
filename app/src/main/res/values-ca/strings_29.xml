@@ -72,14 +72,18 @@
         ]]>
     </string>
     <string name="copy_tag">Copiar etiqueta</string>
-    <string name="tag_is_copied_to">L\'etiqueta %s s\'ha copiat a %s</string>
+    <string name="tag_is_copied_from">L\'etiqueta %s s\'ha copiat de %s</string>
     <string name="help_copy_tag">Crea una nova etiqueta amb el mateix valor però un nom diferent.</string>
     <string name="from_tag">D\'etiqueta</string>
     <string name="to_tag">A etiqueta</string>
     <string name="help_bot_preset_7726">
         <![CDATA[
-        Envia textos de spam a <error>7726</error> (el codi curt universal que escriu <error>SPAM</error>), una característica ampliament utilitzada per molts operadors mòbils.
-        ]]>    </string>
+        Reenvia els textos de spam al <error>7726</error> (el codi curt universal per a <error>SPAM</error>), una funció ampliamenment compatible amb molts operadors mòbils. <br>
+        <br>
+        <warn>Advertència</warn> <br>
+        Activa això només si el teu operador admet el 7726. En cas contrari, es poden aplicar càrrecs estàndard de SMS.
+        ]]>
+    </string>
     <string name="report_sms">Informar SMS</string>
     <string name="regex_starts_with_plus">%s és un caràcter especial en regex (per exemple, %s), escapa\'l com %s</string>
 </resources>
