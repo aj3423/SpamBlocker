@@ -217,7 +217,7 @@ class spf { // for namespace only
         var maxRegexRows by int("rule_max_regex_rows", 3)
         var maxDescRows by int("rule_max_description_rows", 2)
         var ruleListHeightPercentage by int("rule_list_height_percentage", 60)
-        var textboxLimit by int("rule_textbox_max_char_limit", 1000)
+        var textboxLimit by int("rule_textbox_max_char_limit", 10000)
     }
 
     class BotOptions(ctx: Context) : SharedPref(ctx) {
