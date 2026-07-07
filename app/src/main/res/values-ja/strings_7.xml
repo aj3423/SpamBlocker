@@ -3,7 +3,8 @@
     <string name="end_time">終了時間</string>
     <string name="regex_mode">正規表現モード</string>
     <string name="contact_group">連絡先グループ</string>
-    <string name="text_too_long">テキストが長すぎるため、編集は無効になっています</string>
+    <string name="text_too_long">テキストが %s 文字を超えているため、パフォーマンス上の理由から編集が無効になっています。制限を増やすには：</string>
+    <string name="increase_text_limit">ルールを長押し -> 設定 -> テキストボックス制限</string>
     <string name="system"><short>システム</short></string>
     <string name="theme">テーマ</string>
     <string-array name="rule_dropdown_menu">

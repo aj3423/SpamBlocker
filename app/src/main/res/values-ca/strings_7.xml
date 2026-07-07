@@ -3,7 +3,8 @@
     <string name="end_time">Hora de finalització</string>
     <string name="regex_mode">Mode regex</string>
     <string name="contact_group">Grup de contactes</string>
-    <string name="text_too_long">El text és massa llarg, l\'edició està desactivada</string>
+    <string name="text_too_long">El text supera els %s caràcters, l\'edició està desactivada per motius de rendiment. Per augmentar el límit:</string>
+    <string name="increase_text_limit">Mantingueu premuda una regla -> Ajustos -> Límite del quadre de text</string>
     <string name="system"><short>Sistema</short></string>
     <string name="theme">Tema</string>
     <string-array name="rule_dropdown_menu">

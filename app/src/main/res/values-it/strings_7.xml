@@ -3,7 +3,8 @@
     <string name="end_time">Ora di fine</string>
     <string name="regex_mode">Modalità regex</string>
     <string name="contact_group">Gruppo di contatti</string>
-    <string name="text_too_long">Testo troppo lungo, la modifica è disabilitata</string>
+    <string name="text_too_long">Il testo supera i %s caratteri, la modifica è disabilitata per motivi di prestazioni. Per aumentare il limite:</string>
+    <string name="increase_text_limit">Pressione prolungata su una regola -> Impostazioni -> Limite casella di testo</string>
     <string name="system"><short>Sist</short></string>
     <string name="theme">Tema</string>
     <string-array name="rule_dropdown_menu">

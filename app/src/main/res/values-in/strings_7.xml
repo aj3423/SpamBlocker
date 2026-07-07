@@ -3,7 +3,8 @@
     <string name="end_time">Waktu Akhir</string>
     <string name="regex_mode">Mode regex</string>
     <string name="contact_group">Grup Kontak</string>
-    <string name="text_too_long">Teks terlalu panjang, pengubahan dinonaktifkan</string>
+    <string name="text_too_long">Teks melebihi %s karakter, pengeditan dinonaktifkan untuk alasan kinerja. Untuk meningkatkan batas:</string>
+    <string name="increase_text_limit">Tekan lama sebuah aturan -> Pengaturan -> Batas Kotak Teks</string>
     <string name="system"><short>Sistem</short></string>
     <string name="theme">Tema</string>
     <string-array name="rule_dropdown_menu">

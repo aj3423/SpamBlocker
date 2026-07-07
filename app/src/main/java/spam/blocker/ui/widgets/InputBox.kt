@@ -91,7 +91,7 @@ private fun InputBox(
     prefix: @Composable (() -> Unit)? = null,
     suffix: @Composable (() -> Unit)? = null,
     supportingText: AnnotatedString? = null,
-    warnings: SnapshotStateList<String> = mutableStateListOf<String>(),
+    warnings: SnapshotStateList<AnnotatedString> = mutableStateListOf(),
     visualTransformation: VisualTransformation = VisualTransformation.None,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
@@ -202,12 +202,13 @@ private fun InputBox(
         val warningList = warnings.toMutableList()
 
         if (exceedsMaxLen) {
-            warningList += Str(R.string.text_too_long)
+            warningList += Str(R.string.text_too_long).formatAnnotated(maxTextLength.toString().A(C.teal200)).A(C.warning) +
+                    "\n".A() +
+                    Str(R.string.increase_text_limit).A(C.disabled)
         }
         warningList.forEach {
             Text(
                 text = it,
-                color = C.warning,
                 fontSize = 14.sp,
                 lineHeight = 14.sp,
                 modifier = M.padding(4.dp),
@@ -570,13 +571,13 @@ fun RegexInputBox(
     }
 
     @SuppressLint("LocalContextGetResourceValueCall")
-    fun validateWarning(): List<String> {
+    fun validateWarning(): List<AnnotatedString> {
 
-        val ret = mutableListOf<String>()
+        val ret = mutableListOf<AnnotatedString>()
 
         // The user is using wildcard `*` instead of `.*`, it could be a typo
         if (regexWildcardNotSupported(lastText)) {
-            ret += ctx.getString(R.string.waning_using_wildcard_as_regex)
+            ret += ctx.getString(R.string.waning_using_wildcard_as_regex).A(C.warning)
         }
         return ret
     }
@@ -591,7 +592,7 @@ fun RegexInputBox(
     }
 
     val warnings = remember(lastText) {
-        mutableStateListOf<String>().apply {
+        mutableStateListOf<AnnotatedString>().apply {
             addAll(validateWarning())
         }
     }

@@ -3,7 +3,8 @@
     <string name="end_time">结束时间</string>
     <string name="regex_mode">正则模式</string>
     <string name="contact_group">联系人组</string>
-    <string name="text_too_long">文本过长，编辑功能已禁用</string>
+    <string name="text_too_long">文本超过 %s 个字符，出于性能原因，编辑功能已禁用。要增加限制：</string>
+    <string name="increase_text_limit">长按规则 -> 设置 -> 文本框限制</string>
     <string name="system"><short>系统</short></string>
     <string name="theme">主题</string>
     <string-array name="rule_dropdown_menu">

@@ -3,7 +3,8 @@
     <string name="end_time">Endzeit</string>
     <string name="regex_mode">Regex-Modus</string>
     <string name="contact_group">Kontaktgruppe</string>
-    <string name="text_too_long">Text zu lang, Bearbeitung ist deaktiviert</string>
+    <string name="text_too_long">Text überschreitet %s Zeichen, die Bearbeitung ist aus Performancegründen deaktiviert. Um das Limit zu erhöhen:</string>
+    <string name="increase_text_limit">Regel gedrückt halten -> Einstellungen -> Textfeldlimit</string>
     <string name="system"><short>System</short></string>
     <string name="theme">Thema</string>
     <string-array name="rule_dropdown_menu">

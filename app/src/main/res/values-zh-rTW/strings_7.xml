@@ -3,7 +3,8 @@
     <string name="end_time">結束時間</string>
     <string name="regex_mode">正則模式</string>
     <string name="contact_group">聯絡人群組</string>
-    <string name="text_too_long">文字太長，已停用編輯功能</string>
+    <string name="text_too_long">文字超過 %s 個字元，出於效能原因，已停用編輯功能。要增加限制：</string>
+    <string name="increase_text_limit">長按規則 -> 設定 -> 文字方塊限制</string>
     <string name="system"><short>系統</short></string>
     <string name="theme">佈景主題</string>
     <string-array name="rule_dropdown_menu">

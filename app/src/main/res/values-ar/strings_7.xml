@@ -3,7 +3,8 @@
     <string name="end_time">وقت الانتهاء</string>
     <string name="regex_mode">وضع Regex</string>
     <string name="contact_group">مجموعة جهات الاتصال</string>
-    <string name="text_too_long">النص طويل جدًا، التحرير معطل</string>
+    <string name="text_too_long">يتجاوز النص %s حرفًا، التحرير معطل لأسباب تتعلق بالأداء. لزيادة الحد:</string>
+    <string name="increase_text_limit">اضغط مطولاً على قاعدة -> الإعدادات -> حد مربع النص</string>
     <string name="system"><short>نظام</short></string>
     <string name="theme">المظهر</string>
     <string-array name="rule_dropdown_menu">

@@ -27,7 +27,8 @@
         &emsp; <sample>Block all coworkers at weekend by blocking the contact group \"work\". </sample> <br>
         ]]>
     </string>
-    <string name="text_too_long">Text too long, editing is disabled</string>
+    <string name="text_too_long">Text exceeds %s characters, editing is disabled for performance reasons. To increase the limit:</string>
+    <string name="increase_text_limit">Long-press a rule -> Settings -> Text Box Limit</string>
     <string name="system"><short>System</short></string>
     <string name="theme">Theme</string>
     <string-array name="rule_dropdown_menu">

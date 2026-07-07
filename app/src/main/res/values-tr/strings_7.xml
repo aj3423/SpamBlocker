@@ -3,7 +3,8 @@
     <string name="end_time">Bitiş Zamanı</string>
     <string name="regex_mode">Regex modu</string>
     <string name="contact_group">İletişim Grubu</string>
-    <string name="text_too_long">Metin çok uzun, düzenleme devre dışı</string>
+    <string name="text_too_long">Metin %s karakteri aşıyor, performans nedenleriyle düzenleme devre dışı bırakıldı. Limiti artırmak için:</string>
+    <string name="increase_text_limit">Bir kurala uzun basın -> Ayarlar -> Metin Kutusu Limiti</string>
     <string name="system"><short>Sist</short></string>
     <string name="theme">Tema</string>
     <string-array name="rule_dropdown_menu">

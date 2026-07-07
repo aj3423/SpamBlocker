@@ -3,7 +3,8 @@
     <string name="end_time">Час завершення</string>
     <string name="regex_mode">Режим regex</string>
     <string name="contact_group">Група контактів</string>
-    <string name="text_too_long">Текст надто довгий, редагування вимкнено</string>
+    <string name="text_too_long">Текст перевищує %s символів, редагування вимкнено з міркувань продуктивності. Щоб збільшити ліміт:</string>
+    <string name="increase_text_limit">Довге натискання на правило -> Налаштування -> Ліміт текстового поля</string>
     <string name="system"><short>Система</short></string>
     <string name="theme">Тема</string>
     <string-array name="rule_dropdown_menu">
