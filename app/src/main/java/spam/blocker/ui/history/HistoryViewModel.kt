@@ -12,7 +12,6 @@ import spam.blocker.def.Def
 import spam.blocker.ui.history.HistoryOptions.showHistoryBlocked
 import spam.blocker.ui.history.HistoryOptions.showHistoryPassed
 import spam.blocker.util.Contacts
-import spam.blocker.util.logi
 import spam.blocker.util.regexMatches
 
 /*

@@ -37,7 +37,6 @@ import spam.blocker.service.checker.ICheckResult
 import spam.blocker.ui.history.HistoryViewModel
 import spam.blocker.ui.history.tagOther
 import spam.blocker.util.Contacts
-import spam.blocker.util.Lambda2
 import spam.blocker.util.Permission
 import spam.blocker.util.PhoneNumber
 import spam.blocker.util.SaveableLogger
@@ -80,6 +79,10 @@ fun autoReportSMS(
 ) {
     val scope = CoroutineScope(IO)
     val apis = listReportableSmsAPIs(ctx, blockReason = r.type)
+    if (apis.isEmpty()) {
+        return
+    }
+
     val logger = SaveableLogger()
     logger.info(ctx.getString(R.string.auto_report))
     logger.debug("${ctx.getString(R.string.executed_at)} ${formatTime(ctx, System.currentTimeMillis())}\n")

@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -55,7 +56,7 @@ const val BUTTON_H = 26
 @Composable
 fun Button(
     content: @Composable RowScope.() -> Unit,
-    modifier: Modifier = M.height(BUTTON_H.dp),
+    modifier: Modifier = M.heightIn(min = BUTTON_H.dp),
     onLongClick: Lambda? = null,
     enabled: Boolean = true,
     borderWidth: Dp = 1.dp,

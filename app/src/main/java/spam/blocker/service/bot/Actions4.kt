@@ -56,7 +56,6 @@ import spam.blocker.util.Contacts
 import spam.blocker.util.Lambda1
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionWrapper
-import spam.blocker.util.logi
 import spam.blocker.util.regexMatches
 
 @Serializable

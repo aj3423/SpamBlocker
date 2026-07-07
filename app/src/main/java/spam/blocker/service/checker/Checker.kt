@@ -58,7 +58,6 @@ import spam.blocker.util.Util.listUsedAppWithinXSecond
 import spam.blocker.util.formatAnnotated
 import spam.blocker.util.getSaveableOutput
 import spam.blocker.util.hasFlag
-import spam.blocker.util.logi
 import spam.blocker.util.race
 import spam.blocker.util.regexMatches
 import spam.blocker.util.regexMatchesNumber

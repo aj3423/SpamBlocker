@@ -2,12 +2,10 @@ package spam.blocker.ui.history
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
@@ -43,13 +41,12 @@ import spam.blocker.ui.slightDiff
 import spam.blocker.ui.widgets.BUTTON_CORNER_RADIUS
 import spam.blocker.ui.widgets.BUTTON_H_PADDING
 import spam.blocker.ui.widgets.Button
-import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.OutlineCard
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.PopupSize
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.ResIcon16
-import spam.blocker.ui.widgets.ResIcon18
+import spam.blocker.ui.widgets.ResIcon20
 import spam.blocker.ui.widgets.ResImage
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.SimCardIcon
@@ -60,7 +57,6 @@ import spam.blocker.util.TimeUtils.FreshnessColor
 import spam.blocker.util.TimeUtils.formatTime
 import spam.blocker.util.TimeUtils.timeColor
 import spam.blocker.util.Util
-import spam.blocker.util.logi
 import androidx.compose.foundation.Image as ComposeImage
 
 
@@ -161,7 +157,7 @@ fun HistoryCard(
                     val r = parseCheckResultFromDb(ctx, record.result, record.reason)
 
                     // Row 3: Reason Summary
-                    RowVCenterSpaced(4) {
+                    RowVCenterSpaced(4, M.padding(vertical = if(record.expanded) 4.dp else 0.dp)) {
                         // Show a label when not expanded, and a clickable button when expanded
                         if (record.expanded) {
                             val trigger = remember { mutableStateOf(false) }
@@ -187,26 +183,27 @@ fun HistoryCard(
                                 )
                             }
 
-                            Button(
-                                modifier = M.padding(top = 4.dp).weight(1f),
-                                contentPadding = PaddingValues(BUTTON_H_PADDING.dp, 2.dp),
-                                borderWidth = 0.5.dp,
-                                borderColor = C.textGrey,
-                                shape = RoundedCornerShape(BUTTON_CORNER_RADIUS.dp),
-                                onClick = {
-                                    trigger.value = true
-                                },
-                                content = {
-                                    RowVCenterSpaced(2) {
-                                        // Show a yellow "!" if anything went wrong during screening, e.g. ApiQuery timed out
-                                        if (record.anythingWrongScreening) {
-                                            ResIcon16(R.drawable.ic_exclamation, color = C.warning)
-                                        }
+                            Row(M.weight(1f)) {
+                                Button(
+                                    contentPadding = PaddingValues(BUTTON_H_PADDING.dp, 2.dp),
+                                    borderWidth = 0.5.dp,
+                                    borderColor = C.textGrey,
+                                    shape = RoundedCornerShape(BUTTON_CORNER_RADIUS.dp),
+                                    onClick = {
+                                        trigger.value = true
+                                    },
+                                    content = {
+                                        RowVCenterSpaced(2) {
+                                            // Show a yellow "!" if anything went wrong during screening, e.g. ApiQuery timed out
+                                            if (record.anythingWrongScreening) {
+                                                ResIcon16(R.drawable.ic_exclamation, color = C.warning)
+                                            }
 
-                                        r.ResultReason(true)
+                                            r.ResultReason(true)
+                                        }
                                     }
-                                }
-                            )
+                                )
+                            }
                         } else { // record not expanded
                             RowVCenterSpaced(2, M.weight(1f)) {
                                 // Show a yellow "!" if anything went wrong during screening, e.g. ApiQuery timed out
@@ -242,8 +239,6 @@ fun HistoryCard(
                                     )
                                 }
                                 Button(
-                                    modifier = M.fillMaxHeight(),
-                                    contentPadding = PaddingValues(BUTTON_H_PADDING.dp, 3.dp),
                                     borderWidth = 0.5.dp,
                                     borderColor = if (record.anythingWrongReporting) C.warning else C.textGrey,
                                     shape = RoundedCornerShape(BUTTON_CORNER_RADIUS.dp),
@@ -251,14 +246,14 @@ fun HistoryCard(
                                         trigger.value = true
                                     },
                                     content = {
-                                        ResIcon18(
+                                        ResIcon20(
                                             iconId = R.drawable.ic_upload_to_cloud,
                                             color = if (record.anythingWrongReporting) C.warning else C.textGrey,
                                         )
                                     }
                                 )
                             } else {
-                                ResIcon18(
+                                ResIcon20(
                                     iconId = R.drawable.ic_upload_to_cloud,
                                     color = if (record.anythingWrongReporting) C.warning else C.textGrey,
                                 )
@@ -279,6 +274,7 @@ fun HistoryCard(
                         .align(Alignment.Top)
                         .heightIn(ItemHeight.dp)
                 ) {
+
                     // SIM slot icon
                     if ((simCount >= 2 || forceShowSIM.value) && record.simSlot != null) {
                         SimCardIcon(
@@ -287,15 +283,14 @@ fun HistoryCard(
                     }
 
                     // time
-                    val color = if (timeColors.isNullOrEmpty()) {
-                        C.textGrey
-                    } else {
-                        timeColor(record.time, timeColors) ?: C.textGrey
-                    }
                     Text(
                         text = formatTime(ctx, record.time),
                         fontSize = 14.sp,
-                        color = color,
+                        color = if (timeColors.isNullOrEmpty()) {
+                            C.textGrey
+                        } else {
+                            timeColor(record.time, timeColors) ?: C.textGrey
+                        },
                         textAlign = TextAlign.Center,
                     )
                 }

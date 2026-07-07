@@ -7,7 +7,6 @@ import androidx.core.database.getIntOrNull
 import androidx.core.database.getStringOrNull
 import spam.blocker.def.Def
 import spam.blocker.util.Now
-import spam.blocker.util.logi
 
 data class HistoryRecord(
     val id: Long = 0,

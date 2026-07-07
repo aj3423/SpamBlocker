@@ -6,7 +6,6 @@ import android.content.Intent
 import android.provider.Telephony
 import spam.blocker.BuildConfig
 import spam.blocker.Events
-import spam.blocker.G
 import spam.blocker.db.HistoryRecord
 import spam.blocker.db.Notification.ChannelTable
 import spam.blocker.db.SmsTable

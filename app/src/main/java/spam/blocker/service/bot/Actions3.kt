@@ -51,7 +51,6 @@ import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.SummaryLabel
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.A
-import spam.blocker.util.AdbLogger
 import spam.blocker.util.CountryCode
 import spam.blocker.util.Formula
 import spam.blocker.util.ILogger
@@ -64,7 +63,6 @@ import spam.blocker.util.TimeUtils.formatTime
 import spam.blocker.util.Util
 import spam.blocker.util.Xml
 import spam.blocker.util.formatAnnotated
-import spam.blocker.util.logi
 import spam.blocker.util.regexExtract
 import spam.blocker.util.regexReplace
 import spam.blocker.util.spf

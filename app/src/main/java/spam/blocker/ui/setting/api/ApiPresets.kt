@@ -8,7 +8,6 @@ import spam.blocker.db.AutoReportTypes
 import spam.blocker.db.ImportDbReason
 import spam.blocker.db.QueryApi
 import spam.blocker.db.ReportApi
-import spam.blocker.def.Def
 import spam.blocker.service.bot.CategoryConfig
 import spam.blocker.service.bot.CopyTag
 import spam.blocker.service.bot.FilterSpamResult
@@ -21,7 +20,6 @@ import spam.blocker.service.bot.InterceptSms
 import spam.blocker.service.bot.ParseQueryResult
 import spam.blocker.service.bot.SendSms
 import spam.blocker.service.bot.SetTag
-import spam.blocker.service.bot.Wait
 import spam.blocker.ui.history.tagFraud
 import spam.blocker.ui.history.tagMarketing
 import spam.blocker.ui.history.tagOther
