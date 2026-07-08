@@ -86,4 +86,5 @@
     </string>
     <string name="report_sms">Отчет о SMS</string>
     <string name="regex_starts_with_plus">%s — специальный символ в регулярных выражениях (например, %s), экранируйте его как %s</string>
+    <string name="sms_content_is_null">Содержимое SMS пусто, включено ли логирование содержимого SMS?</string>
 </resources>

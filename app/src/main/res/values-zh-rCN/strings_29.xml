@@ -86,4 +86,5 @@
     </string>
     <string name="report_sms">报告短信</string>
     <string name="regex_starts_with_plus">%s 是正则表达式中的特殊字符（例如 %s），请像 %s 这样对其进行转义</string>
+    <string name="sms_content_is_null">SMS 内容为空，是否启用了 SMS 内容日志记录？</string>
 </resources>

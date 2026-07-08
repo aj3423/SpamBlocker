@@ -86,4 +86,5 @@
     </string>
     <string name="report_sms">SMSを報告する</string>
     <string name="regex_starts_with_plus">%sは正規表現の特殊文字です（例：%s）。%sのようにエスケープしてください</string>
+    <string name="sms_content_is_null">SMSコンテンツが空です。SMSコンテンツのログ記録は有効になっていますか？</string>
 </resources>

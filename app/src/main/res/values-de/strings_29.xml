@@ -86,4 +86,5 @@
     </string>
     <string name="report_sms">SMS melden</string>
     <string name="regex_starts_with_plus">%s ist ein Sonderzeichen in Regex (z. B. %s), maskieren Sie es wie %s</string>
+    <string name="sms_content_is_null">SMS-Inhalt ist leer, ist die SMS-Inhalts-Protokollierung aktiviert?</string>
 </resources>

@@ -86,4 +86,5 @@
     </string>
     <string name="report_sms">Laporkan SMS</string>
     <string name="regex_starts_with_plus">%s adalah karakter khusus dalam regex (contoh: %s), gunakan escape seperti %s</string>
+    <string name="sms_content_is_null">Konten SMS kosong, apakah pencatatan konten SMS diaktifkan?</string>
 </resources>

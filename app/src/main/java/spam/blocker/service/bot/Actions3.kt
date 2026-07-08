@@ -416,6 +416,10 @@ class InterceptSms(
 
         // The `rawNumber` is set by the workflow caller before it's executed.
         val rawNumber = aCtx.rawNumber!!
+        if (aCtx.smsContent == null) { // This happens when manually reporting an SMS when SMS content logging is disabled
+            aCtx.logger?.error(ctx.getString(R.string.sms_content_is_null))
+            return false
+        }
         val smsContent = aCtx.smsContent!!
         aCtx.logger?.debug("${label(ctx)}: $rawNumber")
 

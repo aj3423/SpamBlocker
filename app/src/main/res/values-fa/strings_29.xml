@@ -86,4 +86,5 @@
     </string>
     <string name="report_sms">گزارش پیامک</string>
     <string name="regex_starts_with_plus">%s یک کاراکتر خاص در regex است (مثلاً %s)، آن را به صورت %s اسکیپ کنید</string>
+    <string name="sms_content_is_null">محتوای پیامک خالی است، آیا ثبت محتوای پیامک فعال است؟</string>
 </resources>

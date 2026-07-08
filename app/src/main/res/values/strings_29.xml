@@ -87,4 +87,5 @@
     </string>
     <string name="report_sms">Report SMS</string>
     <string name="regex_starts_with_plus">%s is a special character in regex (e.g. %s), escape it like %s</string>
+    <string name="sms_content_is_null">SMS content is empty, is SMS content logging enabled?</string>
 </resources>

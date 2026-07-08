@@ -86,4 +86,5 @@
     </string>
     <string name="report_sms">تقرير الرسائل النصية</string>
     <string name="regex_starts_with_plus">%s هو رمز خاص في التعبيرات النمطية (على سبيل المثال %s)، استخدم رمز الهروب مثل %s</string>
+    <string name="sms_content_is_null">محتوى الرسالة القصيرة فارغ، هل تسجيل محتوى الرسائل القصيرة مفعل؟</string>
 </resources>

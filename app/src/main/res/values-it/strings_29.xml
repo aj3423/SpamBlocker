@@ -86,4 +86,5 @@
     </string>
     <string name="report_sms">Segnala SMS</string>
     <string name="regex_starts_with_plus">%s è un carattere speciale in regex (ad es. %s), effettua l\'escape come %s</string>
+    <string name="sms_content_is_null">Il contenuto dell'SMS è vuoto, il logging del contenuto dell'SMS è abilitato?</string>
 </resources>

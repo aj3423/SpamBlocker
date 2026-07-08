@@ -86,4 +86,5 @@
     </string>
     <string name="report_sms">SMS bildirim</string>
     <string name="regex_starts_with_plus">%s, düzenli ifadelerde (örneğin %s) özel bir karakterdir, %s şeklinde kaçış karakteri kullanın</string>
+    <string name="sms_content_is_null">SMS içeriği boş, SMS içeriği günlüğü etkin mi?</string>
 </resources>

@@ -86,4 +86,5 @@
     </string>
     <string name="report_sms">דווח על SMS</string>
     <string name="regex_starts_with_plus">%s הוא תו מיוחד ב-regex (למשל %s), בצע לו escape כך: %s</string>
+    <string name="sms_content_is_null">תוכן ה-SMS ריק, האם רישום תוכן ה-SMS מופעל?</string>
 </resources>
