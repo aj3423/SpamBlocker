@@ -37,6 +37,8 @@
     <string name="config_text">配置文件</string>
     <string name="imported_successfully">导入成功</string>
     <string name="import_fail">导入失败</string>
+    <string name="exported_successfully">导出成功</string>
+    <string name="export_fail">导出失败</string>
     <string name="prompt_go_to_permission_setting">
         <![CDATA[
         <translate>此功能需要以下权限：<br>

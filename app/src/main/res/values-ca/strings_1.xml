@@ -37,6 +37,8 @@
     <string name="config_text">Text de configuració</string>
     <string name="imported_successfully">Importat correctament</string>
     <string name="import_fail">Error en importar</string>
+    <string name="exported_successfully">Exportat amb èxit</string>
+    <string name="export_fail">Error en l\'exportació</string>
     <string name="prompt_go_to_permission_setting">
         <![CDATA[
         Aquesta funció requereix permís:<br>

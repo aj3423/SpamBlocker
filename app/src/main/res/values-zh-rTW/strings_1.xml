@@ -37,6 +37,8 @@
     <string name="config_text">設定文字</string>
     <string name="imported_successfully">匯入成功</string>
     <string name="import_fail">匯入失敗</string>
+    <string name="exported_successfully">匯出成功</string>
+    <string name="export_fail">匯出失敗</string>
     <string name="prompt_go_to_permission_setting">
         <![CDATA[
         此功能需要權限：<br>

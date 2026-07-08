@@ -37,6 +37,8 @@
     <string name="config_text">Текст конфигурации</string>
     <string name="imported_successfully">Импортировано успешно</string>
     <string name="import_fail">Не удалось импортировать</string>
+    <string name="exported_successfully">Экспортировано успешно</string>
+    <string name="export_fail">Ошибка экспорта</string>
     <string name="prompt_go_to_permission_setting">
         <![CDATA[
         Для этой функции требуется разрешение:<br>

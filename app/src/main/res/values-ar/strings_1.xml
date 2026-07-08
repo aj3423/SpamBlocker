@@ -37,6 +37,8 @@
     <string name="config_text">نص التهيئة</string>
     <string name="imported_successfully">تم الاستيراد بنجاح</string>
     <string name="import_fail">فشل الاستيراد</string>
+    <string name="exported_successfully">تم التصدير بنجاح</string>
+    <string name="export_fail">فشل التصدير</string>
     <string name="prompt_go_to_permission_setting">
         <![CDATA[
         هذه الميزة تتطلب إذنًا:<br>

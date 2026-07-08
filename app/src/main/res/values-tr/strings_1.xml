@@ -37,6 +37,8 @@
     <string name="config_text">Yapılandırma Metni</string>
     <string name="imported_successfully">Başarıyla içe aktarıldı</string>
     <string name="import_fail">Başarısız içe aktarma</string>
+    <string name="exported_successfully">Başarıyla dışa aktarıldı</string>
+    <string name="export_fail">Dışa aktarma başarısız oldu</string>
     <string name="prompt_go_to_permission_setting">
         <![CDATA[
         Bu özellik izin gerektiriyor:<br>

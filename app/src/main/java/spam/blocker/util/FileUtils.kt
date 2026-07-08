@@ -27,15 +27,16 @@ object FileUtils {
         }
     }
 
-    fun writeDataToUri(ctx: Context, uri: Uri, dataToWrite: ByteArray): Boolean {
+    // Returns the "error message" or "null"
+    fun writeDataToUri(ctx: Context, uri: Uri, dataToWrite: ByteArray): String? {
         return try {
             ctx.contentResolver.openOutputStream(uri, "wt")?.use { outputStream ->
                 outputStream.write(dataToWrite)
                 outputStream.flush()
             }
-            true
-        } catch (_: IOException) {
-            false
+            null
+        } catch (e: Exception) {
+            "$e"
         }
     }
 

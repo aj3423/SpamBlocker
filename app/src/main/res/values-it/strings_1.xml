@@ -37,6 +37,8 @@
     <string name="config_text">Prova configurazione</string>
     <string name="imported_successfully">Importato con successo</string>
     <string name="import_fail">Importazione fallita</string>
+    <string name="exported_successfully">Esportato con successo</string>
+    <string name="export_fail">Errore di esportazione</string>
     <string name="prompt_go_to_permission_setting">
         <![CDATA[
         Questa funzionalità richiede l\'autorizzazione:<br>

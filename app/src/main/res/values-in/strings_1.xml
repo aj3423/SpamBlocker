@@ -37,6 +37,8 @@
     <string name="config_text">Teks Konfigurasi</string>
     <string name="imported_successfully">Berhasil Diimpor</string>
     <string name="import_fail">Gagal Diimpor</string>
+    <string name="exported_successfully">Berhasil diekspor</string>
+    <string name="export_fail">Gagal mengekspor</string>
     <string name="prompt_go_to_permission_setting">
         <![CDATA[
         Fitur ini membutuhkan izin:<br>

@@ -37,6 +37,8 @@
     <string name="config_text">متن پیکربندی</string>
     <string name="imported_successfully">با موفقیت وارد شد</string>
     <string name="import_fail">وارد کردن ناموفق</string>
+    <string name="exported_successfully">با موفقیت صادر شد</string>
+    <string name="export_fail">خطا در صادر کردن</string>
     <string name="prompt_go_to_permission_setting">
         <![CDATA[
         <translate>این ویژگی به مجوز نیاز دارد:</translate><br>

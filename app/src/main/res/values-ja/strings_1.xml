@@ -37,6 +37,8 @@
     <string name="config_text">設定テキスト</string>
     <string name="imported_successfully">インポートが正常に完了しました。</string>
     <string name="import_fail">インポートに失敗しました。</string>
+    <string name="exported_successfully">エクスポートに成功しました</string>
+    <string name="export_fail">エクスポートに失敗しました</string>
     <string name="prompt_go_to_permission_setting">
         <![CDATA[
         この機能には権限が必要です:<br>

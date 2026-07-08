@@ -149,6 +149,37 @@ fun ExportButton() {
     val ctx = LocalContext.current
     val coroutine = rememberCoroutineScope()
 
+    var succeeded by remember { mutableStateOf(false) }
+    var errorStr by remember { mutableStateOf<String?>(null) }
+    val resultTrigger = rememberSaveable { mutableStateOf(false) }
+
+    if (resultTrigger.value) {
+        PopupDialog(
+            trigger = resultTrigger,
+            icon = {
+                ResIcon(
+                    iconId = if (succeeded) R.drawable.ic_check_green else R.drawable.ic_fail_red,
+                    color = if (succeeded) C.success else C.error,
+                )
+            },
+            content = {
+                Text(
+                    Str(
+                        if (succeeded)
+                            R.string.exported_successfully
+                        else
+                            R.string.export_fail
+                    ),
+                    color = C.textGrey,
+                    fontWeight = FontWeight.SemiBold,
+                )
+                if (!succeeded) {
+                    Text(errorStr?: "", color = C.error)
+                }
+            }
+        )
+    }
+
     // Show a dialog for exporting database numbers, it can take long
     val progressTrigger = remember { mutableStateOf(false) }
     PopupDialog(
@@ -193,11 +224,13 @@ fun ExportButton() {
                 rememberDirTag = Backup_Last_Dir_Tag,
             ),
             onResult = { uri ->
-                uri?.let {
+                errorStr = uri?.let {
                     if (includeSpamDB) progressTrigger.value = false
 
                     writeDataToUri(ctx, uri, compressed)
                 }
+                succeeded = errorStr == null
+                resultTrigger.value = true
             }
         )
     }

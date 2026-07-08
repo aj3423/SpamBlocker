@@ -37,6 +37,8 @@
     <string name="config_text">טקסט תצורה</string>
     <string name="imported_successfully">יובא בהצלחה</string>
     <string name="import_fail">הייבוא נכשל</string>
+    <string name="exported_successfully">יצא בהצלחה</string>
+    <string name="export_fail">שגיאה בייצוא</string>
     <string name="prompt_go_to_permission_setting">
         <![CDATA[
         תכונה זו דורשת הרשאה:<br>
