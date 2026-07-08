@@ -1,0 +1,8 @@
+New:
+- Report SMS, check the new preset "7726" for details.
+
+Improvements:
+- Auto-report log 
+  A small cloud icon next to the screening result, tap to see the full auto report log.
+- Option "Min Interval" for Repeated Call
+  Use case: set to "5 seconds" to ignore spam bots that immediately call back after being rejected.
