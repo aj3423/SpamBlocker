@@ -72,8 +72,24 @@ object FloatingWindow {
         ctx: Context,
         view: View,
     ) {
-        // Remove the existing one
-        hide(ctx, animated = false)
+        // Do NOT call `hide()` here, it can cause crash https://github.com/aj3423/SpamBlocker/issues/619
+        // Reuse the existing window container instead of removing and re-adding it.
+        val existing = floatingView()
+        if (existing != null) {
+            existing.removeAllViews()
+            existing.addView(
+                view,
+                FrameLayout.LayoutParams(
+                    FrameLayout.LayoutParams.WRAP_CONTENT,
+                    FrameLayout.LayoutParams.WRAP_CONTENT,
+                    Gravity.CENTER
+                )
+            )
+            existing.visibility = View.VISIBLE
+            animateShow(existing)
+            isHiding = false
+            return
+        }
 
         val overlayContainer = FrameLayout(ctx).apply {
             clipToOutline = true
