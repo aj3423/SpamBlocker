@@ -28,6 +28,7 @@
     <string name="yes">כן</string>
     <string name="no">לא</string>
     <string name="ok">אישור</string>
+    <string name="cancel">ביטול</string>
     <string name="miscellaneous">שונות</string>
     <string name="quick_settings">הגדרות מהירות</string>
     <string name="regex_settings">הגדרות ביטוי רגולרי</string>

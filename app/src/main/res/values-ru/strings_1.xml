@@ -28,6 +28,7 @@
     <string name="yes">Да</string>
     <string name="no">Нет</string>
     <string name="ok">OK</string>
+    <string name="cancel">Отмена</string>
     <string name="miscellaneous">Разное</string>
     <string name="quick_settings">Быстрые настройки</string>
     <string name="regex_settings">Настройки рег. выражений</string>

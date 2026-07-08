@@ -28,6 +28,7 @@
     <string name="yes">はい</string>
     <string name="no">いいえ</string>
     <string name="ok">OK</string>
+    <string name="cancel">キャンセル</string>
     <string name="miscellaneous">その他</string>
     <string name="quick_settings">クイック設定</string>
     <string name="regex_settings">正規表現設定</string>

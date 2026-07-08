@@ -28,6 +28,7 @@
     <string name="yes">Evet</string>
     <string name="no">Hayır</string>
     <string name="ok">Tamam</string>
+    <string name="cancel">İptal</string>
     <string name="miscellaneous">Çeşitli</string>
     <string name="quick_settings">Hızlı Ayarlar</string>
     <string name="regex_settings">Düzenli İfade Ayarları</string>

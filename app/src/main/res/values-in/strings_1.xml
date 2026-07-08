@@ -28,6 +28,7 @@
     <string name="yes">Ya</string>
     <string name="no">Tidak</string>
     <string name="ok">OK</string>
+    <string name="cancel">Batal</string>
     <string name="miscellaneous">Lain-lain</string>
     <string name="quick_settings">Pengaturan Cepat</string>
     <string name="regex_settings">Pengaturan Regex</string>

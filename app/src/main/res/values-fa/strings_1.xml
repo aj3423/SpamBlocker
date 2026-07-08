@@ -28,6 +28,7 @@
     <string name="yes">بله</string>
     <string name="no">خیر</string>
     <string name="ok">باشه</string>
+    <string name="cancel">لغو</string>
     <string name="miscellaneous">متفرقه</string>
     <string name="quick_settings">تنظیمات سریع</string>
     <string name="regex_settings">تنظیمات عبارت منظم</string>

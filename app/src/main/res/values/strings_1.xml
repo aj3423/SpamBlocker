@@ -28,6 +28,7 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
     <string name="miscellaneous">Miscellaneous</string>
     <string name="quick_settings">Quick Settings</string>
     <string name="regex_settings">Regex Settings</string>

@@ -12,10 +12,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import spam.blocker.G
+import spam.blocker.R
 import spam.blocker.ui.M
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.HtmlText
 import spam.blocker.ui.widgets.PopupDialog
+import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.PermissionLauncher.launcherProtected
 import spam.blocker.util.PermissionLauncher.launcherRegular
@@ -61,13 +63,13 @@ class PermissionChain() {
                     HtmlText(curr.prompt!!, color = G.palette.textGrey)
                 },
                 buttons = {
-                    GreyButton("cancel") {
+                    GreyButton(Str(R.string.cancel)) {
                         popupTrigger.value = false
                         onResult(false)
                     }
                     Spacer(modifier = M.width(10.dp))
 
-                    StrokeButton("ok", C.teal200) {
+                    StrokeButton(Str(R.string.ok), C.teal200) {
                         popupTrigger.value = false
                         handle(ctx)
                     }

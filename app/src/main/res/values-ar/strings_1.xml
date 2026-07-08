@@ -28,6 +28,7 @@
     <string name="yes">نعم</string>
     <string name="no">لا</string>
     <string name="ok">موافق</string>
+    <string name="cancel">إلغاء</string>
     <string name="miscellaneous">متفرقات</string>
     <string name="quick_settings">إعدادات سريعة</string>
     <string name="regex_settings">إعدادات التعبير النمطي</string>
