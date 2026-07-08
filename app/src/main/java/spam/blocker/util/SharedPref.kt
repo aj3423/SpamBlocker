@@ -253,10 +253,10 @@ class spf { // for namespace only
         var isExpiryEnabled by bool("history_expiry_enabled")
         var ttl by int("history_ttl_days", 14) // 14 days
 
-        var isLogSmsContentEnabled by bool("log_sms_content")
-        var initialSmsRowCount by int("initial_sms_row_count", 1)
+        var isLogSmsContentEnabled by bool("log_sms_content", true)
+        var initialSmsRowCount by int("initial_sms_row_count", 2)
 
-        var showTimeColor by bool("show_time_color", false)
+        var showTimeColor by bool("show_time_color", true)
         var timeColors by str(
             "time_colors",
             Json.encodeToString(listOf(
