@@ -62,7 +62,7 @@
         The maximum characters allowed in the input box. Exceeding this limit disables editing,
           as excessively long text will freeze the UI. <br>
           <br>
-        Default: <b>1000</b> characters
+        Default: <b>10000</b> characters
         ]]>
     </string>
     <string name="clear_history">Clear History</string>

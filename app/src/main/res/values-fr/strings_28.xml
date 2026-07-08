@@ -62,7 +62,7 @@
         Le nombre maximal de caractères autorisés dans la zone de saisie. Dépasser cette limite désactive l\'édition,
           car un texte excessivement long figera l\'interface utilisateur. <br>
           <br>
-        Par défaut : <b>1000</b> caractères
+        Par défaut : <b>10000</b> caractères
         ]]>
     </string>
     <string name="clear_history">Effacer l\'historique</string>

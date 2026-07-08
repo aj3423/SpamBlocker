@@ -62,7 +62,7 @@
         Die maximal zulässige Zeichenanzahl im Eingabefeld. Wird dieses Limit überschritten, wird die Bearbeitung deaktiviert,
           da übermäßig langer Text die Benutzeroberfläche einfrieren lässt. <br>
           <br>
-        Standard: <b>1000</b> Zeichen
+        Standard: <b>10000</b> Zeichen
         ]]>
     </string>
     <string name="clear_history">Verlauf löschen</string>

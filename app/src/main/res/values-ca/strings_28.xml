@@ -62,7 +62,7 @@
         El nombre màxim de caràcters permesos al quadre d\'entrada. Superar aquest límit desactiva l\'edició,
           ja que un text excessivament llarg congelarà la interfície d\'usuari. <br>
           <br>
-        Per defecte: <b>1000</b> caràcters
+        Per defecte: <b>10000</b> caràcters
         ]]>
     </string>
     <string name="clear_history">Esborra l\'historial</string>

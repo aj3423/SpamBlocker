@@ -62,7 +62,7 @@
         O máximo de caracteres permitidos na caixa de entrada. Superar este límite desactiva a edición,
           xa que un texto excesivamente longo conxelará a interface de usuario. <br>
           <br>
-        Predeterminado: <b>1000</b> caracteres
+        Predeterminado: <b>10000</b> caracteres
         ]]>
     </string>
     <string name="clear_history">Borrar o historial</string>

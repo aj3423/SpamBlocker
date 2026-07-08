@@ -62,7 +62,7 @@
         Giriş kutusunda izin verilen en fazla karakter sayısı. Bu sınırın aşılması düzenlemeyi devre dışı bırakır,
           çünkü aşırı uzun metin kullanıcı arayüzünü dondurur. <br>
           <br>
-        Varsayılan: <b>1000</b> karakter
+        Varsayılan: <b>10000</b> karakter
         ]]>
     </string>
     <string name="clear_history">Geçmişi temizle</string>

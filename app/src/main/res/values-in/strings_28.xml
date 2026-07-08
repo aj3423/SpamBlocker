@@ -62,7 +62,7 @@
         Jumlah maksimum karakter yang diizinkan di kotak input. Melebihi batas ini akan menonaktifkan pengeditan,
           karena teks yang terlalu panjang akan membekukan UI. <br>
           <br>
-        Default: <b>1000</b> karakter
+        Default: <b>10000</b> karakter
         ]]>
     </string>
     <string name="clear_history">Hapus Riwayat</string>
