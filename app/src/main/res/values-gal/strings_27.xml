@@ -40,7 +40,7 @@
     </string>
     <string name="help_regex_preset_contact_prefix">
         <![CDATA[
-        Coincide con contactos por prefixo, permitindo variación nos <minor><b>2</b></minor> últimos díxitos. <br>
+        Coincide con contactos por prefixo, permitindo variación nos <minor><b>2</b></minor> últimos díxitos, ideal para organizacións que utilizan números secuenciais, por exemplo, clínicas ou bufetes de avogados. <br>
         <br>
         <b>Por exemplo</b>: <br>
         &ensp; Se tes <sample>111111</sample><highlight>22</highlight> gardado como contacto, tamén se permitirá unha chamada desde <sample>111111</sample><highlight>33</highlight>.

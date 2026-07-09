@@ -40,7 +40,7 @@
     </string>
     <string name="help_regex_preset_contact_prefix">
         <![CDATA[
-        Cocokkan kontak berdasarkan prefiks, dengan mengizinkan variasi pada <minor><b>2</b></minor> digit terakhir. <br>
+        Cocokkan kontak berdasarkan prefiks, dengan mengizinkan variasi pada <minor><b>2</b></minor> digit terakhir, ideal untuk organisasi yang menggunakan nomor berurutan, misalnya klinik atau firma hukum. <br>
         <br>
         <b>Contoh</b>: <br>
         &ensp; Jika Anda menyimpan <sample>111111</sample><highlight>22</highlight> sebagai kontak, panggilan dari <sample>111111</sample><highlight>33</highlight> juga akan diizinkan.

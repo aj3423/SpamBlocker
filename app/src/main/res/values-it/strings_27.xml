@@ -40,7 +40,7 @@
     </string>
     <string name="help_regex_preset_contact_prefix">
         <![CDATA[
-        Abbina i contatti per prefisso, consentendo una variazione nelle ultime <minor><b>2</b></minor> cifre. <br>
+        Abbina i contatti per prefisso, consentendo una variazione nelle ultime <minor><b>2</b></minor> cifre, ideale per organizzazioni che utilizzano numeri sequenziali, ad esempio cliniche o studi legali. <br>
         <br>
         <b>Per esempio</b>: <br>
         &ensp; Se hai salvato <sample>111111</sample><highlight>22</highlight> come contatto, sarà consentita anche una chiamata da <sample>111111</sample><highlight>33</highlight>.

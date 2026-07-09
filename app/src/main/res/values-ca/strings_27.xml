@@ -40,7 +40,7 @@
     </string>
     <string name="help_regex_preset_contact_prefix">
         <![CDATA[
-        Fa coincidir els contactes pel prefix, permetent variació en els <minor><b>2</b></minor> últims dígits. <br>
+        Fa coincidir els contactes pel prefix, permetent variació en els <minor><b>2</b></minor> últims dígits, ideal per a organitzacions que utilitzen números seqüencials, per exemple, clíniques o bufets d\'advocats. <br>
         <br>
         <b>Per exemple</b>: <br>
         &ensp; Si tens <sample>111111</sample><highlight>22</highlight> desat com a contacte, també es permetrà una trucada de <sample>111111</sample><highlight>33</highlight>.

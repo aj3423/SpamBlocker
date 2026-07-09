@@ -40,7 +40,7 @@
     </string>
     <string name="help_regex_preset_contact_prefix">
         <![CDATA[
-        مطابقة جهات الاتصال حسب البادئة، مع السماح باختلاف آخر <minor><b>رقمين</b></minor>. <br>
+        مطابقة جهات الاتصال حسب البادئة، مع السماح باختلاف آخر <minor><b>رقمين</b></minor>، وهو مثالي للمؤسسات التي تستخدم أرقامًا متسلسلة، مثل العيادات أو مكاتب المحاماة. <br>
         <br>
         <b>على سبيل المثال</b>: <br>
         &ensp; إذا كان لديك <sample>111111</sample><highlight>22</highlight> محفوظًا كجهة اتصال، فسيُسمح أيضًا بمكالمة من <sample>111111</sample><highlight>33</highlight>.

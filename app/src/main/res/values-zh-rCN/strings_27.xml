@@ -40,7 +40,7 @@
     </string>
     <string name="help_regex_preset_contact_prefix">
         <![CDATA[
-        按前缀匹配联系人，并允许最后 <minor><b>2</b></minor> 位数字不同。 <br>
+        按前缀匹配联系人，并允许最后 <minor><b>2</b></minor> 位数字不同，非常适合使用连续编号的组织，例如诊所或律师事务所。 <br>
         <br>
         <b>例如</b>: <br>
         &ensp; 如果你将 <sample>111111</sample><highlight>22</highlight> 保存为联系人，则来自 <sample>111111</sample><highlight>33</highlight> 的来电也会被允许。

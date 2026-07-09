@@ -40,7 +40,7 @@
     </string>
     <string name="help_regex_preset_contact_prefix">
         <![CDATA[
-        התאם אנשי קשר לפי קידומת, עם אפשרות לשינוי ב-<minor><b>2</b></minor> הספרות האחרונות. <br>
+        התאם אנשי קשר לפי קידומת, עם אפשרות לשינוי ב-<minor><b>2</b></minor> הספרות האחרונות, אידיאלי עבור ארגונים המשתמשים במספרים רציפים, למשל, מרפאות או משרדי עורכי דין. <br>
         <br>
         <b>לדוגמה</b>: <br>
         &ensp; אם שמרת את <sample>111111</sample><highlight>22</highlight> כאיש קשר, גם שיחה מ-<sample>111111</sample><highlight>33</highlight> תאושר.

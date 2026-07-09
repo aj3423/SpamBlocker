@@ -40,7 +40,8 @@
     </string>
     <string name="help_regex_preset_contact_prefix">
         <![CDATA[
-        Match contacts by prefix, allowing for variation in the last <minor><b>2</b></minor> digits. <br>
+        Match contacts by prefix, allowing for variation in the last <minor><b>2</b></minor> digits, ideal for organizations using
+          sequential numbers, e.g., clinics or law firms. <br>
         <br>
         <b>For example</b>: <br>
         &ensp; If you have <sample>111111</sample><highlight>22</highlight> saved as a contact, a call from <sample>111111</sample><highlight>33</highlight> will also be allowed.

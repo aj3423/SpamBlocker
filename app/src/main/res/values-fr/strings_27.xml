@@ -40,7 +40,7 @@
     </string>
     <string name="help_regex_preset_contact_prefix">
         <![CDATA[
-        Correspond aux contacts par préfixe, en autorisant une variation sur les <minor><b>2</b></minor> derniers chiffres. <br>
+        Correspond aux contacts par préfixe, en autorisant une variation sur les <minor><b>2</b></minor> derniers chiffres, idéal pour les organisations utilisant des numéros séquentiels, par exemple, des cliniques ou des cabinets d\'avocats. <br>
         <br>
         <b>Par exemple</b>: <br>
         &ensp; Si le numéro <sample>111111</sample><highlight>22</highlight> est enregistré comme contact, un appel depuis <sample>111111</sample><highlight>33</highlight> sera aussi autorisé.

@@ -40,7 +40,7 @@
     </string>
     <string name="help_regex_preset_contact_prefix">
         <![CDATA[
-        Kişileri öneke göre eşleştirir ve son <minor><b>2</b></minor> rakamda farklılığa izin verir. <br>
+        Kişileri öneke göre eşleştirir ve son <minor><b>2</b></minor> rakamda farklılığa izin verir, sıralı numaralar kullanan kuruluşlar (örneğin klinikler veya hukuk büroları) için idealdir. <br>
         <br>
         <b>Örneğin</b>: <br>
         &ensp; <sample>111111</sample><highlight>22</highlight> numarasını kişi olarak kaydettiyseniz, <sample>111111</sample><highlight>33</highlight> numarasından gelen aramaya da izin verilir.
