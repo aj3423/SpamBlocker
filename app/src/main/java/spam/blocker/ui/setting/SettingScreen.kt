@@ -215,6 +215,7 @@ fun SettingScreen() {
                             G.ContentRuleVM,
                             G.QuickCopyRuleVM,
                         ).forEach { vm ->
+                            vm.reloadOptions(ctx)
                             LaunchedEffect(true) { vm.reloadDbAndOptions(ctx) }
 
                             RegexHeader(vm)
