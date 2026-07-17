@@ -8,6 +8,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.unit.dp
 import spam.blocker.G
@@ -22,7 +23,9 @@ import spam.blocker.ui.widgets.HtmlText
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.Str
+import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.A
+import spam.blocker.util.spf
 
 fun detectConflictCheckers(ctx: Context) : List<IChecker> {
     val callCheckers = defaultCallCheckers(ctx)
@@ -43,12 +46,19 @@ fun PriorityConflictDialog(
     trigger: MutableState<Boolean>,
     conflicts: List<IChecker>
 ) {
+    val C = G.palette
+    val ctx = LocalContext.current
+
     PopupDialog(
         trigger = trigger,
         icon = { ResIcon(R.drawable.ic_warning, color = Color.Unspecified) },
+        buttons = {
+            StrokeButton(Str(R.string.ignore), C.warning) {
+                spf.Global(ctx).ignorePriorityConflict = true
+                trigger.value = false
+            }
+        }
     ) {
-        val C = G.palette
-
         Column {
             HtmlText(Str(R.string.warning_priority_conflict), modifier = M.padding(bottom = 8.dp))
             conflicts.sortedBy { it.priority() }.forEach {

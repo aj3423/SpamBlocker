@@ -106,7 +106,9 @@ fun SettingScreen() {
     fun checkConflicts() {
         priorityConflicts.apply {
             clear()
-            addAll(detectConflictCheckers(ctx))
+            if (!spf.Global(ctx).ignorePriorityConflict) {
+                addAll(detectConflictCheckers(ctx))
+            }
         }
     }
     // Detect priority conflicts when recomposed (e.g. on tab switching)

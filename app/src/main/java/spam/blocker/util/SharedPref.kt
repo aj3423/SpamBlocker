@@ -188,6 +188,7 @@ class spf { // for namespace only
 
         var hasPromptedForRunningInWorkProfile by bool("warn_running_in_work_profile_once")
         var isDoubleSMSWarningDismissed by bool("warn_double_sms")
+        var ignorePriorityConflict by bool("ignore_priority_conflict")
     }
 
     class EmergencySituation(ctx: Context) : SharedPref(ctx) {
