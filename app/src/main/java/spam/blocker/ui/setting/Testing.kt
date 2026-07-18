@@ -43,6 +43,8 @@ import spam.blocker.util.A
 import spam.blocker.util.Clipboard
 import spam.blocker.util.JetpackTextLogger
 import spam.blocker.util.MultiLogger
+import spam.blocker.util.Permission
+import spam.blocker.util.PermissionWrapper
 import spam.blocker.util.SaveableLogger
 import spam.blocker.util.Util
 import spam.blocker.util.spf
@@ -183,7 +185,18 @@ fun TestDialog(
                         labelId = R.string.caller_id
                     ) {
                         SwitchBox(vm.showCallerID.value) { isTurningOn ->
-                            vm.showCallerID.value = isTurningOn
+                            if (isTurningOn) {
+                                G.permissionChain.ask(
+                                    ctx,
+                                    listOf(PermissionWrapper(Permission.showOverlay))
+                                ) { granted ->
+                                    if (granted) {
+                                        vm.showCallerID.value = true
+                                    }
+                                }
+                            } else {
+                                vm.showCallerID.value = false
+                            }
                         }
                     }
                 }
