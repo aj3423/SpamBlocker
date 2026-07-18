@@ -188,7 +188,12 @@ fun TestDialog(
                             if (isTurningOn) {
                                 G.permissionChain.ask(
                                     ctx,
-                                    listOf(PermissionWrapper(Permission.showOverlay))
+                                    listOf(
+                                        PermissionWrapper(Permission.showOverlay),
+                                        // Permission.phoneState is needed to close the floating dialog when the call gets answered or rejected in real case.
+                                        // It's also needed here, otherwise the dialog would work fine when testing but fail on real calls.
+                                        PermissionWrapper(Permission.phoneState),
+                                    )
                                 ) { granted ->
                                     if (granted) {
                                         vm.showCallerID.value = true

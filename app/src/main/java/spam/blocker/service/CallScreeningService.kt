@@ -268,17 +268,6 @@ class CallScreeningService : CallScreeningService() {
             )
         }
 
-        private fun showCallerId(ctx: Context, r: ICheckResult, rawNumber: String) {
-            if (spf.CallerID(ctx).isEnabled) {
-                showCallerIdWindow(
-                    ctx = ctx,
-                    reason = r.resultReasonStr(ctx),
-                    geolocation = numberGeoLocation(ctx, rawNumber),
-                    carrier = numberCarrier(ctx, rawNumber)
-                )
-            }
-        }
-
         fun processCall(
             ctx: Context,
             rawNumber: String,
@@ -307,9 +296,14 @@ class CallScreeningService : CallScreeningService() {
                     autoReportSpamCall(ctx, r, recordId, rawNumber, isTest)
                 } else { // allowed
                     // 4. Show CallerID window
-                    if (showCallerId && Permission.phoneState.isGranted) {
-                        withContext(Main) {
-                            showCallerId(ctx, r, rawNumber)
+                    withContext(Main) {
+                        if (showCallerId) {
+                            showCallerIdWindow(
+                                ctx = ctx,
+                                reason = r.resultReasonStr(ctx),
+                                geolocation = numberGeoLocation(ctx, rawNumber),
+                                carrier = numberCarrier(ctx, rawNumber)
+                            )
                         }
                     }
                 }

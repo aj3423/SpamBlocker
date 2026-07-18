@@ -71,6 +71,10 @@ fun showCallerIdWindow(
 ) {
     val spf = spf.CallerID(ctx)
 
+    // Permission.phoneState is needed to close the floating dialog when the call gets answered or rejected.
+    if(!Permission.phoneState.isGranted || !Permission.showOverlay.isGranted)
+        return
+
     // Resolve tags: {reason} {carrier} {geolocation}
     val content = spf.template
         .replace("{reason}", reason?.trim().takeIf { !it.isNullOrBlank() } ?: "—")
@@ -200,6 +204,7 @@ fun CallerID() {
                             ctx,
                             listOf(
                                 PermissionWrapper(Permission.showOverlay),
+                                // Permission.phoneState is needed to close the floating dialog when the call gets answered or rejected.
                                 PermissionWrapper(Permission.phoneState),
                             )
                         ) { granted ->
