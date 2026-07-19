@@ -8,6 +8,7 @@
     <string name="system"><short>מערכת</short></string>
     <string name="theme">ערכת נושא</string>
     <string-array name="rule_dropdown_menu">
+        <item>ייצוא</item>
         <item>חפש כלל</item>
         <item>שכפל כלל</item>
         <item>מחק כלל</item>

@@ -8,6 +8,7 @@
     <string name="system"><short>سیستم</short></string>
     <string name="theme">تم</string>
     <string-array name="rule_dropdown_menu">
+        <item>خروجی</item>
         <item>جستجوی قانون</item>
         <item>کپی قانون</item>
         <item>حذف قانون</item>

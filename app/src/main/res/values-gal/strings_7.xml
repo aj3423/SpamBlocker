@@ -8,6 +8,7 @@
     <string name="system"><short>Sistema</short></string>
     <string name="theme">Tema</string>
     <string-array name="rule_dropdown_menu">
+        <item>Exportar</item>
         <item>Buscar regra</item>
         <item>Clonar regra</item>
         <item>Eliminar regra</item>

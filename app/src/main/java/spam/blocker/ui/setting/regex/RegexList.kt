@@ -38,6 +38,7 @@ import spam.blocker.db.ruleTableForType
 import spam.blocker.ui.M
 import spam.blocker.ui.maxScreenHeight
 import spam.blocker.ui.screenHeightDp
+import spam.blocker.ui.widgets.ConfigExportDialog
 import spam.blocker.ui.widgets.DividerItem
 import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.GreyIcon20
@@ -54,6 +55,7 @@ import spam.blocker.ui.widgets.SnackBar
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwipeInfo
+import spam.blocker.util.PermissivePrettyNoDefaultsJson
 import spam.blocker.util.spf
 
 
@@ -274,7 +276,18 @@ fun RegexList(
         HtmlText(Str(R.string.suggest_to_swipe))
     }
 
+    val exportTrigger = remember { mutableStateOf(false) }
+    if (exportTrigger.value) {
+        ConfigExportDialog(
+            trigger = exportTrigger,
+            initialText = PermissivePrettyNoDefaultsJson.encodeToString(
+                clickedRule.value.copy(id = 0) // ignore `id`
+            )
+        )
+    }
+
     val icons = listOf(
+        R.drawable.ic_export,
         R.drawable.ic_find,
         R.drawable.ic_copy,
         R.drawable.ic_recycle_bin,
@@ -285,17 +298,20 @@ fun RegexList(
         ctx.resources.getStringArray(R.array.rule_dropdown_menu).mapIndexed { menuIndex, label ->
             LabelItem(
                 label = when (menuIndex) {
-                    4 -> label.format(vm.table.count(ctx)) // Delete All(%d) Rules
+                    5 -> label.format(vm.table.count(ctx)) // Delete All(%d) Rules
                     else -> label
                 },
                 leadingIcon = { GreyIcon20(icons[menuIndex]) }
             ) {
                 when (menuIndex) {
-                    0 -> { // search rule
+                    0 -> { // Export
+                        exportTrigger.value = true
+                    }
+                    1 -> { // search rule
                         vm.searchEnabled.value = true
                     }
 
-                    1 -> { // clone rule
+                    2 -> { // clone rule
                         // 1. add to db
                         vm.table.addNewRule(ctx, clickedRule.value)
 
@@ -303,15 +319,15 @@ fun RegexList(
                         vm.reloadDb(ctx)
                     }
 
-                    2 -> { // delete a rule
+                    3 -> { // delete a rule
                         // Show prompt for swipe right
                         suggestSwipeToDelTrigger.value = true
                     }
-                    3 -> { // delete duplicated rules
+                    4 -> { // delete duplicated rules
                         confirmDeleteDuplicated.value = true
                     }
 
-                    4 -> { // delete all rules
+                    5 -> { // delete all rules
                         confirmDeleteAll.value = true
                     }
                 }

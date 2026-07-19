@@ -8,6 +8,7 @@
     <string name="system"><short>Sis</short></string>
     <string name="theme">Tema</string>
     <string-array name="rule_dropdown_menu">
+        <item>Exportar</item>
         <item>Buscar regla</item>
         <item>Clonar regla</item>
         <item>Eliminar regla</item>

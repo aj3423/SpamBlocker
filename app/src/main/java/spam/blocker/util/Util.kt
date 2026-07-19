@@ -102,6 +102,12 @@ val PermissivePrettyJson =  Json {
     encodeDefaults = true
     ignoreUnknownKeys = true
 }
+val PermissivePrettyNoDefaultsJson =  Json {
+    prettyPrint = true
+
+    encodeDefaults = false
+    ignoreUnknownKeys = true
+}
 
 // Apply all regex flags to the rawNumber, return the result string
 fun String.applyRegexFlags(regexFlags: Int): String {

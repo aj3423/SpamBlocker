@@ -8,6 +8,7 @@
     <string name="system"><short>Sist</short></string>
     <string name="theme">Tema</string>
     <string-array name="rule_dropdown_menu">
+        <item>Dışa Aktar</item>
         <item>Kural Ara</item>
         <item>Kuralı Kopyala</item>
         <item>Kuralı Sil</item>

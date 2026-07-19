@@ -85,7 +85,7 @@ class RegexState(
             .setFlag(Def.FLAG_FOR_BLOCKED, applyToBlocked.value)
             .setFlag(Def.FLAG_AUTO_COPY, autoCopy.value)
 
-        val schedule = TimeSchedule().apply {
+        var scheduleStr = TimeSchedule().apply {
             enabled = schEnabled.value
             startHour = schSHour.intValue
             startMin = schSMin.intValue
@@ -93,6 +93,10 @@ class RegexState(
             endMin = schEMin.intValue
             weekdays = schWeekdays
         }.serializeToStr()
+        // instead of saving it as ",00:00-00:00,false", force it to "" when unmodified
+        if (scheduleStr == TimeSchedule().serializeToStr()) {
+            scheduleStr = ""
+        }
 
         return RegexRule(
             id = id,
@@ -107,7 +111,7 @@ class RegexState(
             isBlacklist = whiteOrBlack.intValue == 1,
             flags = flags,
             channel = channelId.value,
-            schedule = schedule,
+            schedule = scheduleStr,
             blockType = blockType.intValue,
             blockTypeConfig = blockTypeConfig.value,
             simSlot = simSlot.value,

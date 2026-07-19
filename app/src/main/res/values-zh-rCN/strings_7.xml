@@ -8,6 +8,7 @@
     <string name="system"><short>系统</short></string>
     <string name="theme">主题</string>
     <string-array name="rule_dropdown_menu">
+        <item>导出</item>
         <item>搜索规则</item>
         <item>复制规则</item>
         <item>删除规则</item>

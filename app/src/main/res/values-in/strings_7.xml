@@ -8,6 +8,7 @@
     <string name="system"><short>Sistem</short></string>
     <string name="theme">Tema</string>
     <string-array name="rule_dropdown_menu">
+        <item>Ekspor</item>
         <item>Aturan Pencarian</item>
         <item>Aturan Penggandaan</item>
         <item>Aturan Penghapusan</item>

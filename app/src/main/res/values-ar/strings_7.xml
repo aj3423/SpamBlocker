@@ -8,6 +8,7 @@
     <string name="system"><short>نظام</short></string>
     <string name="theme">المظهر</string>
     <string-array name="rule_dropdown_menu">
+        <item>تصدير</item>
         <item>بحث عن قاعدة</item>
         <item>استنساخ قاعدة</item>
         <item>حذف قاعدة</item>

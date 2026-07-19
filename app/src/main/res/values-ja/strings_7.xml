@@ -8,6 +8,7 @@
     <string name="system"><short>システム</short></string>
     <string name="theme">テーマ</string>
     <string-array name="rule_dropdown_menu">
+        <item>エクスポート</item>
         <item>ルール検索</item>
         <item>ルール複製</item>
         <item>ルール削除</item>

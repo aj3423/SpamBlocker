@@ -8,6 +8,7 @@
     <string name="system"><short>Система</short></string>
     <string name="theme">Тема</string>
     <string-array name="rule_dropdown_menu">
+        <item>Экспорт</item>
         <item>Найти правило</item>
         <item>Клонировать правило</item>
         <item>Удалить правило</item>

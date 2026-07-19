@@ -8,6 +8,7 @@
     <string name="system"><short>Sist</short></string>
     <string name="theme">Tema</string>
     <string-array name="rule_dropdown_menu">
+        <item>Esporta</item>
         <item>Cerca Regola</item>
         <item>Clona Regola</item>
         <item>Elimina Regola</item>
