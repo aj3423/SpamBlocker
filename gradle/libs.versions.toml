@@ -1,8 +1,8 @@
 [versions]
-agp = "9.2.1"
+agp = "9.3.0"
 espressoCore = "3.7.0"
 junitVersion = "1.3.0"
-kotlin = "2.4.0"
+kotlin = "2.4.10"
 activityCompose = "1.13.0"
 
 composeBom = "2026.06.01" # dangerous, breaks things all the time
@@ -10,15 +10,15 @@ composeBom = "2026.06.01" # dangerous, breaks things all the time
 # Do NOT upgrade to 3.0.0 until this is fixed: https://github.com/Calvin-LL/Reorderable/issues/111
 reorderable = "2.3.3"
 
-libphonenumber = "9.0.34"
-geocoder = "3.34" # https://repo1.maven.org/maven2/com/googlecode/libphonenumber/geocoder/maven-metadata.xml
-carrier  = "2.34" # https://repo1.maven.org/maven2/com/googlecode/libphonenumber/carrier/maven-metadata.xml
+libphonenumber = "9.0.35"
+geocoder = "3.35" # https://repo1.maven.org/maven2/com/googlecode/libphonenumber/geocoder/maven-metadata.xml
+carrier  = "2.35" # https://repo1.maven.org/maven2/com/googlecode/libphonenumber/carrier/maven-metadata.xml
 
 serialization = "1.11.0"
 mockk = "1.14.11"
 lazycolumnscrollbar = "2.2.0"
 workRuntimeKtx = "2.11.2"
-junitJupiter = "6.1.1"
+junitJupiter = "6.1.2"
 browser = "1.10.0"
 runtime = "1.11.4"
 

@@ -325,7 +325,7 @@ fun RegexList(
         ruleSettingsTrigger.value = true
     }
 
-    // Nested scrollable Column/LazyColumn is forbidden in jetpack compose, to workaround this:
+    // Nested scrollable Column/LazyColumn is forbidden in jetpack compose, to work around this:
     // when < 10 rules:
     //   show as normal Column (dynamic height)
     // else
