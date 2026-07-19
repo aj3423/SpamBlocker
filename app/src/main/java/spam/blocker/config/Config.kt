@@ -13,7 +13,9 @@ import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.Bot
 import spam.blocker.db.BotTable
+import spam.blocker.db.CallTable
 import spam.blocker.db.ContentRegexTable
+import spam.blocker.db.HistoryRecord
 import spam.blocker.db.Notification.Channel
 import spam.blocker.db.Notification.ChannelTable
 import spam.blocker.db.NumberRegexTable
@@ -24,6 +26,7 @@ import spam.blocker.db.QuickCopyRegexTable
 import spam.blocker.db.RegexRule
 import spam.blocker.db.RegexTable
 import spam.blocker.db.ReportApi
+import spam.blocker.db.SmsTable
 import spam.blocker.db.SpamNumber
 import spam.blocker.db.SpamTable
 import spam.blocker.util.BotJson
@@ -767,6 +770,26 @@ class SpamNumbers : IConfig {
 }
 
 @Serializable
+class HistoryLogs : IConfig {
+    val calls = mutableListOf<HistoryRecord>()
+    val texts = mutableListOf<HistoryRecord>()
+
+    override fun load(ctx: Context) {
+        calls.clear()
+        calls.addAll(CallTable().listRecords(ctx))
+        texts.clear()
+        texts.addAll(SmsTable().listRecords(ctx))
+    }
+
+    override fun apply(ctx: Context) {
+        CallTable().clearAll(ctx)
+        CallTable().addAll(ctx, calls)
+        SmsTable().clearAll(ctx)
+        SmsTable().addAll(ctx, texts)
+    }
+}
+
+@Serializable
 class OAuth : IConfig {
     var phoneBlockToken = ""
     override fun load(ctx: Context) {
@@ -802,13 +825,17 @@ enum class Category(val labelId: Int) {
     WORKFLOWS(R.string.workflows),
     LANGUAGE(R.string.language),
     THEME(R.string.theme),
-    SPAM_NUMBERS(R.string.database)
+    SPAM_NUMBERS(R.string.database),
+    HISTORY_LOGS(R.string.history_logs)
 }
 
 @Serializable
 data class CategorySelection(
     val all: Set<Category> = Category.entries
-        .filter { it != Category.SPAM_NUMBERS }
+        .filter {
+            // exclude db numbers and call/sms history records
+            it != Category.SPAM_NUMBERS && it != Category.HISTORY_LOGS
+        }
         .toSet()
 ) {
     fun isSelected(category: Category): Boolean = category in all
@@ -885,6 +912,8 @@ class Configs {
 
     var spamNumbers : SpamNumbers? = null
 
+    var historyLogs : HistoryLogs? = null
+
     var oauth : OAuth? = null
 
     var permissions : Permissions? = null
@@ -938,6 +967,9 @@ class Configs {
         if (categories.isSelected(Category.SPAM_NUMBERS)) {
             spamNumbers = SpamNumbers().also { it.load(ctx) }
         }
+        if (categories.isSelected(Category.HISTORY_LOGS)) {
+            historyLogs = HistoryLogs().also { it.load(ctx) }
+        }
     }
 
     // This object has been full filled, apply the values to SharedPref/Database
@@ -987,6 +1019,9 @@ class Configs {
         }
         if (categories.isSelected(Category.SPAM_NUMBERS)) {
             spamNumbers?.apply(ctx)
+        }
+        if (categories.isSelected(Category.HISTORY_LOGS)) {
+            historyLogs?.apply(ctx)
         }
     }
 
