@@ -14,6 +14,9 @@ import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.content.res.Configuration
 import android.database.Cursor
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.drawable.Icon
 import android.net.Uri
 import android.os.Build
 import android.os.LocaleList
@@ -46,6 +49,8 @@ import spam.blocker.def.Def.ANDROID_13
 import java.util.Locale
 import java.util.UUID
 import java.util.regex.Pattern
+import androidx.core.graphics.scale
+import java.io.ByteArrayOutputStream
 
 typealias Lambda = () -> Unit
 typealias Lambda1<A> = (A) -> Unit
@@ -1013,8 +1018,42 @@ object Util {
         return manager.callState == TelephonyManager.CALL_STATE_OFFHOOK
     }
 
-    fun isSystemInDarkTheme(ctx: Context): Boolean {
-        val nightModeFlags = ctx.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-        return nightModeFlags == Configuration.UI_MODE_NIGHT_YES
+    // Scale icons 6m -> 100kb, for use in notification channels
+    fun scaleIcon(
+        context: Context,
+        imageUri: Uri,
+        maxSizePx: Int = 96
+    ): ByteArray? {
+        return try {
+            context.contentResolver.openInputStream(imageUri)?.use { inputStream ->
+
+                // Important: Force ARGB_8888 to preserve alpha channel
+                val options = BitmapFactory.Options().apply {
+                    inPreferredConfig = Bitmap.Config.ARGB_8888
+                }
+
+                val original = BitmapFactory.decodeStream(inputStream, null, options)
+                    ?: return@use null
+
+                // Scale only if needed
+                val scaledBitmap: Bitmap = if (maxOf(original.width, original.height) > maxSizePx) {
+                    val scale = maxSizePx.toFloat() / maxOf(original.width, original.height)
+                    original.scale(
+                        (original.width * scale).toInt(),
+                        (original.height * scale).toInt()
+                    )
+                } else {
+                    original
+                }
+
+                // Use PNG with maximum quality
+                ByteArrayOutputStream().use { outputStream ->
+                    scaledBitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+                    outputStream.toByteArray()
+                }
+            }
+        } catch (e: Exception) {
+            null
+        }
     }
 }
