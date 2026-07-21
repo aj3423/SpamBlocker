@@ -1020,37 +1020,30 @@ object Util {
 
     // Scale icons 6m -> 100kb, for use in notification channels
     fun scaleIcon(
-        context: Context,
-        imageUri: Uri,
+        bytes: ByteArray,
         maxSizePx: Int = 96
     ): ByteArray? {
         return try {
-            context.contentResolver.openInputStream(imageUri)?.use { inputStream ->
+            // Decode with alpha channel support
+            val options = BitmapFactory.Options().apply {
+                inPreferredConfig = Bitmap.Config.ARGB_8888
+            }
 
-                // Important: Force ARGB_8888 to preserve alpha channel
-                val options = BitmapFactory.Options().apply {
-                    inPreferredConfig = Bitmap.Config.ARGB_8888
-                }
+            val original = BitmapFactory.decodeByteArray(bytes, 0, bytes.size, options)
+                ?: return null
 
-                val original = BitmapFactory.decodeStream(inputStream, null, options)
-                    ?: return@use null
+            // Only downscale if the image is larger than maxSizePx
+            val scaledBitmap: Bitmap = if (maxOf(original.width, original.height) > maxSizePx) {
+                val scale = maxSizePx.toFloat() / maxOf(original.width, original.height)
+                original.scale((original.width * scale).toInt(), (original.height * scale).toInt())
+            } else {
+                original
+            }
 
-                // Scale only if needed
-                val scaledBitmap: Bitmap = if (maxOf(original.width, original.height) > maxSizePx) {
-                    val scale = maxSizePx.toFloat() / maxOf(original.width, original.height)
-                    original.scale(
-                        (original.width * scale).toInt(),
-                        (original.height * scale).toInt()
-                    )
-                } else {
-                    original
-                }
-
-                // Use PNG with maximum quality
-                ByteArrayOutputStream().use { outputStream ->
-                    scaledBitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
-                    outputStream.toByteArray()
-                }
+            // Compress back to PNG (preserves transparency)
+            ByteArrayOutputStream().use { outputStream ->
+                scaledBitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+                outputStream.toByteArray()
             }
         } catch (e: Exception) {
             null

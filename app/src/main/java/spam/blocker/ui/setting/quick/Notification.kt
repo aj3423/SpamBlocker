@@ -56,6 +56,7 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
+import spam.blocker.util.FileUtils.readDataFromUri
 import spam.blocker.util.Lambda2
 import spam.blocker.util.Notification
 import spam.blocker.util.Notification.createChannel
@@ -358,8 +359,9 @@ fun EditChannelDialog(
                         ),
                         onResult = { uri ->
                             if (uri != null) {
-                                val scaled = scaleIcon(ctx, uri)
-                                    ?: return@popupRead
+                                val raw = readDataFromUri(ctx, uri) ?: return@popupRead
+
+                                val scaled = scaleIcon(raw) ?: return@popupRead
 
                                 icon = scaled
                             }
