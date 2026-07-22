@@ -37,35 +37,23 @@ Table of Contents
 | <img src="https://github.com/user-attachments/assets/abfac64c-83e8-445b-b92a-8826e87156ed" width="200" height="400"> | <img src="https://github.com/user-attachments/assets/17a927a3-7d18-486b-b43e-943e22fc55b7" width="200" height="400"> | <img src="https://github.com/user-attachments/assets/70cb5537-1b29-49e8-be0e-47d362ae3ebc" width="200" height="400"> |
 
 # How it works
-It works without replacing your call/SMS app.
-- For call: <br>
+It works without replacing your call/SMS app. You can kill the app after setup, it doesn't need to stay running in the background.
+
+## 📞 For call: <br>
   It's a Caller ID app.
 
-- For SMS:
-  - <b>Standalone Mode</b>:
-    
-    The app takes over SMS notifications, you need to disable notifications from the SMS app to avoid duplicates. 
-    - Pros
-      - Works with any SMS app.
-      - Advanced notification management (customizable sound/icon/color/LED)
-      - Built-in "Quick Copy" support (for copying OTP codes)
-    - Cons
-      - Feels disconnected, as messages and notifications are handled by two different apps. 
-      - The app doesn't handle RCS and MMS multimedia content.
-      - Requires SMS permission.
-  - <b>Screening provider mode</b>:
-    
-    Similar to call screening, the app works as a service. The SMS app asks it to check messages in real time, this app simply replies "block" or "allow". 
-    - Pros
-      - Notifications are handled by the SMS app, feels more natural and intuitive.
-      - Works without SMS permission.
-      - Better RCS/MMS support.
-    - Cons
-      - It **Only** works with SMS apps that support this [SMS screening protocol](https://github.com/aj3423/SpamBlocker/wiki/SMS-Screening-protocol)
-      - The SMS app might not support features like "Quick Copy" or notification customizing.
+## 💬 For SMS:
 
-> [!TIP]
-> You can kill the app after setup, it doesn't need to stay running in the background.
+  The app takes over SMS notifications, you need to disable notifications from the SMS app to avoid duplicates. 
+   
+  |  App | Send/Receive SMS | Show Notifications |Message Logs |
+  |---|--- |---| ---- |
+  | SpamBlocker |  ❌ | ✅️ | Received messages only, no sent messages |
+  | SMS apps<br>(e.g. Google Messages) |  ✅️ | ❌ <br>Must be manually disabled | All messages<br>(grouped by sender) |
+  
+### SMS Screening provider mode (WIP):
+    
+  Similar to call screening, the app can work as a service. The SMS app asks it to check messages in real time, this app simply replies "block" or "allow". It only works with SMS apps that support this [SMS screening protocol](https://github.com/aj3423/SpamBlocker/wiki/SMS-Screening-protocol). [QUIK](https://github.com/quik-sms/quik/) is working on this.
 
 # Features:
 
@@ -78,14 +66,14 @@ It works without replacing your call/SMS app.
 | Repeated Calls                | Multiple calls from the same number in a short while?                                                                                                                                          |
 | Dialed Number                 | Have you dialed the number?                                                                                                                                                                    |
 | Answered Number               | Allow previously answered numbers                                                                                                                                                              |
-| Emergency                     | Allow calls for a while after dialing an emergency number                                                                                                                                      |
+| Emergency                     | Allow calls for a while after dialing an emergency number(e.g. 911)                                                                                                                                      |
 | Push Alert                    | Allow calls after receiving notifications from other apps, e.g.: "Your order has been taken by driver ...", the driver may then contact you.                                                   | 
 | SMS Alert                     | Allow calls after receiving SMS messages like: "[From ...] We are calling to inform ..., please feel free to answer."                                                                          | 
 | SMS Bomb                      | Block continuous OTP message floods                                                                                                                                                            |
 | Recent Apps                   | Allow calls if some apps have been used recently.<br>Use case:<br>&emsp; You ordered Pizza online and soon they call you to refund.                                                            |
 | Meeting Mode                  | Decline calls during online video meetings.                                                                                                                                                    |
 | Off Time                      | A time period that always allows calls, usually no spams at night.                                                                                                                             |
-| Spam Database                 | If it exists in the spam database. Any public downloadable spam databases can be integrated, such as the [DNC](https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data). |
+| Spam Database                 | Block numbers in the spam database. Any downloadable spam databases can be integrated, such as the [FTC-DNC registry](https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data). |
 | Schedule & Calendar           | Auto adjust rules based on time schedule and calendar events                                                                                                                                   |
 | Geolocation & Carrier         | Block numbers based on geolocation or carrier name                                                                                                                                             | 
 | CNAP                          | The caller's display name                                                                                                                                                                      |
