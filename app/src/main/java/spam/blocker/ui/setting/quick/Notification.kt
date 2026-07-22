@@ -205,7 +205,11 @@ fun EditChannelDialog(
                     // 1. create notification channel
                     createChannel(ctx, newCh)
                     // 2. update db
-                    ChannelTable.addOrReplace(ctx, newCh)
+                    if (isCreatingNewChannel) {
+                        ChannelTable.add(ctx, newCh)
+                    } else {
+                        ChannelTable.updateById(ctx, initChannel.id, newCh)
+                    }
                     // 3. refresh the channel list
                     reloadChannels(ctx)
 

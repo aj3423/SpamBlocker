@@ -139,33 +139,6 @@ object Notification {
             return db.update(TABLE_NOTIFICATION_CHANNEL, cv, "$COLUMN_ID = $id", null) >= 0
         }
 
-        // Add a new channel, or replace the channel with the `channelId`
-        fun addOrReplace(ctx: Context, ch: Channel) {
-            val db = Db.getInstance(ctx).writableDatabase
-
-            db.execSQL(
-                """
-                    INSERT OR REPLACE INTO $TABLE_NOTIFICATION_CHANNEL 
-                    (
-                        $COLUMN_CHANNEL_ID, $COLUMN_IMPORTANCE, $COLUMN_MUTE, $COLUMN_SOUND, 
-                        $COLUMN_ICON, $COLUMN_ICON_COLOR, $COLUMN_GROUP, $COLUMN_LED, $COLUMN_LED_COLOR
-                    )
-                    VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ? )
-                """.trimIndent(),
-                arrayOf(
-                    ch.channelId,               // String
-                    ch.importance,              // Int
-                    if (ch.mute) 1 else 0,      // Int (boolean as 1 or 0)
-                    ch.sound,                   // String
-                    ch.icon,                    // ByteArray (BLOB)
-                    ch.iconColor,               // Int
-                    ch.group,                   // String
-                    if (ch.led) 1 else 0,       // Int (boolean as 1 or 0)
-                    ch.ledColor                 // Int
-                )
-            )
-        }
-
         @SuppressLint("Range")
         private fun fromCursor(it: Cursor): Channel {
             return Channel(
