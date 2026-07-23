@@ -1,3 +1,6 @@
 <resources>
     <string name="history_logs">Journaux d\'historique</string>
+    <string name="repeat">Répéter</string>
+    <string name="repeat_interval_min">Intervalle de répétition (min)</string>
+    <string name="help_repeat">Répète jusqu\'à confirmation afin de ne jamais manquer de messages importants.</string>
 </resources>

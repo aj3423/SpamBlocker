@@ -172,6 +172,9 @@
         <receiver
             android:name=".service.CopyToClipboardReceiver"
             android:exported="false" />
+        <receiver
+            android:name=".service.NotificationRepeatReceiver"
+            android:exported="false" />
     </application>
 
     <!-- for `pm.getPackagesHoldingPermissions` to include non-system packages -->

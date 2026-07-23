@@ -1,3 +1,6 @@
 <resources>
     <string name="history_logs">Registros de historial</string>
+    <string name="repeat">Repetir</string>
+    <string name="repeat_interval_min">Intervalo de repetición (min)</string>
+    <string name="help_repeat">Se repite hasta que se confirme para que nunca te pierdas mensajes importantes.</string>
 </resources>

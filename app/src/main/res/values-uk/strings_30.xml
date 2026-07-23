@@ -1,3 +1,6 @@
 <resources>
     <string name="history_logs">Журнали історії</string>
+    <string name="repeat">Повтор</string>
+    <string name="repeat_interval_min">Інтервал повтору (хв)</string>
+    <string name="help_repeat">Повторюється до підтвердження, щоб ви ніколи не пропустили важливі повідомлення.</string>
 </resources>

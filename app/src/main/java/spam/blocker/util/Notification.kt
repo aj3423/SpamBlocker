@@ -16,12 +16,19 @@ import android.database.sqlite.SQLiteDatabase
 import android.graphics.BitmapFactory
 import android.media.AudioAttributes
 import android.net.Uri
+import android.media.RingtoneManager
 import android.provider.Settings
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.core.app.NotificationCompat
 import androidx.core.graphics.drawable.IconCompat
 import androidx.core.net.toUri
+import androidx.work.Data
+import androidx.work.ExistingWorkPolicy
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
+import androidx.work.Worker
+import androidx.work.WorkerParameters
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.Db
@@ -32,7 +39,9 @@ import spam.blocker.db.Notification.CHANNEL_MEDIUM
 import spam.blocker.db.Notification.CHANNEL_NONE
 import spam.blocker.db.Notification.Channel
 import spam.blocker.db.Notification.ChannelTable
+import spam.blocker.db.Notification.DefaultRepeatInterval
 import spam.blocker.service.CopyToClipboardReceiver
+import java.util.concurrent.TimeUnit
 import kotlin.random.Random
 
 
@@ -327,5 +336,71 @@ object Notification {
             val id = group.hashCode()
             mgr.notify(id, groupBuilder.build())
         }
+
+        // repeat notification sound
+        if (channel.repeat && !channel.mute) {
+            val intervalMin = channel.repeatInterval ?: DefaultRepeatInterval
+            val inputData = Data.Builder()
+                .putInt("notificationId", notificationId)
+                .putString("soundUri", channel.sound)
+                .putInt("intervalMin", intervalMin)
+                .build()
+
+            val workRequest = OneTimeWorkRequestBuilder<NotificationRepeatWorker>()
+                .setInitialDelay(intervalMin.toLong(), TimeUnit.MINUTES)
+                .setInputData(inputData)
+                .build()
+
+            WorkManager.getInstance(ctx).enqueueUniqueWork(
+                "notification_repeat_$notificationId",
+                ExistingWorkPolicy.REPLACE,
+                workRequest
+            )
+        }
+    }
+}
+
+class NotificationRepeatWorker(
+    private val ctx: Context,
+    workerParams: WorkerParameters
+) : Worker(ctx, workerParams) {
+    override fun doWork(): Result {
+        val notificationId = inputData.getInt("notificationId", -1)
+
+        if (notificationId == -1) return Result.success()
+
+        val mgr = Notification.manager(ctx)
+        val isAlive = mgr.activeNotifications.any { it.id == notificationId }
+        if (!isAlive) {
+            return Result.success()
+        }
+
+        val soundUriStr = inputData.getString("soundUri")
+        val soundUri = if (soundUriStr.isNullOrEmpty())
+            RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+        else
+            soundUriStr.toUri()
+        if (soundUri != null) {
+            try {
+                val ringtone = RingtoneManager.getRingtone(ctx, soundUri)
+                ringtone?.play()
+            } catch (e: Exception) {
+                loge("failed to play repeat notification sound: ${e.message}")
+            }
+        }
+
+        val intervalMin = inputData.getInt("intervalMin", DefaultRepeatInterval)
+        val workRequest = OneTimeWorkRequestBuilder<NotificationRepeatWorker>()
+            .setInitialDelay(intervalMin.toLong(), TimeUnit.MINUTES)
+            .setInputData(inputData)
+            .build()
+
+        WorkManager.getInstance(ctx).enqueueUniqueWork(
+            "notification_repeat_$notificationId",
+            ExistingWorkPolicy.REPLACE,
+            workRequest
+        )
+
+        return Result.success()
     }
 }

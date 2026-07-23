@@ -1,3 +1,6 @@
 <resources>
     <string name="history_logs">歷史日誌</string>
+    <string name="repeat">重複</string>
+    <string name="repeat_interval_min">重複間隔 (分)</string>
+    <string name="help_repeat">重複提醒直到確認，確保您不會錯過重要訊息。</string>
 </resources>

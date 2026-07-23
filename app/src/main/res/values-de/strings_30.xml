@@ -1,3 +1,6 @@
 <resources>
     <string name="history_logs">Verlaufsprotokolle</string>
+    <string name="repeat">Wiederholen</string>
+    <string name="repeat_interval_min">Wiederholungsintervall (Min)</string>
+    <string name="help_repeat">Wiederholt sich bis zur Bestätigung, damit Sie keine wichtigen Nachrichten verpassen.</string>
 </resources>

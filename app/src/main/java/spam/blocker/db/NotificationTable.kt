@@ -23,12 +23,15 @@ import spam.blocker.db.Db.Companion.COLUMN_IMPORTANCE
 import spam.blocker.db.Db.Companion.COLUMN_LED
 import spam.blocker.db.Db.Companion.COLUMN_LED_COLOR
 import spam.blocker.db.Db.Companion.COLUMN_MUTE
+import spam.blocker.db.Db.Companion.COLUMN_REPEAT
+import spam.blocker.db.Db.Companion.COLUMN_REPEAT_INTERVAL
 import spam.blocker.db.Db.Companion.COLUMN_SOUND
 import spam.blocker.db.Db.Companion.TABLE_NOTIFICATION_CHANNEL
 import spam.blocker.ui.theme.SkyBlue
 
 
 object Notification {
+    const val DefaultRepeatInterval = 5 // min
 
     // Built-in channel Ids, in system settings.
     const val CHANNEL_NONE = "None"
@@ -52,6 +55,8 @@ object Notification {
         val iconColor: Int? = null, // ARGB, red for block, Unspecified for allowed. "" == Auto choose
         var led: Boolean = false,
         var ledColor: Int = SkyBlue.toArgb(),
+        var repeat: Boolean = false,
+        var repeatInterval: Int? = null, // min
     ) {
 
         fun shouldSilent(): Boolean {
@@ -84,6 +89,8 @@ object Notification {
             if (group != other.group) return false
             if (sound != other.sound) return false
             if (!icon.contentEquals(other.icon)) return false
+            if (repeat != other.repeat) return false
+            if (repeatInterval != other.repeatInterval) return false
 
             return true
         }
@@ -99,6 +106,9 @@ object Notification {
             result = 31 * result + group.hashCode()
             result = 31 * result + sound.hashCode()
             result = 31 * result + (icon?.contentHashCode() ?: 0)
+            result = 31 * result + repeat.hashCode()
+            result = 31 * result + repeatInterval.hashCode()
+
             return result
         }
     }
@@ -118,6 +128,8 @@ object Notification {
             cv.put(COLUMN_GROUP, ch.group)
             cv.put(COLUMN_LED, ch.led)
             cv.put(COLUMN_LED_COLOR, ch.ledColor)
+            cv.put(COLUMN_REPEAT, ch.repeat)
+            cv.put(COLUMN_REPEAT_INTERVAL, ch.repeatInterval)
 
             return wdb.insert(TABLE_NOTIFICATION_CHANNEL, null, cv)
         }
@@ -135,6 +147,8 @@ object Notification {
             cv.put(COLUMN_GROUP, ch.group)
             cv.put(COLUMN_LED, ch.led)
             cv.put(COLUMN_LED_COLOR, ch.ledColor)
+            cv.put(COLUMN_REPEAT, ch.repeat)
+            cv.put(COLUMN_REPEAT_INTERVAL, ch.repeatInterval)
 
             return db.update(TABLE_NOTIFICATION_CHANNEL, cv, "$COLUMN_ID = $id", null) >= 0
         }
@@ -151,7 +165,9 @@ object Notification {
                 iconColor = it.getIntOrNull(it.getColumnIndex(COLUMN_ICON_COLOR)),
                 group = it.getStringOrNull(it.getColumnIndex(COLUMN_GROUP)) ?: "",
                 led = it.getIntOrNull(it.getColumnIndex(COLUMN_LED)) == 1,
-                ledColor = it.getIntOrNull(it.getColumnIndex(COLUMN_LED_COLOR)) ?: G.palette.infoBlue.toArgb()
+                ledColor = it.getIntOrNull(it.getColumnIndex(COLUMN_LED_COLOR)) ?: G.palette.infoBlue.toArgb(),
+                repeat = it.getIntOrNull(it.getColumnIndex(COLUMN_REPEAT)) == 1,
+                repeatInterval = it.getIntOrNull(it.getColumnIndex(COLUMN_REPEAT_INTERVAL)),
             )
         }
 

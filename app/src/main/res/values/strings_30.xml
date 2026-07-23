@@ -1,3 +1,6 @@
 <resources>
     <string name="history_logs">History Logs</string>
+    <string name="repeat">Repeat</string>
+    <string name="repeat_interval_min">Repeat Interval (Min)</string>
+    <string name="help_repeat">Repeats until acknowledged so you never miss important messages.</string>
 </resources>

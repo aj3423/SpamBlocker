@@ -1,3 +1,6 @@
 <resources>
     <string name="history_logs">יומני היסטוריה</string>
+    <string name="repeat">חזרה</string>
+    <string name="repeat_interval_min">מרווח חזרה (דקות)</string>
+    <string name="help_repeat">חוזר עד לאישור כדי שלא תפספס אף פעם הודעות חשובות.</string>
 </resources>
