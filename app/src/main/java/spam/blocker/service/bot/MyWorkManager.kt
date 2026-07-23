@@ -116,7 +116,7 @@ object MyWorkManager {
 
         val infos = workManager.getWorkInfosByTag(tag).get()
             .filter {
-                // Cancelled/Succeeded tasks have this value
+                // Canceled/Succeeded tasks have this value
                 it.nextScheduleTimeMillis != 0x7fffffffffffffff
             }
             .sortedBy {

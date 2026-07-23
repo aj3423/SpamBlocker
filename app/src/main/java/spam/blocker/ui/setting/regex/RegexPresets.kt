@@ -202,23 +202,23 @@ val RegexPresets = mapOf(
                 )
             )
         },
-        RegexPreset(
-            label = { it.getString(R.string.caller_name) },
-            tooltip = {
-                it.getString(R.string.help_regex_preset_caller_name)
-            },
-        ) { ctx ->
-            listOf(
-                RegexRule(
-                    pattern = ".+",
-                    description = ctx.getString(R.string.caller_name),
-                    priority = 1,
-                    isBlacklist = false,
-                    flags = Def.FLAG_FOR_CALL,
-                    patternModeType = ModeType.CallerName
-                )
-            )
-        },
+//        RegexPreset(
+//            label = { it.getString(R.string.caller_name) },
+//            tooltip = {
+//                it.getString(R.string.help_regex_preset_caller_name)
+//            },
+//        ) { ctx ->
+//            listOf(
+//                RegexRule(
+//                    pattern = ".+",
+//                    description = ctx.getString(R.string.caller_name),
+//                    priority = 1,
+//                    isBlacklist = false,
+//                    flags = Def.FLAG_FOR_CALL,
+//                    patternModeType = ModeType.CallerName
+//                )
+//            )
+//        },
 
     ),
 
