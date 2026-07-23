@@ -3,6 +3,7 @@ package spam.blocker.util
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.AlarmManager
 import android.app.AppOpsManager
 import android.app.NotificationManager
 import android.app.role.RoleManager
@@ -13,6 +14,7 @@ import android.content.Intent
 import android.content.ServiceConnection
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.net.Uri
+import android.os.Build
 import android.os.IBinder
 import android.os.PowerManager
 import android.os.Process
@@ -25,6 +27,7 @@ import androidx.compose.runtime.setValue
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import spam.blocker.R
+import spam.blocker.def.Def
 import spam.blocker.service.NotificationListenerService
 import spam.blocker.util.PermissionLauncher.launcherProtected
 import spam.blocker.util.PermissionLauncher.launcherRegular
@@ -41,6 +44,7 @@ import spam.blocker.util.PermissionType.PhoneState
 import spam.blocker.util.PermissionType.ReadSMS
 import spam.blocker.util.PermissionType.ReceiveMMS
 import spam.blocker.util.PermissionType.ReceiveSMS
+import spam.blocker.util.PermissionType.ScheduleAlarm
 import spam.blocker.util.PermissionType.SendSMS
 import spam.blocker.util.PermissionType.ShowOverlay
 import spam.blocker.util.PermissionType.UsageStats
@@ -242,6 +246,32 @@ object PermissionType {
         }
     }
 
+    class ScheduleAlarm(
+        override var descId: Int = R.string.schedule_alarm
+    ): LaunchByIntent() {
+        override fun launcherIntent(ctx: Context): Intent {
+            return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM).apply {
+                    data = "package:${ctx.packageName}".toUri()
+                }
+            } else {
+                // Fallback to general App Details Settings for older Android versions
+                Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                    data = "package:${ctx.packageName}".toUri()
+                }
+            }
+        }
+
+        override fun check(ctx: Context): Boolean {
+            return if (Build.VERSION.SDK_INT >= Def.ANDROID_12) {
+                val alarmManager = ctx.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+                alarmManager.canScheduleExactAlarms()
+            } else {
+                true
+            }
+        }
+    }
+
     class CallScreening(
         override var descId: Int = R.string.perm_call_screening
     ): LaunchByIntent() {
@@ -304,6 +334,7 @@ object Permission {
     val showOverlay = ShowOverlay()
     val usageStats = UsageStats()
     val batteryUnRestricted = BatteryUnRestricted()
+    val scheduleAlarm = ScheduleAlarm()
 
     fun all(): List<Basic> {
         return listOf(
@@ -322,6 +353,7 @@ object Permission {
             showOverlay,
             usageStats,
             batteryUnRestricted,
+            scheduleAlarm
         )
     }
 

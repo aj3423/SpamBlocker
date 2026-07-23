@@ -2,5 +2,13 @@
     <string name="history_logs">Journaux d\'historique</string>
     <string name="repeat">Répéter</string>
     <string name="repeat_interval_min">Intervalle de répétition (min)</string>
-    <string name="help_repeat">Répète jusqu\'à confirmation afin de ne jamais manquer de messages importants.</string>
+    <string name="help_repeat">
+        <![CDATA[
+        Se répète jusqu\'à ce qu\'il soit reconnu pour que vous ne manquiez jamais de notifications importantes. <br>
+        <br>
+        <warn>Note</warn> <br>
+        Cela réveille le téléphone à plusieurs reprises et peut entraîner une consommation accrue de la batterie.
+        ]]>
+    </string>
+    <string name="schedule_alarm">Programmer l\'alarme</string>
 </resources>

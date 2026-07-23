@@ -2,5 +2,13 @@
     <string name="history_logs">Log della cronologia</string>
     <string name="repeat">Ripeti</string>
     <string name="repeat_interval_min">Intervallo di ripetizione (min)</string>
-    <string name="help_repeat">Ripete fino alla conferma in modo da non perdere mai messaggi importanti.</string>
+    <string name="help_repeat">
+        <![CDATA[
+        Si ripete fino a quando non viene riconosciuto, così non perderai mai notifiche importanti. <br>
+        <br>
+        <warn>Nota</warn> <br>
+        Sveglia il telefono ripetutamente e può causare un maggiore consumo di batteria.
+        ]]>
+    </string>
+    <string name="schedule_alarm">Programma sveglia</string>
 </resources>

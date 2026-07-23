@@ -2,5 +2,13 @@
     <string name="history_logs">Журнали історії</string>
     <string name="repeat">Повтор</string>
     <string name="repeat_interval_min">Інтервал повтору (хв)</string>
-    <string name="help_repeat">Повторюється до підтвердження, щоб ви ніколи не пропустили важливі повідомлення.</string>
+    <string name="help_repeat">
+        <![CDATA[
+        Повторюється до підтвердження, щоб ви ніколи не пропустили важливі сповіщення. <br>
+        <br>
+        <warn>Примітка</warn> <br>
+        Це неодноразово пробуджує телефон і може призвести до збільшення споживання заряду батареї.
+        ]]>
+    </string>
+    <string name="schedule_alarm">Запланувати будильник</string>
 </resources>

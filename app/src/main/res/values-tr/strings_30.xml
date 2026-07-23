@@ -2,5 +2,13 @@
     <string name="history_logs">Geçmiş Kayıtları</string>
     <string name="repeat">Tekrarla</string>
     <string name="repeat_interval_min">Tekrar Aralığı (Dak)</string>
-    <string name="help_repeat">Önemli mesajları asla kaçırmamanız için onaylanana kadar tekrarlanır.</string>
+    <string name="help_repeat">
+        <![CDATA[
+        Onaylanana kadar tekrarlanır, böylece önemli bildirimleri asla kaçırmazsınız. <br>
+        <br>
+        <warn>Not</warn> <br>
+        Telefonu tekrar tekrar uyandırır ve daha fazla pil tüketimine neden olabilir.
+        ]]>
+    </string>
+    <string name="schedule_alarm">Alarmı Planla</string>
 </resources>

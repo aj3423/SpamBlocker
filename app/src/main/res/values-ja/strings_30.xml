@@ -2,5 +2,13 @@
     <string name="history_logs">履歴ログ</string>
     <string name="repeat">繰り返し</string>
     <string name="repeat_interval_min">繰り返し間隔 (分)</string>
-    <string name="help_repeat">確認されるまで繰り返すため、重要なメッセージを見逃すことがありません。</string>
+    <string name="help_repeat">
+        <![CDATA[
+        確認されるまで繰り返し通知されるため、重要な通知を見逃しません。 <br>
+        <br>
+        <warn>注意</warn> <br>
+        電話が繰り返し起動するため、バッテリー消費が増加する可能性があります。
+        ]]>
+    </string>
+    <string name="schedule_alarm">アラームをスケジュール</string>
 </resources>

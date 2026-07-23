@@ -12,11 +12,9 @@ import android.content.pm.ApplicationInfo
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PERMISSION_GRANTED
-import android.content.res.Configuration
 import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.drawable.Icon
 import android.net.Uri
 import android.os.Build
 import android.os.LocaleList
@@ -37,6 +35,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
 import androidx.core.content.edit
 import androidx.core.database.getStringOrNull
+import androidx.core.graphics.scale
 import com.google.i18n.phonenumbers.PhoneNumberToCarrierMapper
 import com.google.i18n.phonenumbers.PhoneNumberUtil
 import com.google.i18n.phonenumbers.geocoding.PhoneNumberOfflineGeocoder
@@ -46,11 +45,10 @@ import org.json.JSONObject
 import spam.blocker.R
 import spam.blocker.def.Def
 import spam.blocker.def.Def.ANDROID_13
+import java.io.ByteArrayOutputStream
 import java.util.Locale
 import java.util.UUID
 import java.util.regex.Pattern
-import androidx.core.graphics.scale
-import java.io.ByteArrayOutputStream
 
 typealias Lambda = () -> Unit
 typealias Lambda1<A> = (A) -> Unit

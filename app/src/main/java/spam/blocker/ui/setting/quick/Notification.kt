@@ -66,6 +66,8 @@ import spam.blocker.util.Notification.isBuiltInChannel
 import spam.blocker.util.Notification.manager
 import spam.blocker.util.Notification.openChannelSettings
 import spam.blocker.util.Notification.reloadChannels
+import spam.blocker.util.Permission
+import spam.blocker.util.PermissionWrapper
 import spam.blocker.util.RingtoneUtil
 import spam.blocker.util.Util.scaleIcon
 import spam.blocker.util.spf
@@ -132,7 +134,7 @@ fun EditChannelDialog(
     var iconColor by remember { mutableStateOf<Int?>(initChannel.iconColor) }
     var led by remember { mutableStateOf(initChannel.led) }
     var ledColor by remember { mutableIntStateOf(initChannel.ledColor) }
-    var repeat by remember { mutableStateOf(initChannel.repeat) }
+    var repeat by remember { mutableStateOf(initChannel.repeat && Permission.scheduleAlarm.isGranted) }
     var repeatInterval by remember { mutableStateOf(initChannel.repeatInterval) }
 
     val isCreatingNewChannel by remember { mutableStateOf(initChannel.channelId == "") }
@@ -364,7 +366,17 @@ fun EditChannelDialog(
                                 helpTooltip = Str(R.string.help_repeat),
                             ) {
                                 SwitchBox(repeat) { isTurningOn ->
-                                    repeat = isTurningOn
+                                    if (isTurningOn) {
+                                        G.permissionChain.ask(ctx, listOf(
+                                            PermissionWrapper(Permission.scheduleAlarm)
+                                        )) { granted ->
+                                            if (granted) {
+                                                repeat = true
+                                            }
+                                        }
+                                    } else {
+                                        repeat = false
+                                    }
                                 }
                             }
                             // Repeat Interval

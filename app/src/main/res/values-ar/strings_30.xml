@@ -2,5 +2,13 @@
     <string name="history_logs">سجلات التاريخ</string>
     <string name="repeat">تكرار</string>
     <string name="repeat_interval_min">الفاصل الزمني للتكرار (دقيقة)</string>
-    <string name="help_repeat">يتكرر حتى يتم تأكيده حتى لا تفوتك الرسائل المهمة.</string>
+    <string name="help_repeat">
+        <![CDATA[
+        يتكرر حتى يتم الإقرار به حتى لا تفوتك الإشعارات المهمة. <br>
+        <br>
+        <warn>ملاحظة</warn> <br>
+        إنه يوقظ الهاتف بشكل متكرر ويمكن أن يتسبب في استهلاك المزيد من البطارية.
+        ]]>
+    </string>
+    <string name="schedule_alarm">جدولة المنبه</string>
 </resources>

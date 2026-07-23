@@ -25,6 +25,9 @@
     <!-- for notification -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
+    <!-- for repeating notifications -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
     <!-- for contacts -->
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
@@ -172,6 +175,7 @@
         <receiver
             android:name=".service.CopyToClipboardReceiver"
             android:exported="false" />
+
         <receiver
             android:name=".service.NotificationRepeatReceiver"
             android:exported="false" />

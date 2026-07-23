@@ -2,5 +2,13 @@
     <string name="history_logs">Rexistros de historial</string>
     <string name="repeat">Repetir</string>
     <string name="repeat_interval_min">Intervalo de repetición (min)</string>
-    <string name="help_repeat">Repítese ata que se confirme para que nunca perdas mensaxes importantes.</string>
+    <string name="help_repeat">
+        <![CDATA[
+        Repítese ata que se recoñeca para que nunca perdas notificacións importantes. <br>
+        <br>
+        <warn>Nota</warn> <br>
+        Desperta o teléfono repetidamente e pode causar un maior consumo de batería.
+        ]]>
+    </string>
+    <string name="schedule_alarm">Programar alarma</string>
 </resources>

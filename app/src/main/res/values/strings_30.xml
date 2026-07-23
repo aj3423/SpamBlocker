@@ -2,5 +2,13 @@
     <string name="history_logs">History Logs</string>
     <string name="repeat">Repeat</string>
     <string name="repeat_interval_min">Repeat Interval (Min)</string>
-    <string name="help_repeat">Repeats until acknowledged so you never miss important messages.</string>
+    <string name="help_repeat">
+        <![CDATA[
+        Repeats until acknowledged so you never miss important notifications. <br>
+        <br>
+        <warn>Note</warn> <br>
+        It wakes up the phone repeatedly and can cause more battery consumption.
+        ]]>
+    </string>
+    <string name="schedule_alarm">Schedule Alarm</string>
 </resources>

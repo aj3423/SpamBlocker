@@ -2,5 +2,13 @@
     <string name="history_logs">گزارشات تاریخچه</string>
     <string name="repeat">تکرار</string>
     <string name="repeat_interval_min">فاصله تکرار (دقیقه)</string>
-    <string name="help_repeat">تا زمان تایید تکرار می‌شود تا هرگز پیام‌های مهم را از دست ندهید.</string>
+    <string name="help_repeat">
+        <![CDATA[
+        تکرار می‌شود تا زمانی که تایید شود تا هیچ‌گاه اعلان‌های مهم را از دست ندهید. <br>
+        <br>
+        <warn>نکته</warn> <br>
+        این کار باعث بیدار شدن مکرر گوشی می‌شود و می‌تواند باعث مصرف بیشتر باتری شود.
+        ]]>
+    </string>
+    <string name="schedule_alarm">زمان‌بندی هشدار</string>
 </resources>

@@ -2,5 +2,13 @@
     <string name="history_logs">יומני היסטוריה</string>
     <string name="repeat">חזרה</string>
     <string name="repeat_interval_min">מרווח חזרה (דקות)</string>
-    <string name="help_repeat">חוזר עד לאישור כדי שלא תפספס אף פעם הודעות חשובות.</string>
+    <string name="help_repeat">
+        <![CDATA[
+        חוזר על עצמו עד שמאושר כדי שלא תפספס התראות חשובות. <br>
+        <br>
+        <warn>הערה</warn> <br>
+        זה מעיר את הטלפון שוב ושוב ויכול לגרום לצריכת סוללה מוגברת.
+        ]]>
+    </string>
+    <string name="schedule_alarm">תזמון התראה</string>
 </resources>

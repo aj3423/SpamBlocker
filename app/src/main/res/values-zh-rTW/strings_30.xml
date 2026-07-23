@@ -2,5 +2,13 @@
     <string name="history_logs">歷史日誌</string>
     <string name="repeat">重複</string>
     <string name="repeat_interval_min">重複間隔 (分)</string>
-    <string name="help_repeat">重複提醒直到確認，確保您不會錯過重要訊息。</string>
+    <string name="help_repeat">
+        <![CDATA[
+        重複直到確認，因此您絕不會錯過重要通知。 <br>
+        <br>
+        <warn>注意</warn> <br>
+        它會反覆喚醒手機，可能會導致更多的電池消耗。
+        ]]>
+    </string>
+    <string name="schedule_alarm">計劃鬧鐘</string>
 </resources>

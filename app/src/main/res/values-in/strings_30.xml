@@ -2,5 +2,13 @@
     <string name="history_logs">Log Riwayat</string>
     <string name="repeat">Ulangi</string>
     <string name="repeat_interval_min">Interval Pengulangan (Menit)</string>
-    <string name="help_repeat">Diulangi hingga diakui agar Anda tidak pernah melewatkan pesan penting.</string>
+    <string name="help_repeat">
+        <![CDATA[
+        Berulang sampai dikonfirmasi agar Anda tidak melewatkan pemberitahuan penting. <br>
+        <br>
+        <warn>Catatan</warn> <br>
+        Ini akan membangunkan ponsel secara berulang dan dapat menyebabkan konsumsi baterai yang lebih besar.
+        ]]>
+    </string>
+    <string name="schedule_alarm">Jadwalkan Alarm</string>
 </resources>
