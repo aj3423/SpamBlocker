@@ -112,6 +112,7 @@ It works without replacing your call/SMS app. You can kill the app after setup, 
 | WRITE_SETTINGS                       | For customizing call ringtone                                          | 
 | READ_LOG                             | For reporting bugs with logcat messages                                |   
 | SYSTEM_ALERT_WINDOW                  | For the caller ID floating window                                      |   
+| SCHEDULE_EXACT_ALARM                 | For repeating important notifications                                  |   
 
 # Privacy
  - For offline features
