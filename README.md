@@ -27,7 +27,7 @@ Table of Contents
    * [Privacy](#privacy)
    * [Support](#support)
    * [Language Support](#language-support)
-   * [Contributing](#contributing)
+   * [Contribution Wanted](#contributing)
    * [Some ideas](#some-ideas)
    * [Donate](#donate-)
 
@@ -147,8 +147,9 @@ Full [Privacy Policy](https://github.com/aj3423/SpamBlocker/blob/master/Docs/PRI
 
 Languages are translated using AI, PRs for corrections are welcome.
 
-# Contributing
- - [Contributing Guidelines](https://github.com/aj3423/SpamBlocker/blob/master/Docs/CONTRIBUTING.md)
+# Contribution Wanted
+ - [Publish to Google Play Store](https://github.com/aj3423/SpamBlocker/issues/641)
+ - [On-device AI](https://github.com/aj3423/SpamBlocker/issues/642)
 
 # Some ideas
  - [A decentralized database](https://github.com/aj3423/SpamBlocker/issues/340)
