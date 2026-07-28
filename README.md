@@ -27,7 +27,7 @@ Table of Contents
    * [Privacy](#privacy)
    * [Support](#support)
    * [Language Support](#language-support)
-   * [Contribution Wanted](#contributing)
+   * [Contribution Wanted](#contribution-wanted)
    * [Some ideas](#some-ideas)
    * [Donate](#donate-)
 
