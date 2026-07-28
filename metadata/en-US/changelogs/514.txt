@@ -1,0 +1,17 @@
+Help Wanted
+- Publish to PlayStore under your name
+- On-device AI
+
+Check the pinned issues for details: 
+https://github.com/aj3423/SpamBlocker/issues
+
+Fix:
+- Caller ID window crash issue
+
+Improvements:
+- Import/Export Regex rules
+- Backup/Restore history records
+- Repeat the notification for important messages
+
+Changes:
+- SMS content logging is enabled by default (if history logging is enabled)
