@@ -46,9 +46,12 @@
         <br>
         <warn>Cambia</warn> <b>39</b> por el código de tu país. <br>
         <br>
-        Desglose de la Regex: <br>
+        <b>Desglose de la Regex</b> <br>
         &ensp; - La bandera de regex <b>Número Crudo</b> preserva el <b>+</b> inicial, de lo contrario, se eliminará antes de la verificación. <br>
-        &ensp; - <error><b>\\+(?!39)</b></error> coincide con cualquier número que comience con <b>+</b> y no vaya seguido de <b>39</b> (números extranjeros).
+        &ensp; - <error><b>\\+(?!39)</b></error> coincide con cualquier número que comience con <b>+</b> y no vaya seguido de <b>39</b> (números extranjeros). <br>
+        <br>
+        <b>Consejo</b><br>
+        Si recibe llamadas internacionales de sus contactos, aumente la prioridad de los Contactos a más de 20 para anular esta regla.
         ]]>
     </string>
     <string name="help_private_number">

@@ -46,9 +46,12 @@
         <br>
         <warn>Cambia</warn> <b>39</b> con il prefisso del tuo paese. <br>
         <br>
-        Analisi Regex: <br>
+<b>Analisi Regex</b> <br>
         &ensp; - Il flag regex <b>Numero Originale</b> conserva il <b>+</b> iniziale, altrimenti verrà rimosso prima del controllo. <br>
-        &ensp; - <error><b>\\+(?!39)</b></error> corrisponde a qualsiasi numero che inizia con <b>+</b> non seguito da <b>39</b> (numeri stranieri).
+        &ensp; - <error><b>\\+(?!39)</b></error> corrisponde a qualsiasi numero che inizia con <b>+</b> non seguito da <b>39</b> (numeri stranieri). <br>
+        <br>
+        <b>Consiglio</b><br>
+        Se ricevi chiamate internazionali da contatti, aumenta la priorità dei Contatti a oltre 20 per annullare questa regola.
         ]]>
     </string>
     <string name="help_private_number">

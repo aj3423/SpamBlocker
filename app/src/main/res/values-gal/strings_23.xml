@@ -46,9 +46,12 @@
         <br>
         <warn>Cambia</warn> <b>39</b> polo código do teu país. <br>
         <br>
-        Desglose da expresión regular: <br>
+<b>Desglose da expresión regular</b> <br>
         &ensp; - O indicador de expresión regular <b>Número en bruto</b> conserva o <b>+</b> inicial, se non, eliminarase antes de verificar. <br>
-        &ensp; - <error><b>\\+(?!39)</b></error> coincide con calquera número que comece con <b>+</b> e que non vaia seguido de <b>39</b> (números estranxeiros).
+        &ensp; - <error><b>\\+(?!39)</b></error> coincide con calquera número que comece con <b>+</b> e que non vaia seguido de <b>39</b> (números estranxeiros). <br>
+        <br>
+        <b>Consello</b><br>
+        Se recibes chamadas internacionais de contactos, aumenta a prioridade dos Contactos a máis de 20 para anular esta regra.
         ]]>
     </string>
     <string name="help_private_number">

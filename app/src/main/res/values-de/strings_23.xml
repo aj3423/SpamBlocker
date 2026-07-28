@@ -46,9 +46,12 @@
         <br>
         <warn>Ändere</warn> <b>39</b> zu deiner Landesvorwahl. <br>
         <br>
-        Regex-Aufschlüsselung: <br>
+        <b>Regex-Aufschlüsselung</b> <br>
         &ensp; - Das <b>Raw Number</b>-Regex-Flag behält das führende <b>+</b> bei, andernfalls wird es vor der Überprüfung entfernt. <br>
-        &ensp; - <error><b>\\+(?!39)</b></error> stimmt mit jeder Nummer überein, die mit <b>+</b> beginnt und nicht von <b>39</b> gefolgt wird (ausländische Nummern).
+        &ensp; - <error><b>\\+(?!39)</b></error> stimmt mit jeder Nummer überein, die mit <b>+</b> beginnt und nicht von <b>39</b> gefolgt wird (ausländische Nummern). <br>
+        <br>
+        <b>Tipp</b><br>
+        Wenn Sie internationale Anrufe von Kontakten erhalten, erhöhen Sie die Priorität der Kontakte auf über 20, um diese Regel zu überschreiben.
         ]]>
     </string>
     <string name="help_private_number">

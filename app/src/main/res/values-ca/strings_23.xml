@@ -46,9 +46,12 @@
         <br>
         <warn>Canvia</warn> <b>39</b> pel teu codi de país. <br>
         <br>
-        Desglossament de l\'expressió regular: <br>
+        <b>Desglossament de l\'expressió regular</b> <br>
         &ensp; - L\'indicador de regex <b>Número brut</b> preserva el <b>+</b> inicial, en cas contrari, s\'eliminarà abans de comprovar-ho. <br>
-        &ensp; - <error><b>\\+(?!39)</b></error> coincideix amb qualsevol número que comenci amb <b>+</b> que no estigui seguit de <b>39</b> (números estrangers).
+        &ensp; - <error><b>\\+(?!39)</b></error> coincideix amb qualsevol número que comenci amb <b>+</b> que no estigui seguit de <b>39</b> (números estrangers). <br>
+        <br>
+        <b>Consell</b><br>
+        Si reps trucades internacionals de contactes, augmenta la prioritat dels Contactes a més de 20 per anul·lar aquesta regla.
         ]]>
     </string>
     <string name="help_private_number">

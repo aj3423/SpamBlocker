@@ -46,9 +46,12 @@
         <br>
         <warn>Mude</warn> <b>39</b> para o código do seu país. <br>
         <br>
-        Análise da Regex: <br>
+<b>Análise da Regex</b> <br>
         &ensp; - A flag de regex <b>Número Bruto</b> preserva o <b>+</b> inicial; caso contrário, ele será removido antes da verificação. <br>
-        &ensp; - <error><b>\\+(?!39)</b></error> corresponde a qualquer número que comece com <b>+</b> e não seja seguido por <b>39</b> (números estrangeiros).
+        &ensp; - <error><b>\\+(?!39)</b></error> corresponde a qualquer número que comece com <b>+</b> e não seja seguido por <b>39</b> (números estrangeiros). <br>
+        <br>
+        <b>Dica</b><br>
+        Se você receber chamadas internacionais de contatos, aumente a prioridade dos Contatos para mais de 20 para anular essa regra.
         ]]>
     </string>
     <string name="help_private_number">

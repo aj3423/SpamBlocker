@@ -46,9 +46,12 @@
         <br>
         <warn>Changez</warn> <b>39</b> par votre code de pays. <br>
         <br>
-        Analyse de l\'expression régulière : <br>
+<b>Analyse de l\'expression régulière</b> <br>
         &ensp; - Le drapeau d\'expression régulière <b>Numéro Brut</b> conserve le <b>+</b> initial, sinon, il sera supprimé avant la vérification. <br>
-        &ensp; - <error><b>\\+(?!39)</b></error> correspond à tout numéro commençant par <b>+</b> qui n\'est pas suivi de <b>39</b> (numéros étrangers).
+        &ensp; - <error><b>\\+(?!39)</b></error> correspond à tout numéro commençant par <b>+</b> qui n\'est pas suivi de <b>39</b> (numéros étrangers). <br>
+        <br>
+        <b>Conseil</b><br>
+        Si vous recevez des appels internationaux de vos contacts, augmentez la priorité des Contacts à plus de 20 pour contourner cette règle.
         ]]>
     </string>
     <string name="help_private_number">

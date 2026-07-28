@@ -46,9 +46,12 @@
         <br>
         <warn>Ubah</warn> <b>39</b> ke kode negara Anda. <br>
         <br>
-        Rincian Regex: <br>
+<b>Rincian Regex</b> <br>
         &ensp; - Flag regex <b>Nomor Mentah</b> mempertahankan awalan <b>+</b>, jika tidak, itu akan dihapus sebelum diperiksa. <br>
-        &ensp; - <error><b>\\+(?!39)</b></error> mencocokkan nomor apa pun yang dimulai dengan <b>+</b> yang tidak diikuti oleh <b>39</b> (nomor asing).
+        &ensp; - <error><b>\\+(?!39)</b></error> mencocokkan nomor apa pun yang dimulai dengan <b>+</b> yang tidak diikuti oleh <b>39</b> (nomor asing). <br>
+        <br>
+        <b>Kiat</b><br>
+        Jika Anda menerima panggilan internasional dari kontak, tingkatkan prioritas Kontak di atas 20 untuk mengabaikan aturan ini.
         ]]>
     </string>
     <string name="help_private_number">

@@ -46,9 +46,12 @@
         <br>
         <warn>Change</warn> <b>39</b> to your country code. <br>
         <br>
-        Regex breakdown: <br>
+        <b>Regex breakdown</b> <br>
         &ensp; - The <b>Raw Number</b> regex flag preserves the leading <b>+</b>, otherwise, it will be removed before checking. <br>
-        &ensp; - <error><b>\\+(?!39)</b></error> matches any number starting with <b>+</b> that is not followed by <b>39</b> (foreign numbers).
+        &ensp; - <error><b>\\+(?!39)</b></error> matches any number starting with <b>+</b> that is not followed by <b>39</b> (foreign numbers). <br>
+        <br>
+        <b>Tip</b><br>
+        If you receive international calls from contacts, increase the Contacts priority to above 20 to override this rule.
         ]]>
     </string>
     <string name="verification_code">Verification Code</string>

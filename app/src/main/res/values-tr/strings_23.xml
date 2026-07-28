@@ -45,9 +45,12 @@
         <br>
         <b>39</b>\'u kendi ülke kodunuzla <warn>değiştirin</warn>. <br>
         <br>
-        Regex ayrıştırması: <br>
+<b>Regex ayrıştırması</b> <br>
         &ensp; - <b>Ham Numara</b> regex bayrağı baştaki <b>+</b> işaretini korur, aksi takdirde kontrol edilmeden önce kaldırılır. <br>
-        &ensp; - <error><b>\\+(?!39)</b></error>, <b>+</b> ile başlayan ve <b>39</b> tarafından takip edilmeyen herhangi bir numarayı (yabancı numaraları) eşleştirir.
+        &ensp; - <error><b>\\+(?!39)</b></error>, <b>+</b> ile başlayan ve <b>39</b> tarafından takip edilmeyen herhangi bir numarayı (yabancı numaraları) eşleştirir. <br>
+        <br>
+        <b>İpucu</b><br>
+        İletişimlerden uluslararası arama alıyorsanız, İletişim önceliğini 20\'nin üzerine çıkararak bu kuralı geçersiz kılabilirsiniz.
         ]]>
     </string>
     <string name="help_private_number">
