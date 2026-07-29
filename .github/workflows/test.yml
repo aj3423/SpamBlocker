@@ -30,13 +30,13 @@
             ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
             ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
             ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
-          run: ./gradlew assembleFdroidRelease assemblePlaystoreRelease
+          run: ./gradlew assembleFdroidRelease bundlePlaystoreRelease
 
         # 1.1 move the apk and the mapping.txt to ./
         - name: move the apk
           run: |
             mv app/build/outputs/apk/fdroid/release/app-fdroid-release.apk ./app-release.apk
-            mv app/build/outputs/apk/playstore/release/app-playstore-release.apk ./app-release.playstore.apk
+            mv app/build/outputs/bundle/playstoreRelease/app-playstore-release.aab ./app-release.playstore.aab
 
         - name: Compress mapping.txt
           run: tar zcvf debug.symbol.tar.gz app/build/outputs/mapping/fdroidRelease/mapping.txt app/build/outputs/mapping/playstoreRelease/mapping.txt
@@ -65,8 +65,8 @@
 
         - uses: actions/upload-artifact@v4
           with:
-            name: app-release.playstore.apk
-            path: ./app-release.playstore.apk
+            name: app-release.playstore.aab
+            path: ./app-release.playstore.aab
 
         - uses: actions/upload-artifact@v4
           with:
