@@ -105,6 +105,7 @@ It works without replacing your call/SMS app. You can kill the app after setup, 
 | RECEIVE_SMS / RECEIVE_MMS            | For SMS notification screening                                         |
 | SEND_SMS                             | For auto replying to blocked contacts                                  |
 | READ_CALL_LOG / READ_SMS             | For allowing repeated calls                                            |
+| READ_CALENDAR                        | For dynamically adjusting rules based on calendar events               |
 | PACKAGE_USAGE_STATS                  | For feature: Recent Apps (check whether an app has been used recently) |
 | READ_PHONE_STATE                     | For BlockMode: Answer+Hang-up (monitor ringing state)                  |
 | REQUEST_IGNORE_BATTERY_OPTIMIZATIONS | For it to keep working after being swiped and killed                   |
