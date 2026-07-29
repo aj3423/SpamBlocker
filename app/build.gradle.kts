@@ -28,13 +28,24 @@ android {
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "spam.blocker"
         minSdk = 29
         targetSdk = 36
         versionCode = 514
         versionName = "5.14"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    flavorDimensions += "market"
+    productFlavors {
+        create("fdroid") {
+            dimension = "market"
+            applicationId = "spam.blocker"
+        }
+        create("playstore") {
+            dimension = "market"
+            applicationId = "spam.blocker.playstore"
+        }
     }
 
     buildTypes {

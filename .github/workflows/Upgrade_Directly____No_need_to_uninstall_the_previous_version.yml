@@ -28,14 +28,16 @@
             ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
             ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
             ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
-          run: ./gradlew assembleRelease
+          run: ./gradlew assembleFdroidRelease assemblePlaystoreRelease
 
         # 1.1 move the apk and the mapping.txt to ./
         - name: move the apk
-          run: mv app/build/outputs/apk/release/app-release.apk ./app-release.apk
+          run: |
+            mv app/build/outputs/apk/fdroid/release/app-fdroid-release.apk ./app-release.apk
+            mv app/build/outputs/apk/playstore/release/app-playstore-release.apk ./app-release.playstore.apk
 
         - name: Compress mapping.txt
-          run: tar zcvf debug.symbol.tar.gz app/build/outputs/mapping/release/mapping.txt
+          run: tar zcvf debug.symbol.tar.gz app/build/outputs/mapping/fdroidRelease/mapping.txt app/build/outputs/mapping/playstoreRelease/mapping.txt
 
         # 2. build apk without internet permission
         - name: Remove internet permission from manifest
@@ -46,11 +48,11 @@
             ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
             ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
             ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
-          run: ./gradlew assembleRelease
+          run: ./gradlew assembleFdroidRelease
 
         # 2.1. move the signed apk to ./
         - name: move the apk
-          run: mv app/build/outputs/apk/release/app-release.apk ./app-release-without-internet-permission.apk
+          run: mv app/build/outputs/apk/fdroid/release/app-fdroid-release.apk ./app-release-without-internet-permission.apk
 
 
         # upload apks
@@ -58,6 +60,11 @@
           with:
             name: app-release.apk
             path: ./app-release.apk
+
+        - uses: actions/upload-artifact@v4
+          with:
+            name: app-release.playstore.apk
+            path: ./app-release.playstore.apk
 
         - uses: actions/upload-artifact@v4
           with:
