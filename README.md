@@ -8,7 +8,7 @@ Android Call/SMS blocker. (Android 10+)
     <img src="https://github.com/user-attachments/assets/8757c78c-b0d5-4b8a-9adb-934d8a758e9e" alt="Get it on F-Droid" height="60" />
   </a>
   <a href="https://github.com/ImranR98/Obtainium"> 
-    <img src="https://raw.githubusercontent.com/ImranR98/Obtainium/main/assets/graphics/badge_obtainium.png" alt="Get it on Obtainium" height="60" />
+    <img src="https://github.com/user-attachments/assets/4231e383-a52a-4f10-bb64-a59480a8ee68" alt="Get it on Obtainium" height="61" />
   </a>
   <a href="https://github.com/aj3423/SpamBlocker/releases/latest"> 
     <img src="https://github.com/user-attachments/assets/75d2f736-ba69-4173-b972-6f69a1804e85" alt="Get it on Github" height="60" />
