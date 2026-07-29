@@ -149,7 +149,6 @@ Full [Privacy Policy](https://github.com/aj3423/SpamBlocker/blob/master/Docs/PRI
 Languages are translated using AI, PRs for corrections are welcome.
 
 # Contribution Wanted
- - [Publish to Google Play Store](https://github.com/aj3423/SpamBlocker/issues/641)
  - [On-device AI](https://github.com/aj3423/SpamBlocker/issues/642)
 
 # Some ideas
