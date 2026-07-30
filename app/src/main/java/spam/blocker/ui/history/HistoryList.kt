@@ -106,7 +106,7 @@ fun HistoryList(
                                     val rec = vm.records[index]
 
                                     // 1. delete from db
-                                    vm.table.delById(ctx, rec.id)
+                                    vm.table.deleteById(ctx, rec.id)
 
                                     // 2. remove from ArrayList
                                     vm.records.removeAt(index)
@@ -117,7 +117,7 @@ fun HistoryList(
                                         rec.peer,
                                         ctx.getString(R.string.undelete),
                                     ) {
-                                        vm.table.addRecordWithId(ctx, rec)
+                                        vm.table.addWithId(ctx, rec)
                                         vm.records.add(index, rec)
                                     }
                                 },

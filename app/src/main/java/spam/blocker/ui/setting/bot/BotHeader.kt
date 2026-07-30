@@ -32,7 +32,7 @@ import java.util.UUID
 
 fun addBotToDB(ctx: Context, newBot: Bot) {
     // 1. add to db
-    BotTable.addNewRecord(ctx, newBot)
+    BotTable.addNew(ctx, newBot)
 
     // 2. reload UI
     G.botVM.reload(ctx)

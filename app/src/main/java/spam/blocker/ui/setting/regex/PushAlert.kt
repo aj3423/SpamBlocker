@@ -245,7 +245,7 @@ fun PushAlertHeader() {
             initRecord = PushAlertRecord(),
             onSave = { newRecord ->
                 // 1. add to db
-                vm.table.add(ctx, newRecord)
+                vm.table.addNew(ctx, newRecord)
 
                 // 2. reload from db
                 vm.reloadDb(ctx)

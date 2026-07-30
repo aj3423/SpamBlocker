@@ -58,7 +58,7 @@ fun RegexHeader(
             forType = forType,
             onSave = { newRule ->
                 // 1. add to db
-                vm.table.addNewRule(ctx, newRule)
+                vm.table.addNew(ctx, newRule)
 
                 // 2. reload from db
                 vm.reloadDb(ctx)
@@ -83,7 +83,7 @@ fun RegexHeader(
             val newRule = PermissiveJson.decodeFromString<RegexRule>(configJson).copy(id = 0)
 
             // 1. add to db
-            vm.table.addNewRule(ctx, newRule)
+            vm.table.addNew(ctx, newRule)
             // 2. reload UI
             vm.reloadDb(ctx)
         }
@@ -115,7 +115,7 @@ fun RegexHeader(
                     val newRules = preset.newInstance(ctx)
                     // 1. add to db
                     newRules.forEach {
-                        vm.table.addNewRule(ctx, it)
+                        vm.table.addNew(ctx, it)
                     }
                     // 2. reload from db
                     vm.reloadDb(ctx)

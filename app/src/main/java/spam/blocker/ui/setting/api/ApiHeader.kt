@@ -39,7 +39,7 @@ fun addApiToDB(
     G.permissionChain.ask(ctx, requiredPermissions) { isGranted ->
         if (isGranted) {
             // 1. add to db
-            vm.table.addNewRecord(ctx, newApi)
+            vm.table.addNew(ctx, newApi)
 
             // 2. reload UI
             vm.reloadDb(ctx)
@@ -90,7 +90,7 @@ fun ApiHeader(
             }
 
             // 1. add to db
-            vm.table.addNewRecord(ctx, newApi)
+            vm.table.addNew(ctx, newApi)
             // 2. reload UI
             vm.reloadDb(ctx)
         }

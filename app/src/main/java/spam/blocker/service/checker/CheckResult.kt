@@ -675,14 +675,14 @@ fun parseCheckResultFromDb(ctx: Context, result: Int, reason: String): ICheckRes
             try {
                 // try new format, `reason` is a json string like: {"ruleId": 123, "details": "..."}
                 val data = Json.decodeFromString<ByRegexRule.DbData>(reason)
-                val rule = NumberRegexTable().findRuleById(ctx, data.ruleId)
+                val rule = NumberRegexTable().findById(ctx, data.ruleId)
 
                 ByRegexRule(result, rule, data.details)
             } catch (_: Exception) {
                 // old format, `reason` is the ruleId
                 //  TODO: Remove this compatibility check after 2028-06-01
                 val ruleId = reason.toLong()
-                val rule = NumberRegexTable().findRuleById(ctx, ruleId)
+                val rule = NumberRegexTable().findById(ctx, ruleId)
                 ByRegexRule(result, rule)
             }
         }
@@ -691,13 +691,13 @@ fun parseCheckResultFromDb(ctx: Context, result: Int, reason: String): ICheckRes
             try {
                 // try new format, `reason` is a json string like: {"ruleId": 123, "details": "..."}
                 val data = Json.decodeFromString<ByRegexRule.DbData>(reason)
-                val rule = ContentRegexTable().findRuleById(ctx, data.ruleId)
+                val rule = ContentRegexTable().findById(ctx, data.ruleId)
 
                 ByRegexRule(result, rule, data.details)
             } catch (_: Exception) {
                 // old format, `reason` is the ruleId
                 //  TODO: Remove this compatibility check after 2028-06-01
-                val rule = ContentRegexTable().findRuleById(ctx, reason.toLong())
+                val rule = ContentRegexTable().findById(ctx, reason.toLong())
                 ByRegexRule(result, rule)
             }
         }

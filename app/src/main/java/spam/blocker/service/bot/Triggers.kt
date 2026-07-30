@@ -791,7 +791,7 @@ class SmsThrottling(
         if (!isActivated())
             return false
 
-        val rules = NumberRegexTable().findRuleByDesc(ctx, targetRuleDesc, targetRuleDescFlags)
+        val rules = NumberRegexTable().findByDesc(ctx, targetRuleDesc, targetRuleDescFlags)
         if (rules.isEmpty())
             return false
         val rule = rules[0]

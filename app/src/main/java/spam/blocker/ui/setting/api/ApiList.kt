@@ -131,7 +131,7 @@ fun ApiList(vm: ApiViewModel) {
                                     ctx.getString(R.string.undelete),
                                 ) {
                                     // 1. add to db
-                                    vm.table.addRecordWithId(ctx, api)
+                                    vm.table.addWithId(ctx, api)
                                     // 2. add to UI
                                     vm.apis.add(index, api)
                                 }

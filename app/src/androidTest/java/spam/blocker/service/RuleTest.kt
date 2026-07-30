@@ -82,11 +82,11 @@ class RuleTest {
     }
 
     fun add_number_rule(r: RegexRule) {
-        NumberRegexTable().addNewRule(ctx, r)
+        NumberRegexTable().addNew(ctx, r)
     }
 
     fun add_content_rule(r: RegexRule) {
-        ContentRegexTable().addNewRule(ctx, r)
+        ContentRegexTable().addNew(ctx, r)
     }
 
 

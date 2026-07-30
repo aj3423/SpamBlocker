@@ -29,85 +29,30 @@ data class PushAlertRecord(
     }
 }
 
-object PushAlertTable {
-
-    fun add(ctx: Context, rec: PushAlertRecord): Long {
-        val db = Db.getInstance(ctx).writableDatabase
-        val cv = ContentValues()
-        cv.put(COLUMN_ENABLED, rec.enabled)
-        cv.put(COLUMN_PKG_NAME, rec.pkgName)
-        cv.put(COLUMN_BODY, rec.body)
-        cv.put(COLUMN_BODY_FLAGS, rec.bodyFlags)
-        cv.put(COLUMN_DURATION, rec.duration)
-
-        return db.insert(TABLE_PUSH_ALERT, null, cv)
-    }
-
-    fun addWithId(ctx: Context, rec: PushAlertRecord) {
-        val db = Db.getInstance(ctx).writableDatabase
-        val cv = ContentValues()
-        cv.put(COLUMN_ID, rec.id)
-        cv.put(COLUMN_ENABLED, rec.enabled)
-        cv.put(COLUMN_PKG_NAME, rec.pkgName)
-        cv.put(COLUMN_BODY, rec.body)
-        cv.put(COLUMN_BODY_FLAGS, rec.bodyFlags)
-        cv.put(COLUMN_DURATION, rec.duration)
-
-        db.insert(TABLE_PUSH_ALERT, null, cv)
-    }
-
-    fun updateById(ctx: Context, id: Long, rec: PushAlertRecord): Boolean {
-        val db = Db.getInstance(ctx).writableDatabase
-        val cv = ContentValues()
-        cv.put(COLUMN_ENABLED, rec.enabled)
-        cv.put(COLUMN_PKG_NAME, rec.pkgName)
-        cv.put(COLUMN_BODY, rec.body)
-        cv.put(COLUMN_BODY_FLAGS, rec.bodyFlags)
-        cv.put(COLUMN_DURATION, rec.duration)
-        return db.update(TABLE_PUSH_ALERT, cv, "$COLUMN_ID = $id", null) >= 0
-    }
+object PushAlertTable : BasicTable<PushAlertRecord>(TABLE_PUSH_ALERT) {
 
     @SuppressLint("Range")
-    private fun fromCursor(it: Cursor): PushAlertRecord {
+    override fun fromCursor(cursor: Cursor): PushAlertRecord {
         return PushAlertRecord(
-            id = it.getLong(it.getColumnIndex(COLUMN_ID)),
-            enabled = it.getInt(it.getColumnIndex(COLUMN_ENABLED)) == 1,
-            pkgName = it.getString(it.getColumnIndex(COLUMN_PKG_NAME)),
-            body = it.getString(it.getColumnIndex(COLUMN_BODY)),
-            bodyFlags = it.getInt(it.getColumnIndex(COLUMN_BODY_FLAGS)),
-            duration = it.getInt(it.getColumnIndex(COLUMN_DURATION)),
+            id = cursor.getLong(cursor.getColumnIndex(COLUMN_ID)),
+            enabled = cursor.getInt(cursor.getColumnIndex(COLUMN_ENABLED)) == 1,
+            pkgName = cursor.getString(cursor.getColumnIndex(COLUMN_PKG_NAME)),
+            body = cursor.getString(cursor.getColumnIndex(COLUMN_BODY)),
+            bodyFlags = cursor.getInt(cursor.getColumnIndex(COLUMN_BODY_FLAGS)),
+            duration = cursor.getInt(cursor.getColumnIndex(COLUMN_DURATION)),
         )
     }
 
-    fun listAll(
-        ctx: Context,
-    ): List<PushAlertRecord> {
-        var sql = "SELECT * FROM $TABLE_PUSH_ALERT"
-
-        val ret: MutableList<PushAlertRecord> = mutableListOf()
-
-        val db = Db.getInstance(ctx).readableDatabase
-        val cursor = db.rawQuery(sql, null)
-        cursor.use {
-            if (it.moveToFirst()) {
-                do {
-                    ret += fromCursor(it)
-                } while (it.moveToNext())
-            }
-            return ret
+    override fun toContentValues(item: PushAlertRecord, includeId: Boolean): ContentValues {
+        val cv = ContentValues()
+        if (includeId) {
+            cv.put(COLUMN_ID, item.id)
         }
-    }
-
-    fun clearAll(ctx: Context) {
-        val db = Db.getInstance(ctx).writableDatabase
-        val sql = "DELETE FROM $TABLE_PUSH_ALERT"
-        db.execSQL(sql)
-    }
-
-    fun deleteById(ctx: Context, id: Long): Int {
-        val args = arrayOf(id.toString())
-        val deletedCount = Db.getInstance(ctx).writableDatabase
-            .delete(TABLE_PUSH_ALERT, "$COLUMN_ID = ?", args)
-        return deletedCount
+        cv.put(COLUMN_ENABLED, item.enabled)
+        cv.put(COLUMN_PKG_NAME, item.pkgName)
+        cv.put(COLUMN_BODY, item.body)
+        cv.put(COLUMN_BODY_FLAGS, item.bodyFlags)
+        cv.put(COLUMN_DURATION, item.duration)
+        return cv
     }
 }

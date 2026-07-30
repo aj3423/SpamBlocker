@@ -207,7 +207,7 @@ class ImportAsRegexRule(
             priority = priority,
             isBlacklist = !isWhitelist,
         )
-        getTable().addNewRule(ctx, newRule)
+        getTable().addNew(ctx, newRule)
     }
 
     private fun replace(ctx: Context, aCtx: ActionContext, numbers: List<String>) {
@@ -217,7 +217,7 @@ class ImportAsRegexRule(
         )
 
         val table = getTable()
-        val oldRules = table.findRuleByDesc(ctx, description)
+        val oldRules = table.findByDesc(ctx, description)
         if (oldRules.isEmpty()) {
             aCtx.logger?.warn(
                 ctx.getString(R.string.rule_with_desc_not_found)
@@ -239,7 +239,7 @@ class ImportAsRegexRule(
         )
 
         val table = getTable()
-        val oldRules = table.findRuleByDesc(ctx, description)
+        val oldRules = table.findByDesc(ctx, description)
         if (oldRules.isEmpty()) {
             aCtx.logger?.warn(
                 ctx.getString(R.string.rule_with_desc_not_found)
@@ -258,7 +258,7 @@ class ImportAsRegexRule(
                     .format("${oldNumbers.size}", "${all.size}")
             )
 
-            table.updateRuleById(
+            table.updateById(
                 ctx, previous.id, previous.copy(
                     pattern = "(" + all.joinToString("|") + ")"
                 )
@@ -422,12 +422,12 @@ class ImportAsMultipleRegexRules(
     }
 
     private fun create(ctx: Context, rule: RegexRule) {
-        getTable().addNewRule(ctx, rule)
+        getTable().addNew(ctx, rule)
     }
 
     private fun replace(ctx: Context, rule: RegexRule) {
         val table = getTable()
-        val oldRules = table.findRuleByDesc(ctx, rule.description)
+        val oldRules = table.findByDesc(ctx, rule.description)
         if (oldRules.isEmpty()) {
             create(ctx, rule)
         } else {
@@ -440,7 +440,7 @@ class ImportAsMultipleRegexRules(
 
     private fun merge(ctx: Context, rule: RegexRule) {
         val table = getTable()
-        val oldRules = table.findRuleByDesc(ctx, rule.description)
+        val oldRules = table.findByDesc(ctx, rule.description)
         if (oldRules.isEmpty()) {
             create(ctx, rule)
         } else {
@@ -451,7 +451,7 @@ class ImportAsMultipleRegexRules(
 
             val all = (oldNumbers + numbers).distinct()
 
-            table.updateRuleById(
+            table.updateById(
                 ctx, prevRule.id, prevRule.copy(
                     pattern = "(" + all.joinToString("|") + ")"
                 )
@@ -829,7 +829,7 @@ class ModifyRules(
 
                     val newRule =
                         PermissiveJson.decodeFromString<RegexRule>(JSONObject(mapModified).toString())
-                    table.updateRuleById(ctx, rule.id, newRule)
+                    table.updateById(ctx, rule.id, newRule)
 
                     aCtx.logger?.debug(
                         ctx.getString(R.string.rule_updated)

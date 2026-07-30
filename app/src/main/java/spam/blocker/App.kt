@@ -94,13 +94,13 @@ class App : Application() {
     private fun listenToNewCallSMS() {
         val ctx = this
         Events.onNewCall.listen { recordId ->
-            val record = G.callVM.table.findRecordById(this, recordId as Long)
+            val record = G.callVM.table.findById(this, recordId as Long)
             if (G.callVM.isVisible(ctx, record!!))
                 if (G.callVM.records.firstOrNull()?.id != record.id) // ugly workaround to prevent double inserting
                     G.callVM.records.add(0, record)
         }
         Events.onNewSMS.listen { recordId ->
-            val record = SmsTable().findRecordById(this, recordId as Long)
+            val record = SmsTable().findById(this, recordId as Long)
             if (G.smsVM.isVisible(ctx, record!!))
                 if (G.smsVM.records.firstOrNull()?.id != record.id) // ugly workaround to prevent double inserting
                     G.smsVM.records.add(0, record)

@@ -68,10 +68,10 @@ fun HistoryContextMenuWrapper(
             onSave = { newRule ->
                 if (existingRule == null) {
                     // 1. add to db
-                    G.NumberRuleVM.table.addNewRule(ctx, newRule)
+                    G.NumberRuleVM.table.addNew(ctx, newRule)
                 } else {
                     // 1. update in db
-                    G.NumberRuleVM.table.updateRuleById(ctx, existingRule!!.id, newRule)
+                    G.NumberRuleVM.table.updateById(ctx, existingRule!!.id, newRule)
                 }
 
                 // rule update event is handled by the dialog
@@ -90,7 +90,7 @@ fun HistoryContextMenuWrapper(
             numberInDb = SpamTable.findByNumber(ctx, record.peer) != null
 
             // 2.
-            existingRule = G.NumberRuleVM.table.findRuleByPattern(ctx, record.peer)
+            existingRule = G.NumberRuleVM.table.findByPattern(ctx, record.peer)
 
             // 3. build context menu
             menuItems = listOf(

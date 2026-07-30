@@ -198,7 +198,7 @@ fun RegexList(
             onSave = { updatedRule ->
                 // 1. update in db
                 val table = ruleTableForType(forType)
-                table.updateRuleById(ctx, updatedRule.id, updatedRule)
+                table.updateById(ctx, updatedRule.id, updatedRule)
 
                 // 2. reload from db
                 vm.reloadDb(ctx)
@@ -313,7 +313,7 @@ fun RegexList(
 
                     2 -> { // clone rule
                         // 1. add to db
-                        vm.table.addNewRule(ctx, clickedRule.value)
+                        vm.table.addNew(ctx, clickedRule.value)
 
                         // 2. refresh gui
                         vm.reloadDb(ctx)
@@ -428,7 +428,7 @@ fun RegexItem(
                         ruleToDel.pattern,
                         ctx.getString(R.string.undelete),
                     ) {
-                        table.addRuleWithId(ctx, ruleToDel)
+                        table.addWithId(ctx, ruleToDel)
                         ruleList.add(index, ruleToDel)
                     }
                 }

@@ -76,7 +76,7 @@ fun importCsvItems(
                                                 this.isBlacklist = isBlacklist
                                             }
                                             // 1. add to db
-                                            vm.table.addNewRule(ctx, rule)
+                                            vm.table.addNew(ctx, rule)
 
                                             // 2. refresh gui
                                             vm.reloadDb(ctx)
@@ -91,7 +91,7 @@ fun importCsvItems(
                                     1 -> { // import as multi rules
                                         // 1. add to db
                                         allRules.forEach {
-                                            vm.table.addNewRule(ctx, it)
+                                            vm.table.addNew(ctx, it)
                                         }
 
                                         // 2. refresh gui

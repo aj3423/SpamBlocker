@@ -226,7 +226,7 @@ class CallScreeningService : CallScreeningService() {
             if (!isDbLogEnabled)
                 return null
 
-            val recordId = CallTable().addNewRecord(
+            val recordId = CallTable().addNew(
                 ctx, HistoryRecord(
                     peer = rawNumber,
                     cnap = cnap,

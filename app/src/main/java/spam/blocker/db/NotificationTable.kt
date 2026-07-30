@@ -113,103 +113,56 @@ object Notification {
         }
     }
 
-    object ChannelTable {
-
-        fun add(ctx: Context, ch: Channel, db: SQLiteDatabase? = null): Long {
-            val wdb = db ?: Db.getInstance(ctx).writableDatabase
-
-            val cv = ContentValues()
-            cv.put(COLUMN_CHANNEL_ID, ch.channelId)
-            cv.put(COLUMN_IMPORTANCE, ch.importance)
-            cv.put(COLUMN_MUTE, ch.mute)
-            cv.put(COLUMN_SOUND, ch.sound)
-            cv.put(COLUMN_ICON, ch.icon)
-            cv.put(COLUMN_ICON_COLOR, ch.iconColor)
-            cv.put(COLUMN_GROUP, ch.group)
-            cv.put(COLUMN_LED, ch.led)
-            cv.put(COLUMN_LED_COLOR, ch.ledColor)
-            cv.put(COLUMN_REPEAT, ch.repeat)
-            cv.put(COLUMN_REPEAT_INTERVAL, ch.repeatInterval)
-
-            return wdb.insert(TABLE_NOTIFICATION_CHANNEL, null, cv)
-        }
-
-        fun updateById(ctx: Context, id: Long, ch: Channel): Boolean {
-            val db = Db.getInstance(ctx).writableDatabase
-            val cv = ContentValues()
-
-            cv.put(COLUMN_CHANNEL_ID, ch.channelId)
-            cv.put(COLUMN_IMPORTANCE, ch.importance)
-            cv.put(COLUMN_MUTE, ch.mute)
-            cv.put(COLUMN_SOUND, ch.sound)
-            cv.put(COLUMN_ICON, ch.icon)
-            cv.put(COLUMN_ICON_COLOR, ch.iconColor)
-            cv.put(COLUMN_GROUP, ch.group)
-            cv.put(COLUMN_LED, ch.led)
-            cv.put(COLUMN_LED_COLOR, ch.ledColor)
-            cv.put(COLUMN_REPEAT, ch.repeat)
-            cv.put(COLUMN_REPEAT_INTERVAL, ch.repeatInterval)
-
-            return db.update(TABLE_NOTIFICATION_CHANNEL, cv, "$COLUMN_ID = $id", null) >= 0
-        }
+    object ChannelTable : BasicTable<Channel>(TABLE_NOTIFICATION_CHANNEL) {
 
         @SuppressLint("Range")
-        private fun fromCursor(it: Cursor): Channel {
+        override fun fromCursor(cursor: Cursor): Channel {
             return Channel(
-                id = it.getLong(it.getColumnIndex(COLUMN_ID)),
-                channelId = it.getString(it.getColumnIndex(COLUMN_CHANNEL_ID)),
-                importance = it.getInt(it.getColumnIndex(COLUMN_IMPORTANCE)),
-                mute = it.getIntOrNull(it.getColumnIndex(COLUMN_MUTE)) == 1,
-                sound = it.getStringOrNull(it.getColumnIndex(COLUMN_SOUND)) ?: "",
-                icon = it.getBlobOrNull(it.getColumnIndex(COLUMN_ICON)),
-                iconColor = it.getIntOrNull(it.getColumnIndex(COLUMN_ICON_COLOR)),
-                group = it.getStringOrNull(it.getColumnIndex(COLUMN_GROUP)) ?: "",
-                led = it.getIntOrNull(it.getColumnIndex(COLUMN_LED)) == 1,
-                ledColor = it.getIntOrNull(it.getColumnIndex(COLUMN_LED_COLOR)) ?: G.palette.infoBlue.toArgb(),
-                repeat = it.getIntOrNull(it.getColumnIndex(COLUMN_REPEAT)) == 1,
-                repeatInterval = it.getIntOrNull(it.getColumnIndex(COLUMN_REPEAT_INTERVAL)),
+                id = cursor.getLong(cursor.getColumnIndex(COLUMN_ID)),
+                channelId = cursor.getString(cursor.getColumnIndex(COLUMN_CHANNEL_ID)),
+                importance = cursor.getInt(cursor.getColumnIndex(COLUMN_IMPORTANCE)),
+                mute = cursor.getIntOrNull(cursor.getColumnIndex(COLUMN_MUTE)) == 1,
+                sound = cursor.getStringOrNull(cursor.getColumnIndex(COLUMN_SOUND)) ?: "",
+                icon = cursor.getBlobOrNull(cursor.getColumnIndex(COLUMN_ICON)),
+                iconColor = cursor.getIntOrNull(cursor.getColumnIndex(COLUMN_ICON_COLOR)),
+                group = cursor.getStringOrNull(cursor.getColumnIndex(COLUMN_GROUP)) ?: "",
+                led = cursor.getIntOrNull(cursor.getColumnIndex(COLUMN_LED)) == 1,
+                ledColor = cursor.getIntOrNull(cursor.getColumnIndex(COLUMN_LED_COLOR)) ?: G.palette.infoBlue.toArgb(),
+                repeat = cursor.getIntOrNull(cursor.getColumnIndex(COLUMN_REPEAT)) == 1,
+                repeatInterval = cursor.getIntOrNull(cursor.getColumnIndex(COLUMN_REPEAT_INTERVAL)),
             )
         }
 
-        fun listAll(
-            ctx: Context,
-            whereClause: String? = null,
-            whereParams: Array<String>? = null,
-        ): List<Channel> {
-            var sql = "SELECT * FROM $TABLE_NOTIFICATION_CHANNEL"
-
-            whereClause?.let { sql += it }
-
-            val ret: MutableList<Channel> = mutableListOf()
-
-            val db = Db.getInstance(ctx).readableDatabase
-            val cursor = db.rawQuery(sql, whereParams)
-            cursor.use {
-                if (it.moveToFirst()) {
-                    do {
-                        ret += fromCursor(it)
-                    } while (it.moveToNext())
-                }
-                return ret
+        override fun toContentValues(item: Channel, includeId: Boolean): ContentValues {
+            val cv = ContentValues()
+            if (includeId) {
+                cv.put(COLUMN_ID, item.id)
             }
+            cv.put(COLUMN_CHANNEL_ID, item.channelId)
+            cv.put(COLUMN_IMPORTANCE, item.importance)
+            cv.put(COLUMN_MUTE, item.mute)
+            cv.put(COLUMN_SOUND, item.sound)
+            cv.put(COLUMN_ICON, item.icon)
+            cv.put(COLUMN_ICON_COLOR, item.iconColor)
+            cv.put(COLUMN_GROUP, item.group)
+            cv.put(COLUMN_LED, item.led)
+            cv.put(COLUMN_LED_COLOR, item.ledColor)
+            cv.put(COLUMN_REPEAT, item.repeat)
+            cv.put(COLUMN_REPEAT_INTERVAL, item.repeatInterval)
+            return cv
         }
+
+        fun add(ctx: Context, ch: Channel, db: SQLiteDatabase? = null): Long {
+            if (db != null) {
+                return db.insert(TABLE_NOTIFICATION_CHANNEL, null, toContentValues(ch, includeId = false))
+            }
+            return addNew(ctx, ch)
+        }
+
         fun findByChannelId(ctx: Context, channelId: String) : Channel? {
-            val found = listAll(ctx, " WHERE $COLUMN_CHANNEL_ID = ?", arrayOf(channelId))
-            return found.getOrNull(0)
+            return findFirst(ctx, "$COLUMN_CHANNEL_ID = ?", arrayOf(channelId))
         }
 
-        fun clearAll(ctx: Context) {
-            val db = Db.getInstance(ctx).writableDatabase
-            val sql = "DELETE FROM $TABLE_NOTIFICATION_CHANNEL"
-            db.execSQL(sql)
-        }
-
-        fun deleteById(ctx: Context, id: Long): Int {
-            val args = arrayOf(id.toString())
-            val deletedCount = Db.getInstance(ctx).writableDatabase
-                .delete(TABLE_NOTIFICATION_CHANNEL, "$COLUMN_ID = ?", args)
-            return deletedCount
-        }
         fun deleteByChannelId(ctx: Context, channelId: String): Int {
             val args = arrayOf(channelId)
             val deletedCount = Db.getInstance(ctx).writableDatabase

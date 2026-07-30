@@ -281,7 +281,7 @@ fun BotList() {
                                     ctx.getString(R.string.undelete),
                                 ) {
                                     // 1. add to db
-                                    BotTable.addRecordWithId(ctx, bot)
+                                    BotTable.addWithId(ctx, bot)
                                     // 2. add to UI
                                     vm.bots.add(index, bot)
                                     // 3. re-schedule

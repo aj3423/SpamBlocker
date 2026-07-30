@@ -30,6 +30,22 @@ import kotlinx.serialization.json.intOrNull
 import kotlinx.serialization.json.jsonPrimitive
 import org.json.JSONObject
 import spam.blocker.G
+import spam.blocker.db.Db.Companion.COLUMN_BLOCK_TYPE
+import spam.blocker.db.Db.Companion.COLUMN_BLOCK_TYPE_CONFIG
+import spam.blocker.db.Db.Companion.COLUMN_CHANNEL_ID
+import spam.blocker.db.Db.Companion.COLUMN_DESC
+import spam.blocker.db.Db.Companion.COLUMN_FLAGS
+import spam.blocker.db.Db.Companion.COLUMN_ID
+import spam.blocker.db.Db.Companion.COLUMN_IS_BLACK
+import spam.blocker.db.Db.Companion.COLUMN_PATTERN
+import spam.blocker.db.Db.Companion.COLUMN_PATTERN_EXTRA
+import spam.blocker.db.Db.Companion.COLUMN_PATTERN_EXTRA_FLAGS
+import spam.blocker.db.Db.Companion.COLUMN_PATTERN_EXTRA_MODE_TYPE
+import spam.blocker.db.Db.Companion.COLUMN_PATTERN_FLAGS
+import spam.blocker.db.Db.Companion.COLUMN_PATTERN_MODE_TYPE
+import spam.blocker.db.Db.Companion.COLUMN_PRIORITY
+import spam.blocker.db.Db.Companion.COLUMN_SCHEDULE
+import spam.blocker.db.Db.Companion.COLUMN_SIM_SLOT
 import spam.blocker.db.Notification.CHANNEL_HIGH
 import spam.blocker.db.Notification.CHANNEL_LOW
 import spam.blocker.db.Notification.CHANNEL_NONE
@@ -258,80 +274,70 @@ fun defaultRegexRuleByType(forType: Int): RegexRule {
 
 
 
-abstract class RegexTable {
+abstract class RegexTable(
+    private val tableNameStr: String
+) : BasicTable<RegexRule>(tableNameStr) {
 
-    abstract fun tableName(): String
-
-
-    fun count(ctx: Context): Int {
-        val db = Db.getInstance(ctx).readableDatabase
-        val sql = "SELECT COUNT(*) FROM ${tableName()} "
-
-        val cursor = db.rawQuery(sql, null)
-
-        var count = 0
-        cursor.use {
-            if (it.moveToFirst()) {
-                count = cursor.getInt(0)
-            }
-        }
-        return count
-    }
+    fun tableName(): String = tableNameStr
 
     @SuppressLint("Range")
-    private fun ruleFromCursor(it: Cursor): RegexRule {
+    override fun fromCursor(cursor: Cursor): RegexRule {
         return RegexRule(
-            id = it.getLong(it.getColumnIndex(Db.COLUMN_ID)),
-            pattern = it.getString(it.getColumnIndex(Db.COLUMN_PATTERN)),
-            patternExtra = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_PATTERN_EXTRA)) ?: "",
-            patternFlags = it.getInt(it.getColumnIndex(Db.COLUMN_PATTERN_FLAGS)),
-            patternExtraFlags = it.getInt(it.getColumnIndex(Db.COLUMN_PATTERN_EXTRA_FLAGS)),
-            patternModeType = it.getInt(it.getColumnIndex(Db.COLUMN_PATTERN_MODE_TYPE)),
-            patternExtraModeType = it.getInt(it.getColumnIndex(Db.COLUMN_PATTERN_EXTRA_MODE_TYPE)),
-            description = it.getString(it.getColumnIndex(Db.COLUMN_DESC)),
-            priority = it.getInt(it.getColumnIndex(Db.COLUMN_PRIORITY)),
-            isBlacklist = it.getInt(it.getColumnIndex(Db.COLUMN_IS_BLACK)) == 1,
-            flags = it.getInt(it.getColumnIndex(Db.COLUMN_FLAGS)),
-            channel = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_CHANNEL_ID))
+            id = cursor.getLong(cursor.getColumnIndex(Db.COLUMN_ID)),
+            pattern = cursor.getString(cursor.getColumnIndex(Db.COLUMN_PATTERN)),
+            patternExtra = cursor.getStringOrNull(cursor.getColumnIndex(Db.COLUMN_PATTERN_EXTRA)) ?: "",
+            patternFlags = cursor.getInt(cursor.getColumnIndex(Db.COLUMN_PATTERN_FLAGS)),
+            patternExtraFlags = cursor.getInt(cursor.getColumnIndex(Db.COLUMN_PATTERN_EXTRA_FLAGS)),
+            patternModeType = cursor.getInt(cursor.getColumnIndex(Db.COLUMN_PATTERN_MODE_TYPE)),
+            patternExtraModeType = cursor.getInt(cursor.getColumnIndex(Db.COLUMN_PATTERN_EXTRA_MODE_TYPE)),
+            description = cursor.getString(cursor.getColumnIndex(Db.COLUMN_DESC)),
+            priority = cursor.getInt(cursor.getColumnIndex(Db.COLUMN_PRIORITY)),
+            isBlacklist = cursor.getInt(cursor.getColumnIndex(Db.COLUMN_IS_BLACK)) == 1,
+            flags = cursor.getInt(cursor.getColumnIndex(Db.COLUMN_FLAGS)),
+            channel = cursor.getStringOrNull(cursor.getColumnIndex(Db.COLUMN_CHANNEL_ID))
                 ?: Def.DEF_SPAM_CHANNEL,
-            schedule = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_SCHEDULE)) ?: "",
-            blockType = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_BLOCK_TYPE))
+            schedule = cursor.getStringOrNull(cursor.getColumnIndex(Db.COLUMN_SCHEDULE)) ?: "",
+            blockType = cursor.getIntOrNull(cursor.getColumnIndex(Db.COLUMN_BLOCK_TYPE))
                 ?: Def.DEF_BLOCK_TYPE,
-            blockTypeConfig = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_BLOCK_TYPE_CONFIG))
+            blockTypeConfig = cursor.getStringOrNull(cursor.getColumnIndex(Db.COLUMN_BLOCK_TYPE_CONFIG))
                 ?: "",
-            simSlot = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_SIM_SLOT)),
+            simSlot = cursor.getIntOrNull(cursor.getColumnIndex(Db.COLUMN_SIM_SLOT)),
         )
     }
 
-    @SuppressLint("Range")
-    fun findByFilter(ctx: Context, filterSql: String): List<RegexRule> {
-
-        val sql = "SELECT * FROM ${tableName()} $filterSql"
-
-        val ret: MutableList<RegexRule> = mutableListOf()
-
-        val db = Db.getInstance(ctx).readableDatabase
-        val cursor = db.rawQuery(sql, null)
-        cursor.use {
-            if (it.moveToFirst()) {
-                do {
-                    ret += ruleFromCursor(it)
-                } while (it.moveToNext())
-            }
-            return ret
+    override fun toContentValues(item: RegexRule, includeId: Boolean): ContentValues {
+        val cv = ContentValues()
+        if (includeId) {
+            cv.put(COLUMN_ID, item.id)
         }
+        cv.put(COLUMN_PATTERN, item.pattern)
+        cv.put(COLUMN_PATTERN_EXTRA, item.patternExtra)
+        cv.put(COLUMN_PATTERN_FLAGS, item.patternFlags)
+        cv.put(COLUMN_PATTERN_EXTRA_FLAGS, item.patternExtraFlags)
+        cv.put(COLUMN_PATTERN_MODE_TYPE, item.patternModeType)
+        cv.put(COLUMN_PATTERN_EXTRA_MODE_TYPE, item.patternExtraModeType)
+        cv.put(COLUMN_DESC, item.description)
+        cv.put(COLUMN_PRIORITY, item.priority)
+        cv.put(COLUMN_FLAGS, item.flags)
+        cv.put(COLUMN_IS_BLACK, if (item.isBlacklist) 1 else 0)
+        cv.put(COLUMN_CHANNEL_ID, item.channel)
+        cv.put(COLUMN_SCHEDULE, item.schedule)
+        cv.put(COLUMN_BLOCK_TYPE, item.blockType)
+        cv.put(COLUMN_BLOCK_TYPE_CONFIG, item.blockTypeConfig)
+        cv.put(COLUMN_SIM_SLOT, item.simSlot)
+        return cv
     }
 
-    fun findRuleById(ctx: Context, id: Long): RegexRule? {
-        val filter = "WHERE ${Db.COLUMN_ID} = $id LIMIT 1"
-        return findByFilter(ctx, filter).firstOrNull()
-    }
-    fun findRuleByPattern(ctx: Context, pattern: String): RegexRule? {
-        val filter = "WHERE ${Db.COLUMN_PATTERN} = '$pattern' LIMIT 1" // sql inject issue!! fix when necessary
-        return findByFilter(ctx, filter).firstOrNull()
+    fun findByPattern(ctx: Context, pattern: String): RegexRule? {
+        return listAll(
+            ctx,
+            whereClause = "$COLUMN_PATTERN = ?",
+            whereParams = arrayOf(pattern),
+            limit = 1
+        ).firstOrNull()
     }
 
-    fun findRuleByDesc(
+    fun findByDesc(
         ctx: Context,
         descPattern: String,
         descFlags: Int = Def.DefaultRegexFlags
@@ -347,10 +353,10 @@ abstract class RegexTable {
     fun listAll(
         ctx: Context,
     ): List<RegexRule> {
-        val sql =
-            " ORDER BY ${Db.COLUMN_PRIORITY} DESC, ${Db.COLUMN_DESC} ASC, ${Db.COLUMN_PATTERN} ASC"
-
-        return findByFilter(ctx, sql)
+        return listAll(
+            ctx,
+            orderBy = "$COLUMN_PRIORITY DESC, $COLUMN_DESC ASC, $COLUMN_PATTERN ASC"
+        )
     }
 
 
@@ -361,7 +367,7 @@ abstract class RegexTable {
         val db = Db.getInstance(ctx).readableDatabase
 
         val sql = "SELECT * FROM ${tableName()}" +
-                " GROUP BY ${Db.COLUMN_PATTERN}, ${Db.COLUMN_PATTERN_EXTRA}, ${Db.COLUMN_PATTERN_FLAGS}, ${Db.COLUMN_PATTERN_EXTRA_FLAGS}, ${Db.COLUMN_SCHEDULE}" +
+                " GROUP BY ${COLUMN_PATTERN}, ${COLUMN_PATTERN_EXTRA}, ${COLUMN_PATTERN_FLAGS}, ${COLUMN_PATTERN_EXTRA_FLAGS}, ${Db.COLUMN_SCHEDULE}" +
                 " HAVING COUNT(*) > 1"
 
         val cursor = db.rawQuery(sql, null)
@@ -369,11 +375,11 @@ abstract class RegexTable {
         cursor.use {
             if (it.moveToFirst()) {
                 do {
-                    val first = ruleFromCursor(it)
+                    val first = fromCursor(it)
 
                     val sql2 = """
                         SELECT * FROM ${tableName()}
-                        WHERE ${Db.COLUMN_PATTERN} = ? AND ${Db.COLUMN_PATTERN_EXTRA} = ? AND ${Db.COLUMN_PATTERN_FLAGS} = ? AND ${Db.COLUMN_PATTERN_EXTRA_FLAGS} = ? AND ${Db.COLUMN_SCHEDULE} = ?
+                        WHERE $COLUMN_PATTERN = ? AND $COLUMN_PATTERN_EXTRA = ? AND $COLUMN_PATTERN_FLAGS = ? AND $COLUMN_PATTERN_EXTRA_FLAGS = ? AND $COLUMN_SCHEDULE = ?
                         AND id != ?
                     """
                     val cursor2 = db.rawQuery(sql2, arrayOf(
@@ -387,7 +393,7 @@ abstract class RegexTable {
                     cursor2.use {
                         if (cursor2.moveToFirst()) {
                             do {
-                                ret += ruleFromCursor(cursor2)
+                                ret += fromCursor(cursor2)
                             } while (cursor2.moveToNext())
                         }
                     }
@@ -397,111 +403,11 @@ abstract class RegexTable {
         return ret
     }
 
-    fun addNewRule(ctx: Context, f: RegexRule): Long {
-        val db = Db.getInstance(ctx).writableDatabase
-        val cv = ContentValues()
-        cv.put(Db.COLUMN_PATTERN, f.pattern)
-        cv.put(Db.COLUMN_PATTERN_EXTRA, f.patternExtra)
-        cv.put(Db.COLUMN_PATTERN_FLAGS, f.patternFlags)
-        cv.put(Db.COLUMN_PATTERN_EXTRA_FLAGS, f.patternExtraFlags)
-        cv.put(Db.COLUMN_PATTERN_MODE_TYPE, f.patternModeType)
-        cv.put(Db.COLUMN_PATTERN_EXTRA_MODE_TYPE, f.patternExtraModeType)
-        cv.put(Db.COLUMN_DESC, f.description)
-        cv.put(Db.COLUMN_PRIORITY, f.priority)
-        cv.put(Db.COLUMN_FLAGS, f.flags)
-        cv.put(Db.COLUMN_IS_BLACK, if (f.isBlacklist) 1 else 0)
-        cv.put(Db.COLUMN_CHANNEL_ID, f.channel)
-        cv.put(Db.COLUMN_SCHEDULE, f.schedule)
-        cv.put(Db.COLUMN_BLOCK_TYPE, f.blockType)
-        cv.put(Db.COLUMN_BLOCK_TYPE_CONFIG, f.blockTypeConfig)
-        cv.put(Db.COLUMN_SIM_SLOT, f.simSlot)
-
-        return db.insert(tableName(), null, cv)
-    }
-
-    fun addRuleWithId(ctx: Context, f: RegexRule) {
-        val db = Db.getInstance(ctx).writableDatabase
-        val cv = ContentValues()
-        cv.put(Db.COLUMN_ID, f.id)
-        cv.put(Db.COLUMN_PATTERN, f.pattern)
-        cv.put(Db.COLUMN_PATTERN_EXTRA, f.patternExtra)
-        cv.put(Db.COLUMN_PATTERN_FLAGS, f.patternFlags)
-        cv.put(Db.COLUMN_PATTERN_EXTRA_FLAGS, f.patternExtraFlags)
-        cv.put(Db.COLUMN_PATTERN_MODE_TYPE, f.patternModeType)
-        cv.put(Db.COLUMN_PATTERN_EXTRA_MODE_TYPE, f.patternExtraModeType)
-        cv.put(Db.COLUMN_DESC, f.description)
-        cv.put(Db.COLUMN_PRIORITY, f.priority)
-        cv.put(Db.COLUMN_FLAGS, f.flags)
-        cv.put(Db.COLUMN_IS_BLACK, if (f.isBlacklist) 1 else 0)
-        cv.put(Db.COLUMN_CHANNEL_ID, f.channel)
-        cv.put(Db.COLUMN_SCHEDULE, f.schedule)
-        cv.put(Db.COLUMN_BLOCK_TYPE, f.blockType)
-        cv.put(Db.COLUMN_BLOCK_TYPE_CONFIG, f.blockTypeConfig)
-        cv.put(Db.COLUMN_SIM_SLOT, f.simSlot)
-
-        db.insert(tableName(), null, cv)
-    }
-
-    fun updateRuleById(ctx: Context, id: Long, f: RegexRule): Boolean {
-        val db = Db.getInstance(ctx).writableDatabase
-        val cv = ContentValues()
-        cv.put(Db.COLUMN_PATTERN, f.pattern)
-        cv.put(Db.COLUMN_PATTERN_EXTRA, f.patternExtra)
-        cv.put(Db.COLUMN_PATTERN_FLAGS, f.patternFlags)
-        cv.put(Db.COLUMN_PATTERN_EXTRA_FLAGS, f.patternExtraFlags)
-        cv.put(Db.COLUMN_PATTERN_MODE_TYPE, f.patternModeType)
-        cv.put(Db.COLUMN_PATTERN_EXTRA_MODE_TYPE, f.patternExtraModeType)
-        cv.put(Db.COLUMN_DESC, f.description)
-        cv.put(Db.COLUMN_PRIORITY, f.priority)
-        cv.put(Db.COLUMN_FLAGS, f.flags)
-        cv.put(Db.COLUMN_IS_BLACK, if (f.isBlacklist) 1 else 0)
-        cv.put(Db.COLUMN_CHANNEL_ID, f.channel)
-        cv.put(Db.COLUMN_SCHEDULE, f.schedule)
-        cv.put(Db.COLUMN_BLOCK_TYPE, f.blockType)
-        cv.put(Db.COLUMN_BLOCK_TYPE_CONFIG, f.blockTypeConfig)
-        cv.put(Db.COLUMN_SIM_SLOT, f.simSlot)
-
-        return db.update(tableName(), cv, "${Db.COLUMN_ID} = $id", null) >= 0
-    }
-
-    fun deleteById(ctx: Context, id: Long): Boolean {
-        return deleteByIds(ctx, listOf(id))
-    }
-
-    fun deleteByIds(ctx: Context, ids: List<Long>): Boolean {
-        val db = Db.getInstance(ctx).writableDatabase
-        val sql = "DELETE FROM ${tableName()} WHERE ${Db.COLUMN_ID} IN (${ids.joinToString(",")})"
-        val cursor = db.rawQuery(sql, null)
-
-        return cursor.use {
-            it.moveToFirst()
-        }
-    }
-
-    fun clearAll(ctx: Context) {
-        val db = Db.getInstance(ctx).writableDatabase
-        val sql = "DELETE FROM ${tableName()}"
-        db.execSQL(sql)
-    }
 }
 
-open class NumberRegexTable : RegexTable() {
-    override fun tableName(): String {
-        return Db.TABLE_NUMBER_RULE
-    }
-}
-
-open class ContentRegexTable : RegexTable() {
-    override fun tableName(): String {
-        return Db.TABLE_CONTENT_RULE
-    }
-}
-
-open class QuickCopyRegexTable : RegexTable() {
-    override fun tableName(): String {
-        return Db.TABLE_QUICK_COPY_RULE
-    }
-}
+open class NumberRegexTable : RegexTable(Db.TABLE_NUMBER_RULE)
+open class ContentRegexTable : RegexTable(Db.TABLE_CONTENT_RULE)
+open class QuickCopyRegexTable : RegexTable(Db.TABLE_QUICK_COPY_RULE)
 
 fun ruleTableForType(forType: Int): RegexTable {
     return when (forType) {

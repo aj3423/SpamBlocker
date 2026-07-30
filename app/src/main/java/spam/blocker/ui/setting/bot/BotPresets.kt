@@ -202,7 +202,7 @@ val BotPresets = listOf(
             addBotToDB(ctx, newBot)
 
             // Add a regex rule
-            NumberRegexTable().addNewRule(ctx, RegexRule(
+            NumberRegexTable().addNew(ctx, RegexRule(
                 pattern = ".*",
                 description = ctx.getString(R.string.toggled_by_tile),
                 flags = 0, // disabled for call/sms
@@ -230,7 +230,7 @@ val BotPresets = listOf(
             addBotToDB(ctx, newBot)
 
             // Add a regex rule
-            NumberRegexTable().addNewRule(ctx, RegexRule(
+            NumberRegexTable().addNew(ctx, RegexRule(
                 pattern = ".*",
                 description = ruleDesc,
                 flags = 0, // disabled for call/sms
@@ -260,7 +260,7 @@ val BotPresets = listOf(
             addBotToDB(ctx, newBot)
 
             // Add a regex rule
-            NumberRegexTable().addNewRule(ctx, RegexRule(
+            NumberRegexTable().addNew(ctx, RegexRule(
                 pattern = ".*",
                 description = ruleDesc,
                 flags = 0,
@@ -287,7 +287,7 @@ val BotPresets = listOf(
             addBotToDB(ctx, newBot)
 
             // Add a regex rule
-            NumberRegexTable().addNewRule(ctx, RegexRule(
+            NumberRegexTable().addNew(ctx, RegexRule(
                 pattern = ".*",
                 description = ruleDesc,
                 flags = 0,
