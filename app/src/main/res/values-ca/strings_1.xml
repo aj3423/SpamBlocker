@@ -35,7 +35,7 @@
     <string name="backup">Còpia de seguretat</string>
     <string name="import_">Importa</string>
     <string name="export">Exporta</string>
-    <string name="config_text">Text de configuració</string>
+    <string name="config_json">JSON de configuració</string>
     <string name="imported_successfully">Importat correctament</string>
     <string name="import_fail">Error en importar</string>
     <string name="exported_successfully">Exportat amb èxit</string>

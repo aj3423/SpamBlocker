@@ -35,7 +35,7 @@
     <string name="backup">Рез. копия</string>
     <string name="import_">Импорт</string>
     <string name="export">Экспорт</string>
-    <string name="config_text">Текст конфигурации</string>
+    <string name="config_json">JSON конфигурации</string>
     <string name="imported_successfully">Импортировано успешно</string>
     <string name="import_fail">Не удалось импортировать</string>
     <string name="exported_successfully">Экспортировано успешно</string>

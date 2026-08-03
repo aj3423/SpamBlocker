@@ -35,7 +35,7 @@
     <string name="backup">Cadangkan</string>
     <string name="import_">Impor</string>
     <string name="export">Ekspor</string>
-    <string name="config_text">Teks Konfigurasi</string>
+    <string name="config_json">JSON Konfigurasi</string>
     <string name="imported_successfully">Berhasil Diimpor</string>
     <string name="import_fail">Gagal Diimpor</string>
     <string name="exported_successfully">Berhasil diekspor</string>

@@ -880,7 +880,7 @@ class ModifyRules(
     @Composable
     override fun Options() {
         StrInputBox(
-            label = { Text(Str(R.string.config_text)) },
+            label = { Text(Str(R.string.config_json)) },
             placeholder = { Placeholder(Str(R.string.action_modify_rules_placeholder)) },
             text = config,
             onValueChange = {

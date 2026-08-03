@@ -35,7 +35,7 @@
     <string name="backup">نسخ احتياطي</string>
     <string name="import_">استيراد</string>
     <string name="export">تصدير</string>
-    <string name="config_text">نص التهيئة</string>
+    <string name="config_json">JSON التهيئة</string>
     <string name="imported_successfully">تم الاستيراد بنجاح</string>
     <string name="import_fail">فشل الاستيراد</string>
     <string name="exported_successfully">تم التصدير بنجاح</string>

@@ -35,7 +35,7 @@
     <string name="backup">גיבוי</string>
     <string name="import_">ייבוא</string>
     <string name="export">ייצוא</string>
-    <string name="config_text">טקסט תצורה</string>
+    <string name="config_json">JSON תצורה</string>
     <string name="imported_successfully">יובא בהצלחה</string>
     <string name="import_fail">הייבוא נכשל</string>
     <string name="exported_successfully">יצא בהצלחה</string>

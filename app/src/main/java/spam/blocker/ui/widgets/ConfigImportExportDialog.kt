@@ -71,7 +71,8 @@ fun ConfigImportDialog(
             }
         ) {
             StrInputBox(
-                label = { GreyLabel(Str(R.string.config_text)) },
+                label = { GreyLabel(Str(R.string.config_json)) },
+                placeholder = { Placeholder("{ ... }") },
                 text = text,
                 maxLines = 20,
                 onValueChange = {
@@ -105,7 +106,7 @@ fun ConfigExportDialog(
             }
         ) {
             StrInputBox(
-                label = { GreyLabel(Str(R.string.config_text)) },
+                label = { GreyLabel(Str(R.string.config_json)) },
                 text = text,
                 maxLines = 20,
                 onValueChange = {

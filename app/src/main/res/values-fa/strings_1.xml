@@ -35,7 +35,7 @@
     <string name="backup">پشتیبان گیری</string>
     <string name="import_">وارد کردن</string>
     <string name="export">خروجی</string>
-    <string name="config_text">متن پیکربندی</string>
+    <string name="config_json">JSON پیکربندی</string>
     <string name="imported_successfully">با موفقیت وارد شد</string>
     <string name="import_fail">وارد کردن ناموفق</string>
     <string name="exported_successfully">با موفقیت صادر شد</string>

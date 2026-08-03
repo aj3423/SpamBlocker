@@ -35,7 +35,7 @@
     <string name="backup">备份</string>
     <string name="import_">导入</string>
     <string name="export">导出</string>
-    <string name="config_text">配置文件</string>
+    <string name="config_json">配置 JSON</string>
     <string name="imported_successfully">导入成功</string>
     <string name="import_fail">导入失败</string>
     <string name="exported_successfully">导出成功</string>

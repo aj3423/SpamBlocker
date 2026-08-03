@@ -35,7 +35,7 @@
     <string name="backup">Backup</string>
     <string name="import_">Importa</string>
     <string name="export">Esporta</string>
-    <string name="config_text">Prova configurazione</string>
+    <string name="config_json">JSON di configurazione</string>
     <string name="imported_successfully">Importato con successo</string>
     <string name="import_fail">Importazione fallita</string>
     <string name="exported_successfully">Esportato con successo</string>

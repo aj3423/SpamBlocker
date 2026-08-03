@@ -35,7 +35,7 @@
     <string name="backup">резервна копія</string>
     <string name="import_">Імпорт</string>
     <string name="export">Експорт</string>
-    <string name="config_text">Текст конфігурації</string>
+    <string name="config_json">JSON конфігурації</string>
     <string name="imported_successfully">Імпортовано успішно</string>
     <string name="import_fail">Не вдалося імпортувати</string>
     <string name="exported_successfully">Успішно експортовано</string>
