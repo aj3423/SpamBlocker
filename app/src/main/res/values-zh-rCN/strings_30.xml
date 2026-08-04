@@ -11,4 +11,12 @@
         ]]>
     </string>
     <string name="schedule_alarm">计划闹钟</string>
+    <string name="search_engine">搜索引擎</string>
+    <string name="search_online">在线搜索</string>
+    <string name="raw_number_tag">
+        <![CDATA[
+        <title><b>{raw_number}</b></title> <br>
+        &ensp; 来电号码
+        ]]>
+    </string>
 </resources>

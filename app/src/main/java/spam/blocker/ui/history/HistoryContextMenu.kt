@@ -1,15 +1,20 @@
 package spam.blocker.ui.history
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.retain.retain
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import spam.blocker.Events
@@ -22,13 +27,49 @@ import spam.blocker.def.Def
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.TestDialog
 import spam.blocker.ui.setting.regex.EditRegexDialog
+import spam.blocker.ui.widgets.CustomItem
 import spam.blocker.ui.widgets.DropdownWrapper
+import spam.blocker.ui.widgets.GreyIcon
+import spam.blocker.ui.widgets.GreyIcon16
+import spam.blocker.ui.widgets.GreyIcon18
 import spam.blocker.ui.widgets.GreyIcon20
+import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.IMenuItem
 import spam.blocker.ui.widgets.LabelItem
+import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.ResIcon
+import spam.blocker.ui.widgets.RowVCenter
+import spam.blocker.ui.widgets.RowVCenterSpaced
+import spam.blocker.ui.widgets.Str
+import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.util.Clipboard
+import spam.blocker.util.Launcher
+import spam.blocker.util.resolveNumberTag
+import spam.blocker.util.spf
 
+@Composable
+fun SearchOnlineConfigDialog(
+    trigger: MutableState<Boolean>
+) {
+    PopupDialog(trigger) {
+        val ctx = LocalContext.current
+        val spf = spf.HistoryOptions(ctx)
+
+        var url by retain { mutableStateOf(spf.searchOnlineUrl) }
+
+        StrInputBox(
+            text = url,
+            label = { Text(Str(R.string.search_engine)) },
+            helpTooltip = Str(R.string.tags_supported) + Str(R.string.raw_number_tag),
+            onValueChange = {
+                url = it
+                spf.searchOnlineUrl = it
+            },
+            leadingIconId = R.drawable.ic_find,
+            maxLines = 10,
+        )
+    }
+}
 
 @SuppressLint("LocalContextGetResourceValueCall")
 @Composable
@@ -79,6 +120,9 @@ fun HistoryContextMenuWrapper(
         )
     }
 
+    val triggerSearchOnline = retain { mutableStateOf(false) }
+    SearchOnlineConfigDialog(triggerSearchOnline)
+
     // Test
     val testTrigger = rememberSaveable { mutableStateOf(false) }
     TestDialog(testTrigger)
@@ -119,6 +163,29 @@ fun HistoryContextMenuWrapper(
                     leadingIcon = { GreyIcon20(R.drawable.ic_copy) }
                 ) {
                     Clipboard.copy(ctx, record.peer)
+                },
+
+                // Search Online
+                CustomItem {
+                    RowVCenterSpaced(
+                        space = 10,
+                        modifier = M.padding(horizontal = 0.dp)
+                            .clickable {
+                                val url = spf.HistoryOptions(ctx).searchOnlineUrl
+                                    .replace("{raw_number}", record.peer)
+                                Launcher.openUrl(ctx, url)
+                                menuExpanded = false
+                            }
+                    ) {
+                        GreyIcon20(R.drawable.ic_find)
+                        GreyLabel(Str(R.string.search_online))
+                        GreyIcon20(
+                            iconId = R.drawable.ic_settings,
+                            modifier = M.clickable {
+                                triggerSearchOnline.value = true
+                            }
+                        )
+                    }
                 },
 
                 // Add/Edit regex rule

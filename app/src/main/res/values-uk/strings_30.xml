@@ -11,4 +11,12 @@
         ]]>
     </string>
     <string name="schedule_alarm">Запланувати будильник</string>
+    <string name="search_engine">Пошукова система</string>
+    <string name="search_online">Шукати в Інтернеті</string>
+    <string name="raw_number_tag">
+        <![CDATA[
+        <title><b>{raw_number}</b></title> <br>
+        &ensp; Вхідний номер
+        ]]>
+    </string>
 </resources>

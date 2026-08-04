@@ -11,4 +11,12 @@
         ]]>
     </string>
     <string name="schedule_alarm">زمان‌بندی هشدار</string>
+    <string name="search_engine">موتور جستجو</string>
+    <string name="search_online">جستجوی آنلاین</string>
+    <string name="raw_number_tag">
+        <![CDATA[
+        <title><b>{raw_number}</b></title> <br>
+        &ensp; شماره ورودی
+        ]]>
+    </string>
 </resources>

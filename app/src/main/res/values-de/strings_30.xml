@@ -11,4 +11,12 @@
         ]]>
     </string>
     <string name="schedule_alarm">Alarm einplanen</string>
+    <string name="search_engine">Suchmaschine</string>
+    <string name="search_online">Online suchen</string>
+    <string name="raw_number_tag">
+        <![CDATA[
+        <title><b>{raw_number}</b></title> <br>
+        &ensp; Die eingehende Nummer
+        ]]>
+    </string>
 </resources>

@@ -11,4 +11,12 @@
         ]]>
     </string>
     <string name="schedule_alarm">Alarmı Planla</string>
+    <string name="search_engine">Arama Motoru</string>
+    <string name="search_online">Çevrimiçi Ara</string>
+    <string name="raw_number_tag">
+        <![CDATA[
+        <title><b>{raw_number}</b></title> <br>
+        &ensp; Gelen numara
+        ]]>
+    </string>
 </resources>

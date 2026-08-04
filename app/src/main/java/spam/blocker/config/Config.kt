@@ -106,6 +106,7 @@ class HistoryOptions : IConfig {
     var initialSmsRowCount = 1
     var showTimeColor = false
     var timeColors = ""
+    var searchOnlineUrl = ""
 
     override fun load(ctx: Context) {
         val spf = spf.HistoryOptions(ctx)
@@ -122,6 +123,7 @@ class HistoryOptions : IConfig {
         initialSmsRowCount = spf.initialSmsRowCount
         showTimeColor = spf.showTimeColor
         timeColors = spf.timeColors
+        searchOnlineUrl = spf.searchOnlineUrl
     }
 
     override fun apply(ctx: Context) {
@@ -140,6 +142,7 @@ class HistoryOptions : IConfig {
             initialSmsRowCount = me.initialSmsRowCount
             showTimeColor = me.showTimeColor
             timeColors = me.timeColors
+            searchOnlineUrl = me.searchOnlineUrl
         }
     }
 }

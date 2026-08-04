@@ -11,4 +11,12 @@
         ]]>
     </string>
     <string name="schedule_alarm">Programma sveglia</string>
+    <string name="search_engine">Motore di ricerca</string>
+    <string name="search_online">Cerca online</string>
+    <string name="raw_number_tag">
+        <![CDATA[
+        <title><b>{raw_number}</b></title> <br>
+        &ensp; Il numero in entrata
+        ]]>
+    </string>
 </resources>

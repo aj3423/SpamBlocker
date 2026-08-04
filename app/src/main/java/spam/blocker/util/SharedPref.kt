@@ -257,6 +257,8 @@ class spf { // for namespace only
         var isLogSmsContentEnabled by bool("log_sms_content", true)
         var initialSmsRowCount by int("initial_sms_row_count", 2)
 
+        var searchOnlineUrl by str("search_online_url", "https://google.com/search?q={raw_number}")
+
         var showTimeColor by bool("show_time_color", true)
         var timeColors by str(
             "time_colors",

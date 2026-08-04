@@ -11,4 +11,12 @@
         ]]>
     </string>
     <string name="schedule_alarm">תזמון התראה</string>
+    <string name="search_engine">מנוע חיפוש</string>
+    <string name="search_online">חיפוש באינטרנט</string>
+    <string name="raw_number_tag">
+        <![CDATA[
+        <title><b>{raw_number}</b></title> <br>
+        &ensp; המספר הנכנס
+        ]]>
+    </string>
 </resources>

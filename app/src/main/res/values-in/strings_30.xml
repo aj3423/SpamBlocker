@@ -11,4 +11,12 @@
         ]]>
     </string>
     <string name="schedule_alarm">Jadwalkan Alarm</string>
+    <string name="search_engine">Mesin Pencari</string>
+    <string name="search_online">Cari Online</string>
+    <string name="raw_number_tag">
+        <![CDATA[
+        <title><b>{raw_number}</b></title> <br>
+        &ensp; Nomor masuk
+        ]]>
+    </string>
 </resources>
