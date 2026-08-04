@@ -30,16 +30,16 @@
             ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
             ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
             ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
-          run: ./gradlew assembleFdroidRelease bundlePlaystoreRelease
+          run: ./gradlew assembleFdroidRelease bundleGoogleplayRelease
 
         # 1.1 move the apk and the mapping.txt to ./
         - name: move the apk
           run: |
             mv app/build/outputs/apk/fdroid/release/app-fdroid-release.apk ./app-release.apk
-            mv app/build/outputs/bundle/playstoreRelease/app-playstore-release.aab ./app-release.playstore.aab
+            mv app/build/outputs/bundle/googleplayRelease/app-googleplay-release.aab ./app-release.googleplay.aab
 
         - name: Compress mapping.txt
-          run: tar zcvf debug.symbol.tar.gz app/build/outputs/mapping/fdroidRelease/mapping.txt app/build/outputs/mapping/playstoreRelease/mapping.txt
+          run: tar zcvf debug.symbol.tar.gz app/build/outputs/mapping/fdroidRelease/mapping.txt app/build/outputs/mapping/googleplayRelease/mapping.txt
 
         # 2. build apk without internet permission
         - name: Remove internet permission from manifest
@@ -65,8 +65,8 @@
 
         - uses: actions/upload-artifact@v4
           with:
-            name: app-release.playstore.aab
-            path: ./app-release.playstore.aab
+            name: app-release.googleplay.aab
+            path: ./app-release.googleplay.aab
 
         - uses: actions/upload-artifact@v4
           with:

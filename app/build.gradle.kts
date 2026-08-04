@@ -42,9 +42,9 @@ android {
             dimension = "market"
             applicationId = "spam.blocker"
         }
-        create("playstore") {
+        create("googleplay") {
             dimension = "market"
-            applicationId = "spam.blocker.playstore"
+            applicationId = "spam.blocker.googleplay"
         }
     }
 
