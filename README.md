@@ -25,7 +25,6 @@ Table of Contents
    * [FAQ](#faq)
    * [Permissions](#permissions)
    * [Privacy](#privacy)
-   * [Support](#support)
    * [Language Support](#language-support)
    * [Contribution Wanted](#contribution-wanted)
    * [Some ideas](#some-ideas)
@@ -138,11 +137,6 @@ It works without replacing your call/SMS app. You can kill the app after setup, 
     > 7b1ce727856f3427eab1fadfad6c9730cd4e6ba201661547f009206377dffb58
 
 Full [Privacy Policy](https://github.com/aj3423/SpamBlocker/blob/master/Docs/PRIVACY%20POLICY.md)
-
-# Support
- - Most problems are already covered in the issue list, please search first.
- - There's a [matrix channel](https://matrix.to/#/#spam-blocker:matrix.org).
-
 
 # Language support
 
