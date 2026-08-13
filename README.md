@@ -45,10 +45,10 @@ It works without replacing your call/SMS app. You can kill the app after setup, 
 
   The app takes over SMS notifications, you need to disable notifications from the SMS app to avoid duplicates. 
    
-  |  App | Send/Receive SMS | Show Notifications |Message Logs |
-  |---|--- |---| ---- |
-  | SpamBlocker |  ❌ | ✅️ | Received messages only, no sent messages |
-  | SMS apps<br>(e.g. Google Messages) |  ✅️ | ❌ <br>Must be manually disabled | All messages<br>(grouped by sender) |
+  |  App | Send/Receive SMS | Show Notifications |Message Logs | The Point |
+  |---|--- |---| --- | --- |
+  | SpamBlocker |  ❌ | ✅️ Takes over notifications | Received messages only, no sent messages | Avoid interruptions |
+  | SMS apps  |  ✅️ | ❌ Must be manually disabled | All messages<br>([remain undeleted, including spam texts](https://github.com/aj3423/SpamBlocker/issues/647)) | Messaging |
   
 ### SMS Screening provider mode (WIP):
     
@@ -81,7 +81,7 @@ It works without replacing your call/SMS app. You can kill the app after setup, 
 | Regex<br>(regular expression) | Check the [Wiki](https://github.com/aj3423/SpamBlocker/wiki/Regex-Workflow-Templates) for examples.                                                                                            |
 
 # Limitations 
-- Auto clear SMS: [No plan](https://github.com/aj3423/SpamBlocker/issues/274)
+- Auto clear SMS: [No plan](https://github.com/aj3423/SpamBlocker/issues/647)
 - Local AI support: [Future plan, not yet ready](https://github.com/aj3423/SpamBlocker/issues/267#issuecomment-2632229803)
 - RCS support: [No plan](https://github.com/aj3423/SpamBlocker/issues/308#issuecomment-2692269430)
 - Android 9- support: [No plan](https://github.com/aj3423/SpamBlocker/issues/38)
