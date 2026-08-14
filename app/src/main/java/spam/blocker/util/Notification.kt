@@ -339,7 +339,6 @@ object Notification {
             
             val intent = Intent(ctx, NotificationRepeatReceiver::class.java).apply {
                 putExtra("notificationId", notificationId)
-                putExtra("soundUri", channel.sound)
                 putExtra("intervalMin", intervalMin)
             }
             val pendingIntent = PendingIntent.getBroadcast(
