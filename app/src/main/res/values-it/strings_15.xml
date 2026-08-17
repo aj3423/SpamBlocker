@@ -8,9 +8,6 @@
         <br>
         A colpo d\'occhio, puoi verificare facilmente se i record della cronologia sono coperti dalle regole, quindi non hai bisogno di testarli individualmente. <br>
         <br>
-        <warn>Nota:</warn><br>
-        Questo può influire sulle prestazioni quando ci sono troppe regole regex. <br>
-        <br>
         <b>Esempi:</b> <br>
         <br>
         <img src=\'ic_history_indicator_1\'/> <br>
@@ -30,6 +27,11 @@
         <br>
         <img src=\'ic_history_indicator_3\'/> <br>
         Nessuna regola numerica lo corrisponde, solo regola SMS e database. E sarà bloccato da una regola SMS.<br>
+        <br>
+        <br>
+        <warn>Nota</warn> <br>
+        Regola sempre le regole in base alle icone iniziali, non al colore del numero (<img src=\'ic_history_indicator_4\'/>).
+        Il colore del numero riflette solo il risultato del filtraggio passato e non cambierà mai.
         ]]>
     </string>
     <string name="rule_indicator">Indicatore regola</string>

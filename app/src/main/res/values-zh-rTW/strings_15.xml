@@ -9,9 +9,6 @@
         <br>
         如此一來，您便可以快速確認歷史紀錄是否被規則涵蓋，無需逐一測試。<br>
         <br>
-        <warn>注意：</warn><br>
-        當有太多正規表示式規則時，這可能會影響效能。<br>
-        <br>
         <b>範例：</b> <br>
         <br>
         <img src=\'ic_history_indicator_1\'/> <br>
@@ -30,6 +27,11 @@
         <br>
         <img src=\'ic_history_indicator_3\'/> <br>
         沒有號碼規則符合它，只有簡訊規則和資料庫。它將被一條簡訊規則封鎖。<br>
+        <br>
+        <br>
+        <warn>注意</warn> <br>
+        請一律根據前面的圖示調整規則，而不是根據號碼顏色（<img src=\'ic_history_indicator_4\'/>）。
+        號碼顏色僅反映過去的攔截過濾結果，絕不會改變。
         ]]>
     </string>
     <string name="help_enable_for_mms">

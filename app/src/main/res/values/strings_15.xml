@@ -9,9 +9,6 @@
         <br>
         At a quick glance, you can effortlessly verify if the history records are covered by the rules, so you don\'t need to test them individually. <br>
         <br>
-        <warn>Note:</warn><br>
-        This can impact the performance when there are too many regex rules. <br>
-        <br>
         <b>Examples:</b> <br>
         <br>
         <img src=\'ic_history_indicator_1\'/> <br>
@@ -31,6 +28,11 @@
         <br>
         <img src=\'ic_history_indicator_3\'/> <br>
         No number rule matches it, only an SMS rule and the database match. It will be blocked by an SMS rule.<br>
+        <br>
+        <br>
+        <warn>Note</warn> <br>
+        Always adjust rules based on the leading icons, not the number color (<img src=\'ic_history_indicator_4\'/>).
+         The number color only reflects the past screening result and will never change.
         ]]>
     </string>
     <string name="help_enable_for_mms">

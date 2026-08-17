@@ -8,10 +8,6 @@
         <br>
         一目了然，您可以轻松验证历史记录是否被规则覆盖，因此无需单独测试。<br>
         <br>
-
-        <warn>注意：</warn><br>
-        当正则表达式规则过多时，这可能会影响性能。<br>
-        <br>
         <b>示例：</b> <br>
         <br>
         <img src=\'ic_history_indicator_1\'/> <br>
@@ -31,6 +27,11 @@
         <br>
         <img src=\'ic_history_indicator_3\'/> <br>
         没有号码规则匹配，只有短信规则和数据库。它将被短信规则拦截。<br>
+        <br>
+        <br>
+        <warn>注意</warn> <br>
+        始终根据前面的图标调整规则，而不是根据电话号码颜色（<img src=\'ic_history_indicator_4\'/>）。
+        电话号码颜色仅反映过去的拦截过滤结果，永不改变。
         ]]>
     </string>
     <string name="rule_indicator">规则指示器</string>

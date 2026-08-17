@@ -8,9 +8,6 @@
         <br>
         D\'un coup d\'œil, vous pouvez vérifier sans effort si les enregistrements d\'historique sont couverts par les règles, vous n\'avez donc pas besoin de les tester individuellement. <br>
         <br>
-        <warn>Note :</warn><br>
-        Cela peut impacter les performances lorsqu\'il y a trop de règles d\'expression régulière. <br>
-        <br>
         <b>Exemples :</b> <br>
         <br>
         <img src=\'ic_history_indicator_1\'/> <br>
@@ -30,6 +27,11 @@
         <br>
         <img src=\'ic_history_indicator_3\'/> <br>
         Aucune règle de numéro ne le correspond, seulement une règle SMS et la base de données. Et il sera bloqué par une règle SMS.<br>
+        <br>
+        <br>
+        <warn>Note</warn> <br>
+        Ajustez toujours les règles en fonction des icônes de tête, et non de la couleur du numéro (<img src=\'ic_history_indicator_4\'/>).
+        La couleur du numéro ne reflète que le résultat du filtrage passé et ne changera jamais.
         ]]>
     </string>
     <string name="rule_indicator">Indicateur de règle</string>

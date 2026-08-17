@@ -8,9 +8,6 @@
         <br>
         Hızlıca bakarak, geçmiş kayıtlarının kurallar tarafından kapsanıp kapsanmadığını zahmetsizce doğrulayabilir, böylece her birini tek tek test etmenize gerek kalmaz. <br>
         <br>
-        <warn>Not:</warn><br>
-        Çok fazla regex kuralı olduğunda bu, performansı etkileyebilir. <br>
-        <br>
         <b>Örnekler:</b> <br>
         <br>
         <img src=\'ic_history_indicator_1\'/> <br>
@@ -29,6 +26,11 @@
         <br>
         <img src=\'ic_history_indicator_3\'/> <br>
         Hiçbir numara kuralı eşleşmiyor, sadece SMS kuralı ve veritabanı. Ve bir SMS kuralı tarafından engellenecek.<br>
+        <br>
+        <br>
+        <warn>Not</warn> <br>
+        Kuralları her zaman numara rengine (<img src=\'ic_history_indicator_4\'/>) değil, baştaki simgelere göre ayarlayın.
+        Numara rengi yalnızca geçmiş engelleme/tarama sonucunu yansıtır ve asla değişmez.
         ]]>
     </string>
     <string name="rule_indicator">Kural Göstergesi</string>

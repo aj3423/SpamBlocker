@@ -8,10 +8,6 @@
         <br>
         Auf einen Blick können Sie mühelos überprüfen, ob die Verlaufsaufzeichnungen von den Regeln abgedeckt sind, sodass Sie sie nicht einzeln testen müssen. <br>
         <br>
-
-        <warn>Hinweis:</warn><br>
-        Dies kann die Leistung beeinträchtigen, wenn es zu viele Regex-Regeln gibt. <br>
-        <br>
         <b>Beispiele:</b> <br>
         <br>
         <img src=\'ic_history_indicator_1\'/> <br>
@@ -31,6 +27,11 @@
         <br>
         <img src=\'ic_history_indicator_3\'/> <br>
         Keine Telefonnummern-Regel passt, nur SMS-Regel und Datenbank. Und sie wird durch eine SMS-Regel blockiert.<br>
+        <br>
+        <br>
+        <warn>Hinweis</warn> <br>
+        Passen Sie Regeln immer anhand der vorangestellten Symbole an, nicht anhand der Telefonnummernfarbe (<img src=\'ic_history_indicator_4\'/>).
+        Die Telefonnummernfarbe spiegelt nur das vergangene Filterergebnis wider und ändert sich nie.
         ]]>
     </string>
     <string name="rule_indicator">Regelindikator</string>

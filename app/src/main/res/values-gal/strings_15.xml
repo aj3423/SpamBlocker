@@ -8,10 +8,6 @@
         <br>
         Dunha ollada, pode verificar sen esforzo se os rexistros do historial están cubertos polas regras, polo que non precisa probalos individualmente. <br>
         <br>
-
-        <warn>Nota:</warn><br>
-        Isto pode afectar o rendemento cando hai demasiadas regras de expresión regular. <br>
-        <br>
         <b>Exemplos:</b> <br>
         <br>
         <img src=\'ic_history_indicator_1\'/> <br>
@@ -31,6 +27,11 @@
         <br>
         <img src=\'ic_history_indicator_3\'/> <br>
         Ningunha regra de número coincide, só a regra de SMS e a base de datos. E será bloqueado por unha regra de SMS.<br>
+        <br>
+        <br>
+        <warn>Nota</warn> <br>
+        Axusta sempre as regras en función das iconas iniciais, non da cor do número (<img src=\'ic_history_indicator_4\'/>).
+        A cor do número só reflicte o resultado do cribado pasado e nunca cambiará.
         ]]>
     </string>
     <string name="rule_indicator">Indicador de Regra</string>

@@ -9,10 +9,6 @@
         <br>
         Sekilas, Anda dapat dengan mudah memverifikasi apakah catatan riwayat tercakup oleh aturan, jadi Anda tidak perlu mengujinya satu per satu. <br>
         <br>
-
-        <warn>Catatan:</warn><br>
-        Ini dapat memengaruhi kinerja jika ada terlalu banyak aturan regex. <br>
-        <br>
         <b>Contoh:</b> <br>
         <br>
         <img src=\'ic_history_indicator_1\'/> <br>
@@ -32,6 +28,11 @@
         <br>
         <img src=\'ic_history_indicator_3\'/> <br>
         Tidak ada aturan nomor yang cocok dengannya, hanya aturan SMS dan database. Dan itu akan diblokir oleh aturan SMS.<br>
+        <br>
+        <br>
+        <warn>Catatan</warn> <br>
+        Selalu sesuaikan aturan berdasarkan ikon di depan, bukan warna nomor (<img src=\'ic_history_indicator_4\'/>).
+        Warna nomor hanya mencerminkan hasil penyaringan masa lalu dan tidak akan pernah berubah.
         ]]>
     </string>
     <string name="help_enable_for_mms">

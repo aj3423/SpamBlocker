@@ -9,9 +9,6 @@
         <br>
         A simple vista, pots verificar sense esforç si els registres de l\'historial estan coberts per les regles, de manera que no cal que els provis individualment. <br>
         <br>
-        <warn>Nota:</warn><br>
-        Això pot afectar el rendiment quan hi ha massa regles de regex. <br>
-        <br>
         <b>Exemples:</b> <br>
         <br>
         <img src=\'ic_history_indicator_1\'/> <br>
@@ -31,6 +28,11 @@
         <br>
         <img src=\'ic_history_indicator_3\'/> <br>
         Cap regla de número hi coincideix, només la regla de SMS i la base de dades. I serà bloquejat per una regla de SMS.<br>
+        <br>
+        <br>
+        <warn>Nota</warn> <br>
+        Ajusta sempre les regles en funció de les icones principals, no del color del número (<img src=\'ic_history_indicator_4\'/>).
+        El color del número només reflecteix el resultat del cribratge passat i no canviarà mai.
         ]]>
     </string>
     <string name="help_enable_for_mms">

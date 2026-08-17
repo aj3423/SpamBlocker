@@ -8,10 +8,6 @@
         <br>
         一目で、履歴レコードがルールによってカバーされているかどうかを簡単に確認できるため、個別にテストする必要はありません。<br>
         <br>
-
-        <warn>注:</warn><br>
-        正規表現ルールが多すぎると、パフォーマンスに影響を与える可能性があります。<br>
-        <br>
         <b>例:</b> <br>
         <br>
         <img src=\'ic_history_indicator_1\'/> <br>
@@ -30,6 +26,11 @@
         <br>
         <img src=\'ic_history_indicator_3\'/> <br>
         電話番号ルールは一致せず、SMSルールとデータベースのみが一致します。そしてSMSルールによってブロックされます。<br>
+        <br>
+        <br>
+        <warn>注</warn> <br>
+        番号の色（<img src=\'ic_history_indicator_4\'/>）ではなく、先頭のアイコンに基づいてルールを調整してください。
+        番号の色は過去の着信判定結果のみを反映し、変わることはありません。
         ]]>
     </string>
     <string name="rule_indicator">ルールインジケーター</string>
