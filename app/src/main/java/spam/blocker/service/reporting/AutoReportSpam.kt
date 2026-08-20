@@ -70,7 +70,7 @@ fun updateRecordAutoReportLog(
 }
 
 // ------------ For SMS --------------
-fun autoReportSMS(
+fun maybeAutoReportSMS(
     ctx: Context,
     r: ICheckResult,
     rawNumber: String,
@@ -132,7 +132,7 @@ fun listReportableSmsAPIs(
 }
 
 // ------------ For Call --------------
-fun autoReportSpamCall(
+fun maybeAutoReportSpamCall(
     ctx: Context,
     r: ICheckResult,
     recordId: Long?,

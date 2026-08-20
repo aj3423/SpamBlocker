@@ -23,7 +23,7 @@ import spam.blocker.service.bot.Ringtone
 import spam.blocker.service.bot.executeAll
 import spam.blocker.service.checker.Checker
 import spam.blocker.service.checker.ICheckResult
-import spam.blocker.service.reporting.autoReportSpamCall
+import spam.blocker.service.reporting.maybeAutoReportSpamCall
 import spam.blocker.ui.NotificationTrampolineActivity
 import spam.blocker.ui.setting.quick.showCallerIdWindow
 import spam.blocker.util.Contacts
@@ -292,7 +292,7 @@ class CallScreeningService : CallScreeningService() {
                     showSpamNotification(ctx, r, rawNumber)
 
                     // 3. Report spam number
-                    autoReportSpamCall(ctx, r, recordId, rawNumber, isTest)
+                    maybeAutoReportSpamCall(ctx, r, recordId, rawNumber, isTest)
                 } else { // allowed
                     // 4. Show CallerID window
                     withContext(Main) {
