@@ -1,5 +1,6 @@
 <resources>
     <string name="auto_report">自动举报</string>
+    <string name="manual_report">手动举报</string>
     <string name="help_auto_report_type">
     <![CDATA[
     如果号码因以下原因被阻止，则自动举报该号码： <br>

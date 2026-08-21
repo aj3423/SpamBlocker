@@ -214,7 +214,7 @@ fun HistoryCard(
                             }
                         }
 
-                        // Auto Report Log
+                        // Auto/Manual Report Log
                         if (record.autoReportingLog != null) {
                             if (record.expanded) {
                                 val trigger = remember { mutableStateOf(false) }

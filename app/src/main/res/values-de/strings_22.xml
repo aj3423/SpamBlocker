@@ -1,5 +1,6 @@
 <resources>
     <string name="auto_report">Automatischer Bericht</string>
+    <string name="manual_report">Manueller Bericht</string>
     <string name="help_auto_report_type">
     <![CDATA[
     Die Nummer automatisch melden, wenn sie aus folgenden Gründen blockiert wurde: <br>

@@ -949,6 +949,10 @@ class Checker { // for namespace only
                             )
                             val success = api.actions.executeAll(ctx, aCtx)
 
+                            if (!success) {
+                                cCtx.anythingWrong = true
+                            }
+
                             val result = aCtx.racingResult
                             if (success && result?.determined == true) {
                                 result

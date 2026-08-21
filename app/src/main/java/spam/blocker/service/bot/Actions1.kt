@@ -249,7 +249,7 @@ open class HttpRequest(
                 }
 
                 aCtx.logger?.debug(ctx.getString(R.string.sending_request))
-                
+
                 // 4. Send request
                 val result = httpRequest(
                     scope = aCtx.scope,
@@ -279,18 +279,14 @@ open class HttpRequest(
                     return true
                 } else {
                     aCtx.logger?.error("HTTP <${result?.statusCode}>: $echo")
-                    aCtx.cCtx?.anythingWrong = true
-                    aCtx.anythingWrong = true
                     return false
                 }
             } catch (_: CancellationException) {
                 // For API query, when a winner is found, others will be canceled
                 aCtx.logger?.debug(ctx.getString(R.string.canceling_thread))
-                return false // no need to retry when canceled
+                return true // no need to retry when canceled
             } catch (e: Exception) {
                 aCtx.logger?.error("$e")
-                aCtx.cCtx?.anythingWrong = true
-                aCtx.anythingWrong = true
 
                 // Don't return here for it to retry
             } finally {

@@ -52,7 +52,7 @@ data class HistoryRecord(
 
     val fullScreeningLog: String? = null,
 
-    val autoReportingLog: String? = null,
+    val autoReportingLog: String? = null, // Actually for both auto/manual reporting
 
     // if anything went wrong during the screening, e.g. api query timed out
     val anythingWrongScreening: Boolean = false,

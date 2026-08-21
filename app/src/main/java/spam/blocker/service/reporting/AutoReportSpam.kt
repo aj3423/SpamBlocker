@@ -46,7 +46,7 @@ import spam.blocker.util.Util.getHistoryCallsByNumber
 import spam.blocker.util.logi
 import java.util.UUID
 
-fun updateRecordAutoReportLog(
+fun updateRecordReportLog(
     ctx: Context,
     table: HistoryTable,
     vm: HistoryViewModel,
@@ -96,16 +96,16 @@ fun maybeAutoReportSMS(
                 smsContent = smsContent,
                 tagCategoryValue = tagOther,
             )
-            api.actions.executeAll(ctx, aCtx)
-            aCtx.anythingWrong // returns a boolean
+            val success = api.actions.executeAll(ctx, aCtx)
+            success
         }
     }
     scope.launch {
         val anythingWrong = deferredResults.awaitAll()
-            .contains(true)
+            .contains(false)
         val log = logger.output.serialize()
 
-        updateRecordAutoReportLog(
+        updateRecordReportLog(
             ctx, table = SmsTable(), vm = G.smsVM, recordId = recordId,
             log = log, anythingWrong = anythingWrong
         )
@@ -196,16 +196,16 @@ private fun reportImmediately(
                 rawNumber = rawNumber,
                 tagCategoryValue = tagOther,
             )
-            api.actions.executeAll(ctx, aCtx)
-            aCtx.anythingWrong // returns a boolean
+            val success = api.actions.executeAll(ctx, aCtx)
+            success
         }
     }
     scope.launch {
         val anythingWrong = deferredResults.awaitAll()
-            .contains(true)
+            .contains(false)
         val log = logger.output.serialize()
 
-        updateRecordAutoReportLog(
+        updateRecordReportLog(
             ctx, table = CallTable(), vm = G.callVM, recordId = recordId, log = log, anythingWrong = anythingWrong
         )
     }

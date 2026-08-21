@@ -151,8 +151,6 @@ data class ActionContext(
     // for trigger `AfterCallScreening`
     var checkResult: ICheckResult? = null,
 
-    // Anything went wrong during executing actions, e.g. auto reporting failed due to network issue
-    var anythingWrong: Boolean = false,
 )
 
 interface IAction {

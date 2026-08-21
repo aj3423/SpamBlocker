@@ -31,7 +31,7 @@ import spam.blocker.db.RegexRule
 import spam.blocker.db.reScheduleBot
 import spam.blocker.def.Def
 import spam.blocker.service.reporting.listReportableCallAPIs
-import spam.blocker.service.reporting.updateRecordAutoReportLog
+import spam.blocker.service.reporting.updateRecordReportLog
 import spam.blocker.ui.darken
 import spam.blocker.ui.history.tagValid
 import spam.blocker.ui.setting.LabeledRow
@@ -1088,17 +1088,17 @@ class ScheduledAutoReportNumber(
                     rawNumber = rawNumber,
                     tagCategoryValue = asTagCategory,
                 )
-                api.actions.executeAll(ctx, aCtx)
-                aCtx.anythingWrong // returns a boolean
+                val success = api.actions.executeAll(ctx, aCtx)
+                success
             }
         }
 
         scope.launch {
             val anythingWrong = deferredResults.awaitAll()
-                .contains(true)
+                .contains(false)
             val log = logger.output.serialize()
 
-            updateRecordAutoReportLog(
+            updateRecordReportLog(
                 ctx, table = CallTable(), vm = G.callVM, recordId = recordId,
                 log = log, anythingWrong = anythingWrong
             )

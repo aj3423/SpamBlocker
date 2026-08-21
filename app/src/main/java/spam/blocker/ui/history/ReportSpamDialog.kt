@@ -1,5 +1,6 @@
 package spam.blocker.ui.history
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.inputmethod.InputMethodManager
 import androidx.compose.foundation.layout.Arrangement
@@ -27,15 +28,19 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import spam.blocker.G
 import spam.blocker.R
+import spam.blocker.db.CallTable
 import spam.blocker.def.Def
 import spam.blocker.service.bot.ActionContext
 import spam.blocker.service.bot.executeAll
 import spam.blocker.service.reporting.listReportableCallAPIs
 import spam.blocker.service.reporting.listReportableSmsAPIs
+import spam.blocker.service.reporting.updateRecordReportLog
 import spam.blocker.ui.M
 import spam.blocker.ui.widgets.FlowRowSpaced
 import spam.blocker.ui.widgets.GreyIcon16
@@ -45,6 +50,10 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.JetpackTextLogger
+import spam.blocker.util.MultiLogger
+import spam.blocker.util.SaveableLogger
+import spam.blocker.util.TimeUtils.formatTime
+import spam.blocker.util.getSaveableOutput
 import spam.blocker.util.logi
 
 
@@ -74,11 +83,13 @@ fun spamCategoryNamesMap(ctx: Context, forType: Int): Map<String, String> {
     )
 }
 
+@SuppressLint("LocalContextGetResourceValueCall")
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun ReportSpamDialog(
     trigger: MutableState<Boolean>,
     forType: Int,
+    recordId: Long,
     rawNumber: String,
     smsContent: String? = null
 ) {
@@ -122,22 +133,37 @@ fun ReportSpamDialog(
                         Def.ForNumber -> listReportableCallAPIs(ctx = ctx, rawNumber = rawNumber, domainFilter = null, isManualReport = true, blockReason = null)
                         else -> listReportableSmsAPIs(ctx = ctx, isManualReport = true, blockReason = null)
                     }
-                    apis.forEach { api ->
-                        scope.launch {
-                            withContext(IO) {
-                                val aCtx = ActionContext(
-                                    scope = scope,
-                                    logger = JetpackTextLogger(reportResult),
-                                    rawNumber = rawNumber,
-                                    smsContent = smsContent,
-                                    tagCategoryValue = keyTag,
-                                    tagCommentValue = comment
-                                )
 
-                                val success = api.actions.executeAll(ctx, aCtx)
-                                logi("report to ${api.summary()}, success: $success")
-                            }
+                    val multiLogger = MultiLogger(listOf(
+                        JetpackTextLogger(reportResult),
+                        SaveableLogger()
+                    ))
+                    multiLogger.info(ctx.getString(R.string.manual_report))
+                    multiLogger.debug("${ctx.getString(R.string.executed_at)} ${formatTime(ctx, System.currentTimeMillis())}\n")
+
+                    val deferredResults = apis.map { api ->
+                        scope.async {
+                            val aCtx = ActionContext(
+                                scope = scope,
+                                logger = multiLogger,
+                                rawNumber = rawNumber,
+                                smsContent = smsContent,
+                                tagCategoryValue = keyTag,
+                                tagCommentValue = comment
+                            )
+
+                            val success = api.actions.executeAll(ctx, aCtx)
+                            success
                         }
+                    }
+                    scope.launch {
+                        val anythingWrong = deferredResults.awaitAll()
+                            .contains(false)
+                        val log = multiLogger.getSaveableOutput()?.serialize() ?: ""
+
+                        updateRecordReportLog(
+                            ctx, table = CallTable(), vm = G.callVM, recordId = recordId, log = log, anythingWrong = anythingWrong
+                        )
                     }
                 }
             }

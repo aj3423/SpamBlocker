@@ -1,5 +1,6 @@
 <resources>
     <string name="auto_report">Denúncia automàtica</string>
+    <string name="manual_report">Denúncia manual</string>
     <string name="help_auto_report_type">
     <![CDATA[
     Denuncia automàticament el número si és bloquejat per les raons següents: <br>

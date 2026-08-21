@@ -144,7 +144,7 @@ interface ICheckResult {
                 Spacer(modifier = M.padding(vertical = 4.dp))
 
                 val reportTrigger = remember { mutableStateOf(false) }
-                ReportSpamDialog(trigger = reportTrigger, forType = forType, rawNumber = record.peer, smsContent = record.extraInfo)
+                ReportSpamDialog(trigger = reportTrigger, forType = forType, rawNumber = record.peer, smsContent = record.extraInfo, recordId = record.id)
                 StrokeButton(
                     label = Str(if (forType == Def.ForNumber) R.string.report_number else R.string.report_sms),
                     icon = { ResIcon(R.drawable.ic_upload_to_cloud, color = C.warning) },
