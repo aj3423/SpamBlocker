@@ -43,6 +43,9 @@
     <string name="use_this_token">از این توکن استفاده کن</string>
     <string name="login_and_get_a_token">در وب‌سایت ثبت‌نام و وارد شوید و توکن خود را دریافت کنید.</string>
     <string name="get_a_new_token">دریافت توکن جدید</string>
+    <string name="token">توکن</string>
+    <string name="enter_token_manually_desc">اگر از قبل توکن دارید، آن را به‌صورت دستی وارد کنید.</string>
+    <string name="enter_token_manually">ورود دستی توکن</string>
     <string name="others">سایر موارد</string>
     <string name="api_settings">تنظیمات API</string>
     <string name="include_settings">تنظیمات شامل‌کردن</string>

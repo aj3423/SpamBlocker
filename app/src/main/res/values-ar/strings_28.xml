@@ -43,6 +43,9 @@
     <string name="use_this_token">استخدم هذا الرمز</string>
     <string name="login_and_get_a_token">سجل وأنشئ جلسة دخول إلى الموقع واحصل على الرمز الخاص بك.</string>
     <string name="get_a_new_token">احصل على رمز جديد</string>
+    <string name="token">رمز</string>
+    <string name="enter_token_manually_desc">إذا كان لديك رمز بالفعل، فأدخله يدويًا.</string>
+    <string name="enter_token_manually">إدخال الرمز يدويًا</string>
     <string name="others">أخرى</string>
     <string name="api_settings">إعدادات API</string>
     <string name="include_settings">إعدادات التضمين</string>

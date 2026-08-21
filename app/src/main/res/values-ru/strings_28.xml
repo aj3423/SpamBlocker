@@ -43,6 +43,9 @@
     <string name="use_this_token">Использовать этот токен</string>
     <string name="login_and_get_a_token">Зарегистрируйтесь и войдите на сайт, чтобы получить свой токен.</string>
     <string name="get_a_new_token">Получить новый токен</string>
+    <string name="token">Токен</string>
+    <string name="enter_token_manually_desc">Если у вас уже есть токен, введите его вручную.</string>
+    <string name="enter_token_manually">Ввести токен вручную</string>
     <string name="others">Другое</string>
     <string name="api_settings">Настройки API</string>
     <string name="include_settings">Включены в резервную копию</string>

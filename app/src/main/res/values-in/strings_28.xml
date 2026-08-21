@@ -43,6 +43,9 @@
     <string name="use_this_token">Gunakan token ini</string>
     <string name="login_and_get_a_token">Daftar dan masuk ke situs web untuk mendapatkan token Anda.</string>
     <string name="get_a_new_token">Dapatkan token baru</string>
+    <string name="token">Token</string>
+    <string name="enter_token_manually_desc">Jika Anda sudah memiliki token, masukkan secara manual.</string>
+    <string name="enter_token_manually">Masukkan token secara manual</string>
     <string name="others">Lainnya</string>
     <string name="api_settings">Pengaturan API</string>
     <string name="include_settings">Pengaturan Penyertaan</string>

@@ -43,6 +43,9 @@
     <string name="use_this_token">Usa questo token</string>
     <string name="login_and_get_a_token">Registrati e accedi al sito web per ottenere il tuo token.</string>
     <string name="get_a_new_token">Ottieni un nuovo token</string>
+    <string name="token">Token</string>
+    <string name="enter_token_manually_desc">Se hai già un token, inseriscilo manualmente.</string>
+    <string name="enter_token_manually">Inserisci il token manualmente</string>
     <string name="others">Altro</string>
     <string name="api_settings">Impostazioni API</string>
     <string name="include_settings">Impostazioni di inclusione</string>

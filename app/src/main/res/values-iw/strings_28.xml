@@ -43,6 +43,9 @@
     <string name="use_this_token">השתמש באסימון זה</string>
     <string name="login_and_get_a_token">הירשם והתחבר לאתר כדי לקבל את האסימון שלך.</string>
     <string name="get_a_new_token">קבל אסימון חדש</string>
+    <string name="token">אסימון</string>
+    <string name="enter_token_manually_desc">אם כבר יש לך אסימון, הזן אותו ידנית.</string>
+    <string name="enter_token_manually">הזן אסימון ידנית</string>
     <string name="others">אחר</string>
     <string name="api_settings">הגדרות API</string>
     <string name="include_settings">הגדרות הכללה</string>

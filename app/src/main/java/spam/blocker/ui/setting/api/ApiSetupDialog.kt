@@ -3,6 +3,7 @@ package spam.blocker.ui.setting.api
 import android.content.Context
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.MutableState
@@ -21,10 +22,12 @@ import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.ui.M
 import spam.blocker.ui.startAuthLogin
+import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyText
 import spam.blocker.ui.widgets.HtmlText
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.Str
+import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.Lambda1
 import spam.blocker.util.spf
@@ -49,6 +52,8 @@ abstract class ApiSetupDialog {
 //        }
 //    }
 //}
+
+
 /* --------- Oauth API dialog -------------
   The dialog shows the existing OAuth token if it exists.
   When no existing token is found, it shows a button "Get a Token" that opens a browser activity for completing an oauth flow.
@@ -95,14 +100,46 @@ class OAuthSetupDialog(
                 HorizontalDivider(modifier = M.padding(vertical = 10.dp))
             }
 
-            if (tokenInSpf == null) {
+            // Get a new token online
+//            if (tokenInSpf == null) {
                 GreyText(Str(R.string.login_and_get_a_token))
-            }
+//            }
             StrokeButton(
                 Str(R.string.get_a_new_token),
                 color = if (tokenInSpf == null) G.palette.infoBlue else G.palette.textGrey
             ) {
                 startAuthLogin(ctx, oauthUrl)
+            }
+
+            HorizontalDivider(modifier = M.padding(vertical = 10.dp))
+
+            // Manually enter token
+            val triggerManuallyEnter = retain { mutableStateOf(false) }
+            var tokenEntered by retain { mutableStateOf("") }
+            PopupDialog(
+                trigger = triggerManuallyEnter,
+                buttons = {
+                    StrokeButton(Str(R.string.save), G.palette.teal200) {
+                        spf.OAuth(ctx).phoneBlockToken = tokenEntered
+                        triggerManuallyEnter.value = false
+                        doAdd(ctx)
+                        trigger.value = false
+                    }
+                }
+            ) {
+                StrInputBox(
+                    text = tokenEntered,
+                    label = { Text(Str(R.string.token)) },
+                    onValueChange = {
+                        tokenEntered = it
+                    }
+                )
+            }
+            GreyText(Str(R.string.enter_token_manually_desc))
+            GreyButton(
+                Str(R.string.enter_token_manually),
+            ) {
+                triggerManuallyEnter.value = true
             }
         }
     }
