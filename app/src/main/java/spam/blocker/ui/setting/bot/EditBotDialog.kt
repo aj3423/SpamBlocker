@@ -145,7 +145,7 @@ fun EditBotDialog(
                         }
                         ActionCard(
                             action = trigger.value,
-                            modifier = M.clickable {
+                            cardModifier = M.clickable {
                                 editTrigger.value = true
                             },
                             showDragIndicator = false

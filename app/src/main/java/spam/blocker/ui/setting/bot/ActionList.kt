@@ -86,7 +86,7 @@ fun ActionList(
             ) {
                 ActionCard(
                     action = action,
-                    modifier = M
+                    cardModifier = M
                         .drawBehind {
                             // Draw a green/red line above/below each action card to
                             //  indicate whether it's chainable to the previous/next sibling.
@@ -103,13 +103,13 @@ fun ActionList(
                                     link(if (nextChainable) Color.Green else Color.Red, false)
                             }
                         }
-                        .draggableHandle() // make it reorderable
                         .combinedClickable(
                             onClick = {
                                 clickedIndex = index
                                 editTrigger.value = true
                             }
-                        )
+                        ),
+                    dragModifier = M.draggableHandle() // make it reorderable
                 )
             }
 //            }

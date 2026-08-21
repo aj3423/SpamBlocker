@@ -24,7 +24,8 @@ import spam.blocker.ui.widgets.RowVCenterSpaced
 @Composable
 fun ActionCard(
     action: IAction,
-    modifier: Modifier,
+    cardModifier: Modifier,
+    dragModifier: Modifier = Modifier,
     showDragIndicator: Boolean = true
 ) {
     val ctx = LocalContext.current
@@ -32,7 +33,7 @@ fun ActionCard(
 
     OutlineCard(
         containerBg = C.dialogBg,
-        modifier = modifier,
+        modifier = cardModifier,
     ) {
         RowVCenterSpaced(
             space = 8,
@@ -62,7 +63,7 @@ fun ActionCard(
                 action.Summary(showIcon = false)
             }
 
-            RowVCenterSpaced(2) {
+            RowVCenterSpaced(2, modifier = dragModifier) {
                 BalloonQuestionMark(
                     tooltip = action.tooltip(ctx),
 //                    onLinkClick = action.onTooltipLinkClick(ctx),
