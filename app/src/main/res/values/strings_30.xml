@@ -19,5 +19,5 @@
         &ensp; The incoming number
         ]]>
     </string>
-
+    <string name="sending_request">Sending request…</string>
 </resources>

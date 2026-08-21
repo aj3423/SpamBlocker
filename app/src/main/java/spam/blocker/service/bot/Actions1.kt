@@ -248,6 +248,8 @@ open class HttpRequest(
                     aCtx.logger?.debug("${ctx.getString(R.string.http_post_body)}: %s".formatAnnotated(resolvedBody.A(C.textGrey.darken())))
                 }
 
+                aCtx.logger?.debug(ctx.getString(R.string.sending_request))
+                
                 // 4. Send request
                 val result = httpRequest(
                     scope = aCtx.scope,

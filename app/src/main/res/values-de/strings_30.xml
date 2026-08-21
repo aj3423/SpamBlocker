@@ -19,4 +19,5 @@
         &ensp; Die eingehende Nummer
         ]]>
     </string>
+    <string name="sending_request">Anfrage wird gesendet…</string>
 </resources>

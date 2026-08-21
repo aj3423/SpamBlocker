@@ -19,4 +19,5 @@
         &ensp; Вхідний номер
         ]]>
     </string>
+    <string name="sending_request">Надсилання запиту…</string>
 </resources>

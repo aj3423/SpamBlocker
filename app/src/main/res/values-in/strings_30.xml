@@ -19,4 +19,5 @@
         &ensp; Nomor masuk
         ]]>
     </string>
+    <string name="sending_request">Mengirim permintaan…</string>
 </resources>

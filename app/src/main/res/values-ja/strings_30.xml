@@ -19,4 +19,5 @@
         &ensp; 着信番号
         ]]>
     </string>
+    <string name="sending_request">リクエストを送信中…</string>
 </resources>

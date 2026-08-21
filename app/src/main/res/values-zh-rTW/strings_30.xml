@@ -19,4 +19,5 @@
         &ensp; 來電號碼
         ]]>
     </string>
+    <string name="sending_request">正在發送請求…</string>
 </resources>

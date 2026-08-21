@@ -19,4 +19,5 @@
         &ensp; Gelen numara
         ]]>
     </string>
+    <string name="sending_request">İstek gönderiliyor…</string>
 </resources>

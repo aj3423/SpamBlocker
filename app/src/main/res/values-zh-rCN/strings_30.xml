@@ -19,4 +19,5 @@
         &ensp; 来电号码
         ]]>
     </string>
+    <string name="sending_request">正在发送请求…</string>
 </resources>

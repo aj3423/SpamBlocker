@@ -19,4 +19,5 @@
         &ensp; الرقم الوارد
         ]]>
     </string>
+    <string name="sending_request">جارٍ إرسال الطلب…</string>
 </resources>
