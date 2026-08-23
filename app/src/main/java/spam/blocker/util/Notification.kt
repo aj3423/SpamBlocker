@@ -240,7 +240,7 @@ object Notification {
     ) {
 
         val chId = channel.channelId // 5 importance level <-> 5 channel id
-        val notificationId = System.currentTimeMillis().toInt()
+        val notificationId = Random.nextInt()
 
         // Use different requestCode for every pendingIntent, otherwise the
         //   previous pendingIntent will be canceled by FLAG_CANCEL_CURRENT, which causes
