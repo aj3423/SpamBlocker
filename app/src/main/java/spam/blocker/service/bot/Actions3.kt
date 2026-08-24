@@ -561,20 +561,25 @@ class ParseQueryResult(
     //  E.g.
     //    "12x positive", "24x negative" from SIA
     private fun makeDecisionFormula(ctx: Context, logger: ILogger?, html: String): Boolean? {
-        if (negativeSig.isEmpty() || positiveSig.isEmpty())
-            return null
-
         val C = G.palette
 
         // 1. negative
-        val negativeOpts = Util.flagsToRegexOptions(negativeFlags)
-        val m1 = negativeSig.toRegex(negativeOpts).find(html)
-        val negativeRating = m1?.groupValues[1] ?: "0"
+        val negativeRating = try {
+            val negativeOpts = Util.flagsToRegexOptions(negativeFlags)
+            val m1 = negativeSig.toRegex(negativeOpts).find(html)
+            m1?.groupValues[1] ?: "0"
+        } catch (_: Exception) {
+            "0"
+        }
 
         // 2. positive
-        val positiveOpts = Util.flagsToRegexOptions(positiveFlags)
-        val m2 = positiveSig.toRegex(positiveOpts).find(html)
-        val positiveRating = m2?.groupValues[1] ?: "0"
+        val positiveRating = try {
+            val positiveOpts = Util.flagsToRegexOptions(positiveFlags)
+            val m2 = positiveSig.toRegex(positiveOpts).find(html)
+            m2?.groupValues[1] ?: "0"
+        } catch (_: Exception) {
+            "0"
+        }
 
         logger?.info(ctx.getString(R.string.rating_count_template).formatAnnotated(
             positiveRating.A(C.disabled),
