@@ -1,0 +1,10 @@
+Fixes:
+- If multiple SMS notifications arrive at the same time, only the last one is displayed
+- Wrong history indicator for SMS rules with "particular number" enabled
+
+Improvements:
+- A new `Search Online` option in the history context menu, for searching the number using your preferred search engine.
+- Manual reports are now saved, so you can close the reporting dialog without waiting for it to finish and review the result later by tapping the cloud icon.
+
+Changes:
+- To reorder workflow action cards, drag the `-` handle instead of the entire card.
