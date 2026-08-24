@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentWidth
@@ -78,6 +79,7 @@ fun PopupDialog(
                 dismissOnBackPress = true,
                 dismissOnClickOutside = true,
                 usePlatformDefaultWidth = popupSize == null,
+                decorFitsSystemWindows = false,   // ← important
             )
         ) {
             // Disable the dialog background dim effect.
@@ -95,9 +97,9 @@ fun PopupDialog(
                     .widthIn(
                         min = popupSize?.minWidth()?.dp ?: Dp.Unspecified,
                         max = popupSize?.maxWidth(screenWidthDp())?.dp ?: Dp.Unspecified,
-                    ),
-
-                border = BorderStroke(1.dp, color= C.dialogBg.lighten(0.1f)),
+                    )
+                    .imePadding(), // preserve padding for IME, show the scroll bar when IME appears
+                border = BorderStroke(1.dp, color = C.dialogBg.lighten(0.1f)),
                 colors = CardDefaults.cardColors(
                     containerColor = G.palette.dialogBg,
                 ),
