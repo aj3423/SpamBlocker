@@ -567,6 +567,9 @@ class ParseQueryResult(
         val negativeRating = try {
             val negativeOpts = Util.flagsToRegexOptions(negativeFlags)
             val m1 = negativeSig.toRegex(negativeOpts).find(html)
+            m1?.let { // Print the full match if found
+                logger?.debug(ctx.getString(R.string.negative_identifier).A() + ": ".A() + it.value.A(C.disabled))
+            }
             m1?.groupValues[1] ?: "0"
         } catch (_: Exception) {
             "0"
@@ -576,6 +579,9 @@ class ParseQueryResult(
         val positiveRating = try {
             val positiveOpts = Util.flagsToRegexOptions(positiveFlags)
             val m2 = positiveSig.toRegex(positiveOpts).find(html)
+            m2?.let { // Print the full match if found
+                logger?.debug(ctx.getString(R.string.positive_identifier).A() + ": ".A() + it.value.A(C.disabled))
+            }
             m2?.groupValues[1] ?: "0"
         } catch (_: Exception) {
             "0"
