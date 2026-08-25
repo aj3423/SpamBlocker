@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
@@ -80,6 +81,14 @@ fun ChooseBackupCategoriesDialog(
     onOk: Lambda1<CategorySelection>,
 ) {
     var categories by retain(initialCategories) { mutableStateOf(initialCategories) }
+
+    // Reset to the latest initial value whenever the dialog opens, otherwise it always shows
+    //  the last categories instead of the initialCategories
+    LaunchedEffect(trigger.value) {
+        if (trigger.value) {
+            categories = initialCategories
+        }
+    }
 
     PopupDialog(
         trigger,
