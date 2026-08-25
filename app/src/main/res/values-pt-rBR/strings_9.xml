@@ -5,7 +5,7 @@
     <string name="url">URL</string>
     <string name="expiry_days">Dias de Validade</string>
     <string name="column_mapping">Mapeamento de Colunas</string>
-    <string name="include_spam_db">Incluir Banco de Dados de <translate>Spam</translate></string>
+
     <string name="no_config_needed">Não precisa de configuração</string>
     <string name="optional">(opcional)</string>
 

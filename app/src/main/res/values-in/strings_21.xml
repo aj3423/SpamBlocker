@@ -1,18 +1,5 @@
 <resources>
     <string name="perm_write_settings">Ubah Pengaturan</string>
-    <string name="set_to">Atur ke</string>
-    <string name="help_set_ringtone_to">
-    <![CDATA[
-        Atur nada dering untuk fitur tertentu, atau bisukan. <br>
-        <br>
-        Misalnya, untuk mengatur nada dering untuk aturan regex: <br><br>
-        <sample>
-        &emsp; { \"regex\": \"rule_desc\" }
-        </sample>
-        <br><br>
-        Panggilan yang diizinkan oleh aturan ini akan memutar nada dering yang ditentukan.<br>
-    ]]>
-    </string>
     <string name="ringtone">Nada Dering</string>
     <string name="call_to_test_ringtone">Lakukan panggilan sungguhan untuk menguji nada dering.</string>
     <string name="help_ringtone">
@@ -28,7 +15,7 @@
         ketik <b>Work</b> di kolom ini.
     ]]>
     </string>
-    <string name="invalid_config">Konfigurasi Tidak Valid</string>
+
     <string name="custom">Kustom</string>
     <string name="quick_tile">Ubin Cepat</string>
     <string name="help_quick_tile">

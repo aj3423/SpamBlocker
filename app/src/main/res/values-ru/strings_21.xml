@@ -1,18 +1,5 @@
 <resources>
     <string name="perm_write_settings">Изменение настроек</string>
-    <string name="set_to">Установить на</string>
-    <string name="help_set_ringtone_to">
-    <![CDATA[
-        Установите мелодию звонка для определенной функции или отключите ее. <br>
-        <br>
-        Например, чтобы установить мелодию звонка для правила регулярного выражения: <br><br>
-        <sample>
-        &emsp; { \"regex\": \"rule_desc\" }
-        </sample>
-        <br><br>
-        Звонки, разрешенные этим правилом, будут воспроизводить указанную мелодию звонка.<br>
-    ]]>
-    </string>
     <string name="ringtone">Мелодия звонка</string>
     <string name="call_to_test_ringtone">Выполните реальный звонок, чтобы проверить мелодию.</string>
     <string name="help_ringtone">
@@ -27,7 +14,7 @@
         Например, если вы хотите применить это к правилу регулярного выражения <b>Work</b>, введите <b>Work</b> в это поле.
     ]]>
     </string>
-    <string name="invalid_config">Неверная конфигурация</string>
+
     <string name="custom">Пользовательский</string>
     <string name="quick_tile">Быстрая плитка</string>
     <string name="help_quick_tile">

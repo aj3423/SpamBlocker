@@ -1,18 +1,5 @@
 <resources>
     <string name="perm_write_settings">Escribir configuración</string>
-    <string name="set_to">Establecer en</string>
-    <string name="help_set_ringtone_to">
-    <![CDATA[
-        Establece o ton de chamada para unha función específica, ou silénciao. <br>
-        <br>
-        Por exemplo, para establecer o ton de chamada para unha regra regex: <br><br>
-        <sample>
-        &emsp; { \"regex\": \"rule_desc\" }
-        </sample>
-        <br><br>
-        As chamadas permitidas por esta regra reproducirán o ton de chamada especificado.<br>
-    ]]>
-    </string>
     <string name="ringtone">Ton de chamada</string>
     <string name="call_to_test_ringtone">Realiza unha chamada real para probar o ton de chamada.</string>
     <string name="help_ringtone">
@@ -28,7 +15,7 @@
         escribe <b>Traballo</b> neste campo.
     ]]>
     </string>
-    <string name="invalid_config">Configuración non válida</string>
+
     <string name="custom">Personalizado</string>
     <string name="quick_tile">Mosaico rápido</string>
     <string name="help_quick_tile">

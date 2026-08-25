@@ -33,7 +33,7 @@
     <string name="status"><translate>الحالة</translate></string>
     <string name="inactive"><translate>غير نشط</translate></string>
     <string name="confirm_to_reset"><translate>تأكيد إعادة التعيين؟</translate></string>
-    <string name="check_stir_attestation"><translate>التحقق من STIR (?)</translate></string>
+
     <string name="additional_numbers"><translate>أرقام إضافية</translate></string>
     <string name="call_to_number"><translate>للرقم</translate></string>
     <string name="call_to"><translate>اتصل بـ</translate></string>

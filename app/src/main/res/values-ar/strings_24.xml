@@ -24,14 +24,6 @@
     </string>
     <string name="caller_name">اسم المتصل</string>
     <string name="caller_name_rule">قاعدة اسم المتصل</string>
-    <string name="help_regex_preset_caller_name">
-        <![CDATA[
-        السماح بالمكالمات التي تحتوي على معلومات <b>CNAP (تقديم اسم المتصل)</b>، وهي ميزة اتصالات
-         تعرض الاسم المسجل للمتصل (مع رقم الهاتف) على شاشة هاتف المستلم أثناء مكالمة واردة. <br>
-        <br>
-        بالنسبة للبلدان التي تفرض CNAP تم التحقق منه بواسطة KYC، فمن المرجح أن تكون المكالمات التي تحتوي على اسم المتصل صالحة.
-        ]]>
-    </string>
     <string name="forwarded_call">مكالمة محولة</string>
     <string name="help_regex_preset_forwarded_call">
         <![CDATA[

@@ -5,7 +5,7 @@
     <string name="url">URL</string>
     <string name="expiry_days">Днів до закінчення терміну дії</string>
     <string name="column_mapping">Відповідність стовпців</string>
-    <string name="include_spam_db">Включити базу даних спаму</string>
+
     <string name="no_config_needed">Налаштування не потрібне</string>
     <string name="optional">(необов\'язково)</string>
 

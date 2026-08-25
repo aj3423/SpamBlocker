@@ -1,18 +1,5 @@
 <resources>
     <string name="perm_write_settings">写入设置</string>
-    <string name="set_to">设置为</string>
-    <string name="help_set_ringtone_to">
-    <![CDATA[
-        为特定功能设置铃声，或将其静音。<br>
-        <br>
-        例如，为正则表达式规则设置铃声：<br><br>
-        <sample>
-        &emsp; { \"regex\": \"rule_desc\" }
-        </sample>
-        <br><br>
-        此规则允许的呼叫将播放指定的铃声。<br>
-    ]]>
-    </string>
     <string name="ringtone">铃声</string>
     <string name="call_to_test_ringtone">拨打实际电话以测试铃声。</string>
     <string name="help_ringtone">
@@ -28,7 +15,7 @@
         请在此字段中输入 <b>Work</b>。
     ]]>
     </string>
-    <string name="invalid_config">无效配置</string>
+
     <string name="custom">自定义</string>
     <string name="quick_tile">快捷磁贴</string>
     <string name="help_quick_tile">

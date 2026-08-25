@@ -6,7 +6,7 @@
 
     <string name="notification">通知</string>
     <string name="type">タイプ</string>
-    <string name="times">回数</string>
+
     <plurals name="days">
         <item quantity="one">%d 日</item>
         <item quantity="two">%d 日</item>

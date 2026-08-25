@@ -27,14 +27,6 @@
     </string>
     <string name="caller_name">Ім\'я абонента</string>
     <string name="caller_name_rule">Правило імені абонента</string>
-    <string name="help_regex_preset_caller_name">
-        <![CDATA[
-        Дозволяти дзвінки, що мають інформацію <b>CNAP (Caller Name Presentation)</b>, що є телекомунікаційною функцією, яка
-         відображає зареєстроване ім\'я абонента (разом з номером телефону) на екрані телефону отримувача під час вхідного дзвінка. <br>
-        <br>
-        Для країн, які застосовують CNAP, підтверджений KYC, дзвінки, що мають ім\'я абонента, ймовірно, є дійсними.
-        ]]>
-    </string>
     <string name="forwarded_call">Переадресований дзвінок</string>
     <string name="help_regex_preset_forwarded_call">
         <![CDATA[

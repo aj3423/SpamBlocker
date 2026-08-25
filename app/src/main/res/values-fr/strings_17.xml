@@ -33,7 +33,7 @@
     <string name="status">Statut</string>
     <string name="inactive">Inactif</string>
     <string name="confirm_to_reset">Confirmer la réinitialisation ?</string>
-    <string name="check_stir_attestation"><translate>Vérifier STIR (?)</translate></string>
+
     <string name="additional_numbers">Numéros supplémentaires</string>
     <string name="call_to_number">Vers numéro</string>
     <string name="call_to">Appeler</string>

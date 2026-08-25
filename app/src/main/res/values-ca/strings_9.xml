@@ -5,7 +5,7 @@
     <string name="url">URL</string>
     <string name="expiry_days">Dies de caducitat</string>
     <string name="column_mapping">Assignació de columnes</string>
-    <string name="include_spam_db">Incloure la base de dades de correu brossa</string>
+
     <string name="no_config_needed">No es necessita cap configuració</string>
     <string name="optional">(opcional)</string>
 

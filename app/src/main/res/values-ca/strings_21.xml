@@ -1,18 +1,5 @@
 <resources>
     <string name="perm_write_settings">Escriure configuració</string>
-    <string name="set_to">Establir a</string>
-    <string name="help_set_ringtone_to">
-    <![CDATA[
-        Estableix el to de trucada per a una característica particular, o silencia-lo. <br>
-        <br>
-        Per exemple, per establir el to de trucada per a una regla regex: <br><br>
-        <sample>
-        &emsp; { \"regex\": \"rule_desc\" }
-        </sample>
-        <br><br>
-        Les trucades permeses per aquesta regla reproduiran el to de trucada especificat.<br>
-    ]]>
-    </string>
     <string name="ringtone">To de trucada</string>
     <string name="call_to_test_ringtone">Realitza una trucada real per provar el to de trucada.</string>
     <string name="help_ringtone">
@@ -28,7 +15,7 @@
         escriu <b>Feina</b> en aquest camp.
     ]]>
     </string>
-    <string name="invalid_config">Configuració no vàlida</string>
+
     <string name="custom">Personalitzat</string>
     <string name="quick_tile">Rajola ràpida</string>
     <string name="help_quick_tile">

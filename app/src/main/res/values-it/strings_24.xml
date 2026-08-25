@@ -27,14 +27,6 @@
     </string>
     <string name="caller_name">Nome del chiamante</string>
     <string name="caller_name_rule">Regola nome chiamante</string>
-    <string name="help_regex_preset_caller_name">
-        <![CDATA[
-        Consente chiamate che hanno informazioni <b>CNAP (Caller Name Presentation)</b>, che è una funzionalità di telecomunicazione che
-         visualizza il nome registrato del chiamante (insieme al numero di telefono) sullo schermo del telefono del destinatario durante una chiamata in arrivo. <br>
-        <br>
-        Per i paesi che impongono CNAP verificato KYC, le chiamate con un nome chiamante sono probabilmente valide.
-        ]]>
-    </string>
     <string name="forwarded_call">Chiamata Inoltrata</string>
     <string name="help_regex_preset_forwarded_call">
         <![CDATA[

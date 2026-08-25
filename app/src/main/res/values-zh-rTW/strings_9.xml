@@ -5,7 +5,7 @@
     <string name="url">網址</string>
     <string name="expiry_days">過期天數</string>
     <string name="column_mapping">欄位對應</string>
-    <string name="include_spam_db">包含騷擾號碼資料庫</string>
+
     <string name="no_config_needed">不需要設定</string>
     <string name="optional">（選用）</string>
 

@@ -27,14 +27,6 @@
     </string>
     <string name="caller_name">Nama Penelepon</string>
     <string name="caller_name_rule">Aturan Nama Penelepon</string>
-    <string name="help_regex_preset_caller_name">
-        <![CDATA[
-        Izinkan panggilan yang memiliki informasi <b>CNAP (Caller Name Presentation)</b>, yang merupakan fitur telekomunikasi yang
-         menampilkan nama terdaftar penelepon (bersama dengan nomor telepon) di layar ponsel penerima selama panggilan masuk. <br>
-        <br>
-        Untuk negara yang memberlakukan CNAP terverifikasi KYC, panggilan yang memiliki nama penelepon kemungkinan besar valid.
-        ]]>
-    </string>
     <string name="forwarded_call">Panggilan Diteruskan</string>
     <string name="help_regex_preset_forwarded_call">
         <![CDATA[

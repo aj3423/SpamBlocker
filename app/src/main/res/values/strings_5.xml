@@ -4,7 +4,7 @@
     <string name="confirm_delete_all_rule">Delete all rules?</string>
     <string name="notification">Notification</string>
     <string name="type">Type</string>
-    <string name="times">Times</string>
+
     <plurals name="days">
         <item quantity="one">%d Day</item>
         <item quantity="two">%d Days</item>

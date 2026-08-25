@@ -1,18 +1,5 @@
 <resources>
     <string name="perm_write_settings">Scrivi impostazioni</string>
-    <string name="set_to">Imposta su</string>
-    <string name="help_set_ringtone_to">
-    <![CDATA[
-        Imposta la suoneria per una particolare funzione, o disattivala. <br>
-        <br>
-        Ad esempio, per impostare la suoneria per una regola regex: <br><br>
-        <sample>
-        &emsp; { \"regex\": \"rule_desc\" }
-        </sample>
-        <br><br>
-        Le chiamate consentite da questa regola riprodurranno la suoneria specificata.<br>
-    ]]>
-    </string>
     <string name="ringtone">Suoneria</string>
     <string name="call_to_test_ringtone">Effettua una chiamata reale per testare la suoneria.</string>
     <string name="help_ringtone">
@@ -28,7 +15,7 @@
         digita <b>Lavoro</b> in questo campo.
     ]]>
     </string>
-    <string name="invalid_config">Configurazione non valida</string>
+
     <string name="custom">Personalizzato</string>
     <string name="quick_tile">Riquadro rapido</string>
     <string name="help_quick_tile">

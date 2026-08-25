@@ -24,13 +24,6 @@
     </string>
     <string name="caller_name">発信者名</string>
     <string name="caller_name_rule">発信者名ルール</string>
-    <string name="help_regex_preset_caller_name">
-        <![CDATA[
-        <b>CNAP（Caller Name Presentation）</b>情報を持つ通話を許可します。これは、着信時に発信者の登録名（電話番号とともに）を受信者の電話画面に表示する通信機能です。<br>
-        <br>
-        KYC認証済みのCNAPを義務付けている国では、発信者名がある通話は有効である可能性が高いです。
-        ]]>
-    </string>
     <string name="forwarded_call">転送された通話</string>
     <string name="help_regex_preset_forwarded_call">
         <![CDATA[

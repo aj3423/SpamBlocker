@@ -27,13 +27,6 @@
     </string>
     <string name="caller_name">שם מתקשר</string>
     <string name="caller_name_rule">כלל שם מתקשר</string>
-    <string name="help_regex_preset_caller_name">
-        <![CDATA[
-        אפשר שיחות שיש להן מידע <b>CNAP (Caller Name Presentation)</b>, שהיא תכונה טלקומוניקטיבית המציגה את השם הרשום של המתקשר (יחד עם מספר הטלפון) על מסך הטלפון של הנמען במהלך שיחה נכנסת. <br>
-        <br>
-        עבור מדינות האוכפות CNAP מאומת KYC, שיחות שיש להן שם מתקשר הן ככל הנראה חוקיות.
-        ]]>
-    </string>
     <string name="forwarded_call">שיחה מועברת</string>
     <string name="help_regex_preset_forwarded_call">
         <![CDATA[

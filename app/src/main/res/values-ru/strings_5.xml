@@ -6,7 +6,7 @@
 
     <string name="notification">Уведомление</string>
     <string name="type">Тип</string>
-    <string name="times">Раз</string>
+
     <plurals name="days">
         <item quantity="one">%d день</item>
         <item quantity="two">%d дня</item>

@@ -1,18 +1,5 @@
 <resources>
     <string name="perm_write_settings">كتابة الإعدادات</string>
-    <string name="set_to">تعيين إلى</string>
-    <string name="help_set_ringtone_to">
-    <![CDATA[
-        عيّن نغمة الرنين لميزة معينة، أو اجعلها صامتة. <br>
-        <br>
-        على سبيل المثال، لتعيين نغمة الرنين لقاعدة تعبير نمطي (regex): <br><br>
-        <sample>
-        &emsp; { \"regex\": \"rule_desc\" }
-        </sample>
-        <br><br>
-        المكالمات المسموح بها بهذه القاعدة ستشغل نغمة الرنين المحددة.<br>
-    ]]>
-    </string>
     <string name="ringtone">نغمة الرنين</string>
     <string name="call_to_test_ringtone">قم بإجراء مكالمة فعلية لاختبار نغمة الرنين.</string>
     <string name="help_ringtone">
@@ -28,7 +15,7 @@
         اكتب <b>العمل</b> في هذا الحقل.
     ]]>
     </string>
-    <string name="invalid_config">تهيئة غير صالحة</string>
+
     <string name="custom">مخصص</string>
     <string name="quick_tile">مربع الإعدادات السريعة</string>
     <string name="help_quick_tile">

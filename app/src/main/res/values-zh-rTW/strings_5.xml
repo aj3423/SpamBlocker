@@ -4,7 +4,7 @@
     <string name="confirm_delete_all_rule">確定要刪除所有規則嗎？</string>
     <string name="notification">通知</string>
     <string name="type">類型</string>
-    <string name="times">次數</string>
+
     <plurals name="days">
         <item quantity="other">%d 天</item>
     </plurals>

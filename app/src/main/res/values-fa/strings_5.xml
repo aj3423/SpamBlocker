@@ -6,7 +6,7 @@
 
     <string name="notification">اعلان</string>
     <string name="type">نوع</string>
-    <string name="times">بارها</string>
+
     <plurals name="days">
         <item quantity="one">%d روز</item>
         <item quantity="two">%d روز</item>

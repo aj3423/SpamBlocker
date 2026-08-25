@@ -1,18 +1,5 @@
 <resources>
     <string name="perm_write_settings">Запис налаштувань</string>
-    <string name="set_to">Встановити як</string>
-    <string name="help_set_ringtone_to">
-    <![CDATA[
-        Встановити мелодію дзвінка для певної функції або вимкнути її. <br>
-        <br>
-        Наприклад, щоб встановити мелодію дзвінка для правила регулярного виразу: <br><br>
-        <sample>
-        &emsp; { \"regex\": \"rule_desc\" }
-        </sample>
-        <br><br>
-        Дзвінки, дозволені цим правилом, відтворюватимуть зазначену мелодію дзвінка.<br>
-    ]]>
-    </string>
     <string name="ringtone">Мелодія дзвінка</string>
     <string name="call_to_test_ringtone">Виконайте реальний дзвінок, щоб перевірити мелодію дзвінка.</string>
     <string name="help_ringtone">
@@ -28,7 +15,7 @@
         введіть <b>Робота</b> в цьому полі.
     ]]>
     </string>
-    <string name="invalid_config">Недійсна конфігурація</string>
+
     <string name="custom">Користувацький</string>
     <string name="quick_tile">Швидка плитка</string>
     <string name="help_quick_tile">

@@ -1,18 +1,5 @@
 <resources>
     <string name="perm_write_settings">Ayarları Yaz</string>
-    <string name="set_to">Şuna Ayarla</string>
-    <string name="help_set_ringtone_to">
-    <![CDATA[
-        Belirli bir özellik için zil sesini ayarlayın veya sessize alın. <br>
-        <br>
-        Örneğin, bir regex kuralı için zil sesini ayarlamak için: <br><br>
-        <sample>
-        &emsp; { \"regex\": \"rule_desc\" }
-        </sample>
-        <br><br>
-        Bu kuralın izin verdiği aramalar belirtilen zil sesini çalacaktır.<br>
-    ]]>
-    </string>
     <string name="ringtone">Zil Sesi</string>
     <string name="call_to_test_ringtone">Zil sesini test etmek için gerçek bir arama yapın.</string>
     <string name="help_ringtone">
@@ -28,7 +15,7 @@
         bu alana <b>İş</b> yazın.
     ]]>
     </string>
-    <string name="invalid_config">Geçersiz Yapılandırma</string>
+
     <string name="custom">Özel</string>
     <string name="quick_tile">Hızlı Döşeme</string>
     <string name="help_quick_tile">

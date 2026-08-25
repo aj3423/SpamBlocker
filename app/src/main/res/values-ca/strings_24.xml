@@ -27,13 +27,6 @@
     </string>
     <string name="caller_name">Nom del Trucador</string>
     <string name="caller_name_rule">Regla de Nom del Trucador</string>
-    <string name="help_regex_preset_caller_name">
-        <![CDATA[
-        Permet trucades que tinguin informació de <b>CNAP (Presentació del Nom del Trucador)</b>, que és una funció de telecomunicacions que mostra el nom registrat del trucador (juntament amb el número de telèfon) a la pantalla del telèfon del receptor durant una trucada entrant. <br>
-        <br>
-        Per a països que apliquen el CNAP verificat per KYC, les trucades que tenen un nom de trucador són probablement vàlides.
-        ]]>
-    </string>
     <string name="forwarded_call">Trucada desviada</string>
     <string name="help_regex_preset_forwarded_call">
         <![CDATA[

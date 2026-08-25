@@ -6,7 +6,7 @@
 
     <string name="notification">Notifikasi</string>
     <string name="type">Jenis</string>
-    <string name="times">Waktu</string>
+
     <plurals name="days">
         <item quantity="one">%d Hari</item>
         <item quantity="two">%d Hari</item>

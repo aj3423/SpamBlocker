@@ -1,18 +1,5 @@
 <resources>
     <string name="perm_write_settings">Einstellungen schreiben</string>
-    <string name="set_to">Festlegen auf</string>
-    <string name="help_set_ringtone_to">
-    <![CDATA[
-        Stellen Sie den Klingelton für eine bestimmte Funktion ein oder schalten Sie ihn stumm. <br>
-        <br>
-        Zum Beispiel, um den Klingelton für eine Regex-Regel einzustellen: <br><br>
-        <sample>
-        &emsp; { \"regex\": \"rule_desc\" }
-        </sample>
-        <br><br>
-        Anrufe, die durch diese Regel zugelassen werden, spielen den angegebenen Klingelton ab.<br>
-    ]]>
-    </string>
     <string name="ringtone">Klingelton</string>
     <string name="call_to_test_ringtone">Führen Sie einen tatsächlichen Anruf durch, um den Klingelton zu testen.</string>
     <string name="help_ringtone">
@@ -28,7 +15,7 @@
         geben Sie <b>Arbeit</b> in dieses Feld ein.
     ]]>
     </string>
-    <string name="invalid_config">Ungültige Konfiguration</string>
+
     <string name="custom">Benutzerdefiniert</string>
     <string name="quick_tile">Schnelleinstellung</string>
     <string name="help_quick_tile">

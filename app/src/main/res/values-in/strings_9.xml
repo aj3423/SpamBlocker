@@ -5,7 +5,7 @@
     <string name="url">URL</string>
     <string name="expiry_days">Hari Kadaluarsa</string>
     <string name="column_mapping">Pemetaan Kolom</string>
-    <string name="include_spam_db">Sertakan Basis Data Spam</string>
+
     <string name="no_config_needed">Tidak perlu konfigurasi</string>
     <string name="optional">(opsional)</string>
 

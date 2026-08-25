@@ -27,14 +27,6 @@
         &ensp; <sample>12345 (Display Name)</sample> <br>
         ]]>
     </string>
-    <string name="help_regex_preset_caller_name">
-        <![CDATA[
-        Allow calls that have <b>CNAP(Caller Name Presentation)</b> information, which is a telecom feature that
-         displays the caller\'s registered name (along with the phone number) on the recipient\'s phone screen during an incoming call. <br>
-        <br>
-        For countries that enforce KYC-verified CNAP, calls that have a caller name are likely valid.
-        ]]>
-    </string>
     <string name="forwarded_call">Forwarded Call</string>
     <string name="help_regex_preset_forwarded_call">
         <![CDATA[

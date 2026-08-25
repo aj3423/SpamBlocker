@@ -1,18 +1,5 @@
 <resources>
     <string name="perm_write_settings">כתוב הגדרות</string>
-    <string name="set_to">הגדר ל-</string>
-    <string name="help_set_ringtone_to">
-    <![CDATA[
-        הגדר את הצלצול עבור תכונה מסוימת, או השתק אותו. <br>
-        <br>
-        לדוגמה, כדי להגדיר את הצלצול עבור כלל ביטוי רגולרי: <br><br>
-        <sample>
-        &emsp; { \"regex\": \"rule_desc\" }
-        </sample>
-        <br><br>
-        שיחות המותרות על ידי כלל זה ינגנו את הצלצול שצוין.<br>
-    ]]>
-    </string>
     <string name="ringtone">צלצול</string>
     <string name="call_to_test_ringtone">בצע שיחה בפועל כדי לבדוק את הצלצול.</string>
     <string name="help_ringtone">
@@ -28,7 +15,7 @@
         הקלד <b>עבודה</b> בשדה זה.
     ]]>
     </string>
-    <string name="invalid_config">הגדרה לא חוקית</string>
+
     <string name="custom">מותאם אישית</string>
     <string name="quick_tile">אריח מהיר</string>
     <string name="help_quick_tile">

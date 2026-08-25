@@ -31,7 +31,7 @@
     <string name="status">Durum</string>
     <string name="inactive">Etkin Değil</string>
     <string name="confirm_to_reset">Sıfırlamayı onayla?</string>
-    <string name="check_stir_attestation">STIR Onayını Kontrol Et (?)</string>
+
     <string name="additional_numbers">Ek Numaralar</string>
     <string name="call_to_number">Numaraya Çağrı</string>
     <string name="call_to">Ara</string>

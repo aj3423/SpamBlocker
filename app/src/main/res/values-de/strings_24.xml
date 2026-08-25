@@ -27,14 +27,6 @@
     </string>
     <string name="caller_name">Anrufername</string>
     <string name="caller_name_rule">Regel für Anrufernamen</string>
-    <string name="help_regex_preset_caller_name">
-        <![CDATA[
-        Erlaube Anrufe, die <b>CNAP-Informationen (Anrufernamenanzeige)</b> haben, was eine Telekommunikationsfunktion ist, die
-         den registrierten Namen des Anrufers (zusammen mit der Telefonnummer) während eines eingehenden Anrufs auf dem Telefonbildschirm des Empfängers anzeigt. <br>
-        <br>
-        Für Länder, die KYC-verifizierte CNAP erzwingen, sind Anrufe mit einem Anrufernamen wahrscheinlich gültig.
-        ]]>
-    </string>
     <string name="forwarded_call">Weitergeleiteter Anruf</string>
     <string name="help_regex_preset_forwarded_call">
         <![CDATA[

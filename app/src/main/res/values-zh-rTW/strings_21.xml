@@ -1,18 +1,5 @@
 <resources>
     <string name="perm_write_settings">寫入設定</string>
-    <string name="set_to">設定為</string>
-    <string name="help_set_ringtone_to">
-    <![CDATA[
-        為特定功能指定鈴聲，或將其靜音。<br>
-        <br>
-        例如要為某個正規表示式規則設定鈴聲：<br><br>
-        <sample>
-        &emsp; { \"regex\": \"rule_desc\" }
-        </sample>
-        <br><br>
-        符合該規則並被允許的來電會播放指定鈴聲。<br>
-    ]]>
-    </string>
     <string name="ringtone">鈴聲</string>
     <string name="call_to_test_ringtone">請實際撥打一通電話測試鈴聲。</string>
     <string name="help_ringtone">
@@ -37,7 +24,7 @@
         例如想套用到名稱為 <b>Work</b> 的規則，請在此欄位輸入 <b>Work</b>。<br>
     ]]>
     </string>
-    <string name="invalid_config">設定無效</string>
+
     <string name="custom">自訂</string>
     <string name="quick_tile">快速設定磁貼</string>
     <string name="help_quick_tile">

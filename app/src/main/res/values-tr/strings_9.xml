@@ -5,7 +5,7 @@
     <string name="url">URL</string>
     <string name="expiry_days">Son Kullanım Günleri</string>
     <string name="column_mapping">Sütun Eşleştirme</string>
-    <string name="include_spam_db">Spam Veritabanını Dahil Et</string>
+
     <string name="no_config_needed">Yapılandırma gerekmez</string>
     <string name="optional">(isteğe bağlı)</string>
 

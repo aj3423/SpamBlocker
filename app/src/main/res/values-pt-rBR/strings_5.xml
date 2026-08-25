@@ -6,7 +6,7 @@
 
     <string name="notification">Notificação</string>
     <string name="type">Tipo</string>
-    <string name="times">Vezes</string>
+
     <plurals name="days">
         <item quantity="one">%d Dia</item>
         <item quantity="two">%d Dias</item>

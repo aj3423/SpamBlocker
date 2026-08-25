@@ -27,13 +27,6 @@
     </string>
     <string name="caller_name">نام تماس‌گیرنده</string>
     <string name="caller_name_rule">قانون نام تماس‌گیرنده</string>
-    <string name="help_regex_preset_caller_name">
-        <![CDATA[
-        اجازه دادن به تماس‌هایی که دارای اطلاعات <b>CNAP (نمایش نام تماس‌گیرنده)</b> هستند، که یک ویژگی مخابراتی است که نام ثبت شده تماس‌گیرنده (همراه با شماره تلفن) را روی صفحه تلفن گیرنده در طول یک تماس ورودی نمایش می‌دهد. <br>
-        <br>
-        برای کشورهایی که CNAP تأیید شده توسط KYC را اعمال می‌کنند، تماس‌هایی که دارای نام تماس‌گیرنده هستند، به احتمال زیاد معتبر هستند.
-        ]]>
-    </string>
     <string name="forwarded_call">تماس دایورت‌شده</string>
     <string name="help_regex_preset_forwarded_call">
         <![CDATA[

@@ -1,18 +1,5 @@
 <resources>
     <string name="perm_write_settings">نوشتن تنظیمات</string>
-    <string name="set_to">تنظیم روی</string>
-    <string name="help_set_ringtone_to">
-    <![CDATA[
-        آهنگ زنگ را برای یک ویژگی خاص تنظیم کنید یا آن را بی‌صدا کنید. <br>
-        <br>
-        به عنوان مثال، برای تنظیم آهنگ زنگ برای یک قانون regex: <br><br>
-        <sample>
-        &emsp; { \"regex\": \"rule_desc\" }
-        </sample>
-        <br><br>
-        تماس‌های مجاز توسط این قانون، آهنگ زنگ مشخص شده را پخش خواهند کرد.<br>
-    ]]>
-    </string>
     <string name="ringtone">آهنگ زنگ</string>
     <string name="call_to_test_ringtone">یک تماس واقعی برای تست آهنگ زنگ برقرار کنید.</string>
     <string name="help_ringtone">
@@ -28,7 +15,7 @@
         <b>کار</b> را در این فیلد تایپ کنید.
     ]]>
     </string>
-    <string name="invalid_config">پیکربندی نامعتبر</string>
+
     <string name="custom">سفارشی</string>
     <string name="quick_tile">کاشی سریع</string>
     <string name="help_quick_tile">

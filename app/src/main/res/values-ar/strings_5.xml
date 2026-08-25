@@ -6,7 +6,7 @@
 
     <string name="notification">إشعار</string>
     <string name="type">النوع</string>
-    <string name="times">مرات</string>
+
     <plurals name="days">
         <item quantity="one">%d يوم</item>
         <item quantity="two">%d يومين</item>

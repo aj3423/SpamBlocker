@@ -33,7 +33,7 @@
     <string name="status">סטטוס</string>
     <string name="inactive">לא פעיל</string>
     <string name="confirm_to_reset">לאשר איפוס?</string>
-    <string name="check_stir_attestation">בדיקת STIR (?)</string>
+
     <string name="additional_numbers">מספרים נוספים</string>
     <string name="call_to_number">למספר</string>
     <string name="call_to">שיחה אל</string>

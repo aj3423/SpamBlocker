@@ -5,7 +5,7 @@
     <string name="url">URL</string>
     <string name="expiry_days">Jours d\'expiration</string>
     <string name="column_mapping">Mappage de colonne</string>
-    <string name="include_spam_db">Inclure la base de données de spam</string>
+
     <string name="no_config_needed">Aucune configuration nécessaire</string>
     <string name="optional">(facultatif)</string>
 

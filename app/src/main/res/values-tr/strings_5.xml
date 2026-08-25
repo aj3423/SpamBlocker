@@ -6,7 +6,7 @@
 
     <string name="notification">Bildirim</string>
     <string name="type">Tür</string>
-    <string name="times">Defa</string>
+
     <plurals name="days">
         <item quantity="one">%d Gün</item>
         <item quantity="two">%d Gün</item>

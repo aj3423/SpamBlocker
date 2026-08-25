@@ -5,7 +5,7 @@
     <string name="url">URL</string>
     <string name="expiry_days">روزهای انقضا</string>
     <string name="column_mapping">نقشه ستون</string>
-    <string name="include_spam_db">شامل پایگاه داده اسپم</string>
+
     <string name="no_config_needed">نیازی به پیکربندی نیست</string>
     <string name="optional">(اختیاری)</string>
 

@@ -27,13 +27,6 @@
     </string>
     <string name="caller_name">來電者名稱</string>
     <string name="caller_name_rule">來電者名稱規則</string>
-    <string name="help_regex_preset_caller_name">
-        <![CDATA[
-        允許具有<b>CNAP(Caller Name Presentation - 來電者名稱呈現)</b>資訊的來電，這是一種電信功能，可在來電時，在接收者的手機螢幕上顯示來電者的註冊名稱（連同電話號碼）。 <br>
-        <br>
-        對於強制執行KYC驗證CNAP的國家/地區，具有來電者名稱的來電很可能是有效的。
-        ]]>
-    </string>
     <string name="forwarded_call">轉接電話</string>
     <string name="help_regex_preset_forwarded_call">
         <![CDATA[

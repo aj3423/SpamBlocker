@@ -1,18 +1,5 @@
 <resources>
     <string name="perm_write_settings">Gravar Configurações</string>
-    <string name="set_to">Definir Para</string>
-    <string name="help_set_ringtone_to">
-    <![CDATA[
-        Defina o toque para um recurso específico, ou silencie-o. <br>
-        <br>
-        Por exemplo, para definir o toque para uma regra de expressão regular: <br><br>
-        <sample>
-        &emsp; { \"regex\": \"rule_desc\" }
-        </sample>
-        <br><br>
-        As chamadas permitidas por esta regra tocarão o toque especificado.<br>
-    ]]>
-    </string>
     <string name="ringtone">Toque</string>
     <string name="call_to_test_ringtone">Faça uma chamada real para testar o toque.</string>
     <string name="help_ringtone">
@@ -28,7 +15,7 @@
         digite <b>Trabalho</b> neste campo.
     ]]>
     </string>
-    <string name="invalid_config">Configuração Inválida</string>
+
     <string name="custom">Personalizado</string>
     <string name="quick_tile">Bloco Rápido</string>
     <string name="help_quick_tile">

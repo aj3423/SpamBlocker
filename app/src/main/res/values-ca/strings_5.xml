@@ -6,7 +6,7 @@
 
     <string name="notification">Notificació</string>
     <string name="type">Tipus</string>
-    <string name="times">Vegades</string>
+
     <plurals name="days">
         <item quantity="one">%d dia</item>
         <item quantity="two">%d dies</item>

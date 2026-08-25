@@ -5,7 +5,7 @@
     <string name="url">Адрес ресурса</string>
     <string name="expiry_days">Срок действия (дней)</string>
     <string name="column_mapping">Сопоставление столбцов</string>
-    <string name="include_spam_db">Включить базу данных спама</string>
+
     <string name="no_config_needed">Настройка не требуется</string>
     <string name="optional">(необязательно)</string>
 
