@@ -140,10 +140,12 @@ fun SettingScreen() {
     PriorityConflictDialog(trigger = conflictTrigger, conflicts = priorityConflicts)
 
     // Show text "Testing" on the testing tube icon, and hide this text once it's clicked.
-    val spf = spf.Global(ctx)
+    val spfSections = spf.SettingSections(ctx)
+    val spfGlobal = spf.Global(ctx)
+
     var alsoShowTestButtonLabel by remember {
         mutableStateOf(
-            isFreshInstall(ctx) && !spf.isTestIconClicked
+            isFreshInstall(ctx) && !spfGlobal.isTestIconClicked
         )
     }
     FabWrapper(
@@ -160,7 +162,7 @@ fun SettingScreen() {
                 if (priorityConflicts.isEmpty()) {
                     testingTrigger.value = true
 
-                    spf.isTestIconClicked = true
+                    spfGlobal.isTestIconClicked = true
                     alsoShowTestButtonLabel = false
                 } else {
                     conflictTrigger.value = true
@@ -181,7 +183,11 @@ fun SettingScreen() {
                 // quick settings
                 Section(
                     title = Str(R.string.quick_settings),
-                    horizontalPadding = 8
+                    horizontalPadding = 8,
+                    isCollapsed = remember { mutableStateOf(spfSections.isQuickSettingsCollapsed) },
+                    onToggleCollapse = {
+                        spfSections.isQuickSettingsCollapsed = it
+                    }
                 ) {
                     Column {
                         Contacts()
@@ -208,7 +214,11 @@ fun SettingScreen() {
 
                 Section(
                     title = Str(R.string.regex_settings),
-                    horizontalPadding = 8
+                    horizontalPadding = 8,
+                    isCollapsed = remember { mutableStateOf(spfSections.isRegexSettingsCollapsed) },
+                    onToggleCollapse = {
+                        spfSections.isRegexSettingsCollapsed = it
+                    }
                 ) {
                     Column {
                         // NumberRule / ContentRule / QuickCopy
@@ -249,7 +259,11 @@ fun SettingScreen() {
                 // Instant Query
                 Section(
                     title = Str(R.string.instant_query),
-                    horizontalPadding = 8
+                    horizontalPadding = 8,
+                    isCollapsed = remember { mutableStateOf(spfSections.isInstantQueryCollapsed) },
+                    onToggleCollapse = {
+                        spfSections.isInstantQueryCollapsed = it
+                    }
                 ) {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(0.dp),
@@ -266,7 +280,11 @@ fun SettingScreen() {
                 // Report Number
                 Section(
                     title = Str(R.string.report_number),
-                    horizontalPadding = 8
+                    horizontalPadding = 8,
+                    isCollapsed = remember { mutableStateOf(spfSections.isReportNumberCollapsed) },
+                    onToggleCollapse = {
+                        spfSections.isReportNumberCollapsed = it
+                    }
                 ) {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(0.dp),
@@ -283,7 +301,11 @@ fun SettingScreen() {
                 // Automation
                 Section(
                     title = Str(R.string.automation),
-                    horizontalPadding = 8
+                    horizontalPadding = 8,
+                    isCollapsed = remember { mutableStateOf(spfSections.isAutomationCollapsed) },
+                    onToggleCollapse = {
+                        spfSections.isAutomationCollapsed = it
+                    }
                 ) {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(0.dp),
@@ -300,7 +322,11 @@ fun SettingScreen() {
                 // Miscellaneous
                 Section(
                     title = Str(R.string.miscellaneous),
-                    horizontalPadding = 8
+                    horizontalPadding = 8,
+                    isCollapsed = remember { mutableStateOf(spfSections.isMiscCollapsed) },
+                    onToggleCollapse = {
+                        spfSections.isMiscCollapsed = it
+                    }
                 ) {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(0.dp),

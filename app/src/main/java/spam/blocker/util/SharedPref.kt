@@ -191,6 +191,16 @@ class spf { // for namespace only
         var ignorePriorityConflict by bool("ignore_priority_conflict")
     }
 
+    class SettingSections(ctx: Context) : SharedPref(ctx) {
+        var isScreeningSectionCollapsed by bool("screening_section_collapsed")
+        var isQuickSettingsCollapsed by bool("quick_settings_collapsed")
+        var isRegexSettingsCollapsed by bool("regex_settings_collapsed")
+        var isInstantQueryCollapsed by bool("instant_query_collapsed")
+        var isReportNumberCollapsed by bool("report_number_collapsed")
+        var isAutomationCollapsed by bool("automation_collapsed")
+        var isMiscCollapsed by bool("miscellaneous_collapsed")
+    }
+
     class EmergencySituation(ctx: Context) : SharedPref(ctx) {
         var isEnabled by bool("emergency_enabled")
         var isCollapsed by bool("emergency_collapsed")

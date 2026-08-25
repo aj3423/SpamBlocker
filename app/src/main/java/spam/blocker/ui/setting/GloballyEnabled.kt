@@ -41,24 +41,27 @@ import spam.blocker.util.spf
 fun GloballyEnabled() {
     val ctx = LocalContext.current
     val C = G.palette
-    val spf = spf.Global(ctx)
+    val spfSections = spf.SettingSections(ctx)
+    val spfGlobal = spf.Global(ctx)
 
-    var collapsed by remember { mutableStateOf(spf.isCollapsed) }
+    // Section collapsed state
+    // var sectionCollapsed by remember { mutableStateOf(spfSections.isScreeningSectionCollapsed) }
+    var collapsed by remember { mutableStateOf(spfGlobal.isCollapsed) }
     fun expand() {
         collapsed = false
-        spf.isCollapsed = false
+        spfGlobal.isCollapsed = false
     }
     fun collapse() {
         collapsed = true
-        spf.isCollapsed = true
+        spfGlobal.isCollapsed = true
     }
     fun toggleCollapse() {
         collapsed = !collapsed
-        spf.isCollapsed = collapsed
+        spfGlobal.isCollapsed = collapsed
     }
     fun checkMmsState(): Boolean {
         return G.smsEnabled.value
-                && spf.isMmsEnabled
+                && spfGlobal.isMmsEnabled
                 && Permission.receiveMMS.isGranted
                 && Permission.readSMS.isGranted
     }
@@ -73,7 +76,7 @@ fun GloballyEnabled() {
             icon = { ResIcon(R.drawable.ic_warning, color = Color.Unspecified) },
             buttons = {
                 StrokeButton(label = Str(R.string.dismiss), color = C.warning) {
-                    spf.isDoubleSMSWarningDismissed = true
+                    spfGlobal.isDoubleSMSWarningDismissed = true
                     doubleSmsWarningTrigger.value = false
                 }
                 Spacer(modifier = M.width(10.dp))
@@ -91,8 +94,8 @@ fun GloballyEnabled() {
     LifecycleResumeEffect(G.smsEnabled.value) {
         if (G.smsEnabled.value) {
             if (Build.VERSION.SDK_INT >= Def.ANDROID_13) {
-                if (isDefaultSmsAppNotificationEnabled(ctx) && spf.isGloballyEnabled && spf.isSmsEnabled) {
-                    if (!spf.isDoubleSMSWarningDismissed) {
+                if (isDefaultSmsAppNotificationEnabled(ctx) && spfGlobal.isGloballyEnabled && spfGlobal.isSmsEnabled) {
+                    if (!spfGlobal.isDoubleSMSWarningDismissed) {
                         doubleSmsWarningTrigger.value = true
                     }
                 }
@@ -103,7 +106,11 @@ fun GloballyEnabled() {
 
     Section(
         title = Str(R.string.screening),
-        horizontalPadding = 8
+        horizontalPadding = 8,
+        isCollapsed = remember { mutableStateOf(spfSections.isScreeningSectionCollapsed) },
+        onToggleCollapse = {
+            spfSections.isScreeningSectionCollapsed = it
+        }
     ) {
         Column(
             verticalArrangement = Arrangement.spacedBy(0.dp),
@@ -144,7 +151,7 @@ fun GloballyEnabled() {
                         }
                     }
                     SwitchBox(G.globallyEnabled.value) { enabled ->
-                        spf.isGloballyEnabled = enabled
+                        spfGlobal.isGloballyEnabled = enabled
                         G.globallyEnabled.value = enabled
                         if (enabled) {
                             if (!G.callEnabled.value && !G.smsEnabled.value) {
@@ -170,12 +177,12 @@ fun GloballyEnabled() {
                                     )
                                 ) { granted ->
                                     if (granted) {
-                                        spf.isCallEnabled = true
+                                        spfGlobal.isCallEnabled = true
                                         G.callEnabled.value = true
                                     }
                                 }
                             } else {
-                                spf.isCallEnabled = false
+                                spfGlobal.isCallEnabled = false
                                 G.callEnabled.value = false
                             }
                         })
@@ -196,12 +203,12 @@ fun GloballyEnabled() {
                                     )
                                 ) { granted ->
                                     if (granted) {
-                                        spf.isSmsEnabled = true
+                                        spfGlobal.isSmsEnabled = true
                                         G.smsEnabled.value = true
                                     }
                                 }
                             } else {
-                                spf.isSmsEnabled = false
+                                spfGlobal.isSmsEnabled = false
                                 G.smsEnabled.value = false
                             }
                         })
@@ -223,12 +230,12 @@ fun GloballyEnabled() {
                                         )
                                     ) { granted ->
                                         if (granted) {
-                                            spf.isMmsEnabled = true
+                                            spfGlobal.isMmsEnabled = true
                                             mmsEnabled = checkMmsState()
                                         }
                                     }
                                 } else {
-                                    spf.isMmsEnabled = false
+                                    spfGlobal.isMmsEnabled = false
                                     mmsEnabled = checkMmsState()
                                 }
                             })

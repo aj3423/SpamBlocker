@@ -92,6 +92,42 @@ class Global : IConfig {
 }
 
 @Serializable
+class SettingSections : IConfig {
+    var isScreeningSectionCollapsed = false
+    var isQuickSettingsCollapsed = false
+    var isRegexSettingsCollapsed = false
+    var isInstantQueryCollapsed = false
+    var isReportNumberCollapsed = false
+    var isAutomationCollapsed = false
+    var isMiscCollapsed = false
+
+    override fun load(ctx: Context) {
+        val spf = spf.SettingSections(ctx)
+
+        isScreeningSectionCollapsed = spf.isScreeningSectionCollapsed
+        isQuickSettingsCollapsed = spf.isQuickSettingsCollapsed
+        isRegexSettingsCollapsed = spf.isRegexSettingsCollapsed
+        isInstantQueryCollapsed = spf.isInstantQueryCollapsed
+        isReportNumberCollapsed = spf.isReportNumberCollapsed
+        isAutomationCollapsed = spf.isAutomationCollapsed
+        isMiscCollapsed = spf.isMiscCollapsed
+    }
+
+    override fun apply(ctx: Context) {
+        val me = this
+        spf.SettingSections(ctx).apply {
+            isScreeningSectionCollapsed = me.isScreeningSectionCollapsed
+            isQuickSettingsCollapsed = me.isQuickSettingsCollapsed
+            isRegexSettingsCollapsed = me.isRegexSettingsCollapsed
+            isInstantQueryCollapsed = me.isInstantQueryCollapsed
+            isReportNumberCollapsed = me.isReportNumberCollapsed
+            isAutomationCollapsed = me.isAutomationCollapsed
+            isMiscCollapsed = me.isMiscCollapsed
+        }
+    }
+}
+
+@Serializable
 class HistoryOptions : IConfig {
     var showPassed = true
     var showBlocked = true
@@ -879,6 +915,7 @@ class Configs {
     var categories : CategorySelection? = null
 
     var global : Global? = null
+    var settingSections : SettingSections? = null
     var historyOptions : HistoryOptions? = null
     var regexOptions : RegexOptions? = null
     var botOptions : BotOptions? = null
@@ -924,6 +961,7 @@ class Configs {
 
         if (categories.isSelected(Category.OTHERS)) {
             global = Global().also { it.load(ctx) }
+            settingSections = SettingSections().also { it.load(ctx) }
             historyOptions = HistoryOptions().also { it.load(ctx) }
             contacts = Contact().also { it.load(ctx) }
             stir = STIR().also { it.load(ctx) }
@@ -976,6 +1014,7 @@ class Configs {
     fun apply(ctx: Context, categories: CategorySelection) {
         if (categories.isSelected(Category.OTHERS)) {
             global?.apply(ctx)
+            settingSections?.apply(ctx)
             historyOptions?.apply(ctx)
             contacts?.apply(ctx)
             stir?.apply(ctx)
