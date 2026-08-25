@@ -31,7 +31,6 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.CallTable
@@ -54,7 +53,6 @@ import spam.blocker.util.MultiLogger
 import spam.blocker.util.SaveableLogger
 import spam.blocker.util.TimeUtils.formatTime
 import spam.blocker.util.getSaveableOutput
-import spam.blocker.util.logi
 
 
 const val tagCategory = "{category}"

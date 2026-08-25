@@ -2,7 +2,6 @@ package spam.blocker.db
 
 import android.annotation.SuppressLint
 import android.content.ContentValues
-import android.content.Context
 import android.database.Cursor
 import kotlinx.serialization.Serializable
 import spam.blocker.db.Db.Companion.COLUMN_BODY

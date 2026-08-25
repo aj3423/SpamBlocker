@@ -26,7 +26,6 @@ import spam.blocker.R
 import spam.blocker.config.Category
 import spam.blocker.config.CategorySelection
 import spam.blocker.config.Configs
-import spam.blocker.config.defaultCategorySelection
 import spam.blocker.db.CallTable
 import spam.blocker.db.RegexRule
 import spam.blocker.db.SmsTable
@@ -37,10 +36,13 @@ import spam.blocker.ui.darken
 import spam.blocker.ui.history.tagCategory
 import spam.blocker.ui.history.tagComment
 import spam.blocker.ui.setting.LabeledRow
+import spam.blocker.ui.setting.misc.ChooseBackupCategoriesDialog
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.ui.widgets.DirButton
+import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyIcon
+import spam.blocker.ui.widgets.GreyIcon18
 import spam.blocker.ui.widgets.GreyText
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.NumberInputBox
@@ -495,20 +497,15 @@ class PruneDatabase(
     }
 }
 
-// Dump current settings to a ByteArray
 @Serializable
 @SerialName("BackupExport")
 class BackupExport(
-    var includeSpamDB: Boolean = false
+    var categories: CategorySelection = CategorySelection()
 ) : IPermissiveAction {
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         // Generate config data bytes
         val curr = Configs()
-        curr.load(ctx, if (includeSpamDB) {
-            CategorySelection().select(Category.SPAM_NUMBERS)
-        } else {
-            CategorySelection().unselect(Category.SPAM_NUMBERS)
-        })
+        curr.load(ctx, categories)
         val compressed = curr.toByteArray()
 
         aCtx.logger?.debug(ctx.getString(R.string.action_backup_export))
@@ -523,9 +520,17 @@ class BackupExport(
 
     @Composable
     override fun Summary(showIcon: Boolean) {
-        val yes = Str(R.string.yes)
-        val no = Str(R.string.no)
-        SummaryLabel(Str(R.string.include_spam_db) + ": ${if (includeSpamDB) yes else no}")
+        RowVCenterSpaced(4) {
+            val includeDb = categories.contains(Category.SPAM_NUMBERS)
+            if(includeDb) {
+                GreyIcon18(R.drawable.ic_db_add)
+            }
+
+            val includeHistory = categories.contains(Category.HISTORY_LOGS)
+            if(includeHistory) {
+                GreyIcon18(R.drawable.ic_log)
+            }
+        }
     }
 
     override fun tooltip(ctx: Context): String {
@@ -547,14 +552,19 @@ class BackupExport(
 
     @Composable
     override fun Options() {
-        // Must use a state, otherwise the switch doesn't change on click
-        var includeDB by remember { mutableStateOf(includeSpamDB) }
+        val trigger = remember { mutableStateOf(false) }
 
-        LabeledRow(labelId = R.string.include_spam_db) {
-            SwitchBox(includeDB) { on ->
-                includeDB = on
-                includeSpamDB = on
-            }
+        ChooseBackupCategoriesDialog(
+            trigger = trigger,
+            initialCategories = categories,
+            okLabelId = R.string.ok,
+        ) { selectedCategories ->
+            categories = selectedCategories
+            trigger.value = false
+        }
+
+        GreyButton(Str(R.string.action_category_config)) {
+            trigger.value = true
         }
     }
 }
@@ -563,18 +573,14 @@ class BackupExport(
 @Serializable
 @SerialName("BackupImport")
 class BackupImport(
-    var includeSpamDB: Boolean = false
+    var categories: CategorySelection = CategorySelection()
 ) : IPermissiveAction {
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val input = aCtx.lastOutput as ByteArray
 
         try {
             val newCfg = Configs.fromByteArray(input)
-            newCfg.apply(ctx, if (includeSpamDB) {
-                defaultCategorySelection.select(Category.SPAM_NUMBERS)
-            } else {
-                defaultCategorySelection.unselect(Category.SPAM_NUMBERS)
-            })
+            newCfg.apply(ctx, categories)
 
             aCtx.logger?.debug(ctx.getString(R.string.action_backup_import))
 
@@ -592,11 +598,17 @@ class BackupImport(
 
     @Composable
     override fun Summary(showIcon: Boolean) {
-        val ctx = LocalContext.current
+        RowVCenterSpaced(4) {
+            val includeDb = categories.contains(Category.SPAM_NUMBERS)
+            if(includeDb) {
+                GreyIcon18(R.drawable.ic_db_add)
+            }
 
-        val yes = Str(R.string.yes)
-        val no = Str(R.string.no)
-        SummaryLabel(Str(R.string.include_spam_db) + ": ${if (includeSpamDB) yes else no}")
+            val includeHistory = categories.contains(Category.HISTORY_LOGS)
+            if(includeHistory) {
+                GreyIcon18(R.drawable.ic_log)
+            }
+        }
     }
 
     override fun tooltip(ctx: Context): String {
@@ -618,14 +630,19 @@ class BackupImport(
 
     @Composable
     override fun Options() {
-        // Must use a state, otherwise the switch doesn't change on click
-        var includeDB by remember { mutableStateOf(includeSpamDB) }
+        val trigger = remember { mutableStateOf(false) }
 
-        LabeledRow(labelId = R.string.include_spam_db) {
-            SwitchBox(includeDB) { on ->
-                includeDB = on
-                includeSpamDB = on
-            }
+        ChooseBackupCategoriesDialog(
+            trigger = trigger,
+            initialCategories = categories,
+            okLabelId = R.string.ok,
+        ) { selectedCategories ->
+            categories = selectedCategories
+            trigger.value = false
+        }
+
+        GreyButton(Str(R.string.action_category_config)) {
+            trigger.value = true
         }
     }
 }

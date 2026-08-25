@@ -79,7 +79,7 @@ fun PopupDialog(
                 dismissOnBackPress = true,
                 dismissOnClickOutside = true,
                 usePlatformDefaultWidth = popupSize == null,
-                decorFitsSystemWindows = false,   // ← important
+                decorFitsSystemWindows = false, // important, for IME
             )
         ) {
             // Disable the dialog background dim effect.

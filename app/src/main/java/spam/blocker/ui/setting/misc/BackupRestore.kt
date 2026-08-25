@@ -31,7 +31,6 @@ import spam.blocker.R
 import spam.blocker.config.Category
 import spam.blocker.config.CategorySelection
 import spam.blocker.config.Configs
-import spam.blocker.config.defaultCategorySelection
 import spam.blocker.config.emptyCategorySelection
 import spam.blocker.db.Bot
 import spam.blocker.db.SpamTable
@@ -370,7 +369,7 @@ fun ImportButton() {
 
     ChooseBackupCategoriesDialog(
         trigger = categoryTrigger,
-        initialCategories = newCfg.categories ?: defaultCategorySelection,
+        initialCategories = newCfg.categories ?: CategorySelection(),
         disabledCategories = newCfg.categories?.negate() ?: emptyCategorySelection,
         okLabelId = R.string.import_
     ) { selectedCategories ->

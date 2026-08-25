@@ -869,9 +869,6 @@ data class CategorySelection(
 
     fun allUnselected(): List<Category> = Category.entries.filter { it !in all }
 }
-val defaultCategorySelection by lazy {
-    CategorySelection()
-}
 val emptyCategorySelection by lazy {
     CategorySelection(emptySet())
 }
@@ -975,7 +972,7 @@ class Configs {
         }
     }
 
-    // This object has been full filled, apply the values to SharedPref/Database
+    // This object has been fulfilled, apply the values to SharedPref/Database
     fun apply(ctx: Context, categories: CategorySelection) {
         if (categories.isSelected(Category.OTHERS)) {
             global?.apply(ctx)

@@ -14,7 +14,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.retain.retain
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import spam.blocker.Events
@@ -29,22 +28,17 @@ import spam.blocker.ui.setting.TestDialog
 import spam.blocker.ui.setting.regex.EditRegexDialog
 import spam.blocker.ui.widgets.CustomItem
 import spam.blocker.ui.widgets.DropdownWrapper
-import spam.blocker.ui.widgets.GreyIcon
-import spam.blocker.ui.widgets.GreyIcon16
-import spam.blocker.ui.widgets.GreyIcon18
 import spam.blocker.ui.widgets.GreyIcon20
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.IMenuItem
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.ResIcon
-import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.util.Clipboard
 import spam.blocker.util.Launcher
-import spam.blocker.util.resolveNumberTag
 import spam.blocker.util.spf
 
 @Composable
