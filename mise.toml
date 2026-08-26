@@ -1,0 +1,74 @@
+# Tooling for Android CLI builds, a size-reduced LiteRT-LM AAR,
+# and local SMS-prompt eval with llama.cpp.
+# Install: `mise install && mise run setup-sdk`
+# Debug APK: `mise apk`
+# Custom AAR: `mise run build-litert`
+# SMS AI eval: `mise run download-sms-ai-model && mise run eval-sms-ai`
+
+[tools]
+java = "17"
+python = "3.12"
+cmake = "3.31.6"
+ninja = "1.12.1"
+bazelisk = "1.25.0"
+android-sdk = "latest"
+"github:Genymobile/scrcpy" = "4.1"
+uv = "latest"
+"llama.cpp" = "latest"
+"pipx:huggingface-hub" = { version = "latest", extras = "hf_xet" }
+
+[env]
+_.path = { tools = true, path = [
+  "${ANDROID_HOME}/platform-tools",
+  "${ANDROID_HOME}/build-tools/36.0.0",
+  "${ANDROID_HOME}/build-tools/37.0.0",
+] }
+
+[settings]
+env_shell_expand = true
+
+[tasks.install]
+description = "Install mise tools (Java, Android SDK CLI, scrcpy, LiteRT build deps)"
+run = "mise install"
+
+[tasks.setup-sdk]
+description = "Install Android SDK platforms/build-tools/adb and write local.properties"
+sources = ["mise.toml"]
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+sdkmanager "platform-tools" "build-tools;36.0.0" "build-tools;37.0.0" "platforms;android-37.0"
+if [ ! -e "${ANDROID_HOME}/cmdline-tools/latest" ]; then
+  ln -sfn 23.0 "${ANDROID_HOME}/cmdline-tools/latest"
+fi
+if [ -d "${ANDROID_HOME}/platforms/android-37.0" ] && [ ! -e "${ANDROID_HOME}/platforms/android-37" ]; then
+  ln -sfn android-37.0 "${ANDROID_HOME}/platforms/android-37"
+fi
+printf 'sdk.dir=%s\\n' "${ANDROID_HOME}" > local.properties
+echo "Wrote local.properties sdk.dir=${ANDROID_HOME}"
+"""
+
+[tasks.debug-apk]
+description = "Build the fdroid debug APK"
+depends = ["setup-sdk"]
+alias = "apk"
+run = "./gradlew :app:assembleFdroidDebug"
+
+[tasks.install-apk]
+description = "Install the fdroid debug APK on a connected device"
+depends = ["setup-sdk"]
+run = "./gradlew :app:installFdroidDebug"
+
+[tasks.download-sms-ai-model]
+description = "Download the local Gemma 3 1B IT GGUF (same base model as the on-device default) using HF_TOKEN"
+run = "bash scripts/download-sms-ai-model.sh"
+
+[tasks.eval-sms-ai]
+description = "Classify scrubbed SMS samples with llama.cpp (requires downloaded model)"
+depends = ["download-sms-ai-model"]
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+export SMS_AI_MODEL="${SMS_AI_MODEL:-$PWD/.models/sms-ai/gemma-3-1b-it-Q4_K_M.gguf}"
+./gradlew :app:testFdroidDebugUnitTest --tests spam.blocker.service.ai.SmsAiPromptEvalTest -PsmsAiEval=true
+"""

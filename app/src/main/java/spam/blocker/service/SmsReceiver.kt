@@ -22,9 +22,11 @@ import spam.blocker.util.Now
 import spam.blocker.util.SaveableLogger
 import spam.blocker.util.Util.isDeviceLocked
 import spam.blocker.util.Util.isSmsAppInForeground
+import spam.blocker.util.loge
 import spam.blocker.util.logi
 import spam.blocker.util.regexMatches
 import spam.blocker.util.spf
+import java.util.concurrent.Executors
 
 
 fun getSimSlotFromSmsIntent(ctx: Context, intent: Intent?) : Int? {
@@ -77,11 +79,36 @@ open class SmsReceiver : BroadcastReceiver() {
 
         val simSlot = getSimSlotFromSmsIntent(ctx, intent)
 
-        processSms(ctx, rawNumber = rawNumber, messageBody = messageBody, simSlot = simSlot,
-            isTest = false, logger = SaveableLogger())
+        val run = {
+            processSms(
+                ctx,
+                rawNumber = rawNumber,
+                messageBody = messageBody,
+                simSlot = simSlot,
+                isTest = false,
+                logger = SaveableLogger(),
+            )
+        }
+        if (spam.blocker.util.spf.SmsAi(ctx).isEnabled) {
+            val pending = goAsync()
+            screeningExecutor.execute {
+                try {
+                    run()
+                } catch (t: Throwable) {
+                    loge("sms processing failed: $t")
+                } finally {
+                    pending.finish()
+                }
+            }
+        } else {
+            run()
+        }
     }
 
     companion object {
+        private val screeningExecutor = Executors.newSingleThreadExecutor { r ->
+            Thread(r, "sms-receiver").apply { isDaemon = true }
+        }
         // Update SmsAlert timestamp in SharedPref if it's enabled
         fun checkSmsAlert(ctx: Context, messageBody: String) {
             val spf = spf.SmsAlert(ctx)

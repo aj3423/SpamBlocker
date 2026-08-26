@@ -49,6 +49,7 @@ import spam.blocker.def.Def.RESULT_ALLOWED_BY_OFF_TIME
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_PUSH_ALERT
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_RECENT_APP
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_REPEATED
+import spam.blocker.def.Def.RESULT_ALLOWED_BY_SMS_AI
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_SMS_ALERT
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_STIR
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_API_QUERY
@@ -63,6 +64,7 @@ import spam.blocker.def.Def.RESULT_BLOCKED_BY_GEO_LOCATION_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_MEETING_MODE
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NON_CONTACT
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NUMBER_REGEX
+import spam.blocker.def.Def.RESULT_BLOCKED_BY_SMS_AI
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_SMS_BOMB
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_SPAM_DB
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_STIR
@@ -623,6 +625,42 @@ class ByPushAlert(
     }
 }
 
+@Serializable
+@SerialName("SmsAiDetail")
+data class SmsAiDetail(
+    val categoryId: Long,
+    val categoryName: String,
+    val extracted: String? = null,
+    val modelReply: String? = null,
+)
+
+class BySmsAi(
+    override val type: Int,
+    val detail: SmsAiDetail,
+) : ICheckResult {
+    override fun resultReasonStr(ctx: Context): String {
+        return ctx.getString(R.string.sms_ai_screening) + ": " + detail.categoryName
+    }
+
+    override fun reasonToDb(): String {
+        return PermissiveJson.encodeToString(detail)
+    }
+
+    @Composable
+    override fun ExpandedContent(forType: Int, record: HistoryRecord) {
+        val extra = detail.modelReply ?: detail.extracted
+        Column {
+            super.ExpandedContent(forType, record)
+            if (record.expanded && !extra.isNullOrEmpty()) {
+                ExtraInfoWithDivider(
+                    text = extra.A(),
+                    maxLines = 8,
+                )
+            }
+        }
+    }
+}
+
 // allowed by sms alert
 class BySmsAlert(
     override val type: Int = RESULT_ALLOWED_BY_SMS_ALERT,
@@ -707,6 +745,10 @@ fun parseCheckResultFromDb(ctx: Context, result: Int, reason: String): ICheckRes
         }
         RESULT_ALLOWED_BY_SMS_ALERT -> BySmsAlert()
         RESULT_BLOCKED_BY_SMS_BOMB -> BySmsBomb()
+        RESULT_ALLOWED_BY_SMS_AI, RESULT_BLOCKED_BY_SMS_AI -> {
+            val detail = PermissiveJson.decodeFromString<SmsAiDetail>(reason)
+            BySmsAi(result, detail)
+        }
 
         else -> ByDefault(result)
     }

@@ -86,12 +86,45 @@ android {
                 useLegacyPackaging = true
             }
         }
+        unitTests.all {
+            it.useJUnitPlatform()
+        }
+    }
+
+    packaging {
+        jniLibs {
+            excludes += setOf(
+                "**/armeabi-v7a/**",
+                "**/x86/**",
+                "**/x86_64/**",
+            )
+            pickFirsts += setOf(
+                "**/libc++_shared.so",
+            )
+        }
     }
 }
 
 tasks.configureEach {
     if (name.contains("ReleaseNoR8") && name.contains("lintVital", ignoreCase = true)) {
         enabled = false
+    }
+}
+
+tasks.withType<Test>().configureEach {
+    useJUnitPlatform()
+    val eval = project.findProperty("smsAiEval")?.toString() == "true"
+    if (eval) {
+        systemProperty("smsAiEval", "true")
+        System.getenv("SMS_AI_MODEL")?.let { systemProperty("smsAiModel", it) }
+        System.getenv("SMS_AI_SAMPLES")?.let { systemProperty("smsAiSamples", it) }
+        System.getenv("SMS_AI_LLAMA_SERVER")?.let { systemProperty("smsAiLlamaServer", it) }
+        environment("PATH", System.getenv("PATH") ?: "")
+        testLogging {
+            showStandardStreams = true
+            exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+            events("passed", "failed", "skipped")
+        }
     }
 }
 
@@ -117,8 +150,11 @@ dependencies {
     implementation(libs.compose.material3) // for components like Scaffold, Surface
     implementation(libs.compose.ui)
 
+    implementation(libs.litertlm.android)
+
     // testing
     testImplementation(libs.junit.jupiter)
+    testRuntimeOnly(libs.junit.platform.launcher)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.mockk)

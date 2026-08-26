@@ -22,6 +22,8 @@ import spam.blocker.db.NumberRegexTable
 import spam.blocker.db.PushAlertTable
 import spam.blocker.db.QuickCopyRegexTable
 import spam.blocker.db.RegexRule
+import spam.blocker.db.SmsAiCategory
+import spam.blocker.db.SmsAiCategoryTable
 import spam.blocker.db.SmsTable
 import spam.blocker.db.SpamNumber
 import spam.blocker.db.SpamTable
@@ -35,6 +37,7 @@ import spam.blocker.service.bot.InterceptSms
 import spam.blocker.service.bot.QuickTile
 import spam.blocker.service.bot.SmsEvent
 import spam.blocker.service.bot.SmsThrottling
+import spam.blocker.service.ai.SmsAiClassifier
 import spam.blocker.service.bot.executeAll
 import spam.blocker.ui.darken
 import spam.blocker.ui.setting.regex.RegexMode.ModeType
@@ -73,6 +76,9 @@ class CheckContext(
     val startTimeMillis: Long = System.currentTimeMillis(),
     val checkers: List<IChecker>,
     var anythingWrong: Boolean = false,
+    var smsAiCategory: String? = null,
+    var smsAiReply: String? = null,
+    var smsAiRan: Boolean = false,
 )
 
 
@@ -1501,6 +1507,83 @@ class Checker { // for namespace only
         }
     }
 
+    class SmsAi(
+        private val ctx: Context,
+        private val category: SmsAiCategory,
+        private val asAllow: Boolean,
+    ) : IChecker {
+        override fun isConfigEnabledForCall() = false
+        override fun isConfigEnabledForSms(): Boolean {
+            val spf = spf.SmsAi(ctx)
+            if (!spf.isEnabled) return false
+            return if (asAllow) category.allowEnabled else category.blockEnabled
+        }
+
+        override fun listType() = asAllow
+
+        override fun priority(): Int {
+            return if (asAllow) category.allowPriority else category.blockPriority
+        }
+
+        override fun desc() =
+            (ctx.getString(R.string.sms_ai_screening) + ": " + category.name)
+                .A(if (asAllow) G.palette.success else G.palette.error)
+
+        override fun check(cCtx: CheckContext): ICheckResult? {
+            if (!isConfigEnabledForSms()) {
+                return null
+            }
+            val smsContent = cCtx.smsContent ?: return null
+            val logger = cCtx.logger
+
+            if (!cCtx.smsAiRan) {
+                cCtx.smsAiRan = true
+                logger?.debug(
+                    buildAnnotatedString {
+                        appendInlineContent(id = "priority")
+                        append(
+                            ctx.getString(R.string.checking_template_new)
+                                .formatAnnotated(
+                                    priority().toString().A(G.palette.priority),
+                                    ctx.getString(R.string.sms_ai_screening).A(G.palette.infoBlue)
+                                )
+                        )
+                    }
+                )
+                val classified = SmsAiClassifier.classifySms(ctx, spf.SmsAi(ctx).prompt, smsContent)
+                cCtx.smsAiCategory = classified.category
+                cCtx.smsAiReply = classified.rawReply
+                if (classified.error != null) {
+                    cCtx.anythingWrong = true
+                    logger?.warn(classified.error)
+                }
+            }
+
+            if (!category.name.equals(cCtx.smsAiCategory, ignoreCase = true)) {
+                return null
+            }
+
+            if (asAllow) {
+                logger?.success(
+                    ctx.getString(R.string.allowed_by).formatAnnotated(desc())
+                )
+            } else {
+                logger?.error(
+                    ctx.getString(R.string.blocked_by_template).formatAnnotated(desc())
+                )
+            }
+
+            return BySmsAi(
+                type = if (asAllow) Def.RESULT_ALLOWED_BY_SMS_AI else Def.RESULT_BLOCKED_BY_SMS_AI,
+                detail = SmsAiDetail(
+                    categoryId = category.id,
+                    categoryName = category.name,
+                    modelReply = cCtx.smsAiReply,
+                ),
+            )
+        }
+    }
+
     private class PushAlert(
         private val ctx: Context,
     ) : IChecker {
@@ -1755,7 +1838,22 @@ class Checker { // for namespace only
                 Content(ctx, it)
             }
 
+            checkers += smsAiCheckers(ctx)
+
             return checkers
+        }
+
+        fun smsAiCheckers(ctx: Context): List<IChecker> {
+            return SmsAiCategoryTable.listAll(ctx).flatMap { category ->
+                buildList {
+                    if (category.allowEnabled) {
+                        add(SmsAi(ctx, category, asAllow = true))
+                    }
+                    if (category.blockEnabled) {
+                        add(SmsAi(ctx, category, asAllow = false))
+                    }
+                }
+            }
         }
         fun checkSms(
             ctx: Context,

@@ -1,5 +1,6 @@
 .gradle/
 .idea/
+.models/
 .opencode/
 .kotlin/
 *.db
@@ -8,4 +9,5 @@ app/release/
 app/debug/
 auto_translate/go.sum
 local.properties
+app/libs/*.aar
 auto_translate/.vscode/

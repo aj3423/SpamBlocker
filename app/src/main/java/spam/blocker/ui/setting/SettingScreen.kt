@@ -64,6 +64,9 @@ import spam.blocker.ui.setting.regex.PushAlertViewModel
 import spam.blocker.ui.setting.regex.RegexHeader
 import spam.blocker.ui.setting.regex.RegexList
 import spam.blocker.ui.setting.regex.RegexViewModel
+import spam.blocker.ui.setting.regex.SmsAiHeader
+import spam.blocker.ui.setting.regex.SmsAiList
+import spam.blocker.ui.setting.regex.SmsAiViewModel
 import spam.blocker.ui.setting.regex.SmsAlert
 import spam.blocker.ui.setting.regex.SmsBomb
 import spam.blocker.ui.slightDiff
@@ -239,6 +242,13 @@ fun SettingScreen() {
                                     RegexList(vm)
                                 }
                             }
+                        }
+
+                        // SMS AI Screening
+                        LaunchedEffect(true) { SmsAiViewModel.reloadDbAndOptions(ctx) }
+                        SmsAiHeader()
+                        AnimatedVisibleV(!SmsAiViewModel.listCollapsed.value) {
+                            SmsAiList()
                         }
 
                         // Push Alert
