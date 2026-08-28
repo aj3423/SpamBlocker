@@ -87,6 +87,13 @@ android {
             }
         }
     }
+
+    // Sideload liblitertlm_jni.so from Downloads/test in Debug.summarize().
+    packaging {
+        jniLibs {
+            excludes += "**/liblitertlm_jni.so"
+        }
+    }
 }
 
 tasks.configureEach {
@@ -116,6 +123,8 @@ dependencies {
     implementation(libs.compose.activity) // for ComponentActivity
     implementation(libs.compose.material3) // for components like Scaffold, Surface
     implementation(libs.compose.ui)
+
+    implementation(libs.litertlm.android)
 
     // testing
     testImplementation(libs.junit.jupiter)
