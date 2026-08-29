@@ -183,8 +183,10 @@ fun EmergencySituation() {
         labelId = R.string.emergency,
         isCollapsed = if (!isEnabled) null else collapsed && extraNumbers.isNotBlank(),
         toggleCollapse = {
-            collapsed = !collapsed
-            spf.isCollapsed = collapsed
+            if (isEnabled) {
+                collapsed = !collapsed
+                spf.isCollapsed = collapsed
+            }
         },
         helpTooltip = Str(R.string.help_emergency_situation),
         content = {

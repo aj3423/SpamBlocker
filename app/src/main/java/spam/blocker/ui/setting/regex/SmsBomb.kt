@@ -94,8 +94,10 @@ fun SmsBomb() {
         labelId = R.string.sms_bomb,
         isCollapsed = if (!isEnabled) null else collapsed,
         toggleCollapse = {
-            collapsed = !collapsed
-            spf.isCollapsed = collapsed
+            if (isEnabled) {
+                collapsed = !collapsed
+                spf.isCollapsed = collapsed
+            }
         },
         helpTooltip = Str(R.string.help_sms_bomb),
         content = {

@@ -88,8 +88,10 @@ fun SmsAlert() {
         labelId = R.string.sms_alert,
         isCollapsed = if (!isEnabled) null else collapsed,
         toggleCollapse = {
-            collapsed = !collapsed
-            spf.isCollapsed = collapsed
+            if (isEnabled) {
+                collapsed = !collapsed
+                spf.isCollapsed = collapsed
+            }
         },
         helpTooltip = Str(R.string.help_sms_alert),
         content = {
