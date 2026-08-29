@@ -92,7 +92,7 @@ fun SmsBomb() {
 
     LabeledRow(
         labelId = R.string.sms_bomb,
-        isCollapsed = collapsed,
+        isCollapsed = if (!isEnabled) null else collapsed,
         toggleCollapse = {
             collapsed = !collapsed
             spf.isCollapsed = collapsed

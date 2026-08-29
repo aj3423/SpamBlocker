@@ -181,7 +181,7 @@ fun EmergencySituation() {
 
     LabeledRow(
         labelId = R.string.emergency,
-        isCollapsed = collapsed && extraNumbers.isNotBlank(),
+        isCollapsed = if (!isEnabled) null else collapsed && extraNumbers.isNotBlank(),
         toggleCollapse = {
             collapsed = !collapsed
             spf.isCollapsed = collapsed
