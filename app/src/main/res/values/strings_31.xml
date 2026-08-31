@@ -1,0 +1,45 @@
+<resources>
+    <string name="sms_ai_screening">SMS AI Screening</string>
+    <string name="sms_ai_prompt">Prompt</string>
+    <string name="sms_ai_model">Model</string>
+    <string name="sms_ai_category_name">Category Name</string>
+    <string name="sms_ai_category_description">Description</string>
+    <string name="download">Download</string>
+    <string name="sms_ai_model_ready">Model is on this device.</string>
+    <string name="sms_ai_model_missing">Download the model to classify SMS on this device.</string>
+    <string name="sms_ai_unsupported_abi">This device cannot run the on-device model (arm64 required).</string>
+    <string name="sms_ai_reset_defaults">Reset prompt and categories</string>
+    <string name="sms_ai_hf_token">Hugging Face token</string>
+    <string name="sms_ai_accept_license">Accept license</string>
+    <string name="help_sms_ai_hf_token">
+        <![CDATA[
+        Gemma models on Hugging Face are gated. Create a token with <title>Read</title> access, accept the license on the model page, then paste the token here. Qwen models do not need a token.<br>
+        <br>
+        The token stays on this phone and is only used to download the model.
+        ]]>
+    </string>
+    <string name="help_sms_ai_screening">
+        <![CDATA[
+        Classify incoming SMS on this device with a local model. No text leaves the phone.<br>
+        <br>
+        Add categories with a short description, then set Allow or Block for each category. The model replies with one category name.
+        ]]>
+    </string>
+    <string name="help_sms_ai_prompt">
+        <![CDATA[
+        The first <title>{}</title> is replaced with the category list (name and description). The second <title>{}</title> is replaced with the SMS body, each line prefixed with <title>&gt;</title>.
+        ]]>
+    </string>
+    <string name="help_sms_ai_model">
+        <![CDATA[
+        Pick an on-device LiteRT-LM <title>.litertlm</title> model under 2GB. Default is Gemma-3 1B INT4, 2k (557MB). Smaller models are faster; larger models may classify more accurately.<br>
+        <br>
+        Download is required once per model. Gemma files on Hugging Face are gated: accept the license and add a Read token. Qwen files are not gated. Classification does not use the internet.
+        ]]>
+    </string>
+    <string name="help_sms_ai_category_description">
+        <![CDATA[
+        Short meaning of this category, shown to the model in the prompt. You can include a sample SMS, for example: <title>only a passcode of digits. e.g. "123456 is your verification code"</title>.
+        ]]>
+    </string>
+</resources>

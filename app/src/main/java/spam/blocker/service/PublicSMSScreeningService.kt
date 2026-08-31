@@ -12,6 +12,7 @@ import android.os.RemoteException
 import spam.blocker.util.SaveableLogger
 import spam.blocker.util.loge
 import spam.blocker.util.logi
+import java.util.concurrent.Executors
 
 object Protocol {
     const val action = "sms.screening.provider.PublicSMSScreeningService"
@@ -30,10 +31,12 @@ object Protocol {
 
 class PublicSMSScreeningService : Service() {
 
-    private val mainHandler = Handler(Looper.getMainLooper())
+    private val worker = Executors.newSingleThreadExecutor { r ->
+        Thread(r, "sms-screening").apply { isDaemon = true }
+    }
 
     private val messenger = Messenger(
-        Handler(mainHandler.looper) { message ->
+        Handler(Looper.getMainLooper()) { message ->
             when (message.what) {
                 Protocol.smsScreening -> {
                     handleQuery(message)
@@ -47,11 +50,15 @@ class PublicSMSScreeningService : Service() {
 
     override fun onBind(intent: Intent): IBinder = messenger.binder
 
+    override fun onDestroy() {
+        worker.shutdownNow()
+        super.onDestroy()
+    }
+
     private fun handleQuery(message: Message) {
         val ctx = this
 
         val requestData = message.data ?: Bundle.EMPTY
-
         val number = requestData.takeIf { it.containsKey(Protocol.keyNumber) }?.getString(Protocol.keyNumber)
         val smsContent = requestData.takeIf { it.containsKey(Protocol.keySmsContent) }?.getString(Protocol.keySmsContent)
         val simSlot = requestData.takeIf { it.containsKey(Protocol.keySimSlot) }?.getInt(Protocol.keySimSlot)
@@ -61,33 +68,37 @@ class PublicSMSScreeningService : Service() {
             return
         }
 
-        Runnable {
-            val r = SmsReceiver.processSms(
-                ctx = ctx,
-                logger = SaveableLogger(),
-                rawNumber = number ?: "",
-                messageBody = smsContent ?: "",
-                simSlot = simSlot,
-                isTest = false,
-                showNotification = false, // disable for sms-screening-mode
-            )
-            logi("sms screening result: ${r.shouldBlock()}, ${r.resultReasonStr(ctx)}")
-
-            val response = Message.obtain(
-                null,
-                Protocol.smsScreeningResult,
-            ).apply {
-                data = Bundle().apply {
-                    putBoolean(Protocol.keyShouldBlock, r.shouldBlock())
-                    putString(Protocol.keyReason, r.resultReasonStr(ctx))
-                }
-            }
-
+        worker.execute {
             try {
-                replyMessenger.send(response)
-            } catch (_: RemoteException) {
-                loge("Failed to deliver screening result to caller.")
+                val r = SmsReceiver.processSms(
+                    ctx = ctx,
+                    logger = SaveableLogger(),
+                    rawNumber = number ?: "",
+                    messageBody = smsContent ?: "",
+                    simSlot = simSlot,
+                    isTest = false,
+                    showNotification = false,
+                )
+                logi("sms screening result: ${r.shouldBlock()}, ${r.resultReasonStr(ctx)}")
+                sendResult(replyMessenger, r.shouldBlock(), r.resultReasonStr(ctx))
+            } catch (t: Throwable) {
+                loge("sms screening failed: $t")
+                sendResult(replyMessenger, false, t.message ?: t.toString())
             }
-        }.run()
+        }
+    }
+
+    private fun sendResult(replyMessenger: Messenger, shouldBlock: Boolean, reason: String) {
+        val response = Message.obtain(null, Protocol.smsScreeningResult).apply {
+            data = Bundle().apply {
+                putBoolean(Protocol.keyShouldBlock, shouldBlock)
+                putString(Protocol.keyReason, reason)
+            }
+        }
+        try {
+            replyMessenger.send(response)
+        } catch (_: RemoteException) {
+            loge("Failed to deliver screening result to caller.")
+        }
     }
 }

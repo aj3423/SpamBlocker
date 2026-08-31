@@ -18,7 +18,7 @@ object Def {
     const val BLOCK_TYPE_SILENCE = 1
     const val BLOCK_TYPE_ANSWER_AND_HANGUP = 2
 
-//    const val DEF_SPAM_IMPORTANCE = NotificationManager.IMPORTANCE_LOW
+    //    const val DEF_SPAM_IMPORTANCE = NotificationManager.IMPORTANCE_LOW
     const val DEF_SPAM_CHANNEL = CHANNEL_LOW
 
     const val DEF_BLOCK_TYPE = BLOCK_TYPE_REJECT
@@ -43,11 +43,12 @@ object Def {
     const val RESULT_ALLOWED_BY_ANSWERED = 107
     const val RESULT_ALLOWED_BY_CNAP_REGEX = 108
     const val RESULT_ALLOWED_BY_GEO_LOCATION_REGEX = 109
-//    const val RESULT_ALLOWED_BY_CONTACT_PREFIX = 110 // 110 was used in some action build which causes conflict, skip this slot
+
+    //    const val RESULT_ALLOWED_BY_CONTACT_PREFIX = 110 // 110 was used in some action build which causes conflict, skip this slot
     const val RESULT_ALLOWED_BY_CONTACT_PREFIX_REGEX = 111
     const val RESULT_ALLOWED_BY_CARRIER_REGEX = 112
     const val RESULT_ALLOWED_BY_DATABASE_PREFIX_REGEX = 113
-
+    const val RESULT_ALLOWED_BY_SMS_AI = 114
 
 
     // blocked (10~99)
@@ -66,6 +67,7 @@ object Def {
     const val RESULT_BLOCKED_BY_CONTACT_PREFIX_REGEX = 22
     const val RESULT_BLOCKED_BY_CARRIER_REGEX = 23
     const val RESULT_BLOCKED_BY_DATABASE_PREFIX_REGEX = 24
+    const val RESULT_BLOCKED_BY_SMS_AI = 25
 
 
     fun isBlocked(result: Int): Boolean {
@@ -108,6 +110,10 @@ object Def {
     const val ForNumber = 0
     const val ForSms = 1
     const val ForQuickCopy = 2
+
+    const val DEFAULT_SMS_AI_PROMPT =
+        "Classify the SMS into exactly one category. Use Chat only if none of the others apply.\n\nCategories:\n{}\n\nSMS:\n{}\n\nThe name of the Category that best describes this SMS is:"
+    const val DEFAULT_SMS_AI_MODEL_ID = "gemma3-1b-int4-2k"
 
     const val ForApiQuery = 0
     const val ForApiReport = 1

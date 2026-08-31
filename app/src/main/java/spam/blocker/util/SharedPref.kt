@@ -507,6 +507,15 @@ class spf { // for namespace only
         var timestamp by long("call_alert_timestamp", 0)
     }
 
+    class SmsAi(ctx: Context) : SharedPref(ctx) {
+        var isEnabled by bool("sms_ai_enabled")
+        var isCollapsed by bool("sms_ai_collapsed")
+        var prompt by str("sms_ai_prompt", Def.DEFAULT_SMS_AI_PROMPT)
+        var modelId by str("sms_ai_model_id", Def.DEFAULT_SMS_AI_MODEL_ID)
+        var hfToken by str("sms_ai_hf_token")
+        var defaultsSeeded by bool("sms_ai_defaults_seeded")
+    }
+
     class PushAlert(ctx: Context) : SharedPref(ctx) {
         var isCollapsed by bool("push_alert_collapsed")
         var pkgName by str("push_alert_pkg_name")

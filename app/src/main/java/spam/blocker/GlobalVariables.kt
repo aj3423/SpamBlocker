@@ -8,6 +8,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import spam.blocker.db.Notification.Channel
 import spam.blocker.db.Notification.ChannelTable
+import spam.blocker.db.SmsAiCategoryTable
+import spam.blocker.service.ai.SmsAiEngine
 import spam.blocker.ui.history.CallViewModel
 import spam.blocker.ui.history.HistoryOptions.showHistoryBlocked
 import spam.blocker.ui.history.HistoryOptions.showHistoryPassed
@@ -68,6 +70,9 @@ object G {
             val spf = spf.BotOptions(ctx)
             dynamicTile0Enabled.value = spf.isDynamicTileEnabled(0)
         }
+
+        SmsAiCategoryTable.ensureDefaults(ctx)
+        SmsAiEngine.preload(ctx)
 
         // History options, these two needs to be loaded here because they are used to
         //  calculate the unread count on the bottom bar.

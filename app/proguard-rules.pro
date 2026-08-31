@@ -5,6 +5,10 @@
 # `keep` also keeps the class inner structure
 -keep class spam.blocker.config.* { *; }
 
+# On-device SMS AI (LiteRT-LM JNI)
+-keep class com.google.ai.edge.litertlm.** { *; }
+-dontwarn com.google.ai.edge.litertlm.**
+
 # For backup/restore permissions
 # `keepnames` only keeps the class name, this will generate `PermissionTypes$CallScreening`
 #   in release mode, use `substringAfterLast('$')` to get rid of the `PermissionTypes$`.

@@ -78,10 +78,11 @@ It works without replacing your call/SMS app. You can kill the app after setup, 
 | Instant Query                 | Check the incoming number online in real time, querying multiple API endpoints simultaneously, such as the [PhoneBlock](https://phoneblock.net/).                                              |
 | Report Spam                   | Automatically or manually report the number to build our crowd-sourced databases, protecting others and yourself.                                                                              |
 | Regex<br>(regular expression) | Check the [Wiki](https://github.com/aj3423/SpamBlocker/wiki/Regex-Workflow-Templates) for examples.                                                                                            |
+| SMS AI Screening              | On-device LiteRT-LM model classifies SMS into categories (Scam, Ad, Order, OTP, Chat) and allows or blocks by category. Default: Gemma-3 1B INT4 2k (557MB); other Gemma-3 / Qwen2.5 `.litertlm` models under 2GB can be selected for testing. |
 
 # Limitations 
 - Auto clear SMS: [No plan](https://github.com/aj3423/SpamBlocker/issues/647)
-- Local AI support: [Future plan, not yet ready](https://github.com/aj3423/SpamBlocker/issues/267#issuecomment-2632229803)
+- Local AI support: SMS AI Screening (on-device LiteRT-LM). Call screening with AI is not included.
 - RCS support: [No plan](https://github.com/aj3423/SpamBlocker/issues/308#issuecomment-2692269430)
 - Android 9- support: [No plan](https://github.com/aj3423/SpamBlocker/issues/38)
 
@@ -120,6 +121,8 @@ It works without replacing your call/SMS app. You can kill the app after setup, 
 
  - For online features:
 
+   Downloading an SMS AI model contacts Hugging Face (IP address, and a user-provided token for gated Gemma files). Classification itself stays on the device.
+
    The API endpoints will see your:
 
      - IP address
@@ -142,7 +145,7 @@ Full [Privacy Policy](https://github.com/aj3423/SpamBlocker/blob/master/Docs/PRI
 Languages are translated using AI, PRs for corrections are welcome.
 
 # Contribution Wanted
- - [On-device AI](https://github.com/aj3423/SpamBlocker/issues/642)
+ - [On-device AI](https://github.com/aj3423/SpamBlocker/issues/642) (SMS AI Screening is in settings → Regex Settings)
 
 # Some ideas
  - [A decentralized database](https://github.com/aj3423/SpamBlocker/issues/340)

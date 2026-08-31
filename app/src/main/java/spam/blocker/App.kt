@@ -7,6 +7,7 @@ import spam.blocker.db.BotTable
 import spam.blocker.db.SmsTable
 import spam.blocker.db.reScheduleBot
 import spam.blocker.service.bot.MyWorkManager
+import spam.blocker.service.ai.SmsAiEngine
 import spam.blocker.service.resetPushAlertCache
 import spam.blocker.ui.crash.CrashReportActivity
 import spam.blocker.ui.history.reScheduleHistoryCleanup
@@ -88,6 +89,9 @@ class App : Application() {
 
             // Clear PushAlert cache
             resetPushAlertCache()
+
+            SmsAiEngine.close()
+            SmsAiEngine.preload(this)
         }
     }
 

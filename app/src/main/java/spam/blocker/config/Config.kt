@@ -6,12 +6,14 @@ import androidx.compose.ui.graphics.toArgb
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.Transient
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
 import kotlinx.serialization.json.encodeToStream
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.Bot
+import spam.blocker.def.Def
 import spam.blocker.db.BotTable
 import spam.blocker.db.CallTable
 import spam.blocker.db.ContentRegexTable
@@ -26,6 +28,8 @@ import spam.blocker.db.QuickCopyRegexTable
 import spam.blocker.db.RegexRule
 import spam.blocker.db.RegexTable
 import spam.blocker.db.ReportApi
+import spam.blocker.db.SmsAiCategory
+import spam.blocker.db.SmsAiCategoryTable
 import spam.blocker.db.SmsTable
 import spam.blocker.db.SpamNumber
 import spam.blocker.db.SpamTable
@@ -217,6 +221,44 @@ class RegexOptions : IConfig {
             maxDescRows = me.maxDescRows
             ruleListHeightPercentage = me.listHeightPercentage
             textboxLimit = me.textboxLimit
+        }
+    }
+}
+
+@Serializable
+class SmsAi : IConfig {
+    var enabled = false
+    var collapsed = false
+    var prompt = Def.DEFAULT_SMS_AI_PROMPT
+    var modelId = Def.DEFAULT_SMS_AI_MODEL_ID
+    @Transient var hfToken = ""
+    var defaultsSeeded = false
+    val categories = mutableListOf<SmsAiCategory>()
+
+    override fun load(ctx: Context) {
+        val spf = spf.SmsAi(ctx)
+        enabled = spf.isEnabled
+        collapsed = spf.isCollapsed
+        prompt = spf.prompt
+        modelId = spf.modelId
+        hfToken = spf.hfToken
+        defaultsSeeded = spf.defaultsSeeded
+        categories.clear()
+        categories.addAll(SmsAiCategoryTable.listAll(ctx))
+    }
+
+    override fun apply(ctx: Context) {
+        val me = this
+        spf.SmsAi(ctx).apply {
+            isEnabled = me.enabled
+            isCollapsed = me.collapsed
+            prompt = me.prompt
+            modelId = me.modelId
+            defaultsSeeded = me.defaultsSeeded
+        }
+        SmsAiCategoryTable.clearAll(ctx)
+        me.categories.forEach {
+            SmsAiCategoryTable.addWithId(ctx, it)
         }
     }
 }
@@ -942,6 +984,7 @@ class Configs {
     var smsAlert : SmsAlert? = null
     var emergency : EmergencySituation? = null
     var smsBomb : SmsBomb? = null
+    var smsAi : SmsAi? = null
 
     var apiQuery : ApiQuery? = null
     var apiReport : ApiReport? = null
@@ -987,6 +1030,7 @@ class Configs {
             pushAlert = PushAlert().also { it.load(ctx) }
             smsAlert = SmsAlert().also { it.load(ctx) }
             smsBomb = SmsBomb().also { it.load(ctx) }
+            smsAi = SmsAi().also { it.load(ctx) }
         }
         if (categories.isSelected(Category.APIS)) {
             apiQuery = ApiQuery().also { it.load(ctx) }
@@ -1041,6 +1085,7 @@ class Configs {
             pushAlert?.apply(ctx)
             smsAlert?.apply(ctx)
             smsBomb?.apply(ctx)
+            smsAi?.apply(ctx)
         }
         if (categories.isSelected(Category.APIS)) {
             apiQuery?.apply(ctx)

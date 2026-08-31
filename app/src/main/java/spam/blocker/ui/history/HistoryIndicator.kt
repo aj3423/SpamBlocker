@@ -21,6 +21,7 @@ import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_GROUP_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_PREFIX_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTENT_REGEX
+import spam.blocker.def.Def.RESULT_ALLOWED_BY_SMS_AI
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_DATABASE_PREFIX_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_GEO_LOCATION_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_NUMBER_REGEX
@@ -30,6 +31,7 @@ import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTACT_GROUP_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTACT_PREFIX_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTACT_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTENT_REGEX
+import spam.blocker.def.Def.RESULT_BLOCKED_BY_SMS_AI
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_DATABASE_PREFIX_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_GEO_LOCATION_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NUMBER_REGEX
@@ -95,6 +97,12 @@ fun IndicatorIcons(indicators: Indicators) {
                 }
                 RESULT_BLOCKED_BY_CONTENT_REGEX -> {
                     ResIcon(R.drawable.ic_sms_blocked, modifier = M.size(14.dp), color = C.error)
+                }
+                RESULT_ALLOWED_BY_SMS_AI -> {
+                    ResIcon(R.drawable.ic_category, modifier = M.size(14.dp), color = C.success)
+                }
+                RESULT_BLOCKED_BY_SMS_AI -> {
+                    ResIcon(R.drawable.ic_category, modifier = M.size(14.dp), color = C.error)
                 }
             }
         }

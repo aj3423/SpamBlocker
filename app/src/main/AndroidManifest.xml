@@ -62,7 +62,15 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SpamBlocker" >
+        android:theme="@style/Theme.SpamBlocker">
+
+        <!-- LiteRT GPU backend (optional; CPU is used if these are missing) -->
+        <uses-native-library
+            android:name="libvndksupport.so"
+            android:required="false" />
+        <uses-native-library
+            android:name="libOpenCL.so"
+            android:required="false" />
 
         <activity
             android:name=".ui.main.MainActivity"
