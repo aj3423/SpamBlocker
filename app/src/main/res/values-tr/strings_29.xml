@@ -76,12 +76,29 @@
     <string name="help_copy_tag">Aynı değere sahip ancak farklı isimli yeni bir etiket oluşturun.</string>
     <string name="from_tag">Kaynak Etiket</string>
     <string name="to_tag">Hedef Etiket</string>
+    <string name="allow_7726">7726\'ya İzin Ver</string>
     <string name="help_bot_preset_7726">
         <![CDATA[
-        Spam metinlerini <error>7726</error> (evrensel kısa kod <error>SPAM</error>) numarasına yönlendirir, bu özellik birçok mobil operatör tarafından yaygın olarak desteklenmektedir. <br>
+        Yalnızca <warn>gösterim amaçlıdır</warn>.<br>
+        <br>
+        Spam metinlerini <error>7726</error> (evrensel kısa kod <error>SPAM</error>) numarasına yönlendirir,
+         birçok mobil operatör tarafından desteklenen bir özelliktir. <br>
         <br>
         <warn>Uyarı</warn> <br>
-        Bunu yalnızca operatörünüz 7726\'yı destekliyorsa etkinleştirin. Aksi takdirde standart SMS ücretleri uygulanabilir.
+        Bunu yalnızca operatörünüz 7726\'yı destekliyorsa etkinleştirin. Aksi takdirde standart SMS ücretleri uygulanabilir. <br>
+        <br>
+        Hem bir <minor>iş akışı</minor> hem de bir SMS <minor>regex kuralı</minor> oluşturur: <br>
+        <br>
+        - <minor>İş akışı</minor> <br>
+        &ensp; 1. Spam metnini 7726\'ya gönder. <br>
+        &ensp; 2. 10 saniye bekle. <br>
+        &ensp; 3. Numarayı 7726\'ya gönder. <br>
+        <br>
+        - <minor>Regex kuralı</minor> \"7726\'ya İzin Ver\" <br>
+        &ensp; 7726\'dan gelen mesajlara izin ver, örneğin: <br>
+        &emsp; <sample>Bildirdiğiniz için teşekkürler, lütfen telefon numarasıyla yanıt verin</sample>. <br>
+        <br>
+        10 saniyelik gecikmeyi operatörünüzün yanıt süresine göre ayarlayın, operatörünüz tarafından desteklenmiyorsa numara bildirimini kaldırın.
         ]]>
     </string>
     <string name="report_sms">SMS bildirim</string>

@@ -76,13 +76,29 @@
     <string name="help_copy_tag">Create a new tag with the same value but a different name.</string>
     <string name="from_tag">From Tag</string>
     <string name="to_tag">To Tag</string>
+    <string name="allow_7726">Allow 7726</string>
     <string name="help_bot_preset_7726">
         <![CDATA[
+        For <warn>demonstration purposes</warn> only.<br>
+        <br>
         Forwards spam texts to <error>7726</error> (the universal short code spelling <error>SPAM</error>),
-         a feature widely supported by many mobile carriers. <br>
+         a feature supported by many mobile carriers. <br>
         <br>
         <warn>Warning</warn> <br>
-        Only enable this if your carrier supports 7726. Otherwise, standard SMS charges may apply.
+        Only enable this if your carrier supports 7726. Otherwise, standard SMS charges may apply. <br>
+        <br>
+        It creates both a <minor>workflow</minor> and an SMS <minor>regex rule</minor>: <br>
+        <br>
+        - The <minor>workflow</minor> <br>
+        &ensp; 1. Send the spam text to 7726. <br>
+        &ensp; 2. Wait for 10 seconds. <br>
+        &ensp; 3. Send the number to 7726. <br>
+        <br>
+        - The <minor>regex rule</minor> \"Allow 7726\" <br>
+        &ensp; Allow messages from 7726, such as: <br>
+        &emsp; <sample>Thanks for reporting, please reply with the phone number</sample>. <br>
+        <br>
+        Adjust the 10-second delay according to your carrier\'s response time, remove the number reporting if it\'s not supported by your carrier.
         ]]>
     </string>
     <string name="report_sms">Report SMS</string>

@@ -76,12 +76,29 @@
     <string name="help_copy_tag">Créez une nouvelle balise avec la même valeur mais un nom différent.</string>
     <string name="from_tag">Balise d\'origine</string>
     <string name="to_tag">Balise de destination</string>
+    <string name="allow_7726">Autoriser 7726</string>
     <string name="help_bot_preset_7726">
         <![CDATA[
-        Transfère les SMS indésirables au <error>7726</error> (le code court universel pour <error>SPAM</error>), une fonctionnalité largement prise en charge par de nombreux opérateurs mobiles. <br>
+        À des <warn>fins de démonstration</warn> uniquement.<br>
+        <br>
+        Transfère les SMS indésirables au <error>7726</error> (le code court universel pour <error>SPAM</error>),
+         une fonctionnalité prise en charge par de nombreux opérateurs mobiles. <br>
         <br>
         <warn>Avertissement</warn> <br>
-        N\'activez ceci que si votre opérateur prend en charge le 7726. Sinon, des frais de SMS standard peuvent s\'appliquer.
+        N\'activez ceci que si votre opérateur prend en charge le 7726. Sinon, des frais de SMS standard peuvent s\'appliquer. <br>
+        <br>
+        Cela crée à la fois un <minor>flux de travail</minor> et une <minor>règle d\'expression régulière</minor> SMS : <br>
+        <br>
+        - Le <minor>flux de travail</minor> <br>
+        &ensp; 1. Envoyer le SMS indésirable au 7726. <br>
+        &ensp; 2. Attendre 10 secondes. <br>
+        &ensp; 3. Envoyer le numéro au 7726. <br>
+        <br>
+        - La <minor>règle d\'expression régulière</minor> \"Autoriser 7726\" <br>
+        &ensp; Autoriser les messages provenant du 7726, tels que : <br>
+        &emsp; <sample>Merci pour votre signalement, veuillez répondre avec le numéro de téléphone</sample>. <br>
+        <br>
+        Ajustez le délai de 10 secondes en fonction du temps de réponse de votre opérateur, supprimez le signalement de numéro s\'il n\'est pas pris en charge par votre opérateur.
         ]]>
     </string>
     <string name="report_sms">Signaler un SMS</string>

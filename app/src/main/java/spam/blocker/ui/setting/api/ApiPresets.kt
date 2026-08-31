@@ -1,15 +1,24 @@
 package spam.blocker.ui.setting.api
 
+import android.app.NotificationChannel
 import android.content.Context
 import spam.blocker.BuildConfig
+import spam.blocker.Events
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.AutoReportTypes
+import spam.blocker.db.ContentRegexTable
 import spam.blocker.db.ImportDbReason
+import spam.blocker.db.Notification.CHANNEL_LOW
+import spam.blocker.db.Notification.CHANNEL_NONE
+import spam.blocker.db.NumberRegexTable
 import spam.blocker.db.QueryApi
+import spam.blocker.db.RegexRule
 import spam.blocker.db.ReportApi
+import spam.blocker.def.Def
 import spam.blocker.service.bot.CategoryConfig
 import spam.blocker.service.bot.CopyTag
+import spam.blocker.service.bot.Delay
 import spam.blocker.service.bot.FilterSpamResult
 import spam.blocker.service.bot.ForwardType
 import spam.blocker.service.bot.HTTP_POST
@@ -20,6 +29,7 @@ import spam.blocker.service.bot.InterceptSms
 import spam.blocker.service.bot.ParseQueryResult
 import spam.blocker.service.bot.SendSms
 import spam.blocker.service.bot.SetTag
+import spam.blocker.service.bot.Wait
 import spam.blocker.ui.history.tagFraud
 import spam.blocker.ui.history.tagMarketing
 import spam.blocker.ui.history.tagOther
@@ -28,6 +38,7 @@ import spam.blocker.ui.history.tagSurvey
 import spam.blocker.ui.history.tagValid
 import spam.blocker.util.Lambda1
 import spam.blocker.util.Launcher
+import spam.blocker.util.Notification
 
 data class ApiPreset(
     val desc: (Context) -> String,
@@ -184,19 +195,42 @@ val ApiReportPresets by lazy {
                         InterceptSms(
                             contentFilter = ".*",
                         ),
+                        // send to 7726
                         SetTag(
                             tagName = "send_sms_to",
                             tagValue = "7726"
                         ),
+                        // Send SMS content
                         CopyTag(
                             tagFrom = "sms_content",
                             tagTo = "send_sms_content"
                         ),
-                        SendSms()
+                        SendSms(),
+
+                        Wait(seconds = 10),
+
+                        // Send SMS number
+                        CopyTag(
+                            tagFrom = "raw_number",
+                            tagTo = "send_sms_content"
+                        ),
+                        SendSms(),
                     )
                 )
 
                 addApiToDB(ctx, G.apiReportVM, newApi)
+
+                // Add a regex rule
+                ContentRegexTable().addNew(ctx, RegexRule(
+                    pattern = ".*",
+                    patternExtra = "7726",
+                    description = ctx.getString(R.string.allow_7726),
+                    flags = Def.FLAG_FOR_SMS, // disabled for call/sms
+                    priority = 100,
+                    isBlacklist = false,
+                    channel = CHANNEL_NONE,
+                ))
+                G.ContentRuleVM.reloadDb(ctx)
             }
         ),
     )

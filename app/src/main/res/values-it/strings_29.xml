@@ -76,12 +76,29 @@
     <string name="help_copy_tag">Crea un nuovo tag con lo stesso valore ma un nome diverso.</string>
     <string name="from_tag">Tag di origine</string>
     <string name="to_tag">Tag di destinazione</string>
+    <string name="allow_7726">Consenti 7726</string>
     <string name="help_bot_preset_7726">
         <![CDATA[
-        Invia i messaggi spam al <error>7726</error> (il codice breve universale per <error>SPAM</error>), una funzione ampiamente supportata da molti operatori mobili. <br>
+        Solo a <warn>scopo dimostrativo</warn>.<br>
+        <br>
+        Invia i messaggi spam al <error>7726</error> (il codice breve universale per <error>SPAM</error>),
+         una funzione supportata da molti operatori mobili. <br>
         <br>
         <warn>Avviso</warn> <br>
-        Attiva questa funzione solo se il tuo operatore supporta il 7726. In caso contrario, potrebbero essere applicati i costi standard per gli SMS.
+        Attiva questa funzione solo se il tuo operatore supporta il 7726. In caso contrario, potrebbero essere applicati i costi standard per gli SMS. <br>
+        <br>
+        Crea sia un <minor>flusso di lavoro</minor> che una <minor>regola regex</minor> per gli SMS: <br>
+        <br>
+        - Il <minor>flusso di lavoro</minor> <br>
+        &ensp; 1. Invia il testo di spam a 7726. <br>
+        &ensp; 2. Attendi 10 secondi. <br>
+        &ensp; 3. Invia il numero a 7726. <br>
+        <br>
+        - La <minor>regola regex</minor> \"Consenti 7726\" <br>
+        &ensp; Consenti messaggi da 7726, come: <br>
+        &emsp; <sample>Grazie per la segnalazione, rispondi con il numero di telefono</sample>. <br>
+        <br>
+        Regola il ritardo di 10 secondi in base al tempo di risposta del tuo operatore, rimuovi la segnalazione del numero se non è supportata dal tuo operatore.
         ]]>
     </string>
     <string name="report_sms">Segnala SMS</string>

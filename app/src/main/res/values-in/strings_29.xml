@@ -76,12 +76,29 @@
     <string name="help_copy_tag">Buat tag baru dengan nilai yang sama tapi nama yang berbeda.</string>
     <string name="from_tag">Dari Tag</string>
     <string name="to_tag">Ke Tag</string>
+    <string name="allow_7726">Izinkan 7726</string>
     <string name="help_bot_preset_7726">
         <![CDATA[
-        Meneruskan pesan spam ke <error>7726</error> (kode singkat universal untuk <error>SPAM</error>), fitur yang didukung luas oleh banyak operator seluler. <br>
+        Hanya untuk <warn>tujuan demonstrasi</warn>.<br>
+        <br>
+        Meneruskan pesan spam ke <error>7726</error> (kode singkat universal untuk <error>SPAM</error>),
+         fitur yang didukung oleh banyak operator seluler. <br>
         <br>
         <warn>Peringatan</warn> <br>
-        Aktifkan ini hanya jika operator Anda mendukung 7726. Jika tidak, biaya SMS standar mungkin berlaku.
+        Aktifkan ini hanya jika operator Anda mendukung 7726. Jika tidak, biaya SMS standar mungkin berlaku. <br>
+        <br>
+        Ini membuat <minor>alur kerja</minor> dan <minor>aturan regex</minor> SMS: <br>
+        <br>
+        - <minor>Alur kerja</minor> <br>
+        &ensp; 1. Kirim teks spam ke 7726. <br>
+        &ensp; 2. Tunggu selama 10 detik. <br>
+        &ensp; 3. Kirim nomor ke 7726. <br>
+        <br>
+        - <minor>Aturan regex</minor> \"Izinkan 7726\" <br>
+        &ensp; Izinkan pesan dari 7726, seperti: <br>
+        &emsp; <sample>Terima kasih telah melapor, silakan balas dengan nomor telepon</sample>. <br>
+        <br>
+        Sesuaikan penundaan 10 detik sesuai waktu respons operator Anda, hapus pelaporan nomor jika tidak didukung oleh operator Anda.
         ]]>
     </string>
     <string name="report_sms">Laporkan SMS</string>

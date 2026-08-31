@@ -76,12 +76,28 @@
     <string name="help_copy_tag">建立具有相同值但不同名稱的新標籤。</string>
     <string name="from_tag">來源標籤</string>
     <string name="to_tag">目標標籤</string>
+    <string name="allow_7726">允許 7726</string>
     <string name="help_bot_preset_7726">
         <![CDATA[
-        將垃圾短訊轉發至 <error>7726</error>（<error>SPAM</error> 的通用短代碼），這是許多行動電信業者廣泛支援的功能。<br>
+        僅用於<warn>簡介示範</warn>。<br>
+        <br>
+        將垃圾簡訊轉發至 <error>7726</error>（<error>SPAM</error> 的通用短代碼），這是許多行動電信業者支援的功能。<br>
         <br>
         <warn>警告</warn> <br>
-        僅在您的電信業者支援 7726 時才啟用此功能。否則，可能會產生標準簡訊費用。
+        僅在您的電信業者支援 7726 時才啟用此功能。否則，可能會產生標準簡訊費用。<br>
+        <br>
+        它會同時建立一個<minor>工作流程</minor>和一個簡訊<minor>正規表達式規則</minor>：<br>
+        <br>
+        - <minor>工作流程</minor> <br>
+        &ensp; 1. 將垃圾簡訊傳送至 7726。<br>
+        &ensp; 2. 等待 10 秒。<br>
+        &ensp; 3. 將號碼傳送至 7726。<br>
+        <br>
+        - <minor>正規表達式規則</minor> 「允許 7726」 <br>
+        &ensp; 允許來自 7726 的訊息，例如：<br>
+        &emsp; <sample>感謝您的舉報，請回覆電話號碼</sample>。<br>
+        <br>
+        根據電信業者的回應時間調整 10 秒延遲；如果您的電信業者不支援號碼舉報，請刪除該步驟。
         ]]>
     </string>
     <string name="report_sms">報告簡訊</string>

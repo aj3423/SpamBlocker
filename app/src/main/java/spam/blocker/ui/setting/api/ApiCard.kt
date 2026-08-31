@@ -25,6 +25,7 @@ import spam.blocker.ui.widgets.OutlineCard
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.util.spf
+import kotlin.math.min
 
 
 @Composable
@@ -84,7 +85,7 @@ fun ApiCard(
             // action icons
             NonLazyGrid(
                 columns = 3,
-                itemCount = api.actions.size,
+                itemCount = min(api.actions.size, 6),
             ) {
                 api.actions[it].Icon()
             }

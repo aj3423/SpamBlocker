@@ -76,12 +76,29 @@
     <string name="help_copy_tag">Erstellen Sie ein neues Tag mit demselben Wert, aber einem anderen Namen.</string>
     <string name="from_tag">Von Tag</string>
     <string name="to_tag">Zu Tag</string>
+    <string name="allow_7726">7726 zulassen</string>
     <string name="help_bot_preset_7726">
         <![CDATA[
-        Leitet Spam-Texte an <error>7726</error> (die universelle Kurzwahl für <error>SPAM</error>) weiter, eine Funktion, die von vielen Mobilfunkanbietern weit verbreitet unterstützt wird. <br>
+        Nur zu <warn>Demonstrationszwecken</warn>.<br>
+        <br>
+        Leitet Spam-Texte an <error>7726</error> (die universelle Kurzwahl für <error>SPAM</error>) weiter,
+         eine Funktion, die von vielen Mobilfunkanbietern unterstützt wird. <br>
         <br>
         <warn>Warnung</warn> <br>
-        Aktivieren Sie dies nur, wenn Ihr Anbieter 7726 unterstützt. Andernfalls können Standard-SMS-Gebühren anfallen.
+        Aktivieren Sie dies nur, wenn Ihr Anbieter 7726 unterstützt. Andernfalls können Standard-SMS-Gebühren anfallen. <br>
+        <br>
+        Es erstellt sowohl einen <minor>Workflow</minor> als auch eine SMS-<minor>Regex-Regel</minor>: <br>
+        <br>
+        - Der <minor>Workflow</minor> <br>
+        &ensp; 1. Sende den Spam-Text an 7726. <br>
+        &ensp; 2. Warte 10 Sekunden. <br>
+        &ensp; 3. Sende die Nummer an 7726. <br>
+        <br>
+        - Die <minor>Regex-Regel</minor> \"7726 zulassen\" <br>
+        &ensp; Nachrichten von 7726 zulassen, wie z. B.: <br>
+        &emsp; <sample>Vielen Dank für die Meldung, bitte antworten Sie mit der Telefonnummer</sample>. <br>
+        <br>
+        Passen Sie die 10-Sekunden-Verzögerung an die Antwortzeit Ihres Anbieters an, und entfernen Sie die Nummernmeldung, falls sie von Ihrem Anbieter nicht unterstützt wird.
         ]]>
     </string>
     <string name="report_sms">SMS melden</string>

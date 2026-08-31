@@ -29,6 +29,7 @@ import spam.blocker.service.bot.executeAll
 import spam.blocker.ui.M
 import spam.blocker.ui.history.tagOther
 import spam.blocker.ui.setting.SettingRow
+import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.BalloonQuestionMark
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.GreyText
@@ -46,7 +47,7 @@ import spam.blocker.util.Lambda
 @Composable
 fun TestActionButton(
     actions: SnapshotStateList<IAction>,
-    testingRequireNumber: Boolean = false, // testing InstantQuery requires a number
+    testingRequiresNumberOrContent: Boolean = false, // testing InstantQuery requires a number
     botId: Long? = null, // is testing bot
 ) {
     val ctx = LocalContext.current
@@ -74,7 +75,8 @@ fun TestActionButton(
 
     val coroutine = rememberCoroutineScope()
     fun testActions(
-        content: String? = null,
+        rawNumber: String? = null,
+        smsContent: String? = null,
     ) {
         // Gather all required permissions for all actions
         val requiredPermissions = actions.map { it.requiredPermissions(ctx) }.flatten()
@@ -88,8 +90,8 @@ fun TestActionButton(
                     withContext(IO) {
                         val aCtx = ActionContext(
                             logger = JetpackTextLogger(logStr),
-                            rawNumber = content,
-                            smsContent = content,
+                            rawNumber = rawNumber,
+                            smsContent = smsContent,
                             tagCategoryValue = tagOther,
                             botId = botId,
                         )
@@ -113,26 +115,36 @@ fun TestActionButton(
         trigger = inputTrigger,
         buttons = {
             StrokeButton(label = Str(R.string.ok), color = C.teal200) {
-                testActions(if (forCall) G.testingVM.phone.value else G.testingVM.sms.value)
+                testActions(
+                    rawNumber = G.testingVM.phone.value,
+                    smsContent = if (forCall) null else G.testingVM.sms.value
+                )
             }
         }
     ) {
 
         StrInputBox(
-            text = if(forCall) G.testingVM.phone.value else G.testingVM.sms.value,
-            label = { GreyLabel(Str(if (forCall) R.string.phone_number else R.string.sms_content))},
-            placeholder = { Placeholder(if (forCall) "+12223334444" else "") },
+            text = G.testingVM.phone.value,
+            label = { GreyLabel(Str(R.string.phone_number))},
+            placeholder = { Placeholder("+12223334444") },
             onValueChange = {
-                if (forCall)
-                    G.testingVM.phone.value = it
-                else
-                    G.testingVM.sms.value = it
+                G.testingVM.phone.value = it
             }
         )
+        AnimatedVisibleV(!forCall) {
+            StrInputBox(
+                text = G.testingVM.sms.value,
+                label = { GreyLabel(Str(R.string.sms_content))},
+                placeholder = { Placeholder("") },
+                onValueChange = {
+                    G.testingVM.sms.value = it
+                }
+            )
+        }
     }
 
     StrokeButton(label = Str(R.string.test), color = C.teal200) {
-        if (testingRequireNumber) {
+        if (testingRequiresNumberOrContent) {
             inputTrigger.value = true
         } else {
             testActions()
@@ -202,7 +214,7 @@ fun ActionHeader(
             // Test
             TestActionButton(
                 actions = currentActions,
-                testingRequireNumber = testingRequireNumber,
+                testingRequiresNumberOrContent = testingRequireNumber,
                 botId = botId,
             )
 

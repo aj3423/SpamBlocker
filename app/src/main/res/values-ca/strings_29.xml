@@ -76,12 +76,29 @@
     <string name="help_copy_tag">Crea una nova etiqueta amb el mateix valor però un nom diferent.</string>
     <string name="from_tag">D\'etiqueta</string>
     <string name="to_tag">A etiqueta</string>
+    <string name="allow_7726">Permetre 7726</string>
     <string name="help_bot_preset_7726">
         <![CDATA[
-        Reenvia els textos de spam al <error>7726</error> (el codi curt universal per a <error>SPAM</error>), una funció ampliamenment compatible amb molts operadors mòbils. <br>
+        Només per a <warn>fins de demostració</warn>.<br>
+        <br>
+        Reenvia els textos de spam al <error>7726</error> (el codi curt universal per a <error>SPAM</error>),
+         una funció compatible amb molts operadors mòbils. <br>
         <br>
         <warn>Advertència</warn> <br>
-        Activa això només si el teu operador admet el 7726. En cas contrari, es poden aplicar càrrecs estàndard de SMS.
+        Activa això només si el teu operador admet el 7726. En cas contrari, es poden aplicar càrrecs estàndard de SMS. <br>
+        <br>
+        Crea tant un <minor>flux de treball</minor> com una <minor>regla d\'expressió regular</minor> d\'SMS: <br>
+        <br>
+        - El <minor>flux de treball</minor> <br>
+        &ensp; 1. Envia el text de spam al 7726. <br>
+        &ensp; 2. Espera 10 segons. <br>
+        &ensp; 3. Envia el número al 7726. <br>
+        <br>
+        - La <minor>regla d\'expressió regular</minor> \"Permetre 7726\" <br>
+        &ensp; Permetre missatges del 7726, com ara: <br>
+        &emsp; <sample>Gràcies per informar, si us plau respongueu amb el número de telèfon</sample>. <br>
+        <br>
+        Ajusta el retard de 10 segons segons el temps de resposta del teu operador i elimina l\'informe del número si el teu operador no ho admet.
         ]]>
     </string>
     <string name="report_sms">Informar SMS</string>

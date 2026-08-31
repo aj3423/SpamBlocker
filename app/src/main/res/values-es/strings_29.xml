@@ -76,12 +76,29 @@
     <string name="help_copy_tag">Cree una nueva etiqueta con el mismo valor pero un nombre diferente.</string>
     <string name="from_tag">Desde etiqueta</string>
     <string name="to_tag">A etiqueta</string>
+    <string name="allow_7726">Permitir 7726</string>
     <string name="help_bot_preset_7726">
         <![CDATA[
-        Reenvía los textos de spam al <error>7726</error> (el código corto universal para <error>SPAM</error>), una función ampliamente compatible con muchos operadores móviles. <br>
+        Solo para <warn>fines de demostración</warn>.<br>
+        <br>
+        Reenvía los textos de spam al <error>7726</error> (el código corto universal para <error>SPAM</error>),
+         una función compatible con muchos operadores móviles. <br>
         <br>
         <warn>Advertencia</warn> <br>
-        Active esto solo si su operador admite el 7726. De lo contrario, podrían aplicarse cargos estándar de SMS.
+        Active esto solo si su operador admite el 7726. De lo contrario, podrían aplicarse cargos estándar de SMS. <br>
+        <br>
+        Crea tanto un <minor>flujo de trabajo</minor> como una <minor>regla de regex</minor> de SMS: <br>
+        <br>
+        - El <minor>flujo de trabajo</minor> <br>
+        &ensp; 1. Enviar el texto de spam al 7726. <br>
+        &ensp; 2. Esperar 10 segundos. <br>
+        &ensp; 3. Enviar el número al 7726. <br>
+        <br>
+        - La <minor>regla de regex</minor> \"Permitir 7726\" <br>
+        &ensp; Permitir mensajes de 7726, como: <br>
+        &emsp; <sample>Gracias por informar, por favor responda con el número de teléfono</sample>. <br>
+        <br>
+        Ajuste el retraso de 10 segundos según el tiempo de respuesta de su operador y elimine el reporte de números si su operador no lo admite.
         ]]>
     </string>
     <string name="report_sms">Denunciar SMS</string>

@@ -76,12 +76,28 @@
     <string name="help_copy_tag">同じ値但有り異なる名前の新しいタグを作成します。</string>
     <string name="from_tag">元タグ</string>
     <string name="to_tag">先タグ</string>
+    <string name="allow_7726">7726 を許可</string>
     <string name="help_bot_preset_7726">
         <![CDATA[
-        スパムメールを <error>7726</error>（<error>SPAM</error> のユニバーサル短縮コード）に転送します。これは多くの携帯電話キャリアで広くサポートされている機能です。<br>
+        <warn>デモ目的</warn>のみに使用されます。<br>
+        <br>
+        スパムメールを <error>7726</error>（<error>SPAM</error> のユニバーサル短縮コード）に転送します。これは多くの携帯電話キャリアでサポートされている機能です。<br>
         <br>
         <warn>警告</warn> <br>
-        キャリアが 7726 をサポートしている場合のみ有効にしてください。そうでない場合は、標準の SMS 料金が適用される場合があります。
+        キャリアが 7726 をサポートしている場合のみ有効にしてください。そうでない場合は、標準の SMS 料金が適用される場合があります。<br>
+        <br>
+        <minor>ワークフロー</minor>と SMS の<minor>正規表現ルール</minor>の両方が作成されます：<br>
+        <br>
+        - <minor>ワークフロー</minor> <br>
+        &ensp; 1. スパムテキストを 7726 に送信。 <br>
+        &ensp; 2. 10 秒間待機。 <br>
+        &ensp; 3. 電話番号を 7726 に送信。 <br>
+        <br>
+        - <minor>正規表現ルール</minor>「7726 を許可」 <br>
+        &ensp; 7726 からのメッセージを許可します（例：） <br>
+        &emsp; <sample>ご報告ありがとうございます。電話番号を返信してください</sample>。<br>
+        <br>
+        キャリアの応答時間に合わせて 10 秒の遅延を調整し、キャリアでサポートされていない場合は番号報告のステップを削除してください。
         ]]>
     </string>
     <string name="report_sms">SMSを報告する</string>
