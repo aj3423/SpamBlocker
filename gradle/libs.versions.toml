@@ -10,9 +10,9 @@ composeBom = "2026.08.00" # dangerous, breaks things all the time
 # Do NOT upgrade to 3.0.0 until this is fixed: https://github.com/Calvin-LL/Reorderable/issues/111
 reorderable = "2.3.3"
 
-libphonenumber = "9.0.37"
-geocoder = "3.37" # https://repo1.maven.org/maven2/com/googlecode/libphonenumber/geocoder/maven-metadata.xml
-carrier  = "2.37" # https://repo1.maven.org/maven2/com/googlecode/libphonenumber/carrier/maven-metadata.xml
+libphonenumber = "9.0.38"
+geocoder = "3.38" # https://repo1.maven.org/maven2/com/googlecode/libphonenumber/geocoder/maven-metadata.xml
+carrier  = "2.38" # https://repo1.maven.org/maven2/com/googlecode/libphonenumber/carrier/maven-metadata.xml
 
 serialization = "1.11.0"
 mockk = "1.14.11"
