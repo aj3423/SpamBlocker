@@ -20,4 +20,24 @@
         ]]>
     </string>
     <string name="sending_request">Mengirim permintaan…</string>
+<string name="description_filter">Penyaring Deskripsi</string>
+    <string name="help_auto_report_filter_by_rule_description">
+        <![CDATA[
+        Aktifkan lapor otomatis secara eksklusif untuk aturan regex tertentu dengan mencocokkan <highlight><b>deskripsi</b></highlight> aturannya. <br>
+        <br>
+        Contoh: <br>
+        &ensp; Aturan 1: <error>.*won.*claim.*</error> <br>
+        &emsp; Deskripsi: <highlight><b>scam</b></highlight> <br>
+        &ensp; Aturan 2: <error>.*balance.*bank.*</error> <br>
+        &emsp; Deskripsi: <highlight><b>reminder</b></highlight> <br>
+        <br>
+        &ensp; Menyetel filter ini ke <minor><b>scam</b></minor> memastikan hanya panggilan yang diblokir oleh aturan 1 yang dilaporkan secara otomatis. <br>
+        <br>
+        Pengaturan default <minor><b>.*</b></minor> mengaktifkan lapor otomatis untuk panggilan yang diblokir oleh aturan regex apa pun. <br>
+        <br>
+        Tips: <br>
+        Ini adalah kolom regex, cocokkan beberapa aturan menggunakan pola seperti <minor>(scam|ads|political)</minor>.
+        ]]>
+    </string>
 </resources>
+

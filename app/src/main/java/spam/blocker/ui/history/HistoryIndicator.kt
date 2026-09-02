@@ -179,7 +179,7 @@ fun IndicatorsWrapper(
                         checkers = numberCheckers,
                         simSlot = simSlot
                     )
-                    val resultType = checkResult.type
+                    val resultType = checkResult.byType
 
                     when (resultType) {
                         RESULT_ALLOWED_BY_NUMBER_REGEX, RESULT_BLOCKED_BY_NUMBER_REGEX,
@@ -214,7 +214,7 @@ fun IndicatorsWrapper(
                         simSlot = simSlot,
                         checkers = numberCheckers,
                     )
-                    val resultType = checkResult.type
+                    val resultType = checkResult.byType
 
                     when (resultType) {
                         RESULT_ALLOWED_BY_NUMBER_REGEX, RESULT_BLOCKED_BY_NUMBER_REGEX,
@@ -247,9 +247,9 @@ fun IndicatorsWrapper(
                         simSlot = simSlot,
                         checkers = contentCheckers,
                     )
-                    val resultType = checkResult.type
+                    val resultType = checkResult.byType
 
-                    when (checkResult.type) {
+                    when (checkResult.byType) {
                         RESULT_ALLOWED_BY_CONTENT_REGEX, RESULT_BLOCKED_BY_CONTENT_REGEX -> {
                             add(
                                 Indicator(

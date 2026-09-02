@@ -129,8 +129,8 @@ fun ReportSpamDialog(
                     reportResult.value = buildAnnotatedString {  } // clear prev result
 
                     val apis = when (forType) {
-                        Def.ForNumber -> listReportableCallAPIs(ctx = ctx, rawNumber = rawNumber, domainFilter = null, isManualReport = true, blockReason = null)
-                        else -> listReportableSmsAPIs(ctx = ctx, isManualReport = true, blockReason = null)
+                        Def.ForNumber -> listReportableCallAPIs(ctx = ctx, rawNumber = rawNumber, domainFilter = null, isManualReport = true, checkResult = null)
+                        else -> listReportableSmsAPIs(ctx = ctx, isManualReport = true, checkResult = null)
                     }
 
                     val multiLogger = MultiLogger(listOf(

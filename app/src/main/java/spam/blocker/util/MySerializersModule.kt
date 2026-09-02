@@ -57,8 +57,27 @@ import spam.blocker.service.bot.TextReply
 import spam.blocker.service.bot.Wait
 import spam.blocker.service.bot.Weekly
 import spam.blocker.service.bot.WriteFile
+import spam.blocker.service.checker.ByAnsweredNumber
+import spam.blocker.service.checker.ByApiQuery
+import spam.blocker.service.checker.ByContact
+import spam.blocker.service.checker.ByDefault
+import spam.blocker.service.checker.ByDialedNumber
+import spam.blocker.service.checker.ByEmergencyCall
+import spam.blocker.service.checker.ByEmergencySituation
+import spam.blocker.service.checker.ByMeetingMode
+import spam.blocker.service.checker.ByNonContact
+import spam.blocker.service.checker.ByOffTime
+import spam.blocker.service.checker.ByPushAlert
+import spam.blocker.service.checker.ByRecentApp
+import spam.blocker.service.checker.ByRegexRule
+import spam.blocker.service.checker.ByRepeatedCall
+import spam.blocker.service.checker.BySTIR
+import spam.blocker.service.checker.BySmsAlert
+import spam.blocker.service.checker.BySmsBomb
+import spam.blocker.service.checker.BySpamDb
+import spam.blocker.service.checker.ICheckResult
 
-val botModule = SerializersModule {
+val myModule = SerializersModule {
     // also add to below polymorphic(IAction:class)
     polymorphic(ITriggerAction::class) {
         subclass(Manual::class)
@@ -132,20 +151,42 @@ val botModule = SerializersModule {
         subclass(QueryApi::class, QueryApi.serializer())
         subclass(ReportApi::class, ReportApi.serializer())
     }
+
+    // Check Results
+    polymorphic(ICheckResult::class) {
+        subclass(ByAnsweredNumber::class, ByAnsweredNumber.serializer())
+        subclass(ByApiQuery::class, ByApiQuery.serializer())
+        subclass(ByContact::class, ByContact.serializer())
+        subclass(ByDefault::class, ByDefault.serializer())
+        subclass(ByDialedNumber::class, ByDialedNumber.serializer())
+        subclass(ByEmergencyCall::class, ByEmergencyCall.serializer())
+        subclass(ByEmergencySituation::class, ByEmergencySituation.serializer())
+        subclass(ByMeetingMode::class, ByMeetingMode.serializer())
+        subclass(ByNonContact::class, ByNonContact.serializer())
+        subclass(ByOffTime::class, ByOffTime.serializer())
+        subclass(ByPushAlert::class, ByPushAlert.serializer())
+        subclass(ByRecentApp::class, ByRecentApp.serializer())
+        subclass(ByRegexRule::class, ByRegexRule.serializer())
+        subclass(ByRepeatedCall::class, ByRepeatedCall.serializer())
+        subclass(BySTIR::class, BySTIR.serializer())
+        subclass(BySmsAlert::class, BySmsAlert.serializer())
+        subclass(BySmsBomb::class, BySmsBomb.serializer())
+        subclass(BySpamDb::class, BySpamDb.serializer())
+    }
 }
 
 // A json serializer that supports all interfaces(IAction, IApi, ...) in this app
-val BotJson =  Json {
-    this.serializersModule = botModule
+val MyJson =  Json {
+    this.serializersModule = myModule
     encodeDefaults = true
     classDiscriminator = "type"
     ignoreUnknownKeys = true
 }
 
-val BotPrettyJson =  Json {
+val MyPrettyJson =  Json {
     prettyPrint = true
 
-    this.serializersModule = botModule
+    this.serializersModule = myModule
     encodeDefaults = true
     classDiscriminator = "type"
     ignoreUnknownKeys = true

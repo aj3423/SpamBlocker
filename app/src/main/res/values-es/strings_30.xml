@@ -20,4 +20,24 @@
         ]]>
     </string>
     <string name="sending_request">Enviando solicitud…</string>
+<string name="description_filter">Filtro de Descripción</string>
+    <string name="help_auto_report_filter_by_rule_description">
+        <![CDATA[
+        Habilita el informe automático exclusivamente para reglas regex específicas haciéndolas coincidir con las <highlight><b>descripciones</b></highlight> de las reglas. <br>
+        <br>
+        Ejemplo: <br>
+        &ensp; Regla 1: <error>.*won.*claim.*</error> <br>
+        &emsp; Descripción: <highlight><b>scam</b></highlight> <br>
+        &ensp; Regla 2: <error>.*balance.*bank.*</error> <br>
+        &emsp; Descripción: <highlight><b>reminder</b></highlight> <br>
+        <br>
+        &ensp; Configurar este filtro en <minor><b>scam</b></minor> garantiza que solo las llamadas bloqueadas por la regla 1 se informen automáticamente. <br>
+        <br>
+        La configuración predeterminada <minor><b>.*</b></minor> habilita el informe automático para las llamadas bloqueadas por cualquier regla regex. <br>
+        <br>
+        Consejo: <br>
+        Este es un campo de regex, haz coincidir varias reglas usando un patrón como <minor>(scam|ads|political)</minor>.
+        ]]>
+    </string>
 </resources>
+

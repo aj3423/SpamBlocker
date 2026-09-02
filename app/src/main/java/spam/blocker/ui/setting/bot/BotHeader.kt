@@ -26,7 +26,7 @@ import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.MenuButton
 import spam.blocker.ui.widgets.Str
-import spam.blocker.util.BotJson
+import spam.blocker.util.MyJson
 import java.util.UUID
 
 
@@ -71,7 +71,7 @@ fun BotHeader(
         ConfigImportDialog(
             trigger = importTrigger,
         ) { configJson ->
-            val bot = BotJson.decodeFromString<Bot>(configJson)
+            val bot = MyJson.decodeFromString<Bot>(configJson)
 
             // Show error prompt if user try to import API json (copied from wiki)
             when (bot.actions.firstOrNull()) {

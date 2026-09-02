@@ -20,4 +20,24 @@
         ]]>
     </string>
     <string name="sending_request">جارٍ إرسال الطلب…</string>
+<string name="description_filter">فلتر الوصف</string>
+    <string name="help_auto_report_filter_by_rule_description">
+        <![CDATA[
+        تمكين الإبلاغ التلقائي حصريًا لقواعد regex محددة من خلال مطابقة <highlight><b>أوصاف</b></highlight> القواعد. <br>
+        <br>
+        مثال: <br>
+        &ensp; القاعدة 1: <error>.*won.*claim.*</error> <br>
+        &emsp; الوصف: <highlight><b>scam</b></highlight> <br>
+        &ensp; القاعدة 2: <error>.*balance.*bank.*</error> <br>
+        &emsp; الوصف: <highlight><b>reminder</b></highlight> <br>
+        <br>
+        &ensp; يؤدي تعيين هذا الفلتر إلى <minor><b>scam</b></minor> إلى ضمان الإبلاغ التلقائي فقط عن المكالمات المحظورة بواسطة القاعدة 1. <br>
+        <br>
+        الإعداد الافتراضي <minor><b>.*</b></minor> يتيح الإبلاغ التلقائي للمكالمات المحظورة بأي قاعدة regex. <br>
+        <br>
+        نصيحة: <br>
+        هذا حقل regex، يمكنك مطابقة عدة قواعد باستخدام نمط مثل <minor>(scam|ads|political)</minor>.
+        ]]>
+    </string>
 </resources>
+

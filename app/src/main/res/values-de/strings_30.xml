@@ -20,4 +20,24 @@
         ]]>
     </string>
     <string name="sending_request">Anfrage wird gesendet…</string>
+<string name="description_filter">Beschreibungsfilter</string>
+    <string name="help_auto_report_filter_by_rule_description">
+        <![CDATA[
+        Aktivieren Sie den automatischen Bericht ausschließlich für bestimmte Regex-Regeln durch Abgleich mit ihren Regel-<highlight><b>Beschreibungen</b></highlight>. <br>
+        <br>
+        Beispiel: <br>
+        &ensp; Regel 1: <error>.*won.*claim.*</error> <br>
+        &emsp; Beschreibung: <highlight><b>scam</b></highlight> <br>
+        &ensp; Regel 2: <error>.*balance.*bank.*</error> <br>
+        &emsp; Beschreibung: <highlight><b>reminder</b></highlight> <br>
+        <br>
+        &ensp; Wenn dieser Filter auf <minor><b>scam</b></minor> gesetzt wird, werden nur Anrufe automatisch gemeldet, die durch Regel 1 blockiert wurden. <br>
+        <br>
+        Die Standardeinstellung <minor><b>.*</b></minor> aktiviert den automatischen Bericht für Anrufe, die durch eine beliebige Regex-Regel blockiert wurden. <br>
+        <br>
+        Tipp: <br>
+        Dies ist ein Regex-Feld; stimmen Sie mehrere Regeln mit einem Muster wie <minor>(scam|ads|political)</minor> ab.
+        ]]>
+    </string>
 </resources>
+

@@ -39,6 +39,7 @@ import spam.blocker.ui.history.tagValid
 import spam.blocker.util.Lambda1
 import spam.blocker.util.Launcher
 import spam.blocker.util.Notification
+import spam.blocker.util.PermissionWrapper
 
 data class ApiPreset(
     val desc: (Context) -> String,

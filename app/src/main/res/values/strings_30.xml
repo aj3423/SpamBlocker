@@ -20,4 +20,23 @@
         ]]>
     </string>
     <string name="sending_request">Sending request…</string>
+    <string name="description_filter">Description Filter</string>
+    <string name="help_auto_report_filter_by_rule_description">
+        <![CDATA[
+        Enable auto-reporting exclusively for specific regex rules by matching against their rule <highlight><b>descriptions</b></highlight>. <br>
+        <br>
+        Example: <br>
+        &ensp; Rule 1: <error>.*won.*claim.*</error> <br>
+        &emsp; Description: <highlight><b>scam</b></highlight> <br>
+        &ensp; Rule 2: <error>.*balance.*bank.*</error> <br>
+        &emsp; Description: <highlight><b>reminder</b></highlight> <br>
+        <br>
+        &ensp; Setting this filter to <minor><b>scam</b></minor> ensures only calls blocked by rule 1 get auto-reported. <br>
+        <br>
+        The default setting <minor><b>.*</b></minor> enables auto-reporting for calls blocked by any regex rule. <br>
+        <br>
+        Tip: <br>
+        This is a regex field, match multiple rules using a pattern like <minor>(scam|ads|political)</minor>.
+        ]]>
+    </string>
 </resources>

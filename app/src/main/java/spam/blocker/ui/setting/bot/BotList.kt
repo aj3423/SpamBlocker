@@ -55,7 +55,7 @@ import spam.blocker.ui.widgets.SnackBar
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.SwipeInfo
 import spam.blocker.util.A
-import spam.blocker.util.BotPrettyJson
+import spam.blocker.util.MyPrettyJson
 import spam.blocker.util.MarkupText
 import spam.blocker.util.PermissiveJson
 import spam.blocker.util.TimeUtils.durationString
@@ -221,7 +221,7 @@ fun BotList() {
     if (exportTrigger.value) {
         ConfigExportDialog(
             trigger = exportTrigger,
-            initialText = BotPrettyJson.encodeToString(clickedBot),
+            initialText = MyPrettyJson.encodeToString(clickedBot),
         )
     }
 

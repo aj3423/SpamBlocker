@@ -20,4 +20,24 @@
         ]]>
     </string>
     <string name="sending_request">İstek gönderiliyor…</string>
+<string name="description_filter">Açıklama Filtresi</string>
+    <string name="help_auto_report_filter_by_rule_description">
+        <![CDATA[
+        Kural <highlight><b>açıklamaları</b></highlight> ile eşleştirerek yalnızca belirli regex kuralları için otomatik raporlamayı etkinleştirin. <br>
+        <br>
+        Örnek: <br>
+        &ensp; Kural 1: <error>.*won.*claim.*</error> <br>
+        &emsp; Açıklama: <highlight><b>scam</b></highlight> <br>
+        &ensp; Kural 2: <error>.*balance.*bank.*</error> <br>
+        &emsp; Açıklama: <highlight><b>reminder</b></highlight> <br>
+        <br>
+        &ensp; Bu filtreyi <minor><b>scam</b></minor> olarak ayarlamak, yalnızca kural 1 tarafından engellenen aramaların otomatik olarak raporlanmasını sağlar. <br>
+        <br>
+        Varsayılan ayar olan <minor><b>.*</b></minor>, herhangi bir regex kuralı tarafından engellenen aramalar için otomatik raporlamayı etkinleştirir. <br>
+        <br>
+        İpucu: <br>
+        Bu bir regex alanıdır, <minor>(scam|ads|political)</minor> gibi bir desen kullanarak birden fazla kuralla eşleştirin.
+        ]]>
+    </string>
 </resources>
+

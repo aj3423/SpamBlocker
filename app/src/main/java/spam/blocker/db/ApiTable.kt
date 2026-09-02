@@ -16,8 +16,11 @@ import spam.blocker.service.bot.HttpRequest
 import spam.blocker.service.bot.IAction
 import spam.blocker.service.bot.parseActions
 import spam.blocker.service.bot.serialize
+import spam.blocker.service.checker.ByRegexRule
+import spam.blocker.service.checker.ICheckResult
 import spam.blocker.util.Util.domainFromUrl
 import spam.blocker.util.hasFlag
+import spam.blocker.util.regexMatches
 
 object AutoReportTypes {
     const val NonContact = 1 shl 0
@@ -70,13 +73,21 @@ data class ReportApi(
     override val actions: List<IAction> = listOf(),
     override val enabled: Boolean = true,
 
-    val autoReportTypes: Int = AutoReportTypes.DefaultTypes
+    val autoReportTypes: Int = AutoReportTypes.DefaultTypes,
+    val autoReportRegexFilter: String? = null,
 ) : IApi() {
-    fun enabledForBlockReason(blockReason: Int): Boolean {
-        return when (blockReason) {
+    fun enabledForBlockReason(r: ICheckResult): Boolean {
+        return when (r.byType) {
             RESULT_BLOCKED_BY_NON_CONTACT -> autoReportTypes.hasFlag(AutoReportTypes.NonContact) // Contacts(Strict)
             RESULT_BLOCKED_BY_STIR -> autoReportTypes.hasFlag(AutoReportTypes.STIR) // STIR
-            RESULT_BLOCKED_BY_NUMBER_REGEX, RESULT_BLOCKED_BY_CONTENT_REGEX -> autoReportTypes.hasFlag(AutoReportTypes.Regex) // regex
+            RESULT_BLOCKED_BY_NUMBER_REGEX, RESULT_BLOCKED_BY_CONTENT_REGEX -> { // regex
+                val rule = (r as ByRegexRule).rule!!
+
+                autoReportTypes.hasFlag(AutoReportTypes.Regex)
+                        // the rule.desc matches the `autoReportRegexFilter`
+                        && (autoReportRegexFilter ?: ".*").regexMatches(rule.description)
+            }
+
             else -> false
         }
     }
@@ -131,7 +142,8 @@ class ReportApiTable : ApiTable(Db.TABLE_API_REPORT) {
             actions = actions,
             enabled = cursor.getIntOrNull(cursor.getColumnIndex(Db.COLUMN_ENABLED)) == 1,
             // `true` if `1` or `null`(old version doesn't have this field)
-            autoReportTypes = cursor.getIntOrNull(cursor.getColumnIndex(Db.COLUMN_AUTO_REPORT_TYPES)) ?: AutoReportTypes.DefaultTypes
+            autoReportTypes = cursor.getIntOrNull(cursor.getColumnIndex(Db.COLUMN_AUTO_REPORT_TYPES)) ?: AutoReportTypes.DefaultTypes,
+            autoReportRegexFilter = cursor.getStringOrNull(cursor.getColumnIndex(Db.COLUMN_AUTO_REPORT_REGEX_FILTER))
         )
     }
 
@@ -145,6 +157,7 @@ class ReportApiTable : ApiTable(Db.TABLE_API_REPORT) {
         cv.put(Db.COLUMN_ENABLED, if (item.enabled) 1 else 0)
         val rr = item as ReportApi
         cv.put(Db.COLUMN_AUTO_REPORT_TYPES, rr.autoReportTypes)
+        cv.put(Db.COLUMN_AUTO_REPORT_REGEX_FILTER, rr.autoReportRegexFilter)
         return cv
     }
 }

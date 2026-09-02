@@ -18,10 +18,7 @@ import spam.blocker.db.ReportApi
 import spam.blocker.db.SmsTable
 import spam.blocker.db.SpamTable
 import spam.blocker.def.Def
-import spam.blocker.def.Def.RESULT_BLOCKED_BY_NON_CONTACT
-import spam.blocker.def.Def.RESULT_BLOCKED_BY_NUMBER_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_SPAM_DB
-import spam.blocker.def.Def.RESULT_BLOCKED_BY_STIR
 import spam.blocker.service.bot.ActionContext
 import spam.blocker.service.bot.Delay
 import spam.blocker.service.bot.HttpRequest
@@ -72,13 +69,13 @@ fun updateRecordReportLog(
 // ------------ For SMS --------------
 fun maybeAutoReportSMS(
     ctx: Context,
-    r: ICheckResult,
+    checkResult: ICheckResult,
     rawNumber: String,
     smsContent: String,
     recordId: Long?,
 ) {
     val scope = CoroutineScope(IO)
-    val apis = listReportableSmsAPIs(ctx, blockReason = r.type)
+    val apis = listReportableSmsAPIs(ctx, checkResult = checkResult)
     if (apis.isEmpty()) {
         return
     }
@@ -114,7 +111,7 @@ fun maybeAutoReportSMS(
 
 fun listReportableSmsAPIs(
     ctx: Context,
-    blockReason: Int?, // null for ManualReport
+    checkResult: ICheckResult? = null, // null for ManualReport
     isManualReport: Boolean = false,
 ): List<IApi> {
     return G.apiReportVM.table.listAll(ctx)
@@ -127,46 +124,46 @@ fun listReportableSmsAPIs(
             if (isManualReport)
                 true
             else
-                (it as ReportApi).enabledForBlockReason(blockReason!!)
+                (it as ReportApi).enabledForBlockReason(checkResult!!)
         }
 }
 
 // ------------ For Call --------------
 fun maybeAutoReportSpamCall(
     ctx: Context,
-    r: ICheckResult,
+    checkResult: ICheckResult,
     recordId: Long?,
     rawNumber: String,
     isTest: Boolean,
 ) {
-    if (shouldReportImmediately(r)) {
-        reportImmediately(ctx, r, recordId, rawNumber)
+    if (shouldReportImmediately(checkResult)) {
+        reportImmediately(ctx, checkResult, recordId, rawNumber)
     } else {
-        scheduleReporting(
-            ctx, r = r, rawNumber = rawNumber, isTesting = isTest, recordId = recordId)
+        scheduleReportingCall(
+            ctx, checkResult = checkResult, rawNumber = rawNumber, isTesting = isTest, recordId = recordId)
     }
 }
 
 private fun shouldReportImmediately(
-    r: ICheckResult,
+    checkResult: ICheckResult,
 ) : Boolean {
-    return r.type == RESULT_BLOCKED_BY_SPAM_DB
+    return checkResult.byType == RESULT_BLOCKED_BY_SPAM_DB
 }
 
 //  Report immediately if it's blocked by db and the number is originally blocked by API
 private fun reportImmediately(
     ctx: Context,
-    r: ICheckResult,
+    checkResult: ICheckResult,
     recordId: Long?,
     rawNumber: String,
 ) {
     // 0. if blocked by API or spam db that originally blocked by API
-    val domain: String? = when(r.type) {
+    val domain: String? = when(checkResult.byType) {
         RESULT_BLOCKED_BY_SPAM_DB -> {
             // Only report if it originally blocked by API query, such as:
             //   ApiQuery -> block -> AddToSpamDb
             // When adding to Spam db, the url domain will be saved as the `importReasonExtra`
-            val record = SpamTable.findByNumber(ctx, (r as BySpamDb).matchedNumber)
+            val record = SpamTable.findByNumber(ctx, (checkResult as BySpamDb).matchedNumber)
             if (record?.importReason == ImportDbReason.ByAPI) {
                 record.importReasonExtra // the url domain
             } else {
@@ -182,7 +179,7 @@ private fun reportImmediately(
     // Report
     val scope = CoroutineScope(IO)
     val apis = listReportableCallAPIs(
-        ctx, rawNumber = rawNumber, domainFilter = listOf(domain), blockReason = r.type, isDbApi = true
+        ctx, rawNumber = rawNumber, domainFilter = listOf(domain), checkResult = checkResult, isDbApi = true
     )
     val logger = SaveableLogger()
     logger.info(ctx.getString(R.string.auto_report))
@@ -211,31 +208,22 @@ private fun reportImmediately(
     }
 }
 
-// Schedule a report task if it's blocked by local filters
-private fun scheduleReporting(
+private fun scheduleReportingCall(
     ctx: Context,
-    r: ICheckResult,
+    checkResult: ICheckResult,
     recordId: Long?,
     rawNumber: String,
     isTesting: Boolean,
 ) {
     // 1. Skip if no reporting api is enabled
     val anyApiEnabled = G.apiReportVM.table.listAll(ctx).any {
-        it.enabled && (it as ReportApi).enabledForBlockReason(r.type)
+        it.enabled && (it as ReportApi).enabledForBlockReason(checkResult)
     }
     if (!anyApiEnabled)
         return
 
-    // 2. Skip if it isn't blocked by local filters
-    val isBlockedByLocalFilter = when(r.type) {
-        RESULT_BLOCKED_BY_NON_CONTACT, RESULT_BLOCKED_BY_STIR, RESULT_BLOCKED_BY_NUMBER_REGEX -> true
-        else -> false
-    }
-    if (!isBlockedByLocalFilter)
-        return
-
     // 3. Skip if call log permission is disabled, it's necessary for checking
-    //  if the call is repeated or allowed later.
+    //  if the call is allowed later due to repeat.
     val canReadCalls = Permission.callLog.isGranted
     if (!canReadCalls)
         return
@@ -256,7 +244,7 @@ private fun scheduleReporting(
                     rawNumber = rawNumber,
                     asTagCategory = tagOther,
                     recordId = recordId,
-                    blockReason = r.type
+                    checkResult = checkResult
                 )
             ).serialize(),
             workTag = UUID.randomUUID().toString(),
@@ -292,7 +280,7 @@ fun listReportableCallAPIs(
     ctx: Context,
     rawNumber: String,
     domainFilter: List<String>?,
-    blockReason: Int?, // null for ManualReport
+    checkResult: ICheckResult?, // null for ManualReport
     isManualReport: Boolean = false,
     isDbApi: Boolean = false, // if the number is blocked by DB and was auto added by API query
 ): List<IApi> {
@@ -328,7 +316,7 @@ fun listReportableCallAPIs(
     if (!isManualReport) {
         if (!isDbApi) { // if isDbApi, no need to filter by blockReason
             apis = apis.filter {
-                (it as ReportApi).enabledForBlockReason(blockReason!!)
+                (it as ReportApi).enabledForBlockReason(checkResult!!)
             }
         }
     }

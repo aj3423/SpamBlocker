@@ -20,4 +20,24 @@
         ]]>
     </string>
     <string name="sending_request">Envoi de la requête…</string>
+<string name="description_filter">Filtre de description</string>
+    <string name="help_auto_report_filter_by_rule_description">
+        <![CDATA[
+        Activez le rapport automatique exclusivement pour des règles regex spécifiques en fonction de leurs <highlight><b>descriptions</b></highlight>. <br>
+        <br>
+        Exemple : <br>
+        &ensp; Règle 1 : <error>.*won.*claim.*</error> <br>
+        &emsp; Description : <highlight><b>scam</b></highlight> <br>
+        &ensp; Règle 2 : <error>.*balance.*bank.*</error> <br>
+        &emsp; Description : <highlight><b>reminder</b></highlight> <br>
+        <br>
+        &ensp; Définir ce filtre sur <minor><b>scam</b></minor> garantit que seuls les appels bloqués par la règle 1 sont automatiquement rapportés. <br>
+        <br>
+        La valeur par défaut <minor><b>.*</b></minor> active le rapport automatique pour les appels bloqués par n'importe quelle règle regex. <br>
+        <br>
+        Conseil : <br>
+        C'est un champ regex, faites correspondre plusieurs règles à l'aide d'un motif comme <minor>(scam|ads|political)</minor>.
+        ]]>
+    </string>
 </resources>
+

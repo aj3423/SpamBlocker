@@ -9,6 +9,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -31,8 +32,11 @@ import spam.blocker.ui.setting.bot.ActionHeader
 import spam.blocker.ui.setting.bot.ActionList
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.Button
+import spam.blocker.ui.widgets.GreyIcon18
+import spam.blocker.ui.widgets.Placeholder
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.PopupSize
+import spam.blocker.ui.widgets.RegexInputBox
 import spam.blocker.ui.widgets.ResImage
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Section
@@ -64,7 +68,8 @@ private val autoReportLabelIds = listOf(
 @Composable
 fun PopupEditAutoReport(
     trigger: MutableState<Boolean>,
-    flags: MutableState<Int?>
+    flags: MutableState<Int?>,
+    regexDescFilter: MutableState<String?>,
 ) {
     PopupDialog(trigger) {
         Column {
@@ -79,6 +84,23 @@ fun PopupEditAutoReport(
                         }
                     )
                 }
+            }
+            val isRegexEnabled = flags.value!!.hasFlag(AutoReportTypes.Regex)
+            AnimatedVisibleV(isRegexEnabled) {
+                RegexInputBox(
+                    regexStr = regexDescFilter.value ?: ".*",
+                    label = { Text(Str(R.string.description_filter)) },
+                    helpTooltipId = R.string.help_auto_report_filter_by_rule_description,
+                    onRegexStrChange = { newVal, hasErr ->
+                        if (!hasErr)
+                            regexDescFilter.value = newVal
+                    },
+                    leadingIcon = { GreyIcon18(R.drawable.ic_filter) },
+                    placeholder = { Placeholder(".*") },
+                    regexFlags = remember { mutableIntStateOf(0) },
+                    showFlagsIcon = false,
+                    onFlagsChange = {}
+                )
             }
         }
     }
@@ -103,10 +125,11 @@ fun AutoReportIcons(
 }
 @Composable
 fun AutoReportTypesButton(
-    autoReportTypes: MutableState<Int?>
+    autoReportTypes: MutableState<Int?>,
+    regexDescFilter: MutableState<String?>,
 ) {
     val editTrigger = remember { mutableStateOf(false) }
-    PopupEditAutoReport(editTrigger, autoReportTypes)
+    PopupEditAutoReport(editTrigger, autoReportTypes, regexDescFilter)
 
     Button(
         content = {
@@ -145,6 +168,11 @@ fun EditApiDialog(
             if (isReportApi) (initial as ReportApi).autoReportTypes else null
         )
     }
+    val regexFilter = rememberSaveable {
+        mutableStateOf<String?>(
+            if (isReportApi) (initial as ReportApi).autoReportRegexFilter else null
+        )
+    }
 
 
     // if any error, disable the Save button
@@ -178,7 +206,8 @@ fun EditApiDialog(
                                     desc = description,
                                     enabled = enabled,
                                     actions = actions,
-                                    autoReportTypes = autoReportTypes.value!!
+                                    autoReportTypes = autoReportTypes.value!!,
+                                    autoReportRegexFilter = regexFilter.value
                                 )
                             }
 
@@ -213,7 +242,7 @@ fun EditApiDialog(
                         labelId = R.string.auto_report,
                         helpTooltip = Str(R.string.help_auto_report_type)
                     ) {
-                        AutoReportTypesButton(autoReportTypes!!)
+                        AutoReportTypesButton(autoReportTypes!!, regexFilter)
                     }
                 }
 

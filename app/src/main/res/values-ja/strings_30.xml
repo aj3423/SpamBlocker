@@ -20,4 +20,24 @@
         ]]>
     </string>
     <string name="sending_request">リクエストを送信中…</string>
+<string name="description_filter">説明フィルター</string>
+    <string name="help_auto_report_filter_by_rule_description">
+        <![CDATA[
+        ルールの<highlight><b>説明</b></highlight>と一致させることで、特定の正規表現ルールに対してのみ自動報告を有効にします。<br>
+        <br>
+        例：<br>
+        &ensp; ルール 1: <error>.*won.*claim.*</error> <br>
+        &emsp; 説明: <highlight><b>scam</b></highlight> <br>
+        &ensp; ルール 2: <error>.*balance.*bank.*</error> <br>
+        &emsp; 説明: <highlight><b>reminder</b></highlight> <br>
+        <br>
+        &ensp; このフィルターを <minor><b>scam</b></minor> に設定すると、ルール 1 でブロックされた通話のみが自動報告されます。<br>
+        <br>
+        デフォルト設定の <minor><b>.*</b></minor> は、任意の正規表現ルールによってブロックされた通話に対して自動報告を有効にします。<br>
+        <br>
+        ヒント：<br>
+        これは正規表現フィールドです。<minor>(scam|ads|political)</minor> のようなパターンを使用して複数のルールに一致させます。
+        ]]>
+    </string>
 </resources>
+

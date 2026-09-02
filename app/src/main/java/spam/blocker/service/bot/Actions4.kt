@@ -81,7 +81,7 @@ data class TextReplyRule(
         }
         return when(type) {
             ReplyRuleType.Any -> true
-            ReplyRuleType.MeetingMode -> aCtx.checkResult!!.type == Def.RESULT_BLOCKED_BY_MEETING_MODE
+            ReplyRuleType.MeetingMode -> aCtx.checkResult!!.byType == Def.RESULT_BLOCKED_BY_MEETING_MODE
             ReplyRuleType.NumberRule -> {
                 (aCtx.checkResult as? ByRegexRule)?.let {
                     (this.extraRegex ?: "").regexMatches(it.rule!!.description)

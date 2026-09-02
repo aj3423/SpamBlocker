@@ -25,7 +25,7 @@ import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.MenuButton
 import spam.blocker.ui.widgets.Str
-import spam.blocker.util.BotJson
+import spam.blocker.util.MyJson
 import spam.blocker.util.Lambda
 
 fun addApiToDB(
@@ -84,9 +84,9 @@ fun ApiHeader(
             trigger = importTrigger,
         ) { configJson ->
             val newApi = if (vm.forType == Def.ForApiQuery) {
-                BotJson.decodeFromString<QueryApi>(configJson).copy(id = 0)
+                MyJson.decodeFromString<QueryApi>(configJson).copy(id = 0)
             } else {
-                BotJson.decodeFromString<ReportApi>(configJson).copy(id = 0)
+                MyJson.decodeFromString<ReportApi>(configJson).copy(id = 0)
             }
 
             // 1. add to db

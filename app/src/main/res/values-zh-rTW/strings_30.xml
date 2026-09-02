@@ -20,4 +20,24 @@
         ]]>
     </string>
     <string name="sending_request">正在發送請求…</string>
+<string name="description_filter">描述過濾器</string>
+    <string name="help_auto_report_filter_by_rule_description">
+        <![CDATA[
+        透過比對規則的<highlight><b>描述</b></highlight>，專門為特定的正則表達式規則啟用自動回報。<br>
+        <br>
+        範例：<br>
+        &ensp; 規則 1：<error>.*won.*claim.*</error> <br>
+        &emsp; 描述：<highlight><b>scam</b></highlight> <br>
+        &ensp; 規則 2：<error>.*balance.*bank.*</error> <br>
+        &emsp; 描述：<highlight><b>reminder</b></highlight> <br>
+        <br>
+        &ensp; 將此過濾器設定為 <minor><b>scam</b></minor> 可確保僅自動回報被規則 1 封鎖的通話。<br>
+        <br>
+        預設設定 <minor><b>.*</b></minor> 會為被任何正則表達式規則封鎖的通話啟用自動回報。<br>
+        <br>
+        提示：<br>
+        這是一個正則表達式欄位，可以使用類似於 <minor>(scam|ads|political)</minor> 的模式比對多條規則。
+        ]]>
+    </string>
 </resources>
+

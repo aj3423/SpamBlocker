@@ -20,4 +20,24 @@
         ]]>
     </string>
     <string name="sending_request">Отправка запроса…</string>
+<string name="description_filter">Фильтр описания</string>
+    <string name="help_auto_report_filter_by_rule_description">
+        <![CDATA[
+        Включить автоотчет исключительно для определенных правил регулярных выражений путем сопоставления с <highlight><b>описанием</b></highlight> правила. <br>
+        <br>
+        Пример: <br>
+        &ensp; Правило 1: <error>.*won.*claim.*</error> <br>
+        &emsp; Описание: <highlight><b>scam</b></highlight> <br>
+        &ensp; Правило 2: <error>.*balance.*bank.*</error> <br>
+        &emsp; Описание: <highlight><b>reminder</b></highlight> <br>
+        <br>
+        &ensp; Установка этого фильтра на <minor><b>scam</b></minor> гарантирует, что только вызовы, заблокированные правилом 1, будут отправляться в автоотчет. <br>
+        <br>
+        Значение по умолчанию <minor><b>.*</b></minor> включает автоотчет для вызовов, заблокированных любым правилом регулярного выражения. <br>
+        <br>
+        Совет: <br>
+        Это поле регулярного выражения, сопоставляйте несколько правил с помощью шаблона вида <minor>(scam|ads|political)</minor>.
+        ]]>
+    </string>
 </resources>
+

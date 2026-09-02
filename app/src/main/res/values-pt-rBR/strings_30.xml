@@ -20,4 +20,24 @@
         ]]>
     </string>
     <string name="sending_request">Enviando requisição…</string>
+<string name="description_filter">Filtro de Descrição</string>
+    <string name="help_auto_report_filter_by_rule_description">
+        <![CDATA[
+        Ative a denúncia automática exclusivamente para regras de regex específicas correspondendo às <highlight><b>descrições</b></highlight> das regras. <br>
+        <br>
+        Exemplo: <br>
+        &ensp; Regra 1: <error>.*won.*claim.*</error> <br>
+        &emsp; Descrição: <highlight><b>scam</b></highlight> <br>
+        &ensp; Regra 2: <error>.*balance.*bank.*</error> <br>
+        &emsp; Descrição: <highlight><b>reminder</b></highlight> <br>
+        <br>
+        &ensp; Definir este filtro como <minor><b>scam</b></minor> garante que apenas as chamadas bloqueadas pela regra 1 sejam denunciadas automaticamente. <br>
+        <br>
+        A configuração padrão <minor><b>.*</b></minor> ativa a denúncia automática para chamadas bloqueadas por qualquer regra de regex. <br>
+        <br>
+        Dica: <br>
+        Este é um campo regex, corresponda a várias regras usando um padrão como <minor>(scam|ads|political)</minor>.
+        ]]>
+    </string>
 </resources>
+

@@ -29,7 +29,7 @@ import spam.blocker.db.ReportApi
 import spam.blocker.db.SmsTable
 import spam.blocker.db.SpamNumber
 import spam.blocker.db.SpamTable
-import spam.blocker.util.BotJson
+import spam.blocker.util.MyJson
 import spam.blocker.util.Notification.createChannel
 import spam.blocker.util.Notification.deleteAllChannels
 import spam.blocker.util.Permission
@@ -44,7 +44,7 @@ import java.util.zip.GZIPOutputStream
 // ConfigJson is based on BotJson because backup files contain polymorphic bot/action/API objects,
 //   they require custom serializing modules that already registered in BotJson.
 @OptIn(ExperimentalSerializationApi::class)
-private val ConfigJson = Json(BotJson) {
+private val ConfigJson = Json(MyJson) {
     explicitNulls = false
 }
 

@@ -20,4 +20,24 @@
         ]]>
     </string>
     <string name="sending_request">שולח בקשה…</string>
+<string name="description_filter">מסנן תיאור</string>
+    <string name="help_auto_report_filter_by_rule_description">
+        <![CDATA[
+        הפעל דיווח אוטומטי באופן בלעדי עבור כללי regex ספציפיים על ידי התאמה ל<highlight><b>תיאורי</b></highlight> הכללים שלהם. <br>
+        <br>
+        דוגמה: <br>
+        &ensp; כלל 1: <error>.*won.*claim.*</error> <br>
+        &emsp; תיאור: <highlight><b>scam</b></highlight> <br>
+        &ensp; כלל 2: <error>.*balance.*bank.*</error> <br>
+        &emsp; תיאור: <highlight><b>reminder</b></highlight> <br>
+        <br>
+        &ensp; הגדרת מסנן זה ל-<minor><b>scam</b></minor> מבטיחה שרק שיחות שנחסמו על ידי כלל 1 ידווחו אוטומטית. <br>
+        <br>
+        הגדרת ברירת המחדל <minor><b>.*</b></minor> מאפשרת דיווח אוטומטי עבור שיחות שנחסמו על ידי כלל regex כלשהו. <br>
+        <br>
+        טיפ: <br>
+        זהו שדה regex, התאם מספר כללים באמצעות תבנית כמו <minor>(scam|ads|political)</minor>.
+        ]]>
+    </string>
 </resources>
+

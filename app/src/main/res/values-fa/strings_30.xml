@@ -20,4 +20,24 @@
         ]]>
     </string>
     <string name="sending_request">در حال ارسال درخواست…</string>
+<string name="description_filter">فیلتر توضیحات</string>
+    <string name="help_auto_report_filter_by_rule_description">
+        <![CDATA[
+        گزارش خودکار را منحصراً برای قوانین خاص regex با تطبیق با <highlight><b>توضیحات</b></highlight> قانون فعال کنید. <br>
+        <br>
+        مثال: <br>
+        &ensp; قانون ۱: <error>.*won.*claim.*</error> <br>
+        &emsp; توضیحات: <highlight><b>scam</b></highlight> <br>
+        &ensp; قانون ۲: <error>.*balance.*bank.*</error> <br>
+        &emsp; توضیحات: <highlight><b>reminder</b></highlight> <br>
+        <br>
+        &ensp; تنظیم این فیلتر روی <minor><b>scam</b></minor> اطمینان می‌دهد که فقط تماس‌های مسدود شده توسط قانون ۱ به طور خودکار گزارش می‌شوند. <br>
+        <br>
+        تنظیم پیش‌فرض <minor><b>.*</b></minor> گزارش خودکار را برای تماس‌های مسدود شده توسط هر قانون regex فعال می‌کند. <br>
+        <br>
+        نکته: <br>
+        این یک فیلد regex است، چندین قانون را با استفاده از الگویی مانند <minor>(scam|ads|political)</minor> مطابقت دهید.
+        ]]>
+    </string>
 </resources>
+

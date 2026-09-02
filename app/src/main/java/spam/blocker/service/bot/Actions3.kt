@@ -30,6 +30,7 @@ import spam.blocker.db.CallTable
 import spam.blocker.db.RegexRule
 import spam.blocker.db.reScheduleBot
 import spam.blocker.def.Def
+import spam.blocker.service.checker.ICheckResult
 import spam.blocker.service.reporting.listReportableCallAPIs
 import spam.blocker.service.reporting.updateRecordReportLog
 import spam.blocker.ui.darken
@@ -238,7 +239,9 @@ class InterceptCall(
             PermissionWrapper(
                 Permission.phoneState,
                 prompt = ctx.getString(R.string.auto_detect_cc_permission)
-            )
+            ),
+            // it's necessary for checking if the call is allowed later due to repeat.
+            PermissionWrapper(Permission.callLog)
         )
     }
 
@@ -1082,7 +1085,7 @@ class CategoryConfig(
 class ScheduledAutoReportNumber(
     val rawNumber: String,
     val asTagCategory: String,
-    val blockReason: Int?,
+    val checkResult: ICheckResult?,
     val recordId: Long? = null,
     val domainFilter: List<String>? = null // only report to APIs that matches these domains
 ) : IAction {
@@ -1100,7 +1103,7 @@ class ScheduledAutoReportNumber(
         // Report
         val scope = CoroutineScope(IO)
         val apis = listReportableCallAPIs(
-            ctx = ctx, rawNumber = rawNumber, domainFilter = domainFilter, blockReason = blockReason
+            ctx = ctx, rawNumber = rawNumber, domainFilter = domainFilter, checkResult = checkResult
         )
         val logger = SaveableLogger()
         logger.info(ctx.getString(R.string.auto_report))

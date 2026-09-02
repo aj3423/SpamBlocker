@@ -20,4 +20,24 @@
         ]]>
     </string>
     <string name="sending_request">正在发送请求…</string>
+<string name="description_filter">描述过滤器</string>
+    <string name="help_auto_report_filter_by_rule_description">
+        <![CDATA[
+        通过匹配规则的<highlight><b>描述</b></highlight>，专门为特定的正则表达式规则启用自动举报。<br>
+        <br>
+        例如：<br>
+        &ensp; 规则 1：<error>.*won.*claim.*</error> <br>
+        &emsp; 描述：<highlight><b>scam</b></highlight> <br>
+        &ensp; 规则 2：<error>.*balance.*bank.*</error> <br>
+        &emsp; 描述：<highlight><b>reminder</b></highlight> <br>
+        <br>
+        &ensp; 将此过滤器设置为 <minor><b>scam</b></minor> 可确保仅自动举报被规则 1 拦截的来电。<br>
+        <br>
+        默认设置 <minor><b>.*</b></minor> 会为被任何正则表达式规则拦截的来电启用自动举报。<br>
+        <br>
+        提示：<br>
+        这是一个正则表达式字段，可以使用类似于 <minor>(scam|ads|political)</minor> 的模式匹配多条规则。
+        ]]>
+    </string>
 </resources>
+

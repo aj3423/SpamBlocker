@@ -38,7 +38,7 @@ import spam.blocker.service.bot.parseActions
 import spam.blocker.service.bot.parseSchedule
 import spam.blocker.service.bot.parseTrigger
 import spam.blocker.service.bot.serialize
-import spam.blocker.util.BotJson
+import spam.blocker.util.MyJson
 
 
 // This is only for migrating from v4.20 -> v4.21
@@ -107,12 +107,12 @@ fun reScheduleBot(ctx: Context, bot: Bot) {
 
 // Serialize self to json string
 fun Bot.serialize(): String {
-    return BotJson.encodeToString(this)
+    return MyJson.encodeToString(this)
 }
 
 // Generate a *concrete* ITriggerAction from json string.
 fun String.parseBot(): Bot {
-    return BotJson.decodeFromString<Bot>(this)
+    return MyJson.decodeFromString<Bot>(this)
 }
 val botSaver = Saver<MutableState<Bot>, String>(
     save = { it.value.serialize() },

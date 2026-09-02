@@ -20,4 +20,24 @@
         ]]>
     </string>
     <string name="sending_request">Надсилання запиту…</string>
+<string name="description_filter">Фільтр опису</string>
+    <string name="help_auto_report_filter_by_rule_description">
+        <![CDATA[
+        Увімкнути автозвіт виключно для певних правил регулярних виразів шляхом зіставлення з <highlight><b>описом</b></highlight> правила. <br>
+        <br>
+        Приклад: <br>
+        &ensp; Правило 1: <error>.*won.*claim.*</error> <br>
+        &emsp; Опис: <highlight><b>scam</b></highlight> <br>
+        &ensp; Правило 2: <error>.*balance.*bank.*</error> <br>
+        &emsp; Опис: <highlight><b>reminder</b></highlight> <br>
+        <br>
+        &ensp; Встановлення цього фільтра на <minor><b>scam</b></minor> гарантує, що автоматично звітуватиметься лише про виклики, заблоковані правилом 1. <br>
+        <br>
+        Параметр за замовчуванням <minor><b>.*</b></minor> вмикає автозвіт для викликів, заблокованих будь-яким правилом регулярного виразу. <br>
+        <br>
+        Порада: <br>
+        Це поле регулярного виразу, зіставляйте декілька правил за допомогою шаблону на зразок <minor>(scam|ads|political)</minor>.
+        ]]>
+    </string>
 </resources>
+

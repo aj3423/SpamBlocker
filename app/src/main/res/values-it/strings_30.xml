@@ -20,4 +20,24 @@
         ]]>
     </string>
     <string name="sending_request">Invio della richiesta…</string>
+<string name="description_filter">Filtro Descrizione</string>
+    <string name="help_auto_report_filter_by_rule_description">
+        <![CDATA[
+        Abilita la segnalazione automatica esclusivamente per specifiche regole regex verificando le <highlight><b>descrizioni</b></highlight> delle regole. <br>
+        <br>
+        Esempio: <br>
+        &ensp; Regola 1: <error>.*won.*claim.*</error> <br>
+        &emsp; Descrizione: <highlight><b>scam</b></highlight> <br>
+        &ensp; Regola 2: <error>.*balance.*bank.*</error> <br>
+        &emsp; Descrizione: <highlight><b>reminder</b></highlight> <br>
+        <br>
+        &ensp; Impostando questo filtro su <minor><b>scam</b></minor> si assicura che solo le chiamate bloccate dalla regola 1 vengano segnalate automaticamente. <br>
+        <br>
+        L'impostazione predefinita <minor><b>.*</b></minor> abilita la segnalazione automatica per le chiamate bloccate da qualsiasi regola regex. <br>
+        <br>
+        Suggerimento: <br>
+        Questo è un campo regex, trova la corrispondenza con più regole utilizzando un pattern come <minor>(scam|ads|political)</minor>.
+        ]]>
+    </string>
 </resources>
+

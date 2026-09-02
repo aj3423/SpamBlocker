@@ -231,7 +231,7 @@ class CallScreeningService : CallScreeningService() {
                     peer = rawNumber,
                     cnap = cnap,
                     time = System.currentTimeMillis(),
-                    result = r.type,
+                    result = r.byType,
                     reason = r.reasonToDb(),
                     simSlot = simSlot,
                     isTest = isTest,

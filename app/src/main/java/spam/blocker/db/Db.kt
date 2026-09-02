@@ -31,7 +31,7 @@ class Db private constructor(
 ) : SQLiteOpenHelper(ctx, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 51
+        const val DB_VERSION = 52
         const val DB_NAME = "spam_blocker.db"
 
         // ---- regex rule table ----
@@ -95,6 +95,7 @@ class Db private constructor(
         const val TABLE_API_QUERY = "api_query"
         const val TABLE_API_REPORT = "api_report"
         const val COLUMN_AUTO_REPORT_TYPES = "auto_report_types"
+        const val COLUMN_AUTO_REPORT_REGEX_FILTER = "auto_report_regex_filter"
 
         // ---- call table ----
         const val TABLE_CALL = "call"
@@ -218,7 +219,8 @@ class Db private constructor(
                     "$COLUMN_DESC TEXT, " +
                     "$COLUMN_ACTIONS TEXT, " +
                     "$COLUMN_ENABLED INTEGER, " +
-                    "$COLUMN_AUTO_REPORT_TYPES INTEGER" +
+                    "$COLUMN_AUTO_REPORT_TYPES INTEGER, " +
+                    "$COLUMN_AUTO_REPORT_REGEX_FILTER TEXT " +
                     ")"
         )
         // bot
@@ -590,6 +592,11 @@ class Db private constructor(
         if ((newVersion >= 51) && (oldVersion < 51)) {
             addColumnIfNotExist(db, TABLE_NOTIFICATION_CHANNEL, COLUMN_REPEAT, "INTEGER")
             addColumnIfNotExist(db, TABLE_NOTIFICATION_CHANNEL, COLUMN_REPEAT_INTERVAL, "INTEGER")
+        }
+
+        // v5.16 added auto-report regex filter
+        if ((newVersion >= 52) && (oldVersion < 52)) {
+            addColumnIfNotExist(db, TABLE_API_REPORT, COLUMN_AUTO_REPORT_REGEX_FILTER, "TEXT")
         }
     }
 }

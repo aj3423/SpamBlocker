@@ -121,7 +121,7 @@ open class SmsReceiver : BroadcastReceiver() {
                     ctx, HistoryRecord(
                         peer = rawNumber,
                         time = System.currentTimeMillis(),
-                        result = r.type,
+                        result = r.byType,
                         reason = r.reasonToDb(),
                         simSlot = simSlot,
                         extraInfo = if (spfHistory.isLogSmsContentEnabled) messageBody else null,
@@ -212,7 +212,7 @@ open class SmsReceiver : BroadcastReceiver() {
                 (!isTest || BuildConfig.DEBUG)
             ) {
                 maybeAutoReportSMS(
-                    ctx, r = r, rawNumber = rawNumber, smsContent = messageBody, recordId = recordId
+                    ctx, checkResult = r, rawNumber = rawNumber, smsContent = messageBody, recordId = recordId
                 )
             }
 

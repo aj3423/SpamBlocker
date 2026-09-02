@@ -20,4 +20,24 @@
         ]]>
     </string>
     <string name="sending_request">S’està enviant la sol·licitud…</string>
+<string name="description_filter">Filtre de descripció</string>
+    <string name="help_auto_report_filter_by_rule_description">
+        <![CDATA[
+        Habiliteu la denúncia automàtica exclusivament per a regles regex específiques fent-les coincidir amb les <highlight><b>descripcions</b></highlight> de les regles. <br>
+        <br>
+        Exemple: <br>
+        &ensp; Regla 1: <error>.*won.*claim.*</error> <br>
+        &emsp; Descripció: <highlight><b>scam</b></highlight> <br>
+        &ensp; Regla 2: <error>.*balance.*bank.*</error> <br>
+        &emsp; Descripció: <highlight><b>reminder</b></highlight> <br>
+        <br>
+        &ensp; Establir aquest filtre a <minor><b>scam</b></minor> assegura que només les trucades bloquejades per la regla 1 es denunciïn automàticament. <br>
+        <br>
+        La configuració predeterminada <minor><b>.*</b></minor> habilita la denúncia automàtica per a les trucades bloquejades per qualsevol regla regex. <br>
+        <br>
+        Consell: <br>
+        Aquest és un camp regex, feu coincidir múltiples regles utilitzant un patró com <minor>(scam|ads|political)</minor>.
+        ]]>
+    </string>
 </resources>
+
