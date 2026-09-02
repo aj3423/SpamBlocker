@@ -33,10 +33,10 @@
         <br>
         &ensp; Définir ce filtre sur <minor><b>scam</b></minor> garantit que seuls les appels bloqués par la règle 1 sont automatiquement rapportés. <br>
         <br>
-        La valeur par défaut <minor><b>.*</b></minor> active le rapport automatique pour les appels bloqués par n'importe quelle règle regex. <br>
+        La valeur par défaut <minor><b>.*</b></minor> active le rapport automatique pour les appels bloqués par n\'importe quelle règle regex. <br>
         <br>
         Conseil : <br>
-        C'est un champ regex, faites correspondre plusieurs règles à l'aide d'un motif comme <minor>(scam|ads|political)</minor>.
+        C\'est un champ regex, faites correspondre plusieurs règles à l\'aide d\'un motif comme <minor>(scam|ads|political)</minor>.
         ]]>
     </string>
 </resources>

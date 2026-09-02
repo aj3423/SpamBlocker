@@ -33,7 +33,7 @@
         <br>
         &ensp; Impostando questo filtro su <minor><b>scam</b></minor> si assicura che solo le chiamate bloccate dalla regola 1 vengano segnalate automaticamente. <br>
         <br>
-        L'impostazione predefinita <minor><b>.*</b></minor> abilita la segnalazione automatica per le chiamate bloccate da qualsiasi regola regex. <br>
+        L\'impostazione predefinita <minor><b>.*</b></minor> abilita la segnalazione automatica per le chiamate bloccate da qualsiasi regola regex. <br>
         <br>
         Suggerimento: <br>
         Questo è un campo regex, trova la corrispondenza con più regole utilizzando un pattern come <minor>(scam|ads|political)</minor>.
