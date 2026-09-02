@@ -39,5 +39,10 @@
         Це поле регулярного виразу, зіставляйте декілька правил за допомогою шаблону на зразок <minor>(scam|ads|political)</minor>.
         ]]>
     </string>
+    <string name="last_log_only_for_schedule_trigger">
+        <![CDATA[
+        Записи зберігаються лише для робочих процесів із типом тригера <highlight>Розклад</highlight>.
+        ]]>
+    </string>
 </resources>
 

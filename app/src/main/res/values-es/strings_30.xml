@@ -39,5 +39,10 @@
         Este es un campo de regex, haz coincidir varias reglas usando un patrón como <minor>(scam|ads|political)</minor>.
         ]]>
     </string>
+    <string name="last_log_only_for_schedule_trigger">
+        <![CDATA[
+        Los registros solo se guardan para flujos de trabajo con el tipo de activador <highlight>Horario</highlight>.
+        ]]>
+    </string>
 </resources>
 

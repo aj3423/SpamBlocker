@@ -39,5 +39,10 @@
         这是一个正则表达式字段，可以使用类似于 <minor>(scam|ads|political)</minor> 的模式匹配多条规则。
         ]]>
     </string>
+    <string name="last_log_only_for_schedule_trigger">
+        <![CDATA[
+        仅为触发器类型为<highlight>时间安排</highlight>的工作流程保存日志。
+        ]]>
+    </string>
 </resources>
 

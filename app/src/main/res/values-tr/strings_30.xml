@@ -39,5 +39,10 @@
         Bu bir regex alanıdır, <minor>(scam|ads|political)</minor> gibi bir desen kullanarak birden fazla kuralla eşleştirin.
         ]]>
     </string>
+    <string name="last_log_only_for_schedule_trigger">
+        <![CDATA[
+        Kayıtlar yalnızca tetikleyici türü <highlight>Takvim</highlight> olan iş akışları için kaydedilir.
+        ]]>
+    </string>
 </resources>
 

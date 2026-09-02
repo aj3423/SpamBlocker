@@ -39,4 +39,9 @@
         This is a regex field, match multiple rules using a pattern like <minor>(scam|ads|political)</minor>.
         ]]>
     </string>
+    <string name="last_log_only_for_schedule_trigger">
+        <![CDATA[
+        Logs are saved only for workflows with the <highlight>Schedule</highlight> trigger type.
+        ]]>
+    </string>
 </resources>

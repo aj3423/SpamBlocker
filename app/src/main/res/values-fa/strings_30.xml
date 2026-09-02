@@ -39,5 +39,10 @@
         این یک فیلد regex است، چندین قانون را با استفاده از الگویی مانند <minor>(scam|ads|political)</minor> مطابقت دهید.
         ]]>
     </string>
+    <string name="last_log_only_for_schedule_trigger">
+        <![CDATA[
+        گزارش‌ها فقط برای جریان‌های کاری با نوع راه‌انداز <highlight>برنامه</highlight> ذخیره می‌شوند.
+        ]]>
+    </string>
 </resources>
 

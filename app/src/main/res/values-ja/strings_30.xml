@@ -39,5 +39,10 @@
         これは正規表現フィールドです。<minor>(scam|ads|political)</minor> のようなパターンを使用して複数のルールに一致させます。
         ]]>
     </string>
+    <string name="last_log_only_for_schedule_trigger">
+        <![CDATA[
+        ログはトリガータイプが<highlight>スケジュール</highlight>のワークフローでのみ保存されます。
+        ]]>
+    </string>
 </resources>
 

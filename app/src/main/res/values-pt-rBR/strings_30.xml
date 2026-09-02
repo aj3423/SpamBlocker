@@ -39,5 +39,10 @@
         Este é um campo regex, corresponda a várias regras usando um padrão como <minor>(scam|ads|political)</minor>.
         ]]>
     </string>
+    <string name="last_log_only_for_schedule_trigger">
+        <![CDATA[
+        Os logs são salvos apenas para fluxos de trabalho com o tipo de gatilho <highlight>Cronograma</highlight>.
+        ]]>
+    </string>
 </resources>
 

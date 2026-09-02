@@ -39,5 +39,10 @@
         זהו שדה regex, התאם מספר כללים באמצעות תבנית כמו <minor>(scam|ads|political)</minor>.
         ]]>
     </string>
+    <string name="last_log_only_for_schedule_trigger">
+        <![CDATA[
+        יומנים נשמרים רק עבור זרימות עבודה עם סוג הפעלה <highlight>לוח זמנים</highlight>.
+        ]]>
+    </string>
 </resources>
 

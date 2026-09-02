@@ -39,5 +39,10 @@
         Aquest és un camp regex, feu coincidir múltiples regles utilitzant un patró com <minor>(scam|ads|political)</minor>.
         ]]>
     </string>
+    <string name="last_log_only_for_schedule_trigger">
+        <![CDATA[
+        Els registres només es desen per als fluxos de treball amb el tipus d'activador <highlight>Programació</highlight>.
+        ]]>
+    </string>
 </resources>
 

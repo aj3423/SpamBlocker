@@ -39,5 +39,10 @@
         Dies ist ein Regex-Feld; stimmen Sie mehrere Regeln mit einem Muster wie <minor>(scam|ads|political)</minor> ab.
         ]]>
     </string>
+    <string name="last_log_only_for_schedule_trigger">
+        <![CDATA[
+        Protokolle werden nur für Workflows mit dem Auslösertyp <highlight>Zeitplan</highlight> gespeichert.
+        ]]>
+    </string>
 </resources>
 

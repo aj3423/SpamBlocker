@@ -39,5 +39,10 @@
         這是一個正則表達式欄位，可以使用類似於 <minor>(scam|ads|political)</minor> 的模式比對多條規則。
         ]]>
     </string>
+    <string name="last_log_only_for_schedule_trigger">
+        <![CDATA[
+        僅為觸發類型為<highlight>排程</highlight>的工作流程儲存日誌。
+        ]]>
+    </string>
 </resources>
 

@@ -39,5 +39,10 @@
         هذا حقل regex، يمكنك مطابقة عدة قواعد باستخدام نمط مثل <minor>(scam|ads|political)</minor>.
         ]]>
     </string>
+    <string name="last_log_only_for_schedule_trigger">
+        <![CDATA[
+        يتم حفظ السجلات فقط لسير العمل الذي يحتوي على نوع المشغل <highlight>جدول</highlight>.
+        ]]>
+    </string>
 </resources>
 

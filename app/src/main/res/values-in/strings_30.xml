@@ -39,5 +39,10 @@
         Ini adalah kolom regex, cocokkan beberapa aturan menggunakan pola seperti <minor>(scam|ads|political)</minor>.
         ]]>
     </string>
+    <string name="last_log_only_for_schedule_trigger">
+        <![CDATA[
+        Log hanya disimpan untuk alur kerja dengan tipe pemicu <highlight>Jadwal</highlight>.
+        ]]>
+    </string>
 </resources>
 

@@ -39,5 +39,10 @@
         C\'est un champ regex, faites correspondre plusieurs règles à l\'aide d\'un motif comme <minor>(scam|ads|political)</minor>.
         ]]>
     </string>
+    <string name="last_log_only_for_schedule_trigger">
+        <![CDATA[
+        Les journaux ne sont enregistrés que pour les flux de travail avec le type de déclencheur <highlight>Planification</highlight>.
+        ]]>
+    </string>
 </resources>
 

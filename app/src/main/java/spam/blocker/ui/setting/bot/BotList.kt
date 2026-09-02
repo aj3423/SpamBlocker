@@ -46,6 +46,8 @@ import spam.blocker.ui.widgets.DividerItem
 import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.GreyIcon20
 import spam.blocker.ui.widgets.GreyLabel
+import spam.blocker.ui.widgets.GreyText
+import spam.blocker.ui.widgets.HtmlText
 import spam.blocker.ui.widgets.IMenuItem
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.LeftDeleteSwipeWrapper
@@ -182,6 +184,12 @@ fun BotList() {
 
     var clickedBot by rememberSaveableBotState(Bot())
 
+    var isClickedBotScheduleTrigger by remember(clickedBot.trigger) {
+        mutableStateOf(
+            clickedBot.trigger is Schedule
+        )
+    }
+
     // Edit
     val editTrigger = rememberSaveable { mutableStateOf(false) }
     if (editTrigger.value) {
@@ -215,6 +223,10 @@ fun BotList() {
             logTime = log.second,
         )
     }
+    val notScheduleWarning = remember { mutableStateOf(false) }
+    PopupDialog(notScheduleWarning) {
+        HtmlText(Str(R.string.last_log_only_for_schedule_trigger))
+    }
 
     // Export
     val exportTrigger = remember { mutableStateOf(false) }
@@ -246,7 +258,12 @@ fun BotList() {
             leadingIcon = { GreyIcon20(icons[menuIndex]) }
         ) {
             when (menuIndex) {
-                0 -> { logTrigger.value = true } // View log
+                0 -> { // Last Log
+                    if (isClickedBotScheduleTrigger)
+                        logTrigger.value = true
+                    else
+                        notScheduleWarning.value = true
+                }
                 1 -> { exportTrigger.value = true } // Export
             }
         }
