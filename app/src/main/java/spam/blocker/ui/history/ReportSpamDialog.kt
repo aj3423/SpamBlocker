@@ -34,6 +34,7 @@ import kotlinx.coroutines.launch
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.CallTable
+import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
 import spam.blocker.service.bot.ActionContext
 import spam.blocker.service.bot.executeAll
@@ -160,7 +161,10 @@ fun ReportSpamDialog(
                         val log = multiLogger.getSaveableOutput()?.serialize() ?: ""
 
                         updateRecordReportLog(
-                            ctx, table = CallTable(), vm = G.callVM, recordId = recordId, log = log, anythingWrong = anythingWrong
+                            ctx,
+                            table = if (forType == Def.ForNumber) CallTable() else SmsTable(),
+                            vm = if(forType == Def.ForNumber) G.callVM else G.smsVM,
+                            recordId = recordId, log = log, anythingWrong = anythingWrong
                         )
                     }
                 }
