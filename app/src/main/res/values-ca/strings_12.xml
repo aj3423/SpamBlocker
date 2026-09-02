@@ -80,9 +80,9 @@
         <![CDATA[
         S\'analitzarà el contingut del SMS entrant en les etiquetes següents per a ús en passos posteriors: <br>
         <br>
-        <title><b>{raw_number}</b></title> <br>
-        &ensp; El número entrant <br>
-        <title><b>{sms_content}</b></title> <br>
+        %s
+        <br>
+        - <title><b>{sms_content}</b></title> <br>
         &ensp; El contingut del SMS
         ]]>
     </string>

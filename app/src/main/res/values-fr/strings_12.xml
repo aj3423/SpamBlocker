@@ -102,9 +102,9 @@
         <![CDATA[
         Le contenu du SMS entrant sera analysé dans les balises suivantes pour une utilisation dans les étapes suivantes : <br>
         <br>
-        <title><b>{raw_number}</b></title> <br>
-        &ensp; Le numéro entrant <br>
-        <title><b>{sms_content}</b></title> <br>
+        %s
+        <br>
+        - <title><b>{sms_content}</b></title> <br>
         &ensp; Le contenu du SMS
         ]]>
     </string>

@@ -102,9 +102,9 @@
         <![CDATA[
         受信したSMSの内容は、次のタグに解析され、後続のステップで使用されます: <br>
         <br>
-        <title><b>{raw_number}</b></title> <br>
-        &ensp; 着信番号 <br>
-        <title><b>{sms_content}</b></title> <br>
+        %s
+        <br>
+        - <title><b>{sms_content}</b></title> <br>
         &ensp; SMSの内容
         ]]>
     </string>

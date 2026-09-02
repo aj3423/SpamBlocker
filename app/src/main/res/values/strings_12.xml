@@ -74,9 +74,9 @@
         <![CDATA[
         The incoming SMS message will be parsed into the following tags for use in subsequent steps: <br>
         <br>
-        <title><b>{raw_number}</b></title> <br>
-        &ensp; The incoming number <br>
-        <title><b>{sms_content}</b></title> <br>
+        %s
+        <br>
+        - <title><b>{sms_content}</b></title> <br>
         &ensp; The SMS content
         ]]>
     </string>

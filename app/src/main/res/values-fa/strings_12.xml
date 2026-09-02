@@ -102,9 +102,9 @@
         <![CDATA[
         پیامک ورودی به برچسب‌های زیر تجزیه می‌شود تا در مراحل بعدی استفاده شود: <br>
         <br>
-        <title><b>{raw_number}</b></title> <br>
-        &ensp; شماره ورودی <br>
-        <title><b>{sms_content}</b></title> <br>
+        %s
+        <br>
+        - <title><b>{sms_content}</b></title> <br>
         &ensp; محتوای پیامک
         ]]>
     </string>

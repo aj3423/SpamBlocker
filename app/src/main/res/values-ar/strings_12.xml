@@ -80,9 +80,9 @@
         <![CDATA[
         سيتم تحليل الرسالة القصيرة الواردة إلى العلامات التالية للاستخدام في الخطوات اللاحقة: <br>
         <br>
-        <title><b>{raw_number}</b></title> <br>
-        &ensp; الرقم الوارد <br>
-        <title><b>{sms_content}</b></title> <br>
+        %s
+        <br>
+        - <title><b>{sms_content}</b></title> <br>
         &ensp; محتوى الرسالة القصيرة
         ]]>
     </string>

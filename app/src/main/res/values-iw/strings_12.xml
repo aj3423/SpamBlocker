@@ -80,9 +80,9 @@
         <![CDATA[
         תוכן ה-SMS הנכנס יפורק לתגיות הבאות לשימוש בשלבים הבאים: <br>
         <br>
-        <title><b>{raw_number}</b></title> <br>
-        &ensp; המספר הנכנס <br>
-        <title><b>{sms_content}</b></title> <br>
+        %s
+        <br>
+        - <title><b>{sms_content}</b></title> <br>
         &ensp; תוכן ה-SMS
         ]]>
     </string>

@@ -411,8 +411,21 @@ class InterceptCall(
 @SerialName("InterceptSms")
 class InterceptSms(
     var contentFilter: String = ".*",
-) : IPermissiveAction {
+) : IAction {
+    override fun requiredPermissions(ctx: Context): List<PermissionWrapper> {
+        return listOf(
+            PermissionWrapper(
+                Permission.phoneState,
+                prompt = ctx.getString(R.string.auto_detect_cc_permission)
+            )
+        )
+    }
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+
+        // Parse `cc`, `domestic`
+        val parseNumberOK = InterceptCall().execute(ctx, aCtx)
+        if (!parseNumberOK)
+            return false
 
         // The `rawNumber` is set by the workflow caller before it's executed.
         val rawNumber = aCtx.rawNumber!!
@@ -448,7 +461,9 @@ class InterceptSms(
     }
 
     override fun tooltip(ctx: Context): String {
-        return ctx.getString(R.string.help_action_parse_incoming_sms)
+        return ctx.getString(R.string.help_action_parse_incoming_sms).format(
+            ctx.getString(R.string.number_tags)
+        )
     }
 
     override fun inputParamType(): List<ParamType> {

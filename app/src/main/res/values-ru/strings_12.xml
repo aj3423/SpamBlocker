@@ -80,9 +80,9 @@
         <![CDATA[
         Содержимое входящего SMS будет разобрано в следующие теги для использования в последующих шагах: <br>
         <br>
-        <title><b>{raw_number}</b></title> <br>
-        &ensp; Входящий номер <br>
-        <title><b>{sms_content}</b></title> <br>
+        %s
+        <br>
+        - <title><b>{sms_content}</b></title> <br>
         &ensp; Содержимое SMS
         ]]>
     </string>

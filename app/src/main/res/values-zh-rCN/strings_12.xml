@@ -102,9 +102,9 @@
         <![CDATA[
         收到的短信内容将被解析为以下标签，用于后续步骤： <br>
         <br>
-        <title><b>{raw_number}</b></title> <br>
-        &ensp; 来电号码 <br>
-        <title><b>{sms_content}</b></title> <br>
+        %s
+        <br>
+        - <title><b>{sms_content}</b></title> <br>
         &ensp; 短信内容
         ]]>
     </string>

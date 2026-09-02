@@ -80,9 +80,9 @@
         <![CDATA[
         收到的簡訊內容將被解析為以下標籤，用於後續步驟： <br>
         <br>
-        <title><b>{raw_number}</b></title> <br>
-        &ensp; 來電號碼 <br>
-        <title><b>{sms_content}</b></title> <br>
+        %s
+        <br>
+        - <title><b>{sms_content}</b></title> <br>
         &ensp; 簡訊內容
         ]]>
     </string>

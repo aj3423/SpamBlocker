@@ -103,9 +103,9 @@
         <![CDATA[
         O conteúdo da SMS recebida será analisado nas seguintes tags para uso em etapas subsequentes: <br>
         <br>
-        <title><b>{raw_number}</b></title> <br>
-        &ensp; O número recebido <br>
-        <title><b>{sms_content}</b></title> <br>
+        %s
+        <br>
+        - <title><b>{sms_content}</b></title> <br>
         &ensp; O conteúdo da SMS
         ]]>
     </string>

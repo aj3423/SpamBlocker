@@ -80,9 +80,9 @@
         <![CDATA[
         Pesan SMS masuk akan diuraikan ke tag berikut untuk digunakan dalam langkah-langkah selanjutnya: <br>
         <br>
-        <title><b>{raw_number}</b></title> <br>
-        &ensp; Nomor masuk <br>
-        <title><b>{sms_content}</b></title> <br>
+        %s
+        <br>
+        - <title><b>{sms_content}</b></title> <br>
         &ensp; Isi SMS
         ]]>
     </string>

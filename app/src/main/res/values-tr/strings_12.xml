@@ -102,9 +102,9 @@
         <![CDATA[
         Gelen SMS içeriği sonraki adımlar için kullanılmak üzere aşağıdaki etiketlere ayrıştırılacaktır: <br>
         <br>
-        <title><b>{raw_number}</b></title> <br>
-        &ensp; Gelen numara <br>
-        <title><b>{sms_content}</b></title> <br>
+        %s
+        <br>
+        - <title><b>{sms_content}</b></title> <br>
         &ensp; SMS içeriği
         ]]>
     </string>
