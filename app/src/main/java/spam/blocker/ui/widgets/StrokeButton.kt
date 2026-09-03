@@ -106,7 +106,7 @@ fun StrokeButton(
     onClick: Lambda,
 ) {
     Button(
-        modifier = modifier.height(BUTTON_H.dp),
+        modifier = modifier.heightIn(min = BUTTON_H.dp),
         enabled = enabled,
         onLongClick = onLongClick,
         contentPadding = contentPadding,
