@@ -232,13 +232,12 @@ fun ExportButton() {
                 rememberDirTag = Backup_Last_Dir_Tag,
             ),
             onResult = { uri ->
-                errorStr = uri?.let {
+                if (uri != null) {
                     if (includeSpamDB) progressTrigger.value = false
-
-                    writeDataToUri(ctx, uri, compressed)
+                    errorStr = writeDataToUri(ctx, uri, compressed)
+                    succeeded = errorStr == null
+                    resultTrigger.value = true
                 }
-                succeeded = errorStr == null
-                resultTrigger.value = true
             }
         )
     }
