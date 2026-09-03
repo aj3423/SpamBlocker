@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -16,7 +17,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import spam.blocker.G
@@ -43,13 +46,17 @@ fun SimCardIcon(
             modifier = M.size(22.dp)
         )
 
-        Text(
-            text = "${slotIndex+1}",
-            color = color,
-            fontSize = 12.sp,
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier.offset(x = 7.5.dp)
-        )
+        CompositionLocalProvider( // lock the sim number size regardless of system font scaling
+            LocalDensity provides Density(density = LocalDensity.current.density, fontScale = 1f)
+        ) {
+            Text(
+                text = "${slotIndex+1}",
+                color = color,
+                fontSize = 12.sp,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.offset(x = 7.5.dp)
+            )
+        }
     }
 }
 
