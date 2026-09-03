@@ -31,9 +31,9 @@
     <string name="valid_number">Número Válido</string>
     <string name="valid_sms">Mensaxe de texto Válido</string>
     <string name="fraud">Fraude</string>
-    <string name="marketing">Marketing</string>
+    <string name="promotional">Promocional</string>
     <string name="survey">Enquisa</string>
-    <string name="political">Político</string>
+    <string name="reminder">Lembrete</string>
     <string name="action_category_config">Configuración de Categoría</string>
     <string name="help_action_category_config">
         <![CDATA[
@@ -43,9 +43,9 @@
                 &ensp; Denunciar como número de teléfono válido, non como chamada spam.<br>
                 <br>
                  - <error><b>{fraude}</b></error><br>
-                 - <error><b>{marketing}</b></error><br>
+                 - <error><b>{promotional}</b></error><br>
                  - <error><b>{enquisa}</b></error><br>
-                 - <error><b>{político}</b></error><br>
+                 - <error><b>{reminder}</b></error><br>
                  - <error><b>{outro}</b></error><br>
                 &ensp; O tipo de chamada spam de reserva, usado cando non se aplica ningunha das categorías anteriores.<br>
                 <br>

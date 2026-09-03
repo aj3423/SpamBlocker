@@ -31,9 +31,9 @@
     <string name="valid_number">Numero Valido</string>
     <string name="valid_sms">SMS Valido</string>
     <string name="fraud">Frode</string>
-    <string name="marketing">Marketing</string>
+    <string name="promotional">Promozionale</string>
     <string name="survey">Sondaggio</string>
-    <string name="political">Politica</string>
+    <string name="reminder">Promemoria</string>
     <string name="action_category_config">Config. Categorie</string>
     <string name="help_action_category_config">
         <![CDATA[
@@ -43,9 +43,9 @@
                 &ensp; Segnala come numero di telefono valido, non come chiamata spam.<br>
                 <br>
                  - <error><b>{fraud}</b></error><br>
-                 - <error><b>{marketing}</b></error><br>
+                 - <error><b>{promotional}</b></error><br>
                  - <error><b>{survey}</b></error><br>
-                 - <error><b>{political}</b></error><br>
+                 - <error><b>{reminder}</b></error><br>
                  - <error><b>{other}</b></error><br>
                 &ensp; Il tipo di chiamata spam di fallback, utilizzato quando nessuna delle categorie sopra si applica.<br>
                 <br>

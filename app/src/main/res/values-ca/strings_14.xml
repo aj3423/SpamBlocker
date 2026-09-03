@@ -31,9 +31,9 @@
     <string name="valid_number">Número vàlid</string>
     <string name="valid_sms">SMS vàlid</string>
     <string name="fraud">Frau</string>
-    <string name="marketing">Màrqueting</string>
+    <string name="promotional">Promocional</string>
     <string name="survey">Enquesta</string>
-    <string name="political">Polític</string>
+    <string name="reminder">Recordatori</string>
     <string name="action_category_config">Configuració de la categoria</string>
     <string name="help_action_category_config">
         <![CDATA[
@@ -43,9 +43,9 @@
                 &ensp; Informeu-lo com a número de telèfon vàlid, no com a trucada brossa.<br>
                 <br>
                  - <error><b>{fraud}</b></error><br>
-                 - <error><b>{marketing}</b></error><br>
+                 - <error><b>{promotional}</b></error><br>
                  - <error><b>{survey}</b></error><br>
-                 - <error><b>{political}</b></error><br>
+                 - <error><b>{reminder}</b></error><br>
                  - <error><b>{other}</b></error><br>
                 &ensp; El tipus de trucada brossa de reserva, utilitzat quan no s\'aplica cap de les categories anteriors.<br>
                 <br>

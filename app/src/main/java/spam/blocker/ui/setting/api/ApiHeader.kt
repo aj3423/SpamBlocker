@@ -25,8 +25,8 @@ import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.MenuButton
 import spam.blocker.ui.widgets.Str
-import spam.blocker.util.MyJson
 import spam.blocker.util.Lambda
+import spam.blocker.util.MyJson
 
 fun addApiToDB(
     ctx: Context,

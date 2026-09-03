@@ -31,9 +31,9 @@
     <string name="valid_number">Numéro valide</string>
     <string name="valid_sms">SMS valide</string>
     <string name="fraud">Fraude</string>
-    <string name="marketing">Marketing</string>
+    <string name="promotional">Promotionnel</string>
     <string name="survey">Sondage</string>
-    <string name="political">Politique</string>
+    <string name="reminder">Rappel</string>
     <string name="action_category_config">Config. Catégorie</string>
     <string name="help_action_category_config">
         <![CDATA[
@@ -43,9 +43,9 @@
                 &ensp; Signaler comme numéro de téléphone valide, pas comme appel indésirable.<br>
                 <br>
                  - <error><b>{fraud}</b></error><br>
-                 - <error><b>{marketing}</b></error><br>
+                 - <error><b>{promotional}</b></error><br>
                  - <error><b>{survey}</b></error><br>
-                 - <error><b>{political}</b></error><br>
+                 - <error><b>{reminder}</b></error><br>
                  - <error><b>{other}</b></error><br>
                 &ensp; Le type d\'appel indésirable de secours, utilisé lorsqu\'aucune des catégories ci-dessus ne s\'applique.<br>
                 <br>

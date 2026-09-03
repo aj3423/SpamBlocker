@@ -31,9 +31,9 @@
     <string name="valid_number">شماره معتبر</string>
     <string name="valid_sms">پیامک معتبر</string>
     <string name="fraud">کلاهبرداری</string>
-    <string name="marketing">بازاریابی</string>
+    <string name="promotional">تبلیغاتی</string>
     <string name="survey">نظرسنجی</string>
-    <string name="political">سیاسی</string>
+    <string name="reminder">یادآوری</string>
     <string name="action_category_config">تنظیمات دسته</string>
     <string name="help_action_category_config">
         <![CDATA[
@@ -43,9 +43,9 @@
                 &ensp; به عنوان یک شماره تلفن معتبر گزارش کنید، نه تماس مزاحم.<br>
                 <br>
                  - <error><b>{fraud}</b></error><br>
-                 - <error><b>{marketing}</b></error><br>
+                 - <error><b>{promotional}</b></error><br>
                  - <error><b>{survey}</b></error><br>
-                 - <error><b>{political}</b></error><br>
+                 - <error><b>{reminder}</b></error><br>
                  - <error><b>{other}</b></error><br>
                 &ensp; نوع جایگزین تماس مزاحم که وقتی هیچ‌یک از دسته‌های بالا اعمال نمی‌شوند استفاده می‌شود.<br>
                 <br>

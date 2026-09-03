@@ -31,9 +31,9 @@
     <string name="valid_number">Número Válido</string>
     <string name="valid_sms">Mensaje de texto Válido</string>
     <string name="fraud">Fraude</string>
-    <string name="marketing">Marketing</string>
+    <string name="promotional">Promocional</string>
     <string name="survey">Encuesta</string>
-    <string name="political">Político</string>
+    <string name="reminder">Recordatorio</string>
     <string name="action_category_config">Configuración de Categoría</string>
     <string name="help_action_category_config">
         <![CDATA[
@@ -43,9 +43,9 @@
                 &ensp; Reportar como número de teléfono válido, no como llamada spam.<br>
                 <br>
                  - <error><b>{fraude}</b></error><br>
-                 - <error><b>{marketing}</b></error><br>
+                 - <error><b>{promotional}</b></error><br>
                  - <error><b>{encuesta}</b></error><br>
-                 - <error><b>{político}</b></error><br>
+                 - <error><b>{reminder}</b></error><br>
                  - <error><b>{otro}</b></error><br>
                 &ensp; El tipo de llamada spam de respaldo, utilizado cuando ninguna de las categorías anteriores aplica.<br>
                 <br>

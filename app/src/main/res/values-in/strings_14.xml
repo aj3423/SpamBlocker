@@ -31,9 +31,9 @@
     <string name="valid_number">Nomor Sah</string>
     <string name="valid_sms">Pesan Teks Sah</string>
     <string name="fraud">Penipuan</string>
-    <string name="marketing">Pemasaran</string>
+    <string name="promotional">Promosi</string>
     <string name="survey">Survei</string>
-    <string name="political">Politik</string>
+    <string name="reminder">Pengingat</string>
     <string name="action_category_config">Konfigurasi Kategori</string>
     <string name="help_action_category_config">
         <![CDATA[
@@ -43,9 +43,9 @@
                 &ensp; Laporkan sebagai nomor telepon yang valid, bukan panggilan spam.<br>
                 <br>
                  - <error><b>{penipuan}</b></error><br>
-                 - <error><b>{pemasaran}</b></error><br>
+                 - <error><b>{promosi}</b></error><br>
                  - <error><b>{survei}</b></error><br>
-                 - <error><b>{politik}</b></error><br>
+                 - <error><b>{reminder}</b></error><br>
                  - <error><b>{lainnya}</b></error><br>
                 &ensp; Jenis panggilan spam cadangan, digunakan ketika tidak ada kategori di atas yang berlaku.<br>
                 <br>

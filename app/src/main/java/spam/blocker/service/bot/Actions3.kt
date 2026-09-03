@@ -678,7 +678,7 @@ class ParseQueryResult(
                     }
                     .filterNot { it.isNullOrEmpty() }
                     .map {
-                        // Map "1", "2" to human readable "Fraud", "Political" if it's configured
+                        // Map "1", "2" to human-readable "Fraud", "Reminder" if it's configured
                         //  in the CategoryMapping, otherwise keep it as is.
                         mapping.getOrDefault(it, it) as String
                     }
@@ -1059,7 +1059,7 @@ class CategoryConfig(
                 Placeholder(
                     """
                 {
-                  "{marketing}": "gym",
+                  "{promotional}": "gym",
                   "{other}": "bitcoin",
                   ...
                 }

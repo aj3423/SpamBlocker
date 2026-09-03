@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import androidx.core.database.getStringOrNull
 import spam.blocker.db.Notification.CHANNEL_HIGH
 import spam.blocker.db.Notification.CHANNEL_LOW
 import spam.blocker.db.Notification.CHANNEL_MEDIUM
@@ -12,13 +13,18 @@ import spam.blocker.def.Def
 import spam.blocker.service.bot.CalendarEvent
 import spam.blocker.service.bot.CallEvent
 import spam.blocker.service.bot.CallThrottling
+import spam.blocker.service.bot.CategoryConfig
 import spam.blocker.service.bot.Manual
 import spam.blocker.service.bot.QuickTile
 import spam.blocker.service.bot.Ringtone
 import spam.blocker.service.bot.Schedule
 import spam.blocker.service.bot.SmsEvent
 import spam.blocker.service.bot.SmsThrottling
+import spam.blocker.service.bot.parseActions
 import spam.blocker.service.bot.serialize
+import spam.blocker.ui.history.tagOther
+import spam.blocker.ui.history.tagPromotional
+import spam.blocker.ui.history.tagReminder
 import spam.blocker.util.Notification.deleteAllChannels
 import spam.blocker.util.Notification.ensureBuiltInChannels
 import spam.blocker.util.Notification.isChannelDisabled
@@ -31,7 +37,7 @@ class Db private constructor(
 ) : SQLiteOpenHelper(ctx, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 52
+        const val DB_VERSION = 53
         const val DB_NAME = "spam_blocker.db"
 
         // ---- regex rule table ----
@@ -597,6 +603,44 @@ class Db private constructor(
         // v5.16 added auto-report regex filter
         if ((newVersion >= 52) && (oldVersion < 52)) {
             addColumnIfNotExist(db, TABLE_API_REPORT, COLUMN_AUTO_REPORT_REGEX_FILTER, "TEXT")
+        }
+        // Update all existing CategoryConfig
+        //  1. add key {promotional} with same value as {marketing}
+        //  2. add key {reminder} with same value as {other}
+        //  3. delete {marketing} and {political}
+        if ((newVersion >= 53) && (oldVersion < 53)) {
+            val cursor = db.query(TABLE_API_REPORT, arrayOf(COLUMN_ID, COLUMN_ACTIONS), null, null, null, null, null)
+
+            cursor.use {
+                while (it.moveToNext()) {
+                    val id = it.getLong(it.getColumnIndexOrThrow(COLUMN_ID))
+                    val originalActionsStr = it.getStringOrNull(it.getColumnIndex(COLUMN_ACTIONS)) ?: continue
+                    val actions = originalActionsStr.parseActions()
+                    actions.forEach { act ->
+                        if (act is CategoryConfig) {
+                            val marketingVal = act.map["{marketing}"]
+                            if (marketingVal != null) { // old {marketing} and {political}
+                                val newEntries = listOfNotNull(
+                                    tagPromotional to marketingVal,
+                                    act.map[tagOther]?.let { otherVal -> tagReminder to otherVal }
+                                )
+
+                                act.map = act.map + newEntries - "{marketing}" - "{political}"
+                            }
+                        }
+                    }
+
+                    val updatedActions = actions.serialize()
+
+                    // Only write if something actually changed
+                    if (updatedActions != originalActionsStr) {
+                        val values = ContentValues().apply {
+                            put(COLUMN_ACTIONS, updatedActions)
+                        }
+                        db.update(TABLE_API_REPORT, values, "$COLUMN_ID = ?", arrayOf(id.toString()))
+                    }
+                }
+            }
         }
     }
 }

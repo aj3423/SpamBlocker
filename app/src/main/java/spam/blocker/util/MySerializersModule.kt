@@ -77,6 +77,8 @@ import spam.blocker.service.checker.BySmsBomb
 import spam.blocker.service.checker.BySpamDb
 import spam.blocker.service.checker.ICheckResult
 
+// This module contains ALL serializable classes in this app
+
 val myModule = SerializersModule {
     // also add to below polymorphic(IAction:class)
     polymorphic(ITriggerAction::class) {

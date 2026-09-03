@@ -31,9 +31,9 @@
     <string name="valid_number">Gültige Nummer</string>
     <string name="valid_sms">Gültige SMS</string>
     <string name="fraud">Betrug</string>
-    <string name="marketing">Marketing</string>
+    <string name="promotional">Werbung</string>
     <string name="survey">Umfrage</string>
-    <string name="political">Politik</string>
+    <string name="reminder">Erinnerung</string>
     <string name="action_category_config">Kategorie Konfiguration</string>
     <string name="help_action_category_config">
         <![CDATA[
@@ -43,9 +43,9 @@
                 &ensp; Als gültige Telefonnummer melden, nicht als Spam-Anruf.<br>
                 <br>
                  - <error><b>{fraud}</b></error><br>
-                 - <error><b>{marketing}</b></error><br>
+                 - <error><b>{promotional}</b></error><br>
                  - <error><b>{survey}</b></error><br>
-                 - <error><b>{political}</b></error><br>
+                 - <error><b>{reminder}</b></error><br>
                  - <error><b>{other}</b></error><br>
                 &ensp; Der Fallback-Typ für Spam-Anrufe, der verwendet wird, wenn keine der oben genannten Kategorien zutrifft.<br>
                 <br>

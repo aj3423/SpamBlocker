@@ -62,9 +62,9 @@ const val tagComment = "{comment}"
 const val tagValid = "{valid}"
 const val tagOther = "{other}"
 const val tagFraud = "{fraud}"
-const val tagMarketing = "{marketing}"
+const val tagPromotional = "{promotional}"
 const val tagSurvey = "{survey}"
-const val tagPolitical = "{political}"
+const val tagReminder = "{reminder}"
 
 fun spamCategoryNamesMap(ctx: Context, forType: Int): Map<String, String> {
     return mapOf(
@@ -74,9 +74,9 @@ fun spamCategoryNamesMap(ctx: Context, forType: Int): Map<String, String> {
         }),
 
         tagFraud to ctx.getString(R.string.fraud),
-        tagMarketing to ctx.getString(R.string.marketing),
+        tagPromotional to ctx.getString(R.string.promotional),
         tagSurvey to ctx.getString(R.string.survey),
-        tagPolitical to ctx.getString(R.string.political),
+        tagReminder to ctx.getString(R.string.reminder),
 
         tagOther to ctx.getString(R.string.others), // the last one
     )

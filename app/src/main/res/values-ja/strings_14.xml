@@ -30,9 +30,9 @@
     <string name="valid_number">有効な番号</string>
     <string name="valid_sms">有効なSMS</string>
     <string name="fraud">詐欺</string>
-    <string name="marketing">マーケティング</string>
+    <string name="promotional">宣伝</string>
     <string name="survey">アンケート</string>
-    <string name="political">政治関連</string>
+    <string name="reminder">リマインダー</string>
     <string name="action_category_config">カテゴリ設定</string>
     <string name="help_action_category_config">
         <![CDATA[
@@ -42,9 +42,9 @@
                 &ensp; 有効な電話番号として報告し、迷惑電話としては報告しません。<br>
                 <br>
                  - <error><b>{fraud}</b></error><br>
-                 - <error><b>{marketing}</b></error><br>
+                 - <error><b>{promotional}</b></error><br>
                  - <error><b>{survey}</b></error><br>
-                 - <error><b>{political}</b></error><br>
+                 - <error><b>{reminder}</b></error><br>
                  - <error><b>{other}</b></error><br>
                 &ensp; 上記のどのカテゴリにも当てはまらない場合に使用される、フォールバックの迷惑電話種別です。<br>
                 <br>

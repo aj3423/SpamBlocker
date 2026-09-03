@@ -30,9 +30,9 @@
     <string name="valid_number">有效号码</string>
     <string name="valid_sms">有效短信</string>
     <string name="fraud">诈骗</string>
-    <string name="marketing">营销</string>
+    <string name="promotional">推销广告</string>
     <string name="survey">调查</string>
-    <string name="political">政治</string>
+    <string name="reminder">提醒通知</string>
     <string name="action_category_config">类别配置</string>
     <string name="help_action_category_config">
         <![CDATA[
@@ -42,9 +42,9 @@
                 &ensp; 标记为有效电话号码，而不是骚扰来电。<br>
                 <br>
                  - <error><b>{fraud}</b></error><br>
-                 - <error><b>{marketing}</b></error><br>
+                 - <error><b>{promotional}</b></error><br>
                  - <error><b>{survey}</b></error><br>
-                 - <error><b>{political}</b></error><br>
+                 - <error><b>{reminder}</b></error><br>
                  - <error><b>{other}</b></error><br>
                 &ensp; 后备骚扰来电类型，在以上类别均不适用时使用。<br>
                 <br>

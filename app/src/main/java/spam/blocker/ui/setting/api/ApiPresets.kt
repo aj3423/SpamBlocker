@@ -1,24 +1,19 @@
 package spam.blocker.ui.setting.api
 
-import android.app.NotificationChannel
 import android.content.Context
 import spam.blocker.BuildConfig
-import spam.blocker.Events
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.AutoReportTypes
 import spam.blocker.db.ContentRegexTable
 import spam.blocker.db.ImportDbReason
-import spam.blocker.db.Notification.CHANNEL_LOW
 import spam.blocker.db.Notification.CHANNEL_NONE
-import spam.blocker.db.NumberRegexTable
 import spam.blocker.db.QueryApi
 import spam.blocker.db.RegexRule
 import spam.blocker.db.ReportApi
 import spam.blocker.def.Def
 import spam.blocker.service.bot.CategoryConfig
 import spam.blocker.service.bot.CopyTag
-import spam.blocker.service.bot.Delay
 import spam.blocker.service.bot.FilterSpamResult
 import spam.blocker.service.bot.ForwardType
 import spam.blocker.service.bot.HTTP_POST
@@ -31,15 +26,13 @@ import spam.blocker.service.bot.SendSms
 import spam.blocker.service.bot.SetTag
 import spam.blocker.service.bot.Wait
 import spam.blocker.ui.history.tagFraud
-import spam.blocker.ui.history.tagMarketing
 import spam.blocker.ui.history.tagOther
-import spam.blocker.ui.history.tagPolitical
+import spam.blocker.ui.history.tagPromotional
+import spam.blocker.ui.history.tagReminder
 import spam.blocker.ui.history.tagSurvey
 import spam.blocker.ui.history.tagValid
 import spam.blocker.util.Lambda1
 import spam.blocker.util.Launcher
-import spam.blocker.util.Notification
-import spam.blocker.util.PermissionWrapper
 
 data class ApiPreset(
     val desc: (Context) -> String,
@@ -154,8 +147,8 @@ val ApiReportPresets by lazy {
                                     tagValid to "A_LEGITIMATE",
                                     tagOther to "B_MISSED",
                                     tagSurvey to "D_POLL",
-                                    tagMarketing to "E_ADVERTISING",
-                                    tagPolitical to "E_ADVERTISING",
+                                    tagPromotional to "E_ADVERTISING",
+                                    tagReminder to "B_MISSED",
                                     tagFraud to "G_FRAUD",
                                 )
                             ),

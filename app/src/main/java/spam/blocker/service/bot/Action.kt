@@ -17,8 +17,8 @@ import kotlinx.serialization.PolymorphicSerializer
 import kotlinx.serialization.builtins.ListSerializer
 import spam.blocker.service.checker.CheckContext
 import spam.blocker.service.checker.ICheckResult
-import spam.blocker.util.MyJson
 import spam.blocker.util.ILogger
+import spam.blocker.util.MyJson
 import spam.blocker.util.PermissionWrapper
 
 // When adding a new IAction type, follow all the steps:
