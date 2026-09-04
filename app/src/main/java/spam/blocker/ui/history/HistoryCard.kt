@@ -85,137 +85,119 @@ fun HistoryCard(
             modifier = M
                 .wrapContentSize()
         ) {
-            RowVCenterSpaced(
-                space = 2,
+            Column(
                 modifier = modifier.padding(8.dp)
             ) {
+                val r = remember(record.result, record.reason) { parseCheckResultFromDb(ctx, record.result, record.reason) }
+                val contact = remember(record.peer) { Contacts.findContactByRawNumber(ctx, record.peer) }
 
-                // 1. avatar
-                val contact = Contacts.findContactByRawNumber(ctx, record.peer)
-                val bmpAvatar = contact?.loadAvatar(ctx)
-                if (bmpAvatar != null) {
-                    ComposeImage(
-                        bmpAvatar.asImageBitmap(), "", modifier = M
+                @Composable
+                fun Avatar(modifier: Modifier) {
+                    val bmpAvatar = contact?.loadAvatar(ctx)
+                    if (bmpAvatar != null) {
+                        ComposeImage(bmpAvatar.asImageBitmap(), "", modifier = modifier)
+                    } else {
+                        // Use the hash code as color
+                        val toHash = contact?.name ?: record.peer
+                        val color = Color(toHash.hashCode().toLong() or 0xff808080/* for higher contrast */)
+                        ResImage(R.drawable.ic_contact_circle, color = color, modifier = modifier)
+                    }
+                }
+
+                @Composable
+                fun SimAndTime(modifier: Modifier = Modifier) {
+                    RowVCenterSpaced(2, modifier = modifier) {
+                        if ((simCount >= 2 || forceShowSIM.value) && record.simSlot != null) {
+                            SimCardIcon(
+                                record.simSlot,
+                            )
+                        }
+                        Text(
+                            text = formatTime(ctx, record.time),
+                            fontSize = 14.sp,
+                            color = if (timeColors.isNullOrEmpty()) {
+                                C.textGrey
+                            } else {
+                                timeColor(record.time, timeColors) ?: C.textGrey
+                            },
+                            lineHeight = 16.sp,
+                            textAlign = TextAlign.Center,
+                        )
+                    }
+                }
+
+                RowVCenterSpaced(
+                    space = 2,
+                ) {
+
+                    // 1. avatar (only when not expanded)
+                    if (!record.expanded) {
+                        Avatar(M
                             .size(ItemHeight.dp)
                             .align(Alignment.Top)
                             .clip(RoundedCornerShape((ItemHeight / 2).dp))
-                    )
-                } else {
-                    // Use the hash code as color
-                    val toHash = contact?.name ?: record.peer
-                    val color = Color(toHash.hashCode().toLong() or 0xff808080/* for higher contrast */)
-                    ResImage(
-                        R.drawable.ic_contact_circle, color = color, modifier = M
-                            .size(ItemHeight.dp)
-                            .align(Alignment.Top)
-                    )
-                }
-
-                // 2. Rule indicator / Number / BlockReason / SMS Content
-                Column(
-                    modifier = M
-                        .padding(start = 4.dp)
-                        .weight(1f)
-                ) {
-                    // Row 1: Rule indicator / Number
-                    RowVCenterSpaced(2) {
-                        // Db/Rule existence indicators
-                        if(indicators.isNotEmpty())
-                            IndicatorIcons(indicators)
-
-                        // Number
-                        var t = contact?.name ?: record.peer
-                        // Display Name (CNAP)
-                        if (!record.cnap.isNullOrEmpty()) {
-                            t += " (${record.cnap})"
-                        }
-                        Text(
-                            text = t,
-                            color = if (record.isBlocked()) C.error else C.success,
-                            fontSize = 18.sp
                         )
                     }
-
-                    // Row 2: Geolocation | Carrier
-                    val label = listOfNotNull(
-                        if (showHistoryGeoLocation.value) Util.numberGeoLocation(ctx, record.peer) else null,
-                        if (showHistoryCarrier.value) Util.numberCarrier(ctx, record.peer) else null,
-                    ).joinToString(" | ")
-
-                    if (label.isNotEmpty()) {
-                        Text(
-                            text = label,
-                            style = TextStyle(
-                                fontSize = 12.sp,
-                                color = C.textGrey.slightDiff(),
-                                fontWeight = FontWeight.W500,
-                            ),
-                            modifier = M.padding(start = 4.dp),
-                        )
-                    }
-
-                    val r = parseCheckResultFromDb(ctx, record.result, record.reason)
-
-                    // Row 3: Reason Summary
-                    RowVCenterSpaced(4, M.padding(vertical = if(record.expanded) 4.dp else 0.dp)) {
-                        // Show a label when not expanded, and a clickable button when expanded
-                        if (record.expanded) {
-                            val trigger = remember { mutableStateOf(false) }
-
-                            // Show full screening log
-                            PopupDialog(
-                                trigger = trigger,
-                                popupSize = PopupSize(maxWidthPercentage = 0.9f, minWidthDp = 320, maxWidthDp = 1200),
-                            ) {
-                                val annotatedLog = remember {
-                                    try {
-                                        val t = PermissiveJson.decodeFromString<MarkupText>(
-                                            record.fullScreeningLog?: ""
-                                        )
-                                        t.toAnnotatedString()
-                                    } catch (_: Exception) {
-                                        AnnotatedString("")
-                                    }
-                                }
-                                Text(
-                                    text = annotatedLog,
-                                    inlineContent = priorityInlineMap()
+                    // 2. Rule indicator / Number / BlockReason
+                    Column(
+                        modifier = M
+                            .padding(start = if (!record.expanded) 4.dp else 0.dp)
+                            .weight(1f)
+                    ) {
+                        // Row 1: Contact Avatar (when expanded) / Rule indicator / Number / SIM / Time
+                        RowVCenterSpaced(2) {
+                            if (record.expanded) {
+                                Avatar(M
+                                    .size(22.dp)
+                                    .clip(RoundedCornerShape(9.dp))
                                 )
                             }
 
-                            Row(M.weight(1f)) {
-                                Button(
-                                    contentPadding = PaddingValues(BUTTON_H_PADDING.dp, 2.dp),
-                                    borderWidth = 0.5.dp,
-                                    borderColor = C.textGrey,
-                                    shape = RoundedCornerShape(BUTTON_CORNER_RADIUS.dp),
-                                    onClick = {
-                                        trigger.value = true
-                                    },
-                                    content = {
-                                        RowVCenterSpaced(2) {
-                                            // Show a yellow "!" if anything went wrong during screening, e.g. ApiQuery timed out
-                                            if (record.anythingWrongScreening) {
-                                                ResIcon16(R.drawable.ic_exclamation, color = C.warning)
-                                            }
+                            // Db/Rule existence indicators
+                            if(indicators.isNotEmpty())
+                                IndicatorIcons(indicators)
 
-                                            r.ResultReason(true)
-                                        }
-                                    }
-                                )
+                            // Number
+                            var t = contact?.name ?: record.peer
+                            // Display Name (CNAP)
+                            if (!record.cnap.isNullOrEmpty()) {
+                                t += " (${record.cnap})"
                             }
-                        } else { // record not expanded
-                            RowVCenterSpaced(2, M.weight(1f)) {
-                                // Show a yellow "!" if anything went wrong during screening, e.g. ApiQuery timed out
-                                if (record.anythingWrongScreening) {
-                                    ResIcon16(R.drawable.ic_exclamation, color = C.warning)
-                                }
-                                r.ResultReason(false)
+                            Text(
+                                text = t,
+                                color = if (record.isBlocked()) C.error else C.success,
+                                fontSize = 18.sp,
+                                modifier = M.weight(1f)
+                            )
+
+                            if (record.expanded) {
+                                SimAndTime()
                             }
                         }
 
-                        // Auto/Manual Report Log
-                        if (record.autoReportingLog != null) {
+                        // Row 2: Geolocation | Carrier
+                        val label = remember(record.peer, showHistoryGeoLocation.value, showHistoryCarrier.value) {
+                            listOfNotNull(
+                                if (showHistoryGeoLocation.value) Util.numberGeoLocation(ctx, record.peer) else null,
+                                if (showHistoryCarrier.value) Util.numberCarrier(ctx, record.peer) else null,
+                            ).joinToString(" | ")
+                        }
+
+                        if (label.isNotEmpty()) {
+                            Text(
+                                text = label,
+                                style = TextStyle(
+                                    fontSize = 12.sp,
+                                    color = C.textGrey.slightDiff(),
+                                    fontWeight = FontWeight.W500,
+                                ),
+                                modifier = M.padding(start = if (!record.expanded) 4.dp else 0.dp),
+                            )
+                        }
+
+                        // Row 3: Block Reason
+                        RowVCenterSpaced(4, M.padding(vertical = if(record.expanded) 4.dp else 0.dp)) {
+                            // Show a label when not expanded, and a clickable button when expanded
                             if (record.expanded) {
                                 val trigger = remember { mutableStateOf(false) }
 
@@ -227,7 +209,7 @@ fun HistoryCard(
                                     val annotatedLog = remember {
                                         try {
                                             val t = PermissiveJson.decodeFromString<MarkupText>(
-                                                record.autoReportingLog
+                                                record.fullScreeningLog?: ""
                                             )
                                             t.toAnnotatedString()
                                         } catch (_: Exception) {
@@ -236,64 +218,99 @@ fun HistoryCard(
                                     }
                                     Text(
                                         text = annotatedLog,
+                                        inlineContent = priorityInlineMap()
                                     )
                                 }
-                                Button(
-                                    borderWidth = 0.5.dp,
-                                    borderColor = if (record.anythingWrongReporting) C.warning else C.textGrey,
-                                    shape = RoundedCornerShape(BUTTON_CORNER_RADIUS.dp),
-                                    onClick = {
-                                        trigger.value = true
-                                    },
-                                    content = {
-                                        ResIcon20(
-                                            iconId = R.drawable.ic_upload_to_cloud,
-                                            color = if (record.anythingWrongReporting) C.warning else C.textGrey,
+
+                                // Block Reason
+                                Row(M.weight(1f)) {
+                                    Button(
+                                        contentPadding = PaddingValues(BUTTON_H_PADDING.dp, 2.dp),
+                                        borderWidth = 0.5.dp,
+                                        borderColor = C.textGrey,
+                                        shape = RoundedCornerShape(BUTTON_CORNER_RADIUS.dp),
+                                        onClick = {
+                                            trigger.value = true
+                                        },
+                                        content = {
+                                            RowVCenterSpaced(2) {
+                                                // Show a yellow "!" if anything went wrong during screening, e.g. ApiQuery timed out
+                                                if (record.anythingWrongScreening) {
+                                                    ResIcon16(R.drawable.ic_exclamation, color = C.warning)
+                                                }
+
+                                                r.ResultReason(true)
+                                            }
+                                        }
+                                    )
+                                }
+                            } else { // record not expanded
+                                RowVCenterSpaced(2, modifier = M.weight(1f)) {
+                                    // Show a yellow "!" if anything went wrong during screening, e.g. ApiQuery timed out
+                                    if (record.anythingWrongScreening) {
+                                        ResIcon16(R.drawable.ic_exclamation, color = C.warning)
+                                    }
+                                    r.ResultReason(false)
+                                }
+                            }
+
+                            // Auto/Manual Report Log
+                            if (record.autoReportingLog != null) {
+                                val trigger = remember { mutableStateOf(false) }
+                                val iconColor = if (record.anythingWrongReporting) C.warning else C.textGrey
+
+                                if (record.expanded) {
+                                    // Show full screening log
+                                    PopupDialog(
+                                        trigger = trigger,
+                                        popupSize = PopupSize(maxWidthPercentage = 0.9f, minWidthDp = 320, maxWidthDp = 1200),
+                                    ) {
+                                        val annotatedLog = remember {
+                                            try {
+                                                val t = PermissiveJson.decodeFromString<MarkupText>(
+                                                    record.autoReportingLog
+                                                )
+                                                t.toAnnotatedString()
+                                            } catch (_: Exception) {
+                                                AnnotatedString("")
+                                            }
+                                        }
+                                        Text(
+                                            text = annotatedLog,
                                         )
                                     }
-                                )
-                            } else {
-                                ResIcon20(
-                                    iconId = R.drawable.ic_upload_to_cloud,
-                                    color = if (record.anythingWrongReporting) C.warning else C.textGrey,
-                                )
+                                    Button(
+                                        borderWidth = 0.5.dp,
+                                        borderColor = iconColor,
+                                        shape = RoundedCornerShape(BUTTON_CORNER_RADIUS.dp),
+                                        onClick = {
+                                            trigger.value = true
+                                        },
+                                        content = {
+                                            ResIcon20(
+                                                iconId = R.drawable.ic_upload_to_cloud,
+                                                color = iconColor,
+                                            )
+                                        }
+                                    )
+                                } else {
+                                    ResIcon20(
+                                        iconId = R.drawable.ic_upload_to_cloud,
+                                        color = iconColor,
+                                    )
+                                }
                             }
                         }
                     }
 
-
-                    // Report Number / SMS Content
-                    r.ExpandedContent(forType, record)
-                }
-
-                // 3. SIM / Time
-                RowVCenterSpaced(
-                    space = 2,
-                    modifier = M
-                        .padding(end = 8.dp)
-                        .align(Alignment.Top)
-                        .heightIn(ItemHeight.dp)
-                ) {
-
-                    // SIM slot icon
-                    if ((simCount >= 2 || forceShowSIM.value) && record.simSlot != null) {
-                        SimCardIcon(
-                            record.simSlot,
-                        )
+                    // 3. SIM / Time (only when not expanded)
+                    if (!record.expanded) {
+                        SimAndTime(M.heightIn(ItemHeight.dp))
                     }
-
-                    // time
-                    Text(
-                        text = formatTime(ctx, record.time),
-                        fontSize = 14.sp,
-                        color = if (timeColors.isNullOrEmpty()) {
-                            C.textGrey
-                        } else {
-                            timeColor(record.time, timeColors) ?: C.textGrey
-                        },
-                        textAlign = TextAlign.Center,
-                    )
                 }
+
+                // Report Number / SMS Content
+                r.ExpandedContent(forType, record)
             }
 
             // Unread red dot

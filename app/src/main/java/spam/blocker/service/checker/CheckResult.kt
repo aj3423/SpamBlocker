@@ -18,7 +18,6 @@ import androidx.compose.ui.unit.sp
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonObject
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.ContentRegexTable
@@ -81,7 +80,6 @@ import spam.blocker.util.AppIcon
 import spam.blocker.util.Notification.ShowType
 import spam.blocker.util.Notification.missingChannel
 import spam.blocker.util.PermissiveJson
-import spam.blocker.util.PermissivePrettyJson
 import spam.blocker.util.Util.highlightMatchedText
 import spam.blocker.util.spf
 
@@ -95,7 +93,7 @@ fun ExtraInfoWithDivider(text: AnnotatedString, maxLines: Int) {
             HorizontalDivider(
                 thickness = 0.5.dp,
                 color = C.disabled,
-                modifier = M.padding(vertical = 4.dp)
+                modifier = M.padding(top = 4.dp, bottom = 4.dp)
             )
             Text(
                 text = text,
@@ -163,19 +161,17 @@ interface ICheckResult {
     fun ExpandedContent(forType: Int, record: HistoryRecord) {
         val ctx = LocalContext.current
 
-        Column {
-            // Report Button
-            ReportButtonRow(forType, record)
+        // Report Button
+        ReportButtonRow(forType, record)
 
-            // SMS content
-            if (forType == Def.ForSms) {
-                val smsContent = record.extraInfo
-                if (smsContent != null) {
-                    ExtraInfoWithDivider(
-                        text = smsContent.A(),
-                        maxLines = if (record.expanded) Int.MAX_VALUE else spf.HistoryOptions(ctx).initialSmsRowCount,
-                    )
-                }
+        // SMS content
+        if (forType == Def.ForSms) {
+            val smsContent = record.extraInfo
+            if (smsContent != null) {
+                ExtraInfoWithDivider(
+                    text = smsContent.A(),
+                    maxLines = if (record.expanded) Int.MAX_VALUE else spf.HistoryOptions(ctx).initialSmsRowCount,
+                )
             }
         }
     }
@@ -437,19 +433,19 @@ class ByApiQuery(
         }
 
         // Server Echo
-        val echo = detail.queryResult.serverEcho
-        if (echo != null) {
-            // pretty format the json
-            val prettyEcho = try {
-                PermissivePrettyJson.encodeToString(PermissiveJson.decodeFromString<JsonObject>(echo))
-            } catch (_: Exception) {
-                echo
-            }
-            ExtraInfoWithDivider(
-                text = prettyEcho.A(),
-                maxLines = 20,
-            )
-        }
+//        val echo = detail.queryResult.serverEcho
+//        if (echo != null) {
+//            // pretty format the json
+//            val prettyEcho = try {
+//                PermissivePrettyJson.encodeToString(PermissiveJson.decodeFromString<JsonObject>(echo))
+//            } catch (_: Exception) {
+//                echo
+//            }
+//            ExtraInfoWithDivider(
+//                text = prettyEcho.A(),
+//                maxLines = 20,
+//            )
+//        }
     }
 
     override fun reasonToDb(): String {
@@ -534,22 +530,20 @@ class ByRegexRule(
                 )
 
                 if (smsContent != null && isBySmsRule && rule != null) {
-                    Column {
-                        // Report Button
-                        ReportButtonRow(forType, record)
+                    // Report Button
+                    ReportButtonRow(forType, record)
 
-                        // SMS content
-                        ExtraInfoWithDivider(
-                            text = highlightMatchedText(
-                                text = smsContent,
-                                regexStr = rule.pattern,
-                                regexFlags = rule.patternFlags,
-                                wildcardColor = if(rule.isBlacklist) C.error else C.success,
-                                textColor = C.textGrey
-                            ),
-                            maxLines = if (record.expanded) Int.MAX_VALUE else spf.HistoryOptions(ctx).initialSmsRowCount,
-                        )
-                    }
+                    // SMS content
+                    ExtraInfoWithDivider(
+                        text = highlightMatchedText(
+                            text = smsContent,
+                            regexStr = rule.pattern,
+                            regexFlags = rule.patternFlags,
+                            wildcardColor = if(rule.isBlacklist) C.error else C.success,
+                            textColor = C.textGrey
+                        ),
+                        maxLines = if (record.expanded) Int.MAX_VALUE else spf.HistoryOptions(ctx).initialSmsRowCount,
+                    )
                 } else {
                     super.ExpandedContent(forType, record)
                 }
@@ -628,14 +622,12 @@ class ByPushAlert(
     }
     @Composable
     override fun ExpandedContent(forType: Int, record: HistoryRecord) {
-        Column {
-            super.ExpandedContent(forType, record)
-            if (record.expanded)
-                ExtraInfoWithDivider(
-                    text = detail.body.A(),
-                    maxLines = 20,
-                )
-        }
+        super.ExpandedContent(forType, record)
+        if (record.expanded)
+            ExtraInfoWithDivider(
+                text = detail.body.A(),
+                maxLines = 20,
+            )
     }
 }
 

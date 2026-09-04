@@ -32,6 +32,11 @@ import spam.blocker.util.Lambda
 
 typealias M = Modifier
 
+inline fun Modifier.thenIf(
+    condition: Boolean,
+    modifier: Modifier.() -> Modifier
+): Modifier = if (condition) this.modifier() else this
+
 
 fun priorityInlineMap() = mapOf(
     "priority" to InlineTextContent(
