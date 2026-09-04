@@ -257,7 +257,7 @@ fun HistoryCard(
                             // Auto/Manual Report Log
                             if (record.autoReportingLog != null) {
                                 val trigger = remember { mutableStateOf(false) }
-                                val iconColor = if (record.anythingWrongReporting) C.warning else C.textGrey
+                                val iconColor = if (record.anythingWrongReporting) C.warning else C.success
 
                                 if (record.expanded) {
                                     // Show full screening log
