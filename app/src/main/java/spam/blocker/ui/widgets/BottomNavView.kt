@@ -20,6 +20,7 @@ import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
@@ -28,6 +29,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import spam.blocker.G
@@ -133,12 +135,16 @@ fun BottomBar(vm: BottomBarViewModel) {
                         BadgedBox(
                             badge = {
                                 badgeText?.let {
-                                    Badge(
-                                        modifier = M.offset(x = 12.dp, y = 4.dp),
-                                        containerColor = C.error,
-                                        contentColor = White
+                                    CompositionLocalProvider( // lock the sim number size regardless of system font scaling
+                                        LocalDensity provides Density(density = LocalDensity.current.density, fontScale = 1f)
                                     ) {
-                                        Text(text = badgeText)
+                                        Badge(
+                                            modifier = M.offset(x = 8.dp, y = (-2).dp),
+                                            containerColor = C.error,
+                                            contentColor = White
+                                        ) {
+                                            Text(text = badgeText)
+                                        }
                                     }
                                 }
                             }
