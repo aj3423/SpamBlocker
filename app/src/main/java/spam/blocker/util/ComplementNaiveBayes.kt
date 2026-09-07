@@ -1,9 +1,23 @@
 package spam.blocker.util
 
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
 import spam.blocker.db.BayesianSample
 import kotlin.math.abs
 import kotlin.math.exp
 import kotlin.math.ln
+
+@Serializable
+data class CnbModelData(
+    val weights: Map<Boolean, Map<String, Double>>
+)
+
+//@Serializable
+//data class RawTermCounts(
+//    val counts: Map<Boolean, Map<String, Int>>,
+//    val docFreqs: Map<Boolean, Map<String, Int>> = emptyMap(),
+//    val sampleCount: Int = 0
+//)
 
 /**
  * Complement Naive Bayes for SMS spam filtering.
@@ -20,20 +34,24 @@ class ComplementNaiveBayes(
 ) {
     // class → (token → L1-normalized weight)   weights are negative
     private val weights = mutableMapOf<Boolean, Map<String, Double>>()
-    private var isTrained = false
 
     fun train(samples: List<BayesianSample>) {
         weights.clear()
-        isTrained = false
         if (samples.isEmpty()) return
 
-        // 1. Raw term counts
+        // 1. Raw term counts & Document Frequency (DF)
         val classCounts = mutableMapOf<Boolean, MutableMap<String, Int>>()
         val classTotals = mutableMapOf<Boolean, Int>()
         val globalFreq = mutableMapOf<String, Int>()
+        val docFreq = mutableMapOf<String, Int>()
 
         for (s in samples) {
             val tokens = tokenize(s.content)
+            val uniqueTokensInDoc = tokens.toSet()
+            for (t in uniqueTokensInDoc) {
+                docFreq[t] = docFreq.getOrDefault(t, 0) + 1
+            }
+
             val map = classCounts.getOrPut(s.category) { mutableMapOf() }
             var total = classTotals.getOrDefault(s.category, 0)
             for (t in tokens) {
@@ -44,15 +62,19 @@ class ComplementNaiveBayes(
             classTotals[s.category] = total
         }
 
+        // Filter out hapax legomena (DF < 2) if dataset has >= 10 samples
+        val minDf = if (samples.size >= 10) 2 else 1
+        val filteredFreq = globalFreq.filterKeys { (docFreq[it] ?: 0) >= minDf }
+
         // Keep top features
-        val kept = if (globalFreq.size > maxFeatures) {
-            globalFreq.entries
+        val kept = if (filteredFreq.size > maxFeatures) {
+            filteredFreq.entries
                 .sortedByDescending { it.value }
                 .take(maxFeatures)
                 .map { it.key }
                 .toSet()
         } else {
-            globalFreq.keys
+            filteredFreq.keys
         }
         val vocabSize = kept.size
         if (vocabSize == 0) return
@@ -96,14 +118,47 @@ class ComplementNaiveBayes(
             val norm = if (l1 > 0.0) l1 else 1.0
             weights[c] = raw.mapValues { it.value / norm }
         }
-        isTrained = true
+    }
+
+    /** Export raw term counts for server-side model aggregation across users. */
+//    fun exportRawTermCounts(samples: List<BayesianSample>): RawTermCounts {
+//        val classCounts = mutableMapOf<Boolean, MutableMap<String, Int>>()
+//        val classDocFreqs = mutableMapOf<Boolean, MutableMap<String, Int>>()
+//
+//        for (s in samples) {
+//            val tokens = tokenize(s.content)
+//            val map = classCounts.getOrPut(s.category) { mutableMapOf() }
+//            val dfMap = classDocFreqs.getOrPut(s.category) { mutableMapOf() }
+//
+//            val uniqueTokens = tokens.toSet()
+//            for (t in uniqueTokens) {
+//                dfMap[t] = dfMap.getOrDefault(t, 0) + 1
+//            }
+//            for (t in tokens) {
+//                map[t] = map.getOrDefault(t, 0) + 1
+//            }
+//        }
+//        return RawTermCounts(classCounts, classDocFreqs, samples.size)
+//    }
+
+    /** Serialize trained model state to JSON string. */
+    fun serialize(): String {
+        val model = CnbModelData(weights)
+        return Json.encodeToString(CnbModelData.serializer(), model)
+    }
+
+    /** Deserialize trained model state from JSON string. */
+    fun deserialize(json: String) {
+        val model = Json.decodeFromString(CnbModelData.serializer(), json)
+        weights.clear()
+        weights.putAll(model.weights)
     }
 
     /**
-     * Returns P(spam) ∈ [0.0, 1.0]
+     * Returns P(spam) ∈ [0.01, 0.99]
      */
     fun spamProbability(content: String): Double {
-        if (!isTrained) return 0.0
+        if (weights.isEmpty()) return 0.0
         val tokens = tokenize(content)
         if (tokens.isEmpty()) return 0.0
 
@@ -112,20 +167,25 @@ class ComplementNaiveBayes(
 
         var scoreSpam = 0.0
         var scoreHam = 0.0
-        val defaultWeight = -1e-6
         for (t in tokens) {
-            scoreSpam += -(wSpam[t] ?: defaultWeight)
-            scoreHam += -(wHam[t] ?: defaultWeight)
+            // Unseen tokens contribute 0 (Standard Complement Naive Bayes)
+            val ws = wSpam[t]
+            if (ws != null) scoreSpam += -ws
+
+            val wh = wHam[t]
+            if (wh != null) scoreHam += -wh
         }
 
         val maxS = maxOf(scoreSpam, scoreHam)
         val expSpam = exp(scoreSpam - maxS)
         val expHam = exp(scoreHam - maxS)
         val sum = expSpam + expHam
-        return if (sum == 0.0) 0.5 else expSpam / sum
+        if (sum == 0.0) return 0.5
+        val prob = expSpam / sum
+        return prob.coerceIn(0.01, 0.99)
     }
 
-    // ---------- Tokenization (Words for space-delimited, 1-gram + 2-gram for CJK) ----------
+    // ---------- Tokenization (Words for space-delimited, 1-gram + 2-gram for CJK & Hangul) ----------
     fun tokenize(text: String): List<String> {
         val result = mutableListOf<String>()
 
@@ -138,7 +198,15 @@ class ComplementNaiveBayes(
         fun flushWord() {
             if (sb.isNotEmpty()) {
                 val tok = sb.toString().lowercase()
-                if (tok.isNotEmpty()) result.add(tok)
+                if (tok.isNotEmpty()) {
+                    // Replace pure digit tokens (OTP codes, random numbers) with __num__
+                    if (tok.all { it.isDigit() }) {
+                        result.add("__num__")
+                    } else if (tok.length >= 2) {
+                        // Keep alphabetic/latin words only if length >= 2 to filter single-letter noise
+                        result.add(tok)
+                    }
+                }
                 sb.clear()
             }
         }
@@ -160,20 +228,19 @@ class ComplementNaiveBayes(
             val code = normalizedText.codePointAt(i)
             val script = Character.UnicodeScript.of(code)
 
-            val isCjk = script == Character.UnicodeScript.HAN
+            val isCjkOrHangul = script == Character.UnicodeScript.HAN
                     || script == Character.UnicodeScript.HIRAGANA
                     || script == Character.UnicodeScript.KATAKANA
-
-            val isHangul = script == Character.UnicodeScript.HANGUL
+                    || script == Character.UnicodeScript.HANGUL
 
             val isCurrencyOrSymbol = code in CURRENCY_AND_SYMBOLS
 
             when {
-                isCjk -> {
+                isCjkOrHangul -> {
                     flushWord()
                     cjkBuffer.add(String(Character.toChars(code)))
                 }
-                isHangul || Character.isLetterOrDigit(code) || Character.getType(code) == Character.NON_SPACING_MARK.toInt() -> {
+                Character.isLetterOrDigit(code) || Character.getType(code) == Character.NON_SPACING_MARK.toInt() -> {
                     flushCjk()
                     sb.appendCodePoint(code)
                 }
@@ -195,7 +262,7 @@ class ComplementNaiveBayes(
     }
 
     companion object {
-        private val URL_REGEX = Regex("""(?i)\b(https?://|www\.)\S+""")
+        private val URL_REGEX = Regex("""(?i)\b(?:https?://|www\.)\S+|(?:[a-z0-9-]+\.)+(?:com|net|org|io|me|co|cc|info|biz|link|xyz|top|site|app|live|online|tk|ml|ga|cf|gq)\b\S*""")
         private val CURRENCY_AND_SYMBOLS = setOf(
             '$'.code, '€'.code, '£'.code, '¥'.code, '₩'.code, '₹'.code, '%'.code, '@'.code
         )
