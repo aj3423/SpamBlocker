@@ -124,8 +124,6 @@ dependencies {
     implementation(libs.compose.material3) // for components like Scaffold, Surface
     implementation(libs.compose.ui)
 
-    implementation(libs.litertlm.android)
-
     // testing
     testImplementation(libs.junit.jupiter)
     androidTestImplementation(libs.androidx.junit)

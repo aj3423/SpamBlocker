@@ -51,6 +51,7 @@ import spam.blocker.ui.setting.quick.CallerID
 import spam.blocker.ui.setting.quick.Contacts
 import spam.blocker.ui.setting.quick.Dialed
 import spam.blocker.ui.setting.quick.EmergencySituation
+import spam.blocker.ui.setting.quick.LocalAI
 import spam.blocker.ui.setting.quick.MeetingMode
 import spam.blocker.ui.setting.quick.Notification
 import spam.blocker.ui.setting.quick.OffTime
@@ -190,6 +191,7 @@ fun SettingScreen() {
                     }
                 ) {
                     Column {
+                        LocalAI()
                         Contacts()
                         Stir()
                         SpamDB()

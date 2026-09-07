@@ -31,7 +31,7 @@ class Db private constructor(
 ) : SQLiteOpenHelper(ctx, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 51
+        const val DB_VERSION = 53
         const val DB_NAME = "spam_blocker.db"
 
         // ---- regex rule table ----
@@ -115,6 +115,13 @@ class Db private constructor(
         const val COLUMN_AUTO_REPORTING_LOG = "auto_reporting_log" // text
         const val COLUMN_ANYTHING_WRONG_SCREENING = "anything_wrong" // Boolean
         const val COLUMN_ANYTHING_WRONG_REPORTING = "anything_wrong_reporting" // Boolean
+
+        // ---- Bayesian Filter table ----
+        const val TABLE_BAYESIAN_FILTER = "bayesian_filter"
+        const val COLUMN_CONTENT = "content" // sms content
+        const val COLUMN_HASH = "hash" // sms content hash
+        const val COLUMN_CATEGORY = "category" // true=ham, false=spam
+
 
         @Volatile
         private var instance: Db? = null
@@ -234,6 +241,17 @@ class Db private constructor(
                     "$COLUMN_LAST_LOG_TIME INTEGER " +
                     ")"
         )
+
+        // Bayesian filter
+        db.execSQL(
+            "CREATE TABLE IF NOT EXISTS $TABLE_BAYESIAN_FILTER (" +
+                    "$COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "$COLUMN_HASH INTEGER UNIQUE, " +
+                    "$COLUMN_CATEGORY INTEGER, " +
+                    "$COLUMN_CONTENT TEXT " +
+                    ")"
+        )
+        db.execSQL("CREATE INDEX IF NOT EXISTS index_bayesian_filter_hash ON $TABLE_BAYESIAN_FILTER($COLUMN_HASH)")
 
         // call/sms history
         fun createHistoryTable(tableName: String) {
@@ -590,6 +608,11 @@ class Db private constructor(
         if ((newVersion >= 51) && (oldVersion < 51)) {
             addColumnIfNotExist(db, TABLE_NOTIFICATION_CHANNEL, COLUMN_REPEAT, "INTEGER")
             addColumnIfNotExist(db, TABLE_NOTIFICATION_CHANNEL, COLUMN_REPEAT_INTERVAL, "INTEGER")
+        }
+
+        // v5.16 added Bayesian filter
+        if ((newVersion >= 53) && (oldVersion < 53)) {
+            onCreate(db)
         }
     }
 }
