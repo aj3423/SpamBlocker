@@ -1,6 +1,10 @@
 package spam.blocker.util
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import spam.blocker.db.BayesianSample
+import spam.blocker.def.Def.ANDROID_11
+import spam.blocker.def.Def.ANDROID_14
 import kotlin.collections.iterator
 import kotlin.math.ln
 import kotlin.math.abs
@@ -24,6 +28,7 @@ class ComplementNaiveBayes(
     private val weights = mutableMapOf<Boolean, Map<String, Double>>()
     private var isTrained = false
 
+    @RequiresApi(ANDROID_14)
     fun train(samples: List<BayesianSample>) {
         weights.clear()
         isTrained = false
@@ -104,6 +109,7 @@ class ComplementNaiveBayes(
     /**
      * Returns P(spam) ∈ [0.0, 1.0]
      */
+    @RequiresApi(ANDROID_14)
     fun spamProbability(content: String): Double {
         if (!isTrained) return 0.0
         val tokens = tokenize(content)
@@ -127,16 +133,30 @@ class ComplementNaiveBayes(
         return if (sum == 0.0) 0.5 else expSpam / sum
     }
 
-    // ---------- Tokenization (CJK + Hangul + extensions) ----------
-    private fun tokenize(text: String): List<String> {
+    // ---------- Tokenization (Words for space-delimited, 1-gram + 2-gram for CJK) ----------
+    @RequiresApi(ANDROID_14)
+    fun tokenize(text: String): List<String> {
         val result = mutableListOf<String>()
         val sb = StringBuilder()
+        val cjkBuffer = mutableListOf<String>()
 
-        fun flush() {
+        fun flushWord() {
             if (sb.isNotEmpty()) {
                 val tok = sb.toString().lowercase()
                 if (tok.isNotEmpty()) result.add(tok)
                 sb.clear()
+            }
+        }
+
+        fun flushCjk() {
+            if (cjkBuffer.isNotEmpty()) {
+                // 1-grams
+                result.addAll(cjkBuffer)
+                // 2-grams (bigrams)
+                for (k in 0 until cjkBuffer.size - 1) {
+                    result.add(cjkBuffer[k] + cjkBuffer[k + 1])
+                }
+                cjkBuffer.clear()
             }
         }
 
@@ -146,10 +166,9 @@ class ComplementNaiveBayes(
             val script = Character.UnicodeScript.of(code)
             val block = Character.UnicodeBlock.of(code)
 
-            val isCjkOrHangul = script == Character.UnicodeScript.HAN
+            val isCjk = script == Character.UnicodeScript.HAN
                     || script == Character.UnicodeScript.HIRAGANA
                     || script == Character.UnicodeScript.KATAKANA
-                    || script == Character.UnicodeScript.HANGUL
                     || block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS
                     || block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A
                     || block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_B
@@ -158,23 +177,36 @@ class ComplementNaiveBayes(
                     || block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_E
                     || block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_F
                     || block == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS
+
+            val isHangul = script == Character.UnicodeScript.HANGUL
                     || block == Character.UnicodeBlock.HANGUL_SYLLABLES
                     || block == Character.UnicodeBlock.HANGUL_JAMO
                     || block == Character.UnicodeBlock.HANGUL_COMPATIBILITY_JAMO
 
+            // Keep key spam symbols ($ € £ ¥ @ % + - . : /)
+            val isSpamSymbol = code in setOf(
+                '$'.code, '€'.code, '£'.code, '¥'.code, '₩'.code, '₹'.code,
+                '@'.code, '%'.code, '+'.code, '-'.code, '.'.code, ':'.code, '/'.code
+            )
+
             when {
-                isCjkOrHangul -> {
-                    flush()
-                    result.add(String(Character.toChars(code)))
+                isCjk -> {
+                    flushWord()
+                    cjkBuffer.add(String(Character.toChars(code)))
                 }
-                Character.isLetterOrDigit(code) || Character.getType(code) == Character.NON_SPACING_MARK.toInt() -> {
+                isHangul || Character.isLetterOrDigit(code) || Character.getType(code) == Character.NON_SPACING_MARK.toInt() || isSpamSymbol -> {
+                    flushCjk()
                     sb.appendCodePoint(code)
                 }
-                else -> flush()
+                else -> {
+                    flushWord()
+                    flushCjk()
+                }
             }
             i += Character.charCount(code)
         }
-        flush()
+        flushWord()
+        flushCjk()
         return result
     }
 }
