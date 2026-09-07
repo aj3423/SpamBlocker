@@ -199,8 +199,8 @@ fun ClassifyDialog(trigger: MutableState<Boolean>) {
                 }
                 .filter { sms ->
                     when (sms.category) {
-                        true -> showHam
-                        false -> showSpam
+                        true -> showSpam
+                        false -> showHam
                         null -> showUnlabeled
                     }
                 }
