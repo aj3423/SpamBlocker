@@ -18,6 +18,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import spam.blocker.R
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
@@ -338,11 +339,7 @@ fun SettingDialog(trigger: MutableState<Boolean>) {
         ClassifyDialog(triggerClassify)
 
         GreyButton("classify") {
-            G.permissionChain.ask(ctx, listOf(PermissionWrapper(Permission.readSMS))) { isGranted ->
-                if (isGranted) {
-                    triggerClassify.value = true
-                }
-            }
+            triggerClassify.value = true
         }
     }
 }
@@ -350,11 +347,17 @@ fun SettingDialog(trigger: MutableState<Boolean>) {
 @Composable
 fun LocalAI() {
     LabeledRow(R.string.test) {
-        val trigger = remember { mutableStateOf(true) }
+        val ctx = LocalContext.current
+
+        val trigger = remember { mutableStateOf(false) }
         SettingDialog(trigger)
 
         StrokeButton("Machine Learning", color = G.palette.warning) {
-            trigger.value = true
+            G.permissionChain.ask(ctx, listOf(PermissionWrapper(Permission.readSMS))) { isGranted ->
+                if (isGranted) {
+                    trigger.value = true
+                }
+            }
         }
     }
 }
