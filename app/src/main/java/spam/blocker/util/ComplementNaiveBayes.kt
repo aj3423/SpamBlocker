@@ -1,15 +1,9 @@
 package spam.blocker.util
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import spam.blocker.db.BayesianSample
-import spam.blocker.def.Def.ANDROID_11
-import spam.blocker.def.Def.ANDROID_14
-import kotlin.collections.iterator
-import kotlin.math.ln
 import kotlin.math.abs
 import kotlin.math.exp
-import kotlin.text.iterator
+import kotlin.math.ln
 
 /**
  * Complement Naive Bayes for SMS spam filtering.
@@ -28,7 +22,6 @@ class ComplementNaiveBayes(
     private val weights = mutableMapOf<Boolean, Map<String, Double>>()
     private var isTrained = false
 
-    @RequiresApi(ANDROID_14)
     fun train(samples: List<BayesianSample>) {
         weights.clear()
         isTrained = false
@@ -109,7 +102,6 @@ class ComplementNaiveBayes(
     /**
      * Returns P(spam) ∈ [0.0, 1.0]
      */
-    @RequiresApi(ANDROID_14)
     fun spamProbability(content: String): Double {
         if (!isTrained) return 0.0
         val tokens = tokenize(content)
@@ -134,9 +126,12 @@ class ComplementNaiveBayes(
     }
 
     // ---------- Tokenization (Words for space-delimited, 1-gram + 2-gram for CJK) ----------
-    @RequiresApi(ANDROID_14)
     fun tokenize(text: String): List<String> {
         val result = mutableListOf<String>()
+
+        // Replace URLs with a unified token
+        val normalizedText = text.replace(URL_REGEX, " __url__ ")
+
         val sb = StringBuilder()
         val cjkBuffer = mutableListOf<String>()
 
@@ -161,42 +156,31 @@ class ComplementNaiveBayes(
         }
 
         var i = 0
-        while (i < text.length) {
-            val code = text.codePointAt(i)
+        while (i < normalizedText.length) {
+            val code = normalizedText.codePointAt(i)
             val script = Character.UnicodeScript.of(code)
-            val block = Character.UnicodeBlock.of(code)
 
             val isCjk = script == Character.UnicodeScript.HAN
                     || script == Character.UnicodeScript.HIRAGANA
                     || script == Character.UnicodeScript.KATAKANA
-                    || block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS
-                    || block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A
-                    || block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_B
-                    || block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_C
-                    || block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_D
-                    || block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_E
-                    || block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_F
-                    || block == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS
 
             val isHangul = script == Character.UnicodeScript.HANGUL
-                    || block == Character.UnicodeBlock.HANGUL_SYLLABLES
-                    || block == Character.UnicodeBlock.HANGUL_JAMO
-                    || block == Character.UnicodeBlock.HANGUL_COMPATIBILITY_JAMO
 
-            // Keep key spam symbols ($ € £ ¥ @ % + - . : /)
-            val isSpamSymbol = code in setOf(
-                '$'.code, '€'.code, '£'.code, '¥'.code, '₩'.code, '₹'.code,
-                '@'.code, '%'.code, '+'.code, '-'.code, '.'.code, ':'.code, '/'.code
-            )
+            val isCurrencyOrSymbol = code in CURRENCY_AND_SYMBOLS
 
             when {
                 isCjk -> {
                     flushWord()
                     cjkBuffer.add(String(Character.toChars(code)))
                 }
-                isHangul || Character.isLetterOrDigit(code) || Character.getType(code) == Character.NON_SPACING_MARK.toInt() || isSpamSymbol -> {
+                isHangul || Character.isLetterOrDigit(code) || Character.getType(code) == Character.NON_SPACING_MARK.toInt() -> {
                     flushCjk()
                     sb.appendCodePoint(code)
+                }
+                isCurrencyOrSymbol -> {
+                    flushWord()
+                    flushCjk()
+                    result.add(String(Character.toChars(code)))
                 }
                 else -> {
                     flushWord()
@@ -208,5 +192,12 @@ class ComplementNaiveBayes(
         flushWord()
         flushCjk()
         return result
+    }
+
+    companion object {
+        private val URL_REGEX = Regex("""(?i)\b(https?://|www\.)\S+""")
+        private val CURRENCY_AND_SYMBOLS = setOf(
+            '$'.code, '€'.code, '£'.code, '¥'.code, '₩'.code, '₹'.code, '%'.code, '@'.code
+        )
     }
 }
