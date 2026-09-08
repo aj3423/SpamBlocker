@@ -28,12 +28,14 @@ import android.provider.Telephony
 import android.provider.Telephony.Sms
 import android.telephony.TelephonyManager
 import androidx.annotation.RequiresApi
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
 import androidx.core.content.edit
+import androidx.core.database.getLongOrNull
 import androidx.core.database.getStringOrNull
 import androidx.core.graphics.scale
 import com.google.i18n.phonenumbers.PhoneNumberToCarrierMapper
@@ -56,7 +58,10 @@ typealias Lambda2<A, B> = (A, B) -> Unit
 typealias Lambda3<A, B, C> = (A, B, C) -> Unit
 typealias Lambda4<A, B, C, D> = (A, B, C, D) -> Unit
 
-
+inline fun Modifier.thenIf(
+    condition: Boolean,
+    modifier: Modifier.() -> Modifier
+): Modifier = if (condition) modifier() else this
 
 fun String.escape(): String {
     return this
@@ -904,12 +909,14 @@ object Util {
     class SmsInfo(
         val rawNumber: String,
 //        val type: Int, // sent, ...
-//        val content: String,
+        val content: String,
+        val time: Long,
     )
     fun getHistorySMSes(
         ctx: Context,
         direction: Int, // Def.DIRECTION_INCOMING, Def.DIRECTION_OUTGOING
-        withinMillis: Long
+        withinMillis: Long,
+        limit: Int? = null,
     ): List<SmsInfo> {
         val selection = mutableListOf(
             "${Sms.DATE} >= ${Now.currentMillis() - withinMillis}"
@@ -925,19 +932,25 @@ object Util {
             )
         }
 
+        val projection = mutableListOf(Sms.ADDRESS, Sms.BODY, Sms.DATE)
+
+        val sortOrder = limit?.let { "${Sms.DATE} DESC LIMIT $it" }
+
         val ret = mutableListOf<SmsInfo>()
         try {
             ctx.contentResolver.query(
                 Sms.CONTENT_URI,
-                arrayOf(Sms.ADDRESS),
+                projection.toTypedArray(),
                 selection.joinToString(" AND "),
                 null,
-                null
+                sortOrder
             )?.use {
                 if (it.moveToFirst()) {
                     do {
                         val messagedNumber = it.getStringOrNull(0) ?: ""
-                        ret += SmsInfo(rawNumber = messagedNumber)
+                        val content = it.getStringOrNull(1) ?: ""
+                        val time = it.getLongOrNull(2) ?: 0L
+                        ret += SmsInfo(rawNumber = messagedNumber, content = content, time = time)
 
                     } while (it.moveToNext())
                 }

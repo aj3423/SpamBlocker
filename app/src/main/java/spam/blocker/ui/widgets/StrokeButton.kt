@@ -1,6 +1,7 @@
 package spam.blocker.ui.widgets
 
 import android.net.Uri
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -8,6 +9,7 @@ import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
@@ -35,6 +37,7 @@ import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
+import spam.blocker.util.A
 import spam.blocker.ui.thenIf
 import spam.blocker.util.Lambda
 import spam.blocker.util.Lambda1
@@ -42,6 +45,7 @@ import spam.blocker.util.Lambda2
 import spam.blocker.util.PermissionType
 import spam.blocker.util.PermissionWrapper
 import spam.blocker.util.Util.inRange
+import spam.blocker.util.formatAnnotated
 import spam.blocker.util.hasFolderAccess
 import spam.blocker.util.toFolderDisplayName
 
@@ -127,6 +131,39 @@ fun StrokeButton(
         }
     )
 }
+
+
+@Composable
+fun ToggleButton(
+    enabled: Boolean,
+    content: @Composable RowScope.() -> Unit,
+    modifier: Modifier = Modifier,
+    onClick: Lambda,
+) {
+    val C = G.palette
+    Box(
+        modifier = modifier.wrapContentSize()
+    ) {
+        Button(
+            modifier = modifier,
+            borderColor = if (enabled) C.success else C.disabled,
+            content = content,
+            onClick = onClick
+        )
+
+        if (enabled) {
+            Canvas(
+                modifier = Modifier
+                    .size(4.dp)
+                    .align(Alignment.CenterStart)
+                    .offset(x = 5.dp)
+            ) {
+                drawCircle(color = C.success, radius = size.minDimension / 2)
+            }
+        }
+    }
+}
+
 
 @Composable
 fun GreyButton(

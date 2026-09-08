@@ -4,7 +4,6 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import androidx.core.database.getStringOrNull
 import spam.blocker.db.Notification.CHANNEL_HIGH
 import spam.blocker.db.Notification.CHANNEL_LOW
 import spam.blocker.db.Notification.CHANNEL_MEDIUM
@@ -123,6 +122,13 @@ class Db private constructor(
         const val COLUMN_ANYTHING_WRONG_SCREENING = "anything_wrong" // Boolean
         const val COLUMN_ANYTHING_WRONG_REPORTING = "anything_wrong_reporting" // Boolean
 
+        // ---- Bayesian Filter table ----
+        const val TABLE_BAYESIAN_FILTER = "bayesian_filter"
+        const val COLUMN_CONTENT = "content" // sms content
+        const val COLUMN_HASH = "hash" // sms content hash
+        const val COLUMN_CATEGORY = "category" // true=ham, false=spam
+
+
         @Volatile
         private var instance: Db? = null
 
@@ -225,8 +231,7 @@ class Db private constructor(
                     "$COLUMN_DESC TEXT, " +
                     "$COLUMN_ACTIONS TEXT, " +
                     "$COLUMN_ENABLED INTEGER, " +
-                    "$COLUMN_AUTO_REPORT_TYPES INTEGER, " +
-                    "$COLUMN_AUTO_REPORT_REGEX_FILTER TEXT " +
+                    "$COLUMN_AUTO_REPORT_TYPES INTEGER" +
                     ")"
         )
         // bot
@@ -242,6 +247,17 @@ class Db private constructor(
                     "$COLUMN_LAST_LOG_TIME INTEGER " +
                     ")"
         )
+
+        // Bayesian filter
+        db.execSQL(
+            "CREATE TABLE IF NOT EXISTS $TABLE_BAYESIAN_FILTER (" +
+                    "$COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "$COLUMN_HASH INTEGER UNIQUE, " +
+                    "$COLUMN_CATEGORY INTEGER, " +
+                    "$COLUMN_CONTENT TEXT " +
+                    ")"
+        )
+        db.execSQL("CREATE INDEX IF NOT EXISTS index_bayesian_filter_hash ON $TABLE_BAYESIAN_FILTER($COLUMN_HASH)")
 
         // call/sms history
         fun createHistoryTable(tableName: String) {
@@ -641,6 +657,11 @@ class Db private constructor(
                     }
                 }
             }
+        }
+
+        // v5.16 added Bayesian filter
+        if ((newVersion >= 53) && (oldVersion < 53)) {
+            onCreate(db)
         }
     }
 }

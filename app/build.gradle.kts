@@ -87,6 +87,13 @@ android {
             }
         }
     }
+
+    // Sideload liblitertlm_jni.so from Downloads/test in Debug.summarize().
+    packaging {
+        jniLibs {
+            excludes += "**/liblitertlm_jni.so"
+        }
+    }
 }
 
 tasks.configureEach {

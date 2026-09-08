@@ -60,6 +60,7 @@ import spam.blocker.ui.setting.quick.Dialed
 import spam.blocker.ui.setting.quick.DialedSummary
 import spam.blocker.ui.setting.quick.EmergencySituation
 import spam.blocker.ui.setting.quick.EmergencySituationSummary
+import spam.blocker.ui.setting.quick.LocalAI
 import spam.blocker.ui.setting.quick.MeetingMode
 import spam.blocker.ui.setting.quick.MeetingModeSummary
 import spam.blocker.ui.setting.quick.Notification
@@ -214,6 +215,7 @@ fun SettingScreen() {
                             Contacts()
                             Stir()
                             SpamDB()
+                            LocalAI()
                             RepeatedCall()
                             Dialed()
                             Answered()
