@@ -436,7 +436,7 @@ class Checker { // for namespace only
     ) : IChecker {
         override fun isConfigEnabledForCall() = false
         override fun isConfigEnabledForSms() = spf.NaiveBayes(ctx).isEnabled
-        override fun listType() = false
+        override fun listType() = !checkSpam
 
         override fun desc() =
             ctx.getString(R.string.local_ai).A(G.palette.infoBlue)
