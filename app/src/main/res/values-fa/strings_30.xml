@@ -45,5 +45,43 @@
         ]]>
     </string>
     <string name="api_tokens">توکن‌های API</string>
+    <string name="local_ai">هوش مصنوعی محلی</string>
+    <string name="help_local_ai">
+        <![CDATA[
+        برخی از پیام‌های SMS را به صورت دستی طبقه‌بندی کنید تا فیلتر اسپم خود را آموزش دهید، کاملاً به صورت محلی کار می‌کند. <br>
+        <br>
+        الگوریتم: Complement Naive Bayes. <br>
+        <br>
+        حداقل ۵۰ پیام را آموزش دهید، شامل هر دو پیام <error>اسپم</error> و <highlight>غیر اسپم (ham)</highlight>. هر چه نمونه‌های بیشتری آموزش دهید، دقیق‌تر خواهد بود. <br>
+        <br>
+        <minor><b>آموزش</b></minor> <br>
+        <br>
+        ۱. حدود ۱۰۰۰ سابقه پیامک اخیر را نشان می‌دهد. <br>
+        <br>
+        ۲. برخی از سوابق را بکشید (سوایپ کنید) تا مدل آموزش داده شود. <br>
+        &emsp;  بکشید به <error>چپ</error> - علامت‌گذاری به عنوان <error>اسپم</error> <br>
+        &emsp;  بکشید به <highlight>راست</highlight> - علامت‌گذاری به عنوان <highlight>غیر اسپم</highlight> <br>
+        &emsp;  رویش <sample>ضربه بزنید</sample> - لغو علامت‌گذاری <br>
+        &ensp; هر سوایپ بلافاصله مدل را آموزش می‌دهد، <b>رنگ حاشیه</b> طبقه‌بندی آن را نشان می‌دهد. <br>
+        <br>
+        ۳. روی دکمه <highlight><b>تست</b></highlight> ضربه بزنید، تمام پیام‌ها توسط مدل آموزش دیده طبقه‌بندی می‌شوند. <br>
+        <br>
+        ۴. <b>رنگ متن</b> آن‌ها را بررسی کنید. اگر موردی نادرست است، نمونه‌های بیشتری را آموزش دهید. <br>
+        &ensp; أعدادی مانند <sample>0.5000</sample> احتمال اسپم بودن هستند.
+        ]]>
+    </string>
+    <string name="spam">اسپم</string>
+    <string name="ham">غیر اسپم</string>
+    <string name="unlabeled">بدون برچسب</string>
+    <string name="search">جستجو</string>
+    <string name="filters">فیلترها</string>
+    <string name="train_it_first">مدل هنوز آموزش ندیده است، ابتدا آن را آموزش دهید.</string>
+    <string name="confirm_delete_trained_model">
+        <![CDATA[
+        بازنشانی این بخش، مدل آموزش‌دیده و <error><b>تمام طبقه‌بندی‌های دستی</b></error> را به طور دائمی حذف خواهد کرد.<br>
+        <br>
+        ادامه می‌دهید؟
+        ]]>
+    </string>
 </resources>
 

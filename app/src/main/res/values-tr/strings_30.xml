@@ -45,5 +45,43 @@
         ]]>
     </string>
     <string name="api_tokens">API Belirteçleri</string>
+    <string name="local_ai">Yerel AI</string>
+    <string name="help_local_ai">
+        <![CDATA[
+        Kendi spam filtrenizi eğitmek için bazı SMS mesajlarını manuel olarak sınıflandırın, tamamen yerel olarak çalışır. <br>
+        <br>
+        Algoritma: Tamamlayıcı Naive Bayes (Complement Naive Bayes). <br>
+        <br>
+        Hem <error>spam</error> hem de <highlight>ham</highlight> (spam olmayan) dahil en az 50 mesajı eğitin. Ne kadar çok örnek eğitirseniz, o kadar doğru sonuç verir. <br>
+        <br>
+        <minor><b>Eğitim</b></minor> <br>
+        <br>
+        1. Yaklaşık 1000 son SMS kaydını gösterir. <br>
+        <br>
+        2. Modeli eğitmek için bazı kayıtları kaydırın. <br>
+        &emsp; <error>Sola</error> kaydırın - <error>spam</error> olarak işaretleyin <br>
+        &emsp; <highlight>Sağa</highlight> kaydırın - <highlight>ham</highlight> olarak işaretleyin <br>
+        &emsp; İşareti kaldırmak için <sample>dokunun</sample> <br>
+        &ensp; Her kaydırma modeli anında eğitir, <b>kenarlık rengi</b> sınıflandırmasını gösterir. <br>
+        <br>
+        3. <highlight><b>Test Et</b></highlight> düğmesine dokunun, tüm mesajlar eğitilmiş model tarafından sınıflandırılacaktır. <br>
+        <br>
+        4. <b>Metin renklerini</b> inceleyin. Yanlış olanlar varsa, daha fazla örnek eğitmeyi deneyin. <br>
+        &ensp; <sample>0.5000</sample> gibi sayılar spam olasılıklarıdır.
+        ]]>
+    </string>
+    <string name="spam">Spam</string>
+    <string name="ham">Ham (Spam Değil)</string>
+    <string name="unlabeled">Etiketsiz</string>
+    <string name="search">Ara</string>
+    <string name="filters">Filtreler</string>
+    <string name="train_it_first">Model henüz eğitilmedi, önce eğitin.</string>
+    <string name="confirm_delete_trained_model">
+        <![CDATA[
+        Bunu sıfırlamak, eğitilmiş modeli ve <error><b>TÜM manuel sınıflandırmaları</b></error> kalıcı olarak silecektir.<br>
+        <br>
+        Devam edilsin mi?
+        ]]>
+    </string>
 </resources>
 

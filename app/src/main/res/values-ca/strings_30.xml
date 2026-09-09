@@ -45,5 +45,43 @@
         ]]>
     </string>
     <string name="api_tokens">Testimonis de l\'API</string>
+    <string name="local_ai">IA local</string>
+    <string name="help_local_ai">
+        <![CDATA[
+        Classifiqueu manualment alguns missatges SMS per entrenar el vostre propi filtre de correu brossa, funciona completament de manera local. <br>
+        <br>
+        Algorisme: Complement Naive Bayes. <br>
+        <br>
+        Entreneu almenys 50 missatges, inclosos tant <error>correu brossa</error> com <highlight>missatges legítims</highlight>. Com més mostres entreneu, més precís serà. <br>
+        <br>
+        <minor><b>Entrenament</b></minor> <br>
+        <br>
+        1. Mostra uns 1000 registres de SMS recents. <br>
+        <br>
+        2. Llisqueu alguns registres per entrenar el model. <br>
+        &emsp; Llisqueu a l\' <error>esquerra</error> - marqueu com a <error>correu brossa</error> <br>
+        &emsp; Llisqueu a la <highlight>dreta</highlight> - marqueu com a <highlight>no brossa</highlight> <br>
+        &emsp; <sample>Toca</sample> per desmarcar <br>
+        &ensp; Cada lliscament entrena el model immediatament, el <b>color del voral</b> indica la seva classificació. <br>
+        <br>
+        3. Toqueu el botó <highlight><b>Provar</b></highlight>, tots els missatges seran classificats pel model entrenat. <br>
+        <br>
+        4. Reviseu el seu <b>color de text</b>. Si algun és incorrecte, intenteu entrenar més mostres. <br>
+        &ensp; Els números com <sample>0.5000</sample> són probabilitats de correu brossa.
+        ]]>
+    </string>
+    <string name="spam">Correu brossa</string>
+    <string name="ham">No brossa</string>
+    <string name="unlabeled">Sense etiqueta</string>
+    <string name="search">Cerca</string>
+    <string name="filters">Filtres</string>
+    <string name="train_it_first">El model encara no s\'ha entrenat, entrena\'l primer.</string>
+    <string name="confirm_delete_trained_model">
+        <![CDATA[
+        En restablir això, es suprimirà permanentment el model entrenat i <error><b>TOTES les classificacions manuals</b></error>.<br>
+        <br>
+        Voleu continuar?
+        ]]>
+    </string>
 </resources>
 

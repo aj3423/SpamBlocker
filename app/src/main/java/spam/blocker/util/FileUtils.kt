@@ -10,6 +10,24 @@ import kotlinx.coroutines.withContext
 import java.io.IOException
 
 object FileUtils {
+    fun readInternalFile(ctx: Context, fileName: String): ByteArray? {
+        val file = ctx.getFileStreamPath(fileName)
+
+        if (!file.exists())
+            return null
+
+        return ctx.openFileInput(fileName).use { inputStream ->
+            inputStream.readBytes()
+        }
+    }
+    fun writeInternalFile(ctx: Context, fileName: String, modelBytes: ByteArray) {
+        ctx.openFileOutput(fileName, Context.MODE_PRIVATE).use { outputStream ->
+            outputStream.write(modelBytes)
+        }
+    }
+    fun deleteInternalFile(ctx: Context, fileName: String): Boolean {
+        return ctx.deleteFile(fileName)
+    }
 
     fun readDataFromUri(ctx: Context, uri: Uri): ByteArray? {
         return runBlocking {

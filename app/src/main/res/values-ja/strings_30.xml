@@ -45,5 +45,43 @@
         ]]>
     </string>
     <string name="api_tokens">API トークン</string>
+    <string name="local_ai">ローカル AI</string>
+    <string name="help_local_ai">
+        <![CDATA[
+        手動でいくつかのSMSメッセージを分類して独自のスパムフィルターを学習させます。完全ローカルで動作します。<br>
+        <br>
+        アルゴリズム: 補正ナイーブベイズ (Complement Naive Bayes)。<br>
+        <br>
+        <error>スパム</error>と<highlight>ハム</highlight>（非スパム）の両方を含め、少なくとも50件のメッセージを学習させてください。学習サンプルが多いほど精度が向上します。<br>
+        <br>
+        <minor><b>学習手順</b></minor> <br>
+        <br>
+        1. 最近のSMS履歴を約1000件表示します。<br>
+        <br>
+        2. レコードをスワイプしてモデルを学習させます。<br>
+        &emsp; <error>左</error>にスワイプ - <error>スパム</error>としてマーク<br>
+        &emsp; <highlight>右</highlight>にスワイプ - <highlight>ハム</highlight>としてマーク<br>
+        &emsp; <sample>タップ</sample> - マーク解除<br>
+        &ensp; スワイプするごとに即座にモデルが学習され、<b>枠線の色</b>がその分類を示します。<br>
+        <br>
+        3. <highlight><b>テスト</b></highlight>ボタンをタップすると、すべてのメッセージが学習済みモデルによって分類されます。<br>
+        <br>
+        4. メッセージの<b>文字の色</b>を確認してください。誤りがある場合は、さらにサンプルを学習させてみてください。<br>
+        &ensp; <sample>0.5000</sample> のような数値はスパム確率を示します。
+        ]]>
+    </string>
+    <string name="spam">スパム</string>
+    <string name="ham">ハム</string>
+    <string name="unlabeled">未分類</string>
+    <string name="search">検索</string>
+    <string name="filters">フィルター</string>
+    <string name="train_it_first">モデルがまだ学習されていません。最初に学習させてください。</string>
+    <string name="confirm_delete_trained_model">
+        <![CDATA[
+        これをリセットすると、学習済みモデルと<error><b>すべての手動分類</b></error>が永久に削除されます。<br>
+        <br>
+        続行しますか？
+        ]]>
+    </string>
 </resources>
 

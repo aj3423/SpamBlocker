@@ -32,6 +32,7 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
@@ -103,6 +104,8 @@ fun SwipeWrapper(
             anchors = anchors,
         )
     }
+    val currentLeft by rememberUpdatedState(left)
+    val currentRight by rememberUpdatedState(right)
 
     val flingBehavior = AnchoredDraggableDefaults.flingBehavior(
         state = state,
@@ -130,13 +133,13 @@ fun SwipeWrapper(
         snapshotFlow { state.settledValue }
             .collectLatest {
                 if (it == Anchor.Left) {
-                    left!!.onSwipe()
-                    if (left.veto)
+                    currentLeft?.onSwipe?.invoke()
+                    if (currentLeft?.veto == true)
                         state.animateTo(Anchor.Center)
                 }
                 if (it == Anchor.Right) {
-                    right!!.onSwipe()
-                    if (right.veto)
+                    currentRight?.onSwipe?.invoke()
+                    if (currentRight?.veto == true)
                         state.animateTo(Anchor.Center)
                 }
             }

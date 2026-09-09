@@ -26,6 +26,8 @@ import spam.blocker.db.SmsTable
 import spam.blocker.db.SpamNumber
 import spam.blocker.db.SpamTable
 import spam.blocker.def.Def
+import spam.blocker.def.Def.RESULT_ALLOWED_BY_NAIVE_BAYES
+import spam.blocker.def.Def.RESULT_BLOCKED_BY_NAIVE_BAYES
 import spam.blocker.service.bot.ActionContext
 import spam.blocker.service.bot.CalendarEvent
 import spam.blocker.service.bot.CallEvent
@@ -37,12 +39,15 @@ import spam.blocker.service.bot.SmsEvent
 import spam.blocker.service.bot.SmsThrottling
 import spam.blocker.service.bot.executeAll
 import spam.blocker.ui.darken
+import spam.blocker.ui.setting.quick.Bayes
 import spam.blocker.ui.setting.regex.RegexMode.ModeType
 import spam.blocker.util.A
 import spam.blocker.util.Clipboard
+import spam.blocker.util.ComplementNaiveBayes
 import spam.blocker.util.ContactInfo
 import spam.blocker.util.Contacts
 import spam.blocker.util.CountryCode
+import spam.blocker.util.FileUtils.readInternalFile
 import spam.blocker.util.ILogger
 import spam.blocker.util.Now
 import spam.blocker.util.Permission
@@ -419,6 +424,66 @@ class Checker { // for namespace only
                 )
                 return BySpamDb(matchedNumber = record.peer)
             }
+            return null
+        }
+    }
+
+    // The "Database" in quick settings.
+    // It checks whether the number exists in the spam database.
+    private class NaiveBayes(
+        private val ctx: Context,
+        private val checkSpam: Boolean,
+    ) : IChecker {
+        override fun isConfigEnabledForCall() = false
+        override fun isConfigEnabledForSms() = spf.NaiveBayes(ctx).isEnabled
+        override fun listType() = false
+
+        override fun desc() =
+            ctx.getString(R.string.local_ai).A(G.palette.infoBlue)
+
+        override fun priority(): Int {
+            val spf = spf.NaiveBayes(ctx)
+            return if (checkSpam) spf.prioritySpam else spf.priorityHam
+        }
+
+        override fun check(cCtx: CheckContext): ICheckResult? {
+            val spf = spf.NaiveBayes(ctx)
+
+            if (!spf.isEnabled)
+                return null
+
+            val smsContent = cCtx.smsContent!!
+            val logger = cCtx.logger
+
+            logChecking(ctx, logger)
+
+            // 1. load model from internal file
+            val modelBytes = readInternalFile(ctx, Bayes.Model_File)
+            if (modelBytes == null) {
+                logger?.warn(ctx.getString(R.string.train_it_first))
+                return null
+            }
+
+            val threshold = spf.threshold
+
+            val cnb = ComplementNaiveBayes()
+            cnb.deserialize(String(modelBytes))
+            val prob = cnb.spamProbability(smsContent)
+            val isSpam = prob > threshold
+
+            if (isSpam && checkSpam) { // spam
+                logger?.error(
+                    ctx.getString(R.string.blocked_by_template).formatAnnotated(desc())
+                )
+                return ByNaiveBayes(RESULT_BLOCKED_BY_NAIVE_BAYES)
+            }
+            if (!isSpam && !checkSpam) { // ham
+                logger?.success(
+                    ctx.getString(R.string.allowed_by).formatAnnotated(desc())
+                )
+                return ByNaiveBayes(RESULT_ALLOWED_BY_NAIVE_BAYES)
+            }
+
             return null
         }
     }
@@ -1737,6 +1802,8 @@ class Checker { // for namespace only
                 Contact(ctx),
                 NonContact(ctx),
                 SpamDB(ctx),
+                NaiveBayes(ctx, checkSpam = true),
+                NaiveBayes(ctx, checkSpam = false),
                 MeetingMode(ctx),
                 OffTime(ctx),
                 SmsBomb(ctx),

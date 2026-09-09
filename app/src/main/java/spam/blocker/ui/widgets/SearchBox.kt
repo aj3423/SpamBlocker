@@ -15,18 +15,19 @@ import androidx.compose.ui.unit.dp
 import spam.blocker.R
 import spam.blocker.ui.M
 import spam.blocker.util.Lambda
+import spam.blocker.util.logi
 import spam.blocker.util.thenIf
 
 // A search box at the top of a list of records, e.g., history records and regex rules
 @Composable
 fun SearchBox(
-    enabled: MutableState<Boolean>,
+    visible: MutableState<Boolean>,
     filter: MutableState<String>,
-    canExitSearch: Boolean = true,
+    autoExit: Boolean = true, // when empty, clicking the trailing X hides this search box
     autoFocus: Boolean = true,
     refresh: Lambda,
 ) {
-    if (enabled.value) {
+    if (visible.value) {
         val focusRequester = remember { FocusRequester() }
         var textFieldLoaded by remember { mutableStateOf(false) }
 
@@ -38,10 +39,17 @@ fun SearchBox(
                 refresh()
             },
             alwaysShowClear = true,
-            onClear = {
-                filter.value = ""
-                if (canExitSearch) {
-                    enabled.value = false
+            onClear = { prevText ->
+                if (autoExit) {
+                    if (prevText.isEmpty()) { // already empty, close
+                        visible.value = false
+                    } else { // not empty, clear content
+                        filter.value = ""
+                        refresh()
+                    }
+                } else {
+                    filter.value = ""
+                    refresh()
                 }
             },
             modifier = M.thenIf(autoFocus) {

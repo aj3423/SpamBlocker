@@ -45,5 +45,43 @@
         ]]>
     </string>
     <string name="api_tokens">Tokens de API</string>
+    <string name="local_ai">IA Local</string>
+    <string name="help_local_ai">
+        <![CDATA[
+        Classifique manualmente algumas mensagens SMS para treinar seu próprio filtro de spam, funciona completamente local. <br>
+        <br>
+        Algoritmo: Complement Naive Bayes. <br>
+        <br>
+        Treine pelo menos 50 mensagens, incluindo tanto <error>spam</error> quanto <highlight>ham</highlight> (não spam). Quanto mais amostras você treinar, mais preciso ele será. <br>
+        <br>
+        <minor><b>Treinamento</b></minor> <br>
+        <br>
+        1. Mostra cerca de 1000 registros de SMS recentes. <br>
+        <br>
+        2. Deslize alguns registros para treinar o modelo. <br>
+        &emsp;  Deslizar para a <error>esquerda</error> - marcar como <error>spam</error> <br>
+        &emsp;  Deslizar para a <highlight>direita</highlight> - marcar como <highlight>ham</highlight> <br>
+        &emsp;  <sample>Toque</sample> nele - desmarcar <br>
+        &ensp; Cada deslizamento treina o modelo imediatamente, a <b>cor da borda</b> indica sua classificação. <br>
+        <br>
+        3. Toque no botão <highlight><b>Testar</b></highlight>, todas as mensagens serão classificadas pelo modelo treinado. <br>
+        <br>
+        4. Revise a <b>cor do texto</b>. Se alguma estiver incorreta, tente treinar mais amostras. <br>
+        &ensp; Números como <sample>0.5000</sample> são probabilidades de spam.
+        ]]>
+    </string>
+    <string name="spam">Spam</string>
+    <string name="ham">Ham</string>
+    <string name="unlabeled">Sem rótulo</string>
+    <string name="search">Pesquisar</string>
+    <string name="filters">Filtros</string>
+    <string name="train_it_first">Modelo ainda não treinado, treine-o primeiro.</string>
+    <string name="confirm_delete_trained_model">
+        <![CDATA[
+        Redefinir isso excluirá permanentemente o modelo treinado e <error><b>TODAS as classificações manuais</b></error>.<br>
+        <br>
+        Prosseguir?
+        ]]>
+    </string>
 </resources>
 

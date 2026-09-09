@@ -1,6 +1,7 @@
 .gradle/
 .idea/
 .opencode/
+.vscode/
 .kotlin/
 *.db
 build/

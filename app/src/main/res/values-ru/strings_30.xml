@@ -45,5 +45,43 @@
         ]]>
     </string>
     <string name="api_tokens">Токены API</string>
+    <string name="local_ai">Локальный ИИ</string>
+    <string name="help_local_ai">
+        <![CDATA[
+        Классифицируйте некоторые SMS-сообщения вручную, чтобы обучить собственный спам-фильтр, работает полностью локально. <br>
+        <br>
+        Алгоритм: Комплементарный наивный байесовский классификатор (Complement Naive Bayes). <br>
+        <br>
+        Обучите минимум 50 сообщений, включая как <error>спам</error>, так и <highlight>хам</highlight> (не-спам). Чем больше образцов вы обучите, тем точнее будет фильтр. <br>
+        <br>
+        <minor><b>Обучение</b></minor> <br>
+        <br>
+        1. Показывает около 1000 последних SMS-сообщений. <br>
+        <br>
+        2. Смахните записи для обучения модели. <br>
+        &emsp; Смахнуть <error>влево</error> — пометить как <error>спам</error> <br>
+        &emsp; Смахнуть <highlight>вправо</highlight> — пометить как <highlight>хам</highlight> <br>
+        &emsp; <sample>Нажать</sample> — снять отметку <br>
+        &ensp; Каждое смахивание мгновенно обучает модель, <b>цвет рамки</b> указывает на ее классификацию. <br>
+        <br>
+        3. Нажмите кнопку <highlight><b>Тест</b></highlight>, все сообщения будут классифицированы обученной моделью. <br>
+        <br>
+        4. Проверьте <b>цвет текста</b>. Если есть ошибки, попробуйте обучить больше образцов. <br>
+        &ensp; Числа вида <sample>0.5000</sample> показывают вероятность спама.
+        ]]>
+    </string>
+    <string name="spam">Спам</string>
+    <string name="ham">Хам (не-спам)</string>
+    <string name="unlabeled">Без метки</string>
+    <string name="search">Поиск</string>
+    <string name="filters">Фильтры</string>
+    <string name="train_it_first">Модель еще не обучена, сначала обучите ее.</string>
+    <string name="confirm_delete_trained_model">
+        <![CDATA[
+        Сброс навсегда удалит обученную модель и <error><b>ВСЕ ручные классификации</b></error>.<br>
+        <br>
+        Продолжить?
+        ]]>
+    </string>
 </resources>
 

@@ -43,6 +43,7 @@ import spam.blocker.def.Def.RESULT_ALLOWED_BY_DIALED
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_EMERGENCY_CALL
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_EMERGENCY_SITUATION
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_GEO_LOCATION_REGEX
+import spam.blocker.def.Def.RESULT_ALLOWED_BY_NAIVE_BAYES
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_NUMBER_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_OFF_TIME
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_PUSH_ALERT
@@ -60,6 +61,7 @@ import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTENT_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_DATABASE_PREFIX_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_GEO_LOCATION_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_MEETING_MODE
+import spam.blocker.def.Def.RESULT_BLOCKED_BY_NAIVE_BAYES
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NON_CONTACT
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NUMBER_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_SMS_BOMB
@@ -372,6 +374,16 @@ class BySpamDb(
     }
 }
 
+// blocked/allowed by NaiveBias
+@Serializable
+class ByNaiveBayes(
+    override val byType: Int,
+) : ICheckResult {
+    override fun resultReasonStr(ctx: Context): String {
+        return ctx.getString(R.string.local_ai)
+    }
+}
+
 // allowed/blocked by stir/shaken
 @Serializable
 class BySTIR(
@@ -651,6 +663,7 @@ class BySmsBomb(
     }
 }
 
+// TODO: simplify this
 fun parseCheckResultFromDb(ctx: Context, result: Int, reason: String): ICheckResult {
     return when (result) {
         RESULT_ALLOWED_BY_EMERGENCY_CALL -> ByEmergencyCall()
@@ -695,6 +708,9 @@ fun parseCheckResultFromDb(ctx: Context, result: Int, reason: String): ICheckRes
                 val rule = NumberRegexTable().findById(ctx, ruleId)
                 ByRegexRule(result, rule)
             }
+        }
+        RESULT_ALLOWED_BY_NAIVE_BAYES, RESULT_BLOCKED_BY_NAIVE_BAYES -> {
+            ByNaiveBayes(result)
         }
 
         RESULT_ALLOWED_BY_CONTENT_REGEX, RESULT_BLOCKED_BY_CONTENT_REGEX -> {

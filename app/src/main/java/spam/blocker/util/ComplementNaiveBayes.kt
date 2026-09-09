@@ -2,7 +2,6 @@ package spam.blocker.util
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
-import spam.blocker.db.BayesianSample
 import kotlin.math.abs
 import kotlin.math.exp
 import kotlin.math.ln
@@ -12,58 +11,102 @@ data class CnbModelData(
     val weights: Map<Boolean, Map<String, Double>>
 )
 
-//@Serializable
-//data class RawTermCounts(
-//    val counts: Map<Boolean, Map<String, Int>>,
-//    val docFreqs: Map<Boolean, Map<String, Int>> = emptyMap(),
-//    val sampleCount: Int = 0
-//)
-
-/**
- * Complement Naive Bayes for SMS spam filtering.
- *
- * Convention in this project:
- *   BayesianSample.category == true  → Spam
- *   BayesianSample.category == false → Ham
- *
- * Returns only the spam probability (0.0 … 1.0).
- */
 class ComplementNaiveBayes(
-    private val alpha: Double = 1.0,
-    private val maxFeatures: Int = 50_000
+    private val alpha: Double = 1.0, // smoothing parameter that solves the Zero-Frequency problem
+    private val maxFeatures: Int = 50_000 // vocabulary size limit, a 50_000 limit keeps the model file small (1~2 mb)
 ) {
     // class → (token → L1-normalized weight)   weights are negative
     private val weights = mutableMapOf<Boolean, Map<String, Double>>()
 
-    fun train(samples: List<BayesianSample>) {
+    // Raw frequency state maintained for incremental updates
+    private val classCounts = mutableMapOf<Boolean, MutableMap<String, Int>>()
+    private val docFreq = mutableMapOf<String, Int>()
+    private val globalFreq = mutableMapOf<String, Int>()
+    private var totalSamples = 0
+
+    fun train(samples: List<Pair<String, Boolean>>) {
         weights.clear()
+        classCounts.clear()
+        docFreq.clear()
+        globalFreq.clear()
+        totalSamples = 0
+
         if (samples.isEmpty()) return
 
-        // 1. Raw term counts & Document Frequency (DF)
-        val classCounts = mutableMapOf<Boolean, MutableMap<String, Int>>()
-        val classTotals = mutableMapOf<Boolean, Int>()
-        val globalFreq = mutableMapOf<String, Int>()
-        val docFreq = mutableMapOf<String, Int>()
-
-        for (s in samples) {
-            val tokens = tokenize(s.content)
+        totalSamples = samples.size
+        for ((content, isSpam) in samples) {
+            val tokens = tokenize(content)
             val uniqueTokensInDoc = tokens.toSet()
             for (t in uniqueTokensInDoc) {
                 docFreq[t] = docFreq.getOrDefault(t, 0) + 1
             }
 
-            val map = classCounts.getOrPut(s.category) { mutableMapOf() }
-            var total = classTotals.getOrDefault(s.category, 0)
+            val map = classCounts.getOrPut(isSpam) { mutableMapOf() }
             for (t in tokens) {
                 map[t] = map.getOrDefault(t, 0) + 1
-                total++
                 globalFreq[t] = globalFreq.getOrDefault(t, 0) + 1
             }
-            classTotals[s.category] = total
         }
 
+        recomputeWeights()
+    }
+
+    /** Add a single sample incrementally and recompute weights. */
+    fun addSample(content: String, isSpam: Boolean) {
+        val tokens = tokenize(content)
+        val uniqueTokens = tokens.toSet()
+
+        for (t in uniqueTokens) {
+            docFreq[t] = docFreq.getOrDefault(t, 0) + 1
+        }
+
+        val map = classCounts.getOrPut(isSpam) { mutableMapOf() }
+        for (t in tokens) {
+            map[t] = map.getOrDefault(t, 0) + 1
+            globalFreq[t] = globalFreq.getOrDefault(t, 0) + 1
+        }
+        totalSamples++
+
+        recomputeWeights()
+    }
+
+    /** Remove a single sample incrementally and recompute weights. */
+    fun removeSample(content: String, isSpam: Boolean) {
+        val tokens = tokenize(content)
+        val uniqueTokens = tokens.toSet()
+
+        val map = classCounts[isSpam]
+        for (t in tokens) {
+            if (map != null) {
+                val count = map.getOrDefault(t, 0) - 1
+                if (count > 0) map[t] = count else map.remove(t)
+            }
+            val gCount = globalFreq.getOrDefault(t, 0) - 1
+            if (gCount > 0) globalFreq[t] = gCount else globalFreq.remove(t)
+        }
+
+        for (t in uniqueTokens) {
+            val df = docFreq.getOrDefault(t, 0) - 1
+            if (df > 0) docFreq[t] = df else docFreq.remove(t)
+        }
+
+        if (totalSamples > 0) totalSamples--
+        recomputeWeights()
+    }
+
+    /** Change a sample's category (e.g. Spam → Ham or Ham → Spam) and recompute weights. */
+    fun changeCategory(content: String, oldIsSpam: Boolean, newIsSpam: Boolean) {
+        if (oldIsSpam == newIsSpam) return
+        removeSample(content, oldIsSpam)
+        addSample(content, newIsSpam)
+    }
+
+    private fun recomputeWeights() {
+        weights.clear()
+        if (totalSamples == 0) return
+
         // Filter out hapax legomena (DF < 2) if dataset has >= 10 samples
-        val minDf = if (samples.size >= 10) 2 else 1
+        val minDf = if (totalSamples >= 10) 2 else 1
         val filteredFreq = globalFreq.filterKeys { (docFreq[it] ?: 0) >= minDf }
 
         // Keep top features
@@ -79,7 +122,7 @@ class ComplementNaiveBayes(
         val vocabSize = kept.size
         if (vocabSize == 0) return
 
-        // 2. Complement counts
+        // Complement counts
         val allClasses = classCounts.keys
         if (allClasses.size < 2) return
 
@@ -102,7 +145,7 @@ class ComplementNaiveBayes(
             complementTotals[c] = total
         }
 
-        // 3. log θ + L1 normalisation (weights become negative)
+        // log θ + L1 normalisation (weights become negative)
         for (c in allClasses) {
             val comp = complementCounts[c] ?: continue
             val total = complementTotals[c] ?: 0
@@ -120,36 +163,17 @@ class ComplementNaiveBayes(
         }
     }
 
-    /** Export raw term counts for server-side model aggregation across users. */
-//    fun exportRawTermCounts(samples: List<BayesianSample>): RawTermCounts {
-//        val classCounts = mutableMapOf<Boolean, MutableMap<String, Int>>()
-//        val classDocFreqs = mutableMapOf<Boolean, MutableMap<String, Int>>()
-//
-//        for (s in samples) {
-//            val tokens = tokenize(s.content)
-//            val map = classCounts.getOrPut(s.category) { mutableMapOf() }
-//            val dfMap = classDocFreqs.getOrPut(s.category) { mutableMapOf() }
-//
-//            val uniqueTokens = tokens.toSet()
-//            for (t in uniqueTokens) {
-//                dfMap[t] = dfMap.getOrDefault(t, 0) + 1
-//            }
-//            for (t in tokens) {
-//                map[t] = map.getOrDefault(t, 0) + 1
-//            }
-//        }
-//        return RawTermCounts(classCounts, classDocFreqs, samples.size)
-//    }
-
-    /** Serialize trained model state to JSON string. */
+    /**
+     * Note:
+     *  Serialize / Deserialize are only for classifying (`spamProbability()`)
+     *  DO NOT do incremental updates after `deserialize()`
+     * */
     fun serialize(): String {
         val model = CnbModelData(weights)
         return Json.encodeToString(CnbModelData.serializer(), model)
     }
-
-    /** Deserialize trained model state from JSON string. */
     fun deserialize(json: String) {
-        val model = Json.decodeFromString(CnbModelData.serializer(), json)
+        val model = Json.decodeFromString<CnbModelData>(json)
         weights.clear()
         weights.putAll(model.weights)
     }

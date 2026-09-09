@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import androidx.core.database.getStringOrNull
 import spam.blocker.db.Notification.CHANNEL_HIGH
 import spam.blocker.db.Notification.CHANNEL_LOW
 import spam.blocker.db.Notification.CHANNEL_MEDIUM
@@ -126,7 +127,7 @@ class Db private constructor(
         const val TABLE_BAYESIAN_FILTER = "bayesian_filter"
         const val COLUMN_CONTENT = "content" // sms content
         const val COLUMN_HASH = "hash" // sms content hash
-        const val COLUMN_CATEGORY = "category" // true=ham, false=spam
+        const val COLUMN_IS_SPAM = "is_spam" // true=ham, false=spam
 
 
         @Volatile
@@ -253,7 +254,7 @@ class Db private constructor(
             "CREATE TABLE IF NOT EXISTS $TABLE_BAYESIAN_FILTER (" +
                     "$COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     "$COLUMN_HASH INTEGER UNIQUE, " +
-                    "$COLUMN_CATEGORY INTEGER, " +
+                    "$COLUMN_IS_SPAM INTEGER, " +
                     "$COLUMN_CONTENT TEXT " +
                     ")"
         )

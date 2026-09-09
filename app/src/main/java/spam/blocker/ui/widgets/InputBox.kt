@@ -51,7 +51,6 @@ import spam.blocker.def.Def.FLAG_REGEX_RAW_NUMBER
 import spam.blocker.def.Def.MAP_REGEX_FLAGS
 import spam.blocker.ui.M
 import spam.blocker.util.A
-import spam.blocker.util.Lambda
 import spam.blocker.util.Lambda1
 import spam.blocker.util.Lambda2
 import spam.blocker.util.Util
@@ -383,7 +382,7 @@ fun StrInputBox(
     singleLine: Boolean = false,
     maxLines: Int = if (singleLine) 1 else 10,
     alwaysShowClear: Boolean = false,
-    onClear: Lambda = {},
+    onClear: Lambda1<String>? = null,
 ) {
     // Code learned from the built-in BasicTextField.kt
     var state by remember {
@@ -445,10 +444,11 @@ fun StrInputBox(
                     GreyIcon16(
                         R.drawable.ic_clear,
                         modifier = M.clickable{
+                            val prevText = state.text
                             state = TextFieldValue()
                             lastText = ""
                             onValueChange("")
-                            onClear()
+                            onClear?.let { it(prevText) }
                         }
                     )
                 }

@@ -14,8 +14,6 @@ import spam.blocker.R
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.widgets.DurationButton
 import spam.blocker.ui.widgets.GreyButton
-import spam.blocker.ui.widgets.GreyIcon16
-import spam.blocker.ui.widgets.GreyIcon18
 import spam.blocker.ui.widgets.GreyIcon20
 import spam.blocker.ui.widgets.PluralStr
 import spam.blocker.ui.widgets.PopupDialog

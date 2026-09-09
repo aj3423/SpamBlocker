@@ -8,8 +8,6 @@ import android.app.NotificationManager.IMPORTANCE_NONE
 import android.graphics.BitmapFactory
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.IntrinsicSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable

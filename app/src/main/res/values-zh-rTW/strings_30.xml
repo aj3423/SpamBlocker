@@ -45,5 +45,43 @@
         ]]>
     </string>
     <string name="api_tokens">API 權杖</string>
+    <string name="local_ai">本地 AI</string>
+    <string name="help_local_ai">
+        <![CDATA[
+        手動對一些簡訊進行分類，以訓練您自己的垃圾訊息過濾器，完全在本地運行。<br>
+        <br>
+        演算法：互補樸素貝葉斯 (Complement Naive Bayes)。<br>
+        <br>
+        至少訓練 50 條訊息，包含 <error>垃圾訊息</error> 和 <highlight>正常訊息</highlight>。訓練的樣本越多，準確率就越高。<br>
+        <br>
+        <minor><b>訓練</b></minor> <br>
+        <br>
+        1. 顯示約 1000 條最近的簡訊記錄。<br>
+        <br>
+        2. 滑動一些記錄來訓練模型。<br>
+        &emsp; 向<error>左</error>滑動 - 標記為 <error>垃圾訊息</error> <br>
+        &emsp; 向<highlight>右</highlight>滑動 - 標記為 <highlight>正常訊息</highlight> <br>
+        &emsp; <sample>點擊</sample> 記錄 - 取消標記 <br>
+        &ensp; 每次滑動都會立即訓練模型，<b>邊框顏色</b>表示其分類。<br>
+        <br>
+        3. 點擊 <highlight><b>測試</b></highlight> 按鈕，所有訊息都將由訓練好的模型進行分類。<br>
+        <br>
+        4. 檢查它們的<b>文字顏色</b>。如果存在錯誤，請嘗試訓練更多樣本。<br>
+        &ensp; 像 <sample>0.5000</sample> 這樣的數字代表垃圾訊息的機率。
+        ]]>
+    </string>
+    <string name="spam">垃圾訊息</string>
+    <string name="ham">正常訊息</string>
+    <string name="unlabeled">未標記</string>
+    <string name="search">搜尋</string>
+    <string name="filters">過濾器</string>
+    <string name="train_it_first">模型尚未訓練，請先訓練。</string>
+    <string name="confirm_delete_trained_model">
+        <![CDATA[
+        重置此項將永久刪除已訓練的模型和<error><b>所有手動分類</b></error>。<br>
+        <br>
+        是否繼續？
+        ]]>
+    </string>
 </resources>
 

@@ -25,7 +25,6 @@ import spam.blocker.ui.widgets.FlowRowSpaced
 import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.GreyIcon18
-import spam.blocker.ui.widgets.GreyText
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.MenuButton
 import spam.blocker.ui.widgets.Str

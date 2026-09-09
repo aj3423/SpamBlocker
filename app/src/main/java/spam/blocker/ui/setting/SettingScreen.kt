@@ -61,6 +61,7 @@ import spam.blocker.ui.setting.quick.DialedSummary
 import spam.blocker.ui.setting.quick.EmergencySituation
 import spam.blocker.ui.setting.quick.EmergencySituationSummary
 import spam.blocker.ui.setting.quick.LocalAI
+import spam.blocker.ui.setting.quick.LocalAISummary
 import spam.blocker.ui.setting.quick.MeetingMode
 import spam.blocker.ui.setting.quick.MeetingModeSummary
 import spam.blocker.ui.setting.quick.Notification
@@ -207,7 +208,7 @@ fun SettingScreen() {
                     title = Str(R.string.quick_settings),
                     horizontalPadding = 8,
                     isCollapsed = remember { mutableStateOf(spfSections.isQuickSettingsCollapsed) },
-                    onToggleCollapse = {
+                    onToggle = {
                         spfSections.isQuickSettingsCollapsed = it
                     },
                     content = {
@@ -236,6 +237,7 @@ fun SettingScreen() {
                             ContactsSummary()
                             StirSummary()
                             SpamDBSummary()
+                            LocalAISummary()
                             RepeatedCallSummary()
                             DialedSummary()
                             AnsweredSummary()
@@ -257,7 +259,7 @@ fun SettingScreen() {
                     title = Str(R.string.regex_settings),
                     horizontalPadding = 8,
                     isCollapsed = remember { mutableStateOf(spfSections.isRegexSettingsCollapsed) },
-                    onToggleCollapse = {
+                    onToggle = {
                         spfSections.isRegexSettingsCollapsed = it
                     },
                     content = {
@@ -313,7 +315,7 @@ fun SettingScreen() {
                     title = Str(R.string.instant_query),
                     horizontalPadding = 8,
                     isCollapsed = remember { mutableStateOf(spfSections.isInstantQueryCollapsed) },
-                    onToggleCollapse = {
+                    onToggle = {
                         spfSections.isInstantQueryCollapsed = it
                     },
                     content = {
@@ -338,7 +340,7 @@ fun SettingScreen() {
                     title = Str(R.string.report_number),
                     horizontalPadding = 8,
                     isCollapsed = remember { mutableStateOf(spfSections.isReportNumberCollapsed) },
-                    onToggleCollapse = {
+                    onToggle = {
                         spfSections.isReportNumberCollapsed = it
                     },
                     content = {
@@ -378,7 +380,7 @@ fun SettingScreen() {
                     contentCollapsed = {
                         BotSummary(G.botVM)
                     },
-                    onToggleCollapse = {
+                    onToggle = {
                         spfSections.isAutomationCollapsed = it
                     }
                 )
@@ -388,7 +390,7 @@ fun SettingScreen() {
                     title = Str(R.string.miscellaneous),
                     horizontalPadding = 8,
                     isCollapsed = remember { mutableStateOf(spfSections.isMiscCollapsed) },
-                    onToggleCollapse = {
+                    onToggle = {
                         spfSections.isMiscCollapsed = it
                     },
                     content = {

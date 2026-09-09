@@ -11,6 +11,8 @@ import kotlinx.serialization.json.decodeFromStream
 import kotlinx.serialization.json.encodeToStream
 import spam.blocker.G
 import spam.blocker.R
+import spam.blocker.db.BayesSample
+import spam.blocker.db.BayesTable
 import spam.blocker.db.Bot
 import spam.blocker.db.BotTable
 import spam.blocker.db.CallTable
@@ -29,6 +31,9 @@ import spam.blocker.db.ReportApi
 import spam.blocker.db.SmsTable
 import spam.blocker.db.SpamNumber
 import spam.blocker.db.SpamTable
+import spam.blocker.ui.setting.quick.Bayes
+import spam.blocker.util.FileUtils.readInternalFile
+import spam.blocker.util.FileUtils.writeInternalFile
 import spam.blocker.util.MyJson
 import spam.blocker.util.Notification.createChannel
 import spam.blocker.util.Notification.deleteAllChannels
@@ -480,6 +485,49 @@ class SpamDB : IConfig {
 }
 
 @Serializable
+class NaiveBayes : IConfig {
+    var enabled = false
+    var priorityHam = Bayes.Default_Priority_Ham
+    var prioritySpam = Bayes.Default_Priority_Spam
+
+    val samples = mutableListOf<BayesSample>()
+
+    var model: String? = null
+
+    override fun load(ctx: Context) {
+        val spf = spf.NaiveBayes(ctx)
+        enabled = spf.isEnabled
+        priorityHam = spf.priorityHam
+        prioritySpam = spf.prioritySpam
+
+        // db
+        samples.clear()
+        samples.addAll(BayesTable.listAll(ctx))
+
+        // model
+        model = readInternalFile(ctx, Bayes.Model_File)?.let { String(it) }
+    }
+
+    override fun apply(ctx: Context) {
+        val me = this
+        spf.NaiveBayes(ctx).apply {
+            isEnabled = me.enabled
+            priorityHam = me.priorityHam
+            prioritySpam = me.prioritySpam
+        }
+
+        // db
+        BayesTable.clearAll(ctx)
+        BayesTable.addAll(ctx, samples)
+
+        // model
+        if (model?.isNotEmpty() == true) {
+            writeInternalFile(ctx, Bayes.Model_File, model!!.toByteArray())
+        }
+    }
+}
+
+@Serializable
 class RepeatedCall : IConfig {
     var enabled = false
     var times = 0
@@ -926,6 +974,7 @@ class Configs {
     var contacts : Contact? = null
     var stir : STIR? = null
     var spamDB : SpamDB? = null
+    var naiveBayes : NaiveBayes? = null
     var repeatedCall : RepeatedCall? = null
     var dialed : Dialed? = null
     var answered : Answered? = null
@@ -967,6 +1016,7 @@ class Configs {
             contacts = Contact().also { it.load(ctx) }
             stir = STIR().also { it.load(ctx) }
             spamDB = SpamDB().also { it.load(ctx) }
+            naiveBayes = NaiveBayes().also { it.load(ctx) }
             repeatedCall = RepeatedCall().also { it.load(ctx) }
             dialed = Dialed().also { it.load(ctx) }
             answered = Answered().also { it.load(ctx) }
@@ -1022,6 +1072,7 @@ class Configs {
             contacts?.apply(ctx)
             stir?.apply(ctx)
             spamDB?.apply(ctx)
+            naiveBayes?.apply(ctx)
             repeatedCall?.apply(ctx)
             dialed?.apply(ctx)
             answered?.apply(ctx)

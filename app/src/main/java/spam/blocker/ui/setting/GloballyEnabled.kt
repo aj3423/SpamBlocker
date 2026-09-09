@@ -131,7 +131,7 @@ fun GloballyEnabled() {
         title = Str(R.string.screening),
         horizontalPadding = 8,
         isCollapsed = remember { mutableStateOf(spfSections.isScreeningSectionCollapsed) },
-        onToggleCollapse = {
+        onToggle = {
             spfSections.isScreeningSectionCollapsed = it
         },
         contentCollapsed = { GloballyEnabledSummary() }

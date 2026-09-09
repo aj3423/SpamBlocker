@@ -45,5 +45,43 @@
         ]]>
     </string>
     <string name="api_tokens">رموز API</string>
+    <string name="local_ai">ذكاء اصطناعي محلي</string>
+    <string name="help_local_ai">
+        <![CDATA[
+        صنّف بعض رسائل SMS يدويًا لتدريب مرشح البريد العشوائي الخاص بك، يعمل محليًا بالكامل. <br>
+        <br>
+        الخوارزمية: Complement Naive Bayes. <br>
+        <br>
+        درّب 50 رسالة على الأقل، بما في ذلك كل من <error>البريد العشوائي</error> و <highlight>الرسائل الموثوقة</highlight>. كلما زاد عدد العينات التي تدربها، زادت دقتها. <br>
+        <br>
+        <minor><b>التدريب</b></minor> <br>
+        <br>
+        1. يعرض حوالي 1000 سجل رسائل قصيرة حديثة. <br>
+        <br>
+        2. اسحب بعض السجلات لتدريب النموذج. <br>
+        &emsp;  اسحب نحو <error>اليسار</error> - وضع علامة كـ <error>بريد عشوائي</error> <br>
+        &emsp;  اسحب نحو <highlight>اليمين</highlight> - وضع علامة كـ <highlight>رسالة موثوقة</highlight> <br>
+        &emsp;  <sample>انقر</sample> عليها - إلغاء العلامة <br>
+        &ensp; كل سحبة تدرب النموذج فورًا، ويدل <b>لون الحدود</b> على تصنيفها. <br>
+        <br>
+        3. انقر على زر <highlight><b>اختبار</b></highlight>، وسيتم تصنيف جميع الرسائل بواسطة النموذج المدرب. <br>
+        <br>
+        4. راجع <b>لون النص</b>. إذا كان أي منها غير صحيح، فحاول تدريب المزيد من العينات. <br>
+        &ensp; الأرقام مثل <sample>0.5000</sample> هي احتمالات البريد العشوائي.
+        ]]>
+    </string>
+    <string name="spam">بريد عشوائي</string>
+    <string name="ham">رسائل موثوقة</string>
+    <string name="unlabeled">غير مصنف</string>
+    <string name="search">بحث</string>
+    <string name="filters">الفلاتر</string>
+    <string name="train_it_first">النموذج غير مدرب بعد، قم بتدريبه أولاً.</string>
+    <string name="confirm_delete_trained_model">
+        <![CDATA[
+        سيؤدي إعادة الضبط هذه إلى حذف النموذج المدرب بشكل دائم و<error><b>جميع التصنيفات اليدوية</b></error>.<br>
+        <br>
+        هل تريد المتابعة؟
+        ]]>
+    </string>
 </resources>
 

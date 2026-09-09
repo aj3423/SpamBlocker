@@ -23,6 +23,7 @@ import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTENT_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_DATABASE_PREFIX_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_GEO_LOCATION_REGEX
+import spam.blocker.def.Def.RESULT_ALLOWED_BY_NAIVE_BAYES
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_NUMBER_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CARRIER_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CNAP_REGEX
@@ -32,6 +33,7 @@ import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTACT_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTENT_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_DATABASE_PREFIX_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_GEO_LOCATION_REGEX
+import spam.blocker.def.Def.RESULT_BLOCKED_BY_NAIVE_BAYES
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NUMBER_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_SPAM_DB
 import spam.blocker.def.Def.isBlocked
@@ -42,9 +44,12 @@ import spam.blocker.service.checker.IChecker
 import spam.blocker.service.checker.numberRuleToChecker
 import spam.blocker.ui.M
 import spam.blocker.ui.history.HistoryOptions.showHistoryIndicator
+import spam.blocker.ui.setting.quick.Bayes
 import spam.blocker.ui.setting.regex.RegexMode
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowVCenterSpaced
+import spam.blocker.util.ComplementNaiveBayes
+import spam.blocker.util.FileUtils.readInternalFile
 import spam.blocker.util.spf
 
 data class Indicator(
@@ -95,6 +100,13 @@ fun IndicatorIcons(indicators: Indicators) {
                 }
                 RESULT_BLOCKED_BY_CONTENT_REGEX -> {
                     ResIcon(R.drawable.ic_sms_blocked, modifier = M.size(14.dp), color = C.error)
+                }
+                RESULT_BLOCKED_BY_NAIVE_BAYES, RESULT_ALLOWED_BY_NAIVE_BAYES -> {
+                    ResIcon(
+                        R.drawable.ic_ai,
+                        modifier = M.size(18.dp),
+                        color = if (it.type == RESULT_BLOCKED_BY_NAIVE_BAYES) C.error else C.success
+                    )
                 }
             }
         }
@@ -259,6 +271,28 @@ fun IndicatorsWrapper(
                                 )
                             )
                         }
+                    }
+                }
+
+                // 4. Local AI classification
+                val spf = spf.NaiveBayes(ctx)
+                if (spf.isEnabled) {
+                    val modelBytes = readInternalFile(ctx, Bayes.Model_File)
+                    if (modelBytes != null) {
+                        val threshold = spf.threshold
+
+                        val cnb = ComplementNaiveBayes()
+                        cnb.deserialize(String(modelBytes))
+                        val prob = cnb.spamProbability(smsContent ?: "")
+                        val isSpam = prob > threshold
+
+
+                        add(
+                            Indicator(
+                                type = if(isSpam) RESULT_BLOCKED_BY_NAIVE_BAYES else RESULT_ALLOWED_BY_NAIVE_BAYES,
+                                priority = if(isSpam) spf.prioritySpam else spf.priorityHam
+                            )
+                        )
                     }
                 }
             }

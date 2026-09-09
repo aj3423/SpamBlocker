@@ -45,5 +45,43 @@
         ]]>
     </string>
     <string name="api_tokens">אסימוני API</string>
+    <string name="local_ai">AI מקומי</string>
+    <string name="help_local_ai">
+        <![CDATA[
+        סווג ידנית כמה הודעות SMS כדי לאמן מסנן ספאם משלך, עובד באופן מקומי לחלוטין. <br>
+        <br>
+        אלגוריתם: Complement Naive Bayes. <br>
+        <br>
+        אמן לפחות 50 הודעות, כולל <error>ספאם</error> ו-<highlight>דואר תקין (ham)</highlight>. ככל שתאמן יותר דוגמאות, כך הוא יהיה מדויק יותר. <br>
+        <br>
+        <minor><b>אימון</b></minor> <br>
+        <br>
+        1. מציג כ-1000 רשומות SMS אחרונות. <br>
+        <br>
+        2. החלק כמה רשומות כדי לאמן את המודל. <br>
+        &emsp; החלקה <error>שמאלה</error> - סימון כ-<error>ספאם</error> <br>
+        &emsp; החלקה <highlight>ימינה</highlight> - סימון כ-<highlight>דואר תקין</highlight> <br>
+        &emsp; <sample>לחץ</sample> על הרשומה - ביטול סימון <br>
+        &ensp; כל החלקה מאמנת את המודל באופן מיידי, <b>צבע המסגרת</b> מציין את הסיווג שלו. <br>
+        <br>
+        3. לחץ על הלחצן <highlight><b>בדיקה</b></highlight>, כל ההודעות יסווגו על ידי המודל המאומן. <br>
+        <br>
+        4. בדוק את <b>צבע הטקסט</b> שלהן. אם יש שגיאות, נסה לאמן דוגמאות נוספות. <br>
+        &ensp; מספרים כמו <sample>0.5000</sample> הם הסתברויות לספאם.
+        ]]>
+    </string>
+    <string name="spam">ספאם</string>
+    <string name="ham">דואר תקין</string>
+    <string name="unlabeled">ללא תווית</string>
+    <string name="search">חיפוש</string>
+    <string name="filters">מסננים</string>
+    <string name="train_it_first">המודל עדיין לא אומן, אמן אותו תחילה.</string>
+    <string name="confirm_delete_trained_model">
+        <![CDATA[
+        איפוס זה ימחק לצמיתות את המודל המאומן ואת <error><b>כל הסיווגים הידניים</b></error>.<br>
+        <br>
+        להמשיך?
+        ]]>
+    </string>
 </resources>
 

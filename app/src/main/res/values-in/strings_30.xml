@@ -45,5 +45,43 @@
         ]]>
     </string>
     <string name="api_tokens">Token API</string>
+    <string name="local_ai">AI Lokal</string>
+    <string name="help_local_ai">
+        <![CDATA[
+        Klasifikasikan beberapa pesan SMS secara manual untuk melatih filter spam Anda sendiri, bekerja sepenuhnya secara lokal. <br>
+        <br>
+        Algoritma: Complement Naive Bayes. <br>
+        <br>
+        Latih setidaknya 50 pesan, termasuk <error>spam</error> dan <highlight>ham</highlight> (bukan spam). Semakin banyak sampel yang Anda latih, semakin akurat hasilnya. <br>
+        <br>
+        <minor><b>Pelatihan</b></minor> <br>
+        <br>
+        1. Menampilkan sekitar 1000 catatan SMS terbaru. <br>
+        <br>
+        2. Geser beberapa catatan untuk melatih model. <br>
+        &emsp; Geser ke <error>kiri</error> - tandai sebagai <error>spam</error> <br>
+        &emsp; Geser ke <highlight>kanan</highlight> - tandai sebagai <highlight>ham</highlight> <br>
+        &emsp; <sample>Ketuk</sample> untuk membatalkan tanda <br>
+        &ensp; Setiap usapan melatih model secara langsung, <b>warna batas</b> menunjukkan klasifikasinya. <br>
+        <br>
+        3. Ketuk tombol <highlight><b>Uji</b></highlight>, semua pesan akan diklasifikasikan oleh model yang telah dilatih. <br>
+        <br>
+        4. Tinjau <b>warna teks</b> pesan. Jika ada yang salah, coba latih lebih banyak sampel. <br>
+        &ensp; Angka seperti <sample>0.5000</sample> adalah probabilitas spam.
+        ]]>
+    </string>
+    <string name="spam">Spam</string>
+    <string name="ham">Ham</string>
+    <string name="unlabeled">Tanpa label</string>
+    <string name="search">Cari</string>
+    <string name="filters">Filter</string>
+    <string name="train_it_first">Model belum dilatih, latih terlebih dahulu.</string>
+    <string name="confirm_delete_trained_model">
+        <![CDATA[
+        Mereset ini akan menghapus model yang telah dilatih dan <error><b>SEMUA klasifikasi manual</b></error> secara permanen.<br>
+        <br>
+        Lanjutkan?
+        ]]>
+    </string>
 </resources>
 

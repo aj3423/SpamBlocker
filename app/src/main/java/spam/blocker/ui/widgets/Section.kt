@@ -19,17 +19,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import spam.blocker.G
-import spam.blocker.R
 import spam.blocker.ui.M
 import spam.blocker.ui.slightDiff
 
 @Composable
 fun Section(
     title: String?,
+    titleColor: Color = G.palette.textGrey,
     horizontalPadding : Int = 0,
     bgColor: Color = G.palette.background,
     isCollapsed: MutableState<Boolean>? = null, // null == non-foldable, e.g. sections in api dialogs
-    onToggleCollapse: ((Boolean) -> Unit)? = null,
+    onToggle: ((Boolean) -> Unit)? = null,
     contentCollapsed: (@Composable () -> Unit)? = null,
     content: @Composable () -> Unit,
 ) {
@@ -55,6 +55,7 @@ fun Section(
                 Column(
                     modifier = M.fillMaxWidth().padding(4.dp).clickable {
                         isCollapsed!!.value = !isCollapsed.value
+                        onToggle?.invoke(isCollapsed.value)
                     }
                 ) {
                     contentCollapsed?.let { it() }
@@ -72,7 +73,7 @@ fun Section(
                         if (isCollapsed != null) { // is foldable
                             it.clickable {
                                 isCollapsed.value = !isCollapsed.value
-                                onToggleCollapse?.invoke(isCollapsed.value)
+                                onToggle?.invoke(isCollapsed.value)
                             }
                         } else it
                     }
@@ -87,7 +88,7 @@ fun Section(
                         Text(
                             text = title,
                             fontSize = 13.sp,
-                            color = G.palette.textGrey,
+                            color = titleColor,
                             lineHeight = 13.sp,
                         )
 //                        if (isCollapsed?.value == true) {

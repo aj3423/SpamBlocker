@@ -45,5 +45,43 @@
         ]]>
     </string>
     <string name="api_tokens">Tokens de API</string>
+    <string name="local_ai">IA local</string>
+    <string name="help_local_ai">
+        <![CDATA[
+        Clasifica manualmente algunos mensajes SMS para entrenar tu propio filtro de spam, funciona completamente de forma local. <br>
+        <br>
+        Algoritmo: Complement Naive Bayes. <br>
+        <br>
+        Entrena al menos 50 mensajes, incluyendo tanto <error>spam</error> como <highlight>ham</highlight> (no spam). Cuantas más muestras entrenes, más preciso será. <br>
+        <br>
+        <minor><b>Entrenamiento</b></minor> <br>
+        <br>
+        1. Muestra unos 1000 registros de SMS recientes. <br>
+        <br>
+        2. Desliza algunos registros para entrenar el modelo. <br>
+        &emsp;  Desliza hacia la <error>izquierda</error> - marcar como <error>spam</error> <br>
+        &emsp;  Desliza hacia la <highlight>derecha</highlight> - marcar como <highlight>ham</highlight> <br>
+        &emsp;  <sample>Tócalo</sample> - desmarcar <br>
+        &ensp; Cada deslizamiento entrena el modelo de inmediato, el <b>color del borde</b> indica su clasificación. <br>
+        <br>
+        3. Toca el botón <highlight><b>Probar</b></highlight>, todos los mensajes serán clasificados por el modelo entrenado. <br>
+        <br>
+        4. Revisa su <b>color de texto</b>. Si alguno es incorrecto, intenta entrenar más muestras. <br>
+        &ensp; Los números como <sample>0.5000</sample> son probabilidades de spam.
+        ]]>
+    </string>
+    <string name="spam">Spam</string>
+    <string name="ham">Ham</string>
+    <string name="unlabeled">Sin etiquetar</string>
+    <string name="search">Buscar</string>
+    <string name="filters">Filtros</string>
+    <string name="train_it_first">El modelo aún no está entrenado, entrénalo primero.</string>
+    <string name="confirm_delete_trained_model">
+        <![CDATA[
+        Restablecer esto eliminará permanentemente el modelo entrenado y <error><b>TODAS las clasificaciones manuales</b></error>.<br>
+        <br>
+        ¿Continuar?
+        ]]>
+    </string>
 </resources>
 

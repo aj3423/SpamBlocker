@@ -22,6 +22,7 @@ abstract class BasicTable<T>(
     protected open fun insertColumns(): List<String> = emptyList()
     protected open fun bindInsertStatement(stmt: SQLiteStatement, item: T, baseIndex: Int) {}
 
+    // !!!!! REQUIRES the subclass to override `insertColumns()` and `bindInsertStatement()`
     // Batch insert, way faster than inserting one by one.
     fun addAll(
         ctx: Context,
@@ -131,9 +132,18 @@ abstract class BasicTable<T>(
         return findFirst(ctx, "$COLUMN_ID = ?", arrayOf("$id"))
     }
 
-    fun count(ctx: Context): Int {
+    fun count(
+        ctx: Context,
+        whereClause: String? = null, // "xx = ?"
+        args: Array<String>? = null // arrayOf(1)
+    ): Int {
         val db = Db.getInstance(ctx).readableDatabase
-        val cursor = db.rawQuery("SELECT COUNT(*) FROM $tableName", null)
+        var query = "SELECT COUNT(*) FROM $tableName"
+
+        if (whereClause?.isNotEmpty() == true) {
+            query += " WHERE $whereClause"
+        }
+        val cursor = db.rawQuery(query, args)
         return cursor.use {
             if (it.moveToFirst()) it.getInt(0) else 0
         }

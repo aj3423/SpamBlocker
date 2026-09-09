@@ -45,4 +45,42 @@
         ]]>
     </string>
     <string name="api_tokens">API Tokens</string>
+    <string name="local_ai">Local AI</string>
+    <string name="help_local_ai">
+        <![CDATA[
+        Manually classify some SMS messages to train your own spam filter, works completely locally. <br>
+        <br>
+        Algorithm: Complement Naive Bayes. <br>
+        <br>
+        Train at least 50 messages, including both <error>spam</error> and <highlight>ham</highlight>(non-spam). The more samples you train it, the more accurate it will be. <br>
+        <br>
+        <minor><b>Training</b></minor> <br>
+        <br>
+        1. It shows about 1000 recent SMS records. <br>
+        <br>
+        2. Swipe some records to train the model. <br>
+        &emsp;  Swipe <error>left</error> - mark as <error>spam</error> <br>
+        &emsp;  Swipe <highlight>right</highlight> - mark as <highlight>ham</highlight> <br>
+        &emsp;  <sample>Tap</sample> it - unmark <br>
+        &ensp; Each swipe trains the model immediately, the <b>border color</b> indicates its classification. <br>
+        <br>
+        3. Tap the <highlight><b>Test</b></highlight> button, all messages will be classified by the trained model. <br>
+        <br>
+        4. Review their <b>text color</b>. If any are incorrect, try training more samples. <br>
+        &ensp; Numbers like <sample>0.5000</sample> are spam probabilities.
+        ]]>
+    </string>
+    <string name="spam">Spam</string>
+    <string name="ham">Ham</string>
+    <string name="unlabeled">Unlabeled</string>
+    <string name="search">Search</string>
+    <string name="filters">Filters</string>
+    <string name="train_it_first">Model not trained yet, train it first.</string>
+    <string name="confirm_delete_trained_model">
+        <![CDATA[
+        Resetting this will permanently delete the trained model and <error><b>ALL manual classifications</b></error>.<br>
+        <br>
+        Proceed?
+        ]]>
+    </string>
 </resources>

@@ -45,5 +45,43 @@
         ]]>
     </string>
     <string name="api_tokens">Token API</string>
+    <string name="local_ai">IA locale</string>
+    <string name="help_local_ai">
+        <![CDATA[
+        Classifica manualmente alcuni messaggi SMS per addestrare il tuo filtro antispam, funziona completamente in locale. <br>
+        <br>
+        Algoritmo: Complement Naive Bayes. <br>
+        <br>
+        Addestra almeno 50 messaggi, inclusi sia <error>spam</error> che <highlight>ham</highlight> (non spam). Più campioni addestri, più sarà accurato. <br>
+        <br>
+        <minor><b>Addestramento</b></minor> <br>
+        <br>
+        1. Mostra circa 1000 record SMS recenti. <br>
+        <br>
+        2. Scorri alcuni record per addestrare il modello. <br>
+        &emsp; Scorri a <error>sinistra</error> - contrassegna come <error>spam</error> <br>
+        &emsp; Scorri a <highlight>destra</highlight> - contrassegna come <highlight>ham</highlight> <br>
+        &emsp; <sample>Tocca</sample> per deselezionare <br>
+        &ensp; Ogni scorrimento addestra immediatamente il modello, il <b>colore del bordo</b> ne indica la classificazione. <br>
+        <br>
+        3. Tocca il pulsante <highlight><b>Test</b></highlight>, tutti i messaggi verranno classificati dal modello addestrato. <br>
+        <br>
+        4. Controlla il loro <b>colore del testo</b>. Se qualcuno è errato, prova ad addestrare più campioni. <br>
+        &ensp; I numeri come <sample>0.5000</sample> sono probabilità di spam.
+        ]]>
+    </string>
+    <string name="spam">Spam</string>
+    <string name="ham">Ham</string>
+    <string name="unlabeled">Senza etichetta</string>
+    <string name="search">Cerca</string>
+    <string name="filters">Filtri</string>
+    <string name="train_it_first">Modello non ancora addestrato, addestralo prima.</string>
+    <string name="confirm_delete_trained_model">
+        <![CDATA[
+        La reimpostazione eliminerà permanentemente il modello addestrato e <error><b>TUTTE le classificazioni manuali</b></error>.<br>
+        <br>
+        Proseguire?
+        ]]>
+    </string>
 </resources>
 

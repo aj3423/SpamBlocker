@@ -47,6 +47,7 @@ object Def {
     const val RESULT_ALLOWED_BY_CONTACT_PREFIX_REGEX = 111
     const val RESULT_ALLOWED_BY_CARRIER_REGEX = 112
     const val RESULT_ALLOWED_BY_DATABASE_PREFIX_REGEX = 113
+    const val RESULT_ALLOWED_BY_NAIVE_BAYES = 114
 
 
 
@@ -66,6 +67,7 @@ object Def {
     const val RESULT_BLOCKED_BY_CONTACT_PREFIX_REGEX = 22
     const val RESULT_BLOCKED_BY_CARRIER_REGEX = 23
     const val RESULT_BLOCKED_BY_DATABASE_PREFIX_REGEX = 24
+    const val RESULT_BLOCKED_BY_NAIVE_BAYES = 25
 
 
     fun isBlocked(result: Int): Boolean {

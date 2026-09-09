@@ -45,5 +45,43 @@
         ]]>
     </string>
     <string name="api_tokens">API-Tokens</string>
+    <string name="local_ai">Lokale KI</string>
+    <string name="help_local_ai">
+        <![CDATA[
+        Klassifizieren Sie einige SMS-Nachrichten manuell, um Ihren eigenen Spam-Filter zu trainieren. Funktioniert vollständig lokal. <br>
+        <br>
+        Algorithmus: Complement Naive Bayes. <br>
+        <br>
+        Trainieren Sie mindestens 50 Nachrichten, sowohl <error>Spam</error> als auch <highlight>Ham</highlight> (Nicht-Spam). Je mehr Proben Sie trainieren, desto genauer wird er sein. <br>
+        <br>
+        <minor><b>Training</b></minor> <br>
+        <br>
+        1. Zeigt etwa 1000 aktuelle SMS-Einträge an. <br>
+        <br>
+        2. Wischen Sie über einige Einträge, um das Modell zu trainieren. <br>
+        &emsp; Nach <error>links</error> wischen - als <error>Spam</error> markieren <br>
+        &emsp; Nach <highlight>rechts</highlight> wischen - als <highlight>Ham</highlight> markieren <br>
+        &emsp; Darauf <sample>tippen</sample> - Markierung aufheben <br>
+        &ensp; Jedes Wischen trainiert das Modell sofort; die <b>Rahmenfarbe</b> zeigt die Klassifizierung an. <br>
+        <br>
+        3. Tippen Sie auf die Schaltfläche <highlight><b>Testen</b></highlight>, um alle Nachrichten durch das trainierte Modell klassifizieren zu lassen. <br>
+        <br>
+        4. Überprüfen Sie deren <b>Textfarbe</b>. Wenn Nachrichten falsch klassifiziert wurden, versuchen Sie, mehr Proben zu trainieren. <br>
+        &ensp; Zahlen wie <sample>0.5000</sample> sind Spam-Wahrscheinlichkeiten.
+        ]]>
+    </string>
+    <string name="spam">Spam</string>
+    <string name="ham">Ham</string>
+    <string name="unlabeled">Unbeschriftet</string>
+    <string name="search">Suche</string>
+    <string name="filters">Filter</string>
+    <string name="train_it_first">Modell noch nicht trainiert, zuerst trainieren.</string>
+    <string name="confirm_delete_trained_model">
+        <![CDATA[
+        Das Zurücksetzen löscht das trainierte Modell und <error><b>ALLE manuellen Klassifizierungen</b></error> dauerhaft.<br>
+        <br>
+        Fortfahren?
+        ]]>
+    </string>
 </resources>
 

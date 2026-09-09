@@ -45,5 +45,43 @@
         ]]>
     </string>
     <string name="api_tokens">Tokens da API</string>
+    <string name="local_ai">IA local</string>
+    <string name="help_local_ai">
+        <![CDATA[
+        Clasifica manualmente algúns mensaxes SMS para adestrar o teu propio filtro de spam, funciona completamente de xeito local. <br>
+        <br>
+        Algoritmo: Complement Naive Bayes. <br>
+        <br>
+        Adestra polo menos 50 mensaxes, incluíndo tanto <error>spam</error> como <highlight>ham</highlight> (non spam). Cantas máis mostras adestres, máis preciso será. <br>
+        <br>
+        <minor><b>Adestramento</b></minor> <br>
+        <br>
+        1. Mostra uns 1000 rexistros de SMS recentes. <br>
+        <br>
+        2. Desprazase sobre algúns rexistros para adestrar o modelo. <br>
+        &emsp; Desprazar cara á <error>esquerda</error> - marcar como <error>spam</error> <br>
+        &emsp; Desprazar cara á <highlight>dereita</highlight> - marcar como <highlight>ham</highlight> <br>
+        &emsp; <sample>Toca</sample> para desmarcar <br>
+        &ensp; Cada desprazamento adestra o modelo inmediatamente, a <b>cor do bordo</b> indica a súa clasificación. <br>
+        <br>
+        3. Toca o botón <highlight><b>Probar</b></highlight>, todas as mensaxes serán clasificadas polo modelo adestrado. <br>
+        <br>
+        4. Revisa a súa <b>cor de texto</b>. Se algunha é incorrecta, intenta adestrar máis mostras. <br>
+        &ensp; Os números como <sample>0.5000</sample> son probabilidades de spam.
+        ]]>
+    </string>
+    <string name="spam">Spam</string>
+    <string name="ham">Ham</string>
+    <string name="unlabeled">Sen etiqueta</string>
+    <string name="search">Buscar</string>
+    <string name="filters">Filtros</string>
+    <string name="train_it_first">O modelo aínda non se adestrou, adéstrao primeiro.</string>
+    <string name="confirm_delete_trained_model">
+        <![CDATA[
+        O restablecemento eliminará permanentemente o modelo adestrado e <error><b>TODAS as clasificacións manuais</b></error>.<br>
+        <br>
+        Continuar?
+        ]]>
+    </string>
 </resources>
 

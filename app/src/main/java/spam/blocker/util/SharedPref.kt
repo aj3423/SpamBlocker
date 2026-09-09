@@ -16,6 +16,7 @@ import spam.blocker.db.Notification.CHANNEL_LOW
 import spam.blocker.def.Def
 import spam.blocker.def.Def.DEFAULT_HANG_UP_DELAY
 import spam.blocker.ui.setting.api.PhoneBlock
+import spam.blocker.ui.setting.quick.Bayes
 import spam.blocker.ui.setting.quick.DefaultCallerIdBgColor
 import spam.blocker.ui.setting.quick.DefaultCallerIdTemplate
 import spam.blocker.ui.theme.Black111111
@@ -75,6 +76,18 @@ class spf { // for namespace only
             }
             override fun setValue(thisRef: Any?, property: KProperty<*>, value: Long) {
                 prefs.edit { putLong(key, value) }
+            }
+        }
+
+        fun float(
+            key: String,
+            defaultValue: Float = 0.0f
+        ) : ReadWriteProperty<Any?, Float> = object : ReadWriteProperty<Any?, Float> {
+            override fun getValue(thisRef: Any?, property: KProperty<*>): Float {
+                return prefs.getFloat(key, defaultValue)
+            }
+            override fun setValue(thisRef: Any?, property: KProperty<*>, value: Float) {
+                prefs.edit { putFloat(key, value) }
             }
         }
 
@@ -301,6 +314,12 @@ class spf { // for namespace only
         var isExpiryEnabled by bool("spam_db_expiry_enabled")
         var priority by int("spam_db_priority")
         var ttl by int("spam_db_ttl_days", 180) // 180 days
+    }
+    class NaiveBayes(ctx: Context) : SharedPref(ctx) {
+        var isEnabled by bool("naive_bayes_enabled")
+        var priorityHam by int("naive_bayes_ham_priority", Bayes.Default_Priority_Ham)
+        var prioritySpam by int("naive_bayes_spam_priority", Bayes.Default_Priority_Spam)
+        var threshold by float("naive_bayes_threshold", Bayes.Default_Threshold)
     }
 
     class Contact(ctx: Context) : SharedPref(ctx) {

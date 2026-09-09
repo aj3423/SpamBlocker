@@ -45,5 +45,43 @@
         ]]>
     </string>
     <string name="api_tokens">Jetons API</string>
+    <string name="local_ai">IA locale</string>
+    <string name="help_local_ai">
+        <![CDATA[
+        Classifiez manuellement quelques messages SMS pour entraîner votre propre filtre anti-spam, fonctionne entièrement en local. <br>
+        <br>
+        Algorithme : Complement Naive Bayes. <br>
+        <br>
+        Entraînez au moins 50 messages, incluant à la fois du <error>spam</error> et du <highlight>ham</highlight> (non-spam). Plus vous entraînez d\'échantillons, plus il sera précis. <br>
+        <br>
+        <minor><b>Entraînement</b></minor> <br>
+        <br>
+        1. Affiche environ 1000 enregistrements SMS récents. <br>
+        <br>
+        2. Balayez certains enregistrements pour entraîner le modèle. <br>
+        &emsp; Balayer vers la <error>gauche</error> - marquer comme <error>spam</error> <br>
+        &emsp; Balayer vers la <highlight>droite</highlight> - marquer comme <highlight>ham</highlight> <br>
+        &emsp; <sample>Appuyer</sample> dessus - démarcher <br>
+        &ensp; Chaque balayage entraîne le modèle immédiatement, la <b>couleur de la bordure</b> indique sa classification. <br>
+        <br>
+        3. Appuyez sur le bouton <highlight><b>Tester</b></highlight>, tous les messages seront classifiés par le modèle entraîné. <br>
+        <br>
+        4. Vérifiez leur <b>couleur de texte</b>. Si certains sont incorrects, essayez d\'entraîner plus d\'échantillons. <br>
+        &ensp; Les nombres comme <sample>0.5000</sample> sont des probabilités de spam.
+        ]]>
+    </string>
+    <string name="spam">Spam</string>
+    <string name="ham">Ham</string>
+    <string name="unlabeled">Non étiqueté</string>
+    <string name="search">Recherche</string>
+    <string name="filters">Filtres</string>
+    <string name="train_it_first">Modèle non encore entraîné, entraînez-le d\'abord.</string>
+    <string name="confirm_delete_trained_model">
+        <![CDATA[
+        La réinitialisation supprimera définitivement le modèle entraîné et <error><b>TOUTES les classifications manuelles</b></error>.<br>
+        <br>
+        Continuer ?
+        ]]>
+    </string>
 </resources>
 

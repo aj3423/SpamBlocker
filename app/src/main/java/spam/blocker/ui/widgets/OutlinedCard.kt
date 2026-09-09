@@ -16,6 +16,7 @@ fun OutlineCard(
     modifier: Modifier = Modifier,
     containerBg: Color = G.palette.background,
     borderColor: Color = containerBg.slightDiff(),
+    borderWidth: Int = 1,
     content: @Composable () -> Unit,
 ) {
 
@@ -24,7 +25,7 @@ fun OutlineCard(
         colors = CardDefaults.cardColors(
             containerColor = containerBg,
         ),
-        border = BorderStroke(width = 1.dp, color = borderColor),
+        border = BorderStroke(width = borderWidth.dp, color = borderColor),
         shape = RoundedCornerShape(6.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
     ) {
