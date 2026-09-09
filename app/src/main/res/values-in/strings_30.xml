@@ -52,6 +52,11 @@
         <br>
         Algoritma: Complement Naive Bayes. <br>
         <br>
+        Fitur ini saat ini <warn>eksperimental</warn> dan mungkin diperbarui atau dihapus pada rilis mendatang.
+        ]]>
+    </string>
+    <string name="help_local_ai_training">
+        <![CDATA[
         Latih setidaknya 50 pesan, termasuk <error>spam</error> dan <highlight>ham</highlight> (bukan spam). Semakin banyak sampel yang Anda latih, semakin akurat hasilnya. <br>
         <br>
         <minor><b>Pelatihan</b></minor> <br>
@@ -76,12 +81,14 @@
     <string name="search">Cari</string>
     <string name="filters">Filter</string>
     <string name="train_it_first">Model belum dilatih, latih terlebih dahulu.</string>
+    <string name="training">Pelatihan</string>
     <string name="confirm_delete_trained_model">
         <![CDATA[
-        Mereset ini akan menghapus model yang telah dilatih dan <error><b>SEMUA klasifikasi manual</b></error> secara permanen.<br>
+        Ini akan menghapus model yang telah dilatih dan <error><b>SEMUA klasifikasi manual</b></error> secara permanen.<br>
         <br>
         Lanjutkan?
         ]]>
     </string>
+    <string name="conflicts">Konflik</string>
 </resources>
 

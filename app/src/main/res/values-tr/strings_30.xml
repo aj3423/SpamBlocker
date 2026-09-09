@@ -52,6 +52,11 @@
         <br>
         Algoritma: Tamamlayıcı Naive Bayes (Complement Naive Bayes). <br>
         <br>
+        Bu özellik şu anda <warn>deneyseldir</warn> ve gelecek sürümlerde güncellenebilir veya kaldırılabilir.
+        ]]>
+    </string>
+    <string name="help_local_ai_training">
+        <![CDATA[
         Hem <error>spam</error> hem de <highlight>ham</highlight> (spam olmayan) dahil en az 50 mesajı eğitin. Ne kadar çok örnek eğitirseniz, o kadar doğru sonuç verir. <br>
         <br>
         <minor><b>Eğitim</b></minor> <br>
@@ -76,12 +81,14 @@
     <string name="search">Ara</string>
     <string name="filters">Filtreler</string>
     <string name="train_it_first">Model henüz eğitilmedi, önce eğitin.</string>
+    <string name="training">Eğitim</string>
     <string name="confirm_delete_trained_model">
         <![CDATA[
-        Bunu sıfırlamak, eğitilmiş modeli ve <error><b>TÜM manuel sınıflandırmaları</b></error> kalıcı olarak silecektir.<br>
+        Bu işlem, eğitilmiş modeli ve <error><b>TÜM manuel sınıflandırmaları</b></error> kalıcı olarak silecektir.<br>
         <br>
         Devam edilsin mi?
         ]]>
     </string>
+    <string name="conflicts">Çakışmalar</string>
 </resources>
 

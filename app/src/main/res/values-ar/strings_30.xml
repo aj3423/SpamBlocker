@@ -52,6 +52,11 @@
         <br>
         الخوارزمية: Complement Naive Bayes. <br>
         <br>
+        هذه الميزة حاليًا <warn>تجريبية</warn> وقد يتم تحديثها أو إزالتها في الإصدارات القادمة.
+        ]]>
+    </string>
+    <string name="help_local_ai_training">
+        <![CDATA[
         درّب 50 رسالة على الأقل، بما في ذلك كل من <error>البريد العشوائي</error> و <highlight>الرسائل الموثوقة</highlight>. كلما زاد عدد العينات التي تدربها، زادت دقتها. <br>
         <br>
         <minor><b>التدريب</b></minor> <br>
@@ -76,12 +81,14 @@
     <string name="search">بحث</string>
     <string name="filters">الفلاتر</string>
     <string name="train_it_first">النموذج غير مدرب بعد، قم بتدريبه أولاً.</string>
+    <string name="training">التدريب</string>
     <string name="confirm_delete_trained_model">
         <![CDATA[
-        سيؤدي إعادة الضبط هذه إلى حذف النموذج المدرب بشكل دائم و<error><b>جميع التصنيفات اليدوية</b></error>.<br>
+        سيؤدي هذا إلى حذف النموذج المدرب بشكل دائم و<error><b>جميع التصنيفات اليدوية</b></error>.<br>
         <br>
         هل تريد المتابعة؟
         ]]>
     </string>
+    <string name="conflicts">تعارضات</string>
 </resources>
 

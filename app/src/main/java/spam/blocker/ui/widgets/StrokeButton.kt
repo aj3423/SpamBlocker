@@ -57,7 +57,7 @@ const val BUTTON_H = 26
 @Composable
 fun Button(
     content: @Composable RowScope.() -> Unit,
-    modifier: Modifier = M.heightIn(min = BUTTON_H.dp),
+    modifier: Modifier = Modifier,
     onLongClick: Lambda? = null,
     enabled: Boolean = true,
     borderWidth: Dp = 1.dp,
@@ -71,6 +71,7 @@ fun Button(
 
     Box(
         modifier = modifier
+            .heightIn(min = BUTTON_H.dp)
             .border(
                 width = borderWidth,
                 color = if (enabled) borderColor else C.disabled,

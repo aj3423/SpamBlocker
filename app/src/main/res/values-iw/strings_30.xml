@@ -52,6 +52,11 @@
         <br>
         אלגוריתם: Complement Naive Bayes. <br>
         <br>
+        תכונה זו היא כעת <warn>ניסיונית</warn> ועשויה להתעדכן או להוסר בגירסאות עתידיות.
+        ]]>
+    </string>
+    <string name="help_local_ai_training">
+        <![CDATA[
         אמן לפחות 50 הודעות, כולל <error>ספאם</error> ו-<highlight>דואר תקין (ham)</highlight>. ככל שתאמן יותר דוגמאות, כך הוא יהיה מדויק יותר. <br>
         <br>
         <minor><b>אימון</b></minor> <br>
@@ -76,12 +81,14 @@
     <string name="search">חיפוש</string>
     <string name="filters">מסננים</string>
     <string name="train_it_first">המודל עדיין לא אומן, אמן אותו תחילה.</string>
+    <string name="training">אימון</string>
     <string name="confirm_delete_trained_model">
         <![CDATA[
-        איפוס זה ימחק לצמיתות את המודל המאומן ואת <error><b>כל הסיווגים הידניים</b></error>.<br>
+        פעולה זו תמחק לצמיתות את המודל המאומן ואת <error><b>כל הסיווגים הידניים</b></error>.<br>
         <br>
         להמשיך?
         ]]>
     </string>
+    <string name="conflicts">נגשויות</string>
 </resources>
 

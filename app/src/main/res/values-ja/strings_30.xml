@@ -52,6 +52,11 @@
         <br>
         アルゴリズム: 補正ナイーブベイズ (Complement Naive Bayes)。<br>
         <br>
+        この機能は現在<warn>実験的</warn>なものであり、今後のリリースで更新または削除される可能性があります。
+        ]]>
+    </string>
+    <string name="help_local_ai_training">
+        <![CDATA[
         <error>スパム</error>と<highlight>ハム</highlight>（非スパム）の両方を含め、少なくとも50件のメッセージを学習させてください。学習サンプルが多いほど精度が向上します。<br>
         <br>
         <minor><b>学習手順</b></minor> <br>
@@ -76,12 +81,14 @@
     <string name="search">検索</string>
     <string name="filters">フィルター</string>
     <string name="train_it_first">モデルがまだ学習されていません。最初に学習させてください。</string>
+    <string name="training">学習</string>
     <string name="confirm_delete_trained_model">
         <![CDATA[
-        これをリセットすると、学習済みモデルと<error><b>すべての手動分類</b></error>が永久に削除されます。<br>
+        これにより学習済みモデルと<error><b>すべての手動分類</b></error>が永久に削除されます。<br>
         <br>
         続行しますか？
         ]]>
     </string>
+    <string name="conflicts">競合</string>
 </resources>
 

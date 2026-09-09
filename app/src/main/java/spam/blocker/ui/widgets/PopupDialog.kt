@@ -63,6 +63,7 @@ fun PopupDialog(
     popupSize: PopupSize? = null,
     scrollEnabled: Boolean = true,
     transparentBackground: Boolean = false,
+    contentGap: Int = 5,
     content: @Composable ColumnScope.() -> Unit,
 ) {
     if (trigger.value) {
@@ -127,7 +128,7 @@ fun PopupDialog(
                         )
                     ,
                     horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(10.dp)
+                    verticalArrangement = Arrangement.spacedBy(contentGap.dp)
                 ) {
                     // Icon
                     icon?.let {

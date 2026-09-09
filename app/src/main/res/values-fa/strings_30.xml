@@ -52,6 +52,11 @@
         <br>
         الگوریتم: Complement Naive Bayes. <br>
         <br>
+        این قابلیت در حال حاضر <warn>آزمایشی</warn> است و ممکن است در نسخه‌های بعدی به‌روزرسانی یا حذف شود.
+        ]]>
+    </string>
+    <string name="help_local_ai_training">
+        <![CDATA[
         حداقل ۵۰ پیام را آموزش دهید، شامل هر دو پیام <error>اسپم</error> و <highlight>غیر اسپم (ham)</highlight>. هر چه نمونه‌های بیشتری آموزش دهید، دقیق‌تر خواهد بود. <br>
         <br>
         <minor><b>آموزش</b></minor> <br>
@@ -76,12 +81,14 @@
     <string name="search">جستجو</string>
     <string name="filters">فیلترها</string>
     <string name="train_it_first">مدل هنوز آموزش ندیده است، ابتدا آن را آموزش دهید.</string>
+    <string name="training">آموزش</string>
     <string name="confirm_delete_trained_model">
         <![CDATA[
-        بازنشانی این بخش، مدل آموزش‌دیده و <error><b>تمام طبقه‌بندی‌های دستی</b></error> را به طور دائمی حذف خواهد کرد.<br>
+        این کار، مدل آموزش‌دیده و <error><b>تمام طبقه‌بندی‌های دستی</b></error> را به طور دائمی حذف خواهد کرد.<br>
         <br>
         ادامه می‌دهید؟
         ]]>
     </string>
+    <string name="conflicts">تداخل‌ها</string>
 </resources>
 

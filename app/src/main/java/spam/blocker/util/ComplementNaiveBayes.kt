@@ -2,6 +2,7 @@ package spam.blocker.util
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
+import java.text.Normalizer
 import kotlin.math.abs
 import kotlin.math.exp
 import kotlin.math.ln
@@ -214,7 +215,8 @@ class ComplementNaiveBayes(
         val result = mutableListOf<String>()
 
         // Replace URLs with a unified token
-        val normalizedText = text.replace(URL_REGEX, " __url__ ")
+        val normalizedText = Normalizer.normalize(text, Normalizer.Form.NFC)
+            .replace(URL_REGEX, " __url__ ")
 
         val sb = StringBuilder()
         val cjkBuffer = mutableListOf<String>()
@@ -223,9 +225,9 @@ class ComplementNaiveBayes(
             if (sb.isNotEmpty()) {
                 val tok = sb.toString().lowercase()
                 if (tok.isNotEmpty()) {
-                    // Replace pure digit tokens (OTP codes, random numbers) with __num__
+                    // Replace pure digit tokens (OTP codes, random numbers) with their length.
                     if (tok.all { it.isDigit() }) {
-                        result.add("__num__")
+                        result.add("__num_${tok.length}__")
                     } else if (tok.length >= 2) {
                         // Keep alphabetic/latin words only if length >= 2 to filter single-letter noise
                         result.add(tok)
@@ -258,13 +260,23 @@ class ComplementNaiveBayes(
                     || script == Character.UnicodeScript.HANGUL
 
             val isCurrencyOrSymbol = code in CURRENCY_AND_SYMBOLS
+            val isMark = when (Character.getType(code)) {
+                Character.NON_SPACING_MARK.toInt(),
+                Character.COMBINING_SPACING_MARK.toInt(),
+                Character.ENCLOSING_MARK.toInt() -> true
+                else -> false
+            }
+                val isWordJoiner = code == ZERO_WIDTH_JOINER
+                    || code == ZERO_WIDTH_NON_JOINER
+                    || code == CATALAN_MIDDLE_DOT
 
             when {
+                isWordJoiner -> Unit
                 isCjkOrHangul -> {
                     flushWord()
                     cjkBuffer.add(String(Character.toChars(code)))
                 }
-                Character.isLetterOrDigit(code) || Character.getType(code) == Character.NON_SPACING_MARK.toInt() -> {
+                Character.isLetterOrDigit(code) || isMark -> {
                     flushCjk()
                     sb.appendCodePoint(code)
                 }
@@ -290,5 +302,8 @@ class ComplementNaiveBayes(
         private val CURRENCY_AND_SYMBOLS = setOf(
             '$'.code, '€'.code, '£'.code, '¥'.code, '₩'.code, '₹'.code, '%'.code, '@'.code
         )
+        private const val ZERO_WIDTH_JOINER = 0x200D
+        private const val ZERO_WIDTH_NON_JOINER = 0x200C
+        private const val CATALAN_MIDDLE_DOT = 0x00B7
     }
 }

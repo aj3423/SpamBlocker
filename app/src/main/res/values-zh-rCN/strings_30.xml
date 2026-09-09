@@ -52,6 +52,11 @@
         <br>
         算法：互补朴素贝叶斯 (Complement Naive Bayes)。<br>
         <br>
+        此功能目前处于 <warn>实验性</warn> 阶段，可能会在未来的版本中更新或移除。
+        ]]>
+    </string>
+    <string name="help_local_ai_training">
+        <![CDATA[
         至少训练 50 条消息，包含 <error>垃圾信息</error> 和 <highlight>正常信息</highlight>。训练的样本越多，准确率就越高。<br>
         <br>
         <minor><b>训练</b></minor> <br>
@@ -76,12 +81,14 @@
     <string name="search">搜索</string>
     <string name="filters">过滤器</string>
     <string name="train_it_first">模型尚未训练，请先训练。</string>
+    <string name="training">训练</string>
     <string name="confirm_delete_trained_model">
         <![CDATA[
-        重置此项将永久删除已训练的模型和<error><b>所有手动分类</b></error>。<br>
+        这将永久删除已训练的模型和<error><b>所有手动分类</b></error>。<br>
         <br>
         是否继续？
         ]]>
     </string>
+    <string name="conflicts">冲突</string>
 </resources>
 

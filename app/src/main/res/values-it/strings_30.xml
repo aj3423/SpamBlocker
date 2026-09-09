@@ -52,6 +52,11 @@
         <br>
         Algoritmo: Complement Naive Bayes. <br>
         <br>
+        Questa funzionalità è attualmente <warn>sperimentale</warn> e potrebbe essere aggiornata o rimossa in versioni future.
+        ]]>
+    </string>
+    <string name="help_local_ai_training">
+        <![CDATA[
         Addestra almeno 50 messaggi, inclusi sia <error>spam</error> che <highlight>ham</highlight> (non spam). Più campioni addestri, più sarà accurato. <br>
         <br>
         <minor><b>Addestramento</b></minor> <br>
@@ -76,12 +81,14 @@
     <string name="search">Cerca</string>
     <string name="filters">Filtri</string>
     <string name="train_it_first">Modello non ancora addestrato, addestralo prima.</string>
+    <string name="training">Addestramento</string>
     <string name="confirm_delete_trained_model">
         <![CDATA[
-        La reimpostazione eliminerà permanentemente il modello addestrato e <error><b>TUTTE le classificazioni manuali</b></error>.<br>
+        Questo eliminerà permanentemente il modello addestrato e <error><b>TUTTE le classificazioni manuali</b></error>.<br>
         <br>
         Proseguire?
         ]]>
     </string>
+    <string name="conflicts">Conflitti</string>
 </resources>
 

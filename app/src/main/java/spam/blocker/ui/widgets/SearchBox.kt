@@ -15,7 +15,6 @@ import androidx.compose.ui.unit.dp
 import spam.blocker.R
 import spam.blocker.ui.M
 import spam.blocker.util.Lambda
-import spam.blocker.util.logi
 import spam.blocker.util.thenIf
 
 // A search box at the top of a list of records, e.g., history records and regex rules

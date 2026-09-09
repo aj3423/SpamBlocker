@@ -36,6 +36,7 @@ import spam.blocker.ui.M
 import spam.blocker.ui.screenHeightDp
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.widgets.AnimatedVisibleV
+import spam.blocker.ui.widgets.BalloonQuestionMark
 import spam.blocker.ui.widgets.Button
 import spam.blocker.ui.widgets.FlowRowSpaced
 import spam.blocker.ui.widgets.GreyIcon
@@ -48,7 +49,6 @@ import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.PriorityBox
 import spam.blocker.ui.widgets.PriorityLabel
 import spam.blocker.ui.widgets.ResIcon16
-import spam.blocker.ui.widgets.ResIcon18
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.SearchBox
 import spam.blocker.ui.widgets.Section
@@ -120,7 +120,7 @@ private fun SmsCard(info: SmsCardInfo) {
             // SMS Content
             val isSpam = info.heuristic?.let { it > spf.threshold }
             Text(
-                text = info.content.truncate(100),
+                text = info.content.truncate(200),
                 modifier = M.fillMaxSize().padding(horizontal = 10.dp, vertical = 8.dp),
                 color = when (isSpam) {
                     null -> C.textGrey
@@ -204,7 +204,7 @@ fun TrainingDialog(trigger: MutableState<Boolean>) {
                 .toMutableStateList()
         }
 
-        var cnb = remember { trainCNB() }
+        val cnb = remember { trainCNB() }
         val allSmss = remember { loadSmsCards() }
         val filter = remember { mutableStateOf("") }
         var showHam by remember { mutableStateOf(true) }
@@ -212,23 +212,43 @@ fun TrainingDialog(trigger: MutableState<Boolean>) {
         var showUnlabeled by remember { mutableStateOf(true) }
         val showFilter = remember { mutableStateOf(false) }
 
+        val threshold = spf.NaiveBayes(ctx).threshold
+        fun isConflict(sms: SmsCardInfo): Boolean {
+            if (sms.isSpam == null || sms.heuristic == null) return false
+            val isSpam = sms.heuristic > threshold
+            return sms.isSpam != isSpam
+        }
+
+        val allConflicts by remember {
+            derivedStateOf {
+                allSmss.filter { isConflict(it) }
+            }
+        }
+        var showConflictOnly by remember { mutableStateOf(false) }
+
         val visibleSmss by remember {
-        derivedStateOf {
-            allSmss
-                .filter { sms ->
-                    when (sms.isSpam) {
-                        true -> showSpam
-                        false -> showHam
-                        null -> showUnlabeled
+            derivedStateOf {
+                allSmss
+                    .let { list ->
+                        if (showConflictOnly) {
+                            list.filter { isConflict(it) }
+                        } else {
+                            list.filter { sms ->
+                                when (sms.isSpam) {
+                                    true -> showSpam
+                                    false -> showHam
+                                    null -> showUnlabeled
+                                }
+                            }
+                        }
                     }
-                }
-                .let { list ->
-                    if (filter.value.isNotBlank()) {
-                        list.filter { it.content.contains(filter.value, ignoreCase = true) }
-                    } else {
-                        list
+                    .let { list ->
+                        if (filter.value.isNotBlank()) {
+                            list.filter { it.content.contains(filter.value, ignoreCase = true) }
+                        } else {
+                            list
+                        }
                     }
-                }
             }
         }
 
@@ -244,61 +264,23 @@ fun TrainingDialog(trigger: MutableState<Boolean>) {
             }
         }
 
-        // Settings Dialog
+        // Training Dialog
         PopupDialog(
             trigger = trigger,
             buttons = {
-                FlowRowSpaced(20) {
+                RowVCenterSpaced(12) {
+                    BalloonQuestionMark(Str(R.string.help_local_ai_training))
 
-                    // Delete model
-                    val resetTrigger = remember { mutableStateOf(false) }
-                    PopupDialog(resetTrigger, buttons = {
-                        StrokeButton(Str(R.string.reset), color = G.palette.error) {
-                            deleteInternalFile(ctx, Bayes.Model_File)
-                            table.clearAll(ctx)
-                            cnb = trainCNB()
-                            allSmss.clear()
-                            allSmss.addAll(loadSmsCards())
-                            resetTrigger.value = false
-                        }
-                    }) {
-                        HtmlText(Str(R.string.confirm_delete_trained_model))
-                    }
-                    StrokeButton(Str(R.string.reset), color = G.palette.error) {
-                        resetTrigger.value = true
-                    }
-
-                    // Priority
-                    val priTrigger = remember { mutableStateOf(false) }
-                    PopupDialog(priTrigger) {
-                        val spf = spf.NaiveBayes(ctx)
-                        var priHam by remember { mutableIntStateOf(spf.priorityHam) }
-                        var priSpam by remember { mutableIntStateOf(spf.prioritySpam) }
-
-                        Section(Str(R.string.ham), bgColor = C.dialogBg, titleColor = C.success) {
-                            PriorityBox(priHam) { newValue, hasError ->
-                                if (!hasError) {
-                                    priHam = newValue!!
-                                    spf.priorityHam = newValue
-                                }
-                            }
-                        }
-                        Section(Str(R.string.spam), bgColor = C.dialogBg, titleColor = C.error) {
-                            PriorityBox(priSpam) { newValue, hasError ->
-                                if (!hasError) {
-                                    priSpam = newValue!!
-                                    spf.prioritySpam = newValue
-                                }
-                            }
+                    if (allConflicts.isNotEmpty() || showConflictOnly) {
+                        ToggleButton(
+                            enabled = showConflictOnly,
+                            content = { Text("${Str(R.string.conflicts)} ${allConflicts.size}", color = C.warning) },
+                        ) {
+                            showConflictOnly = !showConflictOnly
                         }
                     }
-                    StrokeButton(color = C.priority, icon = {
-                        ResIcon18(R.drawable.ic_priority, color = C.priority, modifier = M.clickable {
-                            priTrigger.value = true
-                        })
-                    })
 
-                    // Test
+                    // Test Button
                     StrokeButton(Str(R.string.test), color = G.palette.teal200) {
                         allSmss.indices.forEach { index ->
                             val info = allSmss[index]
@@ -434,7 +416,7 @@ fun TrainingDialog(trigger: MutableState<Boolean>) {
 
 
 @Composable
-fun MachineLearningButtonText(
+fun LocalAIButtonText(
     forceRefresh: Boolean
 ) {
     val C = G.palette
@@ -466,6 +448,69 @@ fun MachineLearningButtonText(
     }
 }
 
+@Composable
+fun LocalAISettings(
+    trigger: MutableState<Boolean>
+) {
+    val ctx = LocalContext.current
+    val C = G.palette
+
+    PopupDialog(trigger, contentGap = 0, buttons = {
+        FlowRowSpaced(8) {
+
+            // "Reset" Button
+            val resetTrigger = remember { mutableStateOf(false) }
+            PopupDialog(resetTrigger, buttons = {
+                StrokeButton(Str(R.string.reset), color = G.palette.error) {
+                    deleteInternalFile(ctx, Bayes.Model_File)
+                    BayesTable.clearAll(ctx)
+                    resetTrigger.value = false
+                }
+            }) {
+                HtmlText(Str(R.string.confirm_delete_trained_model))
+            }
+            StrokeButton(Str(R.string.reset), color = G.palette.error) {
+                resetTrigger.value = true
+            }
+
+            // "Training" Button
+            val trainingTrigger = remember { mutableStateOf(false) }
+            TrainingDialog(trainingTrigger)
+            StrokeButton(
+                label = Str(R.string.training),
+                color = C.textGrey,
+                icon = { GreyIcon18(R.drawable.ic_training) }
+            ) {
+                G.permissionChain.ask(ctx, listOf(PermissionWrapper(Permission.readSMS))) { granted ->
+                    if (granted)
+                        trainingTrigger.value = true
+                }
+            }
+        }
+    }) {
+        // Priority
+        val spf = spf.NaiveBayes(ctx)
+        var priHam by remember { mutableIntStateOf(spf.priorityHam) }
+        var priSpam by remember { mutableIntStateOf(spf.prioritySpam) }
+
+        Section(Str(R.string.ham), bgColor = C.dialogBg, titleColor = C.success) {
+            PriorityBox(priHam) { newValue, hasError ->
+                if (!hasError) {
+                    priHam = newValue!!
+                    spf.priorityHam = newValue
+                }
+            }
+        }
+        Section(Str(R.string.spam), bgColor = C.dialogBg, titleColor = C.error) {
+            PriorityBox(priSpam) { newValue, hasError ->
+                if (!hasError) {
+                    priSpam = newValue!!
+                    spf.prioritySpam = newValue
+                }
+            }
+        }
+    }
+}
 
 @Composable
 fun LocalAI() {
@@ -476,23 +521,15 @@ fun LocalAI() {
         var isEnabled by remember { mutableStateOf(spf.isEnabled) }
 
         if (isEnabled) {
-            val trigger = remember { mutableStateOf(false) }
-            TrainingDialog(trigger)
-
+            val settingsTrigger = remember { mutableStateOf(false) }
+            LocalAISettings(settingsTrigger)
             Button(
                 content = {
-                    //  Refresh MachineLearningButtonText when dialog gets closed
-                    MachineLearningButtonText(trigger.value)
+                    //  Refresh LocalAIButtonText when dialog gets closed
+                    LocalAIButtonText(settingsTrigger.value)
                 }
             ) {
-                G.permissionChain.ask(
-                    ctx,
-                    listOf(PermissionWrapper(Permission.readSMS))
-                ) { granted ->
-                    if (granted) {
-                        trigger.value = true
-                    }
-                }
+                settingsTrigger.value = true
             }
         }
 
@@ -520,7 +557,7 @@ fun LocalAISummary() {
                     // Icon
                     GreyIcon(R.drawable.ic_ai, modifier = M.size(22.dp))
 
-                    MachineLearningButtonText(false)
+                    LocalAIButtonText(false)
                 }
             }
         )

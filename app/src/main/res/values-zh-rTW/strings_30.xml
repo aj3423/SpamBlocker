@@ -52,6 +52,11 @@
         <br>
         演算法：互補樸素貝葉斯 (Complement Naive Bayes)。<br>
         <br>
+        此功能目前處於 <warn>實驗性</warn> 階段，可能會在未來的版本中更新或移除。
+        ]]>
+    </string>
+    <string name="help_local_ai_training">
+        <![CDATA[
         至少訓練 50 條訊息，包含 <error>垃圾訊息</error> 和 <highlight>正常訊息</highlight>。訓練的樣本越多，準確率就越高。<br>
         <br>
         <minor><b>訓練</b></minor> <br>
@@ -76,12 +81,14 @@
     <string name="search">搜尋</string>
     <string name="filters">過濾器</string>
     <string name="train_it_first">模型尚未訓練，請先訓練。</string>
+    <string name="training">訓練</string>
     <string name="confirm_delete_trained_model">
         <![CDATA[
-        重置此項將永久刪除已訓練的模型和<error><b>所有手動分類</b></error>。<br>
+        這將永久刪除已訓練的模型和<error><b>所有手動分類</b></error>。<br>
         <br>
         是否繼續？
         ]]>
     </string>
+    <string name="conflicts">衝突</string>
 </resources>
 

@@ -52,6 +52,11 @@
         <br>
         Algoritmo: Complement Naive Bayes. <br>
         <br>
+        Esta función é actualmente <warn>experimental</warn> e pode actualizarse ou eliminarse en futuras versións.
+        ]]>
+    </string>
+    <string name="help_local_ai_training">
+        <![CDATA[
         Adestra polo menos 50 mensaxes, incluíndo tanto <error>spam</error> como <highlight>ham</highlight> (non spam). Cantas máis mostras adestres, máis preciso será. <br>
         <br>
         <minor><b>Adestramento</b></minor> <br>
@@ -76,12 +81,14 @@
     <string name="search">Buscar</string>
     <string name="filters">Filtros</string>
     <string name="train_it_first">O modelo aínda non se adestrou, adéstrao primeiro.</string>
+    <string name="training">Adestramento</string>
     <string name="confirm_delete_trained_model">
         <![CDATA[
-        O restablecemento eliminará permanentemente o modelo adestrado e <error><b>TODAS as clasificacións manuais</b></error>.<br>
+        Isto eliminará permanentemente o modelo adestrado e <error><b>TODAS as clasificacións manuais</b></error>.<br>
         <br>
         Continuar?
         ]]>
     </string>
+    <string name="conflicts">Conflitos</string>
 </resources>
 

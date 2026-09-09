@@ -52,6 +52,11 @@
         <br>
         Algorisme: Complement Naive Bayes. <br>
         <br>
+        Aquesta funció és actualment <warn>experimental</warn> i es pot actualitzar o eliminar en futures versions.
+        ]]>
+    </string>
+    <string name="help_local_ai_training">
+        <![CDATA[
         Entreneu almenys 50 missatges, inclosos tant <error>correu brossa</error> com <highlight>missatges legítims</highlight>. Com més mostres entreneu, més precís serà. <br>
         <br>
         <minor><b>Entrenament</b></minor> <br>
@@ -76,12 +81,14 @@
     <string name="search">Cerca</string>
     <string name="filters">Filtres</string>
     <string name="train_it_first">El model encara no s\'ha entrenat, entrena\'l primer.</string>
+    <string name="training">Entrenament</string>
     <string name="confirm_delete_trained_model">
         <![CDATA[
-        En restablir això, es suprimirà permanentment el model entrenat i <error><b>TOTES les classificacions manuals</b></error>.<br>
+        Això suprimirà permanentment el model entrenat i <error><b>TOTES les classificacions manuals</b></error>.<br>
         <br>
         Voleu continuar?
         ]]>
     </string>
+    <string name="conflicts">Conflictes</string>
 </resources>
 

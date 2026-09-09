@@ -52,6 +52,11 @@
         <br>
         Algoritmo: Complement Naive Bayes. <br>
         <br>
+        Este recurso é atualmente <warn>experimental</warn> e pode ser atualizado ou removido em versões futuras.
+        ]]>
+    </string>
+    <string name="help_local_ai_training">
+        <![CDATA[
         Treine pelo menos 50 mensagens, incluindo tanto <error>spam</error> quanto <highlight>ham</highlight> (não spam). Quanto mais amostras você treinar, mais preciso ele será. <br>
         <br>
         <minor><b>Treinamento</b></minor> <br>
@@ -76,12 +81,14 @@
     <string name="search">Pesquisar</string>
     <string name="filters">Filtros</string>
     <string name="train_it_first">Modelo ainda não treinado, treine-o primeiro.</string>
+    <string name="training">Treinamento</string>
     <string name="confirm_delete_trained_model">
         <![CDATA[
-        Redefinir isso excluirá permanentemente o modelo treinado e <error><b>TODAS as classificações manuais</b></error>.<br>
+        Isso excluirá permanentemente o modelo treinado e <error><b>TODAS as classificações manuais</b></error>.<br>
         <br>
         Prosseguir?
         ]]>
     </string>
+    <string name="conflicts">Conflitos</string>
 </resources>
 

@@ -52,6 +52,11 @@
         <br>
         Алгоритм: Комплементарный наивный байесовский классификатор (Complement Naive Bayes). <br>
         <br>
+        Эта функция в настоящее время является <warn>экспериментальной</warn> и может быть обновлена или удалена в будущих релизах.
+        ]]>
+    </string>
+    <string name="help_local_ai_training">
+        <![CDATA[
         Обучите минимум 50 сообщений, включая как <error>спам</error>, так и <highlight>хам</highlight> (не-спам). Чем больше образцов вы обучите, тем точнее будет фильтр. <br>
         <br>
         <minor><b>Обучение</b></minor> <br>
@@ -76,12 +81,14 @@
     <string name="search">Поиск</string>
     <string name="filters">Фильтры</string>
     <string name="train_it_first">Модель еще не обучена, сначала обучите ее.</string>
+    <string name="training">Обучение</string>
     <string name="confirm_delete_trained_model">
         <![CDATA[
-        Сброс навсегда удалит обученную модель и <error><b>ВСЕ ручные классификации</b></error>.<br>
+        Это навсегда удалит обученную модель и <error><b>ВСЕ ручные классификации</b></error>.<br>
         <br>
         Продолжить?
         ]]>
     </string>
+    <string name="conflicts">Конфликты</string>
 </resources>
 

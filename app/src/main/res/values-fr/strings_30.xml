@@ -52,6 +52,11 @@
         <br>
         Algorithme : Complement Naive Bayes. <br>
         <br>
+        Cette fonctionnalité est actuellement <warn>expérimentale</warn> et peut être mise à jour ou supprimée dans de futures versions.
+        ]]>
+    </string>
+    <string name="help_local_ai_training">
+        <![CDATA[
         Entraînez au moins 50 messages, incluant à la fois du <error>spam</error> et du <highlight>ham</highlight> (non-spam). Plus vous entraînez d\'échantillons, plus il sera précis. <br>
         <br>
         <minor><b>Entraînement</b></minor> <br>
@@ -76,12 +81,14 @@
     <string name="search">Recherche</string>
     <string name="filters">Filtres</string>
     <string name="train_it_first">Modèle non encore entraîné, entraînez-le d\'abord.</string>
+    <string name="training">Entraînement</string>
     <string name="confirm_delete_trained_model">
         <![CDATA[
-        La réinitialisation supprimera définitivement le modèle entraîné et <error><b>TOUTES les classifications manuelles</b></error>.<br>
+        Cela supprimera définitivement le modèle entraîné et <error><b>TOUTES les classifications manuelles</b></error>.<br>
         <br>
         Continuer ?
         ]]>
     </string>
+    <string name="conflicts">Conflits</string>
 </resources>
 
