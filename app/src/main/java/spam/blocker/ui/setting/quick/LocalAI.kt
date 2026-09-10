@@ -226,12 +226,12 @@ fun TrainingDialog(trigger: MutableState<Boolean>) {
                 allSmss.filter { isConflict(it) }
             }
         }
-        var showConflictOnly by remember { mutableStateOf(false) }
+        var showConflicts by remember { mutableStateOf(false) }
 
         // Hide "Conflicts: 0" after the last conflict has been resolved.
         LaunchedEffect(allConflicts.isEmpty()) {
-            if (showConflictOnly && allConflicts.isEmpty()) {
-                showConflictOnly = false
+            if (showConflicts && allConflicts.isEmpty()) {
+                showConflicts = false
             }
         }
 
@@ -240,7 +240,7 @@ fun TrainingDialog(trigger: MutableState<Boolean>) {
                 val fuzzyFilter = FuzzyFilter(filter.value)
                 allSmss
                     .let { list ->
-                        if (showConflictOnly) {
+                        if (showConflicts) {
                             list.filter { isConflict(it) }
                         } else {
                             list.filter { sms ->
@@ -318,12 +318,12 @@ fun TrainingDialog(trigger: MutableState<Boolean>) {
                         )
 
                         // Conflicts
-                        if (allConflicts.isNotEmpty() || showConflictOnly) {
+                        if (allConflicts.isNotEmpty() || showConflicts) {
                             ToggleButton(
-                                enabled = showConflictOnly,
+                                enabled = showConflicts,
                                 content = { Text("${Str(R.string.conflicts)} ${allConflicts.size}", color = C.warning) },
                             ) {
-                                showConflictOnly = !showConflictOnly
+                                showConflicts = !showConflicts
                             }
                         }
 
@@ -335,7 +335,7 @@ fun TrainingDialog(trigger: MutableState<Boolean>) {
                         }
                         AnimatedVisibleV(showFilter.value) {
                             val debouncer = remember { LockedDebouncer(waitMs = 300) }
-                            SearchBox(showFilter, filter, autoFocus = false) {
+                            SearchBox(showFilter, filter) {
                                 debouncer.debounce {
                                 }
                             }

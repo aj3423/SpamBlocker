@@ -3,14 +3,11 @@ package spam.blocker.ui.widgets
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.unit.dp
 import spam.blocker.R
 import spam.blocker.ui.M
@@ -28,7 +25,12 @@ fun SearchBox(
 ) {
     if (visible.value) {
         val focusRequester = remember { FocusRequester() }
-        var textFieldLoaded by remember { mutableStateOf(false) }
+
+        if (autoFocus) {
+            LaunchedEffect(Unit) {
+                focusRequester.requestFocus()
+            }
+        }
 
         StrInputBox(
             text = filter.value,
@@ -52,14 +54,7 @@ fun SearchBox(
                 }
             },
             modifier = M.thenIf(autoFocus) {
-                // Auto focus, and force scroll to input box.
                 focusRequester(focusRequester)
-                onGloballyPositioned {
-                    if (!textFieldLoaded) {
-                        focusRequester.requestFocus() // IMPORTANT
-                        textFieldLoaded = true // stop cyclic recompositions
-                    }
-                }
             }
         )
 
