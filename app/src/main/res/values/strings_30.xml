@@ -61,7 +61,8 @@
         <br>
         <minor><b>Training</b></minor> <br>
         <br>
-        1. It shows about 1000 recent SMS records. <br>
+        1. It shows about 1000 recent SMS records from unknown numbers,
+          messages from contacts are excluded since they are always allowed. <br>
         <br>
         2. Swipe some records to train the model. <br>
         &emsp;  Swipe <error>left</error> - mark as <error>spam</error> <br>

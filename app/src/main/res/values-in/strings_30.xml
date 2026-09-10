@@ -61,7 +61,8 @@
         <br>
         <minor><b>Pelatihan</b></minor> <br>
         <br>
-        1. Menampilkan sekitar 1000 catatan SMS terbaru. <br>
+        1. Menampilkan sekitar 1000 catatan SMS terbaru dari nomor tidak dikenal,
+          pesan dari kontak dikecualikan karena selalu diizinkan. <br>
         <br>
         2. Geser beberapa catatan untuk melatih model. <br>
         &emsp; Geser ke <error>kiri</error> - tandai sebagai <error>spam</error> <br>

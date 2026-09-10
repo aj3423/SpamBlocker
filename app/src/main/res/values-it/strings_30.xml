@@ -61,7 +61,8 @@
         <br>
         <minor><b>Addestramento</b></minor> <br>
         <br>
-        1. Mostra circa 1000 record SMS recenti. <br>
+        1. Mostra circa 1000 record SMS recenti da numeri sconosciuti,
+          i messaggi dai contatti sono esclusi poiché sono sempre consentiti. <br>
         <br>
         2. Scorri alcuni record per addestrare il modello. <br>
         &emsp; Scorri a <error>sinistra</error> - contrassegna come <error>spam</error> <br>

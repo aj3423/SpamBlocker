@@ -61,7 +61,8 @@
         <br>
         <minor><b>Training</b></minor> <br>
         <br>
-        1. Zeigt etwa 1000 aktuelle SMS-Einträge an. <br>
+        1. Zeigt etwa 1000 aktuelle SMS-Einträge von unbekannten Nummern an,
+          Nachrichten von Kontakten sind ausgeschlossen, da diese immer erlaubt sind. <br>
         <br>
         2. Wischen Sie über einige Einträge, um das Modell zu trainieren. <br>
         &emsp; Nach <error>links</error> wischen - als <error>Spam</error> markieren <br>

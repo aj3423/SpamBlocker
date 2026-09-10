@@ -61,7 +61,8 @@
         <br>
         <minor><b>Adestramento</b></minor> <br>
         <br>
-        1. Mostra uns 1000 rexistros de SMS recentes. <br>
+        1. Mostra uns 1000 rexistros de SMS recentes de números descoñecidos,
+          exclúense os mensaxes de contactos xa que sempre están permitidos. <br>
         <br>
         2. Desprazase sobre algúns rexistros para adestrar o modelo. <br>
         &emsp; Desprazar cara á <error>esquerda</error> - marcar como <error>spam</error> <br>

@@ -15,6 +15,7 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
@@ -31,6 +32,7 @@ import spam.blocker.R
 import spam.blocker.db.BayesSample
 import spam.blocker.db.BayesTable
 import spam.blocker.db.SmsTable
+import spam.blocker.db.bayesSampleHash
 import spam.blocker.def.Def
 import spam.blocker.ui.M
 import spam.blocker.ui.screenHeightDp
@@ -39,6 +41,7 @@ import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.BalloonQuestionMark
 import spam.blocker.ui.widgets.Button
 import spam.blocker.ui.widgets.FlowRowSpaced
+import spam.blocker.ui.widgets.GradientDivider
 import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.GreyIcon18
 import spam.blocker.ui.widgets.GreyLabel
@@ -63,6 +66,7 @@ import spam.blocker.util.ComplementNaiveBayes
 import spam.blocker.util.Contacts
 import spam.blocker.util.FileUtils.deleteInternalFile
 import spam.blocker.util.FileUtils.writeInternalFile
+import spam.blocker.util.FuzzyFilter
 import spam.blocker.util.LockedDebouncer
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionWrapper
@@ -148,7 +152,6 @@ private fun SmsCard(info: SmsCardInfo) {
     }
 }
 
-
 @Composable
 fun TrainingDialog(trigger: MutableState<Boolean>) {
     if (trigger.value) {
@@ -158,11 +161,9 @@ fun TrainingDialog(trigger: MutableState<Boolean>) {
         val aDay = 86400
         val aYear = 365 * aDay
 
-        val table = BayesTable
-
         fun trainCNB(): ComplementNaiveBayes {
             val model = ComplementNaiveBayes()
-            val dbSamples = table.listAll(ctx).map { Pair(it.content, it.isSpam) }
+            val dbSamples = BayesTable.listAll(ctx).map { Pair(it.content, it.isSpam) }
             model.train(dbSamples)
             return model
         }
@@ -173,11 +174,11 @@ fun TrainingDialog(trigger: MutableState<Boolean>) {
             ).filter { // exclude texts from contacts
                 Contacts.findContactByRawNumber(ctx, it.rawNumber) == null
             }.map {
-                SmsCardInfo(number = it.rawNumber, content = it.content, hash = it.content.hashCode(), time = it.time)
+                SmsCardInfo(number = it.rawNumber, content = it.content, hash = bayesSampleHash(it.time, it.content), time = it.time)
             }
 
             // Get all training data
-            val dbSmss = table.listAll(ctx).map {
+            val sampleDbSmss = BayesTable.listAll(ctx).map {
                 SmsCardInfo(
                     content = it.content, hash = it.hash, isSpam = it.isSpam,
                     number = "", time = 0,
@@ -187,14 +188,15 @@ fun TrainingDialog(trigger: MutableState<Boolean>) {
             // Get from local db for testing
             val testSmss = SmsTable().getRecordsWithinSeconds(ctx, durationSeconds = aDay)
                 .map {
-                    SmsCardInfo(number = it.peer, content = it.extraInfo ?: "", hash = (it.extraInfo ?: "").hashCode(), time = it.time, isTest = true)
+                    val content = it.extraInfo ?: ""
+                    SmsCardInfo(number = it.peer, content = content, hash = bayesSampleHash(it.time, content), time = it.time, isTest = true)
                 }
 
-            (testSmss + realSmss + dbSmss)
-                .distinctBy { it.hash }
+            (testSmss + realSmss + sampleDbSmss)
+                .distinctBy { it.hash } // real sms and sample in db can have the same hash
                 .map {
                     if (it.isSpam == null) {
-                        val dbCat = table.findByHash(ctx, it.hash)?.isSpam
+                        val dbCat = BayesTable.findByHash(ctx, it.hash)?.isSpam
                         it.copy(isSpam = dbCat)
                     } else {
                         it
@@ -226,8 +228,16 @@ fun TrainingDialog(trigger: MutableState<Boolean>) {
         }
         var showConflictOnly by remember { mutableStateOf(false) }
 
+        // Hide "Conflicts: 0" after the last conflict has been resolved.
+        LaunchedEffect(allConflicts.isEmpty()) {
+            if (showConflictOnly && allConflicts.isEmpty()) {
+                showConflictOnly = false
+            }
+        }
+
         val visibleSmss by remember {
             derivedStateOf {
+                val fuzzyFilter = FuzzyFilter(filter.value)
                 allSmss
                     .let { list ->
                         if (showConflictOnly) {
@@ -244,7 +254,9 @@ fun TrainingDialog(trigger: MutableState<Boolean>) {
                     }
                     .let { list ->
                         if (filter.value.isNotBlank()) {
-                            list.filter { it.content.contains(filter.value, ignoreCase = true) }
+                            list.filter {
+                                fuzzyFilter.matches(it.content)
+                            }
                         } else {
                             list
                         }
@@ -271,15 +283,6 @@ fun TrainingDialog(trigger: MutableState<Boolean>) {
                 RowVCenterSpaced(12) {
                     BalloonQuestionMark(Str(R.string.help_local_ai_training))
 
-                    if (allConflicts.isNotEmpty() || showConflictOnly) {
-                        ToggleButton(
-                            enabled = showConflictOnly,
-                            content = { Text("${Str(R.string.conflicts)} ${allConflicts.size}", color = C.warning) },
-                        ) {
-                            showConflictOnly = !showConflictOnly
-                        }
-                    }
-
                     // Test Button
                     StrokeButton(Str(R.string.test), color = G.palette.teal200) {
                         allSmss.indices.forEach { index ->
@@ -293,24 +296,38 @@ fun TrainingDialog(trigger: MutableState<Boolean>) {
         ) {
             Column {
                 // Filters
-                Section(Str(R.string.filters), bgColor = C.dialogBg) {
+//                Section(Str(R.string.filters), bgColor = C.dialogBg) {
                     FlowRowSpaced(4) {
+                        // Ham
                         ToggleButton(
                             enabled = showHam,
                             content = { Text("${Str(R.string.ham)} %s".formatAnnotated("${counts.ham}".A(C.success))) },
                             onClick = { showHam = !showHam }
                         )
+                        // Spam
                         ToggleButton(
                             enabled = showSpam,
                             content = { Text("${Str(R.string.spam)} %s".formatAnnotated("${counts.spam}".A(C.error))) },
                             onClick = { showSpam = !showSpam}
                         )
+                        // Unlabeled
                         ToggleButton(
                             enabled = showUnlabeled,
                             content = { Text("${Str(R.string.unlabeled)} %s".formatAnnotated("${counts.unlabeled}".A(C.disabled))) },
                             onClick = { showUnlabeled = !showUnlabeled}
                         )
-                        // Filter
+
+                        // Conflicts
+                        if (allConflicts.isNotEmpty() || showConflictOnly) {
+                            ToggleButton(
+                                enabled = showConflictOnly,
+                                content = { Text("${Str(R.string.conflicts)} ${allConflicts.size}", color = C.warning) },
+                            ) {
+                                showConflictOnly = !showConflictOnly
+                            }
+                        }
+
+                        // Search
                         AnimatedVisibleV(!showFilter.value) {
                             StrokeButton(Str(R.string.search), color = C.textGrey, icon = { GreyIcon18(R.drawable.ic_find) }) {
                                 showFilter.value = true
@@ -324,7 +341,9 @@ fun TrainingDialog(trigger: MutableState<Boolean>) {
                             }
                         }
                     }
-                }
+//                }
+
+                GradientDivider(modifier = M.padding(vertical = 8.dp), leftColor = C.error, rightColor = C.success)
 
                 fun saveModel() {
                     writeInternalFile(ctx, Bayes.Model_File, cnb.serialize().toByteArray())
@@ -340,7 +359,7 @@ fun TrainingDialog(trigger: MutableState<Boolean>) {
                         cnb.removeSample(content, isSpam!!)
 
                         // 2. update sample db
-                        table.delByHash(ctx, hash)
+                        BayesTable.delByHash(ctx, hash)
                     } else { // swipe left/right
                         // 1. update model
                         if (isSpam == null) { // currently unlabeled, label it
@@ -350,15 +369,15 @@ fun TrainingDialog(trigger: MutableState<Boolean>) {
                        }
 
                         // 2. update sample db
-                        val rec = table.findByHash(ctx, hash)
+                        val rec = BayesTable.findByHash(ctx, hash)
                         if (rec == null) {
-                            table.addNew(ctx, BayesSample(
+                            BayesTable.addNew(ctx, BayesSample(
                                 hash = hash,
                                 isSpam = asSpam,
                                 content = content
                             ) )
                         } else {
-                            table.updateById(ctx, rec.id, rec.copy(isSpam = asSpam))
+                            BayesTable.updateById(ctx, rec.id, rec.copy(isSpam = asSpam))
                         }
                     }
 
@@ -481,7 +500,10 @@ fun LocalAISettings(
                 color = C.textGrey,
                 icon = { GreyIcon18(R.drawable.ic_training) }
             ) {
-                G.permissionChain.ask(ctx, listOf(PermissionWrapper(Permission.readSMS))) { granted ->
+                G.permissionChain.ask(ctx, listOf(
+                    PermissionWrapper(Permission.contacts), // for excluding contact messages
+                    PermissionWrapper(Permission.readSMS), // for listing all messages for training
+                )) { granted ->
                     if (granted)
                         trainingTrigger.value = true
                 }

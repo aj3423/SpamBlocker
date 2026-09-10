@@ -18,9 +18,11 @@ data class BayesSample(
     val id: Long = 0,
     var isSpam: Boolean,
     val content: String,
-    val hash: Int = content.hashCode(),
+    val hash: Int,
 )
-
+fun bayesSampleHash(timestamp: Long, content: String): Int {
+    return "${timestamp}_$content".hashCode()
+}
 
 object BayesTable : BasicTable<BayesSample>(TABLE_BAYESIAN_FILTER) {
 

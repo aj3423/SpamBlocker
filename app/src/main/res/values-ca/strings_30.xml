@@ -61,7 +61,8 @@
         <br>
         <minor><b>Entrenament</b></minor> <br>
         <br>
-        1. Mostra uns 1000 registres de SMS recents. <br>
+        1. Mostra uns 1000 registres de SMS recents de números desconeguts,
+          es queden exclosos els missatges de contactes ja que sempre estan permesos. <br>
         <br>
         2. Llisqueu alguns registres per entrenar el model. <br>
         &emsp; Llisqueu a l\' <error>esquerra</error> - marqueu com a <error>correu brossa</error> <br>

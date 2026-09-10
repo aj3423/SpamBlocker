@@ -12,7 +12,7 @@ import spam.blocker.def.Def
 import spam.blocker.ui.history.HistoryOptions.showHistoryBlocked
 import spam.blocker.ui.history.HistoryOptions.showHistoryPassed
 import spam.blocker.util.Contacts
-import spam.blocker.util.regexMatches
+import spam.blocker.util.FuzzyFilter
 
 /*
   To simplify the code, this view model is used in GlobalVariables instead of viewModel<...>().
@@ -29,23 +29,19 @@ open class HistoryViewModel(
         records.clear()
 
         // Fuzzy search
-        val filterRegex = fuzzifyFilter()
+        val filter = FuzzyFilter(filter.value)
 
         records.addAll(table.listRecords(ctx).filter {
-            isVisible(ctx, it, filterRegex)
+            isVisible(ctx, it, filter)
         })
     }
 
-    // `aaa bbb` -> `.*aaa.*bbb.*`
-    fun fuzzifyFilter() : String {
-        return filter.value.replace(" ", ".*").let { ".*$it.*" }
-    }
     fun isVisible(
         ctx: Context,
         record: HistoryRecord,
 
         // provide this param when calling this function repetitively (for better performance)
-        filterRegex: String = fuzzifyFilter()
+        filter: FuzzyFilter ?= null
     ) : Boolean {
         // 1. show or not
         val show = (showHistoryPassed.value && record.isNotBlocked()) || (showHistoryBlocked.value && record.isBlocked())
@@ -56,9 +52,13 @@ open class HistoryViewModel(
         return if(!searchEnabled.value) { // not filtering
             true
         } else {
-            val contactName = Contacts.cache.findContactByRawNumber(ctx, record.peer)?.name ?: ""
-            val allText = record.peer + contactName + (record.extraInfo ?: "") + record.reason
-            filterRegex.regexMatches(allText, Def.DefaultRegexFlags)
+            if (filter == null) {
+                true
+            } else {
+                val contactName = Contacts.cache.findContactByRawNumber(ctx, record.peer)?.name ?: ""
+                val allText = record.peer + contactName + (record.extraInfo ?: "") + record.reason
+                filter.matches(text = allText)
+            }
         }
     }
     fun updateRecord(recordId: Long, changes: HistoryRecord.() -> HistoryRecord) {

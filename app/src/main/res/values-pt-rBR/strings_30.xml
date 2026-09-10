@@ -61,7 +61,8 @@
         <br>
         <minor><b>Treinamento</b></minor> <br>
         <br>
-        1. Mostra cerca de 1000 registros de SMS recentes. <br>
+        1. Mostra cerca de 1000 registros de SMS recentes de números desconhecidos,
+          mensagens de contatos são excluídas, pois são sempre permitidas. <br>
         <br>
         2. Deslize alguns registros para treinar o modelo. <br>
         &emsp;  Deslizar para a <error>esquerda</error> - marcar como <error>spam</error> <br>

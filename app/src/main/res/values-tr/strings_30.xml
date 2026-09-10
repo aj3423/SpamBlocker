@@ -61,7 +61,8 @@
         <br>
         <minor><b>Eğitim</b></minor> <br>
         <br>
-        1. Yaklaşık 1000 son SMS kaydını gösterir. <br>
+        1. Bilinmeyen numaralardan gelen yaklaşık 1000 son SMS kaydını gösterir,
+          kişilerden gelen mesajlar her zaman izin verildiği için hariç tutulur. <br>
         <br>
         2. Modeli eğitmek için bazı kayıtları kaydırın. <br>
         &emsp; <error>Sola</error> kaydırın - <error>spam</error> olarak işaretleyin <br>

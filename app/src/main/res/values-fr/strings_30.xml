@@ -61,7 +61,8 @@
         <br>
         <minor><b>Entraînement</b></minor> <br>
         <br>
-        1. Affiche environ 1000 enregistrements SMS récents. <br>
+        1. Affiche environ 1000 enregistrements SMS récents provenant de numéros inconnus,
+          les messages des contacts sont exclus car ils sont toujours autorisés. <br>
         <br>
         2. Balayez certains enregistrements pour entraîner le modèle. <br>
         &emsp; Balayer vers la <error>gauche</error> - marquer comme <error>spam</error> <br>

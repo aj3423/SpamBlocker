@@ -474,7 +474,6 @@ object Util {
         }
     }
 
-
     private var cacheAppList: List<AppInfo>? = null
     private val lock_1 = Any()
 
