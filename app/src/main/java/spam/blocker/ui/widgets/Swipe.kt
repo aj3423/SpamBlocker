@@ -180,10 +180,11 @@ fun SwipeWrapper(
         ) {
             content()
         }
-    }
+        }
 }
 
-// A workaround to  https://issuetracker.google.com/issues/367660226
+// Fixes issue: fast-short-swipe always trigger the swipe regardless of the swiping distance,
+// A workaround to https://issuetracker.google.com/issues/367660226
 private class DistanceOnlyFlingBehavior(
     private val state: AnchoredDraggableState<Anchor>,
     private val swipeDistance: Float,

@@ -232,7 +232,8 @@ class Db private constructor(
                     "$COLUMN_DESC TEXT, " +
                     "$COLUMN_ACTIONS TEXT, " +
                     "$COLUMN_ENABLED INTEGER, " +
-                    "$COLUMN_AUTO_REPORT_TYPES INTEGER" +
+                    "$COLUMN_AUTO_REPORT_TYPES INTEGER, " +
+                    "$COLUMN_AUTO_REPORT_REGEX_FILTER TEXT " +
                     ")"
         )
         // bot
