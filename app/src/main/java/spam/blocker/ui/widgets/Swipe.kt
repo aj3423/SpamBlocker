@@ -290,3 +290,17 @@ fun BgLaunchApp(
         )
     }
 }
+
+// Fulfilled with solid color.
+@Composable
+fun BgFulfilled(
+    color: Color
+) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .clip(RoundedCornerShape(6.dp))
+            .background(color)
+            .padding(horizontal = 16.dp, vertical = 4.dp),
+    ) {}
+}

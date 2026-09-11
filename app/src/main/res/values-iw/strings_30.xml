@@ -52,7 +52,14 @@
         <br>
         אלגוריתם: Complement Naive Bayes. <br>
         <br>
-        תכונה זו היא כעת <warn>ניסיונית</warn> ועשויה להתעדכן או להוסר בגירסאות עתידיות.
+        תכונה זו היא כעת <warn>ניסיונית</warn> ועשויה להתעדכן או להוסר בגירסאות עתידיות. <br>
+        <br>
+        <priority><b>עדיפויות:</b></priority> <br>
+        &ensp; <priority><b>1</b></priority> עבור <highlight>אישור</highlight> <br>
+        &ensp; <priority><b>-1</b></priority> עבור <error>חסימה</error> <br>
+        ערכי ברירת מחדל אלה נמוכים ממסננים כמו
+          <highlight>אנשי קשר</highlight>(<priority><b>10</b></priority>) ו-<error>כללי Regex</error>(<priority><b>0</b></priority>),
+        שתופסים קדימות בשל אמינותם הגבוהה יותר.
         ]]>
     </string>
     <string name="help_local_ai_training">

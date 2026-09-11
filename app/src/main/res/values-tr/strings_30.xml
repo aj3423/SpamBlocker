@@ -52,7 +52,14 @@
         <br>
         Algoritma: Tamamlayıcı Naive Bayes (Complement Naive Bayes). <br>
         <br>
-        Bu özellik şu anda <warn>deneyseldir</warn> ve gelecek sürümlerde güncellenebilir veya kaldırılabilir.
+        Bu özellik şu anda <warn>deneyseldir</warn> ve gelecek sürümlerde güncellenebilir veya kaldırılabilir. <br>
+        <br>
+        <priority><b>Öncelikler:</b></priority> <br>
+        &ensp; <highlight>Izin verme</highlight> için <priority><b>1</b></priority> <br>
+        &ensp; <error>Engelleme</error> için <priority><b>-1</b></priority> <br>
+        Bu varsayılan değerler, daha yüksek güvenilirlikleri nedeniyle önceliğe sahip olan
+          <highlight>Kişiler</highlight>(<priority><b>10</b></priority>) ve <error>Regex Kuralları</error>(<priority><b>0</b></priority>)
+        gibi filtrelerden daha düşüktür.
         ]]>
     </string>
     <string name="help_local_ai_training">

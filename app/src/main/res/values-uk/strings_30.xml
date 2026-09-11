@@ -52,7 +52,14 @@
         <br>
         Алгоритм: Комплементарний наївний байєсівський класифікатор (Complement Naive Bayes). <br>
         <br>
-        Ця функція наразі є <warn>експериментальною</warn> і може бути оновлена або видалена в майбутніх релізах.
+        Ця функція наразі є <warn>експериментальною</warn> і може бути оновлена або видалена в майбутніх релізах. <br>
+        <br>
+        <priority><b>Пріоритети:</b></priority> <br>
+        &ensp; <priority><b>1</b></priority> для <highlight>дозволу</highlight> <br>
+        &ensp; <priority><b>-1</b></priority> для <error>блокування</error> <br>
+        Ці значення за замовчуванням нижчі, ніж у таких фільтрів, як
+          <highlight>Контакти</highlight>(<priority><b>10</b></priority>) та <error>Правила регулярних виразів</error>(<priority><b>0</b></priority>),
+        які мають перевагу завдяки своїй вищій надійності.
         ]]>
     </string>
     <string name="help_local_ai_training">

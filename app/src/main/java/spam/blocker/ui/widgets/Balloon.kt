@@ -83,6 +83,7 @@ fun BalloonWrapper(
 
     TooltipBox(
         positionProvider = TooltipDefaults.rememberRichTooltipPositionProvider(),
+        focusable = true, // make sure tapping outside the tooltip only closes the tooltip, not the popup dialog
         tooltip = {
             RichTooltip(
                 shape = RoundedCornerShape(BalloonCornerRadius.dp),

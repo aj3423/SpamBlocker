@@ -52,7 +52,14 @@
         <br>
         演算法：互補樸素貝葉斯 (Complement Naive Bayes)。<br>
         <br>
-        此功能目前處於 <warn>實驗性</warn> 階段，可能會在未來的版本中更新或移除。
+        此功能目前處於 <warn>實驗性</warn> 階段，可能會在未來的版本中更新或移除。<br>
+        <br>
+        <priority><b>優先級：</b></priority> <br>
+        &ensp; <highlight>允許</highlight> 為 <priority><b>1</b></priority> <br>
+        &ensp; <error>攔截</error> 為 <priority><b>-1</b></priority> <br>
+        這些預設值低於像
+          <highlight>聯絡人</highlight>(<priority><b>10</b></priority>) 和 <error>正則表達式規則</error>(<priority><b>0</b></priority>) 這樣的過濾器，
+        後者因更高的可靠性而優先生效。
         ]]>
     </string>
     <string name="help_local_ai_training">

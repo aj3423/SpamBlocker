@@ -52,7 +52,14 @@
         <br>
         算法：互补朴素贝叶斯 (Complement Naive Bayes)。<br>
         <br>
-        此功能目前处于 <warn>实验性</warn> 阶段，可能会在未来的版本中更新或移除。
+        此功能目前处于 <warn>实验性</warn> 阶段，可能会在未来的版本中更新或移除。<br>
+        <br>
+        <priority><b>优先级：</b></priority> <br>
+        &ensp; <highlight>允许</highlight> 为 <priority><b>1</b></priority> <br>
+        &ensp; <error>拦截</error> 为 <priority><b>-1</b></priority> <br>
+        这些默认值低于像
+          <highlight>联系人</highlight>(<priority><b>10</b></priority>) 和 <error>正则表达式规则</error>(<priority><b>0</b></priority>) 这样的过滤器，
+        后者因更高的可靠性而优先生效。
         ]]>
     </string>
     <string name="help_local_ai_training">

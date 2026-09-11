@@ -2,6 +2,7 @@ package spam.blocker.ui.setting.quick
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,6 +14,7 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material3.SwipeToDismissBoxValue.StartToEnd
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -39,6 +41,8 @@ import spam.blocker.ui.screenHeightDp
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.BalloonQuestionMark
+import spam.blocker.ui.widgets.BgFulfilled
+import spam.blocker.ui.widgets.BgLaunchApp
 import spam.blocker.ui.widgets.Button
 import spam.blocker.ui.widgets.FlowRowSpaced
 import spam.blocker.ui.widgets.GradientDivider
@@ -114,8 +118,7 @@ private fun SmsCard(info: SmsCardInfo) {
             null -> C.textGrey
             true -> C.error
             false -> C.success
-        },
-        modifier = M.padding(vertical = 4.dp)
+        }
     ) {
         Box(
             modifier = M
@@ -343,7 +346,7 @@ fun TrainingDialog(trigger: MutableState<Boolean>) {
                     }
 //                }
 
-                GradientDivider(modifier = M.padding(vertical = 8.dp), leftColor = C.error, rightColor = C.success)
+                GradientDivider(modifier = M.padding(vertical = 8.dp), leftColor = C.error, rightColor = C.success, thickness = 2.dp)
 
                 fun saveModel() {
                     writeInternalFile(ctx, Bayes.Model_File, cnb.serialize().toByteArray())
@@ -400,11 +403,15 @@ fun TrainingDialog(trigger: MutableState<Boolean>) {
                     state = lazyState,
                     modifier = M.height((screenHeightDp() * percentage / 100).dp)
                 ) {
-                    LazyColumn(state = lazyState) {
+                    LazyColumn(
+                        state = lazyState,
+                        verticalArrangement = Arrangement.spacedBy(4.dp),
+                    ) {
                         itemsIndexed(visibleSmss, key = { _, item -> item.hash }) { _, item ->
                             SwipeWrapper(
                                 left = SwipeInfo(
                                     veto = true,
+                                    background = { BgFulfilled(G.palette.error) },
                                     onSwipe = {
                                         if (item.isSpam != true)
                                             updateCategory(item, true)
@@ -412,6 +419,7 @@ fun TrainingDialog(trigger: MutableState<Boolean>) {
                                 ),
                                 right = SwipeInfo(
                                     veto = true,
+                                    background = { BgFulfilled(G.palette.success) },
                                     onSwipe = {
                                         if (item.isSpam != false)
                                             updateCategory(item, false)

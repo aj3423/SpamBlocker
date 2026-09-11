@@ -52,7 +52,14 @@
         <br>
         الخوارزمية: Complement Naive Bayes. <br>
         <br>
-        هذه الميزة حاليًا <warn>تجريبية</warn> وقد يتم تحديثها أو إزالتها في الإصدارات القادمة.
+        هذه الميزة حاليًا <warn>تجريبية</warn> وقد يتم تحديثها أو إزالتها في الإصدارات القادمة. <br>
+        <br>
+        <priority><b>الأولويات:</b></priority> <br>
+        &ensp; <priority><b>1</b></priority> لـ <highlight>السماح</highlight> <br>
+        &ensp; <priority><b>-1</b></priority> لـ <error>الحظر</error> <br>
+        هذه القيم الافتراضية أقل من الفلاتر مثل
+          <highlight>جهات الاتصال</highlight>(<priority><b>10</b></priority>) و <error>قواعد Regex</error>(<priority><b>0</b></priority>)،
+        والتي لها الأسبقية بسبب موثوقيتها العالية.
         ]]>
     </string>
     <string name="help_local_ai_training">

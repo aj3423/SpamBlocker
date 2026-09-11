@@ -52,7 +52,14 @@
         <br>
         Algoritma: Complement Naive Bayes. <br>
         <br>
-        Fitur ini saat ini <warn>eksperimental</warn> dan mungkin diperbarui atau dihapus pada rilis mendatang.
+        Fitur ini saat ini <warn>eksperimental</warn> dan mungkin diperbarui atau dihapus pada rilis mendatang. <br>
+        <br>
+        <priority><b>Prioritas:</b></priority> <br>
+        &ensp; <priority><b>1</b></priority> untuk <highlight>mengizinkan</highlight> <br>
+        &ensp; <priority><b>-1</b></priority> untuk <error>memblokir</error> <br>
+        Nilai bawaan ini lebih rendah daripada filter seperti
+          <highlight>Kontak</highlight>(<priority><b>10</b></priority>) dan <error>Aturan Regex</error>(<priority><b>0</b></priority>),
+        yang diutamakan karena keandalannya yang lebih tinggi.
         ]]>
     </string>
     <string name="help_local_ai_training">

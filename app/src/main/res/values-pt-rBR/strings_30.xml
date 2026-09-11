@@ -52,7 +52,14 @@
         <br>
         Algoritmo: Complement Naive Bayes. <br>
         <br>
-        Este recurso é atualmente <warn>experimental</warn> e pode ser atualizado ou removido em versões futuras.
+        Este recurso é atualmente <warn>experimental</warn> e pode ser atualizado ou removido em versões futuras. <br>
+        <br>
+        <priority><b>Prioridades:</b></priority> <br>
+        &ensp; <priority><b>1</b></priority> para <highlight>permitir</highlight> <br>
+        &ensp; <priority><b>-1</b></priority> para <error>bloquear</error> <br>
+        Estes valores padrão são inferiores a filtros como
+          <highlight>Contatos</highlight>(<priority><b>10</b></priority>) e <error>Regras de Regex</error>(<priority><b>0</b></priority>),
+        que têm precedência devido à sua maior confiabilidade.
         ]]>
     </string>
     <string name="help_local_ai_training">
