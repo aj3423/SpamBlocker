@@ -129,7 +129,7 @@ fun listReportableSmsAPIs(
 }
 
 // ------------ For Call --------------
-fun maybeAutoReportSpamCall(
+fun maybeAutoReportCall(
     ctx: Context,
     checkResult: ICheckResult,
     recordId: Long?,
@@ -272,10 +272,10 @@ private fun isNumberAllowedLater(ctx: Context, rawNumber: String) : Boolean {
 }
 
 // It checks:
-// 0. if the number has repeated later
-// 1. if the api is enabled
-// 2. remove duplicated apis
-// 3. filter by domain(for reporting to a specific api after query or blocked by SpamDB)
+// 1. if the number has repeated later
+// 2. if the api is enabled
+// 3. remove duplicated apis
+// 4. filter by domain(for reporting to a specific api after query or blocked by SpamDB)
 fun listReportableCallAPIs(
     ctx: Context,
     rawNumber: String,
@@ -307,10 +307,7 @@ fun listReportableCallAPIs(
     var apis = G.apiReportVM.table.listAll(ctx)
         .filter { it.enabled }
         .filter { it.actions.firstOrNull() is InterceptCall }
-        .filter { // it must contain at least 1 HttpRequest
-            val https = it.actions.filterIsInstance<HttpRequest>()
-            https.isNotEmpty()
-        }
+
 
     // 3. When auto-reporting, remove APIs that disabled this blockReason.
     if (!isManualReport) {
@@ -321,19 +318,10 @@ fun listReportableCallAPIs(
         }
     }
 
-    // 4. Remove duplicated APIs that have same domain name
-    //  (user might have added multiple instances)
-    apis = apis.distinctBy {
-        val http = it.actions.find { it is HttpRequest }
-        val url = (http as HttpRequest).url
-        val domain = domainFromUrl(url)
-        domain
-    }
-
-    // 5. Remove api that doesn't match the domain filter
+    // 4. Remove api that doesn't match the domain filter
     if (domainFilter != null) {
         apis = apis.filter {
-            val http = it.actions.find { it is HttpRequest }
+            val http = it.actions.firstOrNull { it is HttpRequest } ?: false
             val url = (http as HttpRequest).url
             val domain = domainFromUrl(url)
             domainFilter.contains(domain)
