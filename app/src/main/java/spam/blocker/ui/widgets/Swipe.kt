@@ -3,13 +3,15 @@
 package spam.blocker.ui.widgets
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.animate
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.shrinkHorizontally
 import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.AnchoredDraggableDefaults
 import androidx.compose.foundation.gestures.AnchoredDraggableState
 import androidx.compose.foundation.gestures.DraggableAnchors
+import androidx.compose.foundation.gestures.FlingBehavior
 import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.ScrollScope
 import androidx.compose.foundation.gestures.anchoredDraggable
 import androidx.compose.foundation.gestures.animateTo
 import androidx.compose.foundation.layout.Box
@@ -54,8 +56,6 @@ import spam.blocker.util.Lambda
 import kotlin.math.abs
 import kotlin.math.roundToInt
 
-
-// TODO: wait for https://issuetracker.google.com/issues/367660226 to be fixed and change fling settings accordingly.
 
 const val AnimationDuration = 200
 
@@ -107,16 +107,9 @@ fun SwipeWrapper(
     val currentLeft by rememberUpdatedState(left)
     val currentRight by rememberUpdatedState(right)
 
-    val flingBehavior = AnchoredDraggableDefaults.flingBehavior(
-        state = state,
-        positionalThreshold = {
-            // TODO: Fling settings doesn't work as expected
-            //  wait for https://issuetracker.google.com/issues/367660226
-//            0.1f * it
-            0.01f
-        },
-        animationSpec = tween(),
-    )
+    val flingBehavior = remember(state, openOffsetPx) {
+        DistanceOnlyFlingBehavior(state, openOffsetPx)
+    }
 
 
     val alpha = remember {
@@ -187,6 +180,33 @@ fun SwipeWrapper(
         ) {
             content()
         }
+    }
+}
+
+// A workaround to  https://issuetracker.google.com/issues/367660226
+private class DistanceOnlyFlingBehavior(
+    private val state: AnchoredDraggableState<Anchor>,
+    private val swipeDistance: Float,
+) : FlingBehavior {
+    override suspend fun ScrollScope.performFling(
+        initialVelocity: Float,
+    ): Float {
+        val currentOffset = state.requireOffset()
+        val targetOffset = when {
+            currentOffset <= -swipeDistance -> -swipeDistance
+            currentOffset >= swipeDistance -> swipeDistance
+            else -> 0f
+        }
+        var previousOffset = currentOffset
+        animate(
+            initialValue = currentOffset,
+            targetValue = targetOffset,
+            animationSpec = tween(),
+        ) { offset, _ ->
+            scrollBy(offset - previousOffset)
+            previousOffset = offset
+        }
+        return 0f
     }
 }
 
