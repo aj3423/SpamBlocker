@@ -1,0 +1,26 @@
+Breaking changes: 
+- API report categories changed, existing settings will be migrated automatically.
+- PhoneBlock Token can now be opted out when sharing backups.
+
+  Re-backup if necessary.
+
+New:
+- Local AI SMS filter (experimental)
+  - Train your own spam SMS filter by manually classifying some messages. 
+  - Algorithm: Complement Naive Bayes
+
+Fixes:
+- API query "formula mode" doesn't work when either positive or negative identifier is empty.
+- The 7726 SMS workflow flags replies from 7726 as spam and causes recursive reporting.
+- The result of SMS reporting is not saved and cannot be reviewed.
+- Auto-report doesn't work if "call log" permission is missing and it doesn't ask for it.
+- Canceling the file dialog during backup export still shows "Exported successfully" without any backup actually created.
+- Scrolling vertically can easily trigger an accidental left swipe that deletes the record.
+- Dismissing a balloon tooltip also closes the popup dialog behind it.
+- Fixed broken UI under high system text scaling.
+
+Improvements:
+- All sections in settings tab are now foldable, tap the section header to toggle them.
+- History UI now has better space utilization.
+- Auto-report can now be limited to specific regex rules.
+  E.g., only auto-report calls that are blocked by regex rule "non contact" but not "creepy boss on weekend".
