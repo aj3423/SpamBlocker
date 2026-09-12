@@ -37,8 +37,6 @@ No personal data is sent to or otherwise shared with anyone. The only known poss
  
 Third party services do not necessarily collect all of this data _(always refer to the service's privacy policy)_.
 
- <!-- SpamBlocker specific licenses of libraries used in the application can be accessed from About section. - Not useful actually -->
-
 ## Android permissions requested by the application
 SpamBlocker __optionally__ requires the following permissions:
 
@@ -46,6 +44,7 @@ SpamBlocker __optionally__ requires the following permissions:
 * "ANSWER_PHONE_CALLS" - in order to hang-up calls.
 * "POST_NOTIFICATIONS" - in order to show notifications.
 * "READ_CONTACTS" - in order to match contacts.
+* "PACKAGE_USAGE_STATS" - in order to get app activities and allow calls if some apps are used recently.
 * "RECEIVE_SMS" and "RECEIVE_MMS" - in order to be able to receive new SMS/MMS messages.
 * "SEND_SMS" - in order to reply to contacts after their calls get blocked.
 * "READ_CALL_LOG" and "READ_SMS" - in order to check if a call is repeated.
