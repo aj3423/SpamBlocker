@@ -59,8 +59,6 @@ import kotlin.math.roundToInt
 
 const val AnimationDuration = 200
 
-private const val SwipeDistanceDp = 110
-
 enum class Anchor { Left, Center, Right }
 
 
@@ -80,11 +78,12 @@ data class SwipeInfo(
 fun SwipeWrapper(
     left: SwipeInfo? = null,
     right: SwipeInfo? = null,
+    triggerDistance: Int = 110,
     content: @Composable () -> Unit,
 ) {
     val density = LocalDensity.current
 
-    val openOffsetPx = with(density) { SwipeDistanceDp.dp.toPx() }
+    val openOffsetPx = with(density) { triggerDistance.dp.toPx() }
 
     val anchors = remember(density) {
         DraggableAnchors {

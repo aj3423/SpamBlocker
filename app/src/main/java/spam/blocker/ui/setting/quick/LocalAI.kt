@@ -423,6 +423,7 @@ fun TrainingDialog(trigger: MutableState<Boolean>) {
 
                         itemsIndexed(visibleSmss, key = { _, item -> item.hash }) { _, item ->
                             SwipeWrapper(
+                                triggerDistance = 80,
                                 left = SwipeInfo(
                                     veto = true,
                                     background = { BgFulfilled(G.palette.error) },
