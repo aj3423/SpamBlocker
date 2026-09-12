@@ -2,6 +2,7 @@ package spam.blocker.util
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
+import spam.blocker.util.BayesTokenizer.tokenize
 import java.text.Normalizer
 import kotlin.math.abs
 import kotlin.math.exp
@@ -209,6 +210,21 @@ class ComplementNaiveBayes(
         val prob = expSpam / sum
         return prob.coerceIn(0.01, 0.99)
     }
+}
+
+object BayesTokenizer {
+    private val URL_REGEX = Regex("""(?i)\b(?:https?://|www\.)\S+|(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+(?:[a-z]{2,63}|xn--[a-z0-9-]{2,59})\b\S*""")
+    private const val URL_PLACEHOLDER = '\uE000'
+    private val CURRENCY_AND_SYMBOLS = setOf(
+        '$'.code, '€'.code, '£'.code, '¥'.code, '₩'.code, '₹'.code, '%'.code, '@'.code
+    )
+    private val MONEY_SYMBOLS = setOf(
+        '$'.code, '€'.code, '£'.code, '¥'.code, '₩'.code, '₹'.code
+    )
+    private const val ZERO_WIDTH_JOINER = 0x200D
+    private const val ZERO_WIDTH_NON_JOINER = 0x200C
+    private const val CATALAN_MIDDLE_DOT = 0x00B7
+    private const val KATAKANA_HIRAGANA_PROLONGED_SOUND_MARK = 0x30FC
 
     // ---------- Tokenization (Words for space-delimited, 1-gram + 2-gram for CJK & Hangul) ----------
     fun tokenize(text: String): List<String> {
@@ -216,7 +232,7 @@ class ComplementNaiveBayes(
 
         // Replace URLs with a unified token
         val normalizedText = Normalizer.normalize(text, Normalizer.Form.NFC)
-            .replace(URL_REGEX, " __url__ ")
+            .replace(URL_REGEX, " $URL_PLACEHOLDER ")
 
         val sb = StringBuilder()
         val cjkBuffer = mutableListOf<String>()
@@ -249,6 +265,49 @@ class ComplementNaiveBayes(
             }
         }
 
+        fun moneyTokenAt(startIndex: Int): Pair<String, Int>? {
+            var cursor = startIndex
+            val integerStart = cursor
+            while (cursor < normalizedText.length) {
+                val code = normalizedText.codePointAt(cursor)
+                if (!Character.isDigit(code) && code != ','.code) break
+                cursor += Character.charCount(code)
+            }
+            val integerPart = normalizedText.substring(integerStart, cursor)
+            if (integerPart.isEmpty()) return null
+
+            val groups = integerPart.split(',')
+            val validInteger = if (groups.size == 1) {
+                groups[0].all { it.isDigit() }
+            } else {
+                groups[0].length in 1..3 && groups[0].all { it.isDigit() }
+                        && groups.drop(1).all { it.length == 3 && it.all(Char::isDigit) }
+            }
+            if (!validInteger) return null
+
+            val integerDigits = groups.sumOf { it.length }
+            var fractionDigits = 0
+            if (cursor < normalizedText.length && normalizedText[cursor] == '.') {
+                cursor++
+                val fractionStart = cursor
+                while (cursor < normalizedText.length) {
+                    val code = normalizedText.codePointAt(cursor)
+                    if (!Character.isDigit(code)) break
+                    cursor += Character.charCount(code)
+                }
+                fractionDigits = cursor - fractionStart
+                if (fractionDigits == 0) return null
+            }
+
+            if (cursor < normalizedText.length && Character.isLetterOrDigit(normalizedText.codePointAt(cursor))) return null
+            val token = if (fractionDigits == 0) {
+                "__money_${integerDigits}__"
+            } else {
+                "__money_${integerDigits}_${fractionDigits}__"
+            }
+            return token to cursor
+        }
+
         var i = 0
         while (i < normalizedText.length) {
             val code = normalizedText.codePointAt(i)
@@ -258,6 +317,7 @@ class ComplementNaiveBayes(
                     || script == Character.UnicodeScript.HIRAGANA
                     || script == Character.UnicodeScript.KATAKANA
                     || script == Character.UnicodeScript.HANGUL
+                    || code == KATAKANA_HIRAGANA_PROLONGED_SOUND_MARK
 
             val isCurrencyOrSymbol = code in CURRENCY_AND_SYMBOLS
             val isMark = when (Character.getType(code)) {
@@ -266,12 +326,22 @@ class ComplementNaiveBayes(
                 Character.ENCLOSING_MARK.toInt() -> true
                 else -> false
             }
-                val isWordJoiner = code == ZERO_WIDTH_JOINER
+            val isWordJoiner = code == ZERO_WIDTH_JOINER
                     || code == ZERO_WIDTH_NON_JOINER
                     || code == CATALAN_MIDDLE_DOT
+                val isNumericSeparator = code == ','.code
+                    && i > 0
+                    && i + 1 < normalizedText.length
+                    && Character.isDigit(normalizedText.codePointBefore(i))
+                    && Character.isDigit(normalizedText.codePointAt(i + 1))
 
             when {
-                isWordJoiner -> Unit
+                code == URL_PLACEHOLDER.code -> {
+                    flushWord()
+                    flushCjk()
+                    result.add("__url__")
+                }
+                isWordJoiner || isNumericSeparator -> Unit
                 isCjkOrHangul -> {
                     flushWord()
                     cjkBuffer.add(String(Character.toChars(code)))
@@ -279,6 +349,23 @@ class ComplementNaiveBayes(
                 Character.isLetterOrDigit(code) || isMark -> {
                     flushCjk()
                     sb.appendCodePoint(code)
+                }
+                code in MONEY_SYMBOLS -> {
+                    val money = moneyTokenAt(i + Character.charCount(code))
+                    if (money != null) {
+                        flushWord()
+                        flushCjk()
+                        result.add(money.first)
+                        i = money.second
+                        continue
+                    }
+                    flushWord()
+                    flushCjk()
+                    val nextIndex = i + Character.charCount(code)
+                    if (nextIndex >= normalizedText.length
+                        || !Character.isDigit(normalizedText.codePointAt(nextIndex))) {
+                        result.add(String(Character.toChars(code)))
+                    }
                 }
                 isCurrencyOrSymbol -> {
                     flushWord()
@@ -297,13 +384,4 @@ class ComplementNaiveBayes(
         return result
     }
 
-    companion object {
-        private val URL_REGEX = Regex("""(?i)\b(?:https?://|www\.)\S+|(?:[a-z0-9-]+\.)+(?:com|net|org|io|me|co|cc|info|biz|link|xyz|top|site|app|live|online|tk|ml|ga|cf|gq)\b\S*""")
-        private val CURRENCY_AND_SYMBOLS = setOf(
-            '$'.code, '€'.code, '£'.code, '¥'.code, '₩'.code, '₹'.code, '%'.code, '@'.code
-        )
-        private const val ZERO_WIDTH_JOINER = 0x200D
-        private const val ZERO_WIDTH_NON_JOINER = 0x200C
-        private const val CATALAN_MIDDLE_DOT = 0x00B7
-    }
 }

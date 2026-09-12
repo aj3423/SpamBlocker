@@ -2,6 +2,7 @@ package spam.blocker.ui.setting.quick
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,6 +15,7 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.SwipeToDismissBoxValue.StartToEnd
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -49,6 +51,7 @@ import spam.blocker.ui.widgets.GradientDivider
 import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.GreyIcon18
 import spam.blocker.ui.widgets.GreyLabel
+import spam.blocker.ui.widgets.GreyText
 import spam.blocker.ui.widgets.HtmlText
 import spam.blocker.ui.widgets.LazyScrollbar
 import spam.blocker.ui.widgets.OutlineCard
@@ -66,6 +69,7 @@ import spam.blocker.ui.widgets.SwipeWrapper
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.ui.widgets.ToggleButton
 import spam.blocker.util.A
+import spam.blocker.util.BayesTokenizer.tokenize
 import spam.blocker.util.ComplementNaiveBayes
 import spam.blocker.util.Contacts
 import spam.blocker.util.FileUtils.deleteInternalFile
@@ -396,6 +400,15 @@ fun TrainingDialog(trigger: MutableState<Boolean>) {
                     saveModel()
                 }
 
+                val tokenizerTrigger = remember { mutableStateOf(false) }
+                var tokenizeItem by remember { mutableStateOf<SmsCardInfo?>(null) }
+                PopupDialog(tokenizerTrigger) {
+                    Text("For debugging only", color = C.warning)
+                    GreyText(tokenizeItem!!.content)
+                    HorizontalDivider()
+                    Text(tokenize(tokenizeItem!!.content).joinToString(" "), color = C.disabled)
+                }
+
                 val lazyState = rememberLazyListState()
                 val percentage = 60 // Calculate x% of the screen height
 
@@ -407,6 +420,7 @@ fun TrainingDialog(trigger: MutableState<Boolean>) {
                         state = lazyState,
                         verticalArrangement = Arrangement.spacedBy(4.dp),
                     ) {
+
                         itemsIndexed(visibleSmss, key = { _, item -> item.hash }) { _, item ->
                             SwipeWrapper(
                                 left = SwipeInfo(
@@ -426,10 +440,18 @@ fun TrainingDialog(trigger: MutableState<Boolean>) {
                                     }
                                 )
                             ) {
-                                Box(modifier = M.clickable {
-                                    if (item.isSpam != null)
-                                        updateCategory(item, null)
-                                }) {
+                                Box(
+                                    modifier = M.combinedClickable(
+                                        onClick = {
+                                            if (item.isSpam != null)
+                                                updateCategory(item, null)
+                                        },
+                                        onLongClick = {
+                                            tokenizeItem = item
+                                            tokenizerTrigger.value = true
+                                        }
+                                    )
+                                ) {
                                     SmsCard(item)
                                 }
                             }
