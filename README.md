@@ -50,9 +50,9 @@ It works without replacing your call/SMS app. You can kill the app after setup, 
   | SpamBlocker |  ❌ | ✅️ Takes over notifications | Received messages only, no sent messages | Avoid interruptions |
   | SMS apps  |  ✅️ | ❌ Must be manually disabled | All messages<br>([remain undeleted, including spam texts](https://github.com/aj3423/SpamBlocker/issues/647)) | Messaging |
   
-### SMS Screening provider mode (WIP):
+#### SMS Screening provider mode:
     
-  Similar to call screening, the app can work as a service. The SMS app asks it to check messages in real time, this app simply replies "block" or "allow". It only works with SMS apps that support this [SMS screening protocol](https://github.com/aj3423/SpamBlocker/wiki/SMS-Screening-protocol). [QUIK](https://github.com/quik-sms/quik/) is working on this.
+  Similar to call screening, the app can work as a service. The SMS app asks it to check messages in real time, this app simply replies "block" or "allow". It only works with SMS apps that support this [SMS screening protocol](https://github.com/aj3423/SpamBlocker/wiki/SMS-Screening-protocol). Currently, this is not supported by any SMS app :)
 
 # Features:
 
@@ -73,6 +73,7 @@ It works without replacing your call/SMS app. You can kill the app after setup, 
 | Meeting Mode                  | Decline calls during online video meetings.                                                                                                                                                    |
 | Off Time                      | A time period that always allows calls, usually no spams at night.                                                                                                                             |
 | Spam Database                 | Block numbers in the spam database. Any downloadable spam databases can be integrated, such as the [FTC-DNC registry](https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data). |
+| Local AI Training             | Train your own spam SMS filter |
 | Schedule & Calendar           | Auto adjust rules based on time schedule and calendar events                                                                                                                                   |
 | Geolocation & Carrier         | Block numbers based on geolocation or carrier name                                                                                                                                             | 
 | Instant Query                 | Check the incoming number online in real time, querying multiple API endpoints simultaneously, such as the [PhoneBlock](https://phoneblock.net/).                                              |
@@ -81,12 +82,10 @@ It works without replacing your call/SMS app. You can kill the app after setup, 
 
 # Limitations 
 - Auto clear SMS: [No plan](https://github.com/aj3423/SpamBlocker/issues/647)
-- Local AI support: [Future plan, not yet ready](https://github.com/aj3423/SpamBlocker/issues/267#issuecomment-2632229803)
 - RCS support: [No plan](https://github.com/aj3423/SpamBlocker/issues/308#issuecomment-2692269430)
 - Android 9- support: [No plan](https://github.com/aj3423/SpamBlocker/issues/38)
 
 # FAQ
- - [Security warning from Google Play when installing this app](https://github.com/aj3423/SpamBlocker/issues/108)
  - [How the "Priority" works](https://github.com/aj3423/SpamBlocker/issues/166)
  - [It stops working after being killed](https://github.com/aj3423/SpamBlocker/issues/100)
  - [Android 16+ always shows a "missed call" notification for silenced calls](https://issuetracker.google.com/issues/474398435)
@@ -102,7 +101,8 @@ It works without replacing your call/SMS app. You can kill the app after setup, 
 | READ_CONTACTS                        | Match contacts                                                         |
 | RECEIVE_SMS / RECEIVE_MMS            | For SMS notification screening                                         |
 | SEND_SMS                             | For auto replying to blocked contacts                                  |
-| READ_CALL_LOG / READ_SMS             | For allowing repeated calls                                            |
+| READ_CALL_LOG                        | For allowing repeated calls                                            |
+| READ_SMS                             | For training local AI                                                  |
 | READ_CALENDAR                        | For dynamically adjusting rules based on calendar events               |
 | PACKAGE_USAGE_STATS                  | For feature: Recent Apps (check whether an app has been used recently) |
 | READ_PHONE_STATE                     | For BlockMode: Answer+Hang-up (monitor ringing state)                  |
@@ -120,32 +120,31 @@ It works without replacing your call/SMS app. You can kill the app after setup, 
 
  - For online features:
 
-   The API endpoints will see your:
+   The API server will see your:
 
      - IP address
-     - TLS and TCP fingerprints (which would reveal your Android version)
-     - The reported number(including the country code)
+     - TLS and TCP fingerprints (which would reveal your Android OS)
+     - The reported number(including your country code)
 
    Nothing else.
 
-   You can also [disable the internet access](https://github.com/aj3423/SpamBlocker/issues/147) , or download the offline apk from the release page.
  - [Reproducible](https://f-droid.org/docs/Reproducible_Builds/) apk
  - Apk signing signature:
 
     `apksigner verify --print-certs SpamBlocker.apk`
     > 7b1ce727856f3427eab1fadfad6c9730cd4e6ba201661547f009206377dffb58
 
-Full [Privacy Policy](https://github.com/aj3423/SpamBlocker/blob/master/Docs/PRIVACY%20POLICY.md)
-
 # Language support
 
 Languages are translated using AI, PRs for corrections are welcome.
 
 # Contribution Wanted
- - [On-device AI](https://github.com/aj3423/SpamBlocker/issues/642)
+ - Both manual and AI-assisted improvements are welcome.
 
 # Some ideas
  - [A decentralized database](https://github.com/aj3423/SpamBlocker/issues/340)
+  
+(new ideas are welcome)
 
 # Donate 🤑
 
