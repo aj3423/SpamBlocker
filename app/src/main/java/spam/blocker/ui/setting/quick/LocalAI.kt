@@ -196,7 +196,7 @@ fun TrainingDialog(trigger: MutableState<Boolean>) {
             val testSmss = SmsTable().getRecordsWithinSeconds(ctx, durationSeconds = aDay)
                 .map {
                     val content = it.extraInfo ?: ""
-                    SmsCardInfo(number = it.peer, content = content, hash = bayesSampleHash(it.time, content), time = it.time, isTest = true)
+                    SmsCardInfo(number = it.peer, content = content, hash = bayesSampleHash(it.time, content), time = it.time, isTest = it.isTest)
                 }
 
             (testSmss + realSmss + sampleDbSmss)
