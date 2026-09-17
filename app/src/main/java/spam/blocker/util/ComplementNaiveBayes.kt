@@ -15,7 +15,8 @@ data class CnbModelData(
 
 class ComplementNaiveBayes(
     private val alpha: Double = 1.0, // smoothing parameter that solves the Zero-Frequency problem
-    private val maxFeatures: Int = 50_000 // vocabulary size limit, a 50_000 limit keeps the model file small (1~2 mb)
+    private val maxFeatures: Int = 50_000, // vocabulary size limit, a 50_000 limit keeps the model file small (1~2 mb)
+    private val minDocumentFrequency: Int = 1 // 1: model learns faster   2: smaller model, requires two word-occurrence.
 ) {
     // class → (token → L1-normalized weight)   weights are negative
     private val weights = mutableMapOf<Boolean, Map<String, Double>>()
@@ -107,9 +108,14 @@ class ComplementNaiveBayes(
         weights.clear()
         if (totalSamples == 0) return
 
-        // Filter out hapax legomena (DF < 2) if dataset has >= 10 samples
-        val minDf = if (totalSamples >= 10) 2 else 1
-        val filteredFreq = globalFreq.filterKeys { (docFreq[it] ?: 0) >= minDf }
+        val effectiveMinDocumentFrequency = if (totalSamples >= 10) {
+            minDocumentFrequency
+        } else {
+            1
+        }
+        val filteredFreq = globalFreq.filterKeys {
+            (docFreq[it] ?: 0) >= effectiveMinDocumentFrequency
+        }
 
         // Keep top features
         val kept = if (filteredFreq.size > maxFeatures) {
