@@ -201,6 +201,7 @@ fun TrainingDialog(trigger: MutableState<Boolean>) {
 
             (testSmss + realSmss + sampleDbSmss)
                 .distinctBy { it.hash } // real sms and sample in db can have the same hash
+                .filter { it.content.isNotEmpty() } // exclude image-only-MMS that is displayed as an empty card
                 .map {
                     if (it.isSpam == null) {
                         val dbCat = BayesTable.findByHash(ctx, it.hash)?.isSpam
