@@ -29,6 +29,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import spam.blocker.G
@@ -115,29 +116,28 @@ private fun SmsCard(info: SmsCardInfo) {
     val ctx = LocalContext.current
     val spf = spf.NaiveBayes(ctx)
 
-    OutlineCard(
-        containerBg = C.dialogBg,
-        borderWidth = if (info.isSpam == null) 1 else 2,
-        borderColor = when(info.isSpam) {
+    fun autoColor(isSpam: Boolean?) : Color {
+        return when(isSpam) {
             null -> C.textGrey
             true -> C.error
             false -> C.success
         }
+    }
+
+    OutlineCard(
+        containerBg = C.dialogBg,
+        borderWidth = if (info.isSpam == null) 1 else 2,
+        borderColor = autoColor(info.isSpam)
     ) {
         Box(
-            modifier = M
-                .wrapContentSize()
+            modifier = M.wrapContentSize()
         ) {
             // SMS Content
             val isSpam = info.heuristic?.let { it > spf.threshold }
             Text(
                 text = info.content.truncate(200),
                 modifier = M.fillMaxSize().padding(horizontal = 10.dp, vertical = 8.dp),
-                color = when (isSpam) {
-                    null -> C.textGrey
-                    true -> C.error
-                    false -> C.success
-                }
+                color = autoColor(isSpam)
             )
             // Probability
             RowVCenterSpaced(4, modifier = M
@@ -147,7 +147,7 @@ private fun SmsCard(info: SmsCardInfo) {
             ) {
                 // Probability
                 if (info.heuristic != null) {
-                    GreyLabel("%.4f".format(info.heuristic))
+                    Text("%.4f".format(info.heuristic), color = autoColor(isSpam))
                 }
 
                 // Tube icon
@@ -305,17 +305,17 @@ fun TrainingDialog(trigger: MutableState<Boolean>) {
                 // Filters
 //                Section(Str(R.string.filters), bgColor = C.dialogBg) {
                     FlowRowSpaced(4) {
-                        // Ham
-                        ToggleButton(
-                            enabled = showHam,
-                            content = { Text("${Str(R.string.ham)} %s".formatAnnotated("${counts.ham}".A(C.success))) },
-                            onClick = { showHam = !showHam }
-                        )
                         // Spam
                         ToggleButton(
                             enabled = showSpam,
                             content = { Text("${Str(R.string.spam)} %s".formatAnnotated("${counts.spam}".A(C.error))) },
                             onClick = { showSpam = !showSpam}
+                        )
+                        // Ham
+                        ToggleButton(
+                            enabled = showHam,
+                            content = { Text("${Str(R.string.ham)} %s".formatAnnotated("${counts.ham}".A(C.success))) },
+                            onClick = { showHam = !showHam }
                         )
                         // Unlabeled
                         ToggleButton(

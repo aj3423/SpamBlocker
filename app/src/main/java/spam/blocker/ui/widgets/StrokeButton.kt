@@ -145,7 +145,7 @@ fun ToggleButton(
         Button(
             modifier = modifier,
             borderWidth = if (enabled) 2.dp else 1.dp,
-            borderColor = if (enabled) C.success else C.disabled,
+            borderColor = if (enabled) C.textGrey else C.disabled,
             content = content,
             onClick = onClick
         )
@@ -153,7 +153,7 @@ fun ToggleButton(
         if (enabled) {
             Canvas(
                 modifier = Modifier
-                    .size(4.dp)
+                    .size(5.dp)
                     .align(Alignment.CenterStart)
                     .offset(x = 5.dp)
             ) {
