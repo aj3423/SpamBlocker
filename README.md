@@ -1,3 +1,9 @@
+# 🙏 Help wanted
+
+> [!NOTE]  
+> We are releasing it on the Google Play Store and need your help with the 14-day closed testing.
+See: https://github.com/aj3423/SpamBlocker/issues/664
+
 # SpamBlocker
 Android Call/SMS blocker. (Android 10+)
 
