@@ -58,6 +58,7 @@ import kotlin.math.roundToInt
 
 
 const val AnimationDuration = 200
+private const val QuickSwipeVelocityThreshold = 1_000f
 
 enum class Anchor { Left, Center, Right }
 
@@ -79,11 +80,13 @@ fun SwipeWrapper(
     left: SwipeInfo? = null,
     right: SwipeInfo? = null,
     triggerDistance: Int = 110,
+    minimalQuickSwipeDistance: Int = triggerDistance,
     content: @Composable () -> Unit,
 ) {
     val density = LocalDensity.current
 
     val openOffsetPx = with(density) { triggerDistance.dp.toPx() }
+    val minimalQuickSwipeOffsetPx = with(density) { minimalQuickSwipeDistance.dp.toPx() }
 
     val anchors = remember(density) {
         DraggableAnchors {
@@ -106,8 +109,8 @@ fun SwipeWrapper(
     val currentLeft by rememberUpdatedState(left)
     val currentRight by rememberUpdatedState(right)
 
-    val flingBehavior = remember(state, openOffsetPx) {
-        DistanceOnlyFlingBehavior(state, openOffsetPx)
+    val flingBehavior = remember(state, openOffsetPx, minimalQuickSwipeOffsetPx) {
+        DistanceOnlyFlingBehavior(state, openOffsetPx, minimalQuickSwipeOffsetPx)
     }
 
 
@@ -187,14 +190,18 @@ fun SwipeWrapper(
 private class DistanceOnlyFlingBehavior(
     private val state: AnchoredDraggableState<Anchor>,
     private val swipeDistance: Float,
+    private val minimalQuickSwipeDistance: Float,
 ) : FlingBehavior {
     override suspend fun ScrollScope.performFling(
         initialVelocity: Float,
     ): Float {
         val currentOffset = state.requireOffset()
+        val isQuickSwipe = abs(initialVelocity) >= QuickSwipeVelocityThreshold
         val targetOffset = when {
             currentOffset <= -swipeDistance -> -swipeDistance
             currentOffset >= swipeDistance -> swipeDistance
+            isQuickSwipe && currentOffset <= -minimalQuickSwipeDistance && initialVelocity < 0 -> -swipeDistance
+            isQuickSwipe && currentOffset >= minimalQuickSwipeDistance && initialVelocity > 0 -> swipeDistance
             else -> 0f
         }
         var previousOffset = currentOffset
