@@ -64,7 +64,7 @@
     </string>
     <string name="help_local_ai_training">
         <![CDATA[
-        Adestra polo menos 50 mensaxes, incluíndo tanto <error>spam</error> como <highlight>ham</highlight> (non spam). Cantas máis mostras adestres, máis preciso será. <br>
+        Adestra polo menos 10 mensaxes, incluíndo polo menos 1 mensaxe <highlight>ham</highlight> (non spam) (p. ex., un OTP). Cantas máis mostras adestres, máis preciso será. <br>
         <br>
         <minor><b>Adestramento</b></minor> <br>
         <br>

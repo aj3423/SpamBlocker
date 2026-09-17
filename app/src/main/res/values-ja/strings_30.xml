@@ -64,7 +64,7 @@
     </string>
     <string name="help_local_ai_training">
         <![CDATA[
-        <error>スパム</error>と<highlight>ハム</highlight>（非スパム）の両方を含め、少なくとも50件のメッセージを学習させてください。学習サンプルが多いほど精度が向上します。<br>
+        少なくとも1件の<highlight>ハム</highlight>（非スパム）メッセージ（例：OTP）を含む、少なくとも10件のメッセージを学習させてください。学習サンプルが多いほど精度が向上します。<br>
         <br>
         <minor><b>学習手順</b></minor> <br>
         <br>

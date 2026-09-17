@@ -64,7 +64,7 @@
     </string>
     <string name="help_local_ai_training">
         <![CDATA[
-        درّب 50 رسالة على الأقل، بما في ذلك كل من <error>البريد العشوائي</error> و <highlight>الرسائل الموثوقة</highlight>. كلما زاد عدد العينات التي تدربها، زادت دقتها. <br>
+        Train on at least 10 messages, including at least 1 <highlight>الرسائل الموثوقة</highlight> message(e.g., an OTP). The more samples you train it on, the more accurate it will be. <br>
         <br>
         <minor><b>التدريب</b></minor> <br>
         <br>

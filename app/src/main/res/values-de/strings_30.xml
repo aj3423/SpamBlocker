@@ -64,7 +64,7 @@
     </string>
     <string name="help_local_ai_training">
         <![CDATA[
-        Trainieren Sie mindestens 50 Nachrichten, sowohl <error>Spam</error> als auch <highlight>Ham</highlight> (Nicht-Spam). Je mehr Proben Sie trainieren, desto genauer wird er sein. <br>
+        Trainieren Sie mindestens 10 Nachrichten, einschließlich mindestens 1 <highlight>Ham</highlight>-Nachricht (Nicht-Spam, z. B. eine OTP). Je mehr Proben Sie trainieren, desto genauer wird er sein. <br>
         <br>
         <minor><b>Training</b></minor> <br>
         <br>

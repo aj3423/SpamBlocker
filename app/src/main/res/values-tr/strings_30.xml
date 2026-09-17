@@ -64,7 +64,7 @@
     </string>
     <string name="help_local_ai_training">
         <![CDATA[
-        Hem <error>spam</error> hem de <highlight>ham</highlight> (spam olmayan) dahil en az 50 mesajı eğitin. Ne kadar çok örnek eğitirseniz, o kadar doğru sonuç verir. <br>
+        En az 1 tane <highlight>ham</highlight> (spam olmayan) mesaj (ör. bir OTP) dahil olmak üzere en az 10 mesajı eğitin. Ne kadar çok örnek eğitirseniz, o kadar doğru sonuç verir. <br>
         <br>
         <minor><b>Eğitim</b></minor> <br>
         <br>

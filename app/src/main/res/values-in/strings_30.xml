@@ -64,7 +64,7 @@
     </string>
     <string name="help_local_ai_training">
         <![CDATA[
-        Latih setidaknya 50 pesan, termasuk <error>spam</error> dan <highlight>ham</highlight> (bukan spam). Semakin banyak sampel yang Anda latih, semakin akurat hasilnya. <br>
+        Latih setidaknya 10 pesan, termasuk setidaknya 1 pesan <highlight>ham</highlight> (bukan spam) (misalnya, OTP). Semakin banyak sampel yang Anda latih, semakin akurat hasilnya. <br>
         <br>
         <minor><b>Pelatihan</b></minor> <br>
         <br>

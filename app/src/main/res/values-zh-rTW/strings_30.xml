@@ -64,7 +64,7 @@
     </string>
     <string name="help_local_ai_training">
         <![CDATA[
-        至少訓練 50 條訊息，包含 <error>垃圾訊息</error> 和 <highlight>正常訊息</highlight>。訓練的樣本越多，準確率就越高。<br>
+        至少訓練 10 條訊息，包含至少 1 條 <highlight>正常訊息</highlight>（例如 OTP 驗證碼）。訓練的樣本越多，準確率就越高。<br>
         <br>
         <minor><b>訓練</b></minor> <br>
         <br>

@@ -64,7 +64,7 @@
     </string>
     <string name="help_local_ai_training">
         <![CDATA[
-        אמן לפחות 50 הודעות, כולל <error>ספאם</error> ו-<highlight>דואר תקין (ham)</highlight>. ככל שתאמן יותר דוגמאות, כך הוא יהיה מדויק יותר. <br>
+        אמן לפחות 10 הודעות, כולל לפחות הודעת <highlight>דואר תקין (ham)</highlight> אחת (למשל, OTP). ככל שתאמן יותר דוגמאות, כך הוא יהיה מדויק יותר. <br>
         <br>
         <minor><b>אימון</b></minor> <br>
         <br>

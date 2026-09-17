@@ -64,7 +64,7 @@
     </string>
     <string name="help_local_ai_training">
         <![CDATA[
-        Entreneu almenys 50 missatges, inclosos tant <error>correu brossa</error> com <highlight>missatges legítims</highlight>. Com més mostres entreneu, més precís serà. <br>
+        Entreneu almenys 10 missatges, inclòs almenys 1 missatge <highlight>legítim</highlight> (p. ex., un OTP). Com més mostres entreneu, més precís serà. <br>
         <br>
         <minor><b>Entrenament</b></minor> <br>
         <br>

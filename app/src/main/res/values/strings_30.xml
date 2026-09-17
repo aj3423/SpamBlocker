@@ -64,7 +64,7 @@
     </string>
     <string name="help_local_ai_training">
         <![CDATA[
-        Train at least 50 messages, including both <error>spam</error> and <highlight>ham</highlight>(non-spam). The more samples you train it, the more accurate it will be. <br>
+        Train on at least 10 messages, including at least 1 <highlight>ham</highlight>(non-spam) message(e.g., an OPT). The more samples you train it on, the more accurate it will be. <br>
         <br>
         <minor><b>Training</b></minor> <br>
         <br>

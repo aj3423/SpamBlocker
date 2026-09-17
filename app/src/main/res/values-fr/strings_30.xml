@@ -64,7 +64,7 @@
     </string>
     <string name="help_local_ai_training">
         <![CDATA[
-        Entraînez au moins 50 messages, incluant à la fois du <error>spam</error> et du <highlight>ham</highlight> (non-spam). Plus vous entraînez d\'échantillons, plus il sera précis. <br>
+        Entraînez au moins 10 messages, incluant au moins 1 message <highlight>ham</highlight> (non-spam) (p. ex. un OTP). Plus vous entraînez d\'échantillons, plus il sera précis. <br>
         <br>
         <minor><b>Entraînement</b></minor> <br>
         <br>
