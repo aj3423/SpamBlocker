@@ -306,24 +306,28 @@ fun TrainingDialog(trigger: MutableState<Boolean>) {
                 // Filters
 //                Section(Str(R.string.filters), bgColor = C.dialogBg) {
                     FlowRowSpaced(4) {
-                        // Spam
-                        ToggleButton(
-                            enabled = showSpam,
-                            content = { Text("${Str(R.string.spam)} %s".formatAnnotated("${counts.spam}".A(C.error))) },
-                            onClick = { showSpam = !showSpam}
-                        )
-                        // Ham
-                        ToggleButton(
-                            enabled = showHam,
-                            content = { Text("${Str(R.string.ham)} %s".formatAnnotated("${counts.ham}".A(C.success))) },
-                            onClick = { showHam = !showHam }
-                        )
-                        // Unlabeled
-                        ToggleButton(
-                            enabled = showUnlabeled,
-                            content = { Text("${Str(R.string.unlabeled)} %s".formatAnnotated("${counts.unlabeled}".A(C.disabled))) },
-                            onClick = { showUnlabeled = !showUnlabeled}
-                        )
+                        AnimatedVisibleV(!showConflicts) {
+                            FlowRowSpaced(4) {
+                                // Spam
+                                ToggleButton(
+                                    enabled = showSpam,
+                                    content = { Text("${Str(R.string.spam)} %s".formatAnnotated("${counts.spam}".A(C.error))) },
+                                    onClick = { showSpam = !showSpam}
+                                )
+                                // Ham
+                                ToggleButton(
+                                    enabled = showHam,
+                                    content = { Text("${Str(R.string.ham)} %s".formatAnnotated("${counts.ham}".A(C.success))) },
+                                    onClick = { showHam = !showHam }
+                                )
+                                // Unlabeled
+                                ToggleButton(
+                                    enabled = showUnlabeled,
+                                    content = { Text("${Str(R.string.unlabeled)} %s".formatAnnotated("${counts.unlabeled}".A(C.disabled))) },
+                                    onClick = { showUnlabeled = !showUnlabeled}
+                                )
+                            }
+                        }
 
                         // Conflicts
                         if (allConflicts.isNotEmpty() || showConflicts) {
