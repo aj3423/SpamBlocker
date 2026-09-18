@@ -110,14 +110,19 @@
     </string>
     <string name="requires_min_android_ver">Requires Android %s or higher.</string>
     <string name="detected_sim_count">Only %s SIM card is detected.</string>
-    <string name="toggled_by_tile">Toggled by Tile</string>
-    <string name="custom_tile">Custom Tile</string>>
+    <string name="custom_tile">Custom Tile</string>
     <string name="help_custom_tile">
         <![CDATA[
-        Quickly toggle rules using the Quick Settings Tile. While the global tile toggles the entire app,
-         this custom tile affects only specific rules. <br>
+        Quickly toggle rules using the <title><b>Custom</b></title> Quick Settings Tile. While the global tile toggles the entire app,
+         this custom tile can target specific rules. <br>
         <br>
-        This setup involves both a regex rule and a workflow. When the tile is: <br>
+        This setup demonstrates how to quickly toggle non-contact blocking: <br>
+        <sample>
+        &ensp; Block unknown numbers by default,
+         but temporarily allow them while keeping them screened by filters like STIR and API.<br>
+        </sample>
+        <br>
+        It involves both a regex rule and a workflow. When the tile is: <br>
         &ensp; - <highlight><b>On</b></highlight> <br>
         &emsp;  This workflow will be executed before calls are screened, it will enable the regex rule. <br>
         <br>

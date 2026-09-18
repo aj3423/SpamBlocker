@@ -91,11 +91,16 @@
     <string name="mms">MMS</string>
     <string name="rcs">RCS</string>
     <string name="screening">スクリーニング</string>
-    <string name="toggled_by_tile">タイルによって切り替えられました</string>
     <string name="custom_tile">カスタムタイル</string>
     <string name="help_custom_tile">
         <![CDATA[
-        クイック設定タイルを使用してルールをすばやく切り替えます。グローバルタイルがアプリ全体を切り替えるのに対し、このカスタムタイルは特定のルールのみに影響します。<br>
+        <title><b>カスタム</b></title>クイック設定タイルを使用してルールをすばやく切り替えます。グローバルタイルがアプリ全体を切り替えるのに対し、このカスタムタイルは特定のルールを対象にできます。<br>
+        <br>
+        この設定は、非連絡先のブロックをすばやく切り替える方法を示しています:<br>
+        <sample>
+        &ensp; デフォルトで unknown 番号をブロックしますが、
+         STIR や API などのフィルターでスクリーニングされた状態を維持しながら、一時的に許可します。<br>
+        </sample>
         <br>
         この設定には、正規表現ルールとワークフローの両方が含まれます。タイルが次の状態の場合:<br>
         &ensp; - <highlight><b>オン</b></highlight><br>

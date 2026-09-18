@@ -195,7 +195,7 @@ val BotPresets = listOf(
                 desc = ctx.getString(R.string.custom_tile),
                 trigger = QuickTile(),
                 actions = listOf(
-                    FindRules(pattern = ctx.getString(R.string.toggled_by_tile)),
+                    FindRules(pattern = ctx.getString(R.string.non_contacts)),
                     ModifyRules(config = "{\"flags\": 3}"),
                 )
             )
@@ -204,9 +204,9 @@ val BotPresets = listOf(
             // Add a regex rule
             NumberRegexTable().addNew(ctx, RegexRule(
                 pattern = ".*",
-                description = ctx.getString(R.string.toggled_by_tile),
+                description = ctx.getString(R.string.non_contacts),
                 flags = 0, // disabled for call/sms
-                priority = 100,
+                priority = 0,
             ))
             G.NumberRuleVM.reloadDb(ctx)
         },

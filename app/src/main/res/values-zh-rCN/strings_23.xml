@@ -91,11 +91,16 @@
     <string name="mms">彩信</string>
     <string name="rcs">RCS</string>
     <string name="screening">筛选</string>
-    <string name="toggled_by_tile">通过快捷开关切换</string>
     <string name="custom_tile">自定义快捷开关</string>
     <string name="help_custom_tile">
         <![CDATA[
-        使用快速设置快捷开关快速切换规则。全局快捷开关切换整个应用程序，而此自定义快捷开关仅影响特定规则。<br>
+        使用<title><b>自定义</b></title>快速设置快捷开关快速切换规则。全局快捷开关切换整个应用程序，而此自定义快捷开关可以针对特定的规则。<br>
+        <br>
+        此设置演示了如何快速切换非联系人拦截：<br>
+        <sample>
+        &ensp; 默认情况下拦截未知号码，
+         但在保留 STIR 和 API 等过滤器筛选的同时，临时允许它们来电。<br>
+        </sample>
         <br>
         此设置涉及正则表达式规则和工作流。当快捷开关为：<br>
         &ensp; - <highlight><b>开启</b></highlight> <br>

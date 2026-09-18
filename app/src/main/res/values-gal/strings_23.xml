@@ -94,12 +94,17 @@
     <string name="mms">MMS</string>
     <string name="rcs">RCS</string>
     <string name="screening">Filtrado</string>
-    <string name="toggled_by_tile">Activado por mosaico</string>
     <string name="custom_tile">Mosaico personalizado</string>
     <string name="help_custom_tile">
         <![CDATA[
-        Activa/desactiva regras rapidamente usando o mosaico de Configuración rápida. Mentres o mosaico global activa/desactiva toda a aplicación,
-         este mosaico personalizado afecta só a regras específicas. <br>
+        Activa/desactiva regras rapidamente usando o mosaico de Configuración rápida <title><b>Personalizado</b></title>. Mentres o mosaico global activa/desactiva toda a aplicación,
+         este mosaico personalizado pode dirixirse a regras específicas. <br>
+        <br>
+        Esta configuración demostra como activar/desactivar rapidamente o bloqueo de non contactos: <br>
+        <sample>
+        &ensp; Bloquear números descoñecidos por defecto,
+         pero habilitalos temporalmente mentres se manteñen filtrados por filtros como STIR e API.<br>
+        </sample>
         <br>
         Esta configuración implica tanto unha regra de regex como un fluxo de traballo. Cando o mosaico está: <br>
         &ensp; - <highlight><b>Activado</b></highlight> <br>

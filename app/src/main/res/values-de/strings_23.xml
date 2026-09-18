@@ -94,16 +94,21 @@
     <string name="mms">MMS</string>
     <string name="rcs">RCS</string>
     <string name="screening">Filterung</string>
-    <string name="toggled_by_tile">Umschaltbar per Kachel</string>
     <string name="custom_tile">Benutzerdefinierte Kachel</string>
     <string name="help_custom_tile">
         <![CDATA[
-        Regeln schnell über die Schnelleinstellungs-Kachel umschalten. Während die globale Kachel die gesamte App umschaltet,<br>
-         betrifft diese benutzerdefinierte Kachel nur bestimmte Regeln. <br>
+        Regeln schnell über die <title><b>Benutzerdefinierte</b></title> Schnelleinstellungs-Kachel umschalten. Während die globale Kachel die gesamte App umschaltet,
+         kann diese benutzerdefinierte Kachel auf bestimmte Regeln abzielen. <br>
+        <br>
+        Dieses Setup demonstriert, wie Sie das Blockieren von Nichtkontakten schnell umschalten können: <br>
+        <sample>
+        &ensp; Unbekannte Nummern standardmäßig blockieren,
+         sie jedoch vorübergehend zulassen, während sie weiterhin durch Filter wie STIR und API gefiltert werden.<br>
+        </sample>
         <br>
         Dieses Setup umfasst sowohl eine Regex-Regel als auch einen Workflow. Wenn die Kachel ist: <br>
         &ensp; - <highlight><b>An</b></highlight> <br>
-        &emsp;  Dieser Workflow wird ausgeführt, bevor Anrufe gefiltert werden, er aktiviert die Regex-Regel. <br>
+        &emsp;  Dieser Workflow wird ausgeführt, bevor Anrufe gefiltered werden, er aktiviert die Regex-Regel. <br>
         <br>
         &ensp; - <sample><b>Aus</b></sample> <br>
         &emsp;  Dieser Workflow wird niemals ausgeführt, die Regel wird niemals funktionieren. <br>

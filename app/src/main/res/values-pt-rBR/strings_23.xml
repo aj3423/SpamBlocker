@@ -94,12 +94,17 @@
     <string name="mms">MMS</string>
     <string name="rcs">RCS</string>
     <string name="screening">Triagem</string>
-    <string name="toggled_by_tile">Alternado pelo Bloco</string>
     <string name="custom_tile">Bloco Personalizado</string>
     <string name="help_custom_tile">
         <![CDATA[
-        Alterne rapidamente as regras usando o Bloco de Configurações Rápidas. Enquanto o bloco global alterna todo o aplicativo,
-         este bloco personalizado afeta apenas regras específicas. <br>
+        Alterne rapidamente as regras usando o Bloco de Configurações Rápidas <title><b>Personalizado</b></title>. Enquanto o bloco global alterna todo o aplicativo,
+         este bloco personalizado pode direcionar regras específicas. <br>
+        <br>
+        Esta configuração demonstra como alternar rapidamente o bloqueio de não contatos: <br>
+        <sample>
+        &ensp; Bloquear números desconhecidos por padrão,
+         mas permiti-los temporariamente enquanto são mantidos filtrados por filtros como STIR e API.<br>
+        </sample>
         <br>
         Esta configuração envolve uma regra regex e um fluxo de trabalho. Quando o bloco está: <br>
         &ensp; - <highlight><b>Ligado</b></highlight> <br>

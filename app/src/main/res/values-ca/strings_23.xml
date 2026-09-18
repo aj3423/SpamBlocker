@@ -94,12 +94,17 @@
     <string name="mms">MMS</string>
     <string name="rcs">RCS</string>
     <string name="screening">Filtratge</string>
-    <string name="toggled_by_tile">Activat/desactivat per la rajola</string>
     <string name="custom_tile">Rajola personalitzada</string>
     <string name="help_custom_tile">
         <![CDATA[
-        Activa o desactiva ràpidament les regles utilitzant la rajola de Configuració Ràpida. Mentre la rajola global activa/desactiva tota l\'aplicació,
-         aquesta rajola personalitzada només afecta regles específiques. <br>
+        Activa o desactiva ràpidament les regles utilitzant la rajola de Configuració Ràpida <title><b>Personalitzada</b></title>. Mentre la rajola global activa/desactiva tota l\'aplicació,
+         aquesta rajola personalitzada pot orientar-se a regles específiques. <br>
+        <br>
+        Aquesta configuració demostra com activar o desactivar ràpidament el bloqueig de no-contactes: <br>
+        <sample>
+        &ensp; Bloqueja números desconeguts per defecte,
+         però permet-los temporalment mentre es mantenen filtrats per filtres com STIR i API.<br>
+        </sample>
         <br>
         Aquesta configuració implica tant una regla de regex com un flux de treball. Quan la rajola està: <br>
         &ensp; - <highlight><b>Activada</b></highlight> <br>

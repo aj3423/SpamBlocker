@@ -94,11 +94,17 @@
     <string name="mms">MMS</string>
     <string name="rcs">RCS</string>
     <string name="screening">Filtrage</string>
-    <string name="toggled_by_tile">Activé/désactivé par la tuile</string>
     <string name="custom_tile">Tuile personnalisée</string>
     <string name="help_custom_tile">
         <![CDATA[
-        Activez/désactivez rapidement les règles à l\'aide de la tuile de paramètres rapides. Alors que la tuile globale active/désactive toute l\'application, cette tuile personnalisée n\'affecte que des règles spécifiques. <br>
+        Activez/désactivez rapidement les règles à l\'aide de la tuile de paramètres rapides <title><b>Personnalisée</b></title>. Alors que la tuile globale active/désactive toute l\'application,
+         cette tuile personnalisée peut cibler des règles spécifiques. <br>
+        <br>
+        Cette configuration montre comment activer/désactiver rapidement le blocage des non-contacts : <br>
+        <sample>
+        &ensp; Bloquer les numéros inconnus par défaut,
+         mais les autoriser temporairement tout en les maintenant filtrés par des filtres comme STIR et API.<br>
+        </sample>
         <br>
         Cette configuration implique à la fois une règle regex et un flux de travail. Lorsque la tuile est : <br>
         &ensp; - <highlight><b>Activée</b></highlight> <br>

@@ -91,11 +91,16 @@
     <string name="mms">MMS</string>
     <string name="rcs">RCS</string>
     <string name="screening">篩選</string>
-    <string name="toggled_by_tile">透過快捷磚切換</string>
     <string name="custom_tile">自訂快捷磚</string>
     <string name="help_custom_tile">
         <![CDATA[
-        使用快速設定快捷磚快速切換規則。全域快捷磚切換整個應用程式，而此自訂快捷磚僅影響特定規則。<br>
+        使用<title><b>自訂</b></title>快速設定快捷磚快速切換規則。全域快捷磚切換整個應用程式，而此自訂快捷磚可以針對特定的規則。<br>
+        <br>
+        此設定示範了如何快速切換非聯絡人攔截：<br>
+        <sample>
+        &ensp; 預設情況下攔截未知號碼，
+         但在保留 STIR 和 API 等篩選器篩選的同時，臨時允許它們來電。<br>
+        </sample>
         <br>
         此設定涉及正規表達式規則和工作流程。當快捷磚處於：<br>
         &ensp; - <highlight><b>開啟</b></highlight> <br>

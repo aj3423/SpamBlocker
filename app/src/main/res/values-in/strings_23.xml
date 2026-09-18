@@ -94,12 +94,17 @@
     <string name="mms">MMS</string>
     <string name="rcs">RCS</string>
     <string name="screening">Penyaringan</string>
-    <string name="toggled_by_tile">Diaktifkan oleh Tile</string>
     <string name="custom_tile">Tile Kustom</string>
     <string name="help_custom_tile">
         <![CDATA[
-        Mengaktifkan/menonaktifkan aturan dengan cepat menggunakan Tile Pengaturan Cepat. Sementara tile global mengaktifkan/menonaktifkan seluruh aplikasi,
-         tile kustom ini hanya memengaruhi aturan tertentu. <br>
+        Mengaktifkan/menonaktifkan aturan dengan cepat menggunakan Tile Pengaturan Cepat <title><b>Kustom</b></title>. Sementara tile global mengaktifkan/menonaktifkan seluruh aplikasi,
+         tile kustom ini dapat menargetkan aturan tertentu. <br>
+        <br>
+        Pengaturan ini menunjukkan cara mengaktifkan/menonaktifkan pemblokiran bukan kontak dengan cepat: <br>
+        <sample>
+        &ensp; Blokir nomor tidak dikenal secara default,
+         tetapi izinkan sementara sambil tetap disaring oleh filter seperti STIR dan API.<br>
+        </sample>
         <br>
         Pengaturan ini melibatkan aturan regex dan alur kerja. Saat tile: <br>
         &ensp; - <highlight><b>Aktif</b></highlight> <br>
