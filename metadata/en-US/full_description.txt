@@ -2,12 +2,28 @@ It blocks unwanted calls & SMS messages without replacing your default call/SMS 
 
 Filters:
 
-1. Regex rule for number & SMS content.
-2. Contact
-3. STIR attestation
-4. Repeated call
-5. Dialed number
-6. Recently used apps
-7. Time schedule
+- Contacts	
+- Contact Group
+- Contact Prefix
+- STIR/SHAKEN
+- Repeated Calls
+- Dialed Number
+- Answered Number
+- Emergency
+- Push Alert
+- SMS Alert
+- SMS Bomb
+- Recent Apps
+- Meeting Mode
+- Off Time
+- Spam Database
+- Local AI 
+- Schedule & Calendar
+- Geolocation & Carrier
+- Instant Query
+- Report Spam	
+- Regex
+- and more...
+
 
 Details: https://github.com/aj3423/SpamBlocker
