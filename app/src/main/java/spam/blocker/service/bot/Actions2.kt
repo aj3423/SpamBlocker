@@ -1,15 +1,25 @@
 package spam.blocker.service.bot
 
 import android.content.Context
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import org.json.JSONObject
@@ -23,10 +33,17 @@ import spam.blocker.db.SpamNumber
 import spam.blocker.db.SpamTable
 import spam.blocker.db.ruleTableForType
 import spam.blocker.def.Def
+import spam.blocker.def.Def.ForNumber
+import spam.blocker.def.Def.ForQuickCopy
+import spam.blocker.def.Def.ForSms
 import spam.blocker.service.checker.Checker
 import spam.blocker.service.checker.Checker.RegexRuleChecker
+import spam.blocker.ui.M
 import spam.blocker.ui.darken
+import spam.blocker.ui.screenHeightDp
 import spam.blocker.ui.setting.LabeledRow
+import spam.blocker.ui.setting.regex.RegexCard
+import spam.blocker.ui.slightDiff
 import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.LabelItem
@@ -38,6 +55,7 @@ import spam.blocker.ui.widgets.RegexInputBox
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.SummaryLabel
+import spam.blocker.ui.widgets.simpleLazyScrollbar
 import spam.blocker.util.A
 import spam.blocker.util.PermissiveJson
 import spam.blocker.util.Util.domainFromUrl
@@ -722,22 +740,38 @@ class FindRules(
         GreyIcon(R.drawable.ic_find)
     }
 
+    private class RuleWrapper(
+        val forType: Int,
+        val rule: RegexRule
+    )
     @Composable
     override fun Options() {
+        val ctx = LocalContext.current
+        val C = G.palette
+
         val flagsState = remember { mutableIntStateOf(flags) }
+        var patternState by remember { mutableStateOf(pattern) }
+
+        val targetDescs = remember(patternState) {
+            val ps = patternState.trim()
+            val descs = if (ps.isEmpty()) { // empty
+                listOf()
+            } else if (ps.startsWith("(") && ps.endsWith(")")) { // multiple strings (a|b)
+                ps.removeSurrounding("(", ")").split("|")
+            } else { // the whole string is a regex
+                listOf(ps)
+            }
+            mutableStateListOf(*descs.toTypedArray())
+        }
+
+
         RegexInputBox(
-            label = { Text(Str(R.string.description)) },
-            placeholder = {
-                Placeholder(
-                    Str(R.string.regex_pattern) + "\n"
-                            + Str(R.string.for_example) + "\n"
-                            + ".*"
-                )
-            },
-            regexStr = pattern,
+            label = { Text(Str(R.string.target_rule_desc)) },
+            regexStr = patternState,
             onRegexStrChange = { newVal, hasErr ->
                 if (!hasErr) {
                     pattern = newVal
+                    patternState = newVal
                 }
             },
             regexFlags = flagsState,
@@ -746,6 +780,59 @@ class FindRules(
                 flags = it
             }
         )
+
+        val recs = remember {
+            listOf(ForNumber, ForSms, ForQuickCopy)
+                .flatMap { forType ->
+                    ruleTableForType(forType).listAll(ctx)
+                        .map { RuleWrapper(forType = forType, rule = it) }
+                }
+                .filter { it.rule.description.isNotEmpty() }
+        }
+
+        val lazyState = rememberLazyListState()
+        val percentage = 60 // Calculate x% of the screen height
+
+        LazyColumn(
+            state = lazyState,
+            verticalArrangement = Arrangement.spacedBy(4.dp),
+            modifier = M.heightIn(max = (screenHeightDp() * percentage / 100).dp)
+                .simpleLazyScrollbar(lazyState)
+        ) {
+            items(recs, key = { "${it.forType} ${it.rule.id}" }) { wrapper ->
+                Row(
+                    modifier = M
+                        .clickable {
+                            // 1. update the desc list
+                            val desc = wrapper.rule.description
+                            if (targetDescs.contains(desc)) {
+                                targetDescs.remove(desc)
+                            } else {
+                                targetDescs.add(desc)
+                            }
+
+                            // 2. rebuild the pattern string from the list
+                            patternState = if (targetDescs.isEmpty()) {
+                                ""
+                            } else if(targetDescs.size == 1) {
+                                targetDescs[0]
+                            } else {
+                                "(${targetDescs.joinToString("|")})"
+                            }
+                            pattern = patternState
+                        }
+                ) {
+                    RegexCard(
+                        rule = wrapper.rule, forType = wrapper.forType, containerBg = C.dialogBg,
+                        borderColor = if (targetDescs.any { it.regexMatches(wrapper.rule.description) }) {
+                            C.teal200
+                        } else {
+                            C.dialogBg.slightDiff()
+                        }
+                    )
+                }
+            }
+        }
     }
 }
 

@@ -22,15 +22,17 @@ class App : Application() {
         super.onCreate()
 
         // Bind events here instead of in MainActivity, to prevent it from being called multiple times.
+        // costs 1ms
         listenToConfigImport()
         listenToNewCallSMS()
         listenToHistoryCleanup()
 
         // Initialize permissions
-        Permission.init(this)
-        Notification.ensureBuiltInChannels(this)
+        Permission.init(this) // ~10ms
 
-        G.initialize(this)
+        Notification.ensureBuiltInChannels(this) // ~10ms
+
+        G.initialize(this) // ~14ms
     }
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(base)

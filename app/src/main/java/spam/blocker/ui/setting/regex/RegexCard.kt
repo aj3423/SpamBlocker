@@ -10,6 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -25,6 +26,7 @@ import spam.blocker.ui.M
 import spam.blocker.ui.setting.quick.ChannelIcons
 import spam.blocker.ui.setting.regex.RegexMode.ModeType
 import spam.blocker.ui.setting.regex.RegexMode.regexModeInlineMap
+import spam.blocker.ui.slightDiff
 import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.GreyIcon20
 import spam.blocker.ui.widgets.OutlineCard
@@ -39,12 +41,14 @@ fun RegexCard(
     rule: RegexRule,
     forType: Int,
     modifier: Modifier = Modifier,
+    containerBg: Color = G.palette.background,
+    borderColor: Color = containerBg.slightDiff(),
 ) {
     val C = G.palette
     val ctx = LocalContext.current
     val spf = spf.RegexOptions(ctx)
 
-    OutlineCard {
+    OutlineCard(containerBg = containerBg, borderColor = borderColor) {
         Row(
             modifier = modifier.padding(horizontal = 10.dp, vertical = 8.dp)
         ) {

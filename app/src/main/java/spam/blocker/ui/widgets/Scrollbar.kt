@@ -25,8 +25,8 @@ import kotlin.math.max
 
 
 // ref: https://gist.github.com/XFY9326/2067efcc3c5899557cc6a334d76a92c8
-// Only used in Balloon, and PopupDialog, others are using LazyColumnScrollbar below, because it
-//  has a bug that always maximizes the popup window.
+// For normal `Column` only
+// Doesn't support thumb dragging, but also doesn't expand the parent dialog to max height
 fun Modifier.simpleVerticalScrollbar(
     scrollState: ScrollState,
     scrollBarWidth: Dp = 2.dp,
@@ -67,6 +67,80 @@ fun Modifier.simpleVerticalScrollbar(
     }
 }
 
+// For `LazyColumn` only
+// Doesn't support thumb dragging, but also doesn't expand the parent dialog to max height
+fun Modifier.simpleLazyScrollbar(
+    state: LazyListState,
+    scrollBarWidth: Dp = 2.dp,
+    minScrollBarHeight: Dp = 5.dp,
+    scrollBarColor: Color = G.palette.infoBlue,
+    cornerRadius: Dp = 2.dp,
+    persistent: Boolean = false,
+    offsetX: Int = 0,
+): Modifier = composed {
+    val targetAlpha = if (persistent ||
+        state.isScrollInProgress) 1f else 0f
+    val duration = if (state.isScrollInProgress) 150 else
+        500
+
+    val alpha by animateFloatAsState(
+        label = "",
+        targetValue = targetAlpha,
+        animationSpec = tween(durationMillis = duration)
+    )
+
+    drawWithContent {
+        drawContent()
+
+        val layoutInfo = state.layoutInfo
+        val totalItemsCount = layoutInfo.totalItemsCount
+        val visibleItemsInfo = layoutInfo.visibleItemsInfo
+
+        if (visibleItemsInfo.isEmpty() || totalItemsCount ==
+            0) return@drawWithContent
+
+        val needDrawScrollbar = persistent ||
+                state.isScrollInProgress || alpha > 0.0f
+        if (!needDrawScrollbar) return@drawWithContent
+
+        val firstVisibleItem = visibleItemsInfo.first()
+        val lastVisibleItem = visibleItemsInfo.last()
+
+        val itemHeight = (lastVisibleItem.offset +
+                lastVisibleItem.size - firstVisibleItem.offset).toFloat() /
+                visibleItemsInfo.size
+        val estimatedTotalHeight = itemHeight *
+                totalItemsCount
+        val visibleHeight = this.size.height
+
+        if (estimatedTotalHeight <= visibleHeight)
+            return@drawWithContent
+
+        val scrollBarHeight = max(visibleHeight *
+                (visibleHeight / estimatedTotalHeight),
+            minScrollBarHeight.toPx())
+        val scrollOffset = (firstVisibleItem.index *
+                itemHeight) - firstVisibleItem.offset
+        val maxOffset = estimatedTotalHeight - visibleHeight
+        val scrollPercent = (scrollOffset /
+                maxOffset).coerceIn(0f, 1f)
+        val scrollBarOffsetY = (visibleHeight -
+                scrollBarHeight) * scrollPercent
+
+        drawRoundRect(
+            color = scrollBarColor,
+            topLeft = Offset(this.size.width -
+                    scrollBarWidth.toPx() + offsetX, scrollBarOffsetY),
+            size = Size(scrollBarWidth.toPx(),
+                scrollBarHeight),
+            alpha = alpha,
+            cornerRadius = CornerRadius(cornerRadius.toPx())
+        )
+    }
+}
+
+// For `LazyColumn` only
+// Supports thumb dragging, but it also expands the parent dialog to max height
 @Composable
 fun LazyScrollbar(
     state: LazyListState,
@@ -90,6 +164,9 @@ fun LazyScrollbar(
         content()
     }
 }
+
+// For normal `Column` only
+// Supports thumb dragging, but it also expands the parent dialog to max height
 @Composable
 fun NormalColumnScrollbar(
     state: ScrollState,

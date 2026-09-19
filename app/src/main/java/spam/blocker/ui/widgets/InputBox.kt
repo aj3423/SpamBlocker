@@ -548,6 +548,14 @@ fun RegexInputBox(
             TextFieldValue(text = regexStr)
         )
     }
+    // update state when the text is changed from other places rather typing in the textbox itself.
+    LaunchedEffect(regexStr) {
+        val oldSelection = state.selection
+        state = TextFieldValue(
+            text = regexStr,
+            selection = oldSelection
+        )
+    }
     // Last String value that either text field was recomposed with or updated in the onValueChange
     // callback. We keep track of it to prevent calling onValueChange(String) for same String when
     // CoreTextField's onValueChange is called multiple times without recomposition in between.
