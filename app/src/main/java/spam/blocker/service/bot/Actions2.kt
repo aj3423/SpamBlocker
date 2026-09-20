@@ -43,6 +43,7 @@ import spam.blocker.ui.darken
 import spam.blocker.ui.screenHeightDp
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.regex.RegexCard
+import spam.blocker.ui.setting.regex.RegexSelectionList
 import spam.blocker.ui.slightDiff
 import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.ui.widgets.GreyIcon
@@ -740,30 +741,10 @@ class FindRules(
         GreyIcon(R.drawable.ic_find)
     }
 
-    private class RuleWrapper(
-        val forType: Int,
-        val rule: RegexRule
-    )
     @Composable
     override fun Options() {
-        val ctx = LocalContext.current
-        val C = G.palette
-
         val flagsState = remember { mutableIntStateOf(flags) }
         var patternState by remember { mutableStateOf(pattern) }
-
-        val targetDescs = remember(patternState) {
-            val ps = patternState.trim()
-            val descs = if (ps.isEmpty()) { // empty
-                listOf()
-            } else if (ps.startsWith("(") && ps.endsWith(")")) { // multiple strings (a|b)
-                ps.removeSurrounding("(", ")").split("|")
-            } else { // the whole string is a regex
-                listOf(ps)
-            }
-            mutableStateListOf(*descs.toTypedArray())
-        }
-
 
         RegexInputBox(
             label = { Text(Str(R.string.target_rule_desc)) },
@@ -781,57 +762,9 @@ class FindRules(
             }
         )
 
-        val recs = remember {
-            listOf(ForNumber, ForSms, ForQuickCopy)
-                .flatMap { forType ->
-                    ruleTableForType(forType).listAll(ctx)
-                        .map { RuleWrapper(forType = forType, rule = it) }
-                }
-                .filter { it.rule.description.isNotEmpty() }
-        }
-
-        val lazyState = rememberLazyListState()
-        val percentage = 60 // Calculate x% of the screen height
-
-        LazyColumn(
-            state = lazyState,
-            verticalArrangement = Arrangement.spacedBy(4.dp),
-            modifier = M.heightIn(max = (screenHeightDp() * percentage / 100).dp)
-                .simpleLazyScrollbar(lazyState)
-        ) {
-            items(recs, key = { "${it.forType} ${it.rule.id}" }) { wrapper ->
-                Row(
-                    modifier = M
-                        .clickable {
-                            // 1. update the desc list
-                            val desc = wrapper.rule.description
-                            if (targetDescs.contains(desc)) {
-                                targetDescs.remove(desc)
-                            } else {
-                                targetDescs.add(desc)
-                            }
-
-                            // 2. rebuild the pattern string from the list
-                            patternState = if (targetDescs.isEmpty()) {
-                                ""
-                            } else if(targetDescs.size == 1) {
-                                targetDescs[0]
-                            } else {
-                                "(${targetDescs.joinToString("|")})"
-                            }
-                            pattern = patternState
-                        }
-                ) {
-                    RegexCard(
-                        rule = wrapper.rule, forType = wrapper.forType, containerBg = C.dialogBg,
-                        borderColor = if (targetDescs.any { it.regexMatches(wrapper.rule.description) }) {
-                            C.teal200
-                        } else {
-                            C.dialogBg.slightDiff()
-                        }
-                    )
-                }
-            }
+        RegexSelectionList(pattern = patternState) {
+            pattern = it
+            patternState = it
         }
     }
 }

@@ -2,10 +2,13 @@ package spam.blocker.ui.setting.regex
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -16,6 +19,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -35,9 +39,13 @@ import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.RegexRule
 import spam.blocker.db.ruleTableForType
+import spam.blocker.def.Def.ForNumber
+import spam.blocker.def.Def.ForQuickCopy
+import spam.blocker.def.Def.ForSms
 import spam.blocker.ui.M
 import spam.blocker.ui.maxScreenHeight
 import spam.blocker.ui.screenHeightDp
+import spam.blocker.ui.slightDiff
 import spam.blocker.ui.widgets.ConfigExportDialog
 import spam.blocker.ui.widgets.DividerItem
 import spam.blocker.ui.widgets.DropdownWrapper
@@ -55,7 +63,11 @@ import spam.blocker.ui.widgets.SnackBar
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwipeInfo
+import spam.blocker.ui.widgets.simpleLazyScrollbar
+import spam.blocker.util.Lambda1
+import spam.blocker.util.Lambda2
 import spam.blocker.util.PermissivePrettyNoDefaultsJson
+import spam.blocker.util.regexMatches
 import spam.blocker.util.spf
 
 
@@ -449,6 +461,88 @@ fun RegexItem(
                         }
                     )
             )
+        }
+    }
+}
+
+private class RegexSelectionWrapper(
+    val forType: Int,
+    val rule: RegexRule
+)
+
+// Select regex by desc, for binding   Workflows <-> RegexRules.
+@Composable
+fun RegexSelectionList(
+    pattern: String,
+//    singleSelect: Boolean = false,
+    onSelect: Lambda1<String> // e.g.  (a|b|c)
+) {
+    val ctx = LocalContext.current
+    val C = G.palette
+
+    val targetDescs = remember(pattern) {
+        val ps = pattern.trim()
+        val descs = if (ps.isEmpty()) { // empty
+            listOf()
+        } else if (ps.startsWith("(") && ps.endsWith(")")) { // multiple strings (a|b)
+            ps.removeSurrounding("(", ")").split("|")
+        } else { // the whole string is a regex
+            listOf(ps)
+        }
+        mutableStateListOf(*descs.toTypedArray())
+    }
+
+    val recs = remember {
+        listOf(ForNumber, ForSms, ForQuickCopy)
+            .flatMap { forType ->
+                ruleTableForType(forType).listAll(ctx)
+                    .map { RegexSelectionWrapper(forType = forType, rule = it) }
+            }
+            .filter { it.rule.description.isNotEmpty() }
+    }
+
+    val lazyState = rememberLazyListState()
+    val percentage = 60 // Calculate x% of the screen height
+
+    LazyColumn(
+        state = lazyState,
+        verticalArrangement = Arrangement.spacedBy(4.dp),
+        modifier = M.heightIn(max = (screenHeightDp() * percentage / 100).dp)
+            .simpleLazyScrollbar(lazyState)
+    ) {
+        items(recs, key = { "${it.forType} ${it.rule.id}" }) { wrapper ->
+            Row(
+                modifier = M
+                    .clickable {
+                        // 1. update the desc list
+                        val desc = wrapper.rule.description
+                        if (targetDescs.contains(desc)) {
+                            targetDescs.remove(desc)
+                        } else {
+                            targetDescs.add(desc)
+                        }
+
+                        // 2. rebuild the pattern string from the list
+                        val newPattern = if (targetDescs.isEmpty()) {
+                            ""
+                        } else if(targetDescs.size == 1) {
+                            targetDescs[0]
+                        } else {
+                            "(${targetDescs.joinToString("|")})"
+                        }
+
+                        onSelect(newPattern)
+                    }
+            ) {
+                RegexCard(
+                    rule = wrapper.rule, forType = wrapper.forType, containerBg = C.dialogBg,
+                    borderColor = if (targetDescs.any { it.regexMatches(wrapper.rule.description) }) {
+                        C.teal200
+                    } else {
+                        C.dialogBg.slightDiff()
+                    }
+                )
+            }
         }
     }
 }
