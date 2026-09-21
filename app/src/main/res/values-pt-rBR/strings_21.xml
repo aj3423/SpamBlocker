@@ -9,10 +9,12 @@
     </string>
     <string name="help_target_rule_desc">
     <![CDATA[
-        Este recurso será aplicado à regra de expressão regular que possui a mesma descrição. <br>
+        Direcione uma ou mais regras de regex por descrição. <br>
         <br>
-        Por exemplo, se você quiser aplicar isso à regra de expressão regular <b>Trabalho</b>,
-        digite <b>Trabalho</b> neste campo.
+        Por exemplo, para aplicar isso apenas à regra de regex <sample><b>Trabalho</b></sample>,
+        insira <sample><b>Trabalho</b></sample> aqui. <br>
+        <br>
+        Toque no <title>ícone inicial</title> para selecionar regras em vez de digitar suas descrições manualmente.
     ]]>
     </string>
 

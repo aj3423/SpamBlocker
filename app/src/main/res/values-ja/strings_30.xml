@@ -20,7 +20,6 @@
         ]]>
     </string>
     <string name="sending_request">リクエストを送信中…</string>
-<string name="description_filter">説明フィルター</string>
     <string name="help_auto_report_filter_by_rule_description">
         <![CDATA[
         ルールの<highlight><b>説明</b></highlight>と一致させることで、特定の正規表現ルールに対してのみ自動報告を有効にします。<br>

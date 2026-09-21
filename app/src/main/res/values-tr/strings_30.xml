@@ -20,7 +20,6 @@
         ]]>
     </string>
     <string name="sending_request">İstek gönderiliyor…</string>
-<string name="description_filter">Açıklama Filtresi</string>
     <string name="help_auto_report_filter_by_rule_description">
         <![CDATA[
         Kural <highlight><b>açıklamaları</b></highlight> ile eşleştirerek yalnızca belirli regex kuralları için otomatik raporlamayı etkinleştirin. <br>

@@ -9,10 +9,12 @@
     </string>
     <string name="help_target_rule_desc">
     <![CDATA[
-        Cette fonctionnalité sera appliquée à la règle d\'expression régulière qui a la même description. <br>
+        Ciblez une ou plusieurs règles d\'expression régulière par description. <br>
         <br>
-        Par exemple, si vous voulez appliquer cela à la règle d\'expression régulière <b>Travail</b>,
-        tapez <b>Travail</b> dans ce champ.
+        Par exemple, pour appliquer ceci uniquement à la règle d\'expression régulière <sample><b>Travail</b></sample>,
+        entrez <sample><b>Travail</b></sample> ici. <br>
+        <br>
+        Appuyez sur l\'<title>icône de tête</title> pour sélectionner des règles au lieu de saisir manuellement leurs descriptions.
     ]]>
     </string>
 

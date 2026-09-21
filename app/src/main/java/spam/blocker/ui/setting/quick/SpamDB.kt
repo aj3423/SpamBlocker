@@ -36,6 +36,7 @@ import spam.blocker.service.bot.serialize
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.widgets.Button
+import spam.blocker.ui.widgets.ColumnSpaced
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyIcon18
 import spam.blocker.ui.widgets.GreyLabel
@@ -160,9 +161,7 @@ fun SpamDB() {
             reScheduleSpamDBCleanup(ctx)
         }
     ) {
-        Column(
-            verticalArrangement = Arrangement.spacedBy(4.dp)
-        ) {
+        ColumnSpaced(4) {
             // Total records   [1234] [clear]
             LabeledRow(labelId = R.string.total) {
                 GreyLabel(text = NumberFormat.getInstance().format(total))

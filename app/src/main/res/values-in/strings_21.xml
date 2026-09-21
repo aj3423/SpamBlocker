@@ -9,10 +9,12 @@
     </string>
     <string name="help_target_rule_desc">
     <![CDATA[
-        Fitur ini akan diterapkan pada aturan regex yang memiliki deskripsi yang sama. <br>
+        Targetkan satu atau lebih aturan regex berdasarkan deskripsi. <br>
         <br>
-        Misalnya, jika Anda ingin menerapkan ini pada aturan regex <b>Work</b>,
-        ketik <b>Work</b> di kolom ini.
+        Misalnya, untuk menerapkan ini hanya pada aturan regex <sample><b>Work</b></sample>,
+        masukkan <sample><b>Work</b></sample> di sini. <br>
+        <br>
+        Ketuk <title>ikon di depan</title> untuk memilih aturan alih-alih mengetikkan deskripsinya secara manual.
     ]]>
     </string>
 

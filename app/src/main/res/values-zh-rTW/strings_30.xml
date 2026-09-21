@@ -20,7 +20,6 @@
         ]]>
     </string>
     <string name="sending_request">正在發送請求…</string>
-<string name="description_filter">描述過濾器</string>
     <string name="help_auto_report_filter_by_rule_description">
         <![CDATA[
         透過比對規則的<highlight><b>描述</b></highlight>，專門為特定的正則表達式規則啟用自動回報。<br>

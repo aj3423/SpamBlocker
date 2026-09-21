@@ -16,6 +16,7 @@ import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
+import spam.blocker.ui.widgets.ColumnSpaced
 import spam.blocker.ui.widgets.GreyIcon20
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.PopupDialog
@@ -43,9 +44,9 @@ fun RepeatedCall() {
     PopupDialog(
         trigger = popupTrigger,
         content = {
-            Column(
+            ColumnSpaced(
+                space = 10,
                 modifier = M.widthIn(max = 280.dp),
-                verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 // Max Interval
                 NumberInputBox(

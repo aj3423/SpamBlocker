@@ -9,10 +9,12 @@
     </string>
     <string name="help_target_rule_desc">
     <![CDATA[
-        Bu özellik, aynı açıklamaya sahip regex kuralına uygulanacaktır. <br>
+        Açıklamaya göre bir veya daha fazla regex kuralını hedefleyin. <br>
         <br>
-        Örneğin, bunu <b>İş</b> regex kuralına uygulamak isterseniz,
-        bu alana <b>İş</b> yazın.
+        Örneğin, bunu yalnızca <sample><b>İş</b></sample> regex kuralına uygulamak için
+        buraya <sample><b>İş</b></sample> girin. <br>
+        <br>
+        Açıklamalarını manuel olarak yazmak yerine kuralları seçmek için <title>baştaki simgeye</title> dokunun.
     ]]>
     </string>
 

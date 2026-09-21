@@ -46,6 +46,7 @@ import spam.blocker.ui.SizedBox
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.regex.DisableNestedScrolling
 import spam.blocker.ui.setting.regex.RegexMode.ModeType
+import spam.blocker.ui.setting.regex.RegexRuleFilterField
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.BalloonQuestionMark
 import spam.blocker.ui.widgets.CheckBox
@@ -921,20 +922,10 @@ class SmsThrottling(
         )
 
         // Target rule desc
-        val flagsState = remember { mutableIntStateOf(targetRuleDescFlags) }
-        RegexInputBox(
-            regexStr = targetRuleDesc,
-            label = { Text(Str(R.string.target_rule_desc)) },
-            regexFlags = flagsState,
-            helpTooltipId = R.string.help_target_rule_desc,
-            onRegexStrChange = { newVal, hasError ->
-                if (!hasError) {
-                    targetRuleDesc = newVal
-                }
-            },
-            onFlagsChange = {
-                flagsState.intValue = it
-                targetRuleDescFlags = it
+        RegexRuleFilterField(
+            pattern = targetRuleDesc,
+            onPatternChange = { newVal ->
+                targetRuleDesc = newVal
             }
         )
     }

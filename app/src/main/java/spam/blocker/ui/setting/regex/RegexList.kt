@@ -46,6 +46,7 @@ import spam.blocker.ui.M
 import spam.blocker.ui.maxScreenHeight
 import spam.blocker.ui.screenHeightDp
 import spam.blocker.ui.slightDiff
+import spam.blocker.ui.widgets.ColumnSpaced
 import spam.blocker.ui.widgets.ConfigExportDialog
 import spam.blocker.ui.widgets.DividerItem
 import spam.blocker.ui.widgets.DropdownWrapper
@@ -245,7 +246,7 @@ fun RegexList(
         trigger = confirmDeleteDuplicated,
         scrollEnabled = false,
         content = {
-            Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            ColumnSpaced(10) {
                 duplicatedRules.clear()
                 duplicatedRules.addAll(vm.table.listDuplicated(ctx))
 
@@ -385,9 +386,9 @@ fun RegexList(
             }
         }
     } else { // normal column
-        Column(
+        ColumnSpaced(
+            space = 4,
             modifier = M.nestedScroll(DisableNestedScrolling()),
-            verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
             vm.rules.forEachIndexed { i, rule ->
                 key(rule.id) {
@@ -461,88 +462,6 @@ fun RegexItem(
                         }
                     )
             )
-        }
-    }
-}
-
-private class RegexSelectionWrapper(
-    val forType: Int,
-    val rule: RegexRule
-)
-
-// Select regex by desc, for binding   Workflows <-> RegexRules.
-@Composable
-fun RegexSelectionList(
-    pattern: String,
-//    singleSelect: Boolean = false,
-    onSelect: Lambda1<String> // e.g.  (a|b|c)
-) {
-    val ctx = LocalContext.current
-    val C = G.palette
-
-    val targetDescs = remember(pattern) {
-        val ps = pattern.trim()
-        val descs = if (ps.isEmpty()) { // empty
-            listOf()
-        } else if (ps.startsWith("(") && ps.endsWith(")")) { // multiple strings (a|b)
-            ps.removeSurrounding("(", ")").split("|")
-        } else { // the whole string is a regex
-            listOf(ps)
-        }
-        mutableStateListOf(*descs.toTypedArray())
-    }
-
-    val recs = remember {
-        listOf(ForNumber, ForSms, ForQuickCopy)
-            .flatMap { forType ->
-                ruleTableForType(forType).listAll(ctx)
-                    .map { RegexSelectionWrapper(forType = forType, rule = it) }
-            }
-            .filter { it.rule.description.isNotEmpty() }
-    }
-
-    val lazyState = rememberLazyListState()
-    val percentage = 60 // Calculate x% of the screen height
-
-    LazyColumn(
-        state = lazyState,
-        verticalArrangement = Arrangement.spacedBy(4.dp),
-        modifier = M.heightIn(max = (screenHeightDp() * percentage / 100).dp)
-            .simpleLazyScrollbar(lazyState)
-    ) {
-        items(recs, key = { "${it.forType} ${it.rule.id}" }) { wrapper ->
-            Row(
-                modifier = M
-                    .clickable {
-                        // 1. update the desc list
-                        val desc = wrapper.rule.description
-                        if (targetDescs.contains(desc)) {
-                            targetDescs.remove(desc)
-                        } else {
-                            targetDescs.add(desc)
-                        }
-
-                        // 2. rebuild the pattern string from the list
-                        val newPattern = if (targetDescs.isEmpty()) {
-                            ""
-                        } else if(targetDescs.size == 1) {
-                            targetDescs[0]
-                        } else {
-                            "(${targetDescs.joinToString("|")})"
-                        }
-
-                        onSelect(newPattern)
-                    }
-            ) {
-                RegexCard(
-                    rule = wrapper.rule, forType = wrapper.forType, containerBg = C.dialogBg,
-                    borderColor = if (targetDescs.any { it.regexMatches(wrapper.rule.description) }) {
-                        C.teal200
-                    } else {
-                        C.dialogBg.slightDiff()
-                    }
-                )
-            }
         }
     }
 }

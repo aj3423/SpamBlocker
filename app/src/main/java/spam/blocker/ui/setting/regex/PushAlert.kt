@@ -35,6 +35,7 @@ import spam.blocker.service.resetPushAlertCache
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.quick.PopupChooseApps
+import spam.blocker.ui.widgets.ColumnSpaced
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyIcon18
 import spam.blocker.ui.widgets.GreyIcon20
@@ -360,9 +361,9 @@ fun PushAlertList() {
         )
     }
 
-    Column(
+    ColumnSpaced(
+        space = 4,
         modifier = M.nestedScroll(DisableNestedScrolling()),
-        verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {
         vm.records.forEachIndexed { index, rec ->
             key(rec.id) {

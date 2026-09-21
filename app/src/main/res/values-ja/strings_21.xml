@@ -9,10 +9,12 @@
     </string>
     <string name="help_target_rule_desc">
     <![CDATA[
-        この機能は、同じ説明を持つ正規表現ルールに適用されます。<br>
+        説明によって1つ以上の正規表現ルールを対象にします。<br>
         <br>
-        例えば、これを正規表現ルール<b>Work</b>に適用したい場合、
-        このフィールドに<b>Work</b>と入力してください。
+        例えば、正規表現ルール<sample><b>Work</b></sample>にのみ適用するには、
+        ここに<sample><b>Work</b></sample>と入力します。<br>
+        <br>
+        説明を手動で入力する代わりに、<title>先頭のアイコン</title>をタップしてルールを選択できます。
     ]]>
     </string>
 

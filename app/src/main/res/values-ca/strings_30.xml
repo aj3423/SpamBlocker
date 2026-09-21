@@ -20,7 +20,6 @@
         ]]>
     </string>
     <string name="sending_request">S’està enviant la sol·licitud…</string>
-<string name="description_filter">Filtre de descripció</string>
     <string name="help_auto_report_filter_by_rule_description">
         <![CDATA[
         Habiliteu la denúncia automàtica exclusivament per a regles regex específiques fent-les coincidir amb les <highlight><b>descripcions</b></highlight> de les regles. <br>

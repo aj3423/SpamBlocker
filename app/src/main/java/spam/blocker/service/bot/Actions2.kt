@@ -43,6 +43,7 @@ import spam.blocker.ui.darken
 import spam.blocker.ui.screenHeightDp
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.regex.RegexCard
+import spam.blocker.ui.setting.regex.RegexRuleFilterField
 import spam.blocker.ui.setting.regex.RegexSelectionList
 import spam.blocker.ui.slightDiff
 import spam.blocker.ui.widgets.ComboBox
@@ -743,29 +744,15 @@ class FindRules(
 
     @Composable
     override fun Options() {
-        val flagsState = remember { mutableIntStateOf(flags) }
         var patternState by remember { mutableStateOf(pattern) }
 
-        RegexInputBox(
-            label = { Text(Str(R.string.target_rule_desc)) },
-            regexStr = patternState,
-            onRegexStrChange = { newVal, hasErr ->
-                if (!hasErr) {
-                    pattern = newVal
-                    patternState = newVal
-                }
-            },
-            regexFlags = flagsState,
-            onFlagsChange = {
-                flagsState.intValue = it
-                flags = it
+        RegexRuleFilterField(
+            pattern = patternState,
+            onPatternChange = { newVal ->
+                pattern = newVal
+                patternState = newVal
             }
         )
-
-        RegexSelectionList(pattern = patternState) {
-            pattern = it
-            patternState = it
-        }
     }
 }
 

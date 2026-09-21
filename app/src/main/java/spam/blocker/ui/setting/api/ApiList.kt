@@ -22,6 +22,7 @@ import spam.blocker.R
 import spam.blocker.def.Def
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.regex.DisableNestedScrolling
+import spam.blocker.ui.widgets.ColumnSpaced
 import spam.blocker.ui.widgets.ConfigExportDialog
 import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.GreyIcon20
@@ -106,9 +107,9 @@ fun ApiList(vm: ApiViewModel) {
         )
     }
 
-    Column(
+    ColumnSpaced(
+        space = 4,
         modifier = M.nestedScroll(DisableNestedScrolling()),
-        verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {
         vm.apis.forEachIndexed { index, api ->
             key(api.id) {

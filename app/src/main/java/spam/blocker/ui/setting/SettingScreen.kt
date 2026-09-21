@@ -319,9 +319,7 @@ fun SettingScreen() {
                         spfSections.isInstantQueryCollapsed = it
                     },
                     content = {
-                        Column(
-                            verticalArrangement = Arrangement.spacedBy(0.dp),
-                        ) {
+                        Column {
                             // Api Query list
                             LaunchedEffect(true) { G.apiQueryVM.reloadDb(ctx) }
                             ApiHeader(G.apiQueryVM, ApiQueryPresets)
@@ -344,9 +342,7 @@ fun SettingScreen() {
                         spfSections.isReportNumberCollapsed = it
                     },
                     content = {
-                        Column(
-                            verticalArrangement = Arrangement.spacedBy(0.dp),
-                        ) {
+                        Column {
                             // Api Report list
                             LaunchedEffect(true) { G.apiReportVM.reloadDb(ctx) }
                             ApiHeader(G.apiReportVM, ApiReportPresets)
@@ -366,9 +362,7 @@ fun SettingScreen() {
                     horizontalPadding = 8,
                     isCollapsed = remember { mutableStateOf(spfSections.isAutomationCollapsed) },
                     content = {
-                        Column(
-                            verticalArrangement = Arrangement.spacedBy(0.dp),
-                        ) {
+                        Column {
                             // Bot list
                             LaunchedEffect(true) { G.botVM.reload(ctx) }
                             BotHeader(G.botVM)
@@ -394,9 +388,7 @@ fun SettingScreen() {
                         spfSections.isMiscCollapsed = it
                     },
                     content = {
-                        Column(
-                            verticalArrangement = Arrangement.spacedBy(0.dp),
-                        ) {
+                        Column {
                             Language()
                             Theme()
                             BackupRestore()

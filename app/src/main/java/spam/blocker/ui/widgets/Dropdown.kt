@@ -175,7 +175,8 @@ fun DropdownMenuItems(
 ) {
     val scrollState = rememberScrollState()
 
-    Column(
+    ColumnSpaced(
+        space = 16,
         modifier = M
             .heightIn(max = 500.dp) // Important for it to not crash (scroll unbounded issue)
         .verticalScroll(scrollState)
@@ -184,7 +185,6 @@ fun DropdownMenuItems(
             offsetX = -8,
             persistent = true
         ),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         items.forEach { item ->
             RowVCenter(

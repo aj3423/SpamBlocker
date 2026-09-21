@@ -20,7 +20,6 @@
         ]]>
     </string>
     <string name="sending_request">Mengirim permintaan…</string>
-<string name="description_filter">Penyaring Deskripsi</string>
     <string name="help_auto_report_filter_by_rule_description">
         <![CDATA[
         Aktifkan lapor otomatis secara eksklusif untuk aturan regex tertentu dengan mencocokkan <highlight><b>deskripsi</b></highlight> aturannya. <br>

@@ -20,7 +20,6 @@
         ]]>
     </string>
     <string name="sending_request">جارٍ إرسال الطلب…</string>
-<string name="description_filter">فلتر الوصف</string>
     <string name="help_auto_report_filter_by_rule_description">
         <![CDATA[
         تمكين الإبلاغ التلقائي حصريًا لقواعد regex محددة من خلال مطابقة <highlight><b>أوصاف</b></highlight> القواعد. <br>

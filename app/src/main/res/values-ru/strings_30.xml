@@ -20,7 +20,6 @@
         ]]>
     </string>
     <string name="sending_request">Отправка запроса…</string>
-<string name="description_filter">Фильтр описания</string>
     <string name="help_auto_report_filter_by_rule_description">
         <![CDATA[
         Включить автоотчет исключительно для определенных правил регулярных выражений путем сопоставления с <highlight><b>описанием</b></highlight> правила. <br>

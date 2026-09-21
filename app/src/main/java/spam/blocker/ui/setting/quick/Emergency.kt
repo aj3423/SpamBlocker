@@ -29,6 +29,7 @@ import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.Button
+import spam.blocker.ui.widgets.ColumnSpaced
 import spam.blocker.ui.widgets.GreyIcon18
 import spam.blocker.ui.widgets.GreyText
 import spam.blocker.ui.widgets.NumberInputBox
@@ -133,9 +134,7 @@ fun EmergencySituation() {
                 )
             }
 
-            Column(
-                verticalArrangement = Arrangement.spacedBy(4.dp)
-            ) {
+            ColumnSpaced(4) {
                 // Reset status
                 LabeledRow(labelId = R.string.status) {
                     Text(

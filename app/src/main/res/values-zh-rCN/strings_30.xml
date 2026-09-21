@@ -20,7 +20,6 @@
         ]]>
     </string>
     <string name="sending_request">正在发送请求…</string>
-<string name="description_filter">描述过滤器</string>
     <string name="help_auto_report_filter_by_rule_description">
         <![CDATA[
         通过匹配规则的<highlight><b>描述</b></highlight>，专门为特定的正则表达式规则启用自动举报。<br>

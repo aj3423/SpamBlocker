@@ -30,6 +30,7 @@ import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.bot.ActionHeader
 import spam.blocker.ui.setting.bot.ActionList
+import spam.blocker.ui.setting.regex.RegexRuleFilterField
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.Button
 import spam.blocker.ui.widgets.GreyIcon18
@@ -87,19 +88,12 @@ fun PopupEditAutoReport(
             }
             val isRegexEnabled = flags.value!!.hasFlag(AutoReportTypes.Regex)
             AnimatedVisibleV(isRegexEnabled) {
-                RegexInputBox(
-                    regexStr = regexDescFilter.value ?: ".*",
-                    label = { Text(Str(R.string.description_filter)) },
+                RegexRuleFilterField(
+                    pattern = regexDescFilter.value ?: ".*",
                     helpTooltipId = R.string.help_auto_report_filter_by_rule_description,
-                    onRegexStrChange = { newVal, hasErr ->
-                        if (!hasErr)
-                            regexDescFilter.value = newVal
-                    },
-                    leadingIcon = { GreyIcon18(R.drawable.ic_filter) },
-                    placeholder = { Placeholder(".*") },
-                    regexFlags = remember { mutableIntStateOf(0) },
-                    showFlagsIcon = false,
-                    onFlagsChange = {}
+                    onPatternChange = { newVal ->
+                        regexDescFilter.value = newVal
+                    }
                 )
             }
         }
@@ -114,7 +108,7 @@ fun AutoReportIcons(
 
     RowVCenterSpaced(4) {
         for (i in 0..2) {
-            val hasFlag = autoReportTypes.hasFlag(autoReportFlags[i]) == true
+            val hasFlag = autoReportTypes.hasFlag(autoReportFlags[i])
             ResImage(
                 autoReportIcons[i],
                 if(hasFlag) C.error else C.disabled,

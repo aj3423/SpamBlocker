@@ -9,10 +9,12 @@
     </string>
     <string name="help_target_rule_desc">
     <![CDATA[
-        Questa funzione verrà applicata alla regola regex che ha la stessa descrizione. <br>
+        Indirizza una o più regole regex in base alla descrizione. <br>
         <br>
-        Ad esempio, se desideri applicarla alla regola regex <b>Lavoro</b>,
-        digita <b>Lavoro</b> in questo campo.
+        Ad esempio, per applicare questo solo alla regola regex <sample><b>Lavoro</b></sample>,
+        inserisci <sample><b>Lavoro</b></sample> qui. <br>
+        <br>
+        Tocca l\'<title>icona iniziale</title> per selezionare le regole invece di digitare manualmente le loro descrizioni.
     ]]>
     </string>
 

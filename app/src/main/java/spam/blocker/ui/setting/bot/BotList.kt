@@ -40,6 +40,7 @@ import spam.blocker.service.bot.MyWorkManager
 import spam.blocker.service.bot.Schedule
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.regex.DisableNestedScrolling
+import spam.blocker.ui.widgets.ColumnSpaced
 import spam.blocker.ui.widgets.ConfigExportDialog
 import spam.blocker.ui.widgets.CustomItem
 import spam.blocker.ui.widgets.DividerItem
@@ -268,9 +269,9 @@ fun BotList() {
         }
     }
 
-    Column(
+    ColumnSpaced(
+        space = 4,
         modifier = M.nestedScroll(DisableNestedScrolling()),
-        verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {
         vm.bots.forEachIndexed { index, bot ->
             key(bot.id) {

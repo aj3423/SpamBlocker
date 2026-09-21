@@ -22,6 +22,7 @@ import spam.blocker.def.Def
 import spam.blocker.ui.M
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.Button
+import spam.blocker.ui.widgets.ColumnSpaced
 import spam.blocker.ui.widgets.GreenDot
 import spam.blocker.ui.widgets.HtmlText
 import spam.blocker.ui.widgets.PopupDialog
@@ -136,9 +137,7 @@ fun GloballyEnabled() {
         },
         contentCollapsed = { GloballyEnabledSummary() }
     ) {
-        Column(
-            verticalArrangement = Arrangement.spacedBy(0.dp),
-        ) {
+        Column {
             LabeledRow(
                 R.string.enable,
                 helpTooltip = Str(R.string.help_screening),

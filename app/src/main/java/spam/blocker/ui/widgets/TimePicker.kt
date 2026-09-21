@@ -50,7 +50,7 @@ fun TimeRangePicker(
             onDismiss(sState.hour, sState.minute, eState.hour, eState.minute)
         }
     ) {
-        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        ColumnSpaced(10) {
             Text(Str(R.string.start_time))
             RowCenter(modifier = M.fillMaxWidth()) {
                 TimeInput(state = sState)

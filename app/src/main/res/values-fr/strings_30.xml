@@ -20,7 +20,6 @@
         ]]>
     </string>
     <string name="sending_request">Envoi de la requête…</string>
-<string name="description_filter">Filtre de description</string>
     <string name="help_auto_report_filter_by_rule_description">
         <![CDATA[
         Activez le rapport automatique exclusivement pour des règles regex spécifiques en fonction de leurs <highlight><b>descriptions</b></highlight>. <br>

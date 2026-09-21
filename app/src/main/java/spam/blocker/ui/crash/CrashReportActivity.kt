@@ -33,6 +33,7 @@ import spam.blocker.db.SmsTable
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.misc.REPO
 import spam.blocker.ui.theme.AppTheme
+import spam.blocker.ui.widgets.ColumnSpaced
 import spam.blocker.ui.widgets.GreyText
 import spam.blocker.ui.widgets.HtmlText
 import spam.blocker.ui.widgets.NormalColumnScrollbar
@@ -64,12 +65,12 @@ class CrashReportActivity : ComponentActivity() {
                     val scrollState = rememberScrollState()
 
                     NormalColumnScrollbar(scrollState) {
-                        Column(
+                        ColumnSpaced (
+                            space = 16,
                             modifier = M
                                 .padding(innerPadding)
                                 .padding(16.dp)
                                 .verticalScroll(scrollState),
-                            verticalArrangement = Arrangement.spacedBy(16.dp)
                         ) {
                             // Get the error message from the intent
                             val stackTrace by remember {

@@ -19,9 +19,12 @@
     </string>
     <string name="help_target_rule_desc">
     <![CDATA[
-        此設定會套用到描述相同的正規表示式規則。<br>
+        依描述指定一個或多個正規表示式規則。<br>
         <br>
-        例如想套用到名稱為 <b>Work</b> 的規則，請在此欄位輸入 <b>Work</b>。<br>
+        例如若只想套用到正規表示式規則 <sample><b>Work</b></sample>，
+        請在此處輸入 <sample><b>Work</b></sample>。<br>
+        <br>
+        點擊<title>前面的圖示</title>即可選取規則，而無須手動輸入其描述。
     ]]>
     </string>
 

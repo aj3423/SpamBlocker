@@ -20,7 +20,6 @@
         ]]>
     </string>
     <string name="sending_request">Надсилання запиту…</string>
-<string name="description_filter">Фільтр опису</string>
     <string name="help_auto_report_filter_by_rule_description">
         <![CDATA[
         Увімкнути автозвіт виключно для певних правил регулярних виразів шляхом зіставлення з <highlight><b>описом</b></highlight> правила. <br>

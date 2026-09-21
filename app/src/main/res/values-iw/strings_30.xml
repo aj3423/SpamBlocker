@@ -20,7 +20,6 @@
         ]]>
     </string>
     <string name="sending_request">שולח בקשה…</string>
-<string name="description_filter">מסנן תיאור</string>
     <string name="help_auto_report_filter_by_rule_description">
         <![CDATA[
         הפעל דיווח אוטומטי באופן בלעדי עבור כללי regex ספציפיים על ידי התאמה ל<highlight><b>תיאורי</b></highlight> הכללים שלהם. <br>

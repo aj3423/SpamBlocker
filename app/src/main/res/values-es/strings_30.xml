@@ -20,7 +20,6 @@
         ]]>
     </string>
     <string name="sending_request">Enviando solicitud…</string>
-<string name="description_filter">Filtro de Descripción</string>
     <string name="help_auto_report_filter_by_rule_description">
         <![CDATA[
         Habilita el informe automático exclusivamente para reglas regex específicas haciéndolas coincidir con las <highlight><b>descripciones</b></highlight> de las reglas. <br>

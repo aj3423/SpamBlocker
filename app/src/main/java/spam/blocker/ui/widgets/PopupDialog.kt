@@ -106,7 +106,8 @@ fun PopupDialog(
                 ),
                 shape = RoundedCornerShape(4.dp)
             ) {
-                Column(
+                ColumnCenterSpaced(
+                    space = contentGap,
                     modifier = M
                         .padding(
                             vertical = PopupScrollVPadding.dp
@@ -127,8 +128,6 @@ fun PopupDialog(
                             vertical = (PopupPaddingVertical- PopupScrollVPadding).dp
                         )
                     ,
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(contentGap.dp)
                 ) {
                     // Icon
                     icon?.let {
