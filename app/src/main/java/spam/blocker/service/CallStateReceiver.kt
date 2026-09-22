@@ -43,6 +43,7 @@ class CallStateReceiver : BroadcastReceiver() {
 
     override fun onReceive(ctx: Context, intent: Intent) {
 
+        logi("phone state action: ${intent.action}")
         if (intent.action == "android.intent.action.PHONE_STATE") {
 
             val state = intent.getStringExtra(TelephonyManager.EXTRA_STATE)
@@ -55,6 +56,7 @@ class CallStateReceiver : BroadcastReceiver() {
                     // 1. Blocked by "Answer+HangUp"?
                     val currNumber = extractNumber(intent)
 
+                    logi("currNumber: $currNumber")
                     val block = shouldBlock(ctx, currNumber)
                     logi("shouldBlock: $block")
                     if (block)

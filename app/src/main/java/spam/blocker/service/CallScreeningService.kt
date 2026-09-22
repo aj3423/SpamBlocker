@@ -101,12 +101,16 @@ class CallScreeningService : CallScreeningService() {
 
         val ctx = this
 
+        logi("111")
         // If a call is ongoing, don't hang-up, Reject instead
         if (Util.isInCall(ctx)) {
+            logi("2222")
+
             // "Reject" or "Silence" makes no difference here, it just keeps ringing on the peer.
             reject(details)
             return
         }
+        logi("333")
 
         val now = System.currentTimeMillis()
 
