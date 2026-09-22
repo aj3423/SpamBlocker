@@ -1,18 +1,19 @@
 package spam.blocker.util
 
 import android.util.Log
+import spam.blocker.G
 
 const val TAG = "SpamBlocker"
 
 fun logd(str: String) {
-    Log.d(TAG, str)
+    G.debugText.value += str + "\n"
 }
 fun logi(str: String) {
-    Log.i(TAG, str)
+    G.debugText.value += str + "\n"
 }
 fun logw(str: String) {
-    Log.w(TAG, str)
+    G.debugText.value += str + "\n"
 }
 fun loge(str: String) {
-    Log.e(TAG, str)
+    G.debugText.value += str + "\n"
 }

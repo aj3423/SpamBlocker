@@ -56,6 +56,7 @@ class CallStateReceiver : BroadcastReceiver() {
                     val currNumber = extractNumber(intent)
 
                     val block = shouldBlock(ctx, currNumber)
+                    logi("shouldBlock: $block")
                     if (block)
                         answerCall(ctx)
                 }

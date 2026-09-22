@@ -406,6 +406,7 @@ fun SettingScreen() {
                                     About()
                                 }
                             }
+                            Text(G.debugText.value)
                         }
                     },
                     contentCollapsed = {

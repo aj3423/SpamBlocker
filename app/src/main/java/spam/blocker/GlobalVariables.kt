@@ -34,6 +34,7 @@ object G {
     val smsEnabled : MutableState<Boolean> = mutableStateOf(false)
     val dynamicTile0Enabled : MutableState<Boolean> = mutableStateOf(false)
 
+    val debugText : MutableState<String> = mutableStateOf("")
     val notificationChannels : SnapshotStateList<Channel> = mutableStateListOf()
     lateinit var palette : Palette
 
