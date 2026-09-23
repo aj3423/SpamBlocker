@@ -104,7 +104,7 @@ object SpamTable : BasicTable<SpamNumber>(TABLE_SPAM) {
         val tolerance = pattern.takeLastWhile { it == '.' }.length
 
         // 1. Process `Ignore Country Code` and `Raw Number` first
-        val number = rawNumber.applyRegexFlags(patternFlags)
+        val number = rawNumber.applyRegexFlags(ctx, patternFlags)
 
         if (number.length <= tolerance) {
             return listOf()
@@ -120,7 +120,7 @@ object SpamTable : BasicTable<SpamNumber>(TABLE_SPAM) {
             whereParams = arrayOf("$prefix%")
         ).filter {
             // The number must match the regex
-            if(!pattern.regexMatchesNumber(it.peer, patternFlags))
+            if(!pattern.regexMatchesNumber(ctx, it.peer, patternFlags))
                 return@filter false
 
             // Check if the contact number starts with the prefix AND has 'tolerance' more digits

@@ -107,7 +107,7 @@ object Contacts {
         val tolerance = pattern.takeLastWhile { it == '.' }.length
 
         // 1. Process `Ignore Country Code` and `Raw Number` first
-        val number = rawNumber.applyRegexFlags(patternFlags)
+        val number = rawNumber.applyRegexFlags(ctx, patternFlags)
 
         if (number.length <= tolerance) {
             return null
@@ -151,7 +151,7 @@ object Contacts {
                 val cleanContactNumber = contactNumber.replace(Regex("[^+0-9]+"), "")
 
                 // The number must match the regex
-                if (!pattern.regexMatchesNumber(cleanContactNumber, patternFlags)) {
+                if (!pattern.regexMatchesNumber(ctx, cleanContactNumber, patternFlags)) {
                     continue
                 }
 

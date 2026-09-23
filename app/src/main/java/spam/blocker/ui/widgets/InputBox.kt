@@ -472,6 +472,7 @@ fun TestRegexDialog(
     regexFlags: Int,
 ) {
     val C = G.palette
+    val ctx = LocalContext.current
 
     val result: MutableState<Boolean?> = remember { mutableStateOf(null) }
 
@@ -488,7 +489,7 @@ fun TestRegexDialog(
                     label = Str(R.string.test),
                     color = C.teal200,
                     onClick = {
-                        result.value = regexStr.regexMatchesNumber(regexTestString.value, regexFlags)
+                        result.value = regexStr.regexMatchesNumber(ctx, regexTestString.value, regexFlags)
                     }
                 )
             }

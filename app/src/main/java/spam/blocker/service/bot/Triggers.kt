@@ -398,7 +398,7 @@ class SmsEvent(
         if (!Permission.receiveSMS.isGranted || !enabled)
             return false
 
-        if (!number.regexMatchesNumber(rawNumber, numberFlags)) {
+        if (!number.regexMatchesNumber(ctx, rawNumber, numberFlags)) {
             return false
         }
         if (!content.regexMatches(smsContent, contentFlags)) {
@@ -528,7 +528,7 @@ class CallEvent(
             return false
         }
 
-        if (!number.regexMatchesNumber(rawNumber, numberFlags)) {
+        if (!number.regexMatchesNumber(ctx, rawNumber, numberFlags)) {
             return false
         }
 
@@ -810,7 +810,7 @@ class SmsThrottling(
                         rule.matches(groupName)
                     } != null
             } else {
-                rule.pattern.regexMatchesNumber(rawNumber, rule.patternFlags)
+                rule.pattern.regexMatchesNumber(ctx, rawNumber, rule.patternFlags)
             }
         }
 
