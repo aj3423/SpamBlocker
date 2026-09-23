@@ -83,7 +83,7 @@ fun BlockType() {
                                 ctx,
                                 listOf(
                                     PermissionWrapper(Permission.phoneState),
-                                    PermissionWrapper(Permission.callLog),
+                                    PermissionWrapper(Permission.callLog), // needed by `intent.extras?.getString("incoming_number")`
                                     PermissionWrapper(Permission.answerCalls)
                                 )
                             ) { granted ->

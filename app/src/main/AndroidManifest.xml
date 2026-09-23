@@ -149,7 +149,6 @@
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.PHONE_STATE" />
-                <action android:name="android.permission.READ_CALL_LOG" />
             </intent-filter>
         </receiver>
 
