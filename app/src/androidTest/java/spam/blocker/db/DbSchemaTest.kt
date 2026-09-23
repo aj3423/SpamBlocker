@@ -33,18 +33,36 @@ class DbSchemaTest {
     }
 
     @Test
-    fun freshInstall_satisfiesCurrentTableContracts() {
-        withFreshDatabase { db ->
-            assertEquals(Db.DB_VERSION, db.version)
-            assertCurrentTableContracts(db)
-        }
-    }
+    fun freshInstallAndUpgrade_matchAndSatisfyTableContracts() {
+        withFreshDatabase { freshDb ->
+            withV420DatabaseUpgradedToCurrent { upgradedDb ->
+                assertEquals(Db.DB_VERSION, freshDb.version)
+                assertEquals(Db.DB_VERSION, upgradedDb.version)
 
-    @Test
-    fun upgradeFromV420_satisfiesCurrentTableContracts() {
-        withV420DatabaseUpgradedToCurrent { db ->
-            assertEquals(Db.DB_VERSION, db.version)
-            assertCurrentTableContracts(db)
+                val expectedContracts = currentTableContracts()
+
+                expectedContracts.keys.forEach { table ->
+                    val freshCols = tableColumns(freshDb, table)
+                    val upgradedCols = tableColumns(upgradedDb, table)
+                    val contractCols = expectedContracts[table] ?: emptySet()
+
+                    val missingInFresh = upgradedCols - freshCols
+                    val missingInUpgraded = freshCols - upgradedCols
+                    assertTrue(
+                        "Schema mismatch for table '$table': " +
+                            "missing in fresh = $missingInFresh, missing in upgraded = $missingInUpgraded",
+                        missingInFresh.isEmpty() && missingInUpgraded.isEmpty()
+                    )
+
+                    val missingInAdapter = freshCols - contractCols
+                    val extraInAdapter = contractCols - freshCols
+                    assertTrue(
+                        "Table adapter contract mismatch for table '$table': " +
+                            "missing in adapter = $missingInAdapter, extra in adapter = $extraInAdapter",
+                        missingInAdapter.isEmpty() && extraInAdapter.isEmpty()
+                    )
+                }
+            }
         }
     }
 
@@ -80,19 +98,6 @@ class DbSchemaTest {
         } finally {
             helper.close()
             ctx.deleteDatabase(UPGRADE_DB_NAME)
-        }
-    }
-
-    private fun assertCurrentTableContracts(db: SQLiteDatabase) {
-        currentTableContracts().forEach { (table, requiredColumns) ->
-            val actualColumns = tableColumns(db, table)
-            assertTrue("Missing table: $table", actualColumns.isNotEmpty())
-
-            val missingColumns = requiredColumns - actualColumns
-            assertTrue(
-                "$table is missing columns used by its table adapter: ${missingColumns.sorted()}",
-                missingColumns.isEmpty()
-            )
         }
     }
 
