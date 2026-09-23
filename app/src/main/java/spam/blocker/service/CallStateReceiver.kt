@@ -23,9 +23,13 @@ class CallStateReceiver : BroadcastReceiver() {
         //   they are only set when the call is blocked by "answer + hang up"
         val spf = spf.Temporary(ctx)
 
+        logi("2. load params: ${spf.lastCallToBlock}, ${spf.lastCallTime}, ${spf.hangUpDelay}")
+
+        logi("2. currNumber: $currNumber")
         // 1. Check if the number matches
         val numToBlock = spf.lastCallToBlock
         if (numToBlock != Util.clearNumber(currNumber)) {
+            logi("no match: $numToBlock != ${Util.clearNumber(currNumber)}")
             return false
         }
 
@@ -34,6 +38,7 @@ class CallStateReceiver : BroadcastReceiver() {
         val lastCalledTime = spf.lastCallTime
         val now = System.currentTimeMillis()
         val tolerance = 5000 // 5 seconds
+        logi("now: $now, lastCalledTime: $lastCalledTime, delta: ${now - lastCalledTime}")
         return (now - lastCalledTime) < tolerance
     }
 
@@ -43,7 +48,8 @@ class CallStateReceiver : BroadcastReceiver() {
 
     override fun onReceive(ctx: Context, intent: Intent) {
 
-        logi("phone state action: ${intent.action}")
+        logi("---------- call state -----------")
+        logi("action: ${intent.action}")
         if (intent.action == "android.intent.action.PHONE_STATE") {
 
             val state = intent.getStringExtra(TelephonyManager.EXTRA_STATE)

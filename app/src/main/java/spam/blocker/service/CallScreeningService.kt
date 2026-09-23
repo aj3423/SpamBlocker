@@ -120,6 +120,9 @@ class CallScreeningService : CallScreeningService() {
             lastCallTime = now
             hangUpDelay = r.hangUpDelay(ctx)
         }
+        logi("1. params saved:")
+        val sp = spf.Temporary(ctx)
+        logi("1. load params: ${sp.lastCallToBlock}, ${sp.lastCallTime}, ${sp.hangUpDelay}")
 
         // let it ring silently in the background, it will be answered in the CallStateReceiver immediately
         val builder = CallResponse.Builder().apply {

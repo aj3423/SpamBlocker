@@ -102,6 +102,7 @@ import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.SearchBox
 import spam.blocker.ui.widgets.Section
 import spam.blocker.ui.widgets.Str
+import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.util.Lambda
 import spam.blocker.util.Util.isFreshInstall
 import spam.blocker.util.spf
@@ -406,7 +407,7 @@ fun SettingScreen() {
                                     About()
                                 }
                             }
-                            Text(G.debugText.value)
+                            StrInputBox(G.debugText.value, onValueChange = {})
                         }
                     },
                     contentCollapsed = {
