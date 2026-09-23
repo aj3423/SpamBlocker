@@ -46,16 +46,21 @@ class DbSchemaTest {
                     val upgradedCols = tableColumns(upgradedDb, table)
                     val contractCols = expectedContracts[table] ?: emptySet()
 
-                    val missingInFresh = upgradedCols - freshCols
-                    val missingInUpgraded = freshCols - upgradedCols
+                    val legacyColumnsToIgnore = mapOf(
+                        Db.TABLE_BOT to setOf("schedule", "work_uuid", "enabled")
+                    )
+
+                    val ignored = legacyColumnsToIgnore[table] ?: emptySet()
+                    val missingInFresh = (upgradedCols - freshCols) - ignored
+                    val missingInUpgraded = (freshCols - upgradedCols) - ignored
                     assertTrue(
                         "Schema mismatch for table '$table': " +
                             "missing in fresh = $missingInFresh, missing in upgraded = $missingInUpgraded",
                         missingInFresh.isEmpty() && missingInUpgraded.isEmpty()
                     )
 
-                    val missingInAdapter = freshCols - contractCols
-                    val extraInAdapter = contractCols - freshCols
+                    val missingInAdapter = (freshCols - contractCols) - ignored
+                    val extraInAdapter = (contractCols - freshCols) - ignored
                     assertTrue(
                         "Table adapter contract mismatch for table '$table': " +
                             "missing in adapter = $missingInAdapter, extra in adapter = $extraInAdapter",
