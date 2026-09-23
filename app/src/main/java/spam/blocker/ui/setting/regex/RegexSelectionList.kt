@@ -163,9 +163,13 @@ fun RegexRuleFilterField(
             helpTooltipId = helpTooltipId,
             leadingIcon = {
                 Box {
-                    ResIcon20(R.drawable.ic_select, color = C.infoBlue, modifier = M.clickable {
-                        showList = !showList
-                    })
+                    ResIcon20(
+                        iconId = if (showList) R.drawable.ic_dropdown_arrow else R.drawable.ic_select,
+                        color = C.infoBlue,
+                        modifier = M.clickable {
+                            showList = !showList
+                        }
+                    )
                     // Footer arrow
                     Icon(
                         imageVector = ImageVector.vectorResource(R.drawable.ic_dropdown_footer),

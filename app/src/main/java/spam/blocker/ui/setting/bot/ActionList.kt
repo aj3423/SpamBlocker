@@ -55,7 +55,11 @@ fun ActionList(
     var clickedIndex by rememberSaveable { mutableIntStateOf(0) }
 
     if (editTrigger.value) {
-        EditActionDialog(trigger = editTrigger, initial = actions[clickedIndex]) { newAction ->
+        EditActionDialog(
+            trigger = editTrigger,
+            initial = actions[clickedIndex],
+            actions = actions,
+        ) { newAction ->
             actions[clickedIndex] = newAction
         }
     }

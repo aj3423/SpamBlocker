@@ -56,6 +56,7 @@ import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.PriorityBox
 import spam.blocker.ui.widgets.PriorityLabel
 import spam.blocker.ui.widgets.ResIcon16
+import spam.blocker.ui.widgets.ResIcon18
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.SearchBox
 import spam.blocker.ui.widgets.Section
@@ -530,8 +531,8 @@ fun LocalAISettings(
             TrainingDialog(trainingTrigger)
             StrokeButton(
                 label = Str(R.string.training),
-                color = C.textGrey,
-                icon = { GreyIcon18(R.drawable.ic_training) }
+                color = C.teal200,
+                icon = { ResIcon18(R.drawable.ic_training, color = C.teal200) }
             ) {
                 G.permissionChain.ask(ctx, listOf(
                     PermissionWrapper(Permission.contacts), // for excluding contact messages

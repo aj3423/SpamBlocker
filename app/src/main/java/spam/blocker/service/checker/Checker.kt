@@ -428,8 +428,8 @@ class Checker { // for namespace only
         }
     }
 
-    // The "Database" in quick settings.
-    // It checks whether the number exists in the spam database.
+    // The "Local AI" in quick settings.
+    // It checks the sms content with CNB algorithm
     private class NaiveBayes(
         private val ctx: Context,
         private val checkSpam: Boolean,

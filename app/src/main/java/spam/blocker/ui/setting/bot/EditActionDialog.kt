@@ -4,6 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.CompositionLocalProvider
+import spam.blocker.service.bot.LocalActions
 import spam.blocker.service.bot.IAction
 import spam.blocker.service.bot.parseAction
 import spam.blocker.service.bot.serialize
@@ -15,6 +17,7 @@ import spam.blocker.util.Lambda1
 fun EditActionDialog(
     trigger: MutableState<Boolean>,
     initial: IAction,
+    actions: List<IAction> = emptyList(),
     callback: Lambda1<IAction>,
 ) {
     val edited = remember(initial) { mutableStateOf(initial) }
@@ -27,6 +30,8 @@ fun EditActionDialog(
             callback(clone)
         }
     ) {
-        edited.value.Options()
+        CompositionLocalProvider(LocalActions provides actions) {
+            edited.value.Options()
+        }
     }
 }

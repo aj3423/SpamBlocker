@@ -2,6 +2,7 @@ package spam.blocker.service.bot
 
 import android.content.Context
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
@@ -152,6 +153,8 @@ data class ActionContext(
     var checkResult: ICheckResult? = null,
 
 )
+
+val LocalActions = compositionLocalOf<List<IAction>> { emptyList() }
 
 interface IAction {
     // When it succeeds, it returns: <true, output>

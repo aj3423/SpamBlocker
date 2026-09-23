@@ -46,6 +46,7 @@ import spam.blocker.ui.setting.regex.RegexCard
 import spam.blocker.ui.setting.regex.RegexRuleFilterField
 import spam.blocker.ui.setting.regex.RegexSelectionList
 import spam.blocker.ui.slightDiff
+import spam.blocker.ui.setting.regex.EditRegexDialog
 import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.LabelItem
@@ -54,8 +55,10 @@ import spam.blocker.ui.widgets.PriorityBox
 import spam.blocker.ui.widgets.RadioGroup
 import spam.blocker.ui.widgets.RadioItem
 import spam.blocker.ui.widgets.RegexInputBox
+import spam.blocker.ui.widgets.ResIcon20
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
+import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SummaryLabel
 import spam.blocker.ui.widgets.simpleLazyScrollbar
 import spam.blocker.util.A
@@ -886,12 +889,62 @@ class ModifyRules(
 
     @Composable
     override fun Options() {
+        val C = G.palette
+
+        val editTrigger = remember { mutableStateOf(false) }
+
+        val actions = LocalActions.current
+        val myIndex = actions.indexOf(this)
+        val prevAction = if (myIndex > 0) actions[myIndex - 1] else null // get the prev action `FindRules`
+
+        if (editTrigger.value) {
+            // Find the target rule in the previous action `Find Rules`
+            val baseRule = remember(prevAction) {
+                if (prevAction is FindRules) {
+                    val matchingRule = listOf(G.NumberRuleVM.rules, G.ContentRuleVM.rules, G.QuickCopyRuleVM.rules)
+                        .firstNotNullOfOrNull { rules ->
+                            rules.firstOrNull { rule ->
+                                prevAction.pattern.regexMatches(rule.description, prevAction.flags)
+                            }
+                        }
+                    matchingRule ?: RegexRule()
+                } else {
+                    RegexRule()
+                }
+            }
+
+            val initRule = try {
+                val baseMap = JSONObject(PermissiveJson.encodeToString(baseRule)).toMap()
+                val cfgMap = JSONObject(config).toMap()
+                PermissiveJson.decodeFromString<RegexRule>(JSONObject(baseMap + cfgMap).toString())
+            } catch (e: Exception) {
+                baseRule
+            }
+
+            EditRegexDialog(
+                trigger = editTrigger,
+                forType = ForNumber,
+                initRule = initRule,
+                onSave = { updatedRule ->
+                    val defaultMap = JSONObject(PermissiveJson.encodeToString(baseRule)).toMap()
+                    val updatedMap = JSONObject(PermissiveJson.encodeToString(updatedRule)).toMap()
+                    val diff = updatedMap.filter { (k, v) -> defaultMap[k] != v }
+                    config = JSONObject(diff).toString()
+                }
+            )
+        }
+
         StrInputBox(
             label = { Text(Str(R.string.config_json)) },
             placeholder = { Placeholder(Str(R.string.action_modify_rules_placeholder)) },
             text = config,
             onValueChange = {
                 config = it
+            },
+            leadingIcon = {
+                ResIcon20(R.drawable.ic_note, color = C.infoBlue, modifier = M.clickable {
+                    editTrigger.value = true
+                })
             }
         )
     }

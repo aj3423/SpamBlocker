@@ -87,6 +87,7 @@ fun Contacts() {
             Column {
                 Section(
                     title = Str(R.string.contacts),
+                    titleColor = C.success,
                     bgColor = C.dialogBg
                 ) {
                     Column {
@@ -110,6 +111,7 @@ fun Contacts() {
                 AnimatedVisibleV(isEnabled) {
                     Section(
                         title = Str(R.string.non_contacts),
+                        titleColor = C.error,
                         bgColor = C.dialogBg
                     ) {
                         Column {
