@@ -127,7 +127,7 @@ class CallScreeningService : CallScreeningService() {
         // let it ring silently in the background, it will be answered in the CallStateReceiver immediately
         val builder = CallResponse.Builder().apply {
             setSkipCallLog(false)
-            setSilenceCall(true)
+//            setSilenceCall(true)
         }
         respondToCall(details, builder.build())
     }
