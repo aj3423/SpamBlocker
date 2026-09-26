@@ -3,6 +3,9 @@ package spam.blocker
 import android.app.Application
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
+import android.telephony.TelephonyManager
+import androidx.core.content.ContextCompat
 import spam.blocker.db.BotTable
 import spam.blocker.db.SmsTable
 import spam.blocker.db.reScheduleBot
@@ -33,6 +36,18 @@ class App : Application() {
         Notification.ensureBuiltInChannels(this) // ~10ms
 
         G.initialize(this) // ~14ms
+
+        registerCallStateReceiver()
+    }
+
+    private fun registerCallStateReceiver() {
+        val filter = IntentFilter(TelephonyManager.ACTION_PHONE_STATE_CHANGED)
+        ContextCompat.registerReceiver(
+            this,
+            spam.blocker.service.CallStateReceiver(),
+            filter,
+            ContextCompat.RECEIVER_EXPORTED,
+        )
     }
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(base)
