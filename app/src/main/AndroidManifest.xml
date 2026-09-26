@@ -145,14 +145,6 @@
         </service>
 
         <receiver
-            android:name=".service.CallStateReceiver"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.PHONE_STATE" />
-            </intent-filter>
-        </receiver>
-
-        <receiver
             android:name=".service.SmsReceiver"
             android:exported="true"
             android:permission="android.permission.BROADCAST_SMS" >
