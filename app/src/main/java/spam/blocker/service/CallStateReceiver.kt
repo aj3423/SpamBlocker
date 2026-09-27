@@ -9,6 +9,7 @@ import android.os.Handler
 import android.os.Looper
 import android.telecom.TelecomManager
 import android.telephony.TelephonyManager
+import android.view.KeyEvent
 import spam.blocker.ui.widgets.FloatingWindow
 import spam.blocker.util.Util
 import spam.blocker.util.logi
@@ -102,14 +103,55 @@ class CallStateReceiver : BroadcastReceiver() {
 
     @SuppressLint("MissingPermission")
     private fun answerCall(ctx: Context) {
-        val telMgr = ctx.getSystemService(TELECOM_SERVICE) as TelecomManager
-        telMgr.acceptRingingCall()
         logi("answer call")
+
+//        try {
+//            val telMgr = ctx.getSystemService(TELECOM_SERVICE) as TelecomManager
+//            telMgr.acceptRingingCall()
+//        } catch (_: Exception) {
+            answerViaHeadsetHook(ctx)
+//        }
+    }
+    private fun answerViaHeadsetHook(ctx: Context) {
+        logi("answer call via headset hook")
+
+        val down = Intent(Intent.ACTION_MEDIA_BUTTON)
+        down.putExtra(
+            Intent.EXTRA_KEY_EVENT,
+            KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_HEADSETHOOK)
+        )
+        ctx.sendOrderedBroadcast(down, null)
+
+        val up = Intent(Intent.ACTION_MEDIA_BUTTON)
+        up.putExtra(
+            Intent.EXTRA_KEY_EVENT,
+            KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_HEADSETHOOK)
+        )
+        ctx.sendOrderedBroadcast(up, null)
     }
     @SuppressLint("MissingPermission")
     private fun endCall(ctx: Context) {
-        val telMgr = ctx.getSystemService(TELECOM_SERVICE) as TelecomManager
-        telMgr.endCall()
         logi("end call")
+//        try {
+//            val telMgr = ctx.getSystemService(TELECOM_SERVICE) as TelecomManager
+//            telMgr.endCall()
+//        } catch (_: Exception) {
+            endCallViaHeadsetHook(ctx)
+//        }
+    }
+    private fun endCallViaHeadsetHook(ctx: Context) {
+        logi("end call via headset hook")
+
+        val down = Intent(Intent.ACTION_MEDIA_BUTTON).apply {
+            putExtra(Intent.EXTRA_KEY_EVENT,
+                KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_HEADSETHOOK))
+        }
+        ctx.sendOrderedBroadcast(down, null)
+
+        val up = Intent(Intent.ACTION_MEDIA_BUTTON).apply {
+            putExtra(Intent.EXTRA_KEY_EVENT,
+                KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_HEADSETHOOK))
+        }
+        ctx.sendOrderedBroadcast(up, null)
     }
 }
