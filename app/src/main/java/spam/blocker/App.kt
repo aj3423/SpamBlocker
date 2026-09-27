@@ -72,7 +72,7 @@ class App : Application() {
     }
 
     // Dynamically registering bypasses background queue deferrals and receive state changes immediately,
-    //  unlike static manifest approach that can be delayed for minutes (on some android 12 device).
+    //  unlike static manifest approach that can be delayed for minutes (on Nokia TA—1476 android 12).
     private fun registerCallStateReceiver() {
         val filter = IntentFilter(TelephonyManager.ACTION_PHONE_STATE_CHANGED)
         ContextCompat.registerReceiver(
