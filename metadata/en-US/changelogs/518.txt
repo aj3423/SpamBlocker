@@ -1,0 +1,6 @@
+Fix:
+- Hang-Up doesn't work on some OEM devices
+
+Improvements:
+- SMS AI training no longer requires 50+ samples, try starting with just 10 messages
+- CustomTile title now syncs with the bound workflow (no longer fixed as "Custom")
