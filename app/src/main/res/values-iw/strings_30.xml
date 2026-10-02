@@ -51,8 +51,6 @@
         <br>
         אלגוריתם: Complement Naive Bayes. <br>
         <br>
-        תכונה זו היא כעת <warn>ניסיונית</warn> ועשויה להתעדכן או להוסר בגירסאות עתידיות. <br>
-        <br>
         <priority><b>עדיפויות:</b></priority> <br>
         &ensp; <priority><b>1</b></priority> עבור <highlight>אישור</highlight> <br>
         &ensp; <priority><b>-1</b></priority> עבור <error>חסימה</error> <br>

@@ -51,8 +51,6 @@
         <br>
         Algoritmo: Complement Naive Bayes. <br>
         <br>
-        Este recurso é atualmente <warn>experimental</warn> e pode ser atualizado ou removido em versões futuras. <br>
-        <br>
         <priority><b>Prioridades:</b></priority> <br>
         &ensp; <priority><b>1</b></priority> para <highlight>permitir</highlight> <br>
         &ensp; <priority><b>-1</b></priority> para <error>bloquear</error> <br>

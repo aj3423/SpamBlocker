@@ -51,8 +51,6 @@
         <br>
         الگوریتم: Complement Naive Bayes. <br>
         <br>
-        این قابلیت در حال حاضر <warn>آزمایشی</warn> است و ممکن است در نسخه‌های بعدی به‌روزرسانی یا حذف شود. <br>
-        <br>
         <priority><b>اولویت‌ها:</b></priority> <br>
         &ensp; <priority><b>1</b></priority> برای <highlight>مجاز کردن</highlight> <br>
         &ensp; <priority><b>-1</b></priority> برای <error>مسدود کردن</error> <br>

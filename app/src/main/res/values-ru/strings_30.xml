@@ -51,8 +51,6 @@
         <br>
         Алгоритм: Комплементарный наивный байесовский классификатор (Complement Naive Bayes). <br>
         <br>
-        Эта функция в настоящее время является <warn>экспериментальной</warn> и может быть обновлена или удалена в будущих релизах. <br>
-        <br>
         <priority><b>Приоритеты:</b></priority> <br>
         &ensp; <priority><b>1</b></priority> для <highlight>разрешения</highlight> <br>
         &ensp; <priority><b>-1</b></priority> для <error>блокировки</error> <br>

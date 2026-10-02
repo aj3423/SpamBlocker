@@ -51,8 +51,6 @@
         <br>
         Algoritma: Complement Naive Bayes. <br>
         <br>
-        Fitur ini saat ini <warn>eksperimental</warn> dan mungkin diperbarui atau dihapus pada rilis mendatang. <br>
-        <br>
         <priority><b>Prioritas:</b></priority> <br>
         &ensp; <priority><b>1</b></priority> untuk <highlight>mengizinkan</highlight> <br>
         &ensp; <priority><b>-1</b></priority> untuk <error>memblokir</error> <br>

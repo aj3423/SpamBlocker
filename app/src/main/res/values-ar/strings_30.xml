@@ -51,8 +51,6 @@
         <br>
         الخوارزمية: Complement Naive Bayes. <br>
         <br>
-        هذه الميزة حاليًا <warn>تجريبية</warn> وقد يتم تحديثها أو إزالتها في الإصدارات القادمة. <br>
-        <br>
         <priority><b>الأولويات:</b></priority> <br>
         &ensp; <priority><b>1</b></priority> لـ <highlight>السماح</highlight> <br>
         &ensp; <priority><b>-1</b></priority> لـ <error>الحظر</error> <br>

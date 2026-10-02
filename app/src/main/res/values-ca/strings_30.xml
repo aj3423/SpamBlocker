@@ -51,8 +51,6 @@
         <br>
         Algorisme: Complement Naive Bayes. <br>
         <br>
-        Aquesta funció és actualment <warn>experimental</warn> i es pot actualitzar o eliminar en futures versions. <br>
-        <br>
         <priority><b>Prioritats:</b></priority> <br>
         &ensp; <priority><b>1</b></priority> per a <highlight>permetre</highlight> <br>
         &ensp; <priority><b>-1</b></priority> per a <error>bloquejar</error> <br>

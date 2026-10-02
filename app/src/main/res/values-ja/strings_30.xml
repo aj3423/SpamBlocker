@@ -51,8 +51,6 @@
         <br>
         アルゴリズム: 補正ナイーブベイズ (Complement Naive Bayes)。<br>
         <br>
-        この機能は現在<warn>実験的</warn>なものであり、今後のリリースで更新または削除される可能性があります。<br>
-        <br>
         <priority><b>優先度：</b></priority> <br>
         &ensp; <highlight>許可</highlight> は <priority><b>1</b></priority> <br>
         &ensp; <error>ブロック</error> は <priority><b>-1</b></priority> <br>
