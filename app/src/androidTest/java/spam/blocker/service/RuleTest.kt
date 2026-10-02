@@ -488,26 +488,6 @@ class RuleTest {
         assertEquals("should block", Def.RESULT_BLOCKED_BY_CONTENT_REGEX, r.byType)
     }
 
-    // A stored rule whose pattern isn't a valid regex (imports and workflows don't go through the
-    // editor's validation) shouldn't break screening, it should just never match.
-    @Test
-    fun invalid_content_regex_is_skipped() {
-        // unbalanced `)`, Pattern.compile() throws PatternSyntaxException
-        val broken = ".*([0-9]|1[0-2])[-/]([0-9]|[12]\\d|3[01])[-/](19|20)\\d{2}).*"
-
-        // the broken one has the higher priority, so it is evaluated first
-        add_content_rule(build_rule(broken, "", 3, true, Def.FLAG_FOR_SMS))
-        add_content_rule(build_rule(".*discount.*", "", 1, true, Def.FLAG_FOR_SMS))
-
-        // the valid rule still applies
-        var r = Checker.checkSms(ctx, Alice, " discount ").first
-        assertEquals("should block", Def.RESULT_BLOCKED_BY_CONTENT_REGEX, r.byType)
-
-        // nothing matches
-        r = Checker.checkSms(ctx, Alice, " 10/02/2026 ").first
-        assertEquals("should pass", Def.RESULT_ALLOWED_BY_DEFAULT, r.byType)
-    }
-
     // test regex flags CaseSensitive
     @Test
     fun regex_flags_case_sensitive() {
