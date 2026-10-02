@@ -51,6 +51,7 @@ import java.io.ByteArrayOutputStream
 import java.util.Locale
 import java.util.UUID
 import java.util.regex.Pattern
+import java.util.regex.PatternSyntaxException
 
 typealias Lambda = () -> Unit
 typealias Lambda1<A> = (A) -> Unit
@@ -146,9 +147,15 @@ fun String.regexMatchesNumber(ctx: Context, rawNumber: String, regexFlags: Int):
     }
 }
 // For matching anything other than phone number, it won't raise exception.
+// An invalid pattern never matches, rules can get in through imports without being validated.
 fun String.regexMatches(targetStr: String, regexFlags: Int = Def.DefaultRegexFlags): Boolean {
     val opts = Util.flagsToRegexOptions(regexFlags)
-    return this.toRegex(opts).matches(targetStr)
+    return try {
+        this.toRegex(opts).matches(targetStr)
+    } catch (e: PatternSyntaxException) {
+        logw("invalid regex, treated as no match: ${e.description} at index ${e.index}")
+        false
+    }
 }
 
 fun String.regexExtract(html: String, regexFlags: Int): String? {
