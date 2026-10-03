@@ -4,6 +4,7 @@ package spam.blocker.util
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlarmManager
+import android.app.Notification.EXTRA_PREFER_SMALL_ICON
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.NotificationManager.IMPORTANCE_DEFAULT
@@ -18,7 +19,9 @@ import android.database.sqlite.SQLiteDatabase
 import android.graphics.BitmapFactory
 import android.media.AudioAttributes
 import android.net.Uri
+import android.os.Build
 import android.provider.Settings
+import androidx.annotation.RequiresApi
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.core.app.NotificationCompat
@@ -35,6 +38,7 @@ import spam.blocker.db.Notification.CHANNEL_NONE
 import spam.blocker.db.Notification.Channel
 import spam.blocker.db.Notification.ChannelTable
 import spam.blocker.db.Notification.DefaultRepeatInterval
+import spam.blocker.def.Def.ANDROID_17
 import spam.blocker.service.CopyToClipboardReceiver
 import spam.blocker.service.NotificationRepeatReceiver
 import kotlin.random.Random
@@ -228,6 +232,7 @@ object Notification {
             channel.sound.toUri()
     }
 
+    @RequiresApi(ANDROID_17)
     @SuppressLint("ScheduleExactAlarm")
     fun show(
         ctx: Context,
@@ -276,6 +281,7 @@ object Notification {
             .setSound(sound)
             .setLights(channel.ledColor, 1000, 1000)
             .apply {
+                extras.putBoolean(EXTRA_PREFER_SMALL_ICON, true)
                 if (icon is Int) {
                     setSmallIcon(icon)
                 } else {
@@ -320,6 +326,7 @@ object Notification {
                 .setSound(sound)
                 .setLights(channel.ledColor, 1000, 1000)
                 .apply {
+                    extras.putBoolean(EXTRA_PREFER_SMALL_ICON, true)
                     if (icon is Int) {
                         setSmallIcon(icon)
                     } else {

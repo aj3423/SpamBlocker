@@ -123,4 +123,6 @@ object Def {
     const val ANDROID_13 = 33
     const val ANDROID_14 = 34
     const val ANDROID_15 = 35
+    const val ANDROID_16 = 36
+    const val ANDROID_17 = 37
 }
