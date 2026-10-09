@@ -86,13 +86,27 @@ object SpamTable : BasicTable<SpamNumber>(TABLE_SPAM) {
         pattern: String,
         limit: Int = 10,
     ): List<SpamNumber> {
-        return listAll(
-            ctx,
-            whereClause = "$COLUMN_PEER LIKE ?",
-            whereParams = arrayOf("%$pattern%"),
-            orderBy = "$COLUMN_TIME DESC",
-            limit = limit
-        )
+        return if (pattern.isEmpty()) {
+            // Empty pattern -> match everything, but put private number at the top
+            listAll(
+                ctx,
+                whereClause = null,
+                whereParams = null,
+                orderBy = """
+                    CASE WHEN $COLUMN_PEER = '' THEN 0 ELSE 1 END,
+                    $COLUMN_TIME DESC
+                """.trimIndent(),
+                limit = limit
+            )
+        } else {
+            listAll(
+                ctx,
+                whereClause = "$COLUMN_PEER LIKE ?",
+                whereParams = arrayOf("%$pattern%"),
+                orderBy = "$COLUMN_TIME DESC",
+                limit = limit
+            )
+        }
     }
 
     fun findByNumberPrefix(
