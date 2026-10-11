@@ -19,6 +19,7 @@ import kotlin.system.exitProcess
 import android.content.IntentFilter
 import android.telephony.TelephonyManager
 import androidx.core.content.ContextCompat
+import spam.blocker.util.spf
 
 class App : Application() {
     override fun onCreate() {
@@ -37,7 +38,7 @@ class App : Application() {
 
         G.initialize(this) // ~14ms
 
-        registerCallStateReceiver()
+//        registerCallStateReceiver()
     }
 
     override fun attachBaseContext(base: Context) {
@@ -73,15 +74,15 @@ class App : Application() {
 
     // Dynamically registering bypasses background queue deferrals and receive state changes immediately,
     //  unlike static manifest approach that can be delayed for minutes (on Nokia TA—1476 android 12).
-    private fun registerCallStateReceiver() {
-        val filter = IntentFilter(TelephonyManager.ACTION_PHONE_STATE_CHANGED)
-        ContextCompat.registerReceiver(
-            this,
-            spam.blocker.service.CallStateReceiver(),
-            filter,
-            ContextCompat.RECEIVER_EXPORTED,
-        )
-    }
+//    private fun registerCallStateReceiver() {
+//        val filter = IntentFilter(TelephonyManager.ACTION_PHONE_STATE_CHANGED)
+//        ContextCompat.registerReceiver(
+//            this,
+//            spam.blocker.service.CallStateReceiver(),
+//            filter,
+//            ContextCompat.RECEIVER_EXPORTED,
+//        )
+//    }
 
     // After a backup-import, do:
     // - Re-schedule all tasks
