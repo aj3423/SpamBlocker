@@ -1,0 +1,5 @@
+Fix:
+- Reverted the Hang-up change made in 5.18
+
+Improvements:
+- Custom notification icon is back, supported Android versions: 10~15 and 17, not 16.
