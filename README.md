@@ -17,8 +17,9 @@ Android Call/SMS blocker. (Android 10+)
     <img src="https://github.com/user-attachments/assets/4231e383-a52a-4f10-bb64-a59480a8ee68" alt="Get it on Obtainium" height="61" />
   </a>
   <a href="https://github.com/aj3423/SpamBlocker/releases/latest"> 
-    <img src="https://github.com/user-attachments/assets/75d2f736-ba69-4173-b972-6f69a1804e85" alt="Get it on Github" height="60" />
+    <img src="https://github.com/user-attachments/assets/1e9e805b-6123-4fc2-a73f-0f00ba5ce697" alt="Get it on Github" height="60" />
   </a>
+
 </p>
 
 
