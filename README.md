@@ -88,6 +88,7 @@ It works without replacing your call/SMS app. You can kill the app after setup, 
 
 # FAQ
  - [How the "Priority" works](https://github.com/aj3423/SpamBlocker/issues/166)
+ - [Material UI](https://github.com/aj3423/SpamBlocker/issues/684)
  - [It stops working after being killed](https://github.com/aj3423/SpamBlocker/issues/100)
  - [Android 16+ always shows a "missed call" notification for silenced calls](https://issuetracker.google.com/issues/474398435)
 
