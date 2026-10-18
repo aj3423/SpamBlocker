@@ -697,6 +697,7 @@ class RuleTest {
         assertEquals("2. should ignore 3 digits off", Def.RESULT_ALLOWED_BY_DEFAULT, r.byType)
 
         // More precise regex test
+        NumberRegexTable().clearAll(ctx)
         SpamTable.apply {
             clearAll(ctx)
             add(ctx, rawNumber = "1234500") // 5-digit prefix
@@ -719,6 +720,7 @@ class RuleTest {
         assertEquals("6. should ignore 7 digit prefix", Def.RESULT_ALLOWED_BY_DEFAULT, r.byType)
 
         // Test [min=N] repeat times prefix
+        NumberRegexTable().clearAll(ctx)
         SpamTable.apply {
             clearAll(ctx)
             add(ctx, rawNumber = "1234567800")
