@@ -18,7 +18,10 @@
         <warn>此正規表示式必須以點號結尾</warn>，在此正則模式下，這些結尾的點號表示可變數字。 <br>
         <br>
         <b>例如：</b> <br>
-        &ensp; <sample><b>.{5,}..</b></sample> 要求前綴至少為 5 位數字，同時允許末尾有 2 位數字的變化。
+        &ensp; <error><b>.{5,}..</b></error> 要求前綴至少為 5 位數字，同時允許末尾有 2 位數字的變化。 <br>
+        <br>
+        <b>前綴標籤 [min=N]：</b> <br>
+        &ensp; <error><b>[min=3].*..</b></error> 要求資料庫中至少有 3 個匹配的號碼才觸發。
         ]]>
     </string>
     <string name="help_regex_preset_database_prefix">

@@ -18,7 +18,10 @@
         <warn>This regex must end with dots</warn>, in this regex mode, these trailing dots represent the variable digits. <br>
         <br>
         <b>For example:</b> <br>
-        &ensp; <sample><b>.{5,}..</b></sample> requires the prefix to be at least 5 digits long, while allowing a 2-digit variation at the end.
+        &ensp; <error><b>.{5,}..</b></error> requires the prefix to be at least 5 digits long, while allowing a 2-digit variation at the end. <br>
+        <br>
+        <b>Prefix tag [min=N]:</b> <br>
+        &ensp; <error><b>[min=3].*..</b></error> requires at least 3 matching numbers in the database to trigger.
         ]]>
     </string>
     <string name="help_regex_preset_database_prefix">

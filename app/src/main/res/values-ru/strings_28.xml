@@ -18,7 +18,10 @@
         <warn>Это регулярное выражение должно заканчиваться точками</warn>, в этом режиме регулярного выражения такие завершающие точки обозначают изменяемые цифры. <br>
         <br>
         <b>Например:</b> <br>
-        &ensp; <sample><b>.{5,}..</b></sample> требует, чтобы префикс был длиной не менее 5 цифр, допуская изменение 2 цифр в конце.
+        &ensp; <error><b>.{5,}..</b></error> требует, чтобы префикс был длиной не менее 5 цифр, допуская изменение 2 цифр в конце. <br>
+        <br>
+        <b>Prefix tag [min=N]:</b> <br>
+        &ensp; <error><b>[min=3].*..</b></error> requires at least 3 matching numbers in the database to trigger.
         ]]>
     </string>
     <string name="help_regex_preset_database_prefix">

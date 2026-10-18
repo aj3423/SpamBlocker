@@ -1455,42 +1455,46 @@ class Checker { // for namespace only
 
             logChecking(ctx, logger)
 
-            // Find all numbers instead of checking if any exists, maybe it will support "min match count" in the future
             val similarNumbers = doCheck(rawNumber)
 
             if (similarNumbers.isNotEmpty()) {
-                val firstNumber = similarNumbers[0]
+                val details = similarNumbers.map { it.peer }.joinToString(", ")
 
                 val block = rule.isBlacklist
 
                 if (block)
                     logger?.error(
                         ctx.getString(R.string.blocked_by_template)
-                            .formatAnnotated(desc()) + " - ${firstNumber.peer}".A()
+                            .formatAnnotated(desc()) + " - $details".A()
                     )
                 else
                     logger?.success(
                         ctx.getString(R.string.allowed_by)
-                            .formatAnnotated(desc()) + " - ${firstNumber.peer}".A()
+                            .formatAnnotated(desc()) + " - $details".A()
                     )
 
                 return ByRegexRule(
                     byType = if (block) Def.RESULT_BLOCKED_BY_DATABASE_PREFIX_REGEX else Def.RESULT_ALLOWED_BY_DATABASE_PREFIX_REGEX,
                     rule = rule,
-                    details = firstNumber.peer
+                    details = details
                 )
             }
             return null
         }
+
+        // Handles min-repeat pattern like `[min=3].*..` and returns the top N matched numbers
         fun doCheck(rawNumber: String) : List<SpamNumber> {
+            val minCount = Regex("""^\[min=(\d+)\]""").find(rule.pattern)?.groupValues?.get(1)?.toIntOrNull() ?: 1
+
+            val cleanPattern = rule.pattern.replace(Regex("""^\[min=\d+\]"""), "")
             // Both the incoming number and the database number should match this regex,
             //   check the incoming number here.
-            if (!rule.pattern.regexMatchesNumber(ctx, rawNumber, rule.patternFlags)) {
+            if (!cleanPattern.regexMatchesNumber(ctx, rawNumber, rule.patternFlags)) {
                 return listOf()
             }
 
-            val similarNumbers = SpamTable.findByNumberPrefix(ctx, rawNumber, rule.pattern, rule.patternFlags)
-            return similarNumbers
+            val similarNumbers = SpamTable.findByNumberPrefix(ctx, rawNumber, cleanPattern, rule.patternFlags)
+            return if (similarNumbers.size >= minCount) similarNumbers.take(minCount) else listOf()
         }
     }
 

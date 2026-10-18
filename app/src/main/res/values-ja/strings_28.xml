@@ -18,7 +18,10 @@
         <warn>この正規表現はドットで終わる必要があります</warn>。この正規表現モードでは、末尾のドットが可変の数字を表します。 <br>
         <br>
         <b>例:</b> <br>
-        &ensp; <sample><b>.{5,}..</b></sample> は、プレフィックスが少なくとも 5 桁であることを要求し、末尾の 2 桁の変化を許可します。
+        &ensp; <error><b>.{5,}..</b></error> は、プレフィックスが少なくとも 5 桁であることを要求し、末尾の 2 桁の変化を許可します。 <br>
+        <br>
+        <b>Prefix tag [min=N]:</b> <br>
+        &ensp; <error><b>[min=3].*..</b></error> requires at least 3 matching numbers in the database to trigger.
         ]]>
     </string>
     <string name="help_regex_preset_database_prefix">

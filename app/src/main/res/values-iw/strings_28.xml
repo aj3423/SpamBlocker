@@ -18,7 +18,10 @@
         <warn>ה-regex הזה חייב להסתיים בנקודות</warn>, במצב regex זה הנקודות שבסוף מייצגות את הספרות המשתנות. <br>
         <br>
         <b>לדוגמה:</b> <br>
-        &ensp; <sample><b>.{5,}..</b></sample> דורש שהקידומת תהיה באורך של לפחות 5 ספרות, תוך מתן אפשרות לשינוי של 2 ספרות בסוף.
+        &ensp; <error><b>.{5,}..</b></error> דורש שהקידומת תהיה באורך של לפחות 5 ספרות, תוך מתן אפשרות לשינוי של 2 ספרות בסוף. <br>
+        <br>
+        <b>Prefix tag [min=N]:</b> <br>
+        &ensp; <error><b>[min=3].*..</b></error> requires at least 3 matching numbers in the database to trigger.
         ]]>
     </string>
     <string name="help_regex_preset_database_prefix">

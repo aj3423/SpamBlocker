@@ -18,7 +18,10 @@
         <warn>Bu regex nokta ile bitmelidir</warn>, bu regex modunda sondaki bu noktalar değişken rakamları temsil eder. <br>
         <br>
         <b>Örneğin:</b> <br>
-        &ensp; <sample><b>.{5,}..</b></sample> önekin en az 5 basamak uzunluğunda olmasını gerektirir ve sonda 2 basamaklık değişime izin verir.
+        &ensp; <error><b>.{5,}..</b></error> önekin en az 5 basamak uzunluğunda olmasını gerektirir ve sonda 2 basamaklık değişime izin verir. <br>
+        <br>
+        <b>Prefix tag [min=N]:</b> <br>
+        &ensp; <error><b>[min=3].*..</b></error> requires at least 3 matching numbers in the database to trigger.
         ]]>
     </string>
     <string name="help_regex_preset_database_prefix">

@@ -14,6 +14,7 @@ import spam.blocker.db.NumberRegexTable
 import spam.blocker.db.RegexRule
 import spam.blocker.db.SpamTable
 import spam.blocker.def.Def
+import spam.blocker.service.checker.ByRegexRule
 import spam.blocker.service.checker.Checker
 import spam.blocker.ui.setting.regex.RegexMode.ModeType
 import spam.blocker.util.ContactInfo
@@ -716,5 +717,25 @@ class RuleTest {
         assertEquals("5. should ignore 4 digit prefix", Def.RESULT_ALLOWED_BY_DEFAULT, r.byType)
         r = Checker.checkCall(ctx, rawNumber = "123456711").first
         assertEquals("6. should ignore 7 digit prefix", Def.RESULT_ALLOWED_BY_DEFAULT, r.byType)
+
+        // Test [min=N] repeat times prefix
+        SpamTable.apply {
+            clearAll(ctx)
+            add(ctx, rawNumber = "1234567800")
+            add(ctx, rawNumber = "1234567801")
+        }
+        add_number_rule(
+            build_rule("[min=3].*..", "", 100, isBlacklist = true, Def.FLAG_FOR_CALL, patternModeType = ModeType.DatabasePrefix)
+        )
+
+        // Only 2 matching numbers exist in DB, [min=3] should allow incoming number
+        r = Checker.checkCall(ctx, rawNumber = "1234567802").first
+        assertEquals("7. should allow because count(2) < min(3)", Def.RESULT_ALLOWED_BY_DEFAULT, r.byType)
+
+        // Add 3rd matching number to DB, [min=3] should now block and details should contain 3 numbers
+        SpamTable.add(ctx, rawNumber = "1234567803")
+        r = Checker.checkCall(ctx, rawNumber = "1234567802").first
+        assertEquals("8. should block because count(3) >= min(3)", Def.RESULT_BLOCKED_BY_DATABASE_PREFIX_REGEX, r.byType)
+        assertEquals("1234567800, 1234567801, 1234567803", (r as ByRegexRule).details)
     }
 }

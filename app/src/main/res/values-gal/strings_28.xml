@@ -18,7 +18,10 @@
         <warn>Esta regex debe rematar con puntos</warn>, neste modo regex estes puntos finais representan os díxitos variables. <br>
         <br>
         <b>Por exemplo:</b> <br>
-        &ensp; <sample><b>.{5,}..</b></sample> require que o prefixo teña polo menos 5 díxitos, permitindo unha variación de 2 díxitos ao final.
+        &ensp; <error><b>.{5,}..</b></error> require que o prefixo teña polo menos 5 díxitos, permitindo unha variación de 2 díxitos ao final. <br>
+        <br>
+        <b>Prefix tag [min=N]:</b> <br>
+        &ensp; <error><b>[min=3].*..</b></error> requires at least 3 matching numbers in the database to trigger.
         ]]>
     </string>
     <string name="help_regex_preset_database_prefix">

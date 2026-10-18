@@ -18,7 +18,10 @@
         <warn>Cette expression régulière doit se terminer par des points</warn>, dans ce mode, ces points finaux représentent les chiffres variables. <br>
         <br>
         <b>Par exemple :</b> <br>
-        &ensp; <sample><b>.{5,}..</b></sample> exige un préfixe comportant au moins 5 chiffres, tout en autorisant une variation de 2 chiffres à la fin.
+        &ensp; <error><b>.{5,}..</b></error> exige un préfixe comportant au moins 5 chiffres, tout en autorisant une variation de 2 chiffres à la fin. <br>
+        <br>
+        <b>Prefix tag [min=N]:</b> <br>
+        &ensp; <error><b>[min=3].*..</b></error> requires at least 3 matching numbers in the database to trigger.
         ]]>
     </string>
     <string name="help_regex_preset_database_prefix">
