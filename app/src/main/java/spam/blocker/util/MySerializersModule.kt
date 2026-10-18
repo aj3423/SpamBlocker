@@ -10,8 +10,8 @@ import spam.blocker.db.ReportApi
 import spam.blocker.service.bot.BackupExport
 import spam.blocker.service.bot.BackupImport
 import spam.blocker.service.bot.CalendarEvent
-import spam.blocker.service.bot.CallEvent
-import spam.blocker.service.bot.CallScreened
+import spam.blocker.service.bot.PreCallScreening
+import spam.blocker.service.bot.PostCallScreening
 import spam.blocker.service.bot.CallThrottling
 import spam.blocker.service.bot.CategoryConfig
 import spam.blocker.service.bot.ConvertNumber
@@ -51,7 +51,7 @@ import spam.blocker.service.bot.Schedule
 import spam.blocker.service.bot.ScheduledAutoReportNumber
 import spam.blocker.service.bot.SendSms
 import spam.blocker.service.bot.SetTag
-import spam.blocker.service.bot.SmsEvent
+import spam.blocker.service.bot.PreSmsScreening
 import spam.blocker.service.bot.SmsThrottling
 import spam.blocker.service.bot.TextReply
 import spam.blocker.service.bot.Wait
@@ -84,14 +84,14 @@ val myModule = SerializersModule {
     polymorphic(ITriggerAction::class) {
         subclass(Manual::class)
         subclass(Schedule::class)
-        subclass(CallEvent::class)
-        subclass(SmsEvent::class)
+        subclass(PreCallScreening::class)
+        subclass(PreSmsScreening::class)
         subclass(CalendarEvent::class)
         subclass(CallThrottling::class)
         subclass(SmsThrottling::class)
         subclass(Ringtone::class)
         subclass(QuickTile::class)
-        subclass(CallScreened::class)
+        subclass(PostCallScreening::class)
     }
     polymorphic(ISchedule::class) {
         subclass(Daily::class)
@@ -104,14 +104,14 @@ val myModule = SerializersModule {
         // also add to above polymorphic(ITriggerAction:class)
         subclass(Manual::class)
         subclass(Schedule::class)
-        subclass(CallEvent::class)
-        subclass(SmsEvent::class)
+        subclass(PreCallScreening::class)
+        subclass(PreSmsScreening::class)
         subclass(CalendarEvent::class)
         subclass(CallThrottling::class)
         subclass(SmsThrottling::class)
         subclass(Ringtone::class)
         subclass(QuickTile::class)
-        subclass(CallScreened::class)
+        subclass(PostCallScreening::class)
 
         // Actions
         subclass(PruneHistory::class)

@@ -1,7 +1,7 @@
 <resources>
-    <string name="call_event">Событие вызова</string>
-    <string name="call_event_is_triggered">Событие вызова %s запущено.</string>
-    <string name="help_call_event">
+    <string name="pre_call_screening">Пре-фильтрация звонков</string>
+    <string name="pre_call_screening_is_triggered">Пре-фильтрация звонков запущена: %s</string>
+    <string name="help_pre_call_screening">
         <![CDATA[
         Предварительно обрабатывайте входящий номер, прежде чем он будет проверен правилами, что позволяет изменять правила на лету.<br>
         <br>
@@ -14,7 +14,7 @@
         </sample>
         <br>
         Типичная настройка:<br>
-        - Событие вызова <br>
+        - Пре-фильтрация звонков <br>
         - Изменить номер
         ]]>
     </string>
@@ -30,7 +30,7 @@
         &ensp; Начальные <sample>123</sample> необходимо удалить перед проверкой. <br>
         <br>
         <title><b>Типичная настройка:</b></title> <br>
-        - <b>Событие вызова</b> <br>
+        - <b>Перед фильтрацией звонков</b> <br>
         - <b>Заменить номер</b> <br>
         &emsp; от: <sample>^123</sample> <br>
         &emsp; до: <sample>оставить пустым</sample> <br>

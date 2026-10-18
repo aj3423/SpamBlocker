@@ -11,8 +11,8 @@
         Ein solcher Workflow wird automatisch durch einen eingehenden Anruf ausgelöst. <br>
         ]]>
     </string>
-    <string name="sms_event">SMS-Ereignis</string>
-    <string name="help_sms_event">
+    <string name="pre_sms_screening">Vor-SMS-Filterung</string>
+    <string name="help_pre_sms_screening">
         <![CDATA[
         Dies wird automatisch bei eingehenden SMS-Nachrichten ausgelöst, bevor diese überprüft werden.<br>
         <br>
@@ -26,7 +26,7 @@
         </sample>
         ]]>
     </string>
-    <string name="sms_event_triggered">SMS-Ereignis %s wird ausgelöst.</string>
+    <string name="pre_sms_screening_is_triggered">Vor-SMS-Filterung wird ausgelöst: %s</string>
     <string name="use_global_testing_instead">Verwenden Sie stattdessen die globale Testfunktion.</string>
     <string name="missing_permissions">Folgende Berechtigungen wurden zuvor erteilt, fehlen aber derzeit:</string>
     <string name="grant_permissions">Berechtigungen erteilen</string>

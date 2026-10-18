@@ -11,8 +11,8 @@
         このようなワークフローは、着信によって自動的にトリガーされます。<br>
         ]]>
     </string>
-    <string name="sms_event">SMSイベント</string>
-    <string name="help_sms_event">
+    <string name="pre_sms_screening">事前SMSスクリーニング</string>
+    <string name="help_pre_sms_screening">
         <![CDATA[
         これは、着信SMSメッセージがスクリーニングされる前に自動的にトリガーされます。<br>
         <br>
@@ -26,7 +26,7 @@
         </sample>
         ]]>
     </string>
-    <string name="sms_event_triggered">SMSイベント %s がトリガーされました。</string>
+    <string name="pre_sms_screening_is_triggered">事前SMSスクリーニングがトリガーされました: %s</string>
     <string name="use_global_testing_instead">代わりにグローバルテストを使用してください。</string>
     <string name="missing_permissions">以下の権限は以前付与されていましたが、現在不足しています:</string>
     <string name="grant_permissions">権限を付与する</string>

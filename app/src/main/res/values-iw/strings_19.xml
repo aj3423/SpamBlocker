@@ -1,7 +1,7 @@
 <resources>
-    <string name="call_event">אירוע שיחה</string>
-    <string name="call_event_is_triggered">אירוע שיחה %s הופעל.</string>
-    <string name="help_call_event">
+    <string name="pre_call_screening">טרום-סינון שיחות</string>
+    <string name="pre_call_screening_is_triggered">טרום-סינון שיחות הופעל: %s</string>
+    <string name="help_pre_call_screening">
         <![CDATA[
         עיבוד מקדים של מספר הטלפון הנכנס לפני שהוא נבדק על ידי הכללים, מה שמאפשר לשנות כללים באופן מיידי.<br>
         <br>
@@ -14,7 +14,7 @@
         </sample>
         <br>
         הגדרה אופיינית:<br>
-        - אירוע שיחה <br>
+        - טרום-סינון שיחות <br>
         - שנה מספר
         ]]>
     </string>
@@ -30,7 +30,7 @@
         &ensp; ה-<sample>123</sample> המובילים צריכים להיות מוסרים לפני הבדיקה. <br>
         <br>
         <title><b>הגדרה טיפוסית:</b></title> <br>
-        - <b>אירוע שיחה</b> <br>
+        - <b>לפני סינון שיחות</b> <br>
         - <b>החלף מספר</b> <br>
         &emsp; מ-: <sample>^123</sample> <br>
         &emsp; אל: <sample>השאר ריק</sample> <br>

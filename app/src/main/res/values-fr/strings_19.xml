@@ -1,7 +1,7 @@
 <resources>
-    <string name="call_event">Événement d\'appel</string>
-    <string name="call_event_is_triggered">L\'événement d\'appel %s est déclenché.</string>
-    <string name="help_call_event">
+    <string name="pre_call_screening">Pré-filtrage appels</string>
+    <string name="pre_call_screening_is_triggered">Pré-filtrage appels déclenché : %s</string>
+    <string name="help_pre_call_screening">
         <![CDATA[
         Prétraite le numéro entrant avant qu\'il ne soit vérifié par les règles, permettant de modifier les règles à la volée.<br>
         <br>
@@ -14,8 +14,8 @@
         </sample>
         <br>
         Une configuration typique :<br>
-        - Événement d\'appel <br>
-        - Modifier le numéro
+        - Pré-filtrage appels <br>
+        - Pré-filtrage appels
         ]]>
     </string>
     <string name="action_modify_number">Modifier le numéro</string>
@@ -30,7 +30,7 @@
         &ensp; Le préfixe <sample>123</sample> doit être supprimé avant la vérification. <br>
         <br>
         <title><b>Configuration typique :</b></title> <br>
-        - <b>Événement d\'appel</b> <br>
+        - <b>Avant le filtrage des appels</b> <br>
         - <b>Remplacer le numéro</b> <br>
         &emsp; de : <sample>^123</sample> <br>
         &emsp; à : <sample>laisser vide</sample> <br>

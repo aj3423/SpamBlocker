@@ -24,8 +24,8 @@
         ]]>
     </string>
     <string name="working">運作中</string>
-    <string name="sms_event">簡訊事件</string>
-    <string name="help_sms_event">
+    <string name="pre_sms_screening">簡訊篩選前</string>
+    <string name="help_pre_sms_screening">
         <![CDATA[
         這將在簡訊被篩選之前自動觸發。<br>
         <br>
@@ -39,7 +39,7 @@
         </sample>
         ]]>
     </string>
-    <string name="sms_event_triggered">簡訊事件 %s 已觸發。</string>
+    <string name="pre_sms_screening_is_triggered">簡訊篩選前事件已被觸發：%s</string>
     <string name="use_global_testing_instead">請改用全域測試。</string>
     <string name="missing_permissions">下列權限先前已授予，但目前未啟用：</string>
     <string name="grant_permissions">授予權限</string>

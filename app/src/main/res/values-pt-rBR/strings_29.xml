@@ -1,8 +1,8 @@
 <resources>
-    <string name="call_screened">Chamada filtrada</string>
-    <string name="help_call_screened">
+    <string name="post_call_screening">Pós-triagem de chamadas</string>
+    <string name="help_post_call_screening">
         <![CDATA[
-        Activado após a filtragem da chamada.
+        Acionado após a triagem da chamada.
         ]]>
     </string>
     <string name="text_reply">Resposta de texto</string>

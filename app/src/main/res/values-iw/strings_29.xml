@@ -1,6 +1,6 @@
 <resources>
-    <string name="call_screened">שיחה מסוננת</string>
-    <string name="help_call_screened">
+    <string name="post_call_screening">פוסט-סינון שיחות</string>
+    <string name="help_post_call_screening">
         <![CDATA[
         מופעל לאחר סינון השיחה.
         ]]>

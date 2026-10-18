@@ -13,7 +13,7 @@ import spam.blocker.def.Def.ANDROID_12
 import spam.blocker.service.bot.BackupExport
 import spam.blocker.service.bot.BackupImport
 import spam.blocker.service.bot.CalendarEvent
-import spam.blocker.service.bot.CallScreened
+import spam.blocker.service.bot.PostCallScreening
 import spam.blocker.service.bot.CallThrottling
 import spam.blocker.service.bot.Daily
 import spam.blocker.service.bot.FindRules
@@ -144,7 +144,7 @@ val BotPresets = listOf(
         doAdd = { ctx ->
             val newBot = Bot(
                 desc = ctx.getString(R.string.sms_reply),
-                trigger = CallScreened(),
+                trigger = PostCallScreening(),
                 actions = listOf(
                     TextReply(rules = listOf(
                         TextReplyRule(

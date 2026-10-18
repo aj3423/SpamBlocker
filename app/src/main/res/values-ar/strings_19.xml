@@ -1,7 +1,7 @@
 <resources>
-    <string name="call_event">حدث المكالمة</string>
-    <string name="call_event_is_triggered">تم تشغيل حدث المكالمة %s.</string>
-    <string name="help_call_event">
+    <string name="pre_call_screening">فحص ما قبل المكالمات</string>
+    <string name="pre_call_screening_is_triggered">تم تشغيل فحص ما قبل المكالمات: %s</string>
+    <string name="help_pre_call_screening">
         <![CDATA[
         معالجة الرقم الوارد مسبقًا قبل التحقق منه بواسطة القواعد، مما يتيح تعديل القواعد فورًا.<br>
         <br>
@@ -14,8 +14,8 @@
         </sample>
         <br>
         إعداد نموذجي:<br>
-        - حدث المكالمة <br>
-        - تعديل الرقم
+        - فحص ما قبل المكالمات <br>
+        - فحص ما قبل المكالمات
         ]]>
     </string>
     <string name="action_modify_number">تعديل الرقم</string>
@@ -30,7 +30,7 @@
         &ensp; يجب إزالة البادئة <sample>123</sample> قبل التحقق منها. <br>
         <br>
         <title><b>إعداد نموذجي:</b></title> <br>
-        - <b>حدث المكالمة</b> <br>
+        - <b>قبل فحص المكالمات</b> <br>
         - <b>استبدال الرقم</b> <br>
         &emsp; من: <sample>^123</sample> <br>
         &emsp; إلى: <sample>اتركه فارغًا</sample> <br>

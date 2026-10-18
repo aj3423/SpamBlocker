@@ -11,8 +11,8 @@
         此类工作流将由骚扰电话自动触发。<br>
         ]]>
     </string>
-    <string name="sms_event">短信事件</string>
-    <string name="help_sms_event">
+    <string name="pre_sms_screening">短信筛选前</string>
+    <string name="help_pre_sms_screening">
         <![CDATA[
         这将在收到的短信被筛选之前自动触发。<br>
         <br>
@@ -26,7 +26,7 @@
         </sample>
         ]]>
     </string>
-    <string name="sms_event_triggered">短信事件 %s 已触发。</string>
+    <string name="pre_sms_screening_is_triggered">短信筛选前事件已触发：%s</string>
     <string name="use_global_testing_instead">请使用全局测试。</string>
     <string name="missing_permissions">以下权限之前已授予，但目前缺失：</string>
     <string name="grant_permissions">授予权限</string>

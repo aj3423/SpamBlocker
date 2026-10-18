@@ -30,14 +30,14 @@ import spam.blocker.util.PermissionWrapper
 val botTriggers = listOf(
     Manual(),
     Schedule(),
-    CallEvent(),
-    SmsEvent(),
+    PreCallScreening(),
+    PostCallScreening(),
+    PreSmsScreening(),
     CallThrottling(),
     SmsThrottling(),
     CalendarEvent(),
     Ringtone(),
     QuickTile(),
-    CallScreened()
 )
 val botActions = listOf(
     HttpRequest(),

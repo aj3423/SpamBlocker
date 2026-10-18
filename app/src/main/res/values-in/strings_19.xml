@@ -1,7 +1,7 @@
 <resources>
-    <string name="call_event">Peristiwa Panggilan</string>
-    <string name="call_event_is_triggered">Peristiwa panggilan %s telah dipicu.</string>
-    <string name="help_call_event">
+    <string name="pre_call_screening">Pra-Filter Panggilan</string>
+    <string name="pre_call_screening_is_triggered">Pra-Filter Panggilan dipicu: %s</string>
+    <string name="help_pre_call_screening">
         <![CDATA[
         Memproses nomor masuk sebelum diperiksa oleh aturan, memungkinkan untuk mengubah aturan dengan cepat.<br>
         <br>
@@ -14,8 +14,8 @@
         </sample>
         <br>
         Pengaturan umum:<br>
-        - Peristiwa Panggilan <br>
-        - Ubah Nomor
+        - Pra-Filter Panggilan <br>
+        - Pra-Filter Panggilan
         ]]>
     </string>
     <string name="action_modify_number">Modifikasi Nomor Telepon</string>
@@ -30,7 +30,7 @@
         &ensp; Angka awal <sample>123</sample> perlu dihapus sebelum diperiksa. <br>
         <br>
         <title><b>Pengaturan umum:</b></title> <br>
-        - <b>Peristiwa Panggilan</b> <br>
+        - <b>Sebelum Penyaringan Panggilan</b> <br>
         - <b>Ganti Nomor Telepon</b> <br>
         &emsp; dari: <sample>^123</sample> <br>
         &emsp; ke: <sample>biarkan kosong</sample> <br>

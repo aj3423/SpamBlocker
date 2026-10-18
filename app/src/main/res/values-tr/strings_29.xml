@@ -1,8 +1,8 @@
 <resources>
-    <string name="call_screened">Arama Filtrelendi</string>
-    <string name="help_call_screened">
+    <string name="post_call_screening">Çağrı Taraması Sonrası</string>
+    <string name="help_post_call_screening">
         <![CDATA[
-        Arama filtrelendikten sonra tetiklenir.
+        Çağrı tarandıktan sonra tetiklenir.
         ]]>
     </string>
     <string name="text_reply">Metin Yanıtı</string>

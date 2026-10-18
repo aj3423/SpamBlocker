@@ -11,8 +11,8 @@
         Alur kerja semacam ini akan secara otomatis dipicu oleh panggilan masuk. <br>
         ]]>
     </string>
-    <string name="sms_event">Acara SMS</string>
-    <string name="help_sms_event">
+    <string name="pre_sms_screening">Pra-Filter SMS</string>
+    <string name="help_pre_sms_screening">
         <![CDATA[
         Ini akan dipicu secara otomatis pada pesan SMS masuk sebelum disaring.<br>
         <br>
@@ -26,7 +26,7 @@
         </sample>
         ]]>
     </string>
-    <string name="sms_event_triggered">Acara SMS %s dipicu.</string>
+    <string name="pre_sms_screening_is_triggered">Pra-Filter SMS dipicu: %s</string>
     <string name="use_global_testing_instead">Gunakan pengujian global saja.</string>
     <string name="missing_permissions">Izin berikut sebelumnya telah diberikan namun saat ini hilang:</string>
     <string name="grant_permissions">Berikan Izin</string>

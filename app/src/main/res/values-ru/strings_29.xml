@@ -1,8 +1,8 @@
 <resources>
-    <string name="call_screened">Вызов отфильтрован</string>
-    <string name="help_call_screened">
+    <string name="post_call_screening">Пост-фильтрация звонков</string>
+    <string name="help_post_call_screening">
         <![CDATA[
-        Срабатывает после фильтрации вызова.
+        Срабатывает после фильтрации звонка.
         ]]>
     </string>
     <string name="text_reply">Текстовый ответ</string>

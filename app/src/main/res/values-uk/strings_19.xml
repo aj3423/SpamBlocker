@@ -1,7 +1,7 @@
 <resources>
-    <string name="call_event">Подія виклику</string>
-    <string name="call_event_is_triggered">Подія виклику %s спрацювала.</string>
-    <string name="help_call_event">
+    <string name="pre_call_screening">Пре-фільтрація викликів</string>
+    <string name="pre_call_screening_is_triggered">Пре-фільтрація викликів спрацювала: %s</string>
+    <string name="help_pre_call_screening">
         <![CDATA[
         Попередня обробка вхідного номера перед його перевіркою правилами, що дозволяє змінювати правила на льоту.<br>
         <br>
@@ -14,7 +14,7 @@
         </sample>
         <br>
         Типова конфігурація:<br>
-        - Подія виклику <br>
+        - Пре-фільтрація викликів <br>
         - Змінити номер
         ]]>
     </string>
@@ -30,7 +30,7 @@
         &ensp; Провідні <sample>123</sample> потрібно видалити перед перевіркою. <br>
         <br>
         <title><b>Типова конфігурація:</b></title> <br>
-        - <b>Подія дзвінка</b> <br>
+        - <b>Перед фільтрацією викликів</b> <br>
         - <b>Замінити номер</b> <br>
         &emsp; від: <sample>^123</sample> <br>
         &emsp; до: <sample>залишити порожнім</sample> <br>

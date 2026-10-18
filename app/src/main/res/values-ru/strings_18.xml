@@ -11,8 +11,8 @@
         Такой рабочий процесс будет автоматически запущен при входящем звонке. <br>
         ]]>
     </string>
-    <string name="sms_event">SMS-событие</string>
-    <string name="help_sms_event">
+    <string name="pre_sms_screening">Пре-фильтрация SMS</string>
+    <string name="help_pre_sms_screening">
         <![CDATA[
         Это будет автоматически запускаться при входящих SMS-сообщениях до их проверки.<br>
         <br>
@@ -26,7 +26,7 @@
         </sample>
         ]]>
     </string>
-    <string name="sms_event_triggered">SMS-событие %s запущено.</string>
+    <string name="pre_sms_screening_is_triggered">Пре-фильтрация SMS запущена: %s</string>
     <string name="use_global_testing_instead">Используйте вместо этого глобальное тестирование.</string>
     <string name="missing_permissions">Следующие разрешения были ранее предоставлены, но в настоящее время отсутствуют:</string>
     <string name="grant_permissions">Предоставить разрешения</string>

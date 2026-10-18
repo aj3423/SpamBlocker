@@ -11,8 +11,8 @@
         זרימת עבודה כזו תופעל אוטומטית על ידי שיחה נכנסת. <br>
         ]]>
     </string>
-    <string name="sms_event">אירוע SMS</string>
-    <string name="help_sms_event">
+    <string name="pre_sms_screening">טרום-סינון SMS</string>
+    <string name="help_pre_sms_screening">
         <![CDATA[
         זה יופעל אוטומטית בהודעות SMS נכנסות לפני שהן מסוננות.<br>
         <br>
@@ -26,7 +26,7 @@
         </sample>
         ]]>
     </string>
-    <string name="sms_event_triggered">אירוע ה-SMS %s הופעל.</string>
+    <string name="pre_sms_screening_is_triggered">טרום-סינון SMS הופעל: %s</string>
     <string name="use_global_testing_instead">השתמש בבדיקה הגלובלית במקום זאת.</string>
     <string name="missing_permissions">ההרשאות הבאות ניתנו בעבר אך חסרות כעת:</string>
     <string name="grant_permissions">הענק הרשאות</string>

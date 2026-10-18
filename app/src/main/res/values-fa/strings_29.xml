@@ -1,8 +1,8 @@
 <resources>
-    <string name="call_screened">تماس غربال شده</string>
-    <string name="help_call_screened">
+    <string name="post_call_screening">پس‌فیلتر تماس</string>
+    <string name="help_post_call_screening">
         <![CDATA[
-        بعد از غربال شدن تماس فعال می‌شود.
+        بعد از فیلتر شدن تماس فعال می‌شود.
         ]]>
     </string>
     <string name="text_reply">پاسخ متنی</string>

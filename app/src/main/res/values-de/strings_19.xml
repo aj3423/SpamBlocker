@@ -1,7 +1,7 @@
 <resources>
-    <string name="call_event">Anrufereignis</string>
-    <string name="call_event_is_triggered">Anrufereignis %s wird ausgelöst.</string>
-    <string name="help_call_event">
+    <string name="pre_call_screening">Vor-Anruffilterung</string>
+    <string name="pre_call_screening_is_triggered">Vor-Anruffilterung wird ausgelöst: %s</string>
+    <string name="help_pre_call_screening">
         <![CDATA[
         Verarbeitet die eingehende Nummer, bevor sie von den Regeln überprüft wird, was es ermöglicht, Regeln spontan zu ändern.<br>
         <br>
@@ -14,7 +14,7 @@
         </sample>
         <br>
         Eine typische Einrichtung:<br>
-        - Anrufereignis <br>
+        - Vor-Anruffilterung <br>
         - Nummer ändern
         ]]>
     </string>
@@ -30,7 +30,7 @@
         &ensp; Die führende <sample>123</sample> muss entfernt werden, bevor sie überprüft wird. <br>
         <br>
         <title><b>Ein typischer Aufbau:</b></title> <br>
-        - <b>Anrufereignis</b> <br>
+        - <b>Vor der Anruffilterung</b> <br>
         - <b>Nummer ersetzen</b> <br>
         &emsp; von: <sample>^123</sample> <br>
         &emsp; zu: <sample>leer lassen</sample> <br>

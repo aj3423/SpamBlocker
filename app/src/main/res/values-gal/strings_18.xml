@@ -11,8 +11,8 @@
         Tal fluxo de traballo activarase automaticamente por unha chamada entrante. <br>
         ]]>
     </string>
-    <string name="sms_event">Evento de SMS</string>
-    <string name="help_sms_event">
+    <string name="pre_sms_screening">Pre-filtrado de SMS</string>
+    <string name="help_pre_sms_screening">
         <![CDATA[
         Isto activarase automaticamente coas mensaxes SMS entrantes antes de que sexan filtradas.<br>
         <br>
@@ -26,7 +26,7 @@
         </sample>
         ]]>
     </string>
-    <string name="sms_event_triggered">O evento SMS %s activouse.</string>
+    <string name="pre_sms_screening_is_triggered">Activouse o pre-filtrado de SMS: %s</string>
     <string name="use_global_testing_instead">Usa as probas globais no seu lugar.</string>
     <string name="missing_permissions">Os seguintes permisos foron concedidos previamente pero están actualmente ausentes:</string>
     <string name="grant_permissions">Conceder Permisos</string>

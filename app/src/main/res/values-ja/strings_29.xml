@@ -1,8 +1,8 @@
 <resources>
-    <string name="call_screened">着信フィルタリング済み</string>
-    <string name="help_call_screened">
+    <string name="post_call_screening">事後通話スクリーニング</string>
+    <string name="help_post_call_screening">
         <![CDATA[
-        着信フィルタリング後にトリガーされます。
+        通話スクリーニング後にトリガーされます。
         ]]>
     </string>
     <string name="text_reply">テキスト返信</string>

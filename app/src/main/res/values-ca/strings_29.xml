@@ -1,8 +1,8 @@
 <resources>
-    <string name="call_screened">Trucada filtrada</string>
-    <string name="help_call_screened">
+    <string name="post_call_screening">Post-filtrat de trucades</string>
+    <string name="help_post_call_screening">
         <![CDATA[
-        S\'activar després de filtrar la trucada.
+        S\'activarà després de filtrar la trucada.
         ]]>
     </string>
     <string name="text_reply">Resposta de text</string>

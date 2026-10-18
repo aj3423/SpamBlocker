@@ -1,7 +1,7 @@
 <resources>
-    <string name="call_event">來電事件</string>
-    <string name="call_event_is_triggered">來電事件 %s 已被觸發。</string>
-    <string name="help_call_event">
+    <string name="pre_call_screening">電話篩選前</string>
+    <string name="pre_call_screening_is_triggered">電話篩選前事件已被觸發：%s</string>
+    <string name="help_pre_call_screening">
         <![CDATA[
         在來電號碼被規則檢查之前進行預處理，以便能夠即時修改規則。<br>
         <br>
@@ -14,7 +14,7 @@
         </sample>
         <br>
         典型設定：<br>
-        - 來電事件<br>
+        - 電話篩選前<br>
         - 修改號碼
         ]]>
     </string>
@@ -30,7 +30,7 @@
         &ensp; 檢查前必須先移除前置號碼 <sample>123</sample>。<br>
         <br>
         <title><b>典型設定：</b></title><br>
-        - <b>[來電事件]</b> <br>
+        - <b>[電話篩選前]</b> <br>
         - <b>[取代號碼]</b> <br>
         &emsp; from: <sample>^123</sample> <br>
         &emsp; to: <sample>保留空白</sample>

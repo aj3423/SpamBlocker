@@ -11,14 +11,14 @@ import spam.blocker.db.Notification.CHANNEL_MEDIUM
 import spam.blocker.db.Notification.CHANNEL_NONE
 import spam.blocker.def.Def
 import spam.blocker.service.bot.CalendarEvent
-import spam.blocker.service.bot.CallEvent
+import spam.blocker.service.bot.PreCallScreening
 import spam.blocker.service.bot.CallThrottling
 import spam.blocker.service.bot.CategoryConfig
 import spam.blocker.service.bot.Manual
 import spam.blocker.service.bot.QuickTile
 import spam.blocker.service.bot.Ringtone
 import spam.blocker.service.bot.Schedule
-import spam.blocker.service.bot.SmsEvent
+import spam.blocker.service.bot.PreSmsScreening
 import spam.blocker.service.bot.SmsThrottling
 import spam.blocker.service.bot.parseActions
 import spam.blocker.service.bot.serialize
@@ -497,7 +497,7 @@ class Db private constructor(
             BotTable.listAllOldBot(ctx, db).filter {
                 val act = it.actions.firstOrNull()
                 !it.enabled &&
-                        act !is CallEvent && act !is SmsEvent && act !is CalendarEvent &&
+                        act !is PreCallScreening && act !is PreSmsScreening && act !is CalendarEvent &&
                         act !is CallThrottling && act !is SmsThrottling && act !is Ringtone && act !is QuickTile
             }.forEach {
                 val cv = ContentValues()
@@ -508,7 +508,7 @@ class Db private constructor(
             // 3. Convert all bots, move their first TriggerAction to trigger.
             BotTable.listAllOldBot(ctx, db).filter {
                 val act = it.actions.firstOrNull()
-                act is CallEvent || act is SmsEvent || act is CalendarEvent || act is CallThrottling ||
+                act is PreCallScreening || act is PreSmsScreening || act is CalendarEvent || act is CallThrottling ||
                         act is SmsThrottling || act is Ringtone || act is QuickTile
             }.forEach {
                 // 3. Move first action to trigger

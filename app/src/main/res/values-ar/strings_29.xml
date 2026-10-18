@@ -1,8 +1,8 @@
 <resources>
-    <string name="call_screened">تم فحص المكالمة</string>
-    <string name="help_call_screened">
+    <string name="post_call_screening">فحص ما بعد المكالمات</string>
+    <string name="help_post_call_screening">
         <![CDATA[
-        يتم تفعيله بعد فحص المكالمة.
+        يتم تشغيله بعد فحص المكالمة.
         ]]>
     </string>
     <string name="text_reply">الرد النصي</string>

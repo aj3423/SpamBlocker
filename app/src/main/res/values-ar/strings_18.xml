@@ -11,8 +11,8 @@
         سيتم تشغيل سير العمل هذا تلقائيًا بواسطة مكالمة واردة. <br>
         ]]>
     </string>
-    <string name="sms_event">حدث الرسائل النصية</string>
-    <string name="help_sms_event">
+    <string name="pre_sms_screening">فحص ما قبل SMS</string>
+    <string name="help_pre_sms_screening">
         <![CDATA[
         سيتم تشغيله تلقائيًا عند وصول الرسائل النصية الواردة قبل فحصها.<br>
         <br>
@@ -26,7 +26,7 @@
         </sample>
         ]]>
     </string>
-    <string name="sms_event_triggered">تم تشغيل حدث الرسائل النصية %s.</string>
+    <string name="pre_sms_screening_is_triggered">تم تشغيل فحص ما قبل SMS: %s</string>
     <string name="use_global_testing_instead">استخدم الاختبار العام بدلاً من ذلك.</string>
     <string name="missing_permissions">الأذونات التالية مُنحت سابقًا ولكنها مفقودة حاليًا:</string>
     <string name="grant_permissions">منح الأذونات</string>

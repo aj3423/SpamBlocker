@@ -1,7 +1,7 @@
 <resources>
-    <string name="call_event">Esdeveniment de trucada</string>
-    <string name="call_event_is_triggered">L\'esdeveniment de trucada %s s\'ha activat.</string>
-    <string name="help_call_event">
+    <string name="pre_call_screening">Pre-filtrat de trucades</string>
+    <string name="pre_call_screening_is_triggered">S\'ha activat el pre-filtrat de trucades: %s</string>
+    <string name="help_pre_call_screening">
         <![CDATA[
         Preprocessa el número entrant abans que sigui verificat per les regles, fent possible modificar les regles al moment.<br>
         <br>
@@ -14,7 +14,7 @@
         </sample>
         <br>
         Una configuració típica:<br>
-        - Esdeveniment de trucada <br>
+        - Pre-filtrat de trucades <br>
         - Modificar número
         ]]>
     </string>
@@ -30,7 +30,7 @@
         &ensp; El <sample>123</sample> inicial s\'ha d\'eliminar abans de ser comprovat. <br>
         <br>
         <title><b>Una configuració típica:</b></title> <br>
-        - <b>Esdeveniment de Trucada</b> <br>
+        - <b>Abans del filtrat de trucades</b> <br>
         - <b>Substituir Número</b> <br>
         &emsp; de: <sample>^123</sample> <br>
         &emsp; a: <sample>deixar buit</sample> <br>

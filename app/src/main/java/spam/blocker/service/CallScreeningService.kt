@@ -18,7 +18,7 @@ import spam.blocker.db.CallTable
 import spam.blocker.db.HistoryRecord
 import spam.blocker.def.Def
 import spam.blocker.service.bot.ActionContext
-import spam.blocker.service.bot.CallScreened
+import spam.blocker.service.bot.PostCallScreening
 import spam.blocker.service.bot.Ringtone
 import spam.blocker.service.bot.executeAll
 import spam.blocker.service.checker.Checker
@@ -310,7 +310,7 @@ class CallScreeningService : CallScreeningService() {
                 // 5. Run post screening workflows
                 run {
                     val bots = BotTable.listAll(ctx).filter {
-                        it.trigger is CallScreened && it.trigger.isActivated()
+                        it.trigger is PostCallScreening && it.trigger.isActivated()
                     }
 
                     bots.forEach { bot ->

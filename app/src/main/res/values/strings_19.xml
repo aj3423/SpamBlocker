@@ -1,7 +1,7 @@
 <resources>
-    <string name="call_event">Call Event</string>
-    <string name="call_event_is_triggered">Call event %s is triggered.</string>
-    <string name="help_call_event">
+    <string name="pre_call_screening">Pre-Call Screening</string>
+    <string name="pre_call_screening_is_triggered">Pre-Call Screening event is triggered: %s</string>
+    <string name="help_pre_call_screening">
         <![CDATA[
         Preprocess the incoming number before it\'s checked by the rules, making it possible to modify rules on the fly.<br>
         <br>
@@ -14,7 +14,7 @@
         </sample>
         <br>
         A typical setup:<br>
-        - Call Event <br>
+        - Pre-Call Screening <br>
         - Modify Number
         ]]>
     </string>
@@ -30,7 +30,7 @@
         &ensp; The leading <sample>123</sample> needs to be removed before it\'s checked. <br>
         <br>
         <title><b>A typical setup:</b></title> <br>
-        - <b>Call Event</b> <br>
+        - <b>Pre-Call Screening</b> <br>
         - <b>Replace Number</b> <br>
         &emsp; from: <sample>^123</sample> <br>
         &emsp; to: <sample>leave as empty</sample>

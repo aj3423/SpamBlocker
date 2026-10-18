@@ -1,7 +1,7 @@
 <resources>
-    <string name="call_event">通話イベント</string>
-    <string name="call_event_is_triggered">通話イベント%sがトリガーされました。</string>
-    <string name="help_call_event">
+    <string name="pre_call_screening">事前通話スクリーニング</string>
+    <string name="pre_call_screening_is_triggered">事前通話スクリーニングがトリガーされました: %s</string>
+    <string name="help_pre_call_screening">
         <![CDATA[
         着信番号をルールでチェックする前に前処理し、ルールをその場で変更できるようにします。<br>
         <br>
@@ -13,8 +13,8 @@
         </sample>
         <br>
         一般的な設定:<br>
-        - 通話イベント <br>
-        - 番号変更
+        - 事前通話スクリーニング <br>
+        - 事前通話スクリーニング
         ]]>
     </string>
     <string name="action_modify_number">番号変更</string>
@@ -29,7 +29,7 @@
         &ensp; 先頭の<sample>123</sample>は、確認される前に削除する必要があります。<br>
         <br>
         <title><b>一般的な設定：</b></title> <br>
-        - <b>通話イベント</b> <br>
+        - <b>通話スクリーニング前</b> <br>
         - <b>番号置換</b> <br>
         &emsp; から: <sample>^123</sample> <br>
         &emsp; へ: <sample>空のままにする</sample> <br>

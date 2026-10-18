@@ -11,8 +11,8 @@
         Böyle bir iş akışı, gelen bir arama tarafından otomatik olarak tetiklenecektir. <br>
         ]]>
     </string>
-    <string name="sms_event">SMS Etkinliği</string>
-    <string name="help_sms_event">
+    <string name="pre_sms_screening">Ön SMS Taraması</string>
+    <string name="help_pre_sms_screening">
         <![CDATA[
         Bu, gelen SMS mesajları taranmadan önce otomatik olarak tetiklenecektir.<br>
         <br>
@@ -26,7 +26,7 @@
         </sample>
         ]]>
     </string>
-    <string name="sms_event_triggered">SMS etkinliği %s tetiklendi.</string>
+    <string name="pre_sms_screening_is_triggered">Ön SMS Taraması tetiklendi: %s</string>
     <string name="use_global_testing_instead">Bunun yerine genel test özelliğini kullanın.</string>
     <string name="missing_permissions">Aşağıdaki izinler daha önce verilmişti ancak şu anda eksik:</string>
     <string name="grant_permissions">İzinleri Ver</string>

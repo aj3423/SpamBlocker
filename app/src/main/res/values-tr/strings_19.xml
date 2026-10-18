@@ -1,7 +1,7 @@
 <resources>
-    <string name="call_event">Çağrı Olayı</string>
-    <string name="call_event_is_triggered">Çağrı olayı %s tetiklendi.</string>
-    <string name="help_call_event">
+    <string name="pre_call_screening">Ön Çağrı Taraması</string>
+    <string name="pre_call_screening_is_triggered">Ön Çağrı Taraması tetiklendi: %s</string>
+    <string name="help_pre_call_screening">
         <![CDATA[
         Gelen numara, kurallar tarafından kontrol edilmeden önce ön işleme tabi tutulur, bu da kuralları anında değiştirmeyi mümkün kılar.<br>
         <br>
@@ -13,8 +13,8 @@
         </sample>
         <br>
         Tipik bir kurulum:<br>
-        - Çağrı Olayı <br>
-        - Numarayı Değiştir
+        - Ön Çağrı Taraması <br>
+        - Ön Çağrı Taraması
         ]]>
     </string>
     <string name="action_modify_number">Numarayı Düzenle</string>
@@ -29,7 +29,7 @@
         &ensp; Öndeki <sample>123</sample>\'ün kontrol edilmeden önce kaldırılması gerekir. <br>
         <br>
         <title><b>Tipik bir kurulum:</b></title> <br>
-        - <b>Çağrı Olayı</b> <br>
+        - <b>Çağrı Taramasından Önce</b> <br>
         - <b>Numarayı Değiştir</b> <br>
         &emsp; kaynak: <sample>^123</sample> <br>
         &emsp; hedef: <sample>boş bırakın</sample> <br>

@@ -27,8 +27,8 @@
         ]]>
     </string>
     <string name="working">Working</string>
-    <string name="sms_event">SMS Event</string>
-    <string name="help_sms_event">
+    <string name="pre_sms_screening">Pre-SMS Screening</string>
+    <string name="help_pre_sms_screening">
         <![CDATA[
         This will be automatically triggered on incoming SMS messages before they are screened.<br>
         <br>
@@ -42,7 +42,7 @@
         </sample>
         ]]>
     </string>
-    <string name="sms_event_triggered">SMS event %s is triggered.</string>
+    <string name="pre_sms_screening_is_triggered">Pre-SMS Screening is triggered: %s</string>
     <string name="use_global_testing_instead">Use global testing instead.</string>
     <string name="missing_permissions">The following permissions were previously granted but are currently missing:</string>
     <string name="grant_permissions">Grant Permissions</string>

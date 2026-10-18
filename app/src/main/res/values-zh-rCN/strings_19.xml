@@ -1,7 +1,7 @@
 <resources>
-    <string name="call_event">来电事件</string>
-    <string name="call_event_is_triggered">来电事件 %s 已触发。</string>
-    <string name="help_call_event">
+    <string name="pre_call_screening">来电筛选前</string>
+    <string name="pre_call_screening_is_triggered">来电筛选前事件已触发：%s</string>
+    <string name="help_pre_call_screening">
         <![CDATA[
         在来电号码被规则检查之前进行预处理，使其能够即时修改规则。<br>
         <br>
@@ -14,7 +14,7 @@
         </sample>
         <br>
         典型设置：<br>
-        - 来电事件<br>
+        - 来电筛选前<br>
         - 修改号码
         ]]>
     </string>
@@ -30,7 +30,7 @@
         &ensp; 开头的 <sample>123</sample> 需要在检查前被移除。<br>
         <br>
         <title><b>典型设置：</b></title> <br>
-        - <b>通话事件</b> <br>
+        - <b>来电筛选前</b> <br>
         - <b>替换号码</b> <br>
         &emsp; 从: <sample>^123</sample> <br>
         &emsp; 到: <sample>留空</sample> <br>

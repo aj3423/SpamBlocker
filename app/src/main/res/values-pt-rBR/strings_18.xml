@@ -11,8 +11,8 @@
         Tal fluxo de trabalho será acionado automaticamente por uma chamada recebida. <br>
         ]]>
     </string>
-    <string name="sms_event">Evento de SMS</string>
-    <string name="help_sms_event">
+    <string name="pre_sms_screening">Pré-triagem de SMS</string>
+    <string name="help_pre_sms_screening">
         <![CDATA[
         Isso será acionado automaticamente em mensagens SMS recebidas antes que sejam rastreadas.<br>
         <br>
@@ -26,7 +26,7 @@
         </sample>
         ]]>
     </string>
-    <string name="sms_event_triggered">Evento de SMS %s foi acionado.</string>
+    <string name="pre_sms_screening_is_triggered">Pré-triagem de SMS acionada: %s</string>
     <string name="use_global_testing_instead">Use o teste global em vez disso.</string>
     <string name="missing_permissions">As seguintes permissões foram concedidas anteriormente, mas estão atualmente ausentes:</string>
     <string name="grant_permissions">Conceder Permissões</string>

@@ -1,7 +1,7 @@
 <resources>
-    <string name="call_event">رویداد تماس</string>
-    <string name="call_event_is_triggered">رویداد تماس %s فعال شد.</string>
-    <string name="help_call_event">
+    <string name="pre_call_screening">پیش‌فیلتر تماس</string>
+    <string name="pre_call_screening_is_triggered">پیش‌فیلتر تماس فعال شد: %s</string>
+    <string name="help_pre_call_screening">
         <![CDATA[
         شماره ورودی را قبل از اینکه توسط قوانین بررسی شود، پیش‌پردازش می‌کند و این امکان را فراهم می‌سازد تا قوانین را در لحظه تغییر دهید.<br>
         <br>
@@ -14,7 +14,7 @@
         </sample>
         <br>
         یک تنظیم معمول:<br>
-        - رویداد تماس <br>
+        - پیش‌فیلتر تماس <br>
         - اصلاح شماره
         ]]>
     </string>
@@ -30,7 +30,7 @@
         &ensp; <sample>123</sample> پیشرو باید قبل از بررسی حذف شود. <br>
         <br>
         <title><b>یک تنظیمات معمول:</b></title> <br>
-        - <b>رویداد تماس</b> <br>
+        - <b>قبل از فیلتر تماس</b> <br>
         - <b>جایگزینی شماره</b> <br>
         &emsp; از: <sample>^123</sample> <br>
         &emsp; به: <sample>خالی بگذارید</sample> <br>

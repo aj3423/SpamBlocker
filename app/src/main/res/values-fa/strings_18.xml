@@ -11,8 +11,8 @@
         چنین گردش کاری به طور خودکار توسط یک تماس ورودی فعال می‌شود. <br>
         ]]>
     </string>
-    <string name="sms_event">رویداد پیامک</string>
-    <string name="help_sms_event">
+    <string name="pre_sms_screening">پیش‌فیلتر پیامک</string>
+    <string name="help_pre_sms_screening">
         <![CDATA[
         این به طور خودکار هنگام دریافت پیامک‌های ورودی، قبل از بررسی، فعال می‌شود.<br>
         <br>
@@ -26,7 +26,7 @@
         </sample>
         ]]>
     </string>
-    <string name="sms_event_triggered">رویداد پیامک %s فعال شد.</string>
+    <string name="pre_sms_screening_is_triggered">پیش‌فیلتر پیامک فعال شد: %s</string>
     <string name="use_global_testing_instead">به جای آن از آزمایش سراسری استفاده کنید.</string>
     <string name="missing_permissions">مجوزهای زیر قبلاً اعطا شده بودند اما در حال حاضر موجود نیستند:</string>
     <string name="grant_permissions">اعطای مجوزها</string>

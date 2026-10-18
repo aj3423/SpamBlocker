@@ -30,12 +30,12 @@ import spam.blocker.def.Def.RESULT_ALLOWED_BY_NAIVE_BAYES
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NAIVE_BAYES
 import spam.blocker.service.bot.ActionContext
 import spam.blocker.service.bot.CalendarEvent
-import spam.blocker.service.bot.CallEvent
+import spam.blocker.service.bot.PreCallScreening
 import spam.blocker.service.bot.CallThrottling
 import spam.blocker.service.bot.InterceptCall
 import spam.blocker.service.bot.InterceptSms
 import spam.blocker.service.bot.QuickTile
-import spam.blocker.service.bot.SmsEvent
+import spam.blocker.service.bot.PreSmsScreening
 import spam.blocker.service.bot.SmsThrottling
 import spam.blocker.service.bot.executeAll
 import spam.blocker.ui.darken
@@ -147,8 +147,8 @@ fun List<IChecker>.findConflicts(): List<IChecker> {
 }
 
 // Before the call/SMS is checked by the rules, run all related workflows first.
-// Workflows with triggers like `Call Event`, `Calendar Event` will be executed on incoming call,
-//   and `SMS Event` on SMS.
+// Workflows with triggers like `Before Call Screening`, `Calendar Event` will be executed on incoming call,
+//   and `Pre-SMS Screening` on SMS.
 object Preprocessors { // for namespace only
 
     interface IPreProcessor {
@@ -184,7 +184,7 @@ object Preprocessors { // for namespace only
 
                 // Type of these classes ?
                 return@filter when(trigger) {
-                    is CallEvent, is CallThrottling, is QuickTile, is CalendarEvent -> true
+                    is PreCallScreening, is CallThrottling, is QuickTile, is CalendarEvent -> true
                     else -> false
                 }
             }
@@ -204,7 +204,7 @@ object Preprocessors { // for namespace only
 
                 // one of these types ?
                 return@filter when(trigger) {
-                    is SmsEvent, is SmsThrottling, is CalendarEvent -> true
+                    is PreSmsScreening, is SmsThrottling, is CalendarEvent -> true
                     else -> false
                 }
             }

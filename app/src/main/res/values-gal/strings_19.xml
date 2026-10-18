@@ -1,7 +1,7 @@
 <resources>
-    <string name="call_event">Evento de Chamada</string>
-    <string name="call_event_is_triggered">O evento de chamada %s foi activado.</string>
-    <string name="help_call_event">
+    <string name="pre_call_screening">Pre-filtrado de chamadas</string>
+    <string name="pre_call_screening_is_triggered">Activouse o pre-filtrado de chamadas: %s</string>
+    <string name="help_pre_call_screening">
         <![CDATA[
         Preprocesa o número entrante antes de que sexa comprobado polas regras, posibilitando modificar as regras sobre a marcha.<br>
         <br>
@@ -14,7 +14,7 @@
         </sample>
         <br>
         Unha configuración típica:<br>
-        - Evento de Chamada <br>
+        - Pre-filtrado de chamadas <br>
         - Modificar Número
         ]]>
     </string>
@@ -30,7 +30,7 @@
         &ensp; O <sample>123</sample> inicial debe ser eliminado antes de ser comprobado. <br>
         <br>
         <title><b>Unha configuración típica:</b></title> <br>
-        - <b>Evento de Chamada</b> <br>
+        - <b>Antes do filtrado de chamadas</b> <br>
         - <b>Substituír Número</b> <br>
         &emsp; de: <sample>^123</sample> <br>
         &emsp; a: <sample>deixar baleiro</sample> <br>

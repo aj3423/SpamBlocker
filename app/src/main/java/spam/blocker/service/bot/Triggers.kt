@@ -367,7 +367,7 @@ class CalendarEvent(
 // This will be triggered on receiving SMS messages
 @Serializable
 @SerialName("SmsEvent")
-class SmsEvent(
+class PreSmsScreening(
     var enabled: Boolean = true,
     var number: String = ".*",
     var numberFlags: Int = Def.DefaultRegexFlags,
@@ -406,7 +406,7 @@ class SmsEvent(
         }
 
         aCtx.logger?.warn(
-            ctx.getString(R.string.sms_event_triggered)
+            ctx.getString(R.string.pre_sms_screening_is_triggered)
                 .formatAnnotated(
                     "$content <- $number".A(G.palette.teal200)
                 )
@@ -416,7 +416,7 @@ class SmsEvent(
     }
 
     override fun label(ctx: Context): String {
-        return ctx.getString(R.string.sms_event)
+        return ctx.getString(R.string.pre_sms_screening)
     }
 
     @Composable
@@ -436,7 +436,7 @@ class SmsEvent(
     }
 
     override fun tooltip(ctx: Context): String {
-        return ctx.getString(R.string.help_sms_event)
+        return ctx.getString(R.string.help_pre_sms_screening)
     }
 
     override fun inputParamType(): List<ParamType> {
@@ -503,7 +503,7 @@ class SmsEvent(
 // Workflows that contain this preprocessor will be executed before checking the number.
 @Serializable
 @SerialName("CallEvent")
-class CallEvent(
+class PreCallScreening(
     var enabled : Boolean = true,
     var number: String = ".*",
     var numberFlags: Int = Def.DefaultRegexFlags,
@@ -533,7 +533,7 @@ class CallEvent(
         }
 
         aCtx.logger?.warn(
-            ctx.getString(R.string.call_event_is_triggered)
+            ctx.getString(R.string.pre_call_screening_is_triggered)
                 .formatAnnotated(
                     number.A(G.palette.teal200)
                 )
@@ -542,7 +542,7 @@ class CallEvent(
     }
 
     override fun label(ctx: Context): String {
-        return ctx.getString(R.string.call_event)
+        return ctx.getString(R.string.pre_call_screening)
     }
 
     @Composable
@@ -562,7 +562,7 @@ class CallEvent(
     }
 
     override fun tooltip(ctx: Context): String {
-        return ctx.getString(R.string.help_call_event)
+        return ctx.getString(R.string.help_pre_call_screening)
     }
 
     override fun inputParamType(): List<ParamType> {
@@ -1435,7 +1435,7 @@ class QuickTile(
 
 @Serializable
 @SerialName("CallScreened")
-class CallScreened(
+class PostCallScreening(
     var enabled: Boolean = true,
     var numberFilter: String = ".*",
     var forAllowed: Boolean = false,
@@ -1479,7 +1479,7 @@ class CallScreened(
     }
 
     override fun label(ctx: Context): String {
-        return ctx.getString(R.string.call_screened)
+        return ctx.getString(R.string.post_call_screening)
     }
 
     @Composable
@@ -1507,7 +1507,7 @@ class CallScreened(
     }
 
     override fun tooltip(ctx: Context): String {
-        return ctx.getString(R.string.help_call_screened)
+        return ctx.getString(R.string.help_post_call_screening)
     }
 
     override fun inputParamType(): List<ParamType> {

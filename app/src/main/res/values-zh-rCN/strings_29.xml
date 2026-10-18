@@ -1,8 +1,8 @@
 <resources>
-    <string name="call_screened">电话已筛选</string>
-    <string name="help_call_screened">
+    <string name="post_call_screening">来电筛选后</string>
+    <string name="help_post_call_screening">
         <![CDATA[
-        在电话筛选后触发。
+        在来电筛选后触发。
         ]]>
     </string>
     <string name="text_reply">文本回复</string>
