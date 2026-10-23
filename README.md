@@ -4,6 +4,9 @@ Android Call/SMS blocker. (Android 10+)
 <p>
   <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/9d44afe7-2524-4b34-8bf3-ba285200bb5c" alt="SpamBlocker" height="90" />
 
+  <a href="https://play.google.com/store/apps/details?id=spam.blocker.googleplay">
+    <img src="https://github.com/user-attachments/assets/f7fcdef2-8df1-40c8-bbaa-e95d1b3a753f" alt="Get it on Google Play" height="60" />
+  </a>
   <a href="https://f-droid.org/packages/spam.blocker">
     <img src="https://github.com/user-attachments/assets/8757c78c-b0d5-4b8a-9adb-934d8a758e9e" alt="Get it on F-Droid" height="60" />
   </a>
@@ -16,6 +19,8 @@ Android Call/SMS blocker. (Android 10+)
 
 </p>
 
+> [!NOTE]
+> There are unknown forks on Google play, this one is published under "atvari"
 
 Table of Contents
 =================
