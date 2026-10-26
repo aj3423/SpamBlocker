@@ -36,7 +36,7 @@ import spam.blocker.util.Launcher
 
 data class ApiPreset(
     val desc: (Context) -> String,
-    val tooltipId: Int,
+    val tooltip: (Context) -> String,
     val leadingIconId: Int? = null,
 
     // Either of these must exist
@@ -64,6 +64,8 @@ object PhoneBlock {
     const val spfTokenKey = "PhoneBlock_token"
     const val OAuthState = "PhoneBlock_OAuth_State"
 
+    const val domain = "https://phoneblock.net"
+    const val apiUrl = "https://phoneblock.net/phoneblock/api"
     const val oauthUrl = "https://phoneblock.net/phoneblock/mobile/login?appId=SpamBlocker&state=$OAuthState"
     const val oauthUrl_Debug = "https://phoneblock.net/pb-test/mobile/login?appId=SpamBlocker&state=$OAuthState"
 }
@@ -74,7 +76,7 @@ val ApiQueryPresets by lazy {
         // 1. PhoneBlock
         ApiPreset(
             desc = { ctx -> ctx.getString(R.string.api_preset_phoneblock) },
-            tooltipId = R.string.help_api_preset_phoneblock,
+            tooltip = { ctx -> ctx.getString(R.string.help_api_preset_phoneblock).format(PhoneBlock.domain, PhoneBlock.domain, PhoneBlock.apiUrl, PhoneBlock.apiUrl) },
             leadingIconId = R.drawable.ic_call,
             setupDialog = OAuthSetupDialog(
                 spfTokenKey = PhoneBlock.spfTokenKey,
@@ -113,7 +115,7 @@ val ApiQueryPresets by lazy {
         // Groq
         ApiPreset(
             desc = { ctx -> ctx.getString(R.string.api_preset_remote_llm) },
-            tooltipId = R.string.help_api_preset_remote_llm,
+            tooltip = { ctx -> ctx.getString(R.string.help_api_preset_remote_llm) },
             leadingIconId = R.drawable.ic_sms,
 
             onClick = { ctx ->
@@ -129,7 +131,7 @@ val ApiReportPresets by lazy {
         ApiPreset(
             desc = { ctx -> ctx.getString(R.string.api_preset_phoneblock) },
             leadingIconId = R.drawable.ic_call,
-            tooltipId = R.string.help_api_preset_phoneblock,
+            tooltip = { ctx -> ctx.getString(R.string.help_api_preset_phoneblock).format(PhoneBlock.domain, PhoneBlock.domain, PhoneBlock.apiUrl, PhoneBlock.apiUrl) },
             setupDialog = OAuthSetupDialog(
                 spfTokenKey = PhoneBlock.spfTokenKey,
                 oauthUrl = if (BuildConfig.DEBUG) PhoneBlock.oauthUrl_Debug else PhoneBlock.oauthUrl,
@@ -179,7 +181,7 @@ val ApiReportPresets by lazy {
         ApiPreset(
             desc = { "7726" },
             leadingIconId = R.drawable.ic_sms_blocked,
-            tooltipId = R.string.help_bot_preset_7726,
+            tooltip = { ctx -> ctx.getString(R.string.help_bot_preset_7726) },
             onClick = { ctx ->
                 val newApi = ReportApi(
                     desc = "7726",

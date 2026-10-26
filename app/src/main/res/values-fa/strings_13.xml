@@ -98,9 +98,9 @@
         - به جای شماره تلفن واقعی، از <highlight>پرس‌وجو با هش</highlight> استفاده می‌کند و حریم خصوصی بهتری ارائه می‌دهد. <br>
         - وقتی شماره دقیق پیدا نشود، با نادیده گرفتن دو رقم آخر از <highlight>تشخیص مبتنی بر بازه</highlight> استفاده می‌کند. <br>
         <br>
-        وب‌سایت: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        وب‌سایت: <a href="%s">%s</a><br>
         <br>
-        API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        API: <a href="%s">%s</a>
         ]]>
     </string>
     <string name="not_enough_time_left">

@@ -104,9 +104,9 @@
         - <highlight>استعلامات عبر التجزئة</highlight> بدلاً من رقم الهاتف الفعلي، مما يوفر خصوصية أفضل. <br>
         - يستخدم <highlight>الكشف المستند إلى النطاق</highlight> عند عدم العثور على الرقم الدقيق، مع تجاهل آخر رقمين. <br>
         <br>
-        الموقع الإلكتروني: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        الموقع الإلكتروني: <a href="%s">%s</a><br>
         <br>
-        واجهة برمجة التطبيقات: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        واجهة برمجة التطبيقات: <a href="%s">%s</a>
         ]]>
     </string>
     <string name="not_enough_time_left">

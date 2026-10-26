@@ -44,9 +44,9 @@
         - Gerçek telefon numarası yerine <highlight>karma ile sorgular</highlight>, daha iyi gizlilik sağlar. <br>
         - Tam numara bulunamadığında son iki basamağı yok sayarak <highlight>aralık tabanlı algılama</highlight> kullanır. <br>
         <br>
-        Web sitesi: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        Web sitesi: <a href="%s">%s</a><br>
         <br>
-        API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        API: <a href="%s">%s</a>
         ]]>
     </string>
     <string name="not_enough_time_left">Çağrı tarama süresi limiti 5 saniyedir, zaman fonksiyonlarının doğruluk hatası için %s ms tampon ile toplam süre limiti aslında %s ms\'dir. Önceki adımlar %s ms sürdü, yeterli zaman kalmadı, atlanıyor.</string>

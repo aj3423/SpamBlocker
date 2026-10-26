@@ -98,9 +98,9 @@
         - <highlight>Query tramite hash</highlight> invece del numero di telefono reale, offrendo maggiore privacy. <br>
         - Usa il <highlight>rilevamento basato su intervalli</highlight> quando il numero esatto non viene trovato, ignorando le ultime due cifre. <br>
         <br>
-        Sito web: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        Sito web: <a href="%s">%s</a><br>
         <br>
-        API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        API: <a href="%s">%s</a>
         ]]>
     </string>
     <string name="not_enough_time_left">

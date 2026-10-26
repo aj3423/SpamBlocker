@@ -44,9 +44,9 @@
         - 実際の電話番号ではなく<highlight>ハッシュでクエリ</highlight>するため、プライバシーが向上します。 <br>
         - 完全一致する番号が見つからない場合は、末尾2桁を無視して<highlight>範囲ベースの検出</highlight>を使用します。 <br>
         <br>
-        ウェブサイト：<a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        ウェブサイト：<a href="%s">%s</a><br>
         <br>
-        API：<a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        API：<a href="%s">%s</a>
         ]]>
     </string>
     <string name="not_enough_time_left">通話スクリーニングの時間制限は5秒です。時間関数の不正確さのために%sミリ秒のバッファがあるため、実際は合計%sミリ秒です。前のステップで%sミリ秒かかりました。残りの時間が不足しているため、スキップします。</string>

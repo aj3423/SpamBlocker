@@ -134,7 +134,7 @@ fun ApiHeader(
         ret += presets.map { preset ->
             LabelItem(
                 label = preset.desc(ctx),
-                tooltip = ctx.getString(preset.tooltipId),
+                tooltip = preset.tooltip(ctx),
                 leadingIcon = preset.leadingIconId?.let{ iconId-> { GreyIcon16(iconId) } }
             ) {
                 setupDialog = preset.setupDialog

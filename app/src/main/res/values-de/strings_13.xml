@@ -44,9 +44,9 @@
         - <highlight>Abfragen per Hash</highlight> statt mit der tatsächlichen Telefonnummer, was mehr Datenschutz bietet. <br>
         - Verwendet <highlight>bereichsbasierte Erkennung</highlight>, wenn die exakte Nummer nicht gefunden wird, und ignoriert dabei die letzten zwei Ziffern. <br>
         <br>
-        Website: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        Website: <a href="%s">%s</a><br>
         <br>
-        API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        API: <a href="%s">%s</a>
         ]]>
     </string>
     <string name="not_enough_time_left">Das Zeitlimit für die Anrufprüfung beträgt 5 Sekunden. Mit einem Puffer von %s ms für die Ungenauigkeit von Zeitfunktionen beträgt das Gesamtzeitlimit tatsächlich %s ms. Die vorherigen Schritte dauerten %s ms, nicht genügend Zeit übrig, überspringen.</string>

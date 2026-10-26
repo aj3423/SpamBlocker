@@ -104,9 +104,9 @@
         - <highlight>Consultes per hash</highlight> en comptes del número de telèfon real, proporcionant una millor privacitat. <br>
         - Utilitza <highlight>detecció basada en rangs</highlight> quan no es troba el número exacte, ignorant els dos últims dígits. <br>
         <br>
-        Lloc web: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        Lloc web: <a href="%s">%s</a><br>
         <br>
-        API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        API: <a href="%s">%s</a>
         ]]>
     </string>
     <string name="not_enough_time_left">

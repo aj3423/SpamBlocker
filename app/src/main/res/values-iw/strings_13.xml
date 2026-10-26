@@ -104,9 +104,9 @@
         - <highlight>שאילתות לפי גיבוב</highlight> במקום מספר הטלפון בפועל, מה שמספק פרטיות טובה יותר. <br>
         - משתמש ב<highlight>זיהוי מבוסס טווח</highlight> כאשר המספר המדויק לא נמצא, תוך התעלמות משתי הספרות האחרונות. <br>
         <br>
-        אתר אינטרנט: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        אתר אינטרנט: <a href="%s">%s</a><br>
         <br>
-        API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        API: <a href="%s">%s</a>
         ]]>
     </string>
     <string name="not_enough_time_left">

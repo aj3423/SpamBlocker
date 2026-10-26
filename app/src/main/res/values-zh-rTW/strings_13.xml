@@ -104,9 +104,9 @@
         - 使用<highlight>雜湊查詢</highlight>，而非實際電話號碼，提供更好的隱私保護。 <br>
         - 找不到精確號碼時，使用<highlight>範圍式偵測</highlight>，忽略最後兩位數字。 <br>
         <br>
-        網站：<a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        網站：<a href="%s">%s</a><br>
         <br>
-        API：<a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        API：<a href="%s">%s</a>
         ]]>
     </string>
     <string name="not_enough_time_left">

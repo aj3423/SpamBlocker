@@ -104,9 +104,9 @@
         - <highlight>Kueri dengan hash</highlight>, bukan nomor telepon sebenarnya, sehingga memberikan privasi yang lebih baik. <br>
         - Menggunakan <highlight>deteksi berbasis rentang</highlight> saat nomor persis tidak ditemukan, dengan mengabaikan dua digit terakhir. <br>
         <br>
-        Situs web: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        Situs web: <a href="%s">%s</a><br>
         <br>
-        API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        API: <a href="%s">%s</a>
         ]]>
     </string>
     <string name="not_enough_time_left">

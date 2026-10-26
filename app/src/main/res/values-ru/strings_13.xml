@@ -104,9 +104,9 @@
         - <highlight>Запросы по хэшу</highlight> вместо фактического номера телефона, что обеспечивает лучшую конфиденциальность. <br>
         - Использует <highlight>обнаружение на основе диапазона</highlight>, когда точный номер не найден, игнорируя последние две цифры. <br>
         <br>
-        Веб-сайт: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        Веб-сайт: <a href="%s">%s</a><br>
         <br>
-        API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        API: <a href="%s">%s</a>
         ]]>
     </string>
     <string name="not_enough_time_left">

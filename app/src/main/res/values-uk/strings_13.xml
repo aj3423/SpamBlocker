@@ -44,9 +44,9 @@
         - <highlight>Запити за хешем</highlight> замість фактичного номера телефону, що забезпечує кращу конфіденційність. <br>
         - Використовує <highlight>виявлення на основі діапазону</highlight>, коли точний номер не знайдено, ігноруючи останні дві цифри. <br>
         <br>
-        Вебсайт: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        Вебсайт: <a href="%s">%s</a><br>
         <br>
-        API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        API: <a href="%s">%s</a>
         ]]>
     </string>
     <string name="not_enough_time_left">Ліміт часу перевірки дзвінка становить 5 секунд, з буфером %s мс для неточності функцій часу, загальний ліміт часу насправді становить %s мс. Попередні кроки зайняли %s мс, недостатньо часу, пропускаємо.</string>

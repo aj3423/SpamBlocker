@@ -44,9 +44,9 @@
         - <highlight>Consulta por hash</highlight> en lugar del número de teléfono real, lo que proporciona una mejor privacidad. <br>
         - Usa <highlight>detección basada en rangos</highlight> cuando no se encuentra el número exacto, ignorando los dos últimos dígitos. <br>
         <br>
-        Sitio web: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        Sitio web: <a href="%s">%s</a><br>
         <br>
-        API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        API: <a href="%s">%s</a>
         ]]>
     </string>
     <string name="not_enough_time_left">El límite de tiempo de la identificación de llamadas es de 5 segundos, con un búfer de %s ms para la imprecisión de las funciones de tiempo, el límite de tiempo total es en realidad de %s ms. Los pasos previos costaron %s ms, no queda suficiente tiempo, se omite.</string>

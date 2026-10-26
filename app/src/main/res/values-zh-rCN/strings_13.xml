@@ -44,9 +44,9 @@
         - 使用<highlight>哈希查询</highlight>，而不是实际电话号码，从而提供更好的隐私保护。 <br>
         - 当找不到精确号码时，使用<highlight>基于范围的检测</highlight>，忽略最后两位数字。 <br>
         <br>
-        网站：<a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        网站：<a href="%s">%s</a><br>
         <br>
-        API：<a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        API：<a href="%s">%s</a>
         ]]>
     </string>
     <string name="not_enough_time_left">来电筛选时间限制为 5 秒，考虑时间函数精度误差的 %s 毫秒缓冲区，实际总时间限制为 %s 毫秒。之前的步骤耗时 %s 毫秒，剩余时间不足，跳过。</string>

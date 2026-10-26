@@ -44,9 +44,9 @@
         - <highlight>Requêtes par hachage</highlight> au lieu du numéro de téléphone réel, offrant ainsi une meilleure confidentialité. <br>
         - Utilise la <highlight>détection basée sur les plages</highlight> lorsque le numéro exact n\'est pas trouvé, en ignorant les deux derniers chiffres. <br>
         <br>
-        Site web : <a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        Site web : <a href="%s">%s</a><br>
         <br>
-        API : <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        API : <a href="%s">%s</a>
         ]]>
     </string>
     <string name="not_enough_time_left">La limite de temps de filtrage des appels est de 5 secondes, avec une marge de %s ms pour l\'imprécision des fonctions de temps, la limite de temps totale est en réalité de %s ms. Les étapes précédentes ont coûté %s ms, il ne reste pas assez de temps, ignoré.</string>
