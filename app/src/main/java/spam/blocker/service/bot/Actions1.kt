@@ -28,6 +28,7 @@ import spam.blocker.config.CategorySelection
 import spam.blocker.config.Configs
 import spam.blocker.db.CallTable
 import spam.blocker.db.RegexRule
+import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.db.SmsTable
 import spam.blocker.db.SpamTable
 import spam.blocker.def.Def
@@ -557,11 +558,13 @@ class BackupExport(
         ChooseBackupCategoriesDialog(
             trigger = trigger,
             initialCategories = categories,
-            okLabelId = R.string.ok,
-        ) { selectedCategories ->
-            categories = selectedCategories
-            trigger.value = false
-        }
+            buttons = { selectedCategories ->
+                StrokeButton(Str(R.string.ok), color = G.palette.teal200) {
+                    categories = selectedCategories
+                    trigger.value = false
+                }
+            }
+        )
 
         GreyButton(Str(R.string.action_category_config)) {
             trigger.value = true
@@ -635,11 +638,13 @@ class BackupImport(
         ChooseBackupCategoriesDialog(
             trigger = trigger,
             initialCategories = categories,
-            okLabelId = R.string.ok,
-        ) { selectedCategories ->
-            categories = selectedCategories
-            trigger.value = false
-        }
+            buttons = { selectedCategories ->
+                StrokeButton(Str(R.string.ok), color = G.palette.teal200) {
+                    categories = selectedCategories
+                    trigger.value = false
+                }
+            }
+        )
 
         GreyButton(Str(R.string.action_category_config)) {
             trigger.value = true

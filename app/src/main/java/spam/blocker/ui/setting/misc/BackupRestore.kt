@@ -73,12 +73,66 @@ fun missingBotSafUris(bots: List<Bot>) : List<Uri> {
 
 
 @Composable
+private fun OperationResultDialog(
+    trigger: MutableState<Boolean>,
+    succeeded: Boolean,
+    successMsgId: Int,
+    failMsgId: Int,
+    errorStr: String?,
+    extraContent: (@Composable () -> Unit)? = null,
+    onDismiss: (() -> Unit)? = null,
+) {
+    val C = G.palette
+    PopupDialog(
+        trigger = trigger,
+        icon = {
+            ResIcon(
+                iconId = if (succeeded) R.drawable.ic_check_green else R.drawable.ic_fail_red,
+                color = if (succeeded) C.success else C.error,
+            )
+        },
+        content = {
+            Text(
+                Str(if (succeeded) successMsgId else failMsgId),
+                color = C.textGrey,
+                fontWeight = FontWeight.SemiBold,
+            )
+            if (!succeeded && !errorStr.isNullOrEmpty()) {
+                Text(errorStr, color = C.error)
+            }
+            if (succeeded && extraContent != null) {
+                extraContent()
+            }
+        },
+        onDismiss = onDismiss,
+    )
+}
+
+@Composable
+private fun CategoryButtons(
+    categories: List<Category>,
+    disabledCategories: CategorySelection = emptyCategorySelection,
+    onClick: (Category) -> Unit,
+) {
+    FlowRowSpaced(space = 20, vSpace = 30) {
+        categories.forEach { cat ->
+            val isDisabled = disabledCategories.contains(cat)
+            StrokeButton(
+                label = Str(cat.labelId),
+                color = if (isDisabled) G.palette.disabled else Color(cat.name.hashCode().toLong() or 0xff808080),
+            ) {
+                onClick(cat)
+            }
+        }
+    }
+}
+
+@Composable
 fun ChooseBackupCategoriesDialog(
     trigger: MutableState<Boolean>,
     initialCategories: CategorySelection,
-    okLabelId: Int,
     disabledCategories: CategorySelection = emptyCategorySelection,
-    onOk: Lambda1<CategorySelection>,
+    buttons: @Composable (CategorySelection) -> Unit,
 ) {
     var categories by retain(initialCategories) { mutableStateOf(initialCategories) }
 
@@ -93,27 +147,15 @@ fun ChooseBackupCategoriesDialog(
     PopupDialog(
         trigger,
         buttons = {
-            StrokeButton(Str(okLabelId), color = G.palette.teal200) {
-                onOk(categories)
-            }
+            buttons(categories)
         }
     ) {
 
         Text(Str(R.string.include_settings), color = G.palette.teal200, modifier = M.padding(bottom = 12.dp).align(Alignment.Start))
 
         // Included Category buttons
-        FlowRowSpaced (
-            space = 20,
-            vSpace = 30,
-        ) {
-            categories.allSelected().forEach { cat ->
-                StrokeButton(
-                    label = Str(cat.labelId),
-                    color = Color(cat.name.hashCode().toLong() or 0xff808080),
-                ) {
-                    categories = categories.toggle(cat)
-                }
-            }
+        CategoryButtons(categories.allSelected()) { cat ->
+            categories = categories.toggle(cat)
         }
 
         HorizontalDivider(thickness = 1.dp, color = G.palette.disabled, modifier = M.padding(top = 20.dp, bottom = 10.dp))
@@ -127,25 +169,11 @@ fun ChooseBackupCategoriesDialog(
         }
 
         // Excluded Category buttons
-        FlowRowSpaced (
-            space = 20,
-            vSpace = 30,
-        ) {
-            categories.allUnselected().forEach { cat ->
-                StrokeButton(
-                    label = Str(cat.labelId),
-                    color = if (disabledCategories.contains(cat))
-                        G.palette.disabled
-                    else
-                        Color(cat.name.hashCode().toLong() or 0xff808080)
-                    ,
-                ) {
-                    if (disabledCategories.contains(cat))
-                        errorTrigger.value = true
-                    else
-                        categories = categories.toggle(cat)
-                }
-            }
+        CategoryButtons(categories.allUnselected(), disabledCategories) { cat ->
+            if (disabledCategories.contains(cat))
+                errorTrigger.value = true
+            else
+                categories = categories.toggle(cat)
         }
     }
 }
@@ -162,29 +190,12 @@ fun ExportButton() {
     val resultTrigger = rememberSaveable { mutableStateOf(false) }
 
     if (resultTrigger.value) {
-        PopupDialog(
+        OperationResultDialog(
             trigger = resultTrigger,
-            icon = {
-                ResIcon(
-                    iconId = if (succeeded) R.drawable.ic_check_green else R.drawable.ic_fail_red,
-                    color = if (succeeded) C.success else C.error,
-                )
-            },
-            content = {
-                Text(
-                    Str(
-                        if (succeeded)
-                            R.string.exported_successfully
-                        else
-                            R.string.export_fail
-                    ),
-                    color = C.textGrey,
-                    fontWeight = FontWeight.SemiBold,
-                )
-                if (!succeeded) {
-                    Text(errorStr?: "", color = C.error)
-                }
-            }
+            succeeded = succeeded,
+            successMsgId = R.string.exported_successfully,
+            failMsgId = R.string.export_fail,
+            errorStr = errorStr,
         )
     }
 
@@ -248,12 +259,14 @@ fun ExportButton() {
     ChooseBackupCategoriesDialog(
         trigger = categoryTrigger,
         initialCategories = CategorySelection(),
-        okLabelId = R.string.export
-    ) { selectedCategories ->
-        coroutine.launch(IO) {
-            chooseExportFile(selectedCategories)
+        buttons = { selectedCategories ->
+            StrokeButton(Str(R.string.export), color = C.teal200) {
+                coroutine.launch(IO) {
+                    chooseExportFile(selectedCategories)
+                }
+            }
         }
-    }
+    )
 
     StrokeButton(
         label = Str(R.string.export),
@@ -277,33 +290,19 @@ fun ImportButton() {
     val missingBotSafUris = remember { mutableStateListOf<Uri>() }
 
     if (resultTrigger.value) {
-        PopupDialog(
+        OperationResultDialog(
             trigger = resultTrigger,
-            icon = {
-                ResIcon(
-                    iconId = if (succeeded) R.drawable.ic_check_green else R.drawable.ic_fail_red,
-                    color = if (succeeded) C.success else C.error,
-                )
-            },
-            content = {
-                Text(
-                    Str(
-                        if (succeeded)
-                            R.string.imported_successfully
-                        else
-                            R.string.import_fail
-                    ),
-                    color = C.textGrey,
-                    fontWeight = FontWeight.SemiBold,
-                )
-                if (!succeeded) {
-                    Text(errorStr, color = C.error)
+            succeeded = succeeded,
+            successMsgId = R.string.imported_successfully,
+            failMsgId = R.string.import_fail,
+            errorStr = errorStr,
+            onDismiss = {
+                if (succeeded) {
+                    Launcher.restartProcess(ctx)
                 }
-
-                if (succeeded &&
-                    (missingGlobalPermissions.isNotEmpty() || missingBotSafUris.isNotEmpty())
-                ) {
-
+            },
+            extraContent = {
+                if (missingGlobalPermissions.isNotEmpty() || missingBotSafUris.isNotEmpty()) {
                     // 1. System permissions
                     val prevNames = missingGlobalPermissions
                         .split(",")
@@ -325,7 +324,7 @@ fun ImportButton() {
 
                     // 2. Workflow dir permissions
                     missingBotSafUris
-                        .filter { !it.hasFolderAccess(ctx)  }
+                        .filter { !it.hasFolderAccess(ctx) }
                         .forEach {
                             val perm = PermissionType.SafDirAccess(uri = it)
                             missingPermissions += PermissionWrapper(
@@ -361,11 +360,6 @@ fun ImportButton() {
                         }
                     }
                 }
-            },
-            onDismiss = {
-                if (succeeded) {
-                    Launcher.restartProcess(ctx)
-                }
             }
         )
     }
@@ -379,25 +373,26 @@ fun ImportButton() {
         trigger = categoryTrigger,
         initialCategories = newCfg.categories ?: CategorySelection(),
         disabledCategories = newCfg.categories?.negate() ?: emptyCategorySelection,
-        okLabelId = R.string.import_
-    ) { selectedCategories ->
+        buttons = { selectedCategories ->
+            StrokeButton(Str(R.string.import_), color = C.teal200) {
+                CoroutineScope(IO).launch { // don't freeze the main UI, it can cause ANR and get killed
+                    newCfg.apply(ctx, selectedCategories)
 
-        CoroutineScope(IO).launch { // don't freeze the main UI, it can cause ANR and get killed
-            newCfg.apply(ctx, selectedCategories)
+                    missingGlobalPermissions = newCfg.permissions?.allEnabledNames ?: ""
+                    missingBotSafUris.apply {
+                        clear()
+                        addAll(missingBotSafUris(newCfg.bots?.bots ?: emptyList()))
+                    }
+                    succeeded = true
+                    resultTrigger.value = true
 
-            missingGlobalPermissions = newCfg.permissions?.allEnabledNames ?: ""
-            missingBotSafUris.apply {
-                clear()
-                addAll(missingBotSafUris(newCfg.bots?.bots ?: emptyList()))
+                    // Fire an event to notify the configuration has changed,
+                    // for example, the history cleanup schedule should restart
+                    Events.configImported.fire()
+                }
             }
-            succeeded = true
-            resultTrigger.value = true
-
-            // Fire an event to notify the configuration has changed,
-            // for example, the history cleanup schedule should restart
-            Events.configImported.fire()
         }
-    }
+    )
 
 
     fun chooseImportFile() {
