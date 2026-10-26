@@ -1,0 +1,7 @@
+<resources>
+    <string name="encryption">Enkripsi</string>
+    <string name="key">Kunci</string>
+    <string name="change">Ubah</string>
+    <string name="backup_is_encrypted">Cadangan dienkripsi. Masukkan kunci di bawah.</string>
+    <string name="decrypt_backup_fail">Kunci tidak valid atau cadangan rusak.\nRincian:\n\n %s</string>
+</resources>

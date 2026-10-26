@@ -1,0 +1,7 @@
+<resources>
+    <string name="encryption">Cifrado</string>
+    <string name="key">Clave</string>
+    <string name="change">Cambiar</string>
+    <string name="backup_is_encrypted">La copia de seguridad está cifrada. Introduce la clave a continuación.</string>
+    <string name="decrypt_backup_fail">Clave no válida o copia de seguridad dañada.\nDetalles:\n\n %s</string>
+</resources>

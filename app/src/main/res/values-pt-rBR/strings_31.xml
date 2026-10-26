@@ -1,0 +1,7 @@
+<resources>
+    <string name="encryption">Cripto</string>
+    <string name="key">Chave</string>
+    <string name="change">Alterar</string>
+    <string name="backup_is_encrypted">O backup está criptografado. Insira a chave abaixo.</string>
+    <string name="decrypt_backup_fail">Chave inválida ou backup corrompido.\nDetalhes:\n\n %s</string>
+</resources>

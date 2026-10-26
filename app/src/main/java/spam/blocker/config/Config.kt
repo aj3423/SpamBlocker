@@ -1121,7 +1121,7 @@ class Configs {
     }
 
     @OptIn(ExperimentalSerializationApi::class)
-    fun toByteArray(): ByteArray {
+    fun compressToBytes(): ByteArray {
         val me = this
         return ByteArrayOutputStream(128 * 1024).use { baos ->  // optional initial size hint
             GZIPOutputStream(baos).apply {
@@ -1134,7 +1134,7 @@ class Configs {
 
     companion object {
         @OptIn(ExperimentalSerializationApi::class)
-        fun fromByteArray(bytes: ByteArray) : Configs {
+        fun decompressFromBytes(bytes: ByteArray) : Configs {
             return ByteArrayInputStream(bytes).use { input ->
                 GZIPInputStream(input).use { gzip ->
                     ConfigJson.decodeFromStream(

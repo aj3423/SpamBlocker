@@ -6,6 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.CompositionLocalProvider
 import spam.blocker.service.bot.LocalActions
+import spam.blocker.service.bot.LocalCloseActionOptions
 import spam.blocker.service.bot.IAction
 import spam.blocker.service.bot.parseAction
 import spam.blocker.service.bot.serialize
@@ -30,7 +31,10 @@ fun EditActionDialog(
             callback(clone)
         }
     ) {
-        CompositionLocalProvider(LocalActions provides actions) {
+        CompositionLocalProvider(
+            LocalActions provides actions,
+            LocalCloseActionOptions provides { trigger.value = false },
+        ) {
             edited.value.Options()
         }
     }

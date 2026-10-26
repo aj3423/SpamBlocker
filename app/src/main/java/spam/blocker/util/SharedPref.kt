@@ -183,6 +183,9 @@ class spf { // for namespace only
         var hangUpDelay by int("last_number_to_block_delay", DEFAULT_HANG_UP_DELAY)
 
         var ringtone by str("ringtone")
+
+        var encryptBackup by bool("encrypt_backup")
+        var backupKey by str("backup_key")
     }
 
     class Global(ctx: Context) : SharedPref(ctx) {

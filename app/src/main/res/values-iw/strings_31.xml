@@ -1,0 +1,7 @@
+<resources>
+    <string name="encryption">הצפנה</string>
+    <string name="key">מפתח</string>
+    <string name="change">שינוי</string>
+    <string name="backup_is_encrypted">הגיבוי מוצפן. הזן את המפתח למטה.</string>
+    <string name="decrypt_backup_fail">מפתח שגוי או גיבוי פגום.\nפרטים:\n\n %s</string>
+</resources>

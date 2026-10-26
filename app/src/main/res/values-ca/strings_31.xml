@@ -1,0 +1,7 @@
+<resources>
+    <string name="encryption">Xifrat</string>
+    <string name="key">Clau</string>
+    <string name="change">Canvia</string>
+    <string name="backup_is_encrypted">La còpia de seguretat està xifrada. Introduïu la clau a continuació.</string>
+    <string name="decrypt_backup_fail">Clau no vàlida o còpia de seguretat danyada.\nDetalls:\n\n %s</string>
+</resources>

@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -38,16 +39,22 @@ import spam.blocker.ui.history.tagCategory
 import spam.blocker.ui.history.tagComment
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.misc.ChooseBackupCategoriesDialog
+import spam.blocker.ui.widgets.CheckBox
+import spam.blocker.ui.widgets.ResIcon16
+import spam.blocker.ui.widgets.StrInputBox
+import spam.blocker.util.Algorithm
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.ui.widgets.DirButton
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyIcon
+import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.GreyIcon18
 import spam.blocker.ui.widgets.GreyText
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.Placeholder
+import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.RegexInputBox
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowVCenterSpaced
@@ -56,6 +63,7 @@ import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.SummaryLabel
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.A
+import spam.blocker.util.BackupUtils
 import spam.blocker.util.CSVParser
 import spam.blocker.util.FileUtils.readFileFromTree
 import spam.blocker.util.FileUtils.writeFileInTree
@@ -498,16 +506,80 @@ class PruneDatabase(
     }
 }
 
+@Composable
+private fun BotBackupEncryptionDialog(
+    trigger: MutableState<Boolean>,
+    initialEncrypt: Boolean,
+    initialKey: String?,
+    onSave: (Boolean, String?) -> Unit,
+) {
+    var encrypt by remember { mutableStateOf(initialEncrypt) }
+    val hasSavedKey = initialKey != null
+    var isEditingKey by remember { mutableStateOf(!hasSavedKey) }
+    var key by remember { mutableStateOf("") }
+
+    LaunchedEffect(trigger.value) {
+        if (trigger.value) {
+            encrypt = initialEncrypt
+            isEditingKey = initialKey == null
+            key = ""
+        }
+    }
+
+    PopupDialog(
+        trigger = trigger,
+        buttons = {
+            StrokeButton(Str(R.string.ok), color = G.palette.teal200) {
+                onSave(
+                    encrypt && key.isNotEmpty(),
+                    if (isEditingKey && key.isNotEmpty()) BackupUtils.hashKey(key) else null
+                )
+                trigger.value = false
+            }
+        },
+    ) {
+        CheckBox(
+            checked = encrypt,
+            onCheckChange = { encrypt = it },
+            label = { Text(Str(R.string.encryption)) },
+        )
+        if (encrypt) {
+            RowVCenterSpaced(8) {
+                StrInputBox(
+                    text = if (isEditingKey) key else "********",
+                    onValueChange = { if (isEditingKey) key = it },
+                    label = { Text(Str(R.string.key)) },
+                    enabled = isEditingKey,
+                    modifier = M.weight(1f),
+                )
+                if (!isEditingKey) {
+                    StrokeButton(Str(R.string.change), color = G.palette.teal200) {
+                        isEditingKey = true
+                        key = ""
+                    }
+                }
+            }
+        }
+    }
+}
+
 @Serializable
 @SerialName("BackupExport")
 class BackupExport(
-    var categories: CategorySelection = CategorySelection()
+    var categories: CategorySelection = CategorySelection(),
+    var encrypt: Boolean = false,
+    var encryptKey: String? = null,
 ) : IPermissiveAction {
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         // Generate config data bytes
         val curr = Configs()
         curr.load(ctx, categories)
-        val compressed = curr.toByteArray()
+        var compressed = curr.compressToBytes()
+
+        if (encrypt) {
+            val keyBytes = Algorithm.b64Decode(encryptKey ?: BackupUtils.hashKey(""))
+            compressed = BackupUtils.encryptBackup(compressed, keyBytes)
+        }
 
         aCtx.logger?.debug(ctx.getString(R.string.action_backup_export))
 
@@ -531,6 +603,10 @@ class BackupExport(
             if(includeHistory) {
                 GreyIcon18(R.drawable.ic_log)
             }
+
+            if (encrypt) {
+                GreyIcon16(R.drawable.ic_lock)
+            }
         }
     }
 
@@ -553,22 +629,36 @@ class BackupExport(
 
     @Composable
     override fun Options() {
-        val trigger = remember { mutableStateOf(false) }
+        val trigger = remember { mutableStateOf(true) }
+        val closeOptions = LocalCloseActionOptions.current
+        val encryptionTrigger = remember { mutableStateOf(false) }
+
+        var encryptState by remember { mutableStateOf(encrypt) }
+
+        BotBackupEncryptionDialog(encryptionTrigger, encryptState, encryptKey) { isEncrypted, hashedKey ->
+            encrypt = isEncrypted
+            encryptState = isEncrypted
+            encryptKey = hashedKey
+        }
 
         ChooseBackupCategoriesDialog(
             trigger = trigger,
             initialCategories = categories,
             buttons = { selectedCategories ->
-                StrokeButton(Str(R.string.ok), color = G.palette.teal200) {
-                    categories = selectedCategories
-                    trigger.value = false
+                RowVCenterSpaced(8) {
+                    StrokeButton(
+                        label = Str(R.string.encryption),
+                        color = G.palette.textGrey,
+                        icon = if (encryptState) { { ResIcon16(R.drawable.ic_lock, color = G.palette.warning) } } else null,
+                    ) { encryptionTrigger.value = true }
+                    StrokeButton(Str(R.string.ok), color = G.palette.teal200) {
+                        categories = selectedCategories
+                        closeOptions?.invoke()
+                    }
                 }
-            }
+            },
+            onDismiss = { closeOptions?.invoke() }
         )
-
-        GreyButton(Str(R.string.action_category_config)) {
-            trigger.value = true
-        }
     }
 }
 
@@ -576,13 +666,20 @@ class BackupExport(
 @Serializable
 @SerialName("BackupImport")
 class BackupImport(
-    var categories: CategorySelection = CategorySelection()
+    var categories: CategorySelection = CategorySelection(),
+    var encrypt: Boolean = false,
+    var encryptKey: String? = null,
 ) : IPermissiveAction {
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-        val input = aCtx.lastOutput as ByteArray
+        var input = aCtx.lastOutput as ByteArray
 
         try {
-            val newCfg = Configs.fromByteArray(input)
+            if (encrypt || BackupUtils.isEncrypted(input)) {
+                val keyBytes = Algorithm.b64Decode(encryptKey ?: BackupUtils.hashKey(""))
+                input = BackupUtils.decryptBackup(input, keyBytes)
+            }
+
+            val newCfg = Configs.decompressFromBytes(input)
             newCfg.apply(ctx, categories)
 
             aCtx.logger?.debug(ctx.getString(R.string.action_backup_import))
@@ -590,7 +687,7 @@ class BackupImport(
             Events.configImported.fire()
             return true
         } catch (e: Exception) {
-            aCtx.logger?.error("$e")
+            aCtx.logger?.error(ctx.getString(R.string.decrypt_backup_fail).format("$e"))
             return false
         }
     }
@@ -610,6 +707,10 @@ class BackupImport(
             val includeHistory = categories.contains(Category.HISTORY_LOGS)
             if(includeHistory) {
                 GreyIcon18(R.drawable.ic_log)
+            }
+
+            if (encrypt) {
+                GreyIcon16(R.drawable.ic_lock)
             }
         }
     }
@@ -633,24 +734,39 @@ class BackupImport(
 
     @Composable
     override fun Options() {
-        val trigger = remember { mutableStateOf(false) }
+        val trigger = remember { mutableStateOf(true) }
+        val closeOptions = LocalCloseActionOptions.current
+        val encryptionTrigger = remember { mutableStateOf(false) }
+
+        var encryptState by remember { mutableStateOf(encrypt) }
+
+        BotBackupEncryptionDialog(encryptionTrigger, encryptState, encryptKey) { isEncrypted, hashedKey ->
+            encrypt = isEncrypted
+            encryptKey = hashedKey
+            encryptState = isEncrypted
+        }
 
         ChooseBackupCategoriesDialog(
             trigger = trigger,
             initialCategories = categories,
             buttons = { selectedCategories ->
-                StrokeButton(Str(R.string.ok), color = G.palette.teal200) {
-                    categories = selectedCategories
-                    trigger.value = false
+                RowVCenterSpaced(8) {
+                    StrokeButton(
+                        label = Str(R.string.encryption),
+                        color = G.palette.textGrey,
+                        icon = if (encryptState) { { ResIcon16(R.drawable.ic_lock, color = G.palette.warning) } } else null,
+                    ) { encryptionTrigger.value = true }
+                    StrokeButton(Str(R.string.ok), color = G.palette.teal200) {
+                        categories = selectedCategories
+                        closeOptions?.invoke() ?: run { trigger.value = false }
+                    }
                 }
-            }
+            },
+            onDismiss = { closeOptions?.invoke() }
         )
-
-        GreyButton(Str(R.string.action_category_config)) {
-            trigger.value = true
-        }
     }
 }
+
 @Serializable
 abstract class FileAction : IPermissiveAction {
     // These must be implemented by subclasses

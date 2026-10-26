@@ -1,0 +1,7 @@
+<resources>
+    <string name="encryption">Шифр.</string>
+    <string name="key">Ключ</string>
+    <string name="change">Изменить</string>
+    <string name="backup_is_encrypted">Резервная копия зашифрована. Введите ключ ниже.</string>
+    <string name="decrypt_backup_fail">Неверный ключ или повреждённая резервная копия.\nПодробности:\n\n %s</string>
+</resources>

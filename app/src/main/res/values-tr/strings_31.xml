@@ -1,0 +1,7 @@
+<resources>
+    <string name="encryption">Şifreleme</string>
+    <string name="key">Anahtar</string>
+    <string name="change">Değiştir</string>
+    <string name="backup_is_encrypted">Yedek şifrelenmiş. Anahtarı aşağıya girin.</string>
+    <string name="decrypt_backup_fail">Geçersiz anahtar veya bozuk yedek.\nAyrıntılar:\n\n %s</string>
+</resources>

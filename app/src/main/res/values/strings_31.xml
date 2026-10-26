@@ -1,0 +1,7 @@
+<resources>
+    <string name="encryption">Encryption</string>
+    <string name="key">Key</string>
+    <string name="change">Change</string>
+    <string name="backup_is_encrypted">The backup is encrypted. Enter the key below.</string>
+    <string name="decrypt_backup_fail">Invalid key or corrupted backup.\nDetails:\n\n %s</string>
+</resources>

@@ -1,0 +1,7 @@
+<resources>
+    <string name="encryption">加密</string>
+    <string name="key">金鑰</string>
+    <string name="change">變更</string>
+    <string name="backup_is_encrypted">備份已加密。請在下方輸入金鑰。</string>
+    <string name="decrypt_backup_fail">金鑰無效或備份已損壞。\n詳細資料：\n\n %s</string>
+</resources>

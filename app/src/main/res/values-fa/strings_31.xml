@@ -1,0 +1,7 @@
+<resources>
+    <string name="encryption">رمزگذاری</string>
+    <string name="key">کلید</string>
+    <string name="change">تغییر</string>
+    <string name="backup_is_encrypted">نسخه پشتیبان رمزگذاری شده است. کلید را در زیر وارد کنید.</string>
+    <string name="decrypt_backup_fail">کلید نامعتبر است یا نسخه پشتیبان خراب شده است.\nجزئیات:\n\n %s</string>
+</resources>
