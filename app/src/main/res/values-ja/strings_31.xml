@@ -4,4 +4,5 @@
     <string name="change">変更</string>
     <string name="backup_is_encrypted">バックアップは暗号化されています。以下にキーを入力してください。</string>
     <string name="decrypt_backup_fail">キーが無効か、バックアップが壊れています。\n詳細:\n\n %s</string>
+    <string name="perm_read_phone_number">電話番号の読み取り</string>
 </resources>

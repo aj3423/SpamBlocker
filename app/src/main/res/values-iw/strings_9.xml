@@ -37,7 +37,9 @@
 
     <string name="help_backup">
         <![CDATA[
-        פורמט קובץ הגיבוי הוא JSON דחוס ב-gzip, ניתן לפתוח ולערוך אותו באמצעות כל כלי ארכיון.
+        פורמט קובץ הגיבוי הוא JSON דחוס ב-gzip. <br>
+        <br>
+        ההצפנה משתמשת ב-AES-256-GCM עם מפתח PBKDF2‏ (600,000 חזרות).
         ]]>
     </string>
     <string name="mode">מצב</string>

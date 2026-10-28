@@ -37,7 +37,9 @@
 
     <string name="help_backup">
         <![CDATA[
-        备份文件格式为gzip压缩的json，您可以使用任何压缩工具打开和编辑它。
+        备份文件格式为 gzip 压缩的 json。<br>
+        <br>
+        加密采用 AES-256-GCM 及 PBKDF2 派生密钥（600,000 次迭代）。
         ]]>
     </string>
     <string name="mode">模式</string>

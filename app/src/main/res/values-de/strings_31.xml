@@ -4,4 +4,5 @@
     <string name="change">Ändern</string>
     <string name="backup_is_encrypted">Die Sicherung ist verschlüsselt. Gib unten den Schlüssel ein.</string>
     <string name="decrypt_backup_fail">Ungültiger Schlüssel oder beschädigte Sicherung.\nDetails:\n\n %s</string>
+    <string name="perm_read_phone_number">Telefonnummer lesen</string>
 </resources>

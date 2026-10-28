@@ -4,4 +4,5 @@
     <string name="change">Змінити</string>
     <string name="backup_is_encrypted">Резервну копію зашифровано. Введіть ключ нижче.</string>
     <string name="decrypt_backup_fail">Неправильний ключ або пошкоджена резервна копія.\nДеталі:\n\n %s</string>
+    <string name="perm_read_phone_number">Читання номера телефону</string>
 </resources>

@@ -36,7 +36,9 @@
 
     <string name="help_backup">
         <![CDATA[
-        バックアップファイル形式はgzip圧縮jsonです。任意のアーカイバで開いて編集できます。
+        バックアップ形式はgzip圧縮されたjsonです。<br>
+        <br>
+        暗号化にはPBKDF2派生キー（600,000回反復）によるAES-256-GCMを使用します。
         ]]>
     </string>
     <string name="mode">モード</string>

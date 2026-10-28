@@ -37,7 +37,9 @@
 
     <string name="help_backup">
         <![CDATA[
-        Format berkas cadangan adalah json terkompresi gzip, Anda dapat membuka dan mengubahnya dengan pengarsip apa pun.
+        Format berkas cadangan adalah json terkompresi gzip. <br>
+        <br>
+        Enkripsi menggunakan AES-256-GCM dengan kunci PBKDF2 (600.000 iterasi).
         ]]>
     </string>
     <string name="mode">Mode</string>

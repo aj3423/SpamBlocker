@@ -4,4 +4,5 @@
     <string name="change">Modifica</string>
     <string name="backup_is_encrypted">Il backup è crittografato. Inserisci la chiave qui sotto.</string>
     <string name="decrypt_backup_fail">Chiave non valida o backup danneggiato.\nDettagli:\n\n %s</string>
+    <string name="perm_read_phone_number">Leggi numero di telefono</string>
 </resources>

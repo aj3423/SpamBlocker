@@ -37,7 +37,9 @@
 
     <string name="help_backup">
         <![CDATA[
-        Das Sicherungsdateiformat ist eine gzip-komprimierte JSON-Datei. Sie können sie mit jedem Archivierungsprogramm öffnen und bearbeiten.
+        Das Format der Sicherungsdatei ist gzip-komprimiertes JSON. <br>
+        <br>
+        Verschlüsselung verwendet AES-256-GCM mit PBKDF2-Schlüssel (600.000 Iterationen).
         ]]>
     </string>
     <string name="mode">Modus</string>

@@ -37,7 +37,9 @@
 
     <string name="help_backup">
         <![CDATA[
-        Le format du fichier de sauvegarde est un fichier json compressé gzip, vous pouvez l\'ouvrir et le modifier avec n\'importe quel archiveur.
+        Le format du fichier de sauvegarde est un json compressé gzip. <br>
+        <br>
+        Le chiffrement utilise AES-256-GCM avec une clé PBKDF2 (600 000 itérations).
         ]]>
     </string>
     <string name="mode">Mode</string>

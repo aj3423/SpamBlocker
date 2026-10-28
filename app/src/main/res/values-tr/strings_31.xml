@@ -4,4 +4,5 @@
     <string name="change">Değiştir</string>
     <string name="backup_is_encrypted">Yedek şifrelenmiş. Anahtarı aşağıya girin.</string>
     <string name="decrypt_backup_fail">Geçersiz anahtar veya bozuk yedek.\nAyrıntılar:\n\n %s</string>
+    <string name="perm_read_phone_number">Telefon Numarasını Oku</string>
 </resources>

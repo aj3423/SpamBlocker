@@ -4,4 +4,5 @@
     <string name="change">更改</string>
     <string name="backup_is_encrypted">备份已加密。请在下方输入密钥。</string>
     <string name="decrypt_backup_fail">密钥无效或备份已损坏。\n详情：\n\n %s</string>
+    <string name="perm_read_phone_number">读取电话号码</string>
 </resources>

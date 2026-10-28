@@ -36,7 +36,9 @@
 
     <string name="help_backup">
         <![CDATA[
-        The backup file format is a gzip compressed json, you can open and edit it with any archivers.
+        The backup file format is a gzip compressed json. <br>
+        <br>
+        Encryption uses AES-256-GCM with a PBKDF2-derived key (600,000 iterations).
         ]]>
     </string>
     <string name="mode">Mode</string>

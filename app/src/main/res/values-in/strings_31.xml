@@ -4,4 +4,5 @@
     <string name="change">Ubah</string>
     <string name="backup_is_encrypted">Cadangan dienkripsi. Masukkan kunci di bawah.</string>
     <string name="decrypt_backup_fail">Kunci tidak valid atau cadangan rusak.\nRincian:\n\n %s</string>
+    <string name="perm_read_phone_number">Baca Nomor Telepon</string>
 </resources>

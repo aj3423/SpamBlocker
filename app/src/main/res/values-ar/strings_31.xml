@@ -4,4 +4,5 @@
     <string name="change">تغيير</string>
     <string name="backup_is_encrypted">النسخة الاحتياطية مشفّرة. أدخل المفتاح أدناه.</string>
     <string name="decrypt_backup_fail">مفتاح غير صالح أو نسخة احتياطية تالفة.\nالتفاصيل:\n\n %s</string>
+    <string name="perm_read_phone_number">قراءة رقم الهاتف</string>
 </resources>

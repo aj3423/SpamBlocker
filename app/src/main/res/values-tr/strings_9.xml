@@ -37,7 +37,9 @@
 
     <string name="help_backup">
         <![CDATA[
-        Yedek dosya formatı gzip sıkıştırılmış bir jsondur, herhangi bir arşivleyici ile açıp düzenleyebilirsiniz.
+        Yedek dosya formatı gzip sıkıştırılmış jsondur. <br>
+        <br>
+        Şifreleme, PBKDF2 türetilmiş anahtar (600.000 yineleme) ile AES-256-GCM kullanır.
         ]]>
     </string>
     <string name="mode">Mod</string>

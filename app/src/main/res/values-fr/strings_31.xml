@@ -4,4 +4,5 @@
     <string name="change">Modifier</string>
     <string name="backup_is_encrypted">La sauvegarde est chiffrée. Saisissez la clé ci-dessous.</string>
     <string name="decrypt_backup_fail">Clé non valide ou sauvegarde corrompue.\nDétails :\n\n %s</string>
+    <string name="perm_read_phone_number">Lire le numéro de téléphone</string>
 </resources>

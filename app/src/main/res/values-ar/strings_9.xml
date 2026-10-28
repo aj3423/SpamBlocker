@@ -37,7 +37,9 @@
 
     <string name="help_backup">
         <![CDATA[
-        تنسيق ملف النسخ الاحتياطي هو json مضغوط بـ gzip، يمكنك فتحه وتعديله بأي برنامج أرشفة.
+        تنسيق ملف النسخ الاحتياطي هو json مضغوط بـ gzip. <br>
+        <br>
+        يستخدم التشفير AES-256-GCM مع مفتاح PBKDF2 (600,000 تكرار).
         ]]>
     </string>
     <string name="mode">الوضع</string>

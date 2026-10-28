@@ -37,7 +37,9 @@
 
     <string name="help_backup">
         <![CDATA[
-        El formato del archivo de copia de seguridad es un json comprimido con gzip, puedes abrirlo y editarlo con cualquier archivador.
+        El formato de copia de seguridad es json comprimido con gzip. <br>
+        <br>
+        Usa cifrado AES-256-GCM con clave derivada de PBKDF2 (600.000 iteraciones).
         ]]>
     </string>
     <string name="mode">Modo</string>

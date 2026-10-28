@@ -41,6 +41,7 @@ import spam.blocker.util.PermissionType.CallScreening
 import spam.blocker.util.PermissionType.Contacts
 import spam.blocker.util.PermissionType.NotificationAccess
 import spam.blocker.util.PermissionType.PhoneState
+import spam.blocker.util.PermissionType.ReadPhoneNumber
 import spam.blocker.util.PermissionType.ReadSMS
 import spam.blocker.util.PermissionType.ReceiveMMS
 import spam.blocker.util.PermissionType.ReceiveSMS
@@ -92,6 +93,7 @@ object PermissionType {
     class AnswerCalls: Regular(Manifest.permission.ANSWER_PHONE_CALLS, R.string.perm_answer_calls)
     class CallLog: Regular(Manifest.permission.READ_CALL_LOG, R.string.perm_call_logs)
     class PhoneState: Regular(Manifest.permission.READ_PHONE_STATE, R.string.perm_phone_state)
+    class ReadPhoneNumber: Regular(Manifest.permission.READ_PHONE_NUMBERS, R.string.perm_read_phone_number)
     class ReadSMS: Regular(Manifest.permission.READ_SMS, R.string.perm_read_sms)
     class Calendar: Regular(Manifest.permission.READ_CALENDAR, R.string.perm_read_calendar)
 
@@ -327,6 +329,7 @@ object Permission {
     val answerCalls = AnswerCalls()
     val callLog = CallLog()
     val phoneState = PhoneState()
+    val readPhoneNumber = ReadPhoneNumber()
     val readSMS = ReadSMS()
     val calendar = Calendar()
     val writeSettings = WriteSettings()
@@ -346,6 +349,7 @@ object Permission {
             answerCalls,
             callLog,
             phoneState,
+            readPhoneNumber,
             readSMS,
             calendar,
             writeSettings,
