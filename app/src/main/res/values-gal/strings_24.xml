@@ -27,47 +27,6 @@
     </string>
     <string name="caller_name">Nome do Chamador</string>
     <string name="caller_name_rule">Regra do Nome do Chamador</string>
-    <string name="forwarded_call">Chamada Reenviada</string>
-    <string name="help_regex_preset_forwarded_call">
-        <![CDATA[
-        Bloquear chamadas reenviadas, adoitan ser spam. <br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="explanation_forwarded_call">
-        <![CDATA[
-        Isto é <b>específico do operador</b>; algúns operadores formatan as chamadas reenviadas como dous números concatenados cun \"&amp;\", como <sample>222&111</sample>. <br>
-        <br>
-        Neste formato: <br>
-        &ensp; - A primeira parte (<sample>222</sample>) é tipicamente o número de reenvío. <br>
-        &ensp; - A segunda parte (<sample>111</sample>) é o número orixinal. <br>
-        <br>
-        Tamén podería haber <sample>333&111</sample> e <sample>444&111</sample>, onde o número de orixe permanece o mesmo e o número de reenvío cambia.
-        ]]>
-    </string>
-    <string name="raw">Sen procesar</string>
-    <string name="original">Orixinal</string>
-    <string name="forwarding">Reenvío</string>
-    <string name="help_truncate_forwarded_number">
-        <![CDATA[
-        Non é necesario cambiar isto se non ves números que conteñan o carácter \"&amp;\" no rexistro do historial de chamadas. <br>
-        <br>
-        %s <br>
-        <br>
-        <b>Opcións</b>: <br>
-        <br>
-        <title><b>Sen procesar</b></title> <br>
-        Consultar/informar o número sen procesar (<sample>222&111</sample>), se a API admite este formato. <br>
-        <br>
-        <title><b>Orixinal</b></title> <br>
-        Consultar/informar o número orixinal (<sample>111</sample>), isto é unha solución alternativa para APIs que non admiten o formato sen procesar. <br>
-        <br>
-        <title><b>Reenvío</b></title> <br>
-        Consultar/informar o número de reenvío (<sample>222</sample>). <br>
-        ]]>
-    </string>
-    <string name="forwarded_number_modified_to">Este número reenviado foi modificado a %s.</string>
     <string name="filter">Filtro</string>
     <string name="geolocation">Localización Xeográfica</string>
     <string name="geolocation_rule">Regra de Localización Xeográfica</string>

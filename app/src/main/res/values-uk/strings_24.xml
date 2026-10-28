@@ -27,49 +27,6 @@
     </string>
     <string name="caller_name">Ім\'я абонента</string>
     <string name="caller_name_rule">Правило імені абонента</string>
-    <string name="forwarded_call">Переадресований дзвінок</string>
-    <string name="help_regex_preset_forwarded_call">
-        <![CDATA[
-        Блокувати переадресовані дзвінки, вони зазвичай є спамом. <br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="explanation_forwarded_call">
-        <![CDATA[
-        Це <b>залежить від оператора</b>, деякі оператори форматують переадресовані дзвінки як два номери, об\'єднані символом \"&\",
-         наприклад <sample>222&111</sample>. <br>
-        <br>
-        У цьому форматі: <br>
-        &ensp; - Перша частина (<sample>222</sample>) зазвичай є номером переадресації. <br>
-        &ensp; - Друга частина (<sample>111</sample>) є початковим номером. <br>
-        <br>
-        Також можуть бути <sample>333&111</sample> та <sample>444&111</sample>,
-         де вихідний номер залишається незмінним, а номер переадресації змінюється.
-        ]]>
-    </string>
-    <string name="raw">Необроблений</string>
-    <string name="original">Оригінальний</string>
-    <string name="forwarding">Переадресація</string>
-    <string name="help_truncate_forwarded_number">
-        <![CDATA[
-        Не потрібно змінювати це, якщо ви не бачите номерів, що містять символ \"&\" у журналі історії дзвінків. <br>
-        <br>
-        %s <br>
-        <br>
-        <b>Опції</b>: <br>
-        <br>
-        <title><b>Необроблений</b></title> <br>
-        Запитувати/повідомляти необроблений номер (<sample>222&111</sample>), якщо API підтримує цей формат. <br>
-        <br>
-        <title><b>Оригінальний</b></title> <br>
-        Запитувати/повідомляти оригінальний номер (<sample>111</sample>), це обхідний шлях для API, які не підтримують необроблений формат. <br>
-        <br>
-        <title><b>Переадресація</b></title> <br>
-        Запитувати/повідомляти номер переадресації (<sample>222</sample>). <br>
-        ]]>
-    </string>
-    <string name="forwarded_number_modified_to">Цей переадресований номер було змінено на %s.</string>
     <string name="filter">Фільтр</string>
     <string name="geolocation">Гео-локація</string>
     <string name="geolocation_rule">Правило гео-локації</string>

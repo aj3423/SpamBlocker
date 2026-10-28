@@ -84,7 +84,6 @@
     <string name="ham">Ham</string>
     <string name="unlabeled">Unbeschriftet</string>
     <string name="search">Suche</string>
-    <string name="filters">Filter</string>
     <string name="train_it_first">Modell noch nicht trainiert, zuerst trainieren.</string>
     <string name="training">Training</string>
     <string name="confirm_delete_trained_model">

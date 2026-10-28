@@ -27,49 +27,6 @@
     </string>
     <string name="caller_name">نام تماس‌گیرنده</string>
     <string name="caller_name_rule">قانون نام تماس‌گیرنده</string>
-    <string name="forwarded_call">تماس دایورت‌شده</string>
-    <string name="help_regex_preset_forwarded_call">
-        <![CDATA[
-        تماس‌های دایورت‌شده را مسدود کنید، آن‌ها معمولاً هرزنامه هستند. <br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="explanation_forwarded_call">
-        <![CDATA[
-        این <b>مختص به اپراتور</b> است، برخی اپراتورها تماس‌های دایورت‌شده را به صورت دو شماره که با یک \"&\" به هم متصل شده‌اند،
-         قالب‌بندی می‌کنند، مانند <sample>222&111</sample>. <br>
-        <br>
-        در این قالب: <br>
-        &ensp; - بخش اول (<sample>222</sample>) معمولاً شماره دایورت‌کننده است. <br>
-        &ensp; - بخش دوم (<sample>111</sample>) شماره اصلی است. <br>
-        <br>
-        همچنین ممکن است <sample>333&111</sample> و <sample>444&111</sample> وجود داشته باشد،
-         که در آن شماره مبدأ ثابت می‌ماند و شماره دایورت‌کننده تغییر می‌کند.
-        ]]>
-    </string>
-    <string name="raw">خام</string>
-    <string name="original">اصلی</string>
-    <string name="forwarding">دایورت‌کننده</string>
-    <string name="help_truncate_forwarded_number">
-        <![CDATA[
-        نیازی به تغییر این مورد نیست اگر شماره‌هایی حاوی کاراکتر \"&\" را در گزارش سابقه تماس نمی‌بینید. <br>
-        <br>
-        %s <br>
-        <br>
-        <b>گزینه‌ها</b>: <br>
-        <br>
-        <title><b>خام</b></title> <br>
-        شماره خام (<sample>222&111</sample>) را جستجو/گزارش کنید، اگر API از این قالب پشتیبانی می‌کند. <br>
-        <br>
-        <title><b>اصلی</b></title> <br>
-        شماره اصلی (<sample>111</sample>) را جستجو/گزارش کنید، این یک راه حل برای APIهایی است که از قالب خام پشتیبانی نمی‌کنند. <br>
-        <br>
-        <title><b>دایورت‌کننده</b></title> <br>
-        شماره دایورت‌کننده (<sample>222</sample>) را جستجو/گزارش کنید. <br>
-        ]]>
-    </string>
-    <string name="forwarded_number_modified_to">این شماره دایورت‌شده به %s تغییر یافته است.</string>
     <string name="filter">فیلتر</string>
     <string name="geolocation">موقعیت جغرافیایی</string>
     <string name="geolocation_rule">قانون موقعیت جغرافیایی</string>

@@ -272,12 +272,6 @@ object Util {
             .replace("(", "")
             .replace(")", "")
     }
-    // Numbers like "123&456" are forwarded numbers.
-    //  https://github.com/aj3423/SpamBlocker/issues/488
-    fun isAmpersandNumber(rawNumber: String): Boolean {
-        val regex = Regex("""^\d+&\d+$""")
-        return regex.matches(rawNumber)
-    }
 
     fun extractString(regex: Regex, haystack: String): String? {
         /*

@@ -84,7 +84,6 @@
     <string name="ham">Ham</string>
     <string name="unlabeled">Sen etiqueta</string>
     <string name="search">Buscar</string>
-    <string name="filters">Filtros</string>
     <string name="train_it_first">O modelo aínda non se adestrou, adéstrao primeiro.</string>
     <string name="training">Adestramento</string>
     <string name="confirm_delete_trained_model">

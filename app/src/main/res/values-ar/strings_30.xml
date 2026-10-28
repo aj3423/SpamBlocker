@@ -84,7 +84,6 @@
     <string name="ham">رسائل موثوقة</string>
     <string name="unlabeled">غير مصنف</string>
     <string name="search">بحث</string>
-    <string name="filters">الفلاتر</string>
     <string name="train_it_first">النموذج غير مدرب بعد، قم بتدريبه أولاً.</string>
     <string name="training">التدريب</string>
     <string name="confirm_delete_trained_model">

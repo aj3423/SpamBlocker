@@ -27,47 +27,6 @@
     </string>
     <string name="caller_name">Nama Penelepon</string>
     <string name="caller_name_rule">Aturan Nama Penelepon</string>
-    <string name="forwarded_call">Panggilan Diteruskan</string>
-    <string name="help_regex_preset_forwarded_call">
-        <![CDATA[
-        Blokir panggilan yang diteruskan, biasanya itu adalah spam. <br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="explanation_forwarded_call">
-        <![CDATA[
-        Ini <b>spesifik operator</b>, beberapa operator memformat panggilan yang diteruskan sebagai dua nomor yang digabungkan dengan \"&\", seperti <sample>222&111</sample>. <br>
-        <br>
-        Dalam format ini: <br>
-        &ensp; - Bagian pertama (<sample>222</sample>) biasanya adalah nomor penerus. <br>
-        &ensp; - Bagian kedua (<sample>111</sample>) adalah nomor asli. <br>
-        <br>
-        Mungkin juga ada <sample>333&111</sample> dan <sample>444&111</sample>, di mana nomor asal tetap sama dan nomor penerus berubah.
-        ]]>
-    </string>
-    <string name="raw">Mentah</string>
-    <string name="original">Asli</string>
-    <string name="forwarding">Meneruskan</string>
-    <string name="help_truncate_forwarded_number">
-        <![CDATA[
-        Tidak perlu mengubah ini jika Anda tidak melihat nomor yang mengandung karakter \"&\" di log riwayat panggilan. <br>
-        <br>
-        %s <br>
-        <br>
-        <b>Opsi</b>: <br>
-        <br>
-        <title><b>Mentah</b></title> <br>
-        Kueri/laporkan nomor mentah (<sample>222&111</sample>), jika API mendukung format ini. <br>
-        <br>
-        <title><b>Asli</b></title> <br>
-        Kueri/laporkan nomor asli (<sample>111</sample>), ini adalah solusi untuk API yang tidak mendukung format mentah. <br>
-        <br>
-        <title><b>Meneruskan</b></title> <br>
-        Kueri/laporkan nomor penerusan (<sample>222</sample>). <br>
-        ]]>
-    </string>
-    <string name="forwarded_number_modified_to">Nomor yang diteruskan ini telah diubah menjadi %s.</string>
     <string name="filter">Filter</string>
     <string name="geolocation">Lokasi Geo</string>
     <string name="geolocation_rule">Aturan Lokasi Geo</string>

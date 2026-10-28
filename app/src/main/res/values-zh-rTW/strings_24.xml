@@ -27,47 +27,6 @@
     </string>
     <string name="caller_name">來電者名稱</string>
     <string name="caller_name_rule">來電者名稱規則</string>
-    <string name="forwarded_call">轉接電話</string>
-    <string name="help_regex_preset_forwarded_call">
-        <![CDATA[
-        阻擋轉接電話，它們通常是垃圾電話。 <br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="explanation_forwarded_call">
-        <![CDATA[
-        這是<b>電信業者特定</b>的，有些電信業者會將轉接電話格式化為兩個號碼用「&」連接，例如 <sample>222&111</sample>。 <br>
-        <br>
-        在此格式中： <br>
-        &ensp; - 第一部分 (<sample>222</sample>) 通常是轉接號碼。 <br>
-        &ensp; - 第二部分 (<sample>111</sample>) 是原始號碼。 <br>
-        <br>
-        也可能有 <sample>333&111</sample> 和 <sample>444&111</sample>，其中原始號碼保持不變，轉接號碼會改變。
-        ]]>
-    </string>
-    <string name="raw">原始</string>
-    <string name="original">原始號碼</string>
-    <string name="forwarding">轉接號碼</string>
-    <string name="help_truncate_forwarded_number">
-        <![CDATA[
-        如果您的通話記錄中沒有看到包含「&」字元的號碼，則無需更改此設定。 <br>
-        <br>
-        %s <br>
-        <br>
-        <b>選項</b>： <br>
-        <br>
-        <title><b>原始</b></title> <br>
-        查詢/報告原始號碼(<sample>222&111</sample>)，如果 API 支援此格式。 <br>
-        <br>
-        <title><b>原始號碼</b></title> <br>
-        查詢/報告原始號碼(<sample>111</sample>)，這是針對不支援原始格式的 API 的一種變通方法。 <br>
-        <br>
-        <title><b>轉接號碼</b></title> <br>
-        查詢/報告轉接號碼(<sample>222</sample>)。 <br>
-        ]]>
-    </string>
-    <string name="forwarded_number_modified_to">此轉接號碼已修改為 %s。</string>
     <string name="filter">篩選</string>
     <string name="geolocation">發話位置</string>
     <string name="geolocation_rule">發話位置規則</string>

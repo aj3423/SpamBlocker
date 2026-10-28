@@ -215,12 +215,6 @@ class EnableApp(
     }
 }
 
-object ForwardType {
-    const val Full = 0
-    const val Original = 1
-    const val Forwarding = 2
-}
-
 // For "API Query" only, not for Workflows.
 // This action parses the incoming number and fill the ActionContext with cc/domestic/number,
 //  which can be used in following actions like HttpRequest.
@@ -231,7 +225,6 @@ object ForwardType {
 @SerialName("ParseIncomingNumber")
 class InterceptCall(
     var numberFilter: String = ".*",
-    var forwardType: Int = ForwardType.Full,
 ) : IAction {
 
     override fun requiredPermissions(ctx: Context): List<PermissionWrapper> {
@@ -261,29 +254,7 @@ class InterceptCall(
             return false
         }
 
-        var clearedNumber = Util.clearNumber(rawNumber)
-
-        // Handle forwarded number like "111&222"
-        if (Util.isAmpersandNumber(clearedNumber)) {
-            when (forwardType) {
-                ForwardType.Full -> {}
-                ForwardType.Forwarding -> {
-                    clearedNumber = clearedNumber.split("&").first() // keep "111"
-                }
-                ForwardType.Original -> {
-                    clearedNumber = clearedNumber.split("&").last() // keep "222"
-                }
-            }
-            // Show some log
-            when (forwardType) {
-                ForwardType.Forwarding, ForwardType.Original -> {
-                    aCtx.logger?.warn(
-                        ctx.getString(R.string.forwarded_number_modified_to)
-                            .formatAnnotated(clearedNumber.A(C.textGrey.darken()))
-                    )
-                }
-            }
-        }
+        val clearedNumber = Util.clearNumber(rawNumber)
 
         if (rawNumber.startsWith("+")) {
             aCtx.fullNumber = clearedNumber
@@ -308,7 +279,7 @@ class InterceptCall(
             // Check the part xxxxxxxx, if it's still a valid number for cc==33,
             //   then the xxxxxxxx is the domestic part.
             // Otherwise, the entire 33xxxxxxxx is a domestic number
-            if (clearedNumber.startsWith(cc.toString()) && !Util.isAmpersandNumber(clearedNumber)) {
+            if (clearedNumber.startsWith(cc.toString())) {
                 val rest = clearedNumber.substring(cc.toString().length)
                 val pnUtil = PhoneNumberUtil.getInstance()
                 val n = Phonenumber.PhoneNumber().apply {
@@ -365,7 +336,6 @@ class InterceptCall(
     @SuppressLint("LocalContextGetResourceValueCall")
     @Composable
     override fun Options() {
-        val ctx = LocalContext.current
 
         val dummyFlags = remember { mutableIntStateOf(Def.FLAG_REGEX_RAW_NUMBER) }
         RegexInputBox(
@@ -383,29 +353,6 @@ class InterceptCall(
             },
             onFlagsChange = { }
         )
-
-        // Forward Type
-        var selectedForwardType by remember { mutableIntStateOf(forwardType) }
-        val options = remember {
-            listOf(
-                R.string.raw,
-                R.string.original,
-                R.string.forwarding,
-            ).mapIndexed { index, labelId ->
-                LabelItem(label = ctx.getString(labelId)) {
-                    forwardType = index
-                    selectedForwardType = index
-                }
-            }
-        }
-        LabeledRow(
-            R.string.forwarding,
-            helpTooltip = Str(R.string.help_truncate_forwarded_number).format(
-                Str(R.string.explanation_forwarded_call)
-            )
-        ) {
-            ComboBox(options, selectedForwardType)
-        }
     }
 }
 

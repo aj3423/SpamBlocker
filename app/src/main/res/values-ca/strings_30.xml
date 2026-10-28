@@ -84,7 +84,6 @@
     <string name="ham">No brossa</string>
     <string name="unlabeled">Sense etiqueta</string>
     <string name="search">Cerca</string>
-    <string name="filters">Filtres</string>
     <string name="train_it_first">El model encara no s\'ha entrenat, entrena\'l primer.</string>
     <string name="training">Entrenament</string>
     <string name="confirm_delete_trained_model">

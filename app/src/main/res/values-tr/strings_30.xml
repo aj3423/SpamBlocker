@@ -84,7 +84,6 @@
     <string name="ham">Ham (Spam Değil)</string>
     <string name="unlabeled">Etiketsiz</string>
     <string name="search">Ara</string>
-    <string name="filters">Filtreler</string>
     <string name="train_it_first">Model henüz eğitilmedi, önce eğitin.</string>
     <string name="training">Eğitim</string>
     <string name="confirm_delete_trained_model">

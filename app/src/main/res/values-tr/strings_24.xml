@@ -24,47 +24,6 @@
     </string>
     <string name="caller_name">Arayan Adı</string>
     <string name="caller_name_rule">Arayan Adı Kuralı</string>
-    <string name="forwarded_call">Yönlendirilen Çağrı</string>
-    <string name="help_regex_preset_forwarded_call">
-        <![CDATA[
-        Yönlendirilen çağrıları engelleyin, bunlar genellikle istenmeyen (spam) çağrılardır. <br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="explanation_forwarded_call">
-        <![CDATA[
-        Bu <b>operatöre özeldir</b>, bazı operatörler yönlendirilen çağrıları <sample>222&111</sample> gibi \"&\" ile birleştirilmiş iki numara olarak biçimlendirir. <br>
-        <br>
-        Bu biçimde: <br>
-        &ensp; - İlk kısım (<sample>222</sample>) genellikle yönlendiren numaradır. <br>
-        &ensp; - İkinci kısım (<sample>111</sample>) orijinal numaradır. <br>
-        <br>
-        Ayrıca <sample>333&111</sample> ve <sample>444&111</sample> de olabilir, burada orijinal numara aynı kalır ve yönlendiren numara değişir.
-        ]]>
-    </string>
-    <string name="raw">Ham</string>
-    <string name="original">Orijinal</string>
-    <string name="forwarding">Yönlendirme</string>
-    <string name="help_truncate_forwarded_number">
-        <![CDATA[
-        Çağrı geçmişi kaydında \"&\" karakteri içeren numaralar görmüyorsanız bunu değiştirmenize gerek yok. <br>
-        <br>
-        %s <br>
-        <br>
-        <b>Seçenekler</b>: <br>
-        <br>
-        <title><b>Ham</b></title> <br>
-        API bu biçimi destekliyorsa ham numarayı (<sample>222&111</sample>) sorgulayın/bildirin. <br>
-        <br>
-        <title><b>Orijinal</b></title> <br>
-        Orijinal numarayı (<sample>111</sample>) sorgulayın/bildirin, bu, ham biçimi desteklemeyen API\'ler için bir çözümdür. <br>
-        <br>
-        <title><b>Yönlendirme</b></title> <br>
-        Yönlendirme numarasını (<sample>222</sample>) sorgulayın/bildirin. <br>
-        ]]>
-    </string>
-    <string name="forwarded_number_modified_to">Bu yönlendirilen numara %s olarak değiştirildi.</string>
     <string name="filter">Filtre</string>
     <string name="geolocation">Coğrafi Konum</string>
     <string name="geolocation_rule">Coğrafi Konum Kuralı</string>

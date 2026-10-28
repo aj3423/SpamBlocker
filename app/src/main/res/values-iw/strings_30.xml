@@ -84,7 +84,6 @@
     <string name="ham">דואר תקין</string>
     <string name="unlabeled">ללא תווית</string>
     <string name="search">חיפוש</string>
-    <string name="filters">מסננים</string>
     <string name="train_it_first">המודל עדיין לא אומן, אמן אותו תחילה.</string>
     <string name="training">אימון</string>
     <string name="confirm_delete_trained_model">

@@ -84,7 +84,6 @@
     <string name="ham">Хам (не-спам)</string>
     <string name="unlabeled">Без позначки</string>
     <string name="search">Пошук</string>
-    <string name="filters">Фільтри</string>
     <string name="train_it_first">Модель ще не навчена, спочатку навчіть її.</string>
     <string name="training">Навчання</string>
     <string name="confirm_delete_trained_model">

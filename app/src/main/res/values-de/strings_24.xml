@@ -27,49 +27,6 @@
     </string>
     <string name="caller_name">Anrufername</string>
     <string name="caller_name_rule">Regel für Anrufernamen</string>
-    <string name="forwarded_call">Weitergeleiteter Anruf</string>
-    <string name="help_regex_preset_forwarded_call">
-        <![CDATA[
-        Blockiert weitergeleitete Anrufe, diese sind normalerweise Spam. <br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="explanation_forwarded_call">
-        <![CDATA[
-        Dies ist <b>netzbetreiberspezifisch</b>; einige Netzbetreiber formatieren weitergeleitete Anrufe als zwei Nummern, die mit einem „&“ verkettet sind,
-         z. B. <sample>222&111</sample>. <br>
-        <br>
-        In diesem Format: <br>
-        &ensp; - Der erste Teil (<sample>222</sample>) ist typischerweise die Weiterleitungsnummer. <br>
-        &ensp; - Der zweite Teil (<sample>111</sample>) ist die ursprüngliche Nummer. <br>
-        <br>
-        Es könnte auch <sample>333&111</sample> und <sample>444&111</sample> geben,
-         wobei die Ursprungsnummer gleich bleibt und die Weiterleitungsnummer sich ändert.
-        ]]>
-    </string>
-    <string name="raw">Roh</string>
-    <string name="original">Original</string>
-    <string name="forwarding">Weiterleitung</string>
-    <string name="help_truncate_forwarded_number">
-        <![CDATA[
-        Dies muss nicht geändert werden, wenn Sie im Anrufverlauf keine Nummern sehen, die das Zeichen „&“ enthalten. <br>
-        <br>
-        %s <br>
-        <br>
-        <b>Optionen</b>: <br>
-        <br>
-        <title><b>Roh</b></title> <br>
-        Abfrage/Meldung der Rohdaten-Nummer (<sample>222&111</sample>), falls die API dieses Format unterstützt. <br>
-        <br>
-        <title><b>Original</b></title> <br>
-        Abfrage/Meldung der ursprünglichen Nummer (<sample>111</sample>), dies ist eine Problemumgehung für APIs, die das Rohdatenformat nicht unterstützen. <br>
-        <br>
-        <title><b>Weiterleitung</b></title> <br>
-        Abfrage/Meldung der Weiterleitungsnummer (<sample>222</sample>). <br>
-        ]]>
-    </string>
-    <string name="forwarded_number_modified_to">Diese weitergeleitete Nummer wurde auf %s geändert.</string>
     <string name="filter">Filter</string>
     <string name="geolocation">Geo-Standort</string>
     <string name="geolocation_rule">Regel für Geo-Standort</string>

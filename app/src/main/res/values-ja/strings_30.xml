@@ -84,7 +84,6 @@
     <string name="ham">ハム</string>
     <string name="unlabeled">未分類</string>
     <string name="search">検索</string>
-    <string name="filters">フィルター</string>
     <string name="train_it_first">モデルがまだ学習されていません。最初に学習させてください。</string>
     <string name="training">学習</string>
     <string name="confirm_delete_trained_model">

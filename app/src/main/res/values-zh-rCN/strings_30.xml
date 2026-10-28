@@ -84,7 +84,6 @@
     <string name="ham">正常信息</string>
     <string name="unlabeled">未标记</string>
     <string name="search">搜索</string>
-    <string name="filters">过滤器</string>
     <string name="train_it_first">模型尚未训练，请先训练。</string>
     <string name="training">训练</string>
     <string name="confirm_delete_trained_model">

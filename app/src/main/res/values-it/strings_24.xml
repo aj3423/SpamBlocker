@@ -27,49 +27,6 @@
     </string>
     <string name="caller_name">Nome del chiamante</string>
     <string name="caller_name_rule">Regola nome chiamante</string>
-    <string name="forwarded_call">Chiamata Inoltrata</string>
-    <string name="help_regex_preset_forwarded_call">
-        <![CDATA[
-        Blocca le chiamate inoltrate, di solito sono spam. <br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="explanation_forwarded_call">
-        <![CDATA[
-        Questo è <b>specifico dell\'operatore</b>, alcuni operatori formattano le chiamate inoltrate come due numeri concatenati con una \"&\",
-         come <sample>222&111</sample>. <br>
-        <br>
-        In questo formato: <br>
-        &ensp; - La prima parte (<sample>222</sample>) è tipicamente il numero di inoltro. <br>
-        &ensp; - La seconda parte (<sample>111</sample>) è il numero originale. <br>
-        <br>
-        Potrebbero esserci anche <sample>333&111</sample> e <sample>444&111</sample>,
-         dove il numero di origine rimane lo stesso e il numero di inoltro cambia.
-        ]]>
-    </string>
-    <string name="raw">Raw</string>
-    <string name="original">Originale</string>
-    <string name="forwarding">Inoltro</string>
-    <string name="help_truncate_forwarded_number">
-        <![CDATA[
-        Non è necessario cambiarlo se non vedi numeri contenenti il carattere \"&\" nel registro della cronologia delle chiamate. <br>
-        <br>
-        %s <br>
-        <br>
-        <b>Opzioni</b>: <br>
-        <br>
-        <title><b>Raw</b></title> <br>
-        Interroga/segnala il numero raw (<sample>222&111</sample>), se l\'API supporta questo formato. <br>
-        <br>
-        <title><b>Originale</b></title> <br>
-        Interroga/segnala il numero originale (<sample>111</sample>), questo è un workaround per le API che non supportano il formato raw. <br>
-        <br>
-        <title><b>Inoltro</b></title> <br>
-        Interroga/segnala il numero di inoltro (<sample>222</sample>). <br>
-        ]]>
-    </string>
-    <string name="forwarded_number_modified_to">Questo numero inoltrato è stato modificato in %s.</string>
     <string name="filter">Filtro</string>
     <string name="geolocation">Geolocalizzazione</string>
     <string name="geolocation_rule">Regola di geolocalizzazione</string>

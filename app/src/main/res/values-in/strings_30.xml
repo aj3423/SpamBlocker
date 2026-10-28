@@ -84,7 +84,6 @@
     <string name="ham">Ham</string>
     <string name="unlabeled">Tanpa label</string>
     <string name="search">Cari</string>
-    <string name="filters">Filter</string>
     <string name="train_it_first">Model belum dilatih, latih terlebih dahulu.</string>
     <string name="training">Pelatihan</string>
     <string name="confirm_delete_trained_model">

@@ -27,49 +27,6 @@
     </string>
     <string name="caller_name">שם מתקשר</string>
     <string name="caller_name_rule">כלל שם מתקשר</string>
-    <string name="forwarded_call">שיחה מועברת</string>
-    <string name="help_regex_preset_forwarded_call">
-        <![CDATA[
-        חסום שיחות מועברות, הן בדרך כלל ספאם. <br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="explanation_forwarded_call">
-        <![CDATA[
-        זהו <b>ספציפי למפעיל</b>, חלק מהמפעילים מעצבים שיחות מועברות כשני מספרים מחוברים באמצעות סימן \'&\',
-         כגון <sample>222&111</sample>. <br>
-        <br>
-        בפורמט זה: <br>
-        &ensp; - החלק הראשון (<sample>222</sample>) הוא בדרך כלל מספר ההעברה. <br>
-        &ensp; - החלק השני (<sample>111</sample>) הוא המספר המקורי. <br>
-        <br>
-        יכולים להיות גם <sample>333&111</sample> ו-<sample>444&111</sample>,
-         כאשר מספר המקור נשאר זהה ומספר ההעברה משתנה.
-        ]]>
-    </string>
-    <string name="raw">גלם</string>
-    <string name="original">מקורי</string>
-    <string name="forwarding">מעביר</string>
-    <string name="help_truncate_forwarded_number">
-        <![CDATA[
-        אין צורך לשנות זאת אם אינך רואה מספרים המכילים את התו \'&\' ביומן היסטוריית השיחות. <br>
-        <br>
-        %s <br>
-        <br>
-        <b>אפשרויות</b>: <br>
-        <br>
-        <title><b>גלם</b></title> <br>
-        שאילתה/דיווח על המספר הגולמי (<sample>222&111</sample>), אם ה-API תומך בפורמט זה. <br>
-        <br>
-        <title><b>מקורי</b></title> <br>
-        שאילתה/דיווח על המספר המקורי (<sample>111</sample>), זהו פתרון עוקף עבור ממשקי API שאינם תומכים בפורמט הגולמי. <br>
-        <br>
-        <title><b>מעביר</b></title> <br>
-        שאילתה/דיווח על המספר המעביר (<sample>222</sample>). <br>
-        ]]>
-    </string>
-    <string name="forwarded_number_modified_to">מספר טלפון מועבר זה שונה ל-%s.</string>
     <string name="filter">סינון</string>
     <string name="geolocation">מיקום גאוגרפי</string>
     <string name="geolocation_rule">כלל מיקום גאוגרפי</string>

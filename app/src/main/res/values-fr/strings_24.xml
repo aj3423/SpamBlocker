@@ -27,49 +27,6 @@
     </string>
     <string name="caller_name">Nom de l\'appelant</string>
     <string name="caller_name_rule">Règle du nom de l\'appelant</string>
-    <string name="forwarded_call">Appel transféré</string>
-    <string name="help_regex_preset_forwarded_call">
-        <![CDATA[
-        Bloquer les appels transférés, ils sont généralement du spam. <br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="explanation_forwarded_call">
-        <![CDATA[
-        C\'est <b>spécifique à l\'opérateur</b>, certains opérateurs formatent les appels transférés comme deux numéros concaténés avec un \"&\",
-         tels que <sample>222&111</sample>. <br>
-        <br>
-        Dans ce format : <br>
-        &ensp; - La première partie (<sample>222</sample>) est typiquement le numéro de transfert. <br>
-        &ensp; - La deuxième partie (<sample>111</sample>) est le numéro original. <br>
-        <br>
-        Il pourrait également y avoir <sample>333&111</sample> et <sample>444&111</sample>,
-         où le numéro d\'origine reste le même et le numéro de transfert change.
-        ]]>
-    </string>
-    <string name="raw">Brut</string>
-    <string name="original">Original</string>
-    <string name="forwarding">Transfert</string>
-    <string name="help_truncate_forwarded_number">
-        <![CDATA[
-        Pas besoin de changer cela si vous ne voyez pas de numéros contenant le caractère \"&\" dans le journal de l\'historique des appels. <br>
-        <br>
-        %s <br>
-        <br>
-        <b>Options</b> : <br>
-        <br>
-        <title><b>Brut</b></title> <br>
-        Interroger/rapporter le numéro brut (<sample>222&111</sample>), si l\'API supporte ce format. <br>
-        <br>
-        <title><b>Original</b></title> <br>
-        Interroger/rapporter le numéro original (<sample>111</sample>), c\'est une solution de contournement pour les API qui ne supportent pas le format brut. <br>
-        <br>
-        <title><b>Transfert</b></title> <br>
-        Interroger/rapporter le numéro de transfert (<sample>222</sample>). <br>
-        ]]>
-    </string>
-    <string name="forwarded_number_modified_to">Ce numéro transféré a été modifié en %s.</string>
     <string name="filter">Filtrer</string>
     <string name="geolocation">Géolocalisation</string>
     <string name="geolocation_rule">Règle de géolocalisation</string>

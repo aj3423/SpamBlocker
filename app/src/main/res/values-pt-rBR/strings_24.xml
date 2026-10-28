@@ -27,49 +27,6 @@
     </string>
     <string name="caller_name">Nome do Chamador</string>
     <string name="caller_name_rule">Regra de Nome do Chamador</string>
-    <string name="forwarded_call">Chamada Encaminhada</string>
-    <string name="help_regex_preset_forwarded_call">
-        <![CDATA[
-        Bloquear chamadas encaminhadas, elas geralmente são spam. <br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="explanation_forwarded_call">
-        <![CDATA[
-        Isso é <b>específico da operadora</b>, algumas operadoras formatam chamadas encaminhadas como dois números concatenados com um \"&\",
-         como <sample>222&111</sample>. <br>
-        <br>
-        Neste formato: <br>
-        &ensp; - A primeira parte (<sample>222</sample>) é tipicamente o número de encaminhamento. <br>
-        &ensp; - A segunda parte (<sample>111</sample>) é o número original. <br>
-        <br>
-        Também pode haver <sample>333&111</sample> e <sample>444&111</sample>,
-         onde o número de origem permanece o mesmo e o número de encaminhamento muda.
-        ]]>
-    </string>
-    <string name="raw">Bruto</string>
-    <string name="original">Original</string>
-    <string name="forwarding">Encaminhamento</string>
-    <string name="help_truncate_forwarded_number">
-        <![CDATA[
-        Não há necessidade de alterar isso se você não vir números contendo o caractere \"&\" no registro de histórico de chamadas. <br>
-        <br>
-        %s <br>
-        <br>
-        <b>Opções</b>: <br>
-        <br>
-        <title><b>Bruto</b></title> <br>
-        Consultar/relatar o número bruto (<sample>222&111</sample>), se a API suportar este formato. <br>
-        <br>
-        <title><b>Original</b></title> <br>
-        Consultar/relatar o número original (<sample>111</sample>), esta é uma solução alternativa para APIs que não suportam o formato bruto. <br>
-        <br>
-        <title><b>Encaminhamento</b></title> <br>
-        Consultar/relatar o número de encaminhamento (<sample>222</sample>). <br>
-        ]]>
-    </string>
-    <string name="forwarded_number_modified_to">Este número encaminhado foi modificado para %s.</string>
     <string name="filter">Filtro</string>
     <string name="geolocation">Localização Geográfica</string>
     <string name="geolocation_rule">Regra de Localização Geográfica</string>

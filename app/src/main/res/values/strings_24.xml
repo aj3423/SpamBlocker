@@ -27,49 +27,6 @@
         &ensp; <sample>12345 (Display Name)</sample> <br>
         ]]>
     </string>
-    <string name="forwarded_call">Forwarded Call</string>
-    <string name="help_regex_preset_forwarded_call">
-        <![CDATA[
-        Block forwarded calls, they are usually spam. <br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="explanation_forwarded_call">
-        <![CDATA[
-        This is <b>carrier specific</b>, some carriers format forwarded calls as two numbers concatenated with an \"&\",
-         such as <sample>222&111</sample>. <br>
-        <br>
-        In this format: <br>
-        &ensp; - The first part (<sample>222</sample>) is typically the forwarding number. <br>
-        &ensp; - The second part (<sample>111</sample>) is the original number. <br>
-        <br>
-        There could also be <sample>333&111</sample> and <sample>444&111</sample>,
-         where the origin number remains the same and the forwarding number changes.
-        ]]>
-    </string>
-    <string name="raw">Raw</string>
-    <string name="original">Original</string>
-    <string name="forwarding">Forwarding</string>
-    <string name="help_truncate_forwarded_number">
-        <![CDATA[
-        No need to change this if you don\'t see numbers containing the \"&\" character in the call history log. <br>
-        <br>
-        %s <br>
-        <br>
-        <b>Options</b>: <br>
-        <br>
-        <title><b>Raw</b></title> <br>
-        Query/report the raw number(<sample>222&111</sample>), if the API supports this format. <br>
-        <br>
-        <title><b>Original</b></title> <br>
-        Query/report the original number(<sample>111</sample>), this is a workaround for APIs that don\'t support the raw format. <br>
-        <br>
-        <title><b>Forwarding</b></title> <br>
-        Query/report the forwarding number(<sample>222</sample>). <br>
-        ]]>
-    </string>
-    <string name="forwarded_number_modified_to">This forwarded number has been modified to %s.</string>
     <string name="filter">Filter</string>
     <string name="geolocation">Geolocation</string>
     <string name="geolocation_rule">Geolocation Rule</string>

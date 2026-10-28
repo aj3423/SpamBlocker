@@ -84,7 +84,6 @@
     <string name="ham">غیر اسپم</string>
     <string name="unlabeled">بدون برچسب</string>
     <string name="search">جستجو</string>
-    <string name="filters">فیلترها</string>
     <string name="train_it_first">مدل هنوز آموزش ندیده است، ابتدا آن را آموزش دهید.</string>
     <string name="training">آموزش</string>
     <string name="confirm_delete_trained_model">

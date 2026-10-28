@@ -27,49 +27,6 @@
     </string>
     <string name="caller_name">Nom del Trucador</string>
     <string name="caller_name_rule">Regla de Nom del Trucador</string>
-    <string name="forwarded_call">Trucada desviada</string>
-    <string name="help_regex_preset_forwarded_call">
-        <![CDATA[
-        Bloqueja les trucades desviades, solen ser spam. <br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="explanation_forwarded_call">
-        <![CDATA[
-        Això és <b>específic de l\'operador</b>, alguns operadors formaten les trucades desviades com dos números concatenats amb un \"&\",
-         com ara <sample>222&111</sample>. <br>
-        <br>
-        En aquest format: <br>
-        &ensp; - La primera part (<sample>222</sample>) és normalment el número de desviació. <br>
-        &ensp; - La segona part (<sample>111</sample>) és el número original. <br>
-        <br>
-        També podria haver-hi <sample>333&111</sample> i <sample>444&111</sample>,
-         on el número d\'origen es manté igual i el número de desviació canvia.
-        ]]>
-    </string>
-    <string name="raw">Cru</string>
-    <string name="original">Original</string>
-    <string name="forwarding">Desviació</string>
-    <string name="help_truncate_forwarded_number">
-        <![CDATA[
-        No cal canviar això si no veieu números que continguin el caràcter \"&\" al registre de l\'historial de trucades. <br>
-        <br>
-        %s <br>
-        <br>
-        <b>Opcions</b>: <br>
-        <br>
-        <title><b>Cru</b></title> <br>
-        Consulta/informa el número cru (<sample>222&111</sample>), si l\'API admet aquest format. <br>
-        <br>
-        <title><b>Original</b></title> <br>
-        Consulta/informa el número original (<sample>111</sample>), això és una solució alternativa per a les API que no admeten el format cru. <br>
-        <br>
-        <title><b>Desviació</b></title> <br>
-        Consulta/informa el número de desviació (<sample>222</sample>). <br>
-        ]]>
-    </string>
-    <string name="forwarded_number_modified_to">Aquest número desviat s\'ha modificat a %s.</string>
     <string name="filter">Filtre</string>
     <string name="geolocation">Ubicació geogràfica</string>
     <string name="geolocation_rule">Regla d\'ubicació geogràfica</string>

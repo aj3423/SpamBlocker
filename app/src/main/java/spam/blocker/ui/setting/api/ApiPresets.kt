@@ -15,7 +15,6 @@ import spam.blocker.def.Def
 import spam.blocker.service.bot.CategoryConfig
 import spam.blocker.service.bot.CopyTag
 import spam.blocker.service.bot.FilterSpamResult
-import spam.blocker.service.bot.ForwardType
 import spam.blocker.service.bot.HTTP_POST
 import spam.blocker.service.bot.HttpRequest
 import spam.blocker.service.bot.ImportToSpamDB
@@ -88,7 +87,6 @@ val ApiQueryPresets by lazy {
                         actions = listOf(
                             InterceptCall(
                                 numberFilter = ".*",
-                                forwardType = ForwardType.Original,
                             ),
                             HttpRequest(
                                 url = if (BuildConfig.DEBUG)
@@ -142,7 +140,6 @@ val ApiReportPresets by lazy {
                         actions = listOf(
                             InterceptCall(
                                 numberFilter = ".*",
-                                forwardType = ForwardType.Original,
                             ),
                             CategoryConfig(
                                 map = mapOf(

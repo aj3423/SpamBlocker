@@ -185,24 +185,7 @@ val RegexPresets = mapOf(
                 )
             )
         },
-        RegexPreset(
-            label = { it.getString(R.string.forwarded_call) },
-            tooltip = {
-                it.getString(R.string.help_regex_preset_forwarded_call).format(
-                    it.getString(R.string.explanation_forwarded_call)
-                )
-            },
-        ) { ctx ->
-            listOf(
-                RegexRule(
-                    pattern = ".+&.+",
-                    description = ctx.getString(R.string.forwarded_call),
-                    priority = 11,
-                    isBlacklist = true,
-                    flags = Def.FLAG_FOR_CALL,
-                )
-            )
-        },
+
 //        RegexPreset(
 //            label = { it.getString(R.string.caller_name) },
 //            tooltip = {

@@ -27,49 +27,6 @@
     </string>
     <string name="caller_name">Nombre de quien llama</string>
     <string name="caller_name_rule">Regla del nombre de quien llama</string>
-    <string name="forwarded_call">Llamada Desviada</string>
-    <string name="help_regex_preset_forwarded_call">
-        <![CDATA[
-        Bloquear llamadas desviadas, suelen ser spam. <br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="explanation_forwarded_call">
-        <![CDATA[
-        Esto es <b>específico del operador</b>; algunos operadores formatean las llamadas desviadas como dos números concatenados con un \"&\",
-         como <sample>222&111</sample>. <br>
-        <br>
-        En este formato: <br>
-        &ensp; - La primera parte (<sample>222</sample>) es típicamente el número de desvío. <br>
-        &ensp; - La segunda parte (<sample>111</sample>) es el número original. <br>
-        <br>
-        También podría haber <sample>333&111</sample> y <sample>444&111</sample>,
-         donde el número de origen permanece igual y el número de desvío cambia.
-        ]]>
-    </string>
-    <string name="raw">Bruto</string>
-    <string name="original">Original</string>
-    <string name="forwarding">Desvío</string>
-    <string name="help_truncate_forwarded_number">
-        <![CDATA[
-        No es necesario cambiar esto si no ves números que contengan el carácter \"&\" en el registro del historial de llamadas. <br>
-        <br>
-        %s <br>
-        <br>
-        <b>Opciones</b>: <br>
-        <br>
-        <title><b>Bruto</b></title> <br>
-        Consultar/informar el número bruto (<sample>222&111</sample>), si la API soporta este formato. <br>
-        <br>
-        <title><b>Original</b></title> <br>
-        Consultar/informar el número original (<sample>111</sample>), esto es una solución temporal para APIs que no soportan el formato bruto. <br>
-        <br>
-        <title><b>Desvío</b></title> <br>
-        Consultar/informar el número de desvío (<sample>222</sample>). <br>
-        ]]>
-    </string>
-    <string name="forwarded_number_modified_to">Este número desviado ha sido modificado a %s.</string>
     <string name="filter">Filtro</string>
     <string name="geolocation">Ubicación geográfica</string>
     <string name="geolocation_rule">Regla de ubicación geográfica</string>

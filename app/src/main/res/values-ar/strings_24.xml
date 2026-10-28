@@ -24,49 +24,6 @@
     </string>
     <string name="caller_name">اسم المتصل</string>
     <string name="caller_name_rule">قاعدة اسم المتصل</string>
-    <string name="forwarded_call">مكالمة محولة</string>
-    <string name="help_regex_preset_forwarded_call">
-        <![CDATA[
-        حظر المكالمات المحولة، عادةً ما تكون اقتحامية. <br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="explanation_forwarded_call">
-        <![CDATA[
-        هذا <b>خاص بالناقل</b>، بعض شركات الاتصالات تقوم بتنسيق المكالمات المحولة كرقمين متسلسلين بعلامة \"&\"،
-         مثل <sample>222&111</sample>. <br>
-        <br>
-        في هذا التنسيق: <br>
-        &ensp; - الجزء الأول (<sample>222</sample>) هو عادةً رقم التحويل. <br>
-        &ensp; - الجزء الثاني (<sample>111</sample>) هو الرقم الأصلي. <br>
-        <br>
-        قد يكون هناك أيضًا <sample>333&111</sample> و <sample>444&111</sample>،
-         حيث يبقى الرقم الأصلي كما هو ويتغير رقم التحويل.
-        ]]>
-    </string>
-    <string name="raw">خام</string>
-    <string name="original">أصلي</string>
-    <string name="forwarding">تحويل</string>
-    <string name="help_truncate_forwarded_number">
-        <![CDATA[
-        لا داعي لتغيير هذا إذا لم ترَ أرقامًا تحتوي على الحرف \"&\" في سجل تاريخ المكالمات. <br>
-        <br>
-        %s <br>
-        <br>
-        <b>الخيارات</b>: <br>
-        <br>
-        <title><b>خام</b></title> <br>
-        الاستعلام عن/الإبلاغ عن الرقم الخام (<sample>222&111</sample>)، إذا كانت واجهة برمجة التطبيقات تدعم هذا التنسيق. <br>
-        <br>
-        <title><b>أصلي</b></title> <br>
-        الاستعلام عن/الإبلاغ عن الرقم الأصلي (<sample>111</sample>)، هذا حل بديل لواجهات برمجة التطبيقات التي لا تدعم التنسيق الخام. <br>
-        <br>
-        <title><b>تحويل</b></title> <br>
-        الاستعلام عن/الإبلاغ عن رقم التحويل (<sample>222</sample>). <br>
-        ]]>
-    </string>
-    <string name="forwarded_number_modified_to">تم تعديل هذا الرقم المحوّل إلى %s.</string>
     <string name="filter">تصفية</string>
     <string name="geolocation">الموقع الجغرافي</string>
     <string name="geolocation_rule">قاعدة الموقع الجغرافي</string>
