@@ -47,10 +47,8 @@ object SimUtils {
                     else -> null
                 }
             } catch (e: Exception) {
-                logi("err reading sim: $e")
                 null
             }
-            logi("num: $number")
 
             simList.add(
                 SimInfo(
