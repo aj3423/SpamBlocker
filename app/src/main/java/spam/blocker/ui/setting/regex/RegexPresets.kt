@@ -110,7 +110,7 @@ val RegexPresets = mapOf(
                     listOf(
                         PermissionWrapper(Permission.contacts),
                         PermissionWrapper(Permission.phoneState),
-                        PermissionWrapper(Permission.readPhoneNumber),
+                        PermissionWrapper(Permission.readPhoneNumber, isOptional = true),
                     )
                 ) { granted ->
                     if (granted) {

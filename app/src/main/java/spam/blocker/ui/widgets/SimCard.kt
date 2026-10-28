@@ -102,7 +102,7 @@ fun SimPicker(
                         ctx,
                         listOf(
                             PermissionWrapper(Permission.phoneState),
-                            PermissionWrapper(Permission.readPhoneNumber)
+
                         )
                     ) { granted ->
                         if (granted) {
@@ -121,7 +121,10 @@ fun SimPicker(
             expander = { dropdownExpanded ->
                 G.permissionChain.ask(
                     ctx,
-                    listOf(PermissionWrapper(Permission.phoneState))
+                    listOf(
+                        PermissionWrapper(Permission.phoneState),
+                        PermissionWrapper(Permission.readPhoneNumber, isOptional = true)
+                    )
                 ) { granted ->
                     if (granted) {
                         allCards = SimUtils.listSimCards(ctx)
