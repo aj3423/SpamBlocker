@@ -40,7 +40,11 @@ function generateWiki(contributers, results) {
 		wiki[r.country].push(r);
 	}
 
-	let sortedCountries = Object.keys(wiki).sort();
+	let sortedCountries = Object.keys(wiki).sort((a, b) => {
+		const nameA = a.replace(/^[^\p{L}\p{N}]+/u, '').trim();
+		const nameB = b.replace(/^[^\p{L}\p{N}]+/u, '').trim();
+		return nameA.localeCompare(nameB);
+	});
 
 	// Generate Markdown content
 	let markdown = contributing_tips(contributers)
