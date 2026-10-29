@@ -41,6 +41,11 @@ function generateWiki(contributers, results) {
 	}
 
 	let sortedCountries = Object.keys(wiki).sort((a, b) => {
+		const isGlobalA = a.trim().startsWith('🌐');
+		const isGlobalB = b.trim().startsWith('🌐');
+		if (isGlobalA && !isGlobalB) return 1;
+		if (!isGlobalA && isGlobalB) return -1;
+
 		const nameA = a.replace(/^[^\p{L}\p{N}]+/u, '').trim();
 		const nameB = b.replace(/^[^\p{L}\p{N}]+/u, '').trim();
 		return nameA.localeCompare(nameB);
