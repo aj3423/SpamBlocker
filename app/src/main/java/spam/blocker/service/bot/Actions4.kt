@@ -398,8 +398,10 @@ class SendSms: IAction {
             }
         } ?: SmsManager.getDefault()
 
+        val parts = smsManager.divideMessage(toSend)
+
         return try {
-            smsManager.sendTextMessage(rawNumber, null, toSend, null, null)
+            smsManager.sendMultipartTextMessage(rawNumber, null, parts, null, null)
             logger?.warn(ctx.getString(R.string.sms_sent_successfully))
             true
         } catch (e: Exception) {
