@@ -1,0 +1,12 @@
+Fix:
+- Wrong SIM card detection that checks hardware slots instead of inserted SIM cards.
+
+Improvements:
+- Backups can now be encrypted
+- "Database Prefix" now supports minimum match counts, use case:
+  Block 11199 only if at least two similar numbers exist in the database(e.g., 11122 and 11133)
+- Show the last digits of phone numbers on the SIM picker instead of simply "SIM 1/2"
+
+Changes:
+- Dropped support for `Forwarded Call`(e.g., 111&222), removed it from regex presets and API options.
+  It's a rare telco bug and can be blocked by regex `\d+&\d+` 
