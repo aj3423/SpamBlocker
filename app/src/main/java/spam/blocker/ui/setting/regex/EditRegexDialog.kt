@@ -56,11 +56,13 @@ fun RegexLeadingDropdownIcon(
     val dropdownItems = remember(Unit) {
         val modes = allNumberModes().filter {
             // hide "CNAP" for SMS/QuickCopy
-            if (!initialMode.modeType.isForNumberRegexMode()) {
-                it.modeType != ModeType.CallerName
-            } else {
-                true
-            }
+//            if (!initialMode.modeType.isForNumberRegexMode()) {
+//                it.modeType != ModeType.CallerName
+//            } else {
+//                true
+//            }
+
+            it.modeType != ModeType.CallerName // always hide the CNAP mode until this is fixed: https://issuetracker.google.com/issues/496408103
         }
 
         val items: MutableList<IMenuItem> = mutableListOf(
