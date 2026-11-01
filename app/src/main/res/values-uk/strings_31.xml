@@ -5,4 +5,7 @@
     <string name="backup_is_encrypted">Резервну копію зашифровано. Введіть ключ нижче.</string>
     <string name="decrypt_backup_fail">Неправильний ключ або пошкоджена резервна копія.\nДеталі:\n\n %s</string>
     <string name="perm_read_phone_number">Читання номера телефону</string>
+    <string name="multi_select">Множ. вибір</string>
+    <string name="history_selected_count">Вибрано: %d</string>
+    <string name="confirm_delete_selected_records">Видалити вибрані записи (%d)?</string>
 </resources>

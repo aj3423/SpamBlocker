@@ -5,4 +5,7 @@
     <string name="backup_is_encrypted">La còpia de seguretat està xifrada. Introduïu la clau a continuació.</string>
     <string name="decrypt_backup_fail">Clau no vàlida o còpia de seguretat danyada.\nDetalls:\n\n %s</string>
     <string name="perm_read_phone_number">Llegir el número de telèfon</string>
+    <string name="multi_select">Selecció múltiple</string>
+    <string name="history_selected_count">%d seleccionats</string>
+    <string name="confirm_delete_selected_records">Voleu suprimir %d registres seleccionats?</string>
 </resources>

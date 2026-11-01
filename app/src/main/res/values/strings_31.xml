@@ -5,4 +5,7 @@
     <string name="backup_is_encrypted">The backup is encrypted. Enter the key below.</string>
     <string name="decrypt_backup_fail">Invalid key or corrupted backup.\nDetails:\n\n %s</string>
     <string name="perm_read_phone_number">Read Phone Number</string>
+    <string name="multi_select">Multi Select</string>
+    <string name="history_selected_count">%d selected</string>
+    <string name="confirm_delete_selected_records">Delete %d selected records?</string>
 </resources>

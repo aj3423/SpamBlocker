@@ -5,4 +5,7 @@
     <string name="backup_is_encrypted">La sauvegarde est chiffrée. Saisissez la clé ci-dessous.</string>
     <string name="decrypt_backup_fail">Clé non valide ou sauvegarde corrompue.\nDétails :\n\n %s</string>
     <string name="perm_read_phone_number">Lire le numéro de téléphone</string>
+    <string name="multi_select">Sélection multiple</string>
+    <string name="history_selected_count">%d sélectionné(s)</string>
+    <string name="confirm_delete_selected_records">Supprimer %d enregistrement(s) sélectionné(s) ?</string>
 </resources>

@@ -24,6 +24,24 @@ open class HistoryViewModel(
     val records = mutableStateListOf<HistoryRecord>()
     val searchEnabled = mutableStateOf(false)
     val filter = mutableStateOf("")
+    val multiSelect = mutableStateOf(false)
+    val selectedIds = mutableStateListOf<Long>()
+
+    fun toggleSelected(id: Long) {
+        if (!selectedIds.remove(id)) selectedIds.add(id)
+    }
+
+    fun clearSelection() {
+        selectedIds.clear()
+        multiSelect.value = false
+    }
+
+    fun deleteSelected(ctx: Context) {
+        val ids = selectedIds.toSet()
+        ids.forEach { table.deleteById(ctx, it) }
+        records.removeAll { it.id in ids }
+        clearSelection()
+    }
 
     fun reload(ctx: Context) {
         records.clear()
@@ -34,6 +52,7 @@ open class HistoryViewModel(
         records.addAll(table.listRecords(ctx).filter {
             isVisible(ctx, it, filter)
         })
+        selectedIds.retainAll(records.map { it.id }.toSet())
     }
 
     fun isVisible(

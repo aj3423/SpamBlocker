@@ -5,4 +5,7 @@
     <string name="backup_is_encrypted">הגיבוי מוצפן. הזן את המפתח למטה.</string>
     <string name="decrypt_backup_fail">מפתח שגוי או גיבוי פגום.\nפרטים:\n\n %s</string>
     <string name="perm_read_phone_number">קריאת מספר טלפון</string>
+    <string name="multi_select">בחירה מרובה</string>
+    <string name="history_selected_count">%d נבחרו</string>
+    <string name="confirm_delete_selected_records">למחוק %d רשומות שנבחרו?</string>
 </resources>

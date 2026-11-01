@@ -16,8 +16,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
+import spam.blocker.Events
 import spam.blocker.G
 import spam.blocker.R
+import spam.blocker.db.SpamTable
 import spam.blocker.def.Def
 import spam.blocker.service.bot.Daily
 import spam.blocker.service.bot.MyWorkManager
@@ -438,43 +440,101 @@ fun HistoryFabs(
     )
 
     RowVCenterSpaced(space = 8, modifier = modifier) {
-        Fab(
-            visible = visible,
-            iconId = R.drawable.ic_settings,
-            bgColor = C.infoBlue
-        ) {
-            settingPopupTrigger.value = true
-        }
+        if (vm.multiSelect.value) {
+            val selectedIds = vm.selectedIds.toSet()
+            val selectedNumbers = vm.records.filter { it.id in selectedIds }.map { it.peer }.distinct()
 
-        // Delete all
-        val deleteConfirm = remember { mutableStateOf(false) }
-        PopupDialog(
-            trigger = deleteConfirm,
-            buttons = {
-                StrokeButton(label = Str(R.string.delete), color = C.error) {
-                    deleteConfirm.value = false
-                    when (vm.forType) {
-                        Def.ForNumber -> {
-                            G.callVM.table.clearAll(ctx)
-                            G.callVM.records.clear()
+            // Report
+            Fab(
+                visible = true,
+                iconId = R.drawable.ic_upload_to_cloud,
+                bgColor = C.warning,
+            ) {}
+
+            // Add to db
+            var dbRevision by remember { mutableIntStateOf(0) }
+            Events.spamDbUpdated.Listen { dbRevision++ }
+            val allInDb = remember(selectedNumbers, dbRevision) {
+                selectedNumbers.isNotEmpty() && selectedNumbers.all { SpamTable.findByNumber(ctx, it) != null }
+            }
+            Fab(
+                visible = true,
+                iconId = if (allInDb) R.drawable.ic_db_delete else R.drawable.ic_db_add,
+                bgColor = if (allInDb) C.error else C.infoBlue,
+            ) {
+                if (selectedNumbers.isNotEmpty()) {
+                    selectedNumbers.forEach { number ->
+                        val existing = SpamTable.findByNumber(ctx, number)
+                        if (allInDb) {
+                            if (existing != null) SpamTable.deleteById(ctx, existing.id)
+                        } else if (existing == null) {
+                            SpamTable.add(ctx, number)
                         }
+                    }
+                    dbRevision++
+                    Events.spamDbUpdated.fire()
+                }
+            }
 
-                        Def.ForSms -> {
-                            G.smsVM.table.clearAll(ctx)
-                            G.smsVM.records.clear()
+            // Delete
+            val deleteConfirm = remember { mutableStateOf(false) }
+            PopupDialog(
+                trigger = deleteConfirm,
+                buttons = {
+                    StrokeButton(label = Str(R.string.delete), color = C.error) {
+                        deleteConfirm.value = false
+                        vm.deleteSelected(ctx)
+                    }
+                }
+            ) {
+                Text(Str(R.string.confirm_delete_selected_records).format(vm.selectedIds.size))
+            }
+            Fab(
+                visible = true,
+                iconId = R.drawable.ic_recycle_bin,
+                bgColor = C.error,
+            ) {
+                if (vm.selectedIds.isNotEmpty()) deleteConfirm.value = true
+            }
+        } else { // single select
+            Fab(
+                visible = visible,
+                iconId = R.drawable.ic_settings,
+                bgColor = C.infoBlue
+            ) {
+                settingPopupTrigger.value = true
+            }
+
+            // Delete all
+            val deleteConfirm = remember { mutableStateOf(false) }
+            PopupDialog(
+                trigger = deleteConfirm,
+                buttons = {
+                    StrokeButton(label = Str(R.string.delete), color = C.error) {
+                        deleteConfirm.value = false
+                        when (vm.forType) {
+                            Def.ForNumber -> {
+                                G.callVM.table.clearAll(ctx)
+                                G.callVM.records.clear()
+                            }
+
+                            Def.ForSms -> {
+                                G.smsVM.table.clearAll(ctx)
+                                G.smsVM.records.clear()
+                            }
                         }
                     }
                 }
+            ) {
+                HtmlText(Str(R.string.confirm_delete_all_records))
             }
-        ) {
-            HtmlText(Str(R.string.confirm_delete_all_records))
-        }
-        Fab(
-            visible = visible,
-            iconId = R.drawable.ic_recycle_bin,
-            bgColor = C.error
-        ) {
-            deleteConfirm.value = true
+            Fab(
+                visible = visible,
+                iconId = R.drawable.ic_recycle_bin,
+                bgColor = C.error
+            ) {
+                deleteConfirm.value = true
+            }
         }
     }
 }

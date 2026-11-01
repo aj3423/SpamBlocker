@@ -5,4 +5,7 @@
     <string name="backup_is_encrypted">備份已加密。請在下方輸入金鑰。</string>
     <string name="decrypt_backup_fail">金鑰無效或備份已損壞。\n詳細資料：\n\n %s</string>
     <string name="perm_read_phone_number">讀取電話號碼</string>
+    <string name="multi_select">複選</string>
+    <string name="history_selected_count">已選擇 %d 項</string>
+    <string name="confirm_delete_selected_records">確定刪除選取的 %d 條記錄？</string>
 </resources>

@@ -5,4 +5,7 @@
     <string name="backup_is_encrypted">Cadangan dienkripsi. Masukkan kunci di bawah.</string>
     <string name="decrypt_backup_fail">Kunci tidak valid atau cadangan rusak.\nRincian:\n\n %s</string>
     <string name="perm_read_phone_number">Baca Nomor Telepon</string>
+    <string name="multi_select">Pilih Banyak</string>
+    <string name="history_selected_count">%d dipilih</string>
+    <string name="confirm_delete_selected_records">Hapus %d rekaman yang dipilih?</string>
 </resources>

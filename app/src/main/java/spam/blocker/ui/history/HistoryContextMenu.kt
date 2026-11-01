@@ -132,6 +132,15 @@ fun HistoryContextMenuWrapper(
 
             // 3. build context menu
             menuItems = listOf(
+                LabelItem(
+                    label = ctx.getString(R.string.multi_select),
+                    leadingIcon = { GreyIcon20(R.drawable.ic_select) }
+                ) {
+                    vm.multiSelect.value = true
+                    vm.selectedIds.clear()
+                    vm.selectedIds.add(record.id)
+                },
+
                 // Test
                 LabelItem(
                     label = ctx.getString(R.string.test),

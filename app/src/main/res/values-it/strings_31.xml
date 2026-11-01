@@ -5,4 +5,7 @@
     <string name="backup_is_encrypted">Il backup è crittografato. Inserisci la chiave qui sotto.</string>
     <string name="decrypt_backup_fail">Chiave non valida o backup danneggiato.\nDettagli:\n\n %s</string>
     <string name="perm_read_phone_number">Leggi numero di telefono</string>
+    <string name="multi_select">Selezione multipla</string>
+    <string name="history_selected_count">%d selezionati</string>
+    <string name="confirm_delete_selected_records">Eliminare %d registrazioni selezionate?</string>
 </resources>

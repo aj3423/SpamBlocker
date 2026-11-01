@@ -74,12 +74,13 @@ fun HistoryCard(
     simCount: Int,
     timeColors: List<FreshnessColor>?,
     modifier: Modifier,
+    selected: Boolean = false,
 ) {
     val C = G.palette
     val ctx = LocalContext.current
     OutlineCard(
         modifier = M.animateContentSize(),
-        borderColor = if (record.isTest) C.teal200 else C.dialogBg.slightDiff()
+        borderColor = if (selected) C.infoBlue else C.dialogBg.slightDiff()
     ) {
         Box(
             modifier = M

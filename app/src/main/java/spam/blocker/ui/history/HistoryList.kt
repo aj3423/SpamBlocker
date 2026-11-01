@@ -11,6 +11,7 @@ import androidx.compose.material3.SwipeToDismissBoxValue.StartToEnd
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -74,82 +75,92 @@ fun HistoryList(
                             listOf()
                     }
                     HistoryContextMenuWrapper(vm, record) { contextMenuExpanded ->
-                        // Swipe <---->
-                        LeftDeleteSwipeWrapper(
-                            right = SwipeInfo(
-                                veto = true,
-                                background = { BgLaunchApp(StartToEnd) },
-                                onSwipe = {
-                                    val index = vm.records.indexOfFirst { it.id == record.id }
-                                    val record = vm.records[index]
+                        key(vm.multiSelect.value) {
+                            // Swipe <---->
+                            LeftDeleteSwipeWrapper(
+                                right = if (vm.multiSelect.value) null else SwipeInfo(
+                                    veto = true,
+                                    background = { BgLaunchApp(StartToEnd) },
+                                    onSwipe = {
+                                        val index = vm.records.indexOfFirst { it.id == record.id }
+                                        val record = vm.records[index]
 
-                                    // Navigate to the default app, open the conversation to this number.
-                                    if (!record.read) {
-                                        // 1. update db
-                                        vm.table.markAsRead(ctx, record.id)
-                                        // 2. update UI
-                                        vm.records[index] = vm.records[index].copy(read = true)
-                                    }
-                                    when (vm.forType) {
-                                        Def.ForNumber -> Launcher.openCallConversation(
-                                            ctx,
-                                            record.peer
-                                        )
-
-                                        Def.ForSms -> Launcher.openSMSConversation(ctx, record.peer)
-                                    }
-                                }
-                            ),
-                            left = SwipeInfo(
-                                onSwipe = {
-                                    val index = vm.records.indexOfFirst { it.id == record.id }
-                                    val rec = vm.records[index]
-
-                                    // 1. delete from db
-                                    vm.table.deleteById(ctx, rec.id)
-
-                                    // 2. remove from ArrayList
-                                    vm.records.removeAt(index)
-
-                                    // 3. show snackbar
-                                    SnackBar.show(
-                                        coroutineScope,
-                                        rec.peer,
-                                        ctx.getString(R.string.undelete),
-                                    ) {
-                                        vm.table.addWithId(ctx, rec)
-                                        vm.records.add(index, rec)
-                                    }
-                                },
-                            )
-                        ) {
-                            HistoryCard(
-                                forType = vm.forType,
-                                record = record,
-                                indicators = indicators.value,
-                                simCount = simCount,
-                                timeColors = if (showHistoryTimeColor.value) historyTimeColors else null,
-                                modifier = M.combinedClickable(
-                                    onClick = {
+                                        // Navigate to the default app, open the conversation to this number.
                                         if (!record.read) {
                                             // 1. update db
                                             vm.table.markAsRead(ctx, record.id)
                                             // 2. update UI
                                             vm.records[index] = vm.records[index].copy(read = true)
                                         }
+                                        when (vm.forType) {
+                                            Def.ForNumber -> Launcher.openCallConversation(
+                                                ctx,
+                                                record.peer
+                                            )
 
-                                        // Toggle expanded
-                                        val rec = vm.records[index]
-                                        // 1. update db
-                                        vm.table.setExpanded(ctx, record.id, !rec.expanded)
-                                        // 2. update ui
-                                        vm.records[index] = rec.copy(expanded = !rec.expanded)
-                                    },
-                                    onLongClick = {
-                                        contextMenuExpanded.value = true
+                                            Def.ForSms -> Launcher.openSMSConversation(ctx, record.peer)
+                                        }
                                     }
+                                ),
+                                left = if (vm.multiSelect.value) null else SwipeInfo(
+                                    onSwipe = {
+                                        val index = vm.records.indexOfFirst { it.id == record.id }
+                                        val rec = vm.records[index]
+
+                                        // 1. delete from db
+                                        vm.table.deleteById(ctx, rec.id)
+
+                                        // 2. remove from ArrayList
+                                        vm.records.removeAt(index)
+
+                                        // 3. show snackbar
+                                        SnackBar.show(
+                                            coroutineScope,
+                                            rec.peer,
+                                            ctx.getString(R.string.undelete),
+                                        ) {
+                                            vm.table.addWithId(ctx, rec)
+                                            vm.records.add(index, rec)
+                                        }
+                                    },
                                 )
-                            )
+                            ) {
+                                HistoryCard(
+                                    forType = vm.forType,
+                                    record = if (vm.multiSelect.value && record.expanded) record.copy(expanded = false) else record,
+                                    indicators = indicators.value,
+                                    simCount = simCount,
+                                    timeColors = if (showHistoryTimeColor.value) historyTimeColors else null,
+                                    selected = record.id in vm.selectedIds,
+                                    modifier = M.combinedClickable(
+                                        onClick = {
+                                            if (vm.multiSelect.value) {
+                                                vm.toggleSelected(record.id)
+                                            } else {
+                                                if (!record.read) {
+                                                    // 1. update db
+                                                    vm.table.markAsRead(ctx, record.id)
+                                                    // 2. update UI
+                                                    vm.records[index] = vm.records[index].copy(read = true)
+                                                }
+
+                                                // Toggle expanded
+                                                val rec = vm.records[index]
+                                                // 1. update db
+                                                vm.table.setExpanded(ctx, record.id, !rec.expanded)
+                                                // 2. update ui
+                                                vm.records[index] = rec.copy(expanded = !rec.expanded)
+                                            }
+                                        },
+                                        onLongClick = {
+                                            if (vm.multiSelect.value)
+                                                vm.toggleSelected(record.id)
+                                            else
+                                                contextMenuExpanded.value = true
+                                        }
+                                    )
+                                )
+                            }
                         }
                     }
                 }

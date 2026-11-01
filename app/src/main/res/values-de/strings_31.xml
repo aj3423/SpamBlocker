@@ -5,4 +5,7 @@
     <string name="backup_is_encrypted">Die Sicherung ist verschlüsselt. Gib unten den Schlüssel ein.</string>
     <string name="decrypt_backup_fail">Ungültiger Schlüssel oder beschädigte Sicherung.\nDetails:\n\n %s</string>
     <string name="perm_read_phone_number">Telefonnummer lesen</string>
+    <string name="multi_select">Mehrfachauswahl</string>
+    <string name="history_selected_count">%d ausgewählt</string>
+    <string name="confirm_delete_selected_records">%d ausgewählte Datensätze löschen?</string>
 </resources>

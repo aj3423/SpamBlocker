@@ -1,8 +1,13 @@
 package spam.blocker.ui.history
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
@@ -13,10 +18,16 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import spam.blocker.G
+import spam.blocker.R
 import spam.blocker.ui.M
 import spam.blocker.ui.widgets.FabWrapper
+import spam.blocker.ui.widgets.GreyText
+import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.SearchBox
+import spam.blocker.ui.widgets.Str
 import spam.blocker.util.LockedDebouncer
 import spam.blocker.util.TimeUtils.FreshnessColor
 import spam.blocker.util.spf
@@ -37,6 +48,10 @@ fun HistoryScreen(
     vm: HistoryViewModel,
 ) {
     val ctx = LocalContext.current
+
+    BackHandler(enabled = vm.multiSelect.value) {
+        vm.clearSelection()
+    }
 
     // Load history options
     LaunchedEffect(true) {
@@ -78,11 +93,18 @@ fun HistoryScreen(
         }
     ) {
         Column(modifier = M.padding(8.dp, 8.dp, 8.dp, 2.dp)) {
-            // Use a Debouncer here as there could be LOTS of history records.
-            val debouncer = remember { LockedDebouncer() }
-            SearchBox(vm.searchEnabled, vm.filter) {
-                debouncer.debounce {
-                    vm.reload(ctx)
+            if (vm.multiSelect.value) {
+                GreyText(
+                    text = Str(R.string.history_selected_count).format(vm.selectedIds.size),
+                    modifier = M.padding(8.dp)
+                )
+            } else {
+                // Use a Debouncer here as there could be LOTS of history records.
+                val debouncer = remember { LockedDebouncer() }
+                SearchBox(vm.searchEnabled, vm.filter) {
+                    debouncer.debounce {
+                        vm.reload(ctx)
+                    }
                 }
             }
             HistoryList(

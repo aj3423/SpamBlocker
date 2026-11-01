@@ -5,4 +5,7 @@
     <string name="backup_is_encrypted">バックアップは暗号化されています。以下にキーを入力してください。</string>
     <string name="decrypt_backup_fail">キーが無効か、バックアップが壊れています。\n詳細:\n\n %s</string>
     <string name="perm_read_phone_number">電話番号の読み取り</string>
+    <string name="multi_select">複数選択</string>
+    <string name="history_selected_count">%d 件選択中</string>
+    <string name="confirm_delete_selected_records">選択した %d 件のレコードを削除しますか？</string>
 </resources>

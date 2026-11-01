@@ -5,4 +5,7 @@
     <string name="backup_is_encrypted">A copia de seguranza está cifrada. Introduce a chave abaixo.</string>
     <string name="decrypt_backup_fail">Chave non válida ou copia de seguranza danada.\nDetalles:\n\n %s</string>
     <string name="perm_read_phone_number">Ler o número de teléfono</string>
+    <string name="multi_select">Selección múltiple</string>
+    <string name="history_selected_count">%d seleccionados</string>
+    <string name="confirm_delete_selected_records">Eliminar %d rexistros seleccionados?</string>
 </resources>
