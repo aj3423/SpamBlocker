@@ -71,7 +71,7 @@ import spam.blocker.service.bot.ApiQueryResult
 import spam.blocker.service.bot.InterceptCall
 import spam.blocker.service.bot.InterceptSms
 import spam.blocker.ui.M
-import spam.blocker.ui.history.ReportSpamDialog
+import spam.blocker.ui.history.SingleReportSpamDialog
 import spam.blocker.ui.widgets.GreyText
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowVCenterSpaced
@@ -144,7 +144,7 @@ interface ICheckResult {
                 Spacer(modifier = M.padding(vertical = 4.dp))
 
                 val reportTrigger = remember { mutableStateOf(false) }
-                ReportSpamDialog(trigger = reportTrigger, forType = forType, rawNumber = record.peer, smsContent = record.extraInfo, recordId = record.id)
+                SingleReportSpamDialog(trigger = reportTrigger, forType = forType, rawNumber = record.peer, smsContent = record.extraInfo, recordId = record.id)
                 StrokeButton(
                     label = Str(if (forType == Def.ForNumber) R.string.report_number else R.string.report_sms),
                     icon = { ResIcon(R.drawable.ic_upload_to_cloud, color = C.warning) },

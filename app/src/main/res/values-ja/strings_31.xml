@@ -8,4 +8,8 @@
     <string name="multi_select">複数選択</string>
     <string name="history_selected_count">%d 件選択中</string>
     <string name="confirm_delete_selected_records">選択した %d 件のレコードを削除しますか？</string>
+    <string name="n_succeeded">%d 件成功</string>
+    <string name="n_failed">%d 件失敗</string>
+    <string name="all_finished">完了</string>
+    <string name="reporting">報告中…</string>
 </resources>

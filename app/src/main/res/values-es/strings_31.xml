@@ -8,4 +8,8 @@
     <string name="multi_select">Selección múltiple</string>
     <string name="history_selected_count">%d seleccionados</string>
     <string name="confirm_delete_selected_records">¿Eliminar %d registros seleccionados?</string>
+    <string name="n_succeeded">%d con éxito</string>
+    <string name="n_failed">%d fallidos</string>
+    <string name="all_finished">Finalizado</string>
+    <string name="reporting">Reportando…</string>
 </resources>

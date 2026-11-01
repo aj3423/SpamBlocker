@@ -8,4 +8,8 @@
     <string name="multi_select">Pilih Banyak</string>
     <string name="history_selected_count">%d dipilih</string>
     <string name="confirm_delete_selected_records">Hapus %d rekaman yang dipilih?</string>
+    <string name="n_succeeded">%d berhasil</string>
+    <string name="n_failed">%d gagal</string>
+    <string name="all_finished">Selesai</string>
+    <string name="reporting">Melaporkan…</string>
 </resources>

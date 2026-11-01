@@ -8,4 +8,8 @@
     <string name="multi_select">انتخاب چندگانه</string>
     <string name="history_selected_count">%d انتخاب شده</string>
     <string name="confirm_delete_selected_records">حذف %d سابقه انتخاب شده؟</string>
+    <string name="n_succeeded">%d موفق</string>
+    <string name="n_failed">%d ناموفق</string>
+    <string name="all_finished">پایان</string>
+    <string name="reporting">گزارش…</string>
 </resources>

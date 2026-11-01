@@ -8,4 +8,8 @@
     <string name="multi_select">בחירה מרובה</string>
     <string name="history_selected_count">%d נבחרו</string>
     <string name="confirm_delete_selected_records">למחוק %d רשומות שנבחרו?</string>
+    <string name="n_succeeded">%d הצליחו</string>
+    <string name="n_failed">%d נכשלו</string>
+    <string name="all_finished">הסתיים</string>
+    <string name="reporting">מדווח…</string>
 </resources>

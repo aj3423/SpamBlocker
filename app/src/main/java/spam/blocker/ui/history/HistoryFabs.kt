@@ -19,9 +19,12 @@ import androidx.compose.ui.platform.LocalContext
 import spam.blocker.Events
 import spam.blocker.G
 import spam.blocker.R
+import spam.blocker.db.HistoryRecord
 import spam.blocker.db.SpamTable
 import spam.blocker.def.Def
 import spam.blocker.service.bot.Daily
+import spam.blocker.service.bot.InterceptCall
+import spam.blocker.service.bot.InterceptSms
 import spam.blocker.service.bot.MyWorkManager
 import spam.blocker.service.bot.PruneHistory
 import spam.blocker.service.bot.serialize
@@ -442,14 +445,39 @@ fun HistoryFabs(
     RowVCenterSpaced(space = 8, modifier = modifier) {
         if (vm.multiSelect.value) {
             val selectedIds = vm.selectedIds.toSet()
-            val selectedNumbers = vm.records.filter { it.id in selectedIds }.map { it.peer }.distinct()
+            val selectedRecords = vm.records.filter { it.id in selectedIds }
+            val selectedNumbers = selectedRecords.map { it.peer }.distinct()
 
             // Report
-            Fab(
-                visible = true,
-                iconId = R.drawable.ic_upload_to_cloud,
-                bgColor = C.warning,
-            ) {}
+            val reportAvailable = remember(vm.forType) {
+                G.apiReportVM.table.listAll(ctx).any {
+                    it.enabled && when (vm.forType) {
+                        Def.ForNumber -> it.actions.firstOrNull() is InterceptCall
+                        else -> it.actions.firstOrNull() is InterceptSms
+                    }
+                }
+            }
+            if (reportAvailable) {
+                val reportTrigger = remember { mutableStateOf(false) }
+                var reportRecords by remember { mutableStateOf<List<HistoryRecord>>(emptyList()) }
+                if (reportRecords.isNotEmpty()) {
+                    BatchReportSpamDialog(
+                        trigger = reportTrigger,
+                        forType = vm.forType,
+                        records = reportRecords,
+                    )
+                }
+                Fab(
+                    visible = true,
+                    iconId = R.drawable.ic_upload_to_cloud,
+                    bgColor = C.warning,
+                ) {
+                    if (selectedRecords.isNotEmpty()) {
+                        reportRecords = selectedRecords.toList()
+                        reportTrigger.value = true
+                    }
+                }
+            }
 
             // Add to db
             var dbRevision by remember { mutableIntStateOf(0) }

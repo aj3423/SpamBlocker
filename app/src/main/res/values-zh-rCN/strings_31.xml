@@ -8,4 +8,8 @@
     <string name="multi_select">多选</string>
     <string name="history_selected_count">已选择 %d 项</string>
     <string name="confirm_delete_selected_records">确定删除选中的 %d 条记录？</string>
+    <string name="n_succeeded">%d 成功</string>
+    <string name="n_failed">%d 失败</string>
+    <string name="all_finished">完成</string>
+    <string name="reporting">上报中…</string>
 </resources>

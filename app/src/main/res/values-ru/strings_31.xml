@@ -8,4 +8,8 @@
     <string name="multi_select">Множ. выбор</string>
     <string name="history_selected_count">Выбрано: %d</string>
     <string name="confirm_delete_selected_records">Удалить выбранные записи (%d)?</string>
+    <string name="n_succeeded">Успешно: %d</string>
+    <string name="n_failed">Сбоев: %d</string>
+    <string name="all_finished">Готово</string>
+    <string name="reporting">Отправка…</string>
 </resources>

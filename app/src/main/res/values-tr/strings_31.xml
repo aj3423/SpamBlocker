@@ -8,4 +8,8 @@
     <string name="multi_select">Çoklu Seçim</string>
     <string name="history_selected_count">%d seçildi</string>
     <string name="confirm_delete_selected_records">Seçilen %d kayıt silinsin mi?</string>
+    <string name="n_succeeded">%d başarılı</string>
+    <string name="n_failed">%d başarısız</string>
+    <string name="all_finished">Bitti</string>
+    <string name="reporting">Bildiriliyor…</string>
 </resources>
