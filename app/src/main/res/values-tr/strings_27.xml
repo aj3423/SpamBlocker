@@ -4,8 +4,7 @@
     <string name="success_allow">Başarı / İzin Ver</string>
     <string name="error_block">Hata / Engelle</string>
     <string name="disable">Devre Dışı Bırak</string>
-    <string name="dialog_bg">Diyalog Arka Planı</string>
-    <string name="app_bg">Uygulama Arka Planı</string>
+    <string name="background">Arka Plan</string>
     <string name="should_import_as_instant_query">
         <![CDATA[
         Bu, bir \"API sorgusu\" iş akışı gibi görünüyor, yukarıdaki \"Anlık Sorgu\" bölümüne aktarılmalıdır.

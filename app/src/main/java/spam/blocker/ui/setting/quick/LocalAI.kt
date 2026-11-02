@@ -122,7 +122,7 @@ private fun SmsCard(info: SmsCardInfo) {
     }
 
     OutlineCard(
-        containerBg = C.dialogBg,
+        containerBg = C.background,
         borderWidth = if (info.isSpam == null) 1 else 2,
         borderColor = autoColor(info.isSpam)
     ) {
@@ -140,7 +140,7 @@ private fun SmsCard(info: SmsCardInfo) {
             RowVCenterSpaced(4, modifier = M
                 .align(Alignment.BottomEnd)
                 .offset(x = (-4).dp, y = (-4).dp)
-                .background(C.dialogBg)
+                .background(C.background)
             ) {
                 // Probability
                 if (info.heuristic != null) {
@@ -549,7 +549,7 @@ fun LocalAISettings(
         var priHam by remember { mutableIntStateOf(spf.priorityHam) }
         var priSpam by remember { mutableIntStateOf(spf.prioritySpam) }
 
-        Section(Str(R.string.ham), bgColor = C.dialogBg, titleColor = C.success) {
+        Section(Str(R.string.ham), bgColor = C.background, titleColor = C.success) {
             PriorityBox(priHam) { newValue, hasError ->
                 if (!hasError) {
                     priHam = newValue!!
@@ -557,7 +557,7 @@ fun LocalAISettings(
                 }
             }
         }
-        Section(Str(R.string.spam), bgColor = C.dialogBg, titleColor = C.error) {
+        Section(Str(R.string.spam), bgColor = C.background, titleColor = C.error) {
             PriorityBox(priSpam) { newValue, hasError ->
                 if (!hasError) {
                     priSpam = newValue!!

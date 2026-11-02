@@ -4,8 +4,7 @@
     <string name="success_allow">הצלחה / לאפשר</string>
     <string name="error_block">שגיאה / לחסום</string>
     <string name="disable">השבת</string>
-    <string name="dialog_bg">רקע תיבת דו-שיח</string>
-    <string name="app_bg">רקע האפליקציה</string>
+    <string name="background">רקע</string>
     <string name="should_import_as_instant_query">
         <![CDATA[
         נראה שזהו זרימת עבודה של \"שאילתת API\", יש לייבא אותה אל הסעיף למעלה \"שאילתת מיידית\".

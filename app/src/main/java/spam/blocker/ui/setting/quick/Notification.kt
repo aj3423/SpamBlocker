@@ -649,7 +649,7 @@ fun Notification() {
                 if (G.callEnabled.value) {
                     Section(
                         title = Str(R.string.call_channel),
-                        bgColor = C.dialogBg
+                        bgColor = C.background
                     ) {
                         // 1. Blocked Call
                         LabeledRow(
@@ -668,7 +668,7 @@ fun Notification() {
                 if (G.smsEnabled.value) {
                     Section(
                         title = Str(R.string.sms_channel),
-                        bgColor = C.dialogBg
+                        bgColor = C.background
                     ) {
                         Column {
                             // 1. Allowed SMS

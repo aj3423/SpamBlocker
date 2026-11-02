@@ -80,7 +80,7 @@ fun HistoryCard(
     val ctx = LocalContext.current
     OutlineCard(
         modifier = M.animateContentSize(),
-        borderColor = if (selected) C.infoBlue else C.dialogBg.slightDiff()
+        borderColor = if (selected) C.infoBlue else C.background.slightDiff()
     ) {
         Box(
             modifier = M

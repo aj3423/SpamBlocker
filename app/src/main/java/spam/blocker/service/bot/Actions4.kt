@@ -205,7 +205,7 @@ fun ReplyRuleCard(
     cardModifier: Modifier,
     dragModifier: Modifier
 ) {
-    OutlineCard(containerBg = G.palette.dialogBg, modifier = cardModifier) {
+    OutlineCard(containerBg = G.palette.background, modifier = cardModifier) {
         RowVCenterSpaced(
             4,
             modifier = M.fillMaxSize().padding(horizontal = 10.dp, vertical = 8.dp),

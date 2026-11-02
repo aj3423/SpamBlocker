@@ -14,7 +14,7 @@ fun AppTheme(
         colorScheme = darkColorScheme(
             background = G.palette.background, // main screen bg
             surface = G.palette.background, // top/bottom systembar
-            surfaceContainer = G.palette.dialogBg, // balloon tooltip bg
+            surfaceContainer = G.palette.background, // balloon tooltip bg
         ),
         content = content,
     )

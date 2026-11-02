@@ -4,8 +4,7 @@
     <string name="success_allow">Èxit / Permetre</string>
     <string name="error_block">Error / Bloqueig</string>
     <string name="disable">Desactivar</string>
-    <string name="dialog_bg">Fons del diàleg</string>
-    <string name="app_bg">Fons de l\'aplicació</string>
+    <string name="background">Fons</string>
     <string name="should_import_as_instant_query">
         <![CDATA[
         Sembla que aquest és un flux de treball \"API query\", hauria d\'importar-se a la secció anterior \"Instant Query\".

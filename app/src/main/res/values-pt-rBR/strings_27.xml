@@ -4,8 +4,7 @@
     <string name="success_allow">Sucesso / Permitir</string>
     <string name="error_block">Erro / Bloquear</string>
     <string name="disable">Desativar</string>
-    <string name="dialog_bg">Fundo do Diálogo</string>
-    <string name="app_bg">Fundo do Aplicativo</string>
+    <string name="background">Fundo</string>
     <string name="should_import_as_instant_query">
         <![CDATA[
         Parece que este é um fluxo de trabalho de \"consulta API\", ele deve ser importado para a seção acima \"Consulta Instantânea\".

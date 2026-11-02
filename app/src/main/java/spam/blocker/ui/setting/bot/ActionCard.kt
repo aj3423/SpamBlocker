@@ -32,7 +32,7 @@ fun ActionCard(
     val C = G.palette
 
     OutlineCard(
-        containerBg = C.dialogBg,
+        containerBg = C.background,
         modifier = cardModifier,
     ) {
         RowVCenterSpaced(

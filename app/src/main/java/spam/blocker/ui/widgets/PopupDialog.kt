@@ -2,7 +2,6 @@ package spam.blocker.ui.widgets
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.imePadding
@@ -100,9 +99,9 @@ fun PopupDialog(
                         max = popupSize?.maxWidth(screenWidthDp())?.dp ?: Dp.Unspecified,
                     )
                     .imePadding(), // preserve padding for IME, show the scroll bar when IME appears
-                border = BorderStroke(1.dp, color = C.dialogBg.lighten(0.1f)),
+                border = BorderStroke(1.dp, color = C.background.lighten(0.1f)),
                 colors = CardDefaults.cardColors(
-                    containerColor = G.palette.dialogBg,
+                    containerColor = G.palette.background,
                 ),
                 shape = RoundedCornerShape(4.dp)
             ) {

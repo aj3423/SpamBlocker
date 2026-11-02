@@ -19,13 +19,12 @@ import spam.blocker.ui.setting.api.PhoneBlock
 import spam.blocker.ui.setting.quick.Bayes
 import spam.blocker.ui.setting.quick.DefaultCallerIdBgColor
 import spam.blocker.ui.setting.quick.DefaultCallerIdTemplate
-import spam.blocker.ui.theme.Black111111
+import spam.blocker.ui.theme.Black1E1E1E
 import spam.blocker.ui.theme.ColdGrey
 import spam.blocker.ui.theme.DarkOrange
 import spam.blocker.ui.theme.Emerald
 import spam.blocker.ui.theme.LightMagenta
 import spam.blocker.ui.theme.MayaBlue
-import spam.blocker.ui.theme.RaisinBlack
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.SilverGrey
 import spam.blocker.ui.theme.SkyBlue
@@ -166,14 +165,10 @@ class spf { // for namespace only
         var priority by color("priority", LightMagenta, R.string.priority)
         var regexFlags by color("regexFlags", Color.Magenta, R.string.regex_flags)
 
-        // widgets
         var teal200 by color("enabled", Teal200, R.string.enable)
         var disabled by color("disabled", ColdGrey, R.string.disable)
 
-        // popup
-        var dialogBg by color("dialogBg", RaisinBlack, R.string.dialog_bg)
-
-        var background by color("background", Black111111, R.string.app_bg)
+        var background by color("background", Black1E1E1E, R.string.background)
     }
 
     class Temporary(ctx: Context) : SharedPref(ctx) {

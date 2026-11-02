@@ -88,7 +88,7 @@ fun Contacts() {
                 Section(
                     title = Str(R.string.contacts),
                     titleColor = C.success,
-                    bgColor = C.dialogBg
+                    bgColor = C.background
                 ) {
                     Column {
                         LabeledRow(R.string.allow) {
@@ -112,7 +112,7 @@ fun Contacts() {
                     Section(
                         title = Str(R.string.non_contacts),
                         titleColor = C.error,
-                        bgColor = C.dialogBg
+                        bgColor = C.background
                     ) {
                         Column {
                             LabeledRow(R.string.block) {

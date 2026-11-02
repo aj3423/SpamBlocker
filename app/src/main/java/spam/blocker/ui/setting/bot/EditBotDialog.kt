@@ -115,7 +115,7 @@ fun EditBotDialog(
                 // Trigger
                 Section(
                     title = Str(R.string.trigger),
-                    bgColor = C.dialogBg
+                    bgColor = C.background
                 ) {
                     Column {
                         // Trigger Type
@@ -156,7 +156,7 @@ fun EditBotDialog(
                 // Actions
                 Section(
                     title = Str(R.string.workflow_actions),
-                    bgColor = C.dialogBg
+                    bgColor = C.background
                 ) {
                     Column(modifier = M.fillMaxWidth()) {
                         // Action Header

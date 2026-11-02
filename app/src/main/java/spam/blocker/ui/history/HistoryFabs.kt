@@ -247,7 +247,7 @@ fun HistoryFabs(
                 // Logging enabled / TTL
                 Section(
                     Str(R.string.enable_history_logging),
-                    bgColor = C.dialogBg
+                    bgColor = C.background
                 ) {
                     Column {
                         LabeledRow(
@@ -327,7 +327,7 @@ fun HistoryFabs(
 
                 Section(
                     Str(R.string.show_hide),
-                    bgColor = C.dialogBg
+                    bgColor = C.background
                 ) {
                     Column {
                         // Allowed

@@ -190,7 +190,7 @@ fun <T> PopupChooseApps(
 
                         // divider
                         if (index < sortedApps.lastIndex) // don't show for the last item
-                            HorizontalDivider(thickness = 1.dp, color = C.dialogBg.slightDiff())
+                            HorizontalDivider(thickness = 1.dp, color = C.background.slightDiff())
                     }
                 }
             }

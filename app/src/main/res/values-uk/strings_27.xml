@@ -4,8 +4,7 @@
     <string name="success_allow">Успіх / Дозволити</string>
     <string name="error_block">Помилка / Блокувати</string>
     <string name="disable">Вимкнути</string>
-    <string name="dialog_bg">Фон діалогу</string>
-    <string name="app_bg">Фон додатку</string>
+    <string name="background">Фон</string>
     <string name="should_import_as_instant_query">
         <![CDATA[
         Схоже, це робочий процес \"API query\", його слід імпортувати у розділ вище \"Instant Query\".

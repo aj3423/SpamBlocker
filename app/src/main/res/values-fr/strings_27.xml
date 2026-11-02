@@ -4,8 +4,7 @@
     <string name="success_allow">Succès / Autoriser</string>
     <string name="error_block">Erreur / Bloquer</string>
     <string name="disable">Désactiver</string>
-    <string name="dialog_bg">Fond de la boîte de dialogue</string>
-    <string name="app_bg">Fond de l\'application</string>
+    <string name="background">Fond</string>
     <string name="should_import_as_instant_query">
         <![CDATA[
         Il semble s\'agir d\'un flux de travail « requête API », il devrait être importé dans la section ci‑dessus « Requête instantanée ».

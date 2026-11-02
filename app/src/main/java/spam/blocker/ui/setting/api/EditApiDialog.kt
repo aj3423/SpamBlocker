@@ -9,7 +9,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -33,11 +32,8 @@ import spam.blocker.ui.setting.bot.ActionList
 import spam.blocker.ui.setting.regex.RegexRuleFilterField
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.Button
-import spam.blocker.ui.widgets.GreyIcon18
-import spam.blocker.ui.widgets.Placeholder
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.PopupSize
-import spam.blocker.ui.widgets.RegexInputBox
 import spam.blocker.ui.widgets.ResImage
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Section
@@ -244,7 +240,7 @@ fun EditApiDialog(
                 AnimatedVisibleV(enabled) {
                     Section(
                         title = Str(R.string.workflow),
-                        bgColor = C.dialogBg
+                        bgColor = C.background
                     ) {
                         Column(modifier = M.fillMaxWidth()) {
                             // Action Header

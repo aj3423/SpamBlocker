@@ -79,7 +79,7 @@ fun BottomBar(vm: BottomBarViewModel) {
         modifier = M
             .heightIn(min = BottomNavHeight.dp)
             .fillMaxWidth()
-            .background(C.dialogBg)
+            .background(C.background)
             .onGloballyPositioned {
                 val totalWidthPx = min(it.size.width, MaxBottomBarWidth).toFloat()
 
@@ -106,7 +106,7 @@ fun BottomBar(vm: BottomBarViewModel) {
                         verticalArrangement = Arrangement.Center,
                         modifier = M
                             .width(itemWidth.dp)
-                            .background(C.dialogBg)
+                            .background(C.background)
                             .padding(vertical = 4.dp)
                             .clickable {
                                 val currentRoute = vm.tabItems.firstOrNull { it.isSelected.value }?.route

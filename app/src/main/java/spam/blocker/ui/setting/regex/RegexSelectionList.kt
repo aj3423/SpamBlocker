@@ -131,11 +131,11 @@ fun RegexSelectionList(
                     }
             ) {
                 RegexCard(
-                    rule = wrapper.rule, forType = wrapper.forType, containerBg = C.dialogBg,
+                    rule = wrapper.rule, forType = wrapper.forType, containerBg = C.background,
                     borderColor = if (targetDescs.any { it.regexMatches(wrapper.rule.description) }) {
                         C.teal200
                     } else {
-                        C.dialogBg.slightDiff()
+                        C.background.slightDiff()
                     }
                 )
             }

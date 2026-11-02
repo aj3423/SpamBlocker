@@ -2,9 +2,7 @@ package spam.blocker.ui.widgets
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.combinedClickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
@@ -155,8 +153,8 @@ fun DropdownWrapper(
             modifier = modifier,
             expanded = expanded.value,
             onDismissRequest = { expanded.value = false },
-            containerColor = C.dialogBg,
-            border = BorderStroke(1.dp, C.dialogBg.slightDiff())
+            containerColor = C.background,
+            border = BorderStroke(1.dp, C.background.slightDiff())
         ) {
             if (expanded.value) {
                 DropdownMenuItems(

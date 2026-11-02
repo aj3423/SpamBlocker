@@ -1040,7 +1040,7 @@ fun ReplyRuleEditDialog(
 
             Section(
                 Str(R.string.trigger),
-                bgColor = C.dialogBg
+                bgColor = C.background
             ) {
                 Column {
                     LabeledRow(R.string.trigger, helpTooltip = Str(R.string.help_ringtone_trigger)) {
@@ -1091,7 +1091,7 @@ fun ReplyRuleEditDialog(
 
             Section(
                 Str(R.string.ringtone),
-                bgColor = C.dialogBg
+                bgColor = C.background
             ) {
                 Column {
 // Mute + Sound
@@ -1161,7 +1161,7 @@ fun RingtoneRuleCard(
     cardModifier: Modifier,
     dragModifier: Modifier
 ) {
-    OutlineCard(containerBg = G.palette.dialogBg, modifier = cardModifier) {
+    OutlineCard(containerBg = G.palette.background, modifier = cardModifier) {
         RowVCenterSpaced(
             4,
             modifier = M.fillMaxSize().padding(horizontal = 10.dp, vertical = 8.dp)
