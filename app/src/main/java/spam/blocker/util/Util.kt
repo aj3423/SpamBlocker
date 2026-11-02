@@ -1034,9 +1034,14 @@ object Util {
             return false
         }
 
-        val manager = ctx.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+        return try {
+            val manager = ctx.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
 
-        return manager.callState == TelephonyManager.CALL_STATE_OFFHOOK
+            manager.callState == TelephonyManager.CALL_STATE_OFFHOOK
+        } catch (_: Exception) {
+            loge("isInCall(): no telephony service")
+            false
+        }
     }
 
     // Scale icons 6m -> 100kb, for use in notification channels
