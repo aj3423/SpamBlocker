@@ -12,4 +12,13 @@
     <string name="n_failed">%d başarısız</string>
     <string name="all_finished">Bitti</string>
     <string name="reporting">Bildiriliyor…</string>
+    <string name="cookie">Çerez: %s</string>
+    <string name="cookie_jar">Cookie Jar</string>
+    <string name="help_cookie_jar">
+        <![CDATA[
+        Birden fazla HTTP isteğinde çerezleri otomatik olarak yönetir. <br>
+        <br>
+        Yapılandırma gerekmez, iş akışında herhangi bir yere koymanız yeterlidir.
+        ]]>
+    </string>
 </resources>

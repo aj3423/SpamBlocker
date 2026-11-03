@@ -12,4 +12,13 @@
     <string name="n_failed">%d fallits</string>
     <string name="all_finished">Finalitzat</string>
     <string name="reporting">Informant…</string>
+    <string name="cookie">Cookie: %s</string>
+    <string name="cookie_jar">Cookie Jar</string>
+    <string name="help_cookie_jar">
+        <![CDATA[
+        Gestiona les galetes automàticament a través de múltiples sol·licituds HTTP. <br>
+        <br>
+        No cal configuració, només cal posar-ho a qualsevol lloc del flux de treball.
+        ]]>
+    </string>
 </resources>

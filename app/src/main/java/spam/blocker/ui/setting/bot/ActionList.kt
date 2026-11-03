@@ -95,14 +95,11 @@ fun ActionList(
                             // Draw a green/red line above/below each action card to
                             //  indicate whether it's chainable to the previous/next sibling.
                             if (!isDragging) {
-                                val prev: IAction? = if (index == 0) null else actions[index - 1]
-                                val prevChainable = isPreviousChainable(action, prev)
+                                val prevChainable = isPreviousChainable(actions, index)
                                 if (prevChainable != null)
                                     link(if (prevChainable) Color.Green else Color.Red, true)
 
-                                val next: IAction? =
-                                    if (index >= actions.size - 1) null else actions[index + 1]
-                                val nextChainable = isNextChainable(action, next)
+                                val nextChainable = isNextChainable(actions, index)
                                 if (nextChainable != null)
                                     link(if (nextChainable) Color.Green else Color.Red, false)
                             }

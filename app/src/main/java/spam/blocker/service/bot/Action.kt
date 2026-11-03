@@ -43,6 +43,7 @@ val botTriggers = listOf(
 )
 val botActions = listOf(
     HttpRequest(),
+    CookieJar(),
     ReadFile(),
     WriteFile(),
     ParseCSV(),
@@ -75,6 +76,7 @@ val apiActions = listOf(
     InterceptCall(),
     InterceptSms(),
     HttpRequest(),
+    CookieJar(),
     ParseQueryResult(),
     FilterSpamResult(),
     ConvertNumber(),
@@ -91,6 +93,7 @@ val apiActions = listOf(
 // A list represents all input/output types, which is used to check whether two items are chainable.
 enum class ParamType {
     None,
+    Forward,
     String,
     ByteArray,
     RuleList,
@@ -101,6 +104,8 @@ enum class ParamType {
 //  store temporary values.
 data class ActionContext(
     val scope: CoroutineScope = CoroutineScope(IO),
+
+    var actions: List<IAction> = emptyList(),
 
     var logger: ILogger? = null,
 
@@ -273,44 +278,57 @@ fun String.parseActions(): List<IAction> {
     }
 }
 
+// If an action's outputParamType is listOf(ParamType.Forward), it forwards the output of the previous action.
+// Defaults to ParamType.None if there are no preceding actions.
+fun List<IAction>.effectiveOutputParamType(index: Int): List<ParamType> {
+    for (i in index downTo 0) {
+        val out = this[i].outputParamType()
+        if (out != listOf(ParamType.Forward)) {
+            return out
+        }
+    }
+    return listOf(ParamType.None)
+}
+
 // return:
 //  null - no need to draw the indicator
 //  true - draw green indicator
 //  false - draw red indicator
-fun isPreviousChainable(curr: IAction, prev: IAction?): Boolean? {
-    return if (prev == null) {
+fun isPreviousChainable(actions: List<IAction>, index: Int): Boolean? {
+    val curr = actions[index]
+    val effectivePrevOutput = if (index == 0) listOf(ParamType.None) else actions.effectiveOutputParamType(index - 1)
+
+    return if (index == 0) {
         if (curr.inputParamType().contains(ParamType.None))
             null
         else
             false
     } else {
-        // They will be chainable if the input/output param list share same type of params
-        curr.inputParamType().intersect(prev.outputParamType()).isNotEmpty()
+        curr.inputParamType().intersect(effectivePrevOutput).isNotEmpty()
     }
 }
 
-fun isNextChainable(curr: IAction, next: IAction?): Boolean? {
-    return if (next == null) {
-        if (curr.outputParamType().contains(ParamType.None))
+fun isNextChainable(actions: List<IAction>, index: Int): Boolean? {
+    val curr = actions[index]
+    val effectiveCurrOutput = actions.effectiveOutputParamType(index)
+
+    return if (index == actions.size - 1) {
+        if (effectiveCurrOutput.contains(ParamType.None))
             null
         else
             false
     } else {
-        curr.outputParamType().intersect(next.inputParamType()).isNotEmpty()
+        effectiveCurrOutput.intersect(actions[index + 1].inputParamType()).isNotEmpty()
     }
 }
 
 // Returns whether there is any error in this chain.
 fun List<IAction>.allChainable(): Boolean {
     for (i in this.indices) {
-        val curr = this[i]
-
-        val prev: IAction? = if (i == 0) null else this[i - 1]
-        val prevOK = isPreviousChainable(curr, prev)
+        val prevOK = isPreviousChainable(this, i)
         if (prevOK == false) return false
 
-        val next: IAction? = if (i == this.size - 1) null else this[i + 1]
-        val nextOK = isNextChainable(curr, next)
+        val nextOK = isNextChainable(this, i)
         if (nextOK == false) return false
     }
     return true
@@ -323,6 +341,8 @@ fun List<IAction>.executeAll(
     aCtx: ActionContext,
 ): Boolean {
     val self = this
+
+    aCtx.actions = this
 
     // Run until any action fails
     val anyError = runBlocking {

@@ -12,4 +12,13 @@
     <string name="n_failed">Збоїв: %d</string>
     <string name="all_finished">Готово</string>
     <string name="reporting">Надсилання…</string>
+    <string name="cookie">Cookie: %s</string>
+    <string name="cookie_jar">Cookie Jar</string>
+    <string name="help_cookie_jar">
+        <![CDATA[
+        Автоматично керує cookie у кількох HTTP-запитах. <br>
+        <br>
+        Налаштування не потрібне, просто додайте у будь-яке місце робочого процесу.
+        ]]>
+    </string>
 </resources>

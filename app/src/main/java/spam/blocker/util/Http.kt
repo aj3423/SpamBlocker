@@ -18,6 +18,7 @@ data class HttpResult(
     val statusCode: Int? = null,
     val echo: ByteArray? = null,
     val exception: String? = null,
+    var cookies: List<String> = listOf(),
 )
 
 const val UA = "User-Agent"
@@ -67,17 +68,24 @@ fun asyncHttpRequest(
                 }
             }
 
-            channel.send(
-                HttpResult(
-                    statusCode = conn.responseCode,
-                    echo = echo,
-                )
+            val result = HttpResult(
+                statusCode = conn.responseCode,
+                echo = echo,
             )
+
+            // handle cookies
+            conn.headerFields
+                .entries
+                .firstOrNull { it.key.equals("Set-Cookie", ignoreCase = true) }
+                ?.value
+                ?.let { cookies ->
+                    result.cookies += cookies
+                }
+
+            channel.send(result)
         } catch (e: Exception) {
             channel.send(
-                HttpResult(
-                    exception = "$e",
-                )
+                HttpResult(exception = "$e")
             )
         } finally {
             conn?.disconnect()

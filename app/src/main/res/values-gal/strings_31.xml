@@ -12,4 +12,13 @@
     <string name="n_failed">%d fallidos</string>
     <string name="all_finished">Rematado</string>
     <string name="reporting">Informando…</string>
+    <string name="cookie">Cookie: %s</string>
+    <string name="cookie_jar">Cookie Jar</string>
+    <string name="help_cookie_jar">
+        <![CDATA[
+        Xestiona cookies automaticamente a través de varias solicitudes HTTP. <br>
+        <br>
+        Sen necesidade de configuración, só colóqueo en calquera lugar do fluxo de traballo.
+        ]]>
+    </string>
 </resources>

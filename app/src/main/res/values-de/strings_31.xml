@@ -12,4 +12,13 @@
     <string name="n_failed">%d fehlgeschlagen</string>
     <string name="all_finished">Fertig</string>
     <string name="reporting">Melden…</string>
+    <string name="cookie">Cookie: %s</string>
+    <string name="cookie_jar">Cookie-Jar</string>
+    <string name="help_cookie_jar">
+        <![CDATA[
+        Verwaltet Cookies automatisch über mehrere HTTP-Anfragen hinweg. <br>
+        <br>
+        Keine Konfiguration erforderlich, einfach an beliebiger Stelle im Arbeitsablauf einfügen.
+        ]]>
+    </string>
 </resources>

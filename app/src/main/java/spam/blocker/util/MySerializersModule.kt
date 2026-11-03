@@ -15,6 +15,7 @@ import spam.blocker.service.bot.PostCallScreening
 import spam.blocker.service.bot.CallThrottling
 import spam.blocker.service.bot.CategoryConfig
 import spam.blocker.service.bot.ConvertNumber
+import spam.blocker.service.bot.CookieJar
 import spam.blocker.service.bot.CopyTag
 import spam.blocker.service.bot.Daily
 import spam.blocker.service.bot.Delay
@@ -147,6 +148,7 @@ val myModule = SerializersModule {
         subclass(Wait::class)
         subclass(TextReply::class)
         subclass(SendSms::class)
+        subclass(CookieJar::class)
     }
     polymorphic(IApi::class) {
         // the second param is only for being compatible with old serialized data `spam.blocker.db.QueryApi`

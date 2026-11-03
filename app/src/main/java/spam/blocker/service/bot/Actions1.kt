@@ -160,6 +160,49 @@ class PruneHistory(
     }
 }
 
+
+@Serializable
+@SerialName("CookieJar")
+class CookieJar(
+    var cookies: List<String> = listOf()
+) : IPermissiveAction {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        // TODO, save cook
+        return true
+    }
+
+    override fun label(ctx: Context): String {
+        return ctx.getString(R.string.cookie_jar)
+    }
+
+    @Composable
+    override fun Summary(showIcon: Boolean) {
+    }
+
+    override fun tooltip(ctx: Context): String {
+        return ctx.getString(R.string.help_cookie_jar)
+    }
+
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.Forward)
+    }
+
+    @Composable
+    override fun Icon() {
+        GreyIcon(R.drawable.ic_cookie)
+    }
+
+    @Composable
+    override fun Options() {
+        NoOptionNeeded()
+    }
+}
+
+
 const val HTTP_GET = 0
 const val HTTP_POST = 1
 
@@ -207,7 +250,19 @@ open class HttpRequest(
         }
     }
 
-    @OptIn(DelicateCoroutinesApi::class)
+    private fun getCookie(aCtx: ActionContext) : List<String> {
+        val cookieJar = aCtx.actions.firstOrNull { it is CookieJar }
+        return (cookieJar as? CookieJar)?.cookies ?: emptyList()
+    }
+    private fun updateCookie(aCtx: ActionContext, cookies: List<String>?) {
+        if (cookies == null)
+            return
+
+        val cookieJar = aCtx.actions.firstOrNull { it is CookieJar }
+        (cookieJar as? CookieJar)?.let{
+            it.cookies = cookies
+        }
+    }
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val C = G.palette
 
@@ -235,11 +290,21 @@ open class HttpRequest(
                 aCtx.logger?.debug(ctx.getString(R.string.resolved_url).formatAnnotated(resolvedUrl.A(C.textGrey.darken())))
 
                 // 2. Headers
-                val headersMap = splitHeader(ctx, header, aCtx.customTags)
+                val headersMap = splitHeader(ctx, header, aCtx.customTags).toMutableMap()
                 headersMap.forEach { (key, value) ->
                     aCtx.logger?.debug("${ctx.getString(R.string.http_header)}: %s -> %s".formatAnnotated(
                         key.A(C.textGrey.darken()), value.A(C.textGrey.darken())
                     ))
+                }
+                // Cookies
+                val cookies = getCookie(aCtx)
+                if (cookies.isNotEmpty()) {
+                    headersMap["Cookie"] = cookies.joinToString(" ")
+                    aCtx.logger?.debug(
+                        "${ctx.getString(R.string.cookie)}: %s".formatAnnotated(
+                            cookies.joinToString(" ").truncate().A(C.textGrey.darken())
+                        )
+                    )
                 }
 
                 // 3. post body
@@ -278,6 +343,7 @@ open class HttpRequest(
                     throw Exception(result.exception)
                 }
 
+                updateCookie(aCtx, result?.cookies)
                 aCtx.lastOutput = result?.echo
 
                 // The limit=1000 is necessary, otherwise the log can exceed 2Mb and crash sqlite,
