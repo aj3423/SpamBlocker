@@ -2,6 +2,7 @@ package spam.blocker.ui.widgets
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.imePadding
@@ -16,6 +17,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -105,49 +107,52 @@ fun PopupDialog(
                 ),
                 shape = RoundedCornerShape(4.dp)
             ) {
-                ColumnCenterSpaced(
-                    space = contentGap,
-                    modifier = M
-                        .padding(
-                            vertical = PopupScrollVPadding.dp
-                        )
-                        .then(
-                            if (!scrollEnabled) M else {
-                                M
-                                    .verticalScroll(scrollState)
-                                    .simpleVerticalScrollbar(
-                                        scrollState,
-                                        offsetX = -8,
-                                        persistent = true
-                                    )
-                            }
-                        )
-                        .padding(
-                            horizontal = PopupPaddingHorizontal.dp,
-                            vertical = (PopupPaddingVertical- PopupScrollVPadding).dp
-                        )
-                    ,
+                Column(
+                    modifier = M.padding(
+                        horizontal = PopupPaddingHorizontal.dp,
+                        vertical = (PopupPaddingVertical - PopupScrollVPadding).dp
+                    )
                 ) {
-                    // Icon
-                    icon?.let {
-                        icon()
-                    }
+                    ColumnCenterSpaced(
+                        space = contentGap,
+                        modifier = M
+                            .weight(1f, fill = false)
+                            .padding(
+                                vertical = PopupScrollVPadding.dp
+                            )
+                            .then(
+                                if (!scrollEnabled) M else {
+                                    M
+                                        .verticalScroll(scrollState)
+                                        .simpleVerticalScrollbar(
+                                            scrollState,
+                                            offsetX = -8,
+                                            persistent = true
+                                        )
+                                }
+                            )
 
-                    // Title
-                    title?.let {
-                        title()
-                    }
+                        ,
+                    ) {
+                        // Icon
+                        icon?.let {
+                            icon()
+                        }
 
-                    // Content
-                    content()
+                        // Title
+                        title?.let {
+                            title()
+                        }
+
+                        // Content
+                        content()
+                    }
 
                     // Button Row
                     buttons?.let {
                         RowVCenter(
                             horizontalArrangement = Arrangement.End,
-                            modifier = M
-                                .padding(top = 16.dp)
-                                .align(Alignment.End)
+                            modifier = M.align(Alignment.End).padding(top = 6.dp)
                         ) {
                             buttons()
                         }
