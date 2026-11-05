@@ -21,4 +21,17 @@
         Yapılandırma gerekmez, iş akışında herhangi bir yere koymanız yeterlidir.
         ]]>
     </string>
+    <string name="success_status_code">Başarılı Durum Kodu</string>
+    <string name="help_success_status_code">
+        <![CDATA[
+        Başarılı HTTP durum kodları. Listelenmeyen kodlar başarısız sayılır ve iş akışını durdurur. <br>
+        <br>
+        Birden fazla kod veya aralık virgülle ayrılabilir. <br>
+        Örn: <sample><b>200-299, 404</b></sample> <br>
+        <br>
+        <sample><b>Kullanım senaryosu</b></sample> <br>
+        &ensp; Bazı siteler sorgulanan numara bulunamadığında <error>404</error> döndürür, bu da numaranın temiz olduğu anlamına gelir.
+        Geçmiş kaydındaki <warn><b>!</b></warn> isteğin başarısız olduğunu gösterir, bunu önlemek için buraya <error>404</error> ekleyin.
+        ]]>
+    </string>
 </resources>

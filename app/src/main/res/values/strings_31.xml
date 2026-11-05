@@ -21,4 +21,17 @@
         No configuration needed, just put it anywhere in the workflow.
         ]]>
     </string>
+    <string name="success_status_code">Success Status Code</string>
+    <string name="help_success_status_code">
+        <![CDATA[
+        Successful HTTP status codes. Unlisted codes are treated as failures and will stop the workflow. <br>
+        <br>
+        Multiple codes or ranges can be comma separated. <br>
+        E.g.: <sample><b>200-299, 404</b></sample> <br>
+        <br>
+        <sample><b>Use case</b></sample> <br>
+        &ensp; Some sites return <error>404</error> when a queried number isn\'t found, which means it\'s clean.
+         A <warn><b>!</b></warn> in the history record indicates that the request failed, add <error>404</error> here to avoid that.
+        ]]>
+    </string>
 </resources>

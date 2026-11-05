@@ -221,7 +221,21 @@ open class HttpRequest(
     var enableRetry: Boolean = false,
     var retryTimes: Int = 0,
     var retryDelayMs: Int = 0,
+
+    var successStatusCode: String = "200-299",
 ) : IPermissiveAction {
+
+    private fun isSuccessCode(code: Int, ranges: String): Boolean {
+        return ranges.split(",").any { part ->
+            val trimmed = part.trim()
+            if (trimmed.contains("-")) {
+                val parts = trimmed.split("-").mapNotNull { it.trim().toIntOrNull() }
+                if (parts.size == 2) code in parts[0]..parts[1] else false
+            } else {
+                trimmed.toIntOrNull() == code
+            }
+        }
+    }
     /*
     Split the header string:
         ua: chrome\n
@@ -350,8 +364,9 @@ open class HttpRequest(
                 //   and it slows down the api query, see: https://github.com/aj3423/SpamBlocker/issues/588
                 val echo = String(result?.echo ?: byteArrayOf()).truncate(limit = 1000)
 
-                if (result?.statusCode in 200..299) {
-                    aCtx.logger?.success("HTTP: <${result?.statusCode}>")
+                val isSuccess = result?.statusCode != null && isSuccessCode(result.statusCode, successStatusCode)
+                if (isSuccess) {
+                    aCtx.logger?.success("HTTP: <${result.statusCode}>")
                     aCtx.logger?.debug("%s".formatAnnotated(echo.A(C.textGrey.darken())))
                     return true
                 } else {
@@ -501,6 +516,15 @@ open class HttpRequest(
                     )
                 }
             }
+
+            // Status code
+            StrInputBox(
+                text = successStatusCode,
+                label = { Text(Str(R.string.success_status_code)) },
+                placeholder = { Placeholder("200-299, 404") },
+                helpTooltip = Str(R.string.help_success_status_code),
+                onValueChange = { successStatusCode = it }
+            )
         }
     }
 }

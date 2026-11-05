@@ -21,4 +21,17 @@
         Tidak perlu konfigurasi, cukup letakkan di mana saja dalam alur kerja.
         ]]>
     </string>
+    <string name="success_status_code">Kode Status Sukses</string>
+    <string name="help_success_status_code">
+        <![CDATA[
+        Kode status HTTP yang sukses. Kode yang tidak terdaftar dianggap sebagai kegagalan dan akan menghentikan alur kerja. <br>
+        <br>
+        Beberapa kode atau rentang dapat dipisahkan dengan koma. <br>
+        Contoh: <sample><b>200-299, 404</b></sample> <br>
+        <br>
+        <sample><b>Kasus penggunaan</b></sample> <br>
+        &ensp; Beberapa situs mengembalikan <error>404</error> ketika nomor yang dicari tidak ditemukan, yang berarti nomor tersebut bersih.
+        Tanda <warn><b>!</b></warn> di catatan riwayat menunjukkan bahwa permintaan gagal, tambahkan <error>404</error> di sini untuk menghindarinya.
+        ]]>
+    </string>
 </resources>

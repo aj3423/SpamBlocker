@@ -21,4 +21,17 @@
         設定は不要で、ワークフロー内の任意の場所に配置するだけです。
         ]]>
     </string>
+    <string name="success_status_code">成功ステータスコード</string>
+    <string name="help_success_status_code">
+        <![CDATA[
+        成功した HTTP ステータスコード。リストにないコードは失敗として扱われ、ワークフローが停止します。<br>
+        <br>
+        複数のコードや範囲はカンマで区切ることができます。<br>
+        例: <sample><b>200-299, 404</b></sample><br>
+        <br>
+        <sample><b>使用例</b></sample><br>
+        &ensp; 一部のサイトでは、照会した番号が見つからない場合に <error>404</error> を返しますが、これは安全であることを意味します。
+        履歴の <warn><b>!</b></warn> はリクエストが失敗したことを示します。それを回避するにはここに <error>404</error> を追加してください。
+        ]]>
+    </string>
 </resources>

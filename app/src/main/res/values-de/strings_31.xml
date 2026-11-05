@@ -21,4 +21,17 @@
         Keine Konfiguration erforderlich, einfach an beliebiger Stelle im Arbeitsablauf einfügen.
         ]]>
     </string>
+    <string name="success_status_code">Erfolgs-Statuscode</string>
+    <string name="help_success_status_code">
+        <![CDATA[
+        Erfolgreiche HTTP-Statuscodes. Nicht aufgeführte Codes werden als Fehler behandelt und stoppen den Arbeitsablauf. <br>
+        <br>
+        Mehrere Codes oder Bereiche können durch Kommas getrennt werden. <br>
+        Z. B.: <sample><b>200-299, 404</b></sample> <br>
+        <br>
+        <sample><b>Anwendungsfall</b></sample> <br>
+        &ensp; Einige Seiten geben <error>404</error> zurück, wenn eine abgefragte Nummer nicht gefunden wird, was bedeutet, dass sie sauber ist.
+        Ein <warn><b>!</b></warn> im Verlaufseintrag zeigt an, dass die Anfrage fehlgeschlagen ist; füge hier <error>404</error> hinzu, um dies zu vermeiden.
+        ]]>
+    </string>
 </resources>

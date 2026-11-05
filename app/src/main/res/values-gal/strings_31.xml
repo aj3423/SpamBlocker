@@ -21,4 +21,17 @@
         Sen necesidade de configuración, só colóqueo en calquera lugar do fluxo de traballo.
         ]]>
     </string>
+    <string name="success_status_code">Código de estado correcto</string>
+    <string name="help_success_status_code">
+        <![CDATA[
+        Códigos de estado HTTP de éxito. Os códigos non listados considéranse fallos e deterán o fluxo de traballo. <br>
+        <br>
+        Pódense separar varios códigos ou rangos con comas. <br>
+        Ex.: <sample><b>200-299, 404</b></sample> <br>
+        <br>
+        <sample><b>Caso de uso</b></sample> <br>
+        &ensp; Algúns sitios devolven <error>404</error> cando non se atopa un número consultado, o que significa que está limpo.
+        Un <warn><b>!</b></warn> no rexistro do historial indica que a solicitude fallou, engada <error>404</error> aquí para evitalo.
+        ]]>
+    </string>
 </resources>

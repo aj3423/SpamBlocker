@@ -21,4 +21,17 @@
         No cal configuració, només cal posar-ho a qualsevol lloc del flux de treball.
         ]]>
     </string>
+    <string name="success_status_code">Codi d\'estat de feina feta</string>
+    <string name="help_success_status_code">
+        <![CDATA[
+        Codis d\'estat HTTP d\'èxit. Els codis no llistats es consideren errors i aturaran el flux de treball. <br>
+        <br>
+        Es poden separar diversos codis o intervals amb comes. <br>
+        Ex.: <sample><b>200-299, 404</b></sample> <br>
+        <br>
+        <sample><b>Cas d’ús</b></sample> <br>
+        &ensp; Alguns llocs retornen <error>404</error> quan no es troba un número consultat, la qual cosa significa que està net.
+        Un <warn><b>!</b></warn> al registre de l\'historial indica que la sol·licitud ha fallat, afegiu <error>404</error> aquí per evitar-ho.
+        ]]>
+    </string>
 </resources>
