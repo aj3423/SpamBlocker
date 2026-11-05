@@ -131,8 +131,6 @@ fun PopupDialog(
                                         )
                                 }
                             )
-
-                        ,
                     ) {
                         // Icon
                         icon?.let {

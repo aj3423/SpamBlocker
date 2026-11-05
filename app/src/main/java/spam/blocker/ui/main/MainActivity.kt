@@ -23,6 +23,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.withContext
 import spam.blocker.BuildConfig
 import spam.blocker.G
 import spam.blocker.R
@@ -49,6 +53,7 @@ import spam.blocker.ui.widgets.TabItem
 import spam.blocker.util.Launcher
 import spam.blocker.util.Util
 import spam.blocker.util.spf
+import kotlin.time.Duration.Companion.milliseconds
 
 
 class MainActivity : ComponentActivity() {
@@ -153,8 +158,10 @@ class MainActivity : ComponentActivity() {
 
         // Load all records to show unread badge in the bottom bar.
         LaunchedEffect(showHistoryPassed.value, showHistoryBlocked.value) {
-            G.callVM.reload(ctx)
-            G.smsVM.reload(ctx)
+            withContext(IO) {
+                G.callVM.reload(ctx)
+                G.smsVM.reload(ctx)
+            }
         }
 
         // An extra surface to make the top-status-bar and bottom-system-bar
