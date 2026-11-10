@@ -46,7 +46,7 @@
     <string name="repeated_call">Panggilan Berulang</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Izinkan panggilan berulang, karena kemungkinan besar lebih mendesak daripada spam. <br>
+        Izinkan panggilan berulang. <br>
         <br>
         Secara default, panggilan kedua dalam waktu <highlight><b>5 menit</b></highlight> akan diizinkan. <br>
         <br>

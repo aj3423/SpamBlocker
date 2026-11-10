@@ -46,7 +46,7 @@
     <string name="repeated_call">שיחה חוזרת</string>
     <string name="help_repeated_call">
         <![CDATA[
-        אפשר שיחות חוזרות, סביר יותר שהן דחופות מאשר ספאם. <br>
+        אפשר שיחות חוזרות. <br>
         <br>
         כברירת מחדל, שיחה שנייה בתוך <highlight><b>5 דקות</b></highlight> תאושר. <br>
         <br>

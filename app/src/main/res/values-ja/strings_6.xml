@@ -43,7 +43,7 @@
     <string name="repeated_call">繰り返し通話</string>
     <string name="help_repeated_call">
         <![CDATA[
-        リピートコールを許可します。これらはスパム電話よりも緊急である可能性が高いためです。 <br>
+        リピートコールを許可します。 <br>
         <br>
         デフォルトでは、<highlight><b>5分</b></highlight>以内の2回目の電話が許可されます。 <br>
         <br>

@@ -42,7 +42,7 @@
     <string name="repeated_call">重复呼叫</string>
     <string name="help_repeated_call">
         <![CDATA[
-        允许重复呼叫，因为它们比垃圾电话更有可能是紧急电话。 <br>
+        允许重复呼叫。 <br>
         <br>
         默认情况下，5 分钟内的第二次呼叫将被允许。 <br>
         <br>

@@ -43,7 +43,7 @@
     <string name="repeated_call">Chiamata ripetuta</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Consenti chiamate ripetute, è più probabile che siano urgenti piuttosto che spam. <br>
+        Consenti chiamate ripetute. <br>
         <br>
         Per impostazione predefinita, la seconda chiamata entro <highlight><b>5 minuti</b></highlight> sarà consentita. <br>
         <br>

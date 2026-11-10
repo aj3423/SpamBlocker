@@ -46,7 +46,7 @@
     <string name="repeated_call">重複來電</string>
     <string name="help_repeated_call">
         <![CDATA[
-        允許重複來電，因為它們比垃圾電話更有可能是緊急來電。 <br>
+        允許重複來電。 <br>
         <br>
         預設情況下，5 分鐘內的第二次來電將被允許。 <br>
         <br>

@@ -43,7 +43,7 @@
     <string name="repeated_call">تماس مکرر</string>
     <string name="help_repeated_call">
         <![CDATA[
-        اجازه دادن به تماس‌های تکراری، زیرا احتمالاً بیشتر از اسپم ضروری هستند. <br>
+        اجازه دادن به تماس‌های تکراری. <br>
         <br>
         به طور پیش‌فرض، تماس دوم در بازه زمانی <highlight><b>5 دقیقه</b></highlight> مجاز خواهد بود. <br>
         <br>

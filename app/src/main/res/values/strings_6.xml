@@ -44,7 +44,7 @@
     <string name="repeated_call">Repeated Call</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Allow repeated calls, they are more likely to be urgent than spam. <br>
+        Allow repeated calls. <br>
         <br>
         By default, the second call within <highlight><b>5 minutes</b></highlight> will be allowed. <br>
         <br>

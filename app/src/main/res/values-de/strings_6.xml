@@ -43,7 +43,7 @@
     <string name="repeated_call">Wiederholter Anruf</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Erlaube wiederholte Anrufe, da diese eher dringend als Spam-Anrufe sind. <br>
+        Erlaube wiederholte Anrufe. <br>
         <br>
         Standardmäßig wird der zweite Anruf innerhalb von <highlight><b>5 Minuten</b></highlight> zugelassen. <br>
         <br>

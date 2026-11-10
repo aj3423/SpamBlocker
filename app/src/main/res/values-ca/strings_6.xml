@@ -46,7 +46,7 @@
     <string name="repeated_call"><translate>Trucada repetida</translate></string>
     <string name="help_repeated_call">
         <![CDATA[
-        Permetre trucades repetides, és més probable que siguin urgents que spam. <br>
+        Permetre trucades repetides. <br>
         <br>
         Per defecte, es permetrà la segona trucada en un termini de <highlight><b>5 minuts</b></highlight>. <br>
         <br>

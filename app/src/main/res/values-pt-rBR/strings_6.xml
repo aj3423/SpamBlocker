@@ -43,7 +43,7 @@
     <string name="repeated_call">Chamada Repetida</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Permitir chamadas repetidas, pois elas têm mais probabilidade de serem urgentes do que spam. <br>
+        Permitir chamadas repetidas. <br>
         <br>
         Por padrão, a segunda chamada dentro de <highlight><b>5 minutos</b></highlight> será permitida. <br>
         <br>

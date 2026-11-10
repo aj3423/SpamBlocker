@@ -43,7 +43,7 @@
     <string name="repeated_call">Tekrarlanan Arama</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Tekrarlanan aramalara izin verin, bunların spamdan ziyade acil olma olasılığı daha yüksektir. <br>
+        Tekrarlanan aramalara izin verin. <br>
         <br>
         Varsayılan olarak, <highlight><b>5 dakika</b></highlight> içindeki ikinci aramaya izin verilir. <br>
         <br>

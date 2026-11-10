@@ -43,7 +43,7 @@
     <string name="repeated_call">Appel répété</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Autoriser les appels répétés, ils sont plus susceptibles d\'être urgents que du spam. <br>
+        Autoriser les appels répétés. <br>
         <br>
         Par défaut, le deuxième appel dans un délai de <highlight><b>5 minutes</b></highlight> sera autorisé. <br>
         <br>
