@@ -14,6 +14,7 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -22,6 +23,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.launch
 import spam.blocker.Events
 import spam.blocker.G
 import spam.blocker.R
@@ -215,6 +218,8 @@ fun SpamDB() {
             var keyword by remember { mutableStateOf("") }
             val listState = remember { mutableStateListOf<SpamNumber>() }
 
+            val coroutine = rememberCoroutineScope()
+
             fun refresh() {
                 listState.clear()
                 listState.addAll(SpamTable.search(ctx, keyword, MAX_LIST_SIZE))
@@ -229,12 +234,16 @@ fun SpamDB() {
                 onValueChange = {
                     keyword = it
                     debouncer.debounce {
-                        refresh()
+                        coroutine.launch(IO) {
+                            refresh()
+                        }
                     }
                 },
                 trailingIcon = {
                     GreyIcon18(R.drawable.ic_refresh, modifier = M.clickable {
-                        refresh()
+                        coroutine.launch(IO) {
+                            refresh()
+                        }
                     })
                 }
             )
