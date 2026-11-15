@@ -125,6 +125,9 @@ fun SpamNumCard(
 fun SpamDB() {
     val C = G.palette
     val ctx = LocalContext.current
+
+    val coroutine = rememberCoroutineScope()
+
     val spf = spf.SpamDB(ctx)
 
     var isEnabled by remember { mutableStateOf(spf.isEnabled) }
@@ -146,9 +149,11 @@ fun SpamDB() {
         trigger = deleteConfirm,
         buttons = {
             StrokeButton(label = Str(R.string.clear), color = C.error) {
-                deleteConfirm.value = false
-                SpamTable.clearAll(ctx)
-                total = SpamTable.count(ctx)
+                coroutine.launch { // avoid ANR, deleting 6m numbers can take > 5s
+                    deleteConfirm.value = false
+                    SpamTable.clearAll(ctx)
+                    total = SpamTable.count(ctx)
+                }
             }
         }
     ) {
@@ -217,8 +222,6 @@ fun SpamDB() {
             // Search list
             var keyword by remember { mutableStateOf("") }
             val listState = remember { mutableStateListOf<SpamNumber>() }
-
-            val coroutine = rememberCoroutineScope()
 
             fun refresh() {
                 listState.clear()
