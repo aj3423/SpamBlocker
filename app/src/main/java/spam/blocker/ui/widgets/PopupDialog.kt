@@ -126,7 +126,7 @@ fun PopupDialog(
                                         .verticalScroll(scrollState)
                                         .simpleVerticalScrollbar(
                                             scrollState,
-                                            offsetX = -8,
+                                            offsetX = 32,
                                             persistent = true
                                         )
                                 }

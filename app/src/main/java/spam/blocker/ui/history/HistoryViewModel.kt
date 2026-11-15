@@ -53,7 +53,7 @@ open class HistoryViewModel(
 
             all.filter { isVisible(ctx, it, filter) }
         } else {
-            all
+            all.filter { isVisible(ctx, it, null) }
         }
         records.addAll(filtered)
         selectedIds.retainAll(records.map { it.id }.toSet())
