@@ -46,16 +46,17 @@ open class HistoryViewModel(
     fun reload(ctx: Context) {
         records.clear()
 
-        val all = table.listRecords(ctx)
-        val filtered = if (filter.value.isNotEmpty()) {
+        val textFilter = if (filter.value.isNotEmpty()) {
             // Fuzzy search
-            val filter = FuzzyFilter(filter.value)
-
-            all.filter { isVisible(ctx, it, filter) }
+            FuzzyFilter(filter.value)
         } else {
-            all.filter { isVisible(ctx, it, null) }
+            null
         }
-        records.addAll(filtered)
+
+        records.addAll(
+            table.listRecords(ctx)
+                .filter { isVisible(ctx, it, textFilter) }
+        )
         selectedIds.retainAll(records.map { it.id }.toSet())
     }
 

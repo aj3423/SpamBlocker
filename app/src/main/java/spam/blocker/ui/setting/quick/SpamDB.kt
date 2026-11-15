@@ -48,11 +48,13 @@ import spam.blocker.ui.widgets.PriorityLabel
 import spam.blocker.ui.widgets.ResIcon18
 import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.RowVCenterSpaced
+import spam.blocker.ui.widgets.SearchBox
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwipeInfo
 import spam.blocker.ui.widgets.SwitchBox
+import spam.blocker.util.LockedDebouncer
 import spam.blocker.util.TimeUtils.formatTime
 import spam.blocker.util.spf
 import java.text.NumberFormat
@@ -213,19 +215,26 @@ fun SpamDB() {
             var keyword by remember { mutableStateOf("") }
             val listState = remember { mutableStateListOf<SpamNumber>() }
 
+            fun refresh() {
+                listState.clear()
+                listState.addAll(SpamTable.search(ctx, keyword, MAX_LIST_SIZE))
+            }
+
+            val debouncer = remember { LockedDebouncer(waitMs = 400) }
+
             StrInputBox(
                 label = { GreyLabel(text = Str(strId = R.string.search_number)) },
                 text = keyword,
                 leadingIconId = R.drawable.ic_find,
                 onValueChange = {
                     keyword = it
-                    listState.clear()
-                    listState.addAll(SpamTable.search(ctx, keyword, MAX_LIST_SIZE))
+                    debouncer.debounce {
+                        refresh()
+                    }
                 },
                 trailingIcon = {
                     GreyIcon18(R.drawable.ic_refresh, modifier = M.clickable {
-                        listState.clear()
-                        listState.addAll(SpamTable.search(ctx, keyword, MAX_LIST_SIZE))
+                        refresh()
                     })
                 }
             )
