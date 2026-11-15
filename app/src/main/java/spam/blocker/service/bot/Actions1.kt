@@ -17,7 +17,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import kotlinx.coroutines.CancellationException
-import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import org.json.JSONObject
@@ -33,6 +32,9 @@ import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.db.SmsTable
 import spam.blocker.db.SpamTable
 import spam.blocker.def.Def
+import spam.blocker.service.bot.stream.ByteStream
+import spam.blocker.service.bot.stream.CsvRuleStream
+import spam.blocker.service.bot.stream.ListRuleStream
 import spam.blocker.ui.M
 import spam.blocker.ui.darken
 import spam.blocker.ui.history.tagCategory
@@ -46,7 +48,6 @@ import spam.blocker.util.Algorithm
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.ui.widgets.DirButton
-import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.GreyIcon18
@@ -59,13 +60,11 @@ import spam.blocker.ui.widgets.RegexInputBox
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
-import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.SummaryLabel
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.A
 import spam.blocker.util.BackupUtils
-import spam.blocker.util.CSVParser
-import spam.blocker.util.FileUtils.readFileFromTree
+import spam.blocker.util.FileUtils.findFileInTree
 import spam.blocker.util.FileUtils.writeFileInTree
 import spam.blocker.util.Now
 import spam.blocker.util.Util
@@ -86,10 +85,6 @@ import spam.blocker.util.resolveTimeTags
 import spam.blocker.util.toFolderDisplayName
 import spam.blocker.util.toStringMap
 import spam.blocker.util.truncate
-import java.io.BufferedReader
-import java.io.ByteArrayInputStream
-import java.io.InputStreamReader
-import java.io.PushbackReader
 
 @Composable
 fun NoOptionNeeded() {
@@ -358,11 +353,12 @@ open class HttpRequest(
                 }
 
                 updateCookie(aCtx, result?.cookies)
-                aCtx.lastOutput = result?.echo
+                val echoBytes = result?.echo ?: byteArrayOf()
+                aCtx.lastOutput = ByteStream.fromBytes(echoBytes)
 
                 // The limit=1000 is necessary, otherwise the log can exceed 2Mb and crash sqlite,
                 //   and it slows down the api query, see: https://github.com/aj3423/SpamBlocker/issues/588
-                val echo = String(result?.echo ?: byteArrayOf()).truncate(limit = 1000)
+                val echo = String(echoBytes).truncate(limit = 1000)
 
                 val isSuccess = result?.statusCode != null && isSuccessCode(result.statusCode, successStatusCode)
                 if (isSuccess) {
@@ -423,7 +419,7 @@ open class HttpRequest(
     }
 
     override fun outputParamType(): List<ParamType> {
-        return listOf(ParamType.ByteArray, ParamType.None)
+        return listOf(ParamType.ByteStream, ParamType.None)
     }
 
     @Composable
@@ -673,7 +669,7 @@ class BackupExport(
 
         aCtx.logger?.debug(ctx.getString(R.string.action_backup_export))
 
-        aCtx.lastOutput = compressed
+        aCtx.lastOutput = ByteStream.fromBytes(compressed)
         return true
     }
 
@@ -709,7 +705,7 @@ class BackupExport(
     }
 
     override fun outputParamType(): List<ParamType> {
-        return listOf(ParamType.ByteArray)
+        return listOf(ParamType.ByteStream)
     }
 
     @Composable
@@ -761,7 +757,8 @@ class BackupImport(
     var encryptKey: String? = null,
 ) : IPermissiveAction {
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-        var input = aCtx.lastOutput as ByteArray
+        var input = (aCtx.lastOutput as? ByteStream)?.openStream(ctx)?.use { it.readBytes() }
+            ?: return false
 
         try {
             if (encrypt || BackupUtils.isEncrypted(input)) {
@@ -810,7 +807,7 @@ class BackupImport(
     }
 
     override fun inputParamType(): List<ParamType> {
-        return listOf(ParamType.ByteArray)
+        return listOf(ParamType.ByteStream)
     }
 
     override fun outputParamType(): List<ParamType> {
@@ -926,7 +923,7 @@ class ReadFile(
     override fun label(ctx: Context) = ctx.getString(R.string.action_read_file)
     override fun tooltip(ctx: Context) = ctx.getString(R.string.help_action_read_file)
     override fun inputParamType() = listOf(ParamType.None)
-    override fun outputParamType() = listOf(ParamType.ByteArray)
+    override fun outputParamType() = listOf(ParamType.ByteStream)
 
     @Composable
     override fun Icon() = GreyIcon(R.drawable.ic_file_read)
@@ -934,8 +931,9 @@ class ReadFile(
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val treeUri = validateAndLog(ctx, aCtx) ?: return false
         return try {
-            val bytes = readFileFromTree(ctx, treeUri, filename.resolveTimeTags())
-            aCtx.lastOutput = bytes
+            val fileUri = findFileInTree(ctx, treeUri, filename.resolveTimeTags())
+                ?: return false
+            aCtx.lastOutput = ByteStream.fromUri(fileUri)
             true
         } catch (e: Exception) {
             aCtx.logger?.error("$e")
@@ -952,14 +950,17 @@ class WriteFile(
 ) : FileAction() {
     override fun label(ctx: Context) = ctx.getString(R.string.action_write_file)
     override fun tooltip(ctx: Context) = ctx.getString(R.string.help_action_write_file)
-    override fun inputParamType() = listOf(ParamType.ByteArray)
+    override fun inputParamType() = listOf(ParamType.ByteStream)
     override fun outputParamType() = listOf(ParamType.None)
 
     @Composable
     override fun Icon() = GreyIcon(R.drawable.ic_file_write)
 
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-        val input = aCtx.lastOutput as? ByteArray ?: return false
+        val input = when (val last = aCtx.lastOutput) {
+            is ByteStream -> last.openStream(ctx).use { it.readBytes() }
+            else -> return false
+        }
         val treeUri = validateAndLog(ctx, aCtx) ?: return false
         return try {
             writeFileInTree(ctx, treeUri, filename.resolveTimeTags(), input)
@@ -985,18 +986,15 @@ class ParseCSV(
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val C = G.palette
 
-        val input = aCtx.lastOutput as ByteArray
+        val input = aCtx.lastOutput
 
         return try {
-            // 1. Parse the csv to a `Csv` object that contains `header` and `rows`
-            val csv = CSVParser(
-                PushbackReader(BufferedReader(InputStreamReader(ByteArrayInputStream(input)))),
-                JSONObject(columnMapping).toStringMap(),
-            ).parse()
+            val columnMap = JSONObject(columnMapping).toStringMap()
+            val source = CsvRuleStream.fromByteStream(ctx, input as ByteStream, columnMap)
 
-            // 2. Check if the headers contains required column `pattern`
-            val colPattern = "pattern"
-            if (!csv.headers.contains(colPattern)) {
+            if (!source.headers.contains("pattern")) {
+                source.close()
+                val colPattern = "pattern"
                 aCtx.logger?.error(
                     ctx.getString(R.string.csv_missing_column).formatAnnotated(
                         colPattern.A(C.teal200), colPattern.A(C.teal200), colPattern.A(C.teal200)
@@ -1005,13 +1003,7 @@ class ParseCSV(
                 return false
             }
 
-            // 3. Map `Csv.rows` to `RegexRule`s
-            val rules = csv.rows.map { row ->
-                RegexRule.fromMap(csv.headers.zip(row).toMap())
-            }
-            aCtx.logger?.debug(ctx.getString(R.string.parsed_n_rules).format("${rules.size}"))
-
-            aCtx.lastOutput = rules
+            aCtx.lastOutput = source
             true
         } catch (e: Exception) {
             aCtx.logger?.error("$e")
@@ -1033,11 +1025,11 @@ class ParseCSV(
     }
 
     override fun inputParamType(): List<ParamType> {
-        return listOf(ParamType.ByteArray)
+        return listOf(ParamType.ByteStream)
     }
 
     override fun outputParamType(): List<ParamType> {
-        return listOf(ParamType.RuleList)
+        return listOf(ParamType.RuleStream)
     }
 
     @Composable
@@ -1056,10 +1048,6 @@ class ParseCSV(
     }
 }
 
-/*
-input: ByteArray
-output: List<RegexRule>
- */
 @Serializable
 @SerialName("ParseXML")
 class ParseXML(
@@ -1067,7 +1055,7 @@ class ParseXML(
 ) : IPermissiveAction {
 
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-        val input = aCtx.lastOutput as ByteArray
+        val input = (aCtx.lastOutput as ByteStream).openStream(ctx).use { it.readBytes() }
 
         return try {
             val rules = Xml.parseRules(bytes = input, xpath).map {
@@ -1076,7 +1064,7 @@ class ParseXML(
 
             aCtx.logger?.debug(ctx.getString(R.string.parsed_n_rules).format("${rules.size}"))
 
-            aCtx.lastOutput = rules
+            aCtx.lastOutput = ListRuleStream(rules)
             true
         } catch (e: Exception) {
             aCtx.logger?.error("$e")
@@ -1098,11 +1086,11 @@ class ParseXML(
     }
 
     override fun inputParamType(): List<ParamType> {
-        return listOf(ParamType.ByteArray)
+        return listOf(ParamType.ByteStream)
     }
 
     override fun outputParamType(): List<ParamType> {
-        return listOf(ParamType.RuleList)
+        return listOf(ParamType.RuleStream)
     }
 
     @Composable
@@ -1120,10 +1108,6 @@ class ParseXML(
     }
 }
 
-/*
-input: ByteArray
-output: List<RegexRule>
- */
 @Serializable
 @SerialName("RegexExtract")
 class RegexExtract(
@@ -1132,7 +1116,7 @@ class RegexExtract(
 ) : IPermissiveAction {
 
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-        val input = aCtx.lastOutput as ByteArray
+        val input = (aCtx.lastOutput as ByteStream).openStream(ctx).use { it.readBytes() }
 
         return try {
             val opts = Util.flagsToRegexOptions(regexFlags)
@@ -1147,7 +1131,7 @@ class RegexExtract(
 
             aCtx.logger?.debug(ctx.getString(R.string.parsed_n_rules).format("${rules.size}"))
 
-            aCtx.lastOutput = rules
+            aCtx.lastOutput = ListRuleStream(rules)
             true
         } catch (e: Exception) {
             aCtx.logger?.error("$e")
@@ -1169,11 +1153,11 @@ class RegexExtract(
     }
 
     override fun inputParamType(): List<ParamType> {
-        return listOf(ParamType.ByteArray)
+        return listOf(ParamType.ByteStream)
     }
 
     override fun outputParamType(): List<ParamType> {
-        return listOf(ParamType.RuleList)
+        return listOf(ParamType.RuleStream)
     }
 
     @Composable

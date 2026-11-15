@@ -8,10 +8,11 @@
     <string name="resolved_url">URL resolta: %s.</string>
     <string name="time_cost">Custo de tempo: %s milisegundos.</string>
     <string name="parsed_n_rules">Analizadas %s regras.</string>
-    <string name="add_n_numbers_to_spam_db">Engadindo %s números á base de datos de spam.</string>
+    <string name="adding_numbers_to_spam_db">Engadindo números á base de datos…</string>
+    <string name="added_n_numbers_to_spam_db">Engadidos %s números á base de datos.</string>
     <string name="nothing_to_import">A lista de números está baleira, nada que importar.</string>
     <string name="importing_n_numbers">Importando %s números.</string>
-    <string name="importing_n_rules">Importando %s regras.</string>
+    <string name="imported_n_rules">Importadas %s regras.</string>
     <string name="create_rule_with_numbers">Creando regra con %s números.</string>
     <string name="replace_rule_with_desc">Substituíndo a regra coa descrición: %s.</string>
     <string name="rule_with_desc_not_found">Regra coa descrición %s non atopada.</string>

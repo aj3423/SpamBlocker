@@ -95,8 +95,8 @@ enum class ParamType {
     None,
     Forward,
     String,
-    ByteArray,
-    RuleList,
+    ByteStream,
+    RuleStream,
     InstantQueryResult,
 }
 

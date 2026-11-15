@@ -58,38 +58,31 @@ object FileUtils {
         }
     }
 
-    fun readFileFromTree(ctx: Context, treeUri: Uri, filename: String): ByteArray? {
+    fun findFileInTree(ctx: Context, treeUri: Uri, filename: String): Uri? {
         val resolver = ctx.contentResolver
-
-        // 1. Build the URI to look at the children of the selected folder
         val documentId = DocumentsContract.getTreeDocumentId(treeUri)
         val childrenUri = DocumentsContract.buildChildDocumentsUriUsingTree(treeUri, documentId)
-
-        var fileUri: Uri? = null
-
-        // 2. Query the folder for the specific filename
-        val projection = arrayOf(DocumentsContract.Document.COLUMN_DOCUMENT_ID, DocumentsContract.Document.COLUMN_DISPLAY_NAME)
+        val projection = arrayOf(
+            DocumentsContract.Document.COLUMN_DOCUMENT_ID,
+            DocumentsContract.Document.COLUMN_DISPLAY_NAME,
+        )
 
         resolver.query(childrenUri, projection, null, null, null)?.use { cursor ->
             val nameIndex = cursor.getColumnIndexOrThrow(DocumentsContract.Document.COLUMN_DISPLAY_NAME)
             val idIndex = cursor.getColumnIndexOrThrow(DocumentsContract.Document.COLUMN_DOCUMENT_ID)
-
             while (cursor.moveToNext()) {
                 if (cursor.getString(nameIndex) == filename) {
-                    val foundId = cursor.getString(idIndex)
-                    // 3. Build the Document URI for the specific file found
-                    fileUri = DocumentsContract.buildDocumentUriUsingTree(treeUri, foundId)
-                    break
+                    return DocumentsContract.buildDocumentUriUsingTree(treeUri, cursor.getString(idIndex))
                 }
             }
         }
+        return null
+    }
 
-        // 4. If we found the file, read its bytes
-        return fileUri?.let { uri ->
+    fun readFileFromTree(ctx: Context, treeUri: Uri, filename: String): ByteArray? {
+        return findFileInTree(ctx, treeUri, filename)?.let { uri ->
             try {
-                resolver.openInputStream(uri)?.use { inputStream ->
-                    inputStream.readBytes()
-                }
+                ctx.contentResolver.openInputStream(uri)?.use { it.readBytes() }
             } catch (e: Exception) {
                 e.printStackTrace()
                 null

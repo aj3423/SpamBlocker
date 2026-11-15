@@ -2,24 +2,16 @@ package spam.blocker.service.bot
 
 import android.content.Context
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.heightIn
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.unit.dp
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import org.json.JSONObject
@@ -34,18 +26,16 @@ import spam.blocker.db.SpamTable
 import spam.blocker.db.ruleTableForType
 import spam.blocker.def.Def
 import spam.blocker.def.Def.ForNumber
-import spam.blocker.def.Def.ForQuickCopy
-import spam.blocker.def.Def.ForSms
+import spam.blocker.service.bot.stream.GroupedRuleStream
+import spam.blocker.service.bot.stream.MappingRuleStream
+import spam.blocker.service.bot.stream.RuleStream
+import spam.blocker.service.bot.stream.readAll
 import spam.blocker.service.checker.Checker
 import spam.blocker.service.checker.Checker.RegexRuleChecker
 import spam.blocker.ui.M
 import spam.blocker.ui.darken
-import spam.blocker.ui.screenHeightDp
 import spam.blocker.ui.setting.LabeledRow
-import spam.blocker.ui.setting.regex.RegexCard
 import spam.blocker.ui.setting.regex.RegexRuleFilterField
-import spam.blocker.ui.setting.regex.RegexSelectionList
-import spam.blocker.ui.slightDiff
 import spam.blocker.ui.setting.regex.EditRegexDialog
 import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.ui.widgets.GreyIcon
@@ -58,9 +48,7 @@ import spam.blocker.ui.widgets.RegexInputBox
 import spam.blocker.ui.widgets.ResIcon20
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
-import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SummaryLabel
-import spam.blocker.ui.widgets.simpleLazyScrollbar
 import spam.blocker.util.A
 import spam.blocker.util.PermissiveJson
 import spam.blocker.util.Util.domainFromUrl
@@ -81,43 +69,40 @@ class ImportToSpamDB(
 ) : IPermissiveAction {
 
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-        val rules = aCtx.lastOutput as List<*> // it's actually `List<RegexRule>`
-
-        if (rules.isEmpty()) {
-            return true
-        }
-
         return try {
+            aCtx.logger?.debug(ctx.getString(R.string.adding_numbers_to_spam_db))
+
             val now = System.currentTimeMillis()
+            val extra = if (importReason == ImportDbReason.ByAPI) domainFromUrl(aCtx.httpUrl) else null
+            var count = 0
 
-            val numbers = rules.map {
-                SpamNumber(
-                    peer = (it as RegexRule).pattern,
-                    time = now,
-                    importReason = importReason,
-                    // when import after API query, log the api domain for future reporting
-                    importReasonExtra = if (importReason == ImportDbReason.ByAPI)
-                        domainFromUrl(aCtx.httpUrl) else null,
-                )
+            fun import(rules: List<RegexRule>): String? {
+                if (rules.isEmpty()) return null
+                count += rules.size
+                return SpamTable.addAll(ctx, rules.map {
+                    SpamNumber(
+                        peer = it.pattern,
+                        time = now,
+                        importReason = importReason,
+                        importReasonExtra = extra,
+                    )
+                })
             }
 
-            aCtx.logger?.debug(
-                ctx.getString(R.string.add_n_numbers_to_spam_db)
-                    .format("${numbers.size}")
-            )
+            val error = (aCtx.lastOutput as RuleStream).use { stream ->
+                generateSequence { stream.batchReadRules().takeIf { it.isNotEmpty() } }
+                    .map { import(it) }
+                    .firstOrNull { it != null }
+            }
+            if (error != null) {
+                aCtx.logger?.error(error)
+                return false
+            }
 
-            val errorStr = SpamTable.addAll(ctx, numbers)
-
-            // Fire a global event to update UI
+            aCtx.logger?.debug(ctx.getString(R.string.added_n_numbers_to_spam_db).format("$count"))
             Events.spamDbUpdated.fire()
-
-            if (errorStr == null) {
-                aCtx.logger?.success(ctx.getString(R.string.imported_successfully))
-                true
-            } else {
-                aCtx.logger?.error(errorStr)
-                false
-            }
+            aCtx.logger?.success(ctx.getString(R.string.imported_successfully))
+            true
         } catch (e: Exception) {
             aCtx.logger?.error("$e")
             false
@@ -137,7 +122,7 @@ class ImportToSpamDB(
     }
 
     override fun inputParamType(): List<ParamType> {
-        return listOf(ParamType.RuleList)
+        return listOf(ParamType.RuleStream)
     }
 
     override fun outputParamType(): List<ParamType> {
@@ -177,10 +162,10 @@ class ImportAsRegexRule(
 ) : IPermissiveAction {
 
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-        // lastOutput is `List<RegexRule>`
-        val numberList = (aCtx.lastOutput as List<*>)
-            .map { (it as RegexRule).pattern }
-            .distinct()
+        val numberList = (aCtx.lastOutput as? RuleStream)?.readAll()
+            ?.map { it.pattern }
+            ?.distinct()
+            ?: return false
 
         return try {
 
@@ -305,7 +290,7 @@ class ImportAsRegexRule(
     }
 
     override fun inputParamType(): List<ParamType> {
-        return listOf(ParamType.RuleList)
+        return listOf(ParamType.RuleStream)
     }
 
     override fun outputParamType(): List<ParamType> {
@@ -405,34 +390,30 @@ class ImportAsMultipleRegexRules(
 ) : IPermissiveAction {
 
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-        val rules = (aCtx.lastOutput as List<*>) // lastOutput is `List<RegexRule>`
-            .map { it as RegexRule } // convert List<*> to List<RegexRule>
-
         return try {
-
-            // Do nothing when there isn't any number to add, to prevent adding a `()`
-            if (rules.isEmpty()) {
-                aCtx.logger?.warn(ctx.getString(R.string.nothing_to_import))
-                return true
-            }
-
-            aCtx.logger?.info(
-                ctx.getString(R.string.importing_n_rules)
-                    .format("${rules.size}")
-            )
-
-            rules.forEach {
-                when (importType) {
-                    ImportType.Create -> create(ctx, it)
-                    ImportType.Replace -> replace(ctx, it)
-                    else -> merge(ctx, it)
+            var count = 0
+            fun import(rules: List<RegexRule>) {
+                count += rules.size
+                rules.forEach {
+                    when (importType) {
+                        ImportType.Create -> create(ctx, it)
+                        ImportType.Replace -> replace(ctx, it)
+                        else -> merge(ctx, it)
+                    }
                 }
             }
 
+            (aCtx.lastOutput as RuleStream).use { stream ->
+                generateSequence { stream.batchReadRules().takeIf { it.isNotEmpty() } }
+                    .forEach(::import)
+            }
 
-            // fire event to update the UI
+            if (count == 0) {
+                aCtx.logger?.warn(ctx.getString(R.string.nothing_to_import))
+                return true
+            }
+            aCtx.logger?.info(ctx.getString(R.string.imported_n_rules).format("$count"))
             Events.regexRuleUpdated.fire()
-
             true
         } catch (e: Exception) {
             aCtx.logger?.error("$e")
@@ -495,7 +476,7 @@ class ImportAsMultipleRegexRules(
     }
 
     override fun inputParamType(): List<ParamType> {
-        return listOf(ParamType.RuleList)
+        return listOf(ParamType.RuleStream)
     }
 
     override fun outputParamType(): List<ParamType> {
@@ -575,23 +556,17 @@ class ConvertNumber(
 ) : IPermissiveAction {
 
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-        val rules = aCtx.lastOutput as List<*> // List<RegexRule>
+        val ruleStream = aCtx.lastOutput as? RuleStream ?: return false
 
         aCtx.logger?.debug(
             ctx.getString(R.string.replace_number_from_to)
                 .format(from, to)
         )
 
-        val clearedRuleList = rules.map {
-            val r = it as RegexRule
-
-            val newNum = from.toRegex().replace(r.pattern, to)
-
-            r.copy(
-                pattern = newNum
-            )
+        val regex = from.toRegex()
+        aCtx.lastOutput = MappingRuleStream(ruleStream) { rule ->
+            rule.copy(pattern = regex.replace(rule.pattern, to))
         }
-        aCtx.lastOutput = clearedRuleList
         return true
     }
 
@@ -609,11 +584,11 @@ class ConvertNumber(
     }
 
     override fun inputParamType(): List<ParamType> {
-        return listOf(ParamType.RuleList)
+        return listOf(ParamType.RuleStream)
     }
 
     override fun outputParamType(): List<ParamType> {
-        return listOf(ParamType.RuleList)
+        return listOf(ParamType.RuleStream)
     }
 
     @Composable
@@ -688,7 +663,7 @@ class FindRules(
             }
         }
 
-        aCtx.lastOutput = map
+        aCtx.lastOutput = GroupedRuleStream(map)
 
         return true
     }
@@ -713,7 +688,7 @@ class FindRules(
                 .formatAnnotated("${map.values.sumOf { it.size }}".A(C.teal200), pattern.A(C.textGrey.darken()))
         )
 
-        aCtx.lastOutput = map
+        aCtx.lastOutput = GroupedRuleStream(map)
         return true
     }
 
@@ -737,7 +712,7 @@ class FindRules(
     }
 
     override fun outputParamType(): List<ParamType> {
-        return listOf(ParamType.RuleList)
+        return listOf(ParamType.RuleStream)
     }
 
     @Composable
@@ -771,7 +746,7 @@ class ModifyRules(
     fun modifyInMemory(ctx: Context, aCtx: ActionContext): Boolean {
         val C = G.palette
 
-        val rulesMap = aCtx.lastOutput as Map<Int, List<RegexRule>>
+        val rulesMap = (aCtx.lastOutput as? GroupedRuleStream)?.groups ?: return false
 
         val cCtx = aCtx.cCtx!!
 
@@ -818,7 +793,7 @@ class ModifyRules(
             return modifyInMemory(ctx, aCtx)
         }
 
-        val rulesMap = aCtx.lastOutput as Map<Int, List<RegexRule>>
+        val rulesMap = (aCtx.lastOutput as? GroupedRuleStream)?.groups ?: return false
 
         aCtx.logger?.debug(
             ctx.getString(R.string.modify_n_rules)
@@ -875,7 +850,7 @@ class ModifyRules(
     }
 
     override fun inputParamType(): List<ParamType> {
-        return listOf(ParamType.RuleList)
+        return listOf(ParamType.RuleStream)
     }
 
     override fun outputParamType(): List<ParamType> {
