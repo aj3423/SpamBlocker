@@ -46,11 +46,10 @@
     <string name="show_hide">הצג/הסתר</string>
     <string name="allowed_records">רשומות מורשות</string>
     <string name="blocked_records">רשומות חסומות</string>
-    <string name="local_number">מספר מקומי</string>
     <string name="non_local_number">מספר לא מקומי</string>
-    <string name="help_regex_preset_local_number">
+    <string name="help_regex_preset_non_local_number">
         <![CDATA[
-        אפשר שיחות מקומיות מאותה האזור וחסום אחרות. <br>
+        חסום את כל השיחות שאינן מקומיות. <br>
         <br>
         החלף את <sample>Milan</sample> באיזורך האמיתי. <br>
         <br>

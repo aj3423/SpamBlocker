@@ -46,11 +46,10 @@
     <string name="show_hide">Mostra/Amaga</string>
     <string name="allowed_records">Registres permesos</string>
     <string name="blocked_records">Registres bloquejats</string>
-    <string name="local_number">Número local</string>
     <string name="non_local_number">Número no local</string>
-    <string name="help_regex_preset_local_number">
+    <string name="help_regex_preset_non_local_number">
         <![CDATA[
-        Permet trucades locals de la mateixa regió i bloqueja les altres. <br>
+        Bloqueja totes les trucades no locals. <br>
         <br>
         Substitueix <sample>Milan</sample> amb la teva regió real. <br>
         <br>

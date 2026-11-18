@@ -46,11 +46,10 @@
     <string name="show_hide">Показати/Сховати</string>
     <string name="allowed_records">Дозволені записи</string>
     <string name="blocked_records">Заблоковані записи</string>
-    <string name="local_number">Місцевий номер</string>
     <string name="non_local_number">Не місцевий номер</string>
-    <string name="help_regex_preset_local_number">
+    <string name="help_regex_preset_non_local_number">
         <![CDATA[
-        Дозволяти місцеві дзвінки з того ж регіону та блокувати інші. <br>
+        Блокувати всі немісцеві дзвінки. <br>
         <br>
         Замініть <sample>Milan</sample> вашою фактичною областю. <br>
         <br>

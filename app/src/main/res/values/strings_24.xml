@@ -46,11 +46,10 @@
     <string name="show_hide">Show/Hide</string>
     <string name="allowed_records">Allowed Records</string>
     <string name="blocked_records">Blocked Records</string>
-    <string name="local_number">Local Number</string>
     <string name="non_local_number">Non-local Number</string>
-    <string name="help_regex_preset_local_number">
+    <string name="help_regex_preset_non_local_number">
         <![CDATA[
-        Allow local calls from the same region and block others. <br>
+        Block all non-local calls. <br>
         <br>
         Replace <sample>Milan</sample> with your actual region. <br>
         <br>

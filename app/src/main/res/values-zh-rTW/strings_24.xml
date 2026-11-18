@@ -46,11 +46,10 @@
     <string name="show_hide">顯示/隱藏</string>
     <string name="allowed_records">允許的記錄</string>
     <string name="blocked_records">已封鎖的記錄</string>
-    <string name="local_number">地區號碼</string>
     <string name="non_local_number">非地區號碼</string>
-    <string name="help_regex_preset_local_number">
+    <string name="help_regex_preset_non_local_number">
         <![CDATA[
-        允許同一區域的號碼，並阻止其他號碼。 <br>
+        封鎖所有非本地來電。 <br>
         <br>
         將 <sample>Milan</sample> 替換為您實際需要設定的發話地點區域。 <br>
         <br>

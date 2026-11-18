@@ -46,11 +46,10 @@
     <string name="show_hide">Показать/Скрыть</string>
     <string name="allowed_records">Разрешённые записи</string>
     <string name="blocked_records">Заблокированные записи</string>
-    <string name="local_number">Локальный номер</string>
     <string name="non_local_number">Нелокальный номер</string>
-    <string name="help_regex_preset_local_number">
+    <string name="help_regex_preset_non_local_number">
         <![CDATA[
-        Разрешить локальные вызовы из того же региона и блокировать остальные. <br>
+        Блокировать все нелокальные вызовы. <br>
         <br>
         Замените <sample>Milan</sample> вашим фактическим регионом. <br>
         <br>

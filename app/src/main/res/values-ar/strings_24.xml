@@ -43,11 +43,10 @@
     <string name="show_hide">عرض/إخفاء</string>
     <string name="allowed_records">السجلات المسموح بها</string>
     <string name="blocked_records">السجلات المحظورة</string>
-    <string name="local_number">رقم محلي</string>
     <string name="non_local_number">رقم غير محلي</string>
-    <string name="help_regex_preset_local_number">
+    <string name="help_regex_preset_non_local_number">
         <![CDATA[
-        السماح بالمكالمات المحلية من نفس المنطقة وحظر الأخرى. <br>
+        حظر جميع المكالمات غير المحلية. <br>
         <br>
         استبدل <sample>Milan</sample> بمنطقتك الفعلية. <br>
         <br>

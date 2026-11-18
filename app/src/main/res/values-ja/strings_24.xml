@@ -42,11 +42,10 @@
     <string name="show_hide">表示/非表示</string>
     <string name="allowed_records">許可されたレコード</string>
     <string name="blocked_records">ブロックされたレコード</string>
-    <string name="local_number">ローカル番号</string>
     <string name="non_local_number">非ローカル番号</string>
-    <string name="help_regex_preset_local_number">
+    <string name="help_regex_preset_non_local_number">
         <![CDATA[
-        同じ地域からのローカル電話を許可し、その他をブロックします。 <br>
+        すべてのローカル以外の通話をブロックします。 <br>
         <br>
         <sample>Milan</sample> を実際の地域に置き換えてください。 <br>
         <br>

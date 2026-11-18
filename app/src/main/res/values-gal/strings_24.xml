@@ -46,11 +46,10 @@
     <string name="show_hide">Mostrar/Ocultar</string>
     <string name="allowed_records">Rexistros Permitidos</string>
     <string name="blocked_records">Rexistros Bloqueados</string>
-    <string name="local_number">Número local</string>
     <string name="non_local_number">Número non local</string>
-    <string name="help_regex_preset_local_number">
+    <string name="help_regex_preset_non_local_number">
         <![CDATA[
-        Permite chamadas locais dende a mesma zona e bloquea as demais. <br>
+        Bloquea todas as chamadas non locais. <br>
         <br>
         Substitúe <sample>Milan</sample> pola túa zona real. <br>
         <br>

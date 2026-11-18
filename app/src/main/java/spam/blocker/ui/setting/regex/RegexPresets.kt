@@ -59,9 +59,9 @@ val RegexPresets = mapOf(
             )
         },
         RegexPreset(
-            label = { it.getString(R.string.local_number) },
+            label = { it.getString(R.string.non_local_number) },
             tooltip = {
-                it.getString(R.string.help_regex_preset_local_number)
+                it.getString(R.string.help_regex_preset_non_local_number)
             },
             preCheck = { ctx, onSuccess, onFail ->
                 G.permissionChain.ask(

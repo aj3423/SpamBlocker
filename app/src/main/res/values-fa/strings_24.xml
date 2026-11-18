@@ -45,11 +45,10 @@
     <string name="show_hide">نمایش/مخفی</string>
     <string name="allowed_records">رکوردهای مجاز</string>
     <string name="blocked_records">رکوردهای مسدود شده</string>
-    <string name="local_number">شماره محلی</string>
     <string name="non_local_number">شماره غیرمحلی</string>
-    <string name="help_regex_preset_local_number">
+    <string name="help_regex_preset_non_local_number">
         <![CDATA[
-        اجازه بدهید تماس‌های محلی از همان منطقه و تماس‌های دیگر را مسدود کنید. <br>
+        همهٔ تماس‌های غیرمحلی را مسدود کنید. <br>
         <br>
         <sample>Milan</sample> را با منطقهٔ واقعی خود جایگزین کنید. <br>
         <br>

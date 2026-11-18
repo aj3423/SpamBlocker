@@ -43,11 +43,10 @@
     <string name="show_hide">Göster/Gizle</string>
     <string name="allowed_records">İzin Verilen Kayıtlar</string>
     <string name="blocked_records">Engellenen Kayıtlar</string>
-    <string name="local_number">Yerel Numara</string>
     <string name="non_local_number">Yerel Olmayan Numara</string>
-    <string name="help_regex_preset_local_number">
+    <string name="help_regex_preset_non_local_number">
         <![CDATA[
-        Aynı bölgeden gelen yerel aramaları izin ver ve diğerlerini engelle. <br>
+        Tüm yerel olmayan aramaları engelle. <br>
         <br>
         <sample>Milan</sample>\'ı gerçek bölgenizle değiştirin. <br>
         <br>

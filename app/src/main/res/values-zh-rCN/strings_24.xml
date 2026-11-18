@@ -46,11 +46,10 @@
     <string name="show_hide">显示/隐藏</string>
     <string name="allowed_records">允许的记录</string>
     <string name="blocked_records">已阻止的记录</string>
-    <string name="local_number">归属地号码</string>
     <string name="non_local_number">非属地号码</string>
-    <string name="help_regex_preset_local_number">
+    <string name="help_regex_preset_non_local_number">
         <![CDATA[
-        允许同一地区的归属地来电，阻止其他来电。 <br>
+        拦截所有非本地来电。 <br>
         <br>
         将 <sample>Milan</sample> 替换为您实际需要设置的归属地地区。 <br>
         <br>

@@ -46,11 +46,10 @@
     <string name="show_hide">Tampilkan/Sembunyikan</string>
     <string name="allowed_records">Catatan Diizinkan</string>
     <string name="blocked_records">Catatan Diblokir</string>
-    <string name="local_number">Nomor Lokal</string>
     <string name="non_local_number">Nomor Non-lokal</string>
-    <string name="help_regex_preset_local_number">
+    <string name="help_regex_preset_non_local_number">
         <![CDATA[
-        Izinkan panggilan lokal dari wilayah yang sama dan blokir yang lain. <br>
+        Blokir semua panggilan nonlokal. <br>
         <br>
         Ganti <sample>Milan</sample> dengan wilayah Anda yang sebenarnya. <br>
         <br>
