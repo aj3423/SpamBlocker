@@ -201,16 +201,15 @@ class ImportAsRegexRule(
     }
 
     private fun create(ctx: Context, aCtx: ActionContext, numbers: List<String>) {
-        // Join numbers to `11|22|33...`
-        val combinedPattern = numbers.joinToString("|")
-
         aCtx.logger?.debug(
             ctx.getString(R.string.create_rule_with_numbers)
                 .format("${numbers.size}")
         )
 
         val newRule = RegexRule(
-            pattern = "($combinedPattern)",
+            pattern = numbers.joinToString("|").let {
+                if (numbers.size > 1) "($it)" else it
+            }, 
             description = description,
             priority = priority,
             isBlacklist = !isWhitelist,
@@ -233,10 +232,19 @@ class ImportAsRegexRule(
             )
             create(ctx, aCtx, numbers)
         } else {
-            // 1. delete the previous rule
-            table.deleteById(ctx, oldRules[0].id)
-            // 2. create a new one
-            create(ctx, aCtx, numbers)
+            val previous = oldRules[0]
+            table.updateById(
+                ctx,
+                previous.id,
+                previous.copy(
+                    pattern = numbers.joinToString("|").let {
+                        if (numbers.size > 1) "($it)" else it
+                    }, 
+                    description = description,
+                    priority = priority,
+                    isBlacklist = !isWhitelist,
+                )
+            )
         }
     }
 
