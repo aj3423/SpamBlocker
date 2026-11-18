@@ -1,0 +1,9 @@
+Fix:
+- Startup ANR due to too many regex rules
+
+Improvements:
+- Added history batch operations like report, add to db, delete
+- Support importing large csv files, e.g. 6 million lines
+
+Change:
+- Merged theme options "App Background" and "Dialog Background"
