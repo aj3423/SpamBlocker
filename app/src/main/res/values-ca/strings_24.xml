@@ -49,7 +49,7 @@
     <string name="non_local_number">Número no local</string>
     <string name="help_regex_preset_non_local_number">
         <![CDATA[
-        Bloqueja totes les trucades no locals. <br>
+        Bloqueja les trucades no locals. Les trucades locals no es permeten explícitament aquí; les gestionen altres regles o es permeten per defecte. <br>
         <br>
         Substitueix <sample>Milan</sample> amb la teva regió real. <br>
         <br>

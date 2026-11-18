@@ -49,7 +49,7 @@
     <string name="non_local_number">Nichtlokale Nummer</string>
     <string name="help_regex_preset_non_local_number">
         <![CDATA[
-        Alle nicht lokalen Anrufe blockieren. <br>
+        Nicht lokale Anrufe blockieren. Lokale Anrufe werden hier nicht ausdrücklich erlaubt; sie werden durch andere Regeln behandelt oder standardmäßig erlaubt. <br>
         <br>
         Ersetze <sample>Milan</sample> durch deine tatsächliche Region. <br>
         <br>

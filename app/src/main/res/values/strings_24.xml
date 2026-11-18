@@ -49,7 +49,7 @@
     <string name="non_local_number">Non-local Number</string>
     <string name="help_regex_preset_non_local_number">
         <![CDATA[
-        Block all non-local calls. <br>
+        Block non-local calls. Local calls aren\'t explicitly allowed here, they are handled by other rules or allowed by default.<br>
         <br>
         Replace <sample>Milan</sample> with your actual region. <br>
         <br>

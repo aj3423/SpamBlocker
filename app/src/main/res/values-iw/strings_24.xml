@@ -49,7 +49,7 @@
     <string name="non_local_number">מספר לא מקומי</string>
     <string name="help_regex_preset_non_local_number">
         <![CDATA[
-        חסום את כל השיחות שאינן מקומיות. <br>
+        חסום שיחות שאינן מקומיות. שיחות מקומיות אינן מורשות כאן במפורש; הן מטופלות על ידי כללים אחרים או מורשות כברירת מחדל. <br>
         <br>
         החלף את <sample>Milan</sample> באיזורך האמיתי. <br>
         <br>

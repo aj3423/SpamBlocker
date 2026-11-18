@@ -49,7 +49,7 @@
     <string name="non_local_number">非地區號碼</string>
     <string name="help_regex_preset_non_local_number">
         <![CDATA[
-        封鎖所有非本地來電。 <br>
+        封鎖非本地來電。本地來電不會在此處明確允許，而是由其他規則處理或預設允許。 <br>
         <br>
         將 <sample>Milan</sample> 替換為您實際需要設定的發話地點區域。 <br>
         <br>

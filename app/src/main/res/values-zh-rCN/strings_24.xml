@@ -49,7 +49,7 @@
     <string name="non_local_number">非属地号码</string>
     <string name="help_regex_preset_non_local_number">
         <![CDATA[
-        拦截所有非本地来电。 <br>
+        拦截非本地来电。本地来电不会在此处明确允许，而是由其他规则处理或默认允许。 <br>
         <br>
         将 <sample>Milan</sample> 替换为您实际需要设置的归属地地区。 <br>
         <br>

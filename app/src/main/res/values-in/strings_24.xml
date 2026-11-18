@@ -49,7 +49,7 @@
     <string name="non_local_number">Nomor Non-lokal</string>
     <string name="help_regex_preset_non_local_number">
         <![CDATA[
-        Blokir semua panggilan nonlokal. <br>
+        Blokir panggilan nonlokal. Panggilan lokal tidak diizinkan secara eksplisit di sini; panggilan tersebut ditangani oleh aturan lain atau diizinkan secara default. <br>
         <br>
         Ganti <sample>Milan</sample> dengan wilayah Anda yang sebenarnya. <br>
         <br>

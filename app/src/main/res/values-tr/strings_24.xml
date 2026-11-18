@@ -46,7 +46,7 @@
     <string name="non_local_number">Yerel Olmayan Numara</string>
     <string name="help_regex_preset_non_local_number">
         <![CDATA[
-        Tüm yerel olmayan aramaları engelle. <br>
+        Yerel olmayan aramaları engelle. Yerel aramalara burada açıkça izin verilmez; bunlar diğer kurallar tarafından işlenir veya varsayılan olarak izin verilir. <br>
         <br>
         <sample>Milan</sample>\'ı gerçek bölgenizle değiştirin. <br>
         <br>

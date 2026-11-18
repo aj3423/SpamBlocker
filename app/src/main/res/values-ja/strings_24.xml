@@ -45,7 +45,7 @@
     <string name="non_local_number">非ローカル番号</string>
     <string name="help_regex_preset_non_local_number">
         <![CDATA[
-        すべてのローカル以外の通話をブロックします。 <br>
+        ローカル以外の通話をブロックします。ローカル通話はここで明示的に許可されるのではなく、他のルールで処理されるか、デフォルトで許可されます。 <br>
         <br>
         <sample>Milan</sample> を実際の地域に置き換えてください。 <br>
         <br>

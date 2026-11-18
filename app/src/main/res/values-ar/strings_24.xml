@@ -46,7 +46,7 @@
     <string name="non_local_number">رقم غير محلي</string>
     <string name="help_regex_preset_non_local_number">
         <![CDATA[
-        حظر جميع المكالمات غير المحلية. <br>
+        حظر المكالمات غير المحلية. لا يتم السماح بالمكالمات المحلية صراحةً هنا؛ تتولاها قواعد أخرى أو تُسمح بها افتراضيًا. <br>
         <br>
         استبدل <sample>Milan</sample> بمنطقتك الفعلية. <br>
         <br>
